@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="theme-color" content="#f3f0e6">
+  <meta name="description" content="纸上防线：一款手绘风无限迷宫塔防。部署小队，规划路线，守住最后一道防线。">
+  <title>纸上防线 · Paperline TD</title>
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="h5.css">
+  <script src="../../i18n.js" defer></script>
+  <script src="engine.js" defer></script>
+  <script src="art.js" defer></script>
+  <script src="i18n.js" defer></script>
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <div class="app-shell">
+    <header class="masthead">
+      <a id="back-link" class="lobby-link" href="../../games.html" data-i18n-label="common.back" data-i18n-title="common.back"><span aria-hidden="true">←</span><span data-i18n="common.back">返回大厅</span></a>
+      <div class="brand">
+        <span class="brand-mark"><svg viewBox="0 0 58 64" fill="none" aria-hidden="true"><path d="m6 8 23-5 23 6-3 32-20 18L8 42Z" fill="#667b59" stroke="#354432" stroke-width="2"/><path d="m12 13 17-4 17 5-2 24-15 14-15-14Z" stroke="#d3d6b8"/><path d="m28 18 4 10 11 1-9 7 2 11-9-7-9 6 3-11-8-7 11-1Z" fill="#e6d6a6"/></svg></span>
+        <span><span class="brand-title"><span data-i18n="maxtd.brand">纸上防线</span><span class="brand-dot">.</span></span><span class="brand-sub">PAPERLINE <i></i> TOWER DEFENSE</span></span>
+      </div>
+      <div class="header-center"><span class="hand-arrow">↳</span> <span data-i18n="maxtd.motto">小小一张纸，大大一场仗。</span></div>
+      <nav class="header-actions" aria-label="游戏菜单" data-i18n-label="maxtd.menuAria">
+        <label class="language-control" data-i18n-title="maxtd.language" title="语言"><span data-icon="globe" aria-hidden="true"></span><select id="language-select" data-language-select aria-label="语言" data-i18n-label="maxtd.language"></select></label>
+        <button id="help-btn" class="text-button" data-icon="book" data-i18n-title="maxtd.help" data-i18n-label="maxtd.help"><span data-i18n="maxtd.help">战地手册</span></button>
+        <button id="records-btn" class="text-button" data-icon="trophy" data-i18n-title="maxtd.records" data-i18n-label="maxtd.records"><span data-i18n="maxtd.records">我的战绩</span></button>
+        <button id="sound-btn" class="icon-button" aria-label="开启音效" title="开启音效"></button>
+      </nav>
+    </header>
+
+    <main>
+      <section class="command-strip" aria-label="战场状态" data-i18n-label="maxtd.statusAria">
+        <div class="operation"><span class="tiny-label" data-i18n="maxtd.operation">行动 / 01</span><h1><span data-i18n="maxtd.mode">无尽守卫</span><span class="status-pill" id="status-pill">准备阶段</span></h1></div>
+        <div class="resource wave-resource"><span class="resource-icon" data-icon="flag"></span><span><span class="resource-label" data-i18n="maxtd.waveLabel">当前波次</span><span class="resource-value"><b id="wave-value">00</b><span class="muted"> / ∞</span></span></span></div>
+        <div class="resource"><span class="resource-icon coin-icon" data-icon="coin"></span><span><span class="resource-label" data-i18n="maxtd.funds">部署经费</span><span class="resource-value" id="money-value">320</span></span></div>
+        <div class="resource"><span class="resource-icon heart-icon" data-icon="heart"></span><span><span class="resource-label" data-i18n="maxtd.lives">指挥部耐久</span><span class="resource-value"><b id="lives-value">20</b><span class="small-value"> / 20</span></span></span></div>
+        <div class="best-resource"><span data-icon="trophy"></span><span><span class="resource-label" data-i18n="maxtd.best">个人最佳</span><strong><span id="best-value">00</span> <small data-i18n="maxtd.wavesUnit">波</small></strong></span></div>
+      </section>
+
+      <div class="game-layout">
+        <section class="battle-section" aria-label="战场" data-i18n-label="maxtd.battleAria">
+          <div class="section-heading"><div><span class="live-dot"></span><h2 data-i18n="maxtd.battleTitle">作战沙盘</h2><span class="english-label" data-i18n="maxtd.battleEyebrow">THE BATTLEFIELD</span></div><span class="map-size">20 × 13 <span data-i18n="maxtd.freeBuild">自由布防</span></span></div>
+          <div class="board-paper">
+            <div class="board-topline"><span><span class="orange-dot"></span> <span data-i18n="maxtd.entryNote">敌军由西侧进入</span></span><span><span data-i18n="maxtd.homeNote">守住东侧指挥部</span> <span class="green-dot"></span></span></div>
+            <div class="board-stage"><div class="canvas-wrap" id="canvas-wrap">
+              <canvas id="battlefield" width="1040" height="676" tabindex="0" aria-label="20列13行塔防战场。选中单位后点击格子部署；可用方向键移动光标，回车部署或选中。" data-i18n-label="maxtd.canvasAria"></canvas>
+              <div class="board-overlay" id="pause-overlay" hidden><span data-icon="pause"></span><h2 data-i18n="maxtd.pauseTitle">休息一下，指挥官。</h2><p data-i18n="maxtd.pauseBody">战场已暂停，准备好就继续。</p><button id="resume-btn" class="primary-button"><span data-i18n="maxtd.resume">继续守卫</span> <span data-icon="play"></span></button></div>
+              <div class="wave-banner" id="wave-banner" hidden><span class="tiny-label" data-i18n="maxtd.incoming">敌军来袭</span><strong id="wave-banner-text">第 01 波</strong><span data-i18n="maxtd.holdLine">守好你的防线！</span></div>
+            </div>
+            </div>
+            <div class="board-bottomline"><span id="board-instruction"><span data-icon="info"></span> 选择单位，再点击方格部署</span><button id="path-btn" class="route-button active" aria-pressed="true"><span data-icon="path"></span> <span data-i18n="maxtd.route">行军路线</span> <span class="switch-dot"></span></button></div>
+            <div class="paper-corner"></div>
+          </div>
+          <div class="battle-controls">
+            <div class="next-wave"><span class="tiny-label" id="wave-preview-label">下一波情报</span><div id="wave-preview"><span class="enemy-marker"></span> 10 小怪 <span class="preview-divider">/</span> HP ×1.00</div><div class="wave-progress"><span id="wave-progress-fill"></span></div></div>
+            <div class="speed-control" role="group" aria-label="游戏速度" data-i18n-label="maxtd.speedAria"><button class="speed active" data-speed="1" aria-pressed="true">1×</button><button class="speed" data-speed="2" aria-pressed="false">2×</button><button class="speed" data-speed="3" aria-pressed="false">3×</button></div>
+            <button id="wave-btn" class="primary-button"><span data-icon="play"></span><span id="wave-button-label">开始第 1 波</span><kbd>SPACE</kbd></button>
+          </div>
+          <div class="field-note" id="field-note" hidden></div>
+          <div class="global-buffs"><span class="buffs-title" data-i18n="maxtd.globalSupport">全局支援</span><span id="buff-damage" class="buff" data-i18n-title="maxtd.damageCapTitle"><i class="buff-dot damage-dot"></i> <span data-i18n="maxtd.damage">伤害</span> <b>+0%</b></span><span id="buff-speed" class="buff" data-i18n-title="maxtd.speedCapTitle"><i class="buff-dot speed-dot"></i> <span data-i18n="maxtd.attackSpeed">攻速</span> <b>+0%</b></span><span id="buff-slow" class="buff" data-i18n-title="maxtd.slowCapTitle"><i class="buff-dot slow-dot"></i> <span data-i18n="maxtd.slowActual">干扰减速</span> <b>25%</b></span><span class="buffs-end" data-i18n="maxtd.allMapNote">研究所增益覆盖全图</span></div>
+        </section>
+
+        <aside class="roster" aria-label="单位部署面板" data-i18n-label="maxtd.rosterAria">
+          <div class="roster-header"><div><span class="tiny-label" data-i18n="maxtd.rosterEyebrow">YOUR LITTLE ARMY</span><h2><span data-i18n="maxtd.rosterTitle">部署小队</span><span>＋</span></h2></div><span class="roster-stamp" data-i18n="maxtd.ready">战备就绪</span></div>
+          <div class="roster-category"><span data-i18n="maxtd.attackUnits">攻击单位</span><span data-i18n="maxtd.fourTypes">4 种火力</span></div>
+          <div class="unit-grid" id="attack-units"></div>
+          <div class="roster-category support-heading"><span data-i18n="maxtd.supportUnits">辅助设施</span><span data-i18n="maxtd.global">全局生效</span></div>
+          <div class="support-list" id="support-units"></div>
+          <button id="wall-card" class="wall-card" data-type="wall"><span class="wall-art"></span><span><strong><span data-i18n="maxtd.unit.wall.name">沙袋墙</span> <kbd>1</kbd></strong><small data-i18n="maxtd.wallHint">造个迷宫 · 全额回收</small></span><span class="unit-cost">8 <span class="coin-mini">◉</span></span></button>
+          <div class="roster-footer"><span data-icon="target"></span><span id="roster-hint">选择单位，建立你的防线。</span></div>
+        </aside>
+      </div>
+      <footer class="page-footer"><span data-i18n="maxtd.footerMotto">画一条路线，守一个明天。</span><span><kbd>1</kbd>—<kbd>8</kbd> <span data-i18n="maxtd.keyDeploy">部署</span> <i>·</i> <kbd>ESC</kbd> <span data-i18n="maxtd.keyCancel">取消</span> <i>·</i> <kbd>SPACE</kbd> <span data-i18n="maxtd.keyPause">开始 / 暂停</span> <i>·</i> <kbd>Q</kbd> <span data-i18n="maxtd.keyRoute">路线</span></span><span>PAPERLINE TD <b>v1.2.2</b></span></footer>
+    </main>
+  </div>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <dialog id="detail-dialog" class="modal detail-modal">
+    <a class="dialog-back" href="../../games.html" data-i18n="common.back">返回大厅</a><button class="modal-close icon-button" data-close data-i18n-label="maxtd.close" data-icon="close"></button><div id="detail-content"></div></dialog>
+  <dialog id="help-dialog" class="modal manual-modal">
+    <a class="dialog-back" href="../../games.html" data-i18n="common.back">返回大厅</a>
+    <button class="modal-close icon-button" data-close data-i18n-label="maxtd.close" data-icon="close"></button>
+    <span class="tiny-label" data-i18n="maxtd.manualEyebrow"></span><h2 data-i18n="maxtd.manualTitle"></h2><p class="modal-intro" data-i18n="maxtd.manualIntro"></p>
+    <div class="manual-steps">
+      <article><b>01</b><div><h3 data-i18n="maxtd.manualMazeTitle"></h3><p data-i18n="maxtd.manualMazeBody"></p></div></article>
+      <article><b>02</b><div><h3 data-i18n="maxtd.manualTeamTitle"></h3><p data-i18n="maxtd.manualTeamBody"></p></div></article>
+      <article><b>03</b><div><h3 data-i18n="maxtd.manualWavesTitle"></h3><p data-i18n="maxtd.manualWavesBody"></p></div></article>
+    </div>
+    <div class="manual-note"><strong data-i18n="maxtd.manualNotesTitle"></strong><p data-i18n="maxtd.manualUpgradeBody"></p><p data-i18n="maxtd.manualStartBody"></p></div>
+    <div class="manual-keys"><span><kbd>1—8</kbd> <span data-i18n="maxtd.keyDeploy"></span></span><span><kbd>SPACE</kbd> <span data-i18n="maxtd.keyPause"></span></span><span><kbd>ESC</kbd> <span data-i18n="maxtd.keyCancel"></span></span><span><kbd>Q</kbd> <span data-i18n="maxtd.keyRoute"></span></span><span><kbd>↑↓←→</kbd> <span data-i18n="maxtd.keyMove"></span></span><span><kbd>ENTER</kbd> <span data-i18n="maxtd.keyConfirm"></span></span></div>
+    <button class="primary-button full-width" data-close><span data-i18n="maxtd.manualStart"></span><span data-icon="arrow"></span></button>
+  </dialog>
+  <dialog id="records-dialog" class="modal records-modal">
+    <a class="dialog-back" href="../../games.html" data-i18n="common.back">返回大厅</a>
+    <button class="modal-close icon-button" data-close data-i18n-label="maxtd.close" data-icon="close"></button><span class="tiny-label" data-i18n="maxtd.recordsEyebrow"></span><h2 data-i18n="maxtd.recordsTitle"></h2>
+    <div class="record-hero"><span data-icon="trophy"></span><strong id="record-best">00</strong><span data-i18n="maxtd.bestCleared"></span></div><div id="records-list"></div><p class="record-local"></p>
+    <button id="new-game-btn" class="secondary-button full-width" data-icon="restart"><span data-i18n="maxtd.restart"></span></button>
+  </dialog>
+  <dialog id="restart-dialog" class="modal restart-modal">
+    <a class="dialog-back" href="../../games.html" data-i18n="common.back">返回大厅</a>
+    <button class="modal-close icon-button" data-close data-i18n-label="maxtd.close" data-icon="close"></button><span class="tiny-label" data-i18n="maxtd.restartEyebrow"></span><h2 data-i18n="maxtd.restartTitle"></h2><p data-i18n="maxtd.restartBody"></p>
+    <div class="modal-buttons"><button class="secondary-button" data-close data-i18n="maxtd.keepPlaying"></button><button id="confirm-restart" class="primary-button"><span data-i18n="maxtd.restart"></span><span data-icon="restart"></span></button></div>
+  </dialog>
+  <dialog id="gameover-dialog" class="modal gameover-modal">
+    <a class="dialog-back" href="../../games.html" data-i18n="common.back">返回大厅</a>
+    <span class="tiny-label" data-i18n="maxtd.overEyebrow"></span><div class="gameover-emblem" data-icon="shield"></div><h2 data-i18n="maxtd.overTitle"></h2>
+    <div class="gameover-stats"><div><strong id="final-wave">0</strong><span data-i18n="maxtd.cleared"></span></div><div><strong id="final-kills">0</strong><span data-i18n="maxtd.kills"></span></div><div><strong id="final-best">0</strong><span data-i18n="maxtd.best"></span></div></div>
+    <p id="final-message"></p><button id="play-again-btn" class="primary-button full-width"><span data-i18n="maxtd.playAgain"></span><span data-icon="restart"></span></button><button id="inspect-btn" class="text-button" data-i18n="maxtd.inspect"></button>
+  </dialog>
+</body>
+</html>

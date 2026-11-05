@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="660" height="400" viewBox="0 0 660 400">
+  <rect width="660" height="400" fill="#e4e7dc"/>
+  <g fill="none" stroke="#c6cebb" stroke-width="1"><path d="M120 80h420M120 128h420M120 176h420M120 224h420M120 272h420M120 320h420M138 60v280M186 60v280M234 60v280M282 60v280M330 60v280M378 60v280M426 60v280M474 60v280M522 60v280" opacity=".45"/></g>
+  <g stroke-width="2" stroke="#65795555">
+    <g fill="#ad9aba" transform="translate(259 57) rotate(-7 70 45)"><rect width="42" height="42" x="48" rx="4"/><rect width="42" height="42" y="48" rx="4"/><rect width="42" height="42" x="48" y="48" rx="4"/><rect width="42" height="42" x="96" y="48" rx="4"/></g>
+    <g fill="#9eae7c"><rect width="42" height="42" x="189" y="227" rx="4"/><rect width="42" height="42" x="237" y="227" rx="4"/><rect width="42" height="42" x="141" y="275" rx="4"/><rect width="42" height="42" x="189" y="275" rx="4"/></g>
+    <g fill="#d4b56c"><rect width="42" height="42" x="333" y="227" rx="4"/><rect width="42" height="42" x="381" y="227" rx="4"/><rect width="42" height="42" x="333" y="275" rx="4"/><rect width="42" height="42" x="381" y="275" rx="4"/></g>
+    <g fill="#83adb1"><rect width="42" height="42" x="477" y="131" rx="4"/><rect width="42" height="42" x="477" y="179" rx="4"/><rect width="42" height="42" x="477" y="227" rx="4"/><rect width="42" height="42" x="477" y="275" rx="4"/></g>
+  </g>
+  <path d="M127 332h408" fill="none" stroke="#8b9d7c" stroke-width="2" stroke-linecap="round"/>
+</svg>

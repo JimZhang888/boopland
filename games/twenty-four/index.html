@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-i18n-scope="twentyFour">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#f5f3eb">
+  <title data-i18n="pageTitle">24 点 · Boopland</title>
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+  <div class="game-shell">
+    <header class="topbar">
+      <a class="back" href="../../games.html"><span aria-hidden="true">↶</span><span data-i18n="common.back">返回大厅</span></a>
+      <h1 data-i18n="name">24 点</h1>
+      <div class="top-actions">
+        <select data-language-select aria-label="选择语言"></select>
+        <button class="icon-button" id="help" type="button" data-i18n-label="rules" aria-label="玩法说明">?</button>
+      </div>
+    </header>
+
+    <main class="workspace">
+      <section class="play-area" aria-labelledby="goal-title">
+        <div class="goal">
+          <div><p class="eyebrow" data-i18n="eyebrow">四个数字，一点巧思</p><h2 id="goal-title" data-i18n="goal">让答案，刚好是</h2></div>
+          <span class="target" aria-hidden="true">24<span class="target-spark">✧</span></span>
+          <span class="sr-only">24</span>
+        </div>
+        <div class="cards" id="cards" role="group" data-i18n-label="cards" aria-label="数字牌"></div>
+        <div class="calculator">
+          <div class="selection-row">
+            <output id="selection" aria-live="polite"></output>
+            <button id="swap" class="icon-button" type="button" data-i18n-label="swap" aria-label="交换两个数字的顺序" disabled>⇄</button>
+          </div>
+          <div class="operators" role="group" data-i18n-label="operators" aria-label="选择运算符">
+            <button type="button" data-operator="+" data-i18n-label="add" aria-label="加">+</button>
+            <button type="button" data-operator="-" data-i18n-label="subtract" aria-label="减">−</button>
+            <button type="button" data-operator="*" data-i18n-label="multiply" aria-label="乘">×</button>
+            <button type="button" data-operator="/" data-i18n-label="divide" aria-label="除">÷</button>
+          </div>
+        </div>
+      </section>
+
+      <aside class="notebook" aria-labelledby="notebook-title">
+        <div class="notebook-header">
+          <h2 id="notebook-title" data-i18n="notebook">演算手记</h2>
+          <div class="edit-actions">
+            <button id="undo" class="icon-button" type="button" data-i18n-label="undo" aria-label="撤销一步">↶</button>
+            <button id="reset" class="icon-button" type="button" data-i18n-label="reset" aria-label="重算这题">⟲</button>
+          </div>
+        </div>
+        <p id="original" class="original"></p>
+        <ol id="history" class="history"></ol>
+        <p id="status" class="status" role="status" aria-live="polite" aria-atomic="true"></p>
+        <div class="tally"><span aria-hidden="true">✿</span><span id="solved"></span></div>
+      </aside>
+    </main>
+
+    <footer class="toolbar">
+      <button id="hint" type="button"><span aria-hidden="true">✧</span><span data-i18n="hint">一点提示</span></button>
+      <button id="answer" type="button"><span data-i18n="answer">看看解答</span></button>
+      <button id="next" class="primary" type="button"><span data-i18n="next">换一题</span><span aria-hidden="true">→</span></button>
+    </footer>
+  </div>
+
+  <dialog id="dialog" aria-labelledby="dialog-title">
+    <div class="dialog-header"><h2 id="dialog-title"></h2><button id="close-dialog" class="icon-button" type="button" data-i18n-label="close" aria-label="关闭">×</button></div>
+    <div id="dialog-content"></div>
+  </dialog>
+  <noscript>请开启 JavaScript 以游玩 24 点。 / Please enable JavaScript to play.</noscript>
+  <script src="../../i18n.js"></script>
+  <script src="./translations.js"></script>
+  <script src="./engine.js"></script>
+  <script src="./game.js"></script>
+</body>
+</html>

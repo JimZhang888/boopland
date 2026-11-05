@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-i18n-scope="paperFlight">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#f3f0e7">
+  <title data-i18n="paperFlight.pageTitle">纸飞机 · Boopland</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="game-shell">
+    <header class="topbar">
+      <a class="back" href="../../games.html"><span aria-hidden="true">↶</span><span data-i18n="common.back">返回大厅</span></a>
+      <h1 data-i18n="paperFlight.name">纸飞机</h1>
+      <select data-language-select></select>
+    </header>
+    <section class="desk">
+      <aside class="margin-note left-note" aria-hidden="true">
+        <span class="note-number">No. 02</span>
+        <p data-i18n="paperFlight.margin">把白日梦，<br>折成飞机。</p>
+        <svg viewBox="0 0 140 130"><path d="M18 98c60 28 72-37 31-24s-8 46 46 11M87 82l10 2-5 9"/><path d="m42 29 72-17-36 51-6-25-30-9 30 9 42-26M72 38l6 25-14-17"/></svg>
+        <span class="pencil-label">HB — 02</span>
+      </aside>
+      <div class="notebook">
+        <div class="hud">
+          <div class="stat"><span data-i18n="paperFlight.score">得分</span><strong id="score">00000</strong></div>
+          <div class="stat best-stat"><span data-i18n="paperFlight.best">最佳</span><strong id="best">00000</strong></div>
+          <div class="stat"><span id="wave">第 1 波</span><strong id="lives" class="lives" role="img" aria-label="3 次机会">♡ ♡ ♡</strong></div>
+          <button id="pause" class="icon-button" disabled data-i18n-label="paperFlight.pause" title="暂停"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14M16 5v14"/></svg></button>
+        </div>
+        <div class="stage" id="stage">
+          <canvas id="game" tabindex="0" role="img" data-i18n-label="paperFlight.canvas" data-i18n="paperFlight.canvas">纸飞机射击游戏</canvas>
+          <div id="toast" class="toast" role="status" hidden></div>
+          <div id="power" class="power" hidden></div>
+          <section id="overlay" class="overlay" aria-labelledby="overlay-title">
+            <div class="overlay-card">
+              <div class="intro-art" aria-hidden="true"><svg viewBox="0 0 180 125"><path class="art-trail" d="M17 102c61 13 58-29 29-21s-11 27 38 12"/><path class="art-fill" d="m35 45 118-27-57 88-13-41Z"/><path d="m35 45 118-27-57 88-13-41-48-20 48 20 70-47M83 65l13 41-25-27M39 46l111-25-54 81M87 65l60-41"/><path class="art-hatch" d="m87 71 9-5m-7 11 14-9m-13 16 18-12m-16 18 10-7M22 32l7-4m-5-4 3 11m117 53 9-4m-7-3 3 10"/></svg></div>
+              <p id="overlay-kicker" class="kicker" data-i18n="paperFlight.kicker">一场写在草稿纸上的冒险</p>
+              <h2 id="overlay-title" data-i18n="paperFlight.name">纸飞机</h2>
+              <p id="overlay-description" class="overlay-description" data-i18n="paperFlight.intro">折一架纸飞机，飞过铅笔画的天空。</p>
+              <div id="results" class="results" hidden></div>
+              <button id="start" class="primary" data-i18n="paperFlight.start">起飞吧 <span aria-hidden="true">↗</span></button>
+              <button id="restart" class="text-button" data-i18n="paperFlight.restart" hidden>重新起飞</button>
+              <div id="instructions" class="instructions">
+                <p><span aria-hidden="true">↔</span><span data-i18n="paperFlight.move">鼠标移动 / 手指拖动 / 方向键或 WASD</span></p>
+                <p><span aria-hidden="true">✧</span><span data-i18n="paperFlight.fire">自动射击 · 躲开敌机与弹幕</span></p>
+                <p><span aria-hidden="true">▱</span><span data-i18n="paperFlight.eraseHelp">橡皮擦清屏 · 按空格或点按钮 · 每局 2 次</span></p>
+                <p class="pickups-help" data-i18n="paperFlight.pickups">拾取 ↑ 火力、◇ 护盾、＋ 修复</p>
+              </div>
+            </div>
+          </section>
+        </div>
+        <footer class="controls">
+          <button id="sound" class="icon-button" aria-pressed="false" data-i18n-label="paperFlight.soundOn"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9h4l5-4v14l-5-4H4ZM17 9l5 6m0-6-5 6"/></svg></button>
+          <p class="flight-tip" data-i18n="paperFlight.tip">自由飞行 · 自动射击</p>
+          <button id="erase" class="erase-button" disabled><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m3 14 9-10 9 8-8 9H9Zm4-5 9 8M9 21h13"/></svg><span data-i18n="paperFlight.eraser">橡皮擦</span><b id="erasers">2</b></button>
+        </footer>
+      </div>
+      <aside class="margin-note right-note" aria-hidden="true">
+        <svg class="star-doodle" viewBox="0 0 110 100"><path d="m51 12 9 27 29 2-23 18 8 27-24-16-23 17 6-29-22-16 30-3Z"/><path d="m55 22 4 20 22 1-18 15 6 20-19-13-19 15 6-24-17-11 23-3"/></svg>
+        <p data-i18n="paperFlight.sideNote">飞远一点，<br>再远一点。</p>
+        <span class="note-line"></span>
+        <span class="side-brand">BOOPLAND</span>
+      </aside>
+    </section>
+    <p class="page-foot" data-i18n="paperFlight.footnote">小小的飞机，也有大大的天空。</p>
+  </main>
+  <script src="../../i18n.js"></script>
+  <script src="translations.js"></script>
+  <script src="engine.js"></script>
+  <script src="game.js"></script>
+</body>
+</html>

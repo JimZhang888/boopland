@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-i18n-scope="tetris">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#f5f3eb">
+  <title data-i18n="pageTitle">俄罗斯方块 · Boopland</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="game-shell">
+    <header class="topbar">
+      <a class="back" href="../../games.html"><span aria-hidden="true">↶</span><span data-i18n="common.back">返回大厅</span></a>
+      <div class="heading"><h1 data-i18n="name">俄罗斯方块</h1><span class="edition">BOOPLAND / 02</span></div>
+      <div class="tools">
+        <button id="help" class="icon-button" data-i18n-label="help" data-i18n-title="help">?</button>
+        <select data-language-select></select>
+      </div>
+    </header>
+
+    <section class="play-area" data-i18n-label="gameArea" aria-label="俄罗斯方块游戏区">
+      <div class="board-slot">
+        <div class="board-frame" id="board-frame">
+          <canvas id="board" width="300" height="600" tabindex="0" data-i18n-label="board" aria-label="10 列 20 行的游戏棋盘"></canvas>
+          <div class="overlay" id="overlay">
+            <div class="overlay-card">
+              <div class="little-blocks" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+              <h2 id="overlay-title">一块一块，慢慢来。</h2>
+              <p id="overlay-copy">拼满一行，就给心情腾一点空。</p>
+              <button class="primary" id="start">开始游戏</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <aside class="sidebar">
+        <div class="score-card"><span data-i18n="score">分数</span><strong id="score">0</strong><div class="best"><span data-i18n="best">最佳</span> <b id="best">0</b></div></div>
+        <div class="stats"><div><span data-i18n="lines">消除行</span><strong id="lines">0</strong></div><div><span data-i18n="level">等级</span><strong id="level">1</strong></div></div>
+        <div class="next-card"><span data-i18n="next">下一块</span><canvas id="next" width="120" height="72" role="img" aria-label="下一块">下一块</canvas></div>
+        <p class="status-note" id="status" role="status" aria-live="polite"></p>
+        <div class="game-actions">
+          <button id="pause" disabled><span aria-hidden="true" id="pause-icon">Ⅱ</span><span id="pause-label">暂停</span></button>
+          <button id="restart"><span aria-hidden="true">↻</span><span data-i18n="restart">重开</span></button>
+        </div>
+        <p class="side-note" data-i18n="note">把纷乱，叠成整齐的小快乐。</p>
+      </aside>
+    </section>
+
+    <footer class="controls-bar">
+      <div class="touch-controls" data-i18n-label="controls" role="group">
+        <button data-action="left" data-i18n-label="left" data-i18n-title="left"><span aria-hidden="true">←</span></button>
+        <button data-action="right" data-i18n-label="right" data-i18n-title="right"><span aria-hidden="true">→</span></button>
+        <button data-action="rotate" data-i18n-label="rotate" data-i18n-title="rotate"><span aria-hidden="true">↻</span></button>
+        <button data-action="down" data-i18n-label="down" data-i18n-title="down"><span aria-hidden="true">↓</span></button>
+        <button class="drop-button" data-action="drop" data-i18n-label="drop" data-i18n-title="drop"><span aria-hidden="true">⤓</span></button>
+      </div>
+      <p class="keyboard-note" data-i18n="keyboard">← → 移动 · ↑ 旋转 · ↓ 加速 · 空格 落到底 · P 暂停</p>
+    </footer>
+  </main>
+
+  <dialog id="help-dialog" aria-labelledby="help-title">
+    <h2 id="help-title" data-i18n="help" tabindex="-1">怎么玩</h2>
+    <p data-i18n="instructions">移动、旋转下落的方块。填满一整行即可消除，堆到顶端则游戏结束。虚线方块是落点预览。</p>
+    <dl class="key-guide">
+      <div><dt>← → / A D</dt><dd data-i18n="move">左右移动</dd></div>
+      <div><dt>↑ / W / X</dt><dd data-i18n="rotate">顺时针旋转</dd></div>
+      <div><dt>Z</dt><dd data-i18n="rotateBack">逆时针旋转</dd></div>
+      <div><dt>↓ / S</dt><dd data-i18n="down">加速下落</dd></div>
+      <div><dt data-i18n="space">空格</dt><dd data-i18n="drop">直接落到底</dd></div>
+      <div><dt>P / Esc</dt><dd data-i18n="pauseResume">暂停 / 继续</dd></div>
+    </dl>
+    <p data-i18n="touchHelp">手机点击下方按钮；长按左右或向下可连续操作。</p>
+    <p data-i18n="scoring">一次消除 1 / 2 / 3 / 4 行，获得 100 / 300 / 500 / 800 × 当前等级的分数。每消除 10 行升一级，下落速度逐渐加快。</p>
+    <form method="dialog"><button class="primary" data-i18n="close">知道了</button></form>
+  </dialog>
+
+  <dialog id="restart-dialog" aria-labelledby="restart-title">
+    <h2 id="restart-title" data-i18n="restartTitle">重新来一局？</h2>
+    <p data-i18n="restartCopy">这一局的进度会清空，最佳分数会保留。</p>
+    <div class="dialog-actions"><button id="cancel-restart" data-i18n="cancel">先不重开</button><button class="primary" id="confirm-restart" data-i18n="restart">重开</button></div>
+  </dialog>
+  <script src="../../i18n.js"></script>
+  <script src="translations.js"></script>
+  <script src="engine.js"></script>
+  <script src="game.js"></script>
+</body>
+</html>

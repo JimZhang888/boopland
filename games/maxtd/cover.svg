@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="500" viewBox="0 0 800 500">
+  <defs>
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M40 0H0V40" fill="none" stroke="#a8b695" stroke-width="1" opacity=".45"/></pattern>
+    <g id="bag"><rect x="-17" y="-11" width="34" height="22" rx="7" fill="#b4b38a" stroke="#69785b" stroke-width="2"/><path d="M-12-5Q0-9 12-5M-12 6Q0 9 12 6" fill="none" stroke="#879372"/></g>
+    <g id="tower"><circle r="29" fill="#e9eddb" stroke="#9aa98b" stroke-dasharray="3 5"/><ellipse cy="11" rx="18" ry="8" fill="#566a4b" opacity=".18"/><path d="M-13 12L-10-7Q0-16 10-7L13 12Z" fill="#718660" stroke="#485e40" stroke-width="2"/><circle cy="-12" r="10" fill="#e6cfaa" stroke="#647650" stroke-width="2"/><path d="M-13-11Q-12-27 1-25Q13-24 13-11Z" fill="#647d53" stroke="#485e40" stroke-width="2"/><path d="M7 0L28-10" stroke="#465244" stroke-width="7" stroke-linecap="round"/></g>
+  </defs>
+  <rect width="800" height="500" fill="#e5e8d6"/>
+  <g transform="translate(54 28) rotate(-2 340 220)">
+    <rect x="8" y="9" width="688" height="444" rx="5" fill="#cbd2b8"/>
+    <rect width="688" height="444" rx="5" fill="#f4f1e4" stroke="#a2ae90" stroke-width="2"/>
+    <rect x="24" y="24" width="640" height="380" fill="#e9eddc"/>
+    <rect x="24" y="24" width="640" height="380" fill="url(#grid)"/>
+    <path d="M26 204H150V324H310V124H470V244H650" fill="none" stroke="#d6ca9f" stroke-width="20" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M26 204H150V324H310V124H470V244H650" fill="none" stroke="#a6905e" stroke-width="2.5" stroke-dasharray="6 9"/>
+    <g><use href="#bag" x="190" y="164"/><use href="#bag" x="190" y="204"/><use href="#bag" x="190" y="244"/><use href="#bag" x="190" y="284"/><use href="#bag" x="350" y="284"/><use href="#bag" x="350" y="244"/><use href="#bag" x="350" y="204"/><use href="#bag" x="510" y="164"/><use href="#bag" x="510" y="204"/></g>
+    <use href="#tower" x="110" y="284"/><use href="#tower" x="270" y="164"/><use href="#tower" x="430" y="204"/>
+    <g fill="#b98464" stroke="#795d48" stroke-width="2"><circle cx="75" cy="204" r="8"/><circle cx="112" cy="204" r="8"/><circle cx="150" cy="234" r="8"/></g>
+    <path d="M597 212l26-6 27 7-3 38-24 20-24-20Z" fill="#6d835c" stroke="#435a3c" stroke-width="2"/><path d="m623 221 4 9 10 1-8 7 2 10-8-6-9 6 3-10-8-7 10-1Z" fill="#e7d7ad"/>
+    <path d="m560 360 42-17-12 40-9-20-21-3Zm21 3 21-20" fill="none" stroke="#879676" stroke-width="2"/>
+    <path d="M30 423H205M480 423H652" stroke="#a8b496" stroke-dasharray="2 7"/>
+  </g>
+</svg>

@@ -20,6 +20,74 @@ window.GAME_LIST = [
       'pt-BR': { title: "Uma pausa", description: "Um cantinho verde-sálvia. Sem precisar fazer nada.", category: "Um momento de calma" }
     }
   },
+  {
+    title: "俄罗斯方块",
+    description: "一块一块慢慢叠，拼出整齐的小快乐。",
+    path: "./games/tetris/index.html",
+    category: "经典益智",
+    color: "#e4e7dc",
+    cover: "./games/tetris/cover.svg",
+    locales: {
+      en: { title: "Tetris", description: "Stack a little joy, one block at a time.", category: "Classic puzzle" },
+      ja: { title: "テトリス", description: "ひとつずつ重ねて、小さな喜びをそろえよう。", category: "定番パズル" },
+      ko: { title: "테트리스", description: "한 블록씩 차곡차곡, 작은 기쁨을 쌓아요.", category: "클래식 퍼즐" },
+      fr: { title: "Tetris", description: "Empilez un peu de joie, un bloc à la fois.", category: "Puzzle classique" },
+      de: { title: "Tetris", description: "Stapele kleine Freuden, Stein für Stein.", category: "Puzzle-Klassiker" },
+      es: { title: "Tetris", description: "Apila pequeñas alegrías, un bloque cada vez.", category: "Puzle clásico" },
+      'pt-BR': { title: "Tetris", description: "Empilhe pequenas alegrias, um bloco de cada vez.", category: "Quebra-cabeça clássico" }
+    }
+  },
+  {
+    title: "24 点",
+    description: "四张数字牌，加减乘除，拼出刚刚好的 24。",
+    path: "./games/twenty-four/index.html",
+    category: "动动脑筋",
+    color: "#e5e9d9",
+    cover: "./games/twenty-four/cover.svg",
+    locales: {
+      en: { title: "Make 24", description: "Four number cards and a little arithmetic. Can you make 24?", category: "Brain teasers" },
+      ja: { title: "24 パズル", description: "4枚の数字カードと四則演算で、ぴったり24をつくろう。", category: "頭の体操" },
+      ko: { title: "24 만들기", description: "숫자 카드 네 장과 사칙연산으로 정확히 24를 만들어 보세요.", category: "두뇌 놀이" },
+      fr: { title: "Faire 24", description: "Quatre cartes et un peu de calcul pour arriver exactement à 24.", category: "Remue-méninges" },
+      de: { title: "Mach 24", description: "Vier Zahlenkarten und die vier Grundrechenarten. Schaffst du genau 24?", category: "Denksport" },
+      es: { title: "Haz 24", description: "Cuatro cartas y las cuatro operaciones para llegar justo a 24.", category: "Juegos de ingenio" },
+      'pt-BR': { title: "Faça 24", description: "Quatro cartas e as quatro operações para chegar exatamente a 24.", category: "Quebra-cabeças" }
+    }
+  },
+  {
+    title: "纸飞机",
+    description: "驾驶铅笔画的纸飞机，在草稿纸的天空里躲闪、射击。",
+    path: "./games/paper-flight/index.html",
+    category: "轻松挑战",
+    color: "#f4f1e6",
+    cover: "./games/paper-flight/cover.svg",
+    locales: {
+      en: { title: "Paper Flight", description: "Fly a pencil-drawn paper plane. Dodge and shoot across a notebook sky.", category: "A little challenge" },
+      ja: { title: "紙飛行機", description: "鉛筆で描いた紙飛行機で、ノートの空をよけて撃って飛ぼう。", category: "小さな挑戦" },
+      ko: { title: "종이비행기", description: "연필로 그린 종이비행기를 타고 노트 속 하늘에서 피하고 쏘아요.", category: "작은 도전" },
+      fr: { title: "Vol de papier", description: "Pilotez un avion dessiné au crayon. Esquivez et tirez dans un ciel de papier.", category: "Un petit défi" },
+      de: { title: "Papierflug", description: "Fliege durch einen Bleistifthimmel. Weiche aus und schieße mit deinem Papierflieger.", category: "Eine kleine Herausforderung" },
+      es: { title: "Vuelo de papel", description: "Pilota un avión dibujado a lápiz. Esquiva y dispara por un cielo de papel.", category: "Un pequeño reto" },
+      'pt-BR': { title: "Voo de papel", description: "Pilote um avião desenhado a lápis. Desvie e atire pelo céu de um caderno.", category: "Um pequeno desafio" }
+    }
+  },
+  {
+    title: "纸上防线 · MaxTD",
+    description: "部署小队、搭起迷宫，在手绘沙盘上守住一波又一波。",
+    path: "./games/maxtd/index.html",
+    category: "策略塔防",
+    color: "#e8ead9",
+    cover: "./games/maxtd/cover.svg",
+    locales: {
+      en: { title: "Paperline TD · MaxTD", description: "Deploy a squad, shape a maze, and hold the line through endless waves.", category: "Tower defense" },
+      ja: { title: "紙の防衛線 · MaxTD", description: "部隊を配置して迷路を作り、手描きの戦場で迫る敵を迎え撃とう。", category: "タワーディフェンス" },
+      ko: { title: "종이 방어선 · MaxTD", description: "부대를 배치하고 미로를 만들어 끝없이 밀려오는 적을 막아 보세요.", category: "타워 디펜스" },
+      fr: { title: "Paperline TD · MaxTD", description: "Déployez votre équipe, tracez un labyrinthe et résistez à des vagues sans fin.", category: "Défense de tours" },
+      de: { title: "Paperline TD · MaxTD", description: "Platziere dein Team, baue ein Labyrinth und halte endlose Gegnerwellen auf.", category: "Tower Defense" },
+      es: { title: "Paperline TD · MaxTD", description: "Despliega tu equipo, crea un laberinto y resiste oleadas sin fin.", category: "Defensa de torres" },
+      'pt-BR': { title: "Paperline TD · MaxTD", description: "Posicione sua equipe, construa um labirinto e resista a ondas sem fim.", category: "Defesa de torres" }
+    }
+  },
   // 新增示例（删除每行开头的 //，修改内容即可）：
   // {
   //   title: "游戏名字",

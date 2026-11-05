@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="640" height="388" viewBox="0 0 640 388">
+  <rect width="640" height="388" fill="#e5e9d9"/>
+  <g fill="none" stroke="#c4ceb6" stroke-width="1"><path d="M42 54H598M42 334H598"/><circle cx="528" cy="102" r="35" stroke-dasharray="3 5"/></g>
+  <g transform="translate(87 103) rotate(-9 71 92)"><rect x="4" y="5" width="142" height="184" rx="7" fill="#cad3bc"/><rect width="142" height="184" rx="7" fill="#fffef5" stroke="#aebca0"/><rect x="9" y="9" width="124" height="166" rx="4" fill="none" stroke="#e2e6d7"/><text x="71" y="119" text-anchor="middle" font-family="Georgia,serif" font-size="78" fill="#526e4c">6</text></g>
+  <g transform="translate(231 92) rotate(7 71 92)"><rect x="4" y="5" width="142" height="184" rx="7" fill="#cad3bc"/><rect width="142" height="184" rx="7" fill="#fffef5" stroke="#aebca0"/><rect x="9" y="9" width="124" height="166" rx="4" fill="none" stroke="#e2e6d7"/><text x="71" y="119" text-anchor="middle" font-family="Georgia,serif" font-size="78" fill="#526e4c">4</text></g>
+  <text x="384" y="222" font-family="Georgia,serif" font-size="44" fill="#7f906d">=</text><text x="439" y="224" font-family="Georgia,serif" font-style="italic" font-size="88" fill="#526e4c">24</text>
+  <path d="M435 246q55 13 115-3" fill="none" stroke="#a6b791" stroke-width="3" stroke-linecap="round"/><path d="m552 146 4-12 4 12 12 4-12 4-4 12-4-12-12-4Z" fill="none" stroke="#a68e56" stroke-width="2"/>
+  <text x="207" y="208" text-anchor="middle" font-family="Georgia,serif" font-size="37" fill="#7f906d">×</text>
+</svg>
