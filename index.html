@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="zh-CN" data-i18n-scope="welcome">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
@@ -243,7 +243,7 @@
   </div>
   <div class="page-wipe" aria-hidden="true"></div>
   <div class="sr-only" id="language-status" role="status" aria-live="polite"></div>
-  <!-- The welcome page is self-contained. The game collection is maintained separately. -->
+  <script src="./i18n.js"></script>
   <script>
     (() => {
       'use strict';
@@ -262,8 +262,9 @@
         es: { name: 'Español', title: 'Un momento para las pequeñas alegrías', description: 'Un mundo de papel, pequeños juegos y alegrías sencillas. Respira y descubre Boopland.', headerNote: 'Un espacio para soñar.', chooseLanguage: 'Pequeñas alegrías en tu idioma', languageLabel: 'Elegir idioma. Idioma actual:', eyebrow: 'UNA PEQUEÑA PAUSA, UN POCO DE ALEGRÍA', heading1: 'Un momento', heading2: 'para sonreír.', intro1: 'La vida va deprisa. Aquí sopla una brisa suave.', intro2: 'Pasa la página. Deja que la alegría te encuentre.', enter: 'Entrar', entryNote: 'un poco de curiosidad', microCopy: 'TIEMPO PARA LAS PEQUEÑAS COSAS BONITAS', artCaption: 'Sigue la brisa. Descubre algo bonito.', bottomNote: 'Está bien ir sin prisa.', edition: 'PEQUEÑO MUNDO · CURIOSIDAD INFINITA', footer: 'Hecho de pequeñas alegrías.', pause: 'Pausar la brisa', resume: 'Dejar pasar la brisa', reduced: 'Movimiento reducido · sistema', home: 'Inicio de Boopland', artTitle: 'Un pequeño mundo de papel en la brisa', artDescription: 'Colinas de papel rodean un río y un barquito que se mece suavemente. Nubes, margaritas y un avión de papel flotan en la brisa.', changed: 'Idioma cambiado a español' },
         'pt-BR': { name: 'Português', title: 'Um instante para pequenas alegrias', description: 'Um mundo de papel, pequenos jogos e alegrias simples. Respire e descubra Boopland.', headerNote: 'Um espaço para sonhar.', chooseLanguage: 'Pequenas alegrias no seu idioma', languageLabel: 'Escolher idioma. Idioma atual:', eyebrow: 'UMA PEQUENA PAUSA, UM POUCO DE ALEGRIA', heading1: 'Um instante', heading2: 'de leveza.', intro1: 'A vida corre. Aqui, a brisa é mais suave.', intro2: 'Vire a página. Deixe a alegria encontrar você.', enter: 'Entrar', entryNote: 'um pouco de curiosidade', microCopy: 'TEMPO PARA AS PEQUENAS COISAS BONITAS', artCaption: 'Siga a brisa. Encontre uma pequena surpresa.', bottomNote: 'Tudo bem ir devagar.', edition: 'PEQUENO MUNDO · CURIOSIDADE SEM FIM', footer: 'Feito de pequenas alegrias.', pause: 'Pausar a brisa', resume: 'Deixar a brisa entrar', reduced: 'Movimento reduzido · sistema', home: 'Página inicial do Boopland', artTitle: 'Um pequeno mundo de papel ao vento', artDescription: 'Colinas de papel cercam um rio e um barquinho que balança suavemente. Nuvens, margaridas e um avião de papel flutuam na brisa.', changed: 'Idioma alterado para português' }
       };
-      const savedLanguage = storage.get('boopland-language');
-      let language = Object.hasOwn(translations, savedLanguage) ? savedLanguage : 'zh-CN';
+      const i18n = window.BooplandI18n;
+      i18n.register('welcome', translations);
+      let language = i18n.language;
       let userPaused = storage.get('boopland-motion') === 'paused';
       let paused = userPaused || reducedMotion.matches;
       const languageToggle = $('language-toggle');
@@ -274,7 +275,7 @@
         $('motion-label').textContent = translations[language][reducedMotion.matches ? 'reduced' : paused ? 'resume' : 'pause'];
         $('motion-button').disabled = reducedMotion.matches;
       }
-      function setLanguage(next, announce = false) {
+      function setLanguage(next) {
         language = Object.hasOwn(translations, next) ? next : 'zh-CN';
         const words = translations[language];
         root.lang = language;
@@ -288,7 +289,6 @@
         $('world-desc').textContent = words.artDescription;
         languageOptions.forEach(option => option.setAttribute('aria-checked', String(option.dataset.lang === language)));
         updateMotionLabel();
-        if (announce) { storage.set('boopland-language', language); $('language-status').textContent = words.changed; }
       }
       function closeLanguages(restoreFocus = false) {
         languageMenu.hidden = true;
@@ -302,7 +302,12 @@
       }
       languageToggle.addEventListener('click', () => languageMenu.hidden ? openLanguages() : closeLanguages(true));
       languageToggle.addEventListener('keydown', event => { if (event.key === 'ArrowDown' || event.key === 'ArrowUp') { event.preventDefault(); openLanguages(event.key === 'ArrowUp'); } });
-      languageOptions.forEach(option => option.addEventListener('click', () => { setLanguage(option.dataset.lang, true); closeLanguages(true); }));
+      languageOptions.forEach(option => option.addEventListener('click', () => {
+        i18n.setLanguage(option.dataset.lang);
+        $('language-status').textContent = translations[i18n.language].changed;
+        closeLanguages(true);
+      }));
+      window.addEventListener('boopland:languagechange', event => setLanguage(event.detail.language));
       languageMenu.addEventListener('keydown', event => {
         const index = languageOptions.indexOf(document.activeElement);
         let next;

@@ -10,6 +10,8 @@
 ├─ H5_GAME_RULES.md          # 本规则
 ├─ games.html               # 小游戏大厅
 ├─ gamelist.js              # 手动维护的游戏清单
+├─ i18n.js                  # 全站语言设置、翻译接口与链接传递
+├─ games-i18n.js            # 大厅的八国语言文案
 └─ games/
    ├─ README.md             # 新增游戏的快速说明
    ├─ blank/
@@ -126,6 +128,30 @@ html, body { margin: 0; width: 100%; }
 - 有音效时由用户交互启动，并提供关闭方式。切换标签页或离开游戏时暂停不必要的声音和循环，恢复后避免游戏时间突然跳跃。
 - 不添加无关登录、广告、联网请求和统计；不把调试信息或开发说明摆进正常游玩界面。
 
+### 全局语言（所有页面共同遵守）
+
+- 欢迎页、大厅和小游戏共用根目录的 `i18n.js`；不要各自维护不同的语言设置。支持 `zh-CN`、`en`、`ja`、`ko`、`fr`、`de`、`es`、`pt-BR`。
+- 每个游戏在自己的逻辑之前，以普通脚本引入 `../../i18n.js`。语言读取与保存由 `window.BooplandI18n` 负责，存储键为 `boopland-language`。
+- 内部 HTML 链接自动携带 `lang` 参数，兼容本地文件存储隔离或存储不可用。程序化导航须使用 `BooplandI18n.withLanguage(relativeUrl)`；不要丢弃其他查询参数或锚点。
+- 静态文字用 `data-i18n="作用域.键名"`；占位提示、无障碍标签分别用 `data-i18n-placeholder`、`data-i18n-label`。内容通过 `textContent` 更新，翻译不能包含 HTML。
+- 游戏用唯一作用域注册八国语言文案，动态文本用 `BooplandI18n.t(key, values)`，监听 `boopland:languagechange` 刷新文字；切换语言不得重置游戏进度。网页标题、按钮、玩法说明、状态、提示和无障碍标签都应覆盖。
+- 返回按钮使用公共键 `common.back`。如需游戏内语言选择，可使用 `<select data-language-select></select>`；纯色极简游戏按任务要求保留单一返回入口。
+- `gamelist.js` 每条记录可增加 `locales: { en: { title, description, category }, ... }`。基础字段作为中文和缺失翻译的回退；新增游戏应补齐其余七种语言，不把“保存了语言代码”当成完成界面翻译。
+
+```html
+<a href="../../games.html" data-i18n="common.back">返回大厅</a>
+<button data-i18n="my-game.start">开始</button>
+<script src="../../i18n.js"></script>
+<script>
+  // 完整实现须为八种语言提供字典。这里只展示接口用法。
+  BooplandI18n.register('my-game', {
+    'zh-CN': { start: '开始', score: '分数：{value}' },
+    en: { start: 'Start', score: 'Score: {value}' }
+  });
+  // 动态状态示例：BooplandI18n.t('my-game.score', { value: score })
+</script>
+```
+
 ## 5. 并行开发与集成
 
 当任务安排多个小游戏并行开发时，先分配唯一的 `<slug>` 和明确的目录归属。
@@ -158,6 +184,8 @@ html, body { margin: 0; width: 100%; }
 - [ ] 游戏入口存在，资源路径有效；直接打开与静态服务器访问方式可用。
 - [ ] 清单登记正确，卡片名称、简介、封面与实际游戏一致；大厅搜索能找到。
 - [ ] 从大厅进入游戏，再通过「返回大厅」正确返回；直接打开游戏也能返回。
+- [ ] 八国语言设置贯穿欢迎页、大厅、游戏及返回路径；刷新保留选择，同源多标签页同步；切换不重置游戏状态。
+- [ ] 翻译包括动态状态、游戏卡片、搜索、无障碍标签；长文案在小屏仍可读可操作。
 - [ ] 开始、游玩、暂停、结算、重开等实际存在的状态均不遮挡主要操作。
 - [ ] 横竖屏与窗口大小变化后布局正常，必要状态和操作仍在可见区域。
 - [ ] 正常游玩无页面横向溢出，也不需要下拉寻找按钮；确有例外时说明原因。

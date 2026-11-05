@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="zh-CN" data-i18n-scope="lobby">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#f5f3eb">
-  <meta name="description" content="收集一些轻轻的小快乐。找个喜欢的小游戏，让时间慢下来。">
-  <title>小游戏手记 · Boopland</title>
+  <meta name="description" data-i18n-content="description" content="收集一些轻轻的小快乐。找个喜欢的小游戏，让时间慢下来。">
+  <title data-i18n="title">小游戏手记 · Boopland</title>
   <style>
     :root {
       color-scheme: light;
@@ -29,11 +29,11 @@
       font: 14px/1.6 var(--body);
       -webkit-font-smoothing: antialiased;
     }
-    button, input { font: inherit; }
+    button, input, select { font: inherit; }
     button, a { -webkit-tap-highlight-color: transparent; }
     button { cursor: pointer; }
     a { color: inherit; }
-    a:focus-visible, button:focus-visible, input:focus-visible {
+    a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible {
       outline: 2px solid var(--green);
       outline-offset: 5px;
     }
@@ -58,17 +58,19 @@
     .brand small { display: block; margin-top: 3px; font-size: 9px; letter-spacing: 2.4px; color: var(--muted); }
     .home-link { font: 16px var(--hand); color: #63745b; text-decoration: none; padding: 12px 0 12px 12px; }
     .home-link:hover { text-decoration: underline; text-underline-offset: 5px; }
+    .header-actions { display: flex; align-items: center; flex-wrap: wrap; justify-content: flex-end; gap: 12px; }
+    .language-select { min-height: 44px; max-width: 145px; padding: 9px 12px; border: 1px solid #c4cdb8; border-radius: 22px; background: #f8f6ee; color: var(--ink); font-size: 12px; cursor: pointer; }
     .intro { position: relative; display: flex; align-items: center; justify-content: space-between; gap: 24px; padding: 43px 0 40px; }
     .intro-text { margin: 0 0 10px; font: 25px/1.6 var(--hand); letter-spacing: 1px; }
-    .intro-text span { position: relative; white-space: nowrap; }
-    .intro-text span::after { content: ""; position: absolute; height: 5px; background: #ddbd886b; left: -2px; right: -3px; bottom: 0; border-radius: 50%; transform: rotate(-2deg); z-index: -1; }
+    .intro-text .intro-accent { position: relative; }
+    .intro-text .intro-accent::after { content: ""; position: absolute; height: 5px; background: #ddbd886b; left: -2px; right: -3px; bottom: 0; border-radius: 50%; transform: rotate(-2deg); z-index: -1; }
     .intro-sub { margin: 0; color: var(--muted); font-size: 12px; letter-spacing: .5px; }
     .postmark { transform: rotate(7deg); border: 1px solid #abb7a0; padding: 7px 16px; text-align: center; color: #788c6d; margin-right: 7px; outline: 1px solid #c3ccb9; outline-offset: 4px; }
     .postmark span { display: block; font: 17px var(--hand); }
     .postmark small { font: 8px/2.1 var(--body); letter-spacing: 2px; }
     .collection { padding-bottom: 25px; }
     .collection-bar { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 18px; margin-bottom: 27px; }
-    .collection-label { display: flex; align-items: center; gap: 11px; }
+    .collection-label { display: flex; align-items: center; flex-wrap: wrap; gap: 11px; }
     .collection-label::before { content: ""; width: 5px; height: 5px; border-radius: 50%; background: #809272; }
     h2 { margin: 0; font: 18px var(--hand); letter-spacing: 1px; }
     .count { font-size: 10px; color: var(--muted); border-left: 1px solid #cbd2c1; padding-left: 12px; }
@@ -92,13 +94,13 @@
     .cover::after { content: ""; position: absolute; inset: 9px; border: 1px solid #ffffff69; pointer-events: none; }
     .cover img { width: 100%; height: 100%; object-fit: cover; position: absolute; inset: 0; }
     .cover-mark { font: 38px var(--hand); color: #424c40; opacity: .77; letter-spacing: 8px; padding-left: 8px; max-width: 90%; overflow-wrap: anywhere; text-align: center; }
-    .cover-note { position: absolute; bottom: 15px; font: italic 12px Georgia, serif; letter-spacing: .8px; color: #424c40; opacity: .8; }
+    .cover-note { position: absolute; bottom: 15px; max-width: calc(100% - 24px); text-align: center; font: italic 12px Georgia, serif; letter-spacing: .8px; color: #424c40; opacity: .8; }
     .card-body { padding: 17px 8px 15px; }
     .card-top { display: flex; justify-content: space-between; align-items: center; gap: 12px; }
     .card-title { margin: 0; font: 23px/1.4 var(--hand); letter-spacing: 1px; overflow-wrap: anywhere; }
     .card-number { font: italic 12px Georgia, serif; color: #77846c; }
     .card-description { font-size: 11px; line-height: 1.8; color: #737b6a; margin: 8px 0 18px; overflow-wrap: anywhere; }
-    .card-bottom { display: flex; justify-content: space-between; align-items: center; gap: 12px; padding-top: 12px; border-top: 1px dashed #d9decf; }
+    .card-bottom { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; padding-top: 12px; border-top: 1px dashed #d9decf; }
     .category { color: #697c5c; font-size: 10px; letter-spacing: .6px; }
     .play { display: flex; align-items: center; gap: 7px; font: 16px var(--hand); color: #536c47; white-space: nowrap; }
     .play svg { width: 25px; height: 17px; transition: transform .2s; }
@@ -128,7 +130,9 @@
     }
     @media (max-width: 600px) {
       .page { width: calc(100% - 40px); }
-      .masthead { min-height: 86px; gap: 12px; }
+      .masthead { min-height: 86px; gap: 12px; padding-block: 20px; flex-wrap: wrap; }
+      .header-actions { width: 100%; justify-content: space-between; }
+      .home-link { padding-left: 0; }
       h1 { font-size: 20px; letter-spacing: 1px; }
       .brand { gap: 9px; }
       .brand small { font-size: 8px; letter-spacing: 1.7px; }
@@ -152,7 +156,7 @@
       .collection { padding-bottom: 5px; }
       .footnote { padding: 24px 0; gap: 9px; }
       .footnote p { font-size: 15px; letter-spacing: 0; }
-      .footer { padding: 20px 0 24px; gap: 10px; }
+      .footer { padding: 20px 0 24px; gap: 10px; flex-wrap: wrap; }
       .footer span { font-size: 8px; letter-spacing: 1px; }
       .footer em { font-size: 11px; }
     }
@@ -167,52 +171,56 @@
     <header class="masthead">
       <div class="brand">
         <svg viewBox="0 0 40 46" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 9q7-3 15 1 9-4 15-1l-1 29q-7-2-14 2-8-4-15-2Z"/><path d="m20 10 .3 29M9 16l6 1m-6 5 6 1m9 6c0-7 4-11 7-14-1 6-2 11-7 14Zm0 0-2 4M9 29l6 1"/><path d="m28 4 2-3m5 5 3-1"/></svg>
-        <div><h1>小游戏手记</h1><small>BOOPLAND · LITTLE PLAYROOM</small></div>
+        <div><h1 data-i18n="name">小游戏手记</h1><small>BOOPLAND · LITTLE PLAYROOM</small></div>
       </div>
-      <a class="home-link" href="./index.html">去海边走走 ↗</a>
+      <div class="header-actions"><a class="home-link" href="./index.html" data-i18n="common.home">回到首页 ↗</a><select class="language-select" data-language-select aria-label="选择语言"><option value="zh-CN">简体中文</option></select></div>
     </header>
     <main>
       <div class="intro">
         <div>
-          <p class="intro-text">把空闲，折成一点<span>小快乐。</span></p>
-          <p class="intro-sub">收集一些小小的世界，留给不用赶路的时刻。</p>
+          <p class="intro-text"><span data-i18n="intro">把空闲，折成一点</span><span class="intro-accent" data-i18n="introAccent">小快乐。</span></p>
+          <p class="intro-sub" data-i18n="introSub">收集一些小小的世界，留给不用赶路的时刻。</p>
         </div>
-        <div class="postmark" aria-hidden="true"><span>宜 · 偷闲</span><small>TAKE YOUR TIME</small></div>
+        <div class="postmark" aria-hidden="true"><span data-i18n="stamp">宜 · 偷闲</span><small data-i18n="stampSub">TAKE YOUR TIME</small></div>
       </div>
       <section class="collection" aria-labelledby="collection-heading">
         <div class="collection-bar">
-          <div class="collection-label"><h2 id="collection-heading">纸上的游乐园</h2><span class="count" id="game-count" role="status" aria-live="polite"></span></div>
+          <div class="collection-label"><h2 id="collection-heading" data-i18n="collection">纸上的游乐园</h2><span class="count" id="game-count" role="status" aria-live="polite"></span></div>
           <label class="search-box">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true"><circle cx="10" cy="10" r="6.5"/><path d="m15 15 5 5"/></svg>
-            <span class="sr-only">搜索小游戏</span>
-            <input id="search" type="search" placeholder="找一点喜欢的…" autocomplete="off" maxlength="100">
+            <span class="sr-only" data-i18n="search">搜索小游戏</span>
+            <input id="search" type="search" data-i18n-placeholder="placeholder" placeholder="找一点喜欢的…" autocomplete="off" maxlength="100">
           </label>
         </div>
         <div class="shelf">
           <div class="game-grid" id="game-grid"></div>
-          <aside class="margin-note" id="margin-note" hidden aria-label="页边小记">
-            <p>不必闯关，<br>也不必抵达哪里。<br>玩一小会儿，就很好。<small>a little pause, a little joy.</small></p>
+          <aside class="margin-note" id="margin-note" hidden aria-label="页边小记" data-i18n-label="noteLabel">
+            <p><span data-i18n="note1">不必闯关，</span><br><span data-i18n="note2">也不必抵达哪里。</span><br><span data-i18n="note3">玩一小会儿，就很好。</span><small data-i18n="noteSmall">a little pause, a little joy.</small></p>
             <svg class="flower" viewBox="0 0 90 154" fill="none" stroke="#859475" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M42 144q15-40 5-92M48 109Q22 104 19 82q28 2 29 27ZM49 92q27-4 28-25-24 2-28 25Z"/><path d="M44 49c-22 4-25-15-13-19-11-16 6-25 16-10 6-18 25-12 21 4 18 1 19 21 0 22 6 17-13 23-21 8-14 13-26 0-18-10" fill="#eee6cb"/><circle cx="49" cy="37" r="7" fill="#d2b983" stroke="#b7a376"/><path d="m27 146 35-2m-44-18-5-5m59-12 7-3M6 61l3-4m-1 1 4 2"/><path d="M29 83q8 15 18 23m23-33L51 90" stroke-width=".8"/></svg>
           </aside>
           <div class="empty" id="empty-state" hidden>
             <p id="empty-title"></p>
             <small id="empty-description"></small>
-            <button class="clear-search" id="clear-search" type="button" hidden>看看全部小游戏 ↶</button>
+            <button class="clear-search" id="clear-search" type="button" data-i18n="allGames" hidden>看看全部小游戏 ↶</button>
           </div>
         </div>
       </section>
       <div class="footnote">
         <svg viewBox="0 0 40 32" fill="none" stroke="#879575" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m3 10 32-6-10 22-7-10-15-6Zm15 6L35 4M18 16l-1 9 5-4M4 24l5-2m-2 7 6-3"/></svg>
-        <p>快乐不用很大，刚好装进口袋就好。</p>
+        <p data-i18n="footnote">快乐不用很大，刚好装进口袋就好。</p>
       </div>
     </main>
-    <footer class="footer"><span>BOOPLAND · 慢慢玩，慢慢来</span><em>A small place for happy little things.</em></footer>
+    <footer class="footer"><span data-i18n="footer">BOOPLAND · 慢慢玩，慢慢来</span><em data-i18n="footerSmall">A small place for happy little things.</em></footer>
     <noscript><p>请开启 JavaScript 查看游戏清单，或直接<a href="./games/blank/index.html">打开「留白」</a>。</p></noscript>
   </div>
+  <script src="./i18n.js"></script>
+  <script src="./games-i18n.js"></script>
   <script src="./gamelist.js"></script>
   <script>
     (() => {
       'use strict';
+      const i18n = window.BooplandI18n;
+      const t = (key, values) => i18n.t('lobby.' + key, values);
       const grid = document.getElementById('game-grid');
       const search = document.getElementById('search');
       const empty = document.getElementById('empty-state');
@@ -238,8 +246,9 @@
         if (!url) return [];
         return [{
           title: game.title.trim(),
-          description: typeof game.description === 'string' ? game.description : '一个等你打开的小世界。',
-          category: typeof game.category === 'string' ? game.category : '轻松一刻',
+          description: typeof game.description === 'string' ? game.description : '',
+          category: typeof game.category === 'string' ? game.category : '',
+          locales: game.locales && typeof game.locales === 'object' ? game.locales : {},
           color: /^#[0-9a-f]{6}$/i.test(game.color || '') ? game.color : '#dce5d8',
           cover: localGameUrl(game.cover),
           url,
@@ -256,13 +265,13 @@
 
       function createCard(game) {
         const card = element('a', 'game-card');
-        card.href = game.url;
-        card.setAttribute('aria-label', '打开小游戏：' + game.title);
+        card.href = i18n.withLanguage(game.url);
+        card.setAttribute('aria-label', t('open', { title: game.title }));
         const cover = element('div', 'cover');
         cover.style.setProperty('--cover', game.color);
         cover.setAttribute('aria-hidden', 'true');
         const mark = element('span', 'cover-mark', Array.from(game.title).slice(0, 4).join(''));
-        cover.append(mark, element('span', 'cover-note', 'a small world of your own'));
+        cover.append(mark, element('span', 'cover-note', t('coverNote')));
         if (game.cover) {
           const img = document.createElement('img');
           img.alt = '';
@@ -275,7 +284,7 @@
         const top = element('div', 'card-top');
         top.append(element('h3', 'card-title', game.title), element('span', 'card-number', 'No. ' + game.number));
         const bottom = element('div', 'card-bottom');
-        const play = element('span', 'play', '进去坐坐');
+        const play = element('span', 'play', t('play'));
         const arrow = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
         arrow.setAttribute('viewBox', '0 0 28 18');
         arrow.setAttribute('fill', 'none');
@@ -296,20 +305,26 @@
 
       function render() {
         const query = search.value.trim().toLocaleLowerCase();
-        const visible = games.filter(game => [game.title, game.description, game.category].some(text => text.toLocaleLowerCase().includes(query)));
+        const localized = games.map(game => {
+          const words = game.locales[i18n.language] || {};
+          const text = (key, fallback) => typeof words[key] === 'string' && words[key].trim() ? words[key] : fallback;
+          return { ...game, title: text('title', game.title), description: text('description', game.description || t('defaultDescription')), category: text('category', game.category || t('defaultCategory')), original: game };
+        });
+        const visible = localized.filter(game => [game.title, game.description, game.category, game.original.title, game.original.description, game.original.category].some(text => text.toLocaleLowerCase().includes(query)));
         grid.replaceChildren(...visible.map(createCard));
-        count.textContent = query ? visible.length + ' / ' + games.length + ' 个小世界' : games.length + ' 个小世界';
+        count.textContent = query ? t('filteredCount', { visible: visible.length, total: games.length }) : t(games.length === 1 ? 'countOne' : 'countMany', { count: games.length });
         note.hidden = visible.length !== 1;
         empty.hidden = visible.length > 0;
         clear.hidden = !query;
         if (!visible.length) {
-          document.getElementById('empty-title').textContent = query ? '这一页，暂时没有找到。' : hasList ? '下一份小快乐，还在路上。' : '游戏清单暂时没有翻开。';
-          document.getElementById('empty-description').textContent = query ? '换个词试试，或者看看所有的小世界。' : hasList ? '这里会慢慢收集更多小游戏。' : '请刷新页面，再来看看。';
+          document.getElementById('empty-title').textContent = t(query ? 'noResults' : hasList ? 'noGames' : 'missingList');
+          document.getElementById('empty-description').textContent = t(query ? 'searchHelp' : hasList ? 'emptyHelp' : 'loadHelp');
         }
       }
       search.addEventListener('input', render);
       clear.addEventListener('click', () => { search.value = ''; render(); search.focus(); });
       window.addEventListener('pageshow', render);
+      window.addEventListener('boopland:languagechange', render);
       render();
     })();
   </script>
