@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f5f3eb">
+  <meta name="description" content="收集一些轻轻的小快乐。找个喜欢的小游戏，让时间慢下来。">
+  <title>小游戏手记 · Boopland</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --paper: #f5f3eb;
+      --ink: #424c40;
+      --muted: #737c6d;
+      --line: #d8dccd;
+      --green: #5b7352;
+      --hand: "KaiTi", "STKaiti", "Kaiti SC", "楷体", cursive;
+      --body: "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+    }
+    * { box-sizing: border-box; }
+    [hidden] { display: none !important; }
+    body {
+      margin: 0;
+      min-width: 280px;
+      min-height: 100vh;
+      color: var(--ink);
+      background: var(--paper);
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160' viewBox='0 0 160 160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.76' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Cpath fill='%236d745b' opacity='.045' filter='url(%23n)' d='M0 0h160v160H0z'/%3E%3C/svg%3E");
+      font: 14px/1.6 var(--body);
+      -webkit-font-smoothing: antialiased;
+    }
+    button, input { font: inherit; }
+    button, a { -webkit-tap-highlight-color: transparent; }
+    button { cursor: pointer; }
+    a { color: inherit; }
+    a:focus-visible, button:focus-visible, input:focus-visible {
+      outline: 2px solid var(--green);
+      outline-offset: 5px;
+    }
+    svg { display: block; }
+    .sr-only {
+      position: absolute; width: 1px; height: 1px; padding: 0;
+      margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0);
+      white-space: nowrap; border: 0;
+    }
+    .page { width: min(1080px, calc(100% - 96px)); margin: 0 auto; }
+    .masthead {
+      min-height: 108px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      border-bottom: 1px solid var(--line);
+    }
+    .brand { display: flex; align-items: center; gap: 13px; }
+    .brand svg { width: 37px; height: 42px; color: var(--green); }
+    h1 { margin: 0; font: 22px/1.4 var(--hand); letter-spacing: 2px; }
+    .brand small { display: block; margin-top: 3px; font-size: 9px; letter-spacing: 2.4px; color: var(--muted); }
+    .home-link { font: 16px var(--hand); color: #63745b; text-decoration: none; padding: 12px 0 12px 12px; }
+    .home-link:hover { text-decoration: underline; text-underline-offset: 5px; }
+    .intro { position: relative; display: flex; align-items: center; justify-content: space-between; gap: 24px; padding: 43px 0 40px; }
+    .intro-text { margin: 0 0 10px; font: 25px/1.6 var(--hand); letter-spacing: 1px; }
+    .intro-text span { position: relative; white-space: nowrap; }
+    .intro-text span::after { content: ""; position: absolute; height: 5px; background: #ddbd886b; left: -2px; right: -3px; bottom: 0; border-radius: 50%; transform: rotate(-2deg); z-index: -1; }
+    .intro-sub { margin: 0; color: var(--muted); font-size: 12px; letter-spacing: .5px; }
+    .postmark { transform: rotate(7deg); border: 1px solid #abb7a0; padding: 7px 16px; text-align: center; color: #788c6d; margin-right: 7px; outline: 1px solid #c3ccb9; outline-offset: 4px; }
+    .postmark span { display: block; font: 17px var(--hand); }
+    .postmark small { font: 8px/2.1 var(--body); letter-spacing: 2px; }
+    .collection { padding-bottom: 25px; }
+    .collection-bar { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 18px; margin-bottom: 27px; }
+    .collection-label { display: flex; align-items: center; gap: 11px; }
+    .collection-label::before { content: ""; width: 5px; height: 5px; border-radius: 50%; background: #809272; }
+    h2 { margin: 0; font: 18px var(--hand); letter-spacing: 1px; }
+    .count { font-size: 10px; color: var(--muted); border-left: 1px solid #cbd2c1; padding-left: 12px; }
+    .search-box { display: flex; align-items: center; width: 244px; border-bottom: 1px solid #bfc7b6; gap: 9px; }
+    .search-box svg { width: 17px; height: 17px; flex-shrink: 0; color: #7a8871; }
+    .search-box input { min-width: 0; width: 100%; border: 0; border-radius: 0; background: transparent; padding: 9px 0; color: var(--ink); font: 16px var(--hand); }
+    .search-box input::placeholder { color: #7b8274; }
+    .search-box input::-webkit-search-cancel-button { cursor: pointer; }
+    .shelf { min-height: 355px; position: relative; }
+    .game-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); align-items: start; gap: 30px 25px; }
+    .game-card {
+      position: relative; display: block; text-decoration: none; min-width: 0;
+      background: #fffef7; padding: 12px 12px 0; border: 1px solid #e0dfd2;
+      border-radius: 3px 5px 3px 4px;
+      box-shadow: 2px 4px 0 #e7e6db6b, 0 6px 15px #46513d05;
+      transition: transform .2s, box-shadow .2s;
+    }
+    .game-card:hover { transform: translateY(-5px) rotate(-.4deg); box-shadow: 3px 8px 0 #e4e5d85c, 0 9px 20px #46513d0a; }
+    .game-card::before { content: ""; position: absolute; width: 66px; height: 21px; background: #e3d8b89c; top: -9px; left: calc(50% - 33px); transform: rotate(-4deg); z-index: 1; border-left: 1px dashed #c7be9b80; border-right: 1px dashed #c7be9b80; }
+    .cover { position: relative; aspect-ratio: 1.65; background: var(--cover, #dce5d8); display: grid; place-items: center; overflow: hidden; }
+    .cover::after { content: ""; position: absolute; inset: 9px; border: 1px solid #ffffff69; pointer-events: none; }
+    .cover img { width: 100%; height: 100%; object-fit: cover; position: absolute; inset: 0; }
+    .cover-mark { font: 38px var(--hand); color: #424c40; opacity: .77; letter-spacing: 8px; padding-left: 8px; max-width: 90%; overflow-wrap: anywhere; text-align: center; }
+    .cover-note { position: absolute; bottom: 15px; font: italic 12px Georgia, serif; letter-spacing: .8px; color: #424c40; opacity: .8; }
+    .card-body { padding: 17px 8px 15px; }
+    .card-top { display: flex; justify-content: space-between; align-items: center; gap: 12px; }
+    .card-title { margin: 0; font: 23px/1.4 var(--hand); letter-spacing: 1px; overflow-wrap: anywhere; }
+    .card-number { font: italic 12px Georgia, serif; color: #77846c; }
+    .card-description { font-size: 11px; line-height: 1.8; color: #737b6a; margin: 8px 0 18px; overflow-wrap: anywhere; }
+    .card-bottom { display: flex; justify-content: space-between; align-items: center; gap: 12px; padding-top: 12px; border-top: 1px dashed #d9decf; }
+    .category { color: #697c5c; font-size: 10px; letter-spacing: .6px; }
+    .play { display: flex; align-items: center; gap: 7px; font: 16px var(--hand); color: #536c47; white-space: nowrap; }
+    .play svg { width: 25px; height: 17px; transition: transform .2s; }
+    .game-card:hover .play svg { transform: translateX(3px); }
+    .margin-note { position: absolute; left: 51%; top: 46px; right: 0; display: flex; align-items: center; justify-content: center; gap: 24px; color: #7c866f; pointer-events: none; }
+    .margin-note p { margin: 0; font: 19px/2.1 var(--hand); transform: rotate(-4deg); letter-spacing: 1px; }
+    .margin-note small { display: block; font: italic 12px/2 Georgia, serif; margin-top: 12px; letter-spacing: .4px; }
+    .flower { width: 90px; height: 154px; flex-shrink: 0; transform: rotate(5deg); }
+    .empty { text-align: center; padding: 60px 20px 90px; color: var(--muted); }
+    .empty p { font: 21px/1.8 var(--hand); margin: 0 0 8px; }
+    .empty small { font-size: 12px; }
+    .clear-search { display: block; margin: 20px auto 0; background: transparent; color: var(--green); border: 0; border-bottom: 1px solid #aab79b; padding: 8px 3px; font: 17px var(--hand); }
+    .footnote { display: flex; align-items: center; gap: 13px; padding: 23px 0 31px; color: #77836d; }
+    .footnote svg { width: 36px; height: 30px; flex-shrink: 0; }
+    .footnote p { margin: 0; font: 17px/1.7 var(--hand); letter-spacing: .7px; }
+    .footer { border-top: 1px solid var(--line); display: flex; justify-content: space-between; gap: 20px; padding: 23px 0 30px; color: #7f8776; }
+    .footer span { font: 9px/1.7 var(--body); letter-spacing: 2px; }
+    .footer em { font: italic 12px/1.6 Georgia, serif; }
+    noscript p { padding: 30px; text-align: center; }
+    @media (min-width: 1450px) { .page { margin-top: 22px; } .shelf { min-height: 390px; } }
+    @media (max-width: 900px) {
+      .page { width: calc(100% - 60px); }
+      .game-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .margin-note { left: 53%; gap: 8px; }
+      .margin-note p { font-size: 17px; }
+      .flower { width: 64px; }
+    }
+    @media (max-width: 600px) {
+      .page { width: calc(100% - 40px); }
+      .masthead { min-height: 86px; gap: 12px; }
+      h1 { font-size: 20px; letter-spacing: 1px; }
+      .brand { gap: 9px; }
+      .brand small { font-size: 8px; letter-spacing: 1.7px; }
+      .brand svg { width: 30px; height: 36px; }
+      .home-link { font-size: 14px; white-space: nowrap; }
+      .intro { padding: 30px 0; }
+      .intro-text { font-size: 22px; letter-spacing: 0; }
+      .intro-sub { font-size: 11px; max-width: 230px; line-height: 1.9; }
+      .postmark { display: none; }
+      .collection-bar { gap: 14px; margin-bottom: 25px; }
+      .search-box { width: 100%; }
+      .search-box input { padding: 11px 0; }
+      .game-grid { grid-template-columns: minmax(0, 1fr); gap: 29px; }
+      .cover { aspect-ratio: 1.8; }
+      .card-body { padding: 16px 8px 17px; }
+      .card-description { font-size: 12px; }
+      .margin-note { position: static; padding: 28px 0 5px; gap: 30px; }
+      .margin-note p { font-size: 17px; }
+      .flower { height: 122px; width: 68px; }
+      .shelf { min-height: 0; }
+      .collection { padding-bottom: 5px; }
+      .footnote { padding: 24px 0; gap: 9px; }
+      .footnote p { font-size: 15px; letter-spacing: 0; }
+      .footer { padding: 20px 0 24px; gap: 10px; }
+      .footer span { font-size: 8px; letter-spacing: 1px; }
+      .footer em { font-size: 11px; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { transition: none !important; }
+      .game-card:hover { transform: none; }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <header class="masthead">
+      <div class="brand">
+        <svg viewBox="0 0 40 46" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 9q7-3 15 1 9-4 15-1l-1 29q-7-2-14 2-8-4-15-2Z"/><path d="m20 10 .3 29M9 16l6 1m-6 5 6 1m9 6c0-7 4-11 7-14-1 6-2 11-7 14Zm0 0-2 4M9 29l6 1"/><path d="m28 4 2-3m5 5 3-1"/></svg>
+        <div><h1>小游戏手记</h1><small>BOOPLAND · LITTLE PLAYROOM</small></div>
+      </div>
+      <a class="home-link" href="./index.html">去海边走走 ↗</a>
+    </header>
+    <main>
+      <div class="intro">
+        <div>
+          <p class="intro-text">把空闲，折成一点<span>小快乐。</span></p>
+          <p class="intro-sub">收集一些小小的世界，留给不用赶路的时刻。</p>
+        </div>
+        <div class="postmark" aria-hidden="true"><span>宜 · 偷闲</span><small>TAKE YOUR TIME</small></div>
+      </div>
+      <section class="collection" aria-labelledby="collection-heading">
+        <div class="collection-bar">
+          <div class="collection-label"><h2 id="collection-heading">纸上的游乐园</h2><span class="count" id="game-count" role="status" aria-live="polite"></span></div>
+          <label class="search-box">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true"><circle cx="10" cy="10" r="6.5"/><path d="m15 15 5 5"/></svg>
+            <span class="sr-only">搜索小游戏</span>
+            <input id="search" type="search" placeholder="找一点喜欢的…" autocomplete="off" maxlength="100">
+          </label>
+        </div>
+        <div class="shelf">
+          <div class="game-grid" id="game-grid"></div>
+          <aside class="margin-note" id="margin-note" hidden aria-label="页边小记">
+            <p>不必闯关，<br>也不必抵达哪里。<br>玩一小会儿，就很好。<small>a little pause, a little joy.</small></p>
+            <svg class="flower" viewBox="0 0 90 154" fill="none" stroke="#859475" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M42 144q15-40 5-92M48 109Q22 104 19 82q28 2 29 27ZM49 92q27-4 28-25-24 2-28 25Z"/><path d="M44 49c-22 4-25-15-13-19-11-16 6-25 16-10 6-18 25-12 21 4 18 1 19 21 0 22 6 17-13 23-21 8-14 13-26 0-18-10" fill="#eee6cb"/><circle cx="49" cy="37" r="7" fill="#d2b983" stroke="#b7a376"/><path d="m27 146 35-2m-44-18-5-5m59-12 7-3M6 61l3-4m-1 1 4 2"/><path d="M29 83q8 15 18 23m23-33L51 90" stroke-width=".8"/></svg>
+          </aside>
+          <div class="empty" id="empty-state" hidden>
+            <p id="empty-title"></p>
+            <small id="empty-description"></small>
+            <button class="clear-search" id="clear-search" type="button" hidden>看看全部小游戏 ↶</button>
+          </div>
+        </div>
+      </section>
+      <div class="footnote">
+        <svg viewBox="0 0 40 32" fill="none" stroke="#879575" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m3 10 32-6-10 22-7-10-15-6Zm15 6L35 4M18 16l-1 9 5-4M4 24l5-2m-2 7 6-3"/></svg>
+        <p>快乐不用很大，刚好装进口袋就好。</p>
+      </div>
+    </main>
+    <footer class="footer"><span>BOOPLAND · 慢慢玩，慢慢来</span><em>A small place for happy little things.</em></footer>
+    <noscript><p>请开启 JavaScript 查看游戏清单，或直接<a href="./games/blank/index.html">打开「留白」</a>。</p></noscript>
+  </div>
+  <script src="./gamelist.js"></script>
+  <script>
+    (() => {
+      'use strict';
+      const grid = document.getElementById('game-grid');
+      const search = document.getElementById('search');
+      const empty = document.getElementById('empty-state');
+      const clear = document.getElementById('clear-search');
+      const count = document.getElementById('game-count');
+      const note = document.getElementById('margin-note');
+      const hasList = Array.isArray(window.GAME_LIST);
+      const base = new URL('./games/', location.href);
+
+      // 清单使用普通脚本加载，因此 file:// 双击打开时也不依赖 fetch。
+      function localGameUrl(value) {
+        if (typeof value !== 'string' || !value.trim()) return null;
+        try {
+          const url = new URL(value, location.href);
+          if (url.protocol !== base.protocol || url.host !== base.host || !url.pathname.startsWith(base.pathname)) return null;
+          return url.href;
+        } catch { return null; }
+      }
+
+      const games = (hasList ? window.GAME_LIST : []).flatMap((game, index) => {
+        if (!game || typeof game.title !== 'string' || !game.title.trim()) return [];
+        const url = localGameUrl(game.path);
+        if (!url) return [];
+        return [{
+          title: game.title.trim(),
+          description: typeof game.description === 'string' ? game.description : '一个等你打开的小世界。',
+          category: typeof game.category === 'string' ? game.category : '轻松一刻',
+          color: /^#[0-9a-f]{6}$/i.test(game.color || '') ? game.color : '#dce5d8',
+          cover: localGameUrl(game.cover),
+          url,
+          number: String(index + 1).padStart(2, '0')
+        }];
+      });
+
+      function element(tag, className, text) {
+        const node = document.createElement(tag);
+        node.className = className;
+        if (text !== undefined) node.textContent = text;
+        return node;
+      }
+
+      function createCard(game) {
+        const card = element('a', 'game-card');
+        card.href = game.url;
+        card.setAttribute('aria-label', '打开小游戏：' + game.title);
+        const cover = element('div', 'cover');
+        cover.style.setProperty('--cover', game.color);
+        cover.setAttribute('aria-hidden', 'true');
+        const mark = element('span', 'cover-mark', Array.from(game.title).slice(0, 4).join(''));
+        cover.append(mark, element('span', 'cover-note', 'a small world of your own'));
+        if (game.cover) {
+          const img = document.createElement('img');
+          img.alt = '';
+          img.loading = 'lazy';
+          img.addEventListener('error', () => img.remove(), { once: true });
+          img.src = game.cover;
+          cover.append(img);
+        }
+        const body = element('div', 'card-body');
+        const top = element('div', 'card-top');
+        top.append(element('h3', 'card-title', game.title), element('span', 'card-number', 'No. ' + game.number));
+        const bottom = element('div', 'card-bottom');
+        const play = element('span', 'play', '进去坐坐');
+        const arrow = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+        arrow.setAttribute('viewBox', '0 0 28 18');
+        arrow.setAttribute('fill', 'none');
+        arrow.setAttribute('aria-hidden', 'true');
+        const path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+        path.setAttribute('d', 'M2 10q10-2 23-1m-7-6 7 6-7 6');
+        path.setAttribute('stroke', 'currentColor');
+        path.setAttribute('stroke-width', '1.4');
+        path.setAttribute('stroke-linecap', 'round');
+        path.setAttribute('stroke-linejoin', 'round');
+        arrow.append(path);
+        play.append(arrow);
+        bottom.append(element('span', 'category', game.category), play);
+        body.append(top, element('p', 'card-description', game.description), bottom);
+        card.append(cover, body);
+        return card;
+      }
+
+      function render() {
+        const query = search.value.trim().toLocaleLowerCase();
+        const visible = games.filter(game => [game.title, game.description, game.category].some(text => text.toLocaleLowerCase().includes(query)));
+        grid.replaceChildren(...visible.map(createCard));
+        count.textContent = query ? visible.length + ' / ' + games.length + ' 个小世界' : games.length + ' 个小世界';
+        note.hidden = visible.length !== 1;
+        empty.hidden = visible.length > 0;
+        clear.hidden = !query;
+        if (!visible.length) {
+          document.getElementById('empty-title').textContent = query ? '这一页，暂时没有找到。' : hasList ? '下一份小快乐，还在路上。' : '游戏清单暂时没有翻开。';
+          document.getElementById('empty-description').textContent = query ? '换个词试试，或者看看所有的小世界。' : hasList ? '这里会慢慢收集更多小游戏。' : '请刷新页面，再来看看。';
+        }
+      }
+      search.addEventListener('input', render);
+      clear.addEventListener('click', () => { search.value = ''; render(); search.focus(); });
+      window.addEventListener('pageshow', render);
+      render();
+    })();
+  </script>
+</body>
+</html>

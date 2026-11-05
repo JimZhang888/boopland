@@ -2,319 +2,395 @@
 <html lang="zh-CN">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#f7f5ed">
-  <meta name="description" content="和一只鹈鹕沿海骑行。调慢速度，听听海风，看白昼慢慢变成星夜。">
-  <title>鹈鹕漫游 · A little ride by the sea</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#f4f1e8">
+  <meta name="description" content="在 Boopland，把片刻交给美好。翻开一个装着小游戏与小快乐的纸上世界。">
+  <title>Boopland · 把片刻，交给美好</title>
   <style>
-    :root{--paper:#f7f5ed;--ink:#283d36;--muted:#7b8378;--line:#d9ddd0;--accent:#e77d51;--soft:#eeeee4;--green:#467365;--sky-top:#c8e7e0;--sky-bottom:#e7efe0;--sea-top:#78b7b1;--sea-bottom:#aad0bc;--mountain:#8fbbb1;--sand:#e8d7ad;--road:#e7d7b6;--road-line:#f9f0d6;--cloud:#fffbee;--sun:#f8cd6d;--art-ink:#354a40}
-    *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--paper);color:var(--ink);font-family:"Segoe UI","Microsoft YaHei","PingFang SC",sans-serif;-webkit-font-smoothing:antialiased}button,input{font:inherit}button{cursor:pointer;-webkit-tap-highlight-color:transparent}button:focus-visible,input:focus-visible,a:focus-visible{outline:3px solid var(--accent);outline-offset:5px}button{color:inherit}a{color:inherit}svg{display:block}.icon{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:1.65;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0}.sprite{position:absolute;width:0;height:0;overflow:hidden}.page{max-width:1320px;margin:auto;padding:0 54px}.site-header{height:104px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--line)}.brand{display:flex;align-items:center;gap:12px;text-decoration:none}.brand-mark{width:45px;height:45px}.brand-name{font-weight:650;letter-spacing:3px;font-size:17px}.brand-sub{font-size:9px;letter-spacing:2.2px;margin-top:5px;color:var(--muted)}.header-right{display:flex;align-items:center;gap:26px}.header-note{font-family:Georgia,serif;font-size:15px;font-style:italic;color:var(--muted)}.sound-button{border:1px solid var(--line);padding:10px 15px;background:transparent;border-radius:24px;display:flex;align-items:center;gap:8px;font-size:12px}.sound-button:hover{background:#ebece2}.sound-button[aria-pressed=true]{background:#e1e9dd;border-color:#a6b6a2}.hero{display:flex;justify-content:space-between;align-items:flex-end;padding:41px 0 30px;gap:30px}.eyebrow{display:flex;align-items:center;gap:9px;font-size:10px;letter-spacing:2.7px;font-weight:600;color:var(--green);margin-bottom:15px}.eyebrow:before{content:"";width:21px;height:1px;background:var(--green)}h1{font-family:"Noto Serif SC","Source Han Serif SC","Songti SC",SimSun,serif;font-size:clamp(32px,3.6vw,49px);font-weight:500;letter-spacing:3px;margin:0;line-height:1.35}h1 .accent{position:relative;display:inline-block}h1 .accent:after{position:absolute;content:"";height:5px;border-radius:50%;background:#eebc89;left:2px;right:2px;bottom:-4px;transform:rotate(-2deg)}.hero-copy{padding-bottom:3px;flex-shrink:0}.hero-copy p{font-size:12px;line-height:2.05;color:var(--muted);margin:0}.scene-shell{position:relative;border:1px solid #a8b5a3;border-radius:19px;overflow:hidden;background:var(--sky-top);isolation:isolate}.scene{width:100%;height:auto;aspect-ratio:1200/520}.scene-top{position:absolute;top:23px;left:25px;right:25px;display:flex;align-items:center;justify-content:space-between;pointer-events:none;gap:12px}.location-pill{font-size:10px;letter-spacing:1.2px;display:flex;align-items:center;gap:8px;background:rgba(250,249,233,.78);padding:9px 12px;border:1px solid #fff7;border-radius:20px;backdrop-filter:blur(8px)}.live-dot{width:5px;height:5px;border-radius:50%;background:#497462;box-shadow:0 0 0 3px #49746214}.scene-time{font-size:12px;letter-spacing:1.5px;display:flex;align-items:center;gap:8px;font-variant-numeric:tabular-nums;color:#354a40;background:#fff9e8b8;border-radius:20px;padding:8px 11px}.scene-time .icon{width:15px;height:15px}.scene-caption{position:absolute;bottom:18px;left:25px;display:flex;align-items:center;gap:10px;color:#5c6756;font-size:9px;letter-spacing:1.7px}.scene-caption:before{content:"";width:26px;height:1px;background:currentColor}.scene-distance{position:absolute;bottom:17px;right:25px;color:#5c6756;font-size:10px;letter-spacing:1px;font-variant-numeric:tabular-nums}.night .scene-caption,.night .scene-distance{color:#ecdfc1}.control-panel{margin-top:16px;border:1px solid var(--line);border-radius:14px;display:grid;grid-template-columns:1.15fr 1.3fr .72fr;background:#faf9f3;min-height:112px;align-items:center;padding:21px 27px;gap:26px}.control-label{font-size:10px;letter-spacing:1.1px;display:flex;align-items:center;gap:7px;color:#707d70;margin-bottom:14px}.control-label .icon{width:15px;height:15px}.control-label strong{color:var(--green);font-size:11px;font-weight:600;margin-left:auto;letter-spacing:0;font-variant-numeric:tabular-nums}.speed-control{padding-right:27px;border-right:1px solid var(--line)}.speed-row{display:flex;align-items:center;gap:13px}.speed-row>span{font-size:10px;color:#959c8e;white-space:nowrap}.speed-row .icon{width:17px;height:17px}.slider{width:100%;height:5px;border-radius:10px;margin:7px 0;appearance:none;background:linear-gradient(to right,var(--green) 33.333%,#e0e3d6 33.333%);cursor:pointer}.slider::-webkit-slider-thumb{appearance:none;width:15px;height:15px;background:var(--green);border:3px solid #faf9f3;border-radius:50%;box-shadow:0 0 0 1px var(--green)}.slider::-moz-range-thumb{width:10px;height:10px;background:var(--green);border:3px solid #faf9f3;border-radius:50%;box-shadow:0 0 0 1px var(--green)}.environment-heading{display:flex;justify-content:space-between;align-items:flex-start;gap:10px}.auto-toggle{display:flex;align-items:center;gap:7px;border:0;background:none;padding:0;font-size:10px;color:#788575;white-space:nowrap}.switch-track{width:25px;height:14px;background:#bdc4b5;border-radius:15px;padding:3px;transition:background .2s}.switch-track:after{content:"";display:block;width:8px;height:8px;background:#fffdf4;border-radius:50%;transition:transform .2s}.auto-toggle[aria-checked=true] .switch-track{background:var(--green)}.auto-toggle[aria-checked=true] .switch-track:after{transform:translateX(11px)}.modes{display:flex;gap:5px}.mode{display:flex;align-items:center;justify-content:center;gap:6px;background:transparent;border:1px solid transparent;padding:7px 12px;border-radius:7px;font-size:11px;flex:1;white-space:nowrap;transition:background .2s,border-color .2s}.mode .icon{width:15px;height:15px}.mode:hover{background:#eeefe4}.mode[aria-pressed=true]{background:#e7eddf;border-color:#ced9c4;color:#365b47}.ride-control{padding-left:24px;border-left:1px solid var(--line);text-align:center}.ride-button{border:1px solid var(--ink);background:var(--ink);color:#fbf8ed;border-radius:8px;width:100%;min-height:42px;display:flex;justify-content:center;align-items:center;gap:8px;font-size:12px;letter-spacing:.7px;transition:background .2s,transform .2s}.ride-button:hover{background:#46634c;transform:translateY(-1px)}.ride-button .icon{width:15px;height:15px}.keyboard-tip{font-size:9px;letter-spacing:.6px;color:#969d90;margin:10px 0 0}.keyboard-tip kbd{font-family:inherit;border:1px solid #dedfd4;padding:1px 4px;border-radius:3px;font-size:8px}.under-scene{display:flex;align-items:center;justify-content:space-between;gap:20px;padding:22px 2px 26px}.quote{font-family:"Songti SC",SimSun,serif;font-size:12px;letter-spacing:1px;color:#778373;margin:0}.quote span{color:var(--accent);font-family:Georgia,serif;font-size:22px;vertical-align:-4px;margin-right:6px}.trip-state{font-size:10px;color:#83907f;display:flex;align-items:center;gap:7px}.trip-state .dot{width:5px;height:5px;background:#8ca07e;border-radius:50%}.footer{border-top:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;padding:21px 0 26px;color:#969b8e;font-size:9px;letter-spacing:1.5px}.footer-right{font-family:Georgia,serif;font-size:12px;font-style:italic;letter-spacing:.4px}.footer .tiny-wave{display:inline;vertical-align:middle;width:22px;height:12px;margin:0 5px}.toast{position:fixed;left:50%;bottom:25px;transform:translate(-50%,15px);background:var(--ink);color:var(--paper);padding:12px 20px;border-radius:30px;font-size:12px;opacity:0;pointer-events:none;transition:.25s;z-index:10;max-width:90vw;text-align:center}.toast.show{opacity:1;transform:translate(-50%,0)}.sky-stop-top{stop-color:var(--sky-top)}.sky-stop-bottom{stop-color:var(--sky-bottom)}.sea-stop-top{stop-color:var(--sea-top)}.sea-stop-bottom{stop-color:var(--sea-bottom)}.cloud{fill:var(--cloud)}.mountain{fill:var(--mountain)}.road{fill:var(--road)}.sand{fill:var(--sand)}.road-mark{stroke:var(--road-line)}#stars{opacity:0}#moon{opacity:0}.moon-glow{fill:#f8e9b4}.sea-glint{stroke:#f9f2ce;stroke-linecap:round;opacity:.4}.outline{stroke:var(--art-ink);stroke-width:3.2;stroke-linecap:round;stroke-linejoin:round}#headlight{opacity:0}#pelican-body{transform-origin:550px 310px}.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
-    @media(min-width:1450px){.page{padding:0 35px}.hero{padding-top:47px;padding-bottom:35px}.site-header{height:110px}}
-    @media(max-width:900px){.page{padding:0 28px}.hero{gap:20px;padding-top:32px}.hero-copy p{font-size:11px}h1{font-size:36px;letter-spacing:1px}.header-note{display:none}.control-panel{gap:17px;padding:20px}.speed-control{padding-right:17px}.ride-control{padding-left:17px}.mode{padding:7px 8px}.scene{aspect-ratio:1.95}}
-    @media(max-width:650px){.page{padding:0 19px}.site-header{height:83px}.brand-name{font-size:15px;letter-spacing:2px}.brand-sub{font-size:8px;letter-spacing:1.5px}.brand-mark{width:37px;height:37px}.brand{gap:8px}.sound-button{padding:9px}.sound-button span{display:none}.hero{display:block;padding:29px 0 24px}.eyebrow{font-size:8px;letter-spacing:2.3px;margin-bottom:12px}h1{font-size:clamp(28px,7.4vw,43px);letter-spacing:1px}.hero-copy{padding-top:17px}.hero-copy p{display:inline;font-size:11px;line-height:1.9}.hero-copy p+p:before{content:" "}.scene-shell{border-radius:13px}.scene{height:350px;aspect-ratio:auto}.scene-top{top:15px;left:14px;right:14px}.location-pill{padding:8px 9px;font-size:8px;letter-spacing:.5px}.scene-time{font-size:10px;gap:5px;padding:7px 9px}.scene-caption{left:15px;bottom:14px;font-size:7px;letter-spacing:1px}.scene-caption:before{width:15px}.scene-distance{right:14px;bottom:14px;font-size:9px}.control-panel{grid-template-columns:1fr 1fr;padding:20px 17px;gap:22px 17px;border-radius:12px}.speed-control{border-right:0;padding-right:0}.environment-control{padding-left:17px;border-left:1px solid var(--line)}.control-label{font-size:9px;letter-spacing:0;gap:5px;margin-bottom:14px}.auto-toggle{font-size:9px;gap:4px}.auto-toggle .auto-word{display:none}.mode{padding:6px 5px;font-size:10px;gap:3px}.mode .icon{width:13px;height:13px}.modes{gap:2px}.ride-control{grid-column:1/-1;border-left:0;border-top:1px solid var(--line);padding:17px 0 0;display:flex;align-items:center;justify-content:space-between;gap:12px}.ride-button{width:46%;min-height:39px;order:2}.keyboard-tip{margin:0;font-size:9px;line-height:1.8;text-align:left}.keyboard-tip kbd{font-size:8px}.under-scene{padding:20px 0 23px;gap:10px}.quote{font-size:10px;letter-spacing:0}.quote span{font-size:18px;margin-right:2px}.trip-state{font-size:8px;white-space:nowrap}.footer{font-size:7px;letter-spacing:.9px;padding:18px 0 23px}.footer-right{font-size:10px}.speed-row{gap:7px}.speed-row>span{font-size:9px}}
-    @media(max-width:650px){#sun,#moon,#sun-reflection{translate:-110px 0}}
-    @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*:before,*:after{transition:none!important}.ride-button:hover{transform:none}}
+    :root { --paper: #f4f1e8; --ink: #344b3e; --green: #657d53; --muted: #7b8172; --line: #d6d9c9; --serif: "Iowan Old Style", "Palatino Linotype", "Noto Serif CJK SC", "Songti SC", "SimSun", serif; --sans: "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif; }
+    * { box-sizing: border-box; }
+    html { background: var(--paper); }
+    body { margin: 0; color: var(--ink); font-family: var(--sans); -webkit-font-smoothing: antialiased; overflow-x: clip; }
+    button, a { -webkit-tap-highlight-color: transparent; }
+    button { font: inherit; color: inherit; cursor: pointer; }
+    a { color: inherit; }
+    button:focus-visible, a:focus-visible { outline: 2px solid var(--green); outline-offset: 6px; }
+    [hidden] { display: none !important; }
+    ::selection { background: #d5dfc3; color: var(--ink); }
+    .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0; }
+    .paper-grain { position: fixed; inset: 0; z-index: 8; opacity: .2; pointer-events: none; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Cpath fill='%23000' filter='url(%23n)' opacity='.26' d='M0 0h180v180H0z'/%3E%3C/svg%3E"); }
+    .ambient-light { position: fixed; inset: 0; pointer-events: none; background: radial-gradient(ellipse at 72% 36%, #fffdf6 0, transparent 54%), radial-gradient(ellipse at 0 100%, #dfe3d333, transparent 50%); }
+    #motes { position: fixed; inset: 0; width: 100%; height: 100%; z-index: 5; pointer-events: none; }
+    .page { position: relative; max-width: 1600px; min-height: 100svh; margin: auto; padding: 0 clamp(24px, 5.2vw, 84px); display: flex; flex-direction: column; }
+    .site-header { min-height: 112px; display: flex; align-items: center; justify-content: space-between; gap: 24px; border-bottom: 1px solid var(--line); position: relative; z-index: 10; }
+    .brand { display: inline-flex; align-items: center; gap: 10px; text-decoration: none; }
+    .brand-icon { width: 35px; height: 39px; }
+    .wordmark { font: 600 29px/1 Georgia, serif; letter-spacing: -1.4px; }
+    .wordmark span { color: #acb18c; }
+    .header-note { margin-left: auto; margin-right: 30px; font-family: var(--serif); font-size: 12px; letter-spacing: 2px; color: var(--muted); }
+    .language { position: relative; }
+    .language-toggle { display: flex; align-items: center; gap: 10px; border: 1px solid #c6ccba; border-radius: 30px; background: #f8f6ee; min-height: 43px; padding: 0 16px; font-size: 12px; transition: background .2s, box-shadow .2s; }
+    .language-toggle:hover, .language-toggle[aria-expanded="true"] { background: #e9eddf; box-shadow: 0 3px 10px #344b3e08; }
+    .icon { width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width: 1.4; stroke-linecap: round; stroke-linejoin: round; flex-shrink: 0; }
+    .chevron { width: 12px; height: 12px; transition: transform .25s; }
+    [aria-expanded="true"] .chevron { transform: rotate(180deg); }
+    .language-menu { position: absolute; right: 0; top: calc(100% + 14px); width: 290px; max-width: calc(100vw - 48px); border: 1px solid #d8dccb; border-radius: 16px 6px 16px 6px; background: #fbfaf4; padding: 18px 13px 12px; box-shadow: 0 16px 50px #344b3e1c, 3px 4px 0 #e8e8db; animation: menu-in .2s ease both; }
+    .menu-heading { padding: 0 10px 13px; margin: 0; font-size: 11px; letter-spacing: 1px; color: var(--muted); border-bottom: 1px dashed var(--line); }
+    .language-options { display: grid; grid-template-columns: 1fr 1fr; gap: 5px; margin-top: 10px; }
+    .language-option { min-height: 44px; display: flex; align-items: center; justify-content: space-between; gap: 4px; padding: 10px; border: 0; border-radius: 6px; background: transparent; text-align: left; font-size: 12px; }
+    .language-option:hover { background: #eeeee4; }
+    .language-option[aria-checked="true"] { background: #e5ebda; }
+    .language-option[aria-checked="true"]::after { content: "✓"; color: var(--green); }
+    .hero { flex: 1; display: grid; grid-template-columns: .94fr 1.06fr; align-items: center; gap: 10px; padding: 45px 0 34px; min-height: 610px; }
+    .hero-copy { position: relative; z-index: 2; padding-bottom: 10px; }
+    .eyebrow { display: flex; align-items: center; gap: 11px; color: var(--green); font-size: 10px; font-weight: 600; letter-spacing: 3px; margin: 0 0 30px; }
+    .eyebrow::before { content: ""; width: 26px; height: 1px; background: #899775; }
+    h1 { font-family: var(--serif); font-size: clamp(48px, 5.55vw, 82px); line-height: 1.36; letter-spacing: .035em; font-weight: 400; margin: 0; }
+    .heading-line { display: block; }
+    .heading-accent { color: var(--green); position: relative; width: fit-content; }
+    .heading-accent::after { content: ""; position: absolute; left: 4%; bottom: 0; width: 83%; height: 9px; border-top: 1px solid #a2ae89; border-radius: 50%; transform: rotate(-3deg); opacity: .8; }
+    .intro { margin: 30px 0 34px; color: #747d6d; font-size: 13px; line-height: 2.15; letter-spacing: 1.3px; max-width: 370px; }
+    .intro span { display: block; }
+    .entry-row { display: flex; align-items: center; gap: 25px; }
+    .enter-link { position: relative; display: inline-flex; align-items: center; justify-content: space-between; gap: 26px; min-width: 216px; min-height: 80px; padding: 16px 22px 16px 34px; border: 1px solid #5f754e; border-radius: 48% 46% 46% 48% / 65% 65% 65% 65%; color: #fffcef; background: #657d53; text-decoration: none; box-shadow: 0 5px 0 #e0e3d3, 0 9px 18px #4c654914, inset 0 1px 0 #ffffff25; transition: transform .3s, background .3s, box-shadow .3s; isolation: isolate; }
+    .enter-link::before { content: ""; position: absolute; inset: 5px; border: 1px solid #e6edcf3b; border-radius: inherit; pointer-events: none; }
+    .enter-label { font-family: var(--serif); font-size: 27px; letter-spacing: .16em; }
+    .enter-arrow { display: grid; place-items: center; width: 42px; height: 42px; border: 1px solid #e7efd345; border-radius: 50%; transition: transform .3s, background .3s; }
+    .enter-arrow .icon { width: 23px; height: 23px; }
+    .enter-link:hover { transform: translateY(-4px) rotate(-1deg); background: #566f46; box-shadow: 0 8px 0 #e0e3d3, 0 14px 24px #4c65491c; }
+    .enter-link:hover .enter-arrow { transform: translateX(3px); background: #e6edcf18; }
+    .enter-link:active { transform: translateY(2px); box-shadow: 0 2px 0 #e0e3d3; }
+    .entry-note { display: flex; flex-direction: column; gap: 5px; transform: rotate(-7deg); color: #8f967d; }
+    .entry-note svg { width: 49px; height: 25px; margin-left: 9px; fill: none; stroke: #929d7f; stroke-width: 1.15; stroke-linecap: round; }
+    .entry-note span { font-family: var(--serif); font-size: 12px; font-style: italic; letter-spacing: .5px; }
+    .micro-copy { color: #919782; font-size: 8px; letter-spacing: 2.2px; margin: 25px 0 0 6px; }
+    .artwork { position: relative; width: calc(100% + 25px); margin-left: -10px; max-width: min(710px, calc(100svh - 285px)); justify-self: center; }
+    .paper-world { display: block; width: 100%; height: auto; overflow: visible; }
+    .art-caption { display: flex; align-items: center; justify-content: center; gap: 13px; margin: -5px 0 0; color: #899078; font-size: 9px; letter-spacing: 1.6px; }
+    .art-caption::before, .art-caption::after { content: ""; height: 1px; width: 27px; background: #bdc5ac; }
+    .art-caption span { font-family: var(--serif); font-size: 12px; font-style: italic; letter-spacing: .6px; }
+    .parallax { transform: translate(calc(var(--mx, 0) * var(--depth, 8) * 1px), calc(var(--my, 0) * var(--depth, 8) * 1px)); transition: transform .55s cubic-bezier(.2,.6,.3,1); }
+    .float-slow { animation: float-slow 7s ease-in-out infinite; }
+    .float-plane { animation: float-plane 7s ease-in-out infinite; transform-origin: 548px 108px; }
+    .float-leaf { animation: float-leaf 8s ease-in-out infinite; transform-origin: 88px 366px; }
+    .float-star { animation: float-star 9s ease-in-out infinite; transform-origin: 105px 166px; }
+    .cloud-a { animation: cloud-drift 16s ease-in-out infinite; }
+    .cloud-b { animation: cloud-drift 21s ease-in-out -8s infinite reverse; }
+    .boat { animation: boat-rock 5s ease-in-out infinite; transform-origin: 362px 368px; }
+    .flower-sway { animation: flower-sway 5s ease-in-out infinite; transform-origin: 170px 465px; }
+    .flower-sway-right { animation: flower-sway 6s ease-in-out -2s infinite reverse; transform-origin: 480px 484px; }
+    .sun-rays { animation: sun-turn 80s linear infinite; transform-origin: 394px 188px; }
+    .wind-line { stroke-dasharray: 8 7; animation: wind-travel 5s linear infinite; }
+    .orbit-dot { animation: orbit 36s linear infinite; transform-origin: 330px 300px; }
+    .spark { animation: twinkle 4s ease-in-out infinite; }
+    .spark-late { animation-delay: -2s; }
+    .bottom-note { display: flex; align-items: center; justify-content: space-between; gap: 30px; padding: 20px 0 29px; }
+    .little-note { display: flex; align-items: center; gap: 14px; }
+    .note-flower { width: 32px; height: 32px; animation: tiny-turn 25s linear infinite; }
+    .little-note p { margin: 0; font-family: var(--serif); font-size: 13px; letter-spacing: 1px; color: #707d64; }
+    .note-rule { width: 58px; height: 1px; background: var(--line); }
+    .edition { display: flex; align-items: center; gap: 13px; color: #8c937f; font-size: 8px; letter-spacing: 1.8px; }
+    .edition-number { font: italic 24px/1 var(--serif); color: #899775; }
+    .site-footer { display: flex; align-items: center; justify-content: space-between; gap: 20px; border-top: 1px solid var(--line); padding: 22px 0 25px; color: #969b88; font-size: 9px; letter-spacing: 1.6px; }
+    .footer-center { font-family: var(--serif); font-style: italic; font-size: 12px; letter-spacing: .4px; }
+    .motion-button { display: inline-flex; align-items: center; gap: 7px; border: 0; padding: 8px 0 8px 8px; margin: -8px 0; background: transparent; color: #737f67; font-size: 10px; letter-spacing: .6px; }
+    .motion-button .icon { width: 16px; height: 16px; }
+    .motion-button:hover { color: #344b3e; }
+    .motion-button:disabled { cursor: default; }
+    .motion-button[aria-pressed="true"] .wind-active, .motion-button[aria-pressed="false"] .wind-paused { display: none; }
+    .reveal { animation: reveal-in 1s cubic-bezier(.2,.65,.3,1) both; }
+    .hero-copy { animation-delay: .1s; }
+    .artwork.reveal { animation-delay: .23s; }
+    .bottom-note.reveal { animation-delay: .4s; }
+    .page-wipe { position: fixed; inset: 0; z-index: 100; background: #e3e9d7; pointer-events: none; clip-path: circle(0 at var(--wipe-x, 30%) var(--wipe-y, 60%)); transition: clip-path .6s cubic-bezier(.65,0,.2,1); }
+    .leaving .page-wipe { clip-path: circle(150vmax at var(--wipe-x, 30%) var(--wipe-y, 60%)); }
+    .leaving .page { transition: opacity .4s, transform .5s; opacity: .35; transform: translateY(-8px); }
+    .motion-paused *, .motion-paused *::before, .motion-paused *::after { animation-play-state: paused !important; }
+    .motion-paused .reveal { animation: none; }
+    .motion-paused .parallax { transform: none; transition: none; }
+    .motion-paused .page-wipe { transition: none; }
+    .background-paused * { animation-play-state: paused !important; }
+    html:not([lang="zh-CN"]):not([lang="ja"]):not([lang="ko"]) h1 { font-size: clamp(46px, 4.6vw, 68px); letter-spacing: -.025em; line-height: 1.16; }
+    html:not([lang="zh-CN"]):not([lang="ja"]):not([lang="ko"]) .heading-accent { font-style: italic; margin-top: .08em; }
+    html[lang="ja"] h1, html[lang="ko"] h1 { font-size: clamp(40px, 4.4vw, 66px); letter-spacing: -.025em; }
+    html[lang="ja"] .intro, html[lang="ko"] .intro { letter-spacing: .1px; }
+    html:not([lang="zh-CN"]) .enter-label { font-size: 25px; letter-spacing: .04em; }
+    @keyframes reveal-in { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: translateY(0); } }
+    @keyframes menu-in { from { opacity: 0; transform: translateY(-7px) rotate(-1deg); } to { opacity: 1; transform: translateY(0); } }
+    @keyframes float-slow { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
+    @keyframes float-plane { 0%,100% { transform: translate(0,0) rotate(-3deg); } 50% { transform: translate(10px,-13px) rotate(3deg); } }
+    @keyframes float-leaf { 0%,100% { transform: translateY(0) rotate(-7deg); } 50% { transform: translate(5px,-13px) rotate(8deg); } }
+    @keyframes float-star { 0%,100% { transform: translateY(0) rotate(-8deg); } 50% { transform: translateY(-12px) rotate(15deg); } }
+    @keyframes cloud-drift { 0%,100% { transform: translateX(-9px); } 50% { transform: translateX(12px); } }
+    @keyframes boat-rock { 0%,100% { transform: translateY(0) rotate(-2deg); } 50% { transform: translateY(-5px) rotate(2deg); } }
+    @keyframes flower-sway { 0%,100% { transform: rotate(-2deg); } 50% { transform: rotate(3deg); } }
+    @keyframes sun-turn { to { transform: rotate(360deg); } }
+    @keyframes wind-travel { to { stroke-dashoffset: -90; } }
+    @keyframes orbit { to { transform: rotate(360deg); } }
+    @keyframes twinkle { 0%,100% { opacity: .35; } 50% { opacity: 1; } }
+    @keyframes tiny-turn { to { transform: rotate(360deg); } }
+    @media (min-width: 1600px) { .hero { min-height: 700px; } }
+    @media (max-width: 1100px) { .page { padding-inline: 36px; } .hero { min-height: 560px; padding-block: 40px; } .header-note { margin-right: 12px; } .entry-row { gap: 17px; } .enter-link { min-width: 196px; min-height: 74px; padding-left: 29px; } .entry-note span { font-size: 10px; } .intro { font-size: 12px; letter-spacing: .6px; } .artwork { width: calc(100% + 38px); margin-left: -20px; } .eyebrow { font-size: 9px; letter-spacing: 2.2px; } }
+    @media (max-width: 760px) { .page { padding-inline: 26px; } .site-header { min-height: 88px; } .header-note { display: none; } .wordmark { font-size: 26px; } .brand-icon { width: 30px; height: 34px; } .hero { grid-template-columns: 1fr; gap: 2px; padding: 42px 0 18px; } .hero-copy { text-align: center; padding: 0; } .eyebrow { justify-content: center; margin-bottom: 20px; font-size: 9px; } .eyebrow::after { content: ""; width: 26px; height: 1px; background: #899775; } h1 { font-size: clamp(43px, 8.5vw, 65px); line-height: 1.3; letter-spacing: .05em; } .heading-accent { margin-inline: auto; } .intro { font-size: 12px; margin: 22px auto 25px; line-height: 2; max-width: 410px; } .entry-row { justify-content: center; gap: 0; } .enter-link { min-width: 206px; min-height: 72px; padding: 13px 20px 13px 30px; } .enter-label { font-size: 25px; } .entry-note { display: none; } .micro-copy { font-size: 7px; margin: 19px 0 0; letter-spacing: 2px; } .artwork { width: min(105%, 490px); max-width: none; margin: 1px 0 0; } .art-caption { margin-top: -14px; font-size: 8px; } .art-caption span { font-size: 11px; } .bottom-note { padding: 25px 0; gap: 15px; } .little-note { gap: 10px; } .little-note p { font-size: 11px; letter-spacing: .4px; } .note-flower { width: 25px; height: 25px; } .note-rule { display: none; } .edition { font-size: 7px; letter-spacing: 1px; gap: 7px; } .edition-number { font-size: 21px; } .site-footer { padding: 20px 0 25px; font-size: 7px; letter-spacing: 1px; } .footer-center { display: none; } .motion-button { font-size: 9px; letter-spacing: 0; } html:not([lang="zh-CN"]):not([lang="ja"]):not([lang="ko"]) h1 { font-size: clamp(42px, 8.5vw, 64px); } html[lang="ja"] h1, html[lang="ko"] h1 { font-size: clamp(36px, 7.6vw, 56px); } }
+    @media (max-width: 380px) { .page { padding-inline: 20px; } .site-header { gap: 10px; } .language-toggle { padding-inline: 10px; gap: 6px; font-size: 11px; } .wordmark { font-size: 24px; } .brand { gap: 6px; } .brand-icon { width: 26px; } .hero { padding-top: 34px; } .edition-text { display: none; } .intro { font-size: 11px; } .eyebrow { letter-spacing: 1.5px; font-size: 8px; } h1 { font-size: 41px; } }
+    @media (max-height: 700px) and (min-width: 761px) { .site-header { min-height: 86px; } .hero { min-height: 460px; padding: 18px 0; } .artwork { width: min(100%, 530px); } .eyebrow { margin-bottom: 19px; } h1 { font-size: 60px; } .intro { margin-block: 20px 25px; } .bottom-note { padding-block: 12px 20px; } }
+    @media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation: none !important; transition: none !important; } .parallax { transform: none; } .enter-link:hover, .leaving .page { transform: none; } }
   </style>
 </head>
 <body>
-  <svg class="sprite" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><defs>
-    <symbol id="i-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M2 12h2m16 0h2M5 5l1.5 1.5m11 11L19 19M5 19l1.5-1.5m11-11L19 5"/></symbol>
-    <symbol id="i-sunset" viewBox="0 0 24 24"><path d="M3 17h18M5 21h14M7 17a5 5 0 0 1 10 0M12 2v3M3 9l2 2m16-2-2 2M9 7l3-3 3 3"/></symbol>
-    <symbol id="i-moon" viewBox="0 0 24 24"><path d="M20.7 13A9 9 0 0 1 11 3.3 9 9 0 1 0 20.7 13Z"/></symbol>
-    <symbol id="i-sound" viewBox="0 0 24 24"><path d="M11 4 6 8H3v8h3l5 4zM15 8a6 6 0 0 1 0 8m3-11a10 10 0 0 1 0 14"/></symbol>
-    <symbol id="i-mute" viewBox="0 0 24 24"><path d="M11 4 6 8H3v8h3l5 4zM16 9l5 6m0-6-5 6"/></symbol>
-    <symbol id="i-pause" viewBox="0 0 24 24"><path d="M8 5v14M16 5v14" stroke-width="3"/></symbol>
-    <symbol id="i-play" viewBox="0 0 24 24"><path d="m8 4 12 8-12 8Z" fill="currentColor" stroke="none"/></symbol>
-    <symbol id="i-speed" viewBox="0 0 24 24"><path d="M4 19a9 9 0 1 1 16 0M12 13l5-5M4 12h2m12 0h2M12 4v2"/><circle cx="12" cy="13" r="1.5"/></symbol>
-    <symbol id="i-wind" viewBox="0 0 24 24"><path d="M3 8h12a3 3 0 1 0-3-3M2 12h17a3 3 0 1 1-3 3M5 17h5a2 2 0 1 1-2 2"/></symbol>
-    <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></symbol>
-    <symbol id="i-wave" viewBox="0 0 24 12"><path d="M1 4q3-5 6 0t6 0t6 0t6 0M1 10q3-5 6 0t6 0t6 0t6 0"/></symbol>
-  </defs></svg>
+  <div class="ambient-light" aria-hidden="true"></div>
+  <div class="paper-grain" aria-hidden="true"></div>
+  <canvas id="motes" aria-hidden="true"></canvas>
   <div class="page">
     <header class="site-header">
-      <a class="brand" href="#" aria-label="鹈鹕漫游主页">
-        <svg class="brand-mark" viewBox="0 0 50 50" aria-hidden="true"><circle cx="25" cy="25" r="23" fill="none" stroke="#aab8a1" stroke-width="1"/><path d="M11 32c1-9 9-7 14-3 5 2 8-1 8-6V13c0-5 7-5 8 0l-2 5H30v10c0 12-16 13-19 4Z" fill="#faf7e8" stroke="#344d3d" stroke-width="1.6" stroke-linejoin="round"/><path d="m38 13 9 5H34" fill="#eab46b" stroke="#344d3d" stroke-width="1.6" stroke-linejoin="round"/><circle cx="37" cy="12" r="1.2" fill="#344d3d"/><path d="M16 31q6 5 12 0M21 39l-2 5m8-5 1 5" fill="none" stroke="#344d3d" stroke-width="1.5"/></svg>
-        <div><div class="brand-name">鹈鹕漫游</div><div class="brand-sub">PELICAN COAST CLUB</div></div>
+      <a class="brand" href="./index.html" aria-label="Boopland 首页" id="brand-link">
+        <svg class="brand-icon" viewBox="0 0 38 42" fill="none" aria-hidden="true"><path d="M18 35c-1-10 0-17 6-24" stroke="#657d53" stroke-width="1.5" stroke-linecap="round"/><path d="M21 20C17 10 24 5 33 6c0 9-5 16-12 14Z" fill="#a6b38c"/><path d="M18 27C9 28 4 20 6 13c9 1 15 6 12 14Z" fill="#708762"/><path d="m21 20 7-9M18 27l-8-9" stroke="#f4f1e8" stroke-width=".85"/><path d="M9 37q10 3 19-1" stroke="#bdc6ac" stroke-width="1.2" stroke-linecap="round"/></svg>
+        <span class="wordmark">boopland<span>.</span></span>
       </a>
-      <div class="header-right"><span class="header-note">Nowhere to rush. Just ride.</span><button class="sound-button" id="sound-button" type="button" aria-pressed="false" aria-label="开启海浪声音" title="开启海浪声音"><svg class="icon"><use href="#i-mute"/></svg><span id="sound-label">听听海风</span></button></div>
+      <span class="header-note" data-i18n="headerNote">给生活，留一点空白。</span>
+      <div class="language" id="language-control">
+        <button class="language-toggle" id="language-toggle" type="button" aria-expanded="false" aria-haspopup="menu" aria-controls="language-menu" aria-label="选择语言，当前为简体中文">
+          <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><ellipse cx="12" cy="12" rx="4" ry="9"/><path d="M3 12h18M5 6.5h14M5 17.5h14"/></svg>
+          <span id="current-language">简体中文</span><svg class="icon chevron" viewBox="0 0 14 14" aria-hidden="true"><path d="m3 5 4 4 4-4"/></svg>
+        </button>
+        <div class="language-menu" id="language-menu" hidden>
+          <p class="menu-heading" id="language-heading" data-i18n="chooseLanguage">用熟悉的语言，遇见小美好</p>
+          <div class="language-options" role="menu" aria-labelledby="language-heading">
+            <button class="language-option" type="button" role="menuitemradio" aria-checked="true" data-lang="zh-CN" lang="zh-CN" tabindex="-1">简体中文</button>
+            <button class="language-option" type="button" role="menuitemradio" aria-checked="false" data-lang="en" lang="en" tabindex="-1">English</button>
+            <button class="language-option" type="button" role="menuitemradio" aria-checked="false" data-lang="ja" lang="ja" tabindex="-1">日本語</button>
+            <button class="language-option" type="button" role="menuitemradio" aria-checked="false" data-lang="ko" lang="ko" tabindex="-1">한국어</button>
+            <button class="language-option" type="button" role="menuitemradio" aria-checked="false" data-lang="fr" lang="fr" tabindex="-1">Français</button>
+            <button class="language-option" type="button" role="menuitemradio" aria-checked="false" data-lang="de" lang="de" tabindex="-1">Deutsch</button>
+            <button class="language-option" type="button" role="menuitemradio" aria-checked="false" data-lang="es" lang="es" tabindex="-1">Español</button>
+            <button class="language-option" type="button" role="menuitemradio" aria-checked="false" data-lang="pt-BR" lang="pt-BR" tabindex="-1">Português</button>
+          </div>
+        </div>
+      </div>
     </header>
-    <main>
-      <section class="hero" aria-labelledby="page-heading">
-        <div><div class="eyebrow">A LITTLE RIDE, A LITTLE JOY</div><h1 id="page-heading">把日子，<span class="accent">骑慢一点。</span></h1></div>
-        <div class="hero-copy"><p>跟着鹈鹕，去海边兜兜风。</p><p>从晨光到星夜，好风景一直在路上。</p></div>
-      </section>
-      <section aria-label="互动海岸骑行">
-        <div class="scene-shell" id="scene-shell">
-          <svg class="scene" id="coast-scene" viewBox="0 0 1200 520" preserveAspectRatio="xMidYMid slice" role="img" aria-labelledby="scene-title scene-desc">
-            <title id="scene-title">鹈鹕的海岸骑行</title><desc id="scene-desc">一只戴着绿色小帽、系着橙色围巾的白色鹈鹕，骑薄荷绿自行车经过海边。远处有灯塔、帆船和起伏的海浪，天空会随昼夜变化。</desc>
-            <defs>
-              <linearGradient id="sky-gradient" x2="0" y2="1"><stop class="sky-stop-top"/><stop offset="1" class="sky-stop-bottom"/></linearGradient>
-              <linearGradient id="sea-gradient" x2="0" y2="1"><stop class="sea-stop-top"/><stop offset="1" class="sea-stop-bottom"/></linearGradient>
-              <linearGradient id="light-beam"><stop stop-color="#fff3bc" stop-opacity=".5"/><stop offset="1" stop-color="#fff3bc" stop-opacity="0"/></linearGradient>
-              <pattern id="road-pattern" width="150" height="40" patternUnits="userSpaceOnUse"><path d="M10 15h57" class="road-mark" stroke-width="3" stroke-linecap="round"/></pattern>
-              <pattern id="ocean-pattern" width="280" height="58" patternUnits="userSpaceOnUse"><path d="M10 20q24-7 48 0m64 23q32-7 64 0m45-30h24" fill="none" stroke="#eff3da" stroke-opacity=".36" stroke-width="2" stroke-linecap="round"/></pattern>
-              <pattern id="grain" width="110" height="90" patternUnits="userSpaceOnUse"><circle cx="12" cy="28" r=".65" fill="#344c3d" opacity=".14"/><circle cx="48" cy="65" r=".6" fill="#fff" opacity=".3"/><circle cx="93" cy="12" r=".5" fill="#344c3d" opacity=".13"/><circle cx="77" cy="82" r=".5" fill="#344c3d" opacity=".12"/></pattern>
-              <g id="wheel-spokes" stroke="#78978b" stroke-width="1.4"><path d="M-54 0H54M0-54V54M-38-38l76 76M-38 38l76-76M-21-50l42 100M-50-21l100 42M-50 21l100-42M-21 50l42-100"/></g>
-              <g id="cloud-shape"><path d="M0 20c-2-10 13-16 23-12 4-20 34-21 43-4 18-9 34 1 35 13 19-4 27 5 25 10H0Z"/></g>
-              <g id="gull" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M-12 0Q-5-7 0 0Q5-7 12 0"/></g>
-            </defs>
-            <rect width="1200" height="520" fill="url(#sky-gradient)"/>
-            <g id="stars" fill="#f8edc6"><circle cx="96" cy="119" r="1.7"/><circle cx="245" cy="57" r="1.3"/><circle cx="383" cy="119" r="2"/><circle cx="489" cy="51" r="1.2"/><circle cx="639" cy="72" r="1.4"/><circle cx="763" cy="44" r="1.5"/><circle cx="953" cy="163" r="1.6"/><circle cx="1095" cy="99" r="1.4"/><circle cx="1143" cy="42" r="1.2"/><circle cx="704" cy="172" r="1"/><circle cx="339" cy="181" r="1.2"/><path d="M192 157v8m-4-4h8M999 57v10m-5-5h10M561 107v8m-4-4h8" stroke="#f8edc6" stroke-width="1.3"/></g>
-            <g id="sun"><circle cx="854" cy="113" r="63" fill="var(--sun)" opacity=".12"/><circle cx="854" cy="113" r="49" fill="var(--sun)" opacity=".18"/><circle cx="854" cy="113" r="36" fill="var(--sun)"/></g>
-            <g id="moon"><circle cx="854" cy="113" r="58" class="moon-glow" opacity=".05"/><circle cx="854" cy="113" r="42" class="moon-glow" opacity=".06"/><path d="M868 82a33 33 0 1 0 19 48 31 31 0 0 1-19-48Z" fill="#f6e9bb"/></g>
-            <g class="cloud" opacity=".68" id="clouds-far"><use href="#cloud-shape" transform="translate(120 113) scale(.85)"/><use href="#cloud-shape" transform="translate(619 78) scale(.7)"/><use href="#cloud-shape" transform="translate(1110 146) scale(1.1)"/><use href="#cloud-shape" transform="translate(1440 105) scale(.85)"/></g>
-            <g class="cloud" opacity=".8" id="clouds-near"><use href="#cloud-shape" transform="translate(307 71) scale(1.2)"/><use href="#cloud-shape" transform="translate(927 135) scale(.65)"/><use href="#cloud-shape" transform="translate(1627 71) scale(1.2)"/></g>
-            <g class="mountain"><path d="M-30 242q40-34 84-32c23-34 75-39 110-8 40-13 66 22 107 29l65 21H-30Z" opacity=".5"/><path d="M-20 244q80-36 134-24c62-29 119 8 174 16l102 24H-20Z"/><path d="M947 247q62-28 93-16c36-27 67-31 97-12 34-21 59-16 84-7v44Z" opacity=".6"/></g>
-            <rect y="244" width="1200" height="190" fill="url(#sea-gradient)"/>
-            <path d="M0 246h1200" stroke="#edf0d5" stroke-opacity=".45" stroke-width="2"/>
-            <g id="sun-reflection" class="sea-glint" fill="none"><path d="M831 255h46m-56 9h67m-57 13h50m-76 17h100m-78 17h57m-79 20h103" stroke-width="3"/></g>
-            <rect id="sea-texture" y="260" width="1480" height="151" fill="url(#ocean-pattern)"/>
-            <g id="sailboat" transform="translate(280 288)"><path d="M-23 0h48l-7 8h-32Z" fill="#547e72"/><path d="M1-51V0" stroke="#526d5e" stroke-width="1.5"/><path d="M-3-47-23-6h20Z" fill="#fff7df"/><path d="M5-37 21-6H5Z" fill="#ecd9ad"/><path d="M-17 14h34" stroke="#eff2d5" stroke-width="2" opacity=".55"/></g>
-            <g id="birds" color="#547c71" opacity=".8"><use href="#gull" transform="translate(710 137) scale(.8)"/><use href="#gull" transform="translate(748 152) scale(.58)"/><use href="#gull" transform="translate(177 171) scale(.65)"/></g>
-            <g id="lighthouse" transform="translate(1042 219)"><path d="m-57 78 12-16 22 3 12-14 33 11 15-7 38 23Z" fill="#789b88"/><path d="m-16 66 6-76h23l7 76Z" fill="#f3ecd4" stroke="#637b67" stroke-width="1.5"/><path d="m-12 13 27 0 2 15h-30Zm-3 32h34l1 15h-36Z" fill="#c77c60"/><path d="M-12-10h26v-16h-26Z" fill="#e8cd7f" stroke="#637b67" stroke-width="1.5"/><path d="M-18-26 1-39l19 13Z" fill="#587967"/><path d="M-16-9h34M1-25v14" stroke="#637b67" stroke-width="2"/><path d="M0 66V52q7-3 8 0v14" fill="#6c8270"/><path id="lighthouse-light" d="m4-18-260-55v110Z" fill="url(#light-beam)" opacity="0" transform="rotate(180 4 -18)"/></g>
-            <path d="M0 377c193-12 216 25 403 23 201-3 358-39 516-21 113 12 205 4 281-11v152H0Z" class="sand"/>
-            <path id="shore-wave" d="M-20 366c171-14 237 30 424 19 222-13 360-40 517-20 117 15 212 0 307-16" fill="none" stroke="#f4f4dc" stroke-width="6" opacity=".7"/>
-            <path d="M0 410c209-11 351 13 584 4 262-10 442-8 616 1v105H0Z" class="road"/>
-            <path d="M0 409c209-11 351 13 584 4 262-10 442-8 616 1" fill="none" stroke="#b9b392" stroke-width="2" opacity=".5"/>
-            <rect id="road-stripes" x="-150" y="471" width="1500" height="40" fill="url(#road-pattern)"/>
-            <g id="road-pebbles" fill="#b4af8a" opacity=".65"><ellipse cx="200" cy="449" rx="3" ry="1.2"/><ellipse cx="364" cy="466" rx="2" ry="1"/><ellipse cx="850" cy="432" rx="3" ry="1"/><ellipse cx="1080" cy="459" rx="2" ry="1"/><ellipse cx="1400" cy="449" rx="3" ry="1.2"/></g>
-            <g id="bike" class="outline">
-              <ellipse id="bike-shadow" cx="573" cy="476" rx="167" ry="10" fill="#6c7354" stroke="none" opacity=".15"/>
-              <g id="headlight"><path d="m660 332 261 67-2-137Z" fill="url(#light-beam)" stroke="none"/><circle cx="659" cy="332" r="7" fill="#fff2b3" stroke="none"/></g>
-              <g id="back-wheel"><circle cx="460" cy="411" r="62" fill="#f8efd51a" stroke="#354a40" stroke-width="7"/><circle cx="460" cy="411" r="55" fill="none" stroke="#f8edcc" stroke-width="3"/><g transform="translate(460 411)"><g id="back-spokes"><use href="#wheel-spokes"/></g></g><circle cx="460" cy="411" r="5" fill="#f6e6bc" stroke-width="2"/></g>
-              <g id="front-wheel"><circle cx="682" cy="411" r="62" fill="#f8efd51a" stroke="#354a40" stroke-width="7"/><circle cx="682" cy="411" r="55" fill="none" stroke="#f8edcc" stroke-width="3"/><g transform="translate(682 411)"><g id="front-spokes"><use href="#wheel-spokes"/></g></g><circle cx="682" cy="411" r="5" fill="#f6e6bc" stroke-width="2"/></g>
-              <path d="M393 403a68 68 0 0 1 132-14M618 389a69 69 0 0 1 126 7" fill="none" stroke="#788e74" stroke-width="5"/>
-              <path id="far-leg" d="M545 310Q509 355 558 392" fill="none" stroke="#ce9b5c" stroke-width="10"/>
-              <path d="m460 411 63-77 43 77H460l-1-1m64-76 130-5-87 82m87-82 29 82" fill="none" stroke="#354a40" stroke-width="10"/>
-              <path d="m460 411 63-77 43 77H460m63-77 130-5-87 82m87-82 29 82" fill="none" stroke="#82aa8b" stroke-width="6"/>
-              <path d="m523 334-9-27m139 22-7-24 13-13h15" fill="none" stroke="#354a40" stroke-width="5"/>
-              <path d="M497 307h34q6-2 3-6l-36-2q-9 1-1 8Z" fill="#845b41"/>
-              <path d="M665 292h12" stroke="#9e6748" stroke-width="7"/>
-              <path d="M435 334h50m-44 0-18 17m57-17 16 20" fill="none" stroke="#718b70" stroke-width="3"/>
-              <g transform="rotate(-6 459 324)"><rect x="439" y="310" width="39" height="23" rx="4" fill="#c19a67" stroke-width="2"/><path d="M450 311v21m17-21v21" stroke="#8b704c" stroke-width="2"/><path d="M452 310v-5h13v5" fill="none" stroke-width="2"/></g>
-              <circle cx="566" cy="411" r="17" fill="#b4c4a0" stroke-width="2.5"/><circle cx="566" cy="411" r="7" fill="#78977b" stroke-width="2"/>
-              <g id="crank"><path d="M542 411h48" stroke="#586b53" stroke-width="4"/></g>
-              <g id="pelican-body">
-                <path id="scarf-tail" d="M572 218q-37-10-72 2l-26-6 11 17-9 10q42-19 94-9Z" fill="#dc7956" stroke-width="2.5"/>
-                <path d="m489 277-34-21 17 35-27-5q27 24 56 20" fill="#fcf8e8"/>
-                <path d="M483 270c5-22 38-29 63-27 16-13 8-33 11-57 2-24 14-39 34-38 21 1 27 17 22 31-4 13-19 17-25 23-9 10-2 27 2 42 10 31-11 64-39 73-28 10-63-5-68-26-2-7-3-14 0-21Z" fill="#fcf8e8"/>
-                <path d="M557 193q-3 33 8 45m-51 65q30 14 51-4" fill="none" stroke="#dfdfc9" stroke-width="3"/>
-                <path d="M608 169q45 3 113 22c-31 9-65 9-104 0-10-3-16-12-9-22Z" fill="#efba6d"/>
-                <path d="M613 181q19 42 49 30 25-10 59-20" fill="#ebc788"/>
-                <path d="M606 180q45 7 115 11" fill="none" stroke-width="2"/>
-                <circle cx="596" cy="166" r="3.2" fill="#354a40" stroke="none"/><circle cx="597" cy="165" r=".9" fill="#fff" stroke="none"/>
-                <path d="m583 153 1-7" fill="none" stroke-width="2"/><ellipse cx="596" cy="183" rx="7" ry="4" fill="#edb59b" stroke="none" opacity=".65"/>
-                <path d="M565 151q0-24 23-24 20 0 21 19" fill="#789878"/>
-                <path d="M562 152q27-10 52-4l-1 6q-29-5-51 3Z" fill="#5b7a5c" stroke-width="2.5"/>
-                <path d="M586 128v12" fill="none" stroke="#a2b49a" stroke-width="2"/>
-                <path d="m555 217 27-2 4 12-28 6Z" fill="#df7e58" stroke-width="2.5"/><path d="m575 222 9 3-10 12-7-10Z" fill="#cc6846" stroke-width="2"/>
-                <path d="M523 259c22-7 40 7 56 21 17 15 38 16 65 12-4 12-20 20-39 18-22-2-34-9-48-14-15 6-35 0-41-10" fill="#f1f0db"/>
-                <path d="M537 273q15 1 27 13m-35-4q10 5 20 8" fill="none" stroke="#b8c5ac" stroke-width="2"/>
-                <path d="M632 302q9 2 16-6" stroke="#e6b266" stroke-width="6" fill="none"/>
-              </g>
-              <path id="near-leg" d="M551 312Q590 350 590 411" fill="none" stroke="#354a40" stroke-width="12"/>
-              <path id="near-leg-fill" d="M551 312Q590 350 590 411" fill="none" stroke="#e8b46e" stroke-width="7.5"/>
-              <g id="near-foot" transform="translate(590 411)"><path d="M-5-2q13-7 21 2l-3 5H-6Z" fill="#e8b46e" stroke-width="2"/><path d="M-7 7h25" stroke-width="4"/></g>
-              <g id="far-foot" transform="translate(542 411)"><path d="M-7 3h23" stroke-width="4"/></g>
-              <circle cx="658" cy="325" r="5" fill="#f5e7ae" stroke-width="2"/>
+    <main class="hero">
+      <div class="hero-copy reveal">
+        <p class="eyebrow" data-i18n="eyebrow">A SMALL ESCAPE, A LITTLE JOY</p>
+        <h1><span class="heading-line" data-i18n="heading1">把片刻，</span><span class="heading-line heading-accent" data-i18n="heading2">交给美好。</span></h1>
+        <p class="intro"><span data-i18n="intro1">生活有些匆忙，幸好这里有风。</span><span data-i18n="intro2">翻开这一页，让小小的快乐自然发生。</span></p>
+        <div class="entry-row">
+          <a class="enter-link" id="enter-link" href="./games.html"><span class="enter-label" data-i18n="enter">进入</span><span class="enter-arrow" aria-hidden="true"><svg class="icon" viewBox="0 0 26 26"><path d="M5 13h15m-6-6 6 6-6 6"/></svg></span></a>
+          <div class="entry-note" aria-hidden="true"><span data-i18n="entryNote">一点好奇，刚刚好</span><svg viewBox="0 0 55 28"><path d="M51 4C45 21 24 25 5 15m7-3-8 2 5 7"/></svg></div>
+        </div>
+        <p class="micro-copy" data-i18n="microCopy">留一点时间，给无用而美好的事</p>
+      </div>
+      <div class="artwork reveal" id="artwork">
+        <svg class="paper-world" viewBox="0 0 660 590" role="img" aria-labelledby="world-title world-desc">
+          <title id="world-title">风里的纸上小世界</title><desc id="world-desc">层叠的纸雕山丘环抱一条小河，纸船轻轻摇晃。太阳、云朵、雏菊与纸飞机，在微风里慢慢浮动。</desc>
+          <defs>
+            <filter id="paper-shadow" x="-30%" y="-30%" width="170%" height="180%"><feDropShadow dx="2" dy="8" stdDeviation="8" flood-color="#596144" flood-opacity=".14"/></filter>
+            <filter id="layer-shadow" x="-25%" y="-25%" width="160%" height="165%"><feDropShadow dx="1" dy="4" stdDeviation="4" flood-color="#45563c" flood-opacity=".17"/></filter>
+            <filter id="soft-shadow" x="-35%" y="-35%" width="180%" height="190%"><feDropShadow dx="2" dy="5" stdDeviation="4" flood-color="#586044" flood-opacity=".13"/></filter>
+            <clipPath id="world-clip"><circle cx="330" cy="295" r="222"/></clipPath>
+            <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#e1e8d7"/><stop offset="1" stop-color="#f4edcf"/></linearGradient>
+            <linearGradient id="river" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#c4d9cb"/><stop offset="1" stop-color="#e0e8d5"/></linearGradient>
+            <pattern id="paper-specks" width="45" height="40" patternUnits="userSpaceOnUse"><circle cx="3" cy="10" r=".6" fill="#555f42" opacity=".12"/><circle cx="32" cy="27" r=".5" fill="#fffef5" opacity=".55"/><path d="m18 21 2-1m20-14 1 2" stroke="#65704b" stroke-width=".5" opacity=".1"/></pattern>
+            <g id="daisy"><g fill="#fffdf0" stroke="#e2dfc9" stroke-width=".6"><ellipse cy="-10" rx="4.8" ry="9"/><ellipse cy="-10" rx="4.8" ry="9" transform="rotate(45)"/><ellipse cy="-10" rx="4.8" ry="9" transform="rotate(90)"/><ellipse cy="-10" rx="4.8" ry="9" transform="rotate(135)"/><ellipse cy="-10" rx="4.8" ry="9" transform="rotate(180)"/><ellipse cy="-10" rx="4.8" ry="9" transform="rotate(225)"/><ellipse cy="-10" rx="4.8" ry="9" transform="rotate(270)"/><ellipse cy="-10" rx="4.8" ry="9" transform="rotate(315)"/></g><circle r="6.1" fill="#d8b56e"/><circle cx="-1.5" cy="-1.5" r="1.3" fill="#edcf8b"/></g>
+          </defs>
+          <ellipse cx="335" cy="545" rx="196" ry="13" fill="#879773" opacity=".07"/>
+          <circle cx="330" cy="295" r="261" fill="none" stroke="#c7cfb9" stroke-width=".8" stroke-dasharray="2 7"/>
+          <path d="M85 263A252 252 0 0 1 429 60M576 345A252 252 0 0 1 262 539" fill="none" stroke="#d3d8c7" stroke-width=".8"/>
+          <g class="orbit-dot"><circle cx="132" cy="117" r="4" fill="#b2bf9b"/><circle cx="529" cy="478" r="3" fill="#c5a475"/></g>
+          <g class="parallax" style="--depth: -4"><circle cx="330" cy="295" r="239" fill="#f9f7ee" filter="url(#paper-shadow)"/><circle cx="330" cy="295" r="230" fill="#eeefdf" stroke="#e4e6d6" stroke-width=".8"/></g>
+          <g clip-path="url(#world-clip)">
+            <circle cx="330" cy="295" r="222" fill="url(#sky)"/>
+            <g class="parallax" style="--depth: 5">
+              <g class="sun-rays" stroke="#ccb875" stroke-width="1.4" opacity=".55"><path d="M394 129v8m0 102v8M335 188h8m102 0h8M352 146l6 6m72 72 6 6M352 230l6-6m72-72 6-6"/></g>
+              <circle cx="394" cy="188" r="42" fill="#e7c882" filter="url(#soft-shadow)"/><circle cx="394" cy="188" r="35" fill="none" stroke="#f4dfaa" stroke-width=".7" opacity=".6"/>
+              <g class="cloud-a" fill="#faf8ed" filter="url(#soft-shadow)"><path d="M158 187c-5-11 5-20 15-18 1-17 23-24 34-10 11-9 27-3 27 10 15-3 24 6 22 17Z"/></g>
+              <g class="cloud-b" fill="#f8f7e9" filter="url(#soft-shadow)"><path d="M421 253c-2-9 5-16 14-15 3-15 22-19 31-5 12-5 23 2 23 11 13-2 20 5 19 10Z"/></g>
+              <path d="m292 174 7 4 7-5m-33 28 5 3 6-4" fill="none" stroke="#8c9d7c" stroke-width="1.5" stroke-linecap="round"/>
             </g>
-            <g id="foreground" stroke="#718469" stroke-width="2.5" fill="none" stroke-linecap="round"><path d="M21 450q4-32-16-49m17 45q8-45 22-55m-22 45q-2-50-13-58m12 64q17-23 33-20"/><path d="M1159 433q-4-30-19-43m19 35q4-46 22-67m-21 67q12-21 27-23m-28 26q-4-42-3-61"/><path d="M84 402q0-14-8-21m9 20q6-21 13-23" stroke-width="2"/></g>
-            <g fill="#99a786"><ellipse cx="44" cy="388" rx="3" ry="9" transform="rotate(35 44 388)"/><ellipse cx="9" cy="377" rx="3" ry="10" transform="rotate(-12 9 377)"/><ellipse cx="1182" cy="357" rx="3" ry="10" transform="rotate(30 1182 357)"/></g>
-            <rect width="1200" height="520" fill="url(#grain)" pointer-events="none"/>
-          </svg>
-          <div class="scene-top"><div class="location-pill"><span class="live-dot"></span>海岸漫游 · 第 01 站</div><div class="scene-time" aria-label="场景时间"><svg class="icon"><use id="clock-icon" href="#i-sun"/></svg><span id="scene-clock">09:00</span></div></div>
-          <div class="scene-caption" id="scene-caption">SEA BREEZE & EASY DAYS</div><div class="scene-distance"><span id="distance">0.00</span> km 的好时光</div>
-        </div>
-        <div class="control-panel">
-          <div class="speed-control"><label class="control-label" for="speed"><svg class="icon"><use href="#i-speed"/></svg>骑行速度<strong id="speed-value">1.0 ×</strong></label><div class="speed-row"><span>慢悠悠</span><input class="slider" id="speed" type="range" min="0" max="3" step="0.1" value="1" aria-valuetext="1 倍速"><svg class="icon" aria-hidden="true"><use href="#i-wind"/></svg></div></div>
-          <div class="environment-control"><div class="environment-heading"><div class="control-label"><svg class="icon"><use href="#i-sun"/></svg>沿途时光</div><button class="auto-toggle" id="auto-toggle" type="button" role="switch" aria-checked="true" aria-label="自动日夜交替"><span class="auto-word">自动</span><span class="switch-track"></span></button></div><div class="modes" role="group" aria-label="选择时段"><button class="mode" type="button" data-mode="day" aria-pressed="true"><svg class="icon"><use href="#i-sun"/></svg>白昼</button><button class="mode" type="button" data-mode="sunset" aria-pressed="false"><svg class="icon"><use href="#i-sunset"/></svg>日落</button><button class="mode" type="button" data-mode="night" aria-pressed="false"><svg class="icon"><use href="#i-moon"/></svg>星夜</button></div></div>
-          <div class="ride-control"><button class="ride-button" id="ride-button" type="button" aria-label="暂停旅程"><svg class="icon"><use id="ride-icon" href="#i-pause"/></svg><span id="ride-label">歇一小会</span></button><p class="keyboard-tip"><kbd>Space</kbd> 暂停 / 继续 · <kbd>←</kbd> <kbd>→</kbd> 调速</p></div>
-        </div>
-        <div class="under-scene"><p class="quote"><span>“</span> 不必赶路，就这样和海风待一会儿。</p><div class="trip-state"><span class="dot"></span><span id="trip-state">正在收集沿途的风景</span></div></div>
-      </section>
+            <g class="parallax" style="--depth: 8">
+              <path d="M71 333Q142 216 231 278T392 287Q474 234 580 306V541H71Z" fill="#bdcaa3" filter="url(#layer-shadow)"/>
+              <path d="M63 353Q157 288 252 323T417 306Q508 277 600 362V545H63Z" fill="#a0b18b" filter="url(#layer-shadow)"/>
+              <path d="M80 386Q160 317 279 352T451 343Q510 328 583 369V550H80Z" fill="#829d78" filter="url(#layer-shadow)"/>
+              <path d="M323 320c-21 20-45 22-22 39 34 23 113 30 103 59-6 20-60 23-57 50 2 18 43 30 57 70h112c-15-53-40-58-57-81-36-49 11-48 3-78-7-28-135-31-119-59Z" fill="url(#river)"/>
+              <path d="M331 331c-20 16-13 19 21 30m59 39 11 7m-42 41-6 10m52 29 19 17" fill="none" stroke="#f4f4e5" stroke-width="1.3" stroke-linecap="round" opacity=".8"/>
+              <path d="M68 404c75-44 142-39 213 8 39 27 43 70 100 128H61Z" fill="#6d8966" filter="url(#layer-shadow)"/>
+              <path d="M438 490c54-74 101-96 166-80v151H353Z" fill="#a9ba8c" filter="url(#layer-shadow)"/>
+              <path d="M93 465c84-29 162 9 219 68H93Z" fill="#b9c39b" filter="url(#layer-shadow)"/>
+              <path d="m128 367 4-8 4 8m88-15 3-7 3 7m228-30 4-8 4 8m37 40 3-8 4 8m-18 93 4-8 4 8m-283-13 4-8 4 8" fill="none" stroke="#e2e6c3" stroke-width="1.2" opacity=".6"/>
+              <g fill="#e9e8bf" opacity=".8"><circle cx="202" cy="384" r="1.8"/><circle cx="216" cy="391" r="1.4"/><circle cx="183" cy="389" r="1.3"/><circle cx="463" cy="333" r="1.5"/><circle cx="471" cy="336" r="1.2"/><circle cx="510" cy="453" r="1.6"/><circle cx="518" cy="443" r="1.3"/></g>
+            </g>
+            <g class="parallax" style="--depth: 12"><g class="boat" filter="url(#soft-shadow)"><path d="m327 362 71 1-19 20-37-3Z" fill="#f8f3dd"/><path d="m327 362 32 6 20 15-37-3Z" fill="#e5ddc0"/><path d="m359 368 4-50 35 45Z" fill="#fffbee"/><path d="m359 368 4-50-23 36Z" fill="#ede5ce"/><path d="m359 368 4-50" stroke="#d7d0b8" stroke-width=".8"/></g></g>
+            <circle cx="330" cy="295" r="222" fill="url(#paper-specks)"/>
+          </g>
+          <circle cx="330" cy="295" r="222" fill="none" stroke="#b8c2a2" stroke-opacity=".28" stroke-width="1"/>
+          <g class="parallax" style="--depth: 15"><g class="flower-sway" filter="url(#soft-shadow)"><path d="M170 465c0-39-12-57-4-93m2 67c-24-2-32-15-33-27 19-1 33 12 33 27m0-19c20-4 29-17 26-29-18 3-27 13-26 29" fill="#71895d" stroke="#667e54" stroke-width="1.5" stroke-linejoin="round"/><use href="#daisy" transform="translate(167 371) rotate(-9) scale(1.05)"/><path d="M171 465c-4-27 20-31 26-50" fill="none" stroke="#71895d" stroke-width="1.7"/><use href="#daisy" transform="translate(198 413) rotate(16) scale(.66)"/></g></g>
+          <g class="parallax" style="--depth: 18"><g class="flower-sway-right" filter="url(#soft-shadow)"><path d="M480 484c4-26 16-49 13-76m-6 45c-19-8-24-22-20-33 16 4 22 16 20 33m-5 15c21-1 33-12 35-24-18-2-31 10-35 24" fill="#798f61" stroke="#728758" stroke-width="1.5"/><use href="#daisy" transform="translate(493 406) rotate(12) scale(.9)"/></g></g>
+          <g class="parallax" style="--depth: 20"><g class="float-plane" filter="url(#soft-shadow)"><path d="m495 112 105-39-41 83-17-29Z" fill="#fbf8e9" stroke="#d7dac7" stroke-width=".7" stroke-linejoin="round"/><path d="m542 127 58-54-48 64 7 19Z" fill="#d8dfc6"/><path d="m552 137 7 19-17-29 58-54Z" fill="#e9ecd9"/><path d="m495 112 47 15 58-54Z" fill="#fffcef"/></g><path class="wind-line" d="M526 173c-7 36 18 58 45 48s28-45 6-43c-25 2-21 52 16 72" fill="none" stroke="#b0bca0" stroke-width="1" opacity=".8"/></g>
+          <g class="parallax" style="--depth: 14"><g class="float-star" filter="url(#soft-shadow)"><path d="m105 137 8 20 22 8-22 9-8 21-9-21-21-9 21-8Z" fill="#e1c58c"/><path d="m105 137 0 29 30-1-22 9-8 21v-29l-30-1 21-8Z" fill="#d0b57c" opacity=".6"/></g></g>
+          <g class="parallax" style="--depth: 22"><g class="float-leaf" filter="url(#soft-shadow)"><path d="M72 389c-13-28 1-52 30-61 6 25-2 51-30 61Z" fill="#a1b187"/><path d="m72 389 23-49m-16 34-3-15m9 3 12-5" fill="none" stroke="#e1e6ce" stroke-width="1"/></g></g>
+          <g class="float-slow"><path d="M552 365c7-15 17-17 23-12-3 14-10 20-23 12Z" fill="#c9cda7"/><path d="m551 369 18-12" fill="none" stroke="#8f9e77" stroke-width="1"/></g>
+          <g fill="none" stroke="#aeb996" stroke-width="1.2" stroke-linecap="round"><path class="spark" d="M173 79v11m-5.5-5.5h11"/><path class="spark spark-late" d="M591 310v10m-5-5h10"/><path class="spark" d="M101 454v9m-4.5-4.5h9"/></g>
+          <g fill="#b4bd9c"><circle class="spark" cx="466" cy="65" r="2.5"/><circle class="spark spark-late" cx="66" cy="266" r="2"/><circle class="spark" cx="555" cy="476" r="2.5"/></g>
+          <path d="M263 563q16-7 32 0t32 0" fill="none" stroke="#b4bd9d" stroke-width="1" stroke-linecap="round"/><text x="342" y="566" fill="#9aa58a" font-size="9" letter-spacing="2" font-family="Georgia, serif">a little wonder</text>
+        </svg>
+        <p class="art-caption"><span data-i18n="artCaption">风会带你，去有趣的地方。</span></p>
+      </div>
     </main>
-    <footer class="footer"><span>EST. 2026 · 慢生活海岸俱乐部</span><span class="footer-right">Made for the scenic route <svg class="icon tiny-wave" aria-hidden="true"><use href="#i-wave"/></svg></span></footer>
+    <div class="bottom-note reveal">
+      <div class="little-note"><svg class="note-flower" viewBox="0 0 36 36" fill="none" aria-hidden="true"><g stroke="#93a17b" stroke-width="1"><ellipse cx="18" cy="11" rx="3.5" ry="8"/><ellipse cx="18" cy="11" rx="3.5" ry="8" transform="rotate(60 18 18)"/><ellipse cx="18" cy="11" rx="3.5" ry="8" transform="rotate(120 18 18)"/><ellipse cx="18" cy="11" rx="3.5" ry="8" transform="rotate(180 18 18)"/><ellipse cx="18" cy="11" rx="3.5" ry="8" transform="rotate(240 18 18)"/><ellipse cx="18" cy="11" rx="3.5" ry="8" transform="rotate(300 18 18)"/></g><circle cx="18" cy="18" r="3" fill="#d9bf85"/></svg><p data-i18n="bottomNote">慢一点，也没关系。</p><span class="note-rule" aria-hidden="true"></span></div>
+      <div class="edition"><span class="edition-text" data-i18n="edition">小小世界 · 无限好奇</span><span class="edition-number" aria-hidden="true">∞</span></div>
+    </div>
+    <footer class="site-footer"><span>© 2026 BOOPLAND</span><span class="footer-center" data-i18n="footer">Made of little happy things.</span><button class="motion-button" id="motion-button" type="button" aria-pressed="false"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><g class="wind-active"><path d="M3 8h12a3 3 0 1 0-3-3M2 12h17a3 3 0 1 1-3 3M5 17h5a2 2 0 1 1-2 2"/></g><g class="wind-paused"><path d="M9 5v14M15 5v14"/></g></svg><span id="motion-label">让风歇一会</span></button></footer>
   </div>
-  <div class="toast" id="toast" role="status" aria-live="polite"></div>
-  <noscript><p style="text-align:center;padding:20px">开启 JavaScript，即可体验鹈鹕骑行、速度调节和日夜交替。</p></noscript>
+  <div class="page-wipe" aria-hidden="true"></div>
+  <div class="sr-only" id="language-status" role="status" aria-live="polite"></div>
+  <!-- The welcome page is self-contained. The game collection is maintained separately. -->
   <script>
     (() => {
       'use strict';
       const $ = id => document.getElementById(id);
       const root = document.documentElement;
-      const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
-      const state = { speed: 1, paused: reducedMotion.matches, automatic: true, hour: 9, distance: 0, pedal: 0, travel: 0, ambient: 0, targetHour: null, sound: false };
-      const nodes = {};
-      ['back-spokes','front-spokes','near-leg','near-leg-fill','far-leg','near-foot','far-foot','crank','pelican-body','scarf-tail','clouds-far','clouds-near','sea-texture','road-stripes','road-pebbles','shore-wave','sailboat','birds','stars','moon','sun','sun-reflection','lighthouse-light','headlight','scene-shell','scene-clock','clock-icon','scene-caption','distance','speed','speed-value','auto-toggle','ride-button','ride-icon','ride-label','trip-state','sound-button','sound-label','toast'].forEach(id => nodes[id] = $(id));
-      const modes = [...document.querySelectorAll('[data-mode]')];
-      const clamp = (n, min, max) => Math.max(min, Math.min(max, n));
-      const smooth = n => { n = clamp(n, 0, 1); return n * n * (3 - 2 * n); };
-      // Scene time is simulated: a full day takes 96 seconds. Cycling speed affects the ride only.
-      const paletteKeys = ['sky-top','sky-bottom','sea-top','sea-bottom','mountain','sand','road','road-line','cloud','sun'];
-      const paletteStops = [
-        { hour: 0, colors: ['#172e40','#466274','#35596a','#597c81','#355665','#8c987f','#7b8575','#b7b79c','#bac6be','#f6d799'] },
-        { hour: 5, colors: ['#293f50','#8e9090','#607c85','#8daba3','#5d7d80','#c3b799','#b5ac94','#e7dbc0','#d9d4c4','#efb981'] },
-        { hour: 7, colors: ['#c5e0d9','#f3e8c9','#7eb9b2','#aed0b8','#96bab0','#e9d9b1','#e8d7b6','#faf0d7','#fff9e8','#f6cf79'] },
-        { hour: 11, colors: ['#c8e7e0','#e7efe0','#78b7b1','#aad0bc','#8fbbb1','#e8d7ad','#e7d7b6','#f9f0d6','#fffbee','#f8cd6d'] },
-        { hour: 15, colors: ['#b9ddd7','#e3e9cf','#72afa9','#a7c6ad','#89afa4','#e7d1a6','#e5d1ae','#f9e8ca','#fff7e5','#f2c371'] },
-        { hour: 18, colors: ['#dda595','#f4d0a0','#98aaa0','#c1baa2','#a1a58d','#dfbb91','#d9b48f','#f3d9b1','#ffe4c1','#f6b263'] },
-        { hour: 20, colors: ['#3c465e','#a28891','#667c87','#8e9b9a','#657c7e','#ada78d','#9d9a85','#d8cbb0','#c5bdc0','#edc9a0'] },
-        { hour: 22, colors: ['#172e40','#466274','#35596a','#597c81','#355665','#8c987f','#7b8575','#b7b79c','#bac6be','#f6d799'] },
-        { hour: 24, colors: ['#172e40','#466274','#35596a','#597c81','#355665','#8c987f','#7b8575','#b7b79c','#bac6be','#f6d799'] }
-      ];
-      paletteStops.forEach(stop => stop.rgb = stop.colors.map(hex => [1,3,5].map(i => parseInt(hex.slice(i,i+2),16))));
-      let toastTimer, lastClock = '', lastMode = '', frameId, lastTime = null, lastPaletteTime = -1;
-      let audioContext, audioGain, oceanSource, audioBusy = false;
-      const notify = message => { nodes.toast.textContent = message; nodes.toast.classList.add('show'); clearTimeout(toastTimer); toastTimer = setTimeout(() => nodes.toast.classList.remove('show'), 2600); };
-      function currentMode() { return state.hour >= 6.5 && state.hour < 16.5 ? 'day' : state.hour >= 16.5 && state.hour < 19.5 || state.hour >= 5 && state.hour < 6.5 ? 'sunset' : 'night'; }
-      function updateEnvironment() {
-        let a = paletteStops[0], b = paletteStops[1];
-        for (let i = 0; i < paletteStops.length - 1; i++) { if (state.hour >= paletteStops[i].hour && state.hour <= paletteStops[i+1].hour) { a = paletteStops[i]; b = paletteStops[i+1]; break; } }
-        const mix = smooth((state.hour - a.hour) / (b.hour - a.hour));
-        paletteKeys.forEach((key, i) => root.style.setProperty('--' + key, 'rgb(' + a.rgb[i].map((c,j) => Math.round(c + (b.rgb[i][j]-c)*mix)).join(',') + ')'));
-        const darkness = state.hour < 6.5 ? 1 - smooth((state.hour-4.5)/2) : smooth((state.hour-18)/3);
-        const daylight = 1 - darkness;
-        nodes.stars.style.opacity = darkness;
-        nodes.moon.style.opacity = darkness;
-        nodes.sun.style.opacity = daylight;
-        const sunY = 125 * (1 - Math.sin(clamp((state.hour-6)/13,0,1)*Math.PI));
-        nodes.sun.setAttribute('transform', 'translate(0 ' + sunY.toFixed(1) + ')');
-        nodes['sun-reflection'].style.opacity = .3 + daylight*.7;
-        nodes['lighthouse-light'].style.opacity = darkness * .5;
-        nodes.headlight.style.opacity = darkness * .7;
-        nodes['scene-shell'].classList.toggle('night', darkness > .55);
-        const mode = currentMode();
-        if (lastMode !== mode) {
-          lastMode = mode;
-          modes.forEach(button => button.setAttribute('aria-pressed', String(button.dataset.mode === mode)));
-          nodes['clock-icon'].setAttribute('href', mode === 'day' ? '#i-sun' : mode === 'sunset' ? '#i-sunset' : '#i-moon');
-          nodes['scene-caption'].textContent = {day:'SEA BREEZE & EASY DAYS',sunset:'CHASE A LITTLE GOLDEN LIGHT',night:'UNDER THE SAME STARRY SKY'}[mode];
-        }
-        const minutes = Math.floor(state.hour * 60);
-        const clock = String(Math.floor(minutes / 60) % 24).padStart(2,'0') + ':' + String(minutes % 60).padStart(2,'0');
-        if (clock !== lastClock) { nodes['scene-clock'].textContent = clock; lastClock = clock; }
+      const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)');
+      const finePointer = matchMedia('(hover: hover) and (pointer: fine)');
+      const storage = { get(key) { try { return localStorage.getItem(key); } catch { return null; } }, set(key, value) { try { localStorage.setItem(key, value); } catch { /* Storage is optional. */ } } };
+      const translations = {
+        'zh-CN': { name: '简体中文', title: '把片刻，交给美好', description: '在 Boopland，把片刻交给美好。翻开一个装着小游戏与小快乐的纸上世界。', headerNote: '给生活，留一点空白。', chooseLanguage: '用熟悉的语言，遇见小美好', languageLabel: '选择语言，当前为', eyebrow: 'A SMALL ESCAPE, A LITTLE JOY', heading1: '把片刻，', heading2: '交给美好。', intro1: '生活有些匆忙，幸好这里有风。', intro2: '翻开这一页，让小小的快乐自然发生。', enter: '进入', entryNote: '一点好奇，刚刚好', microCopy: '留一点时间，给无用而美好的事', artCaption: '风会带你，去有趣的地方。', bottomNote: '慢一点，也没关系。', edition: '小小世界 · 无限好奇', footer: 'Made of little happy things.', pause: '让风歇一会', resume: '让微风继续', reduced: '已跟随系统减少动态', home: 'Boopland 首页', artTitle: '风里的纸上小世界', artDescription: '层叠的纸雕山丘环抱一条小河，纸船轻轻摇晃。太阳、云朵、雏菊与纸飞机，在微风里慢慢浮动。', changed: '语言已切换为简体中文' },
+        en: { name: 'English', title: 'A little room for wonder', description: 'A paper world of little games and simple joys. Take a breath, follow your curiosity, and step into Boopland.', headerNote: 'Leave a little room for wonder.', chooseLanguage: 'A little joy, in your language', languageLabel: 'Choose language. Current language:', eyebrow: 'A SMALL ESCAPE, A LITTLE JOY', heading1: 'A moment for', heading2: 'little wonders.', intro1: 'Life moves quickly. Here, a softer breeze.', intro2: 'Turn the page. Let a little happiness find you.', enter: 'Enter', entryNote: 'a little curiosity', microCopy: 'A LITTLE TIME FOR THE LOVELY LITTLE THINGS', artCaption: 'Follow the breeze. Find a little wonder.', bottomNote: 'It’s okay to take your time.', edition: 'SMALL WORLD · ENDLESS CURIOSITY', footer: 'Made of little happy things.', pause: 'Pause the breeze', resume: 'Let the breeze in', reduced: 'Reduced motion · system setting', home: 'Boopland home', artTitle: 'A little paper world in the breeze', artDescription: 'Layered paper hills surround a winding river and a rocking paper boat. Clouds, daisies, and a paper plane drift softly in the breeze.', changed: 'Language changed to English' },
+        ja: { name: '日本語', title: '小さな幸せに、ひとやすみ', description: '小さなゲームと喜びがつまった紙の世界。Booplandで、ひとやすみ。', headerNote: '毎日に、少しの余白を。', chooseLanguage: 'いつもの言葉で、小さな幸せを', languageLabel: '言語を選択。現在：', eyebrow: '小さな寄り道、小さなよろこび', heading1: 'ひとときを、', heading2: '小さな幸せに。', intro1: 'あわただしい毎日。ここには、やさしい風。', intro2: 'ページをめくって、小さな喜びに出会おう。', enter: '入る', entryNote: '好奇心を、少しだけ', microCopy: '心がよろこぶことに、少しの時間を', artCaption: '風の向こうに、きっと楽しいこと。', bottomNote: 'ゆっくりでも、大丈夫。', edition: '小さな世界 · 尽きない好奇心', footer: '小さな幸せを、ひとつずつ。', pause: '風をひとやすみ', resume: 'もう一度、そよ風を', reduced: 'システム設定で動きを抑制中', home: 'Boopland ホーム', artTitle: 'そよ風の中の紙の世界', artDescription: '重なる紙の丘と曲がりくねった川。紙の舟、雲、ひなぎく、紙飛行機がそよ風に揺れています。', changed: '日本語に切り替えました' },
+        ko: { name: '한국어', title: '작은 행복에 머무는 순간', description: '작은 게임과 소소한 기쁨이 담긴 종이 세상. Boopland에서 잠시 쉬어 가세요.', headerNote: '일상에 작은 여백을.', chooseLanguage: '익숙한 언어로 만나는 작은 기쁨', languageLabel: '언어 선택. 현재 언어:', eyebrow: '잠깐의 쉼, 작은 기쁨', heading1: '잠깐의 여유,', heading2: '작은 행복으로.', intro1: '바쁜 일상 속, 여기에는 산들바람이 불어요.', intro2: '한 페이지를 넘겨 작은 기쁨을 만나 보세요.', enter: '들어가기', entryNote: '작은 호기심 하나', microCopy: '소소하고 아름다운 것들을 위한 시간', artCaption: '바람을 따라, 즐거움이 있는 곳으로.', bottomNote: '천천히 가도 괜찮아요.', edition: '작은 세상 · 끝없는 호기심', footer: '작은 행복들이 모인 곳.', pause: '바람 잠시 멈추기', resume: '다시 산들바람', reduced: '시스템 설정에 따라 동작 줄임', home: 'Boopland 홈', artTitle: '바람 속 작은 종이 세상', artDescription: '겹겹의 종이 언덕 사이로 흐르는 강과 흔들리는 종이배. 구름, 데이지, 종이비행기가 바람에 부드럽게 움직입니다.', changed: '한국어로 변경했어요' },
+        fr: { name: 'Français', title: 'Un instant pour les petits bonheurs', description: 'Un monde de papier, de petits jeux et de joies simples. Prenez le temps de découvrir Boopland.', headerNote: 'Un peu de place pour rêver.', chooseLanguage: 'Les petits bonheurs dans votre langue', languageLabel: 'Choisir la langue. Langue actuelle :', eyebrow: 'UNE PETITE PAUSE, UN PEU DE JOIE', heading1: 'Un instant de', heading2: 'douceur.', intro1: 'La vie va vite. Ici, la brise prend son temps.', intro2: 'Tournez la page. Un petit bonheur vous attend.', enter: 'Entrer', entryNote: 'un peu de curiosité', microCopy: 'DU TEMPS POUR LES JOLIES PETITES CHOSES', artCaption: 'Suivez la brise, laissez-vous surprendre.', bottomNote: 'Prenez le temps qu’il vous faut.', edition: 'PETIT MONDE · CURIOSITÉ INFINIE', footer: 'Fait de petits bonheurs.', pause: 'Suspendre la brise', resume: 'Retrouver la brise', reduced: 'Animations réduites · système', home: 'Accueil Boopland', artTitle: 'Un petit monde de papier dans la brise', artDescription: 'Des collines de papier entourent une rivière et un petit bateau. Nuages, marguerites et avion de papier dansent dans la brise.', changed: 'La langue est maintenant le français' },
+        de: { name: 'Deutsch', title: 'Ein Moment für kleine Wunder', description: 'Eine Papierwelt voller kleiner Spiele und stiller Freuden. Entdecke Boopland in deinem Tempo.', headerNote: 'Ein wenig Platz zum Träumen.', chooseLanguage: 'Kleine Freuden in deiner Sprache', languageLabel: 'Sprache auswählen. Aktuelle Sprache:', eyebrow: 'KLEINE AUSZEIT, KLEINES GLÜCK', heading1: 'Zeit für', heading2: 'kleine Wunder.', intro1: 'Das Leben eilt. Hier weht eine sanfte Brise.', intro2: 'Blättere um. Ein kleines Glück wartet auf dich.', enter: 'Eintreten', entryNote: 'ein wenig Neugier', microCopy: 'ZEIT FÜR DIE KLEINEN, SCHÖNEN DINGE', artCaption: 'Folge dem Wind. Entdecke etwas Schönes.', bottomNote: 'Du darfst dir Zeit lassen.', edition: 'KLEINE WELT · GROSSE NEUGIER', footer: 'Aus kleinen Glücksmomenten gemacht.', pause: 'Wind anhalten', resume: 'Wind wehen lassen', reduced: 'Weniger Bewegung · System', home: 'Boopland Startseite', artTitle: 'Eine kleine Papierwelt im Wind', artDescription: 'Geschichtete Papierhügel umgeben einen Fluss mit einem schaukelnden Papierboot. Wolken, Blumen und ein Papierflieger bewegen sich sanft im Wind.', changed: 'Sprache auf Deutsch geändert' },
+        es: { name: 'Español', title: 'Un momento para las pequeñas alegrías', description: 'Un mundo de papel, pequeños juegos y alegrías sencillas. Respira y descubre Boopland.', headerNote: 'Un espacio para soñar.', chooseLanguage: 'Pequeñas alegrías en tu idioma', languageLabel: 'Elegir idioma. Idioma actual:', eyebrow: 'UNA PEQUEÑA PAUSA, UN POCO DE ALEGRÍA', heading1: 'Un momento', heading2: 'para sonreír.', intro1: 'La vida va deprisa. Aquí sopla una brisa suave.', intro2: 'Pasa la página. Deja que la alegría te encuentre.', enter: 'Entrar', entryNote: 'un poco de curiosidad', microCopy: 'TIEMPO PARA LAS PEQUEÑAS COSAS BONITAS', artCaption: 'Sigue la brisa. Descubre algo bonito.', bottomNote: 'Está bien ir sin prisa.', edition: 'PEQUEÑO MUNDO · CURIOSIDAD INFINITA', footer: 'Hecho de pequeñas alegrías.', pause: 'Pausar la brisa', resume: 'Dejar pasar la brisa', reduced: 'Movimiento reducido · sistema', home: 'Inicio de Boopland', artTitle: 'Un pequeño mundo de papel en la brisa', artDescription: 'Colinas de papel rodean un río y un barquito que se mece suavemente. Nubes, margaritas y un avión de papel flotan en la brisa.', changed: 'Idioma cambiado a español' },
+        'pt-BR': { name: 'Português', title: 'Um instante para pequenas alegrias', description: 'Um mundo de papel, pequenos jogos e alegrias simples. Respire e descubra Boopland.', headerNote: 'Um espaço para sonhar.', chooseLanguage: 'Pequenas alegrias no seu idioma', languageLabel: 'Escolher idioma. Idioma atual:', eyebrow: 'UMA PEQUENA PAUSA, UM POUCO DE ALEGRIA', heading1: 'Um instante', heading2: 'de leveza.', intro1: 'A vida corre. Aqui, a brisa é mais suave.', intro2: 'Vire a página. Deixe a alegria encontrar você.', enter: 'Entrar', entryNote: 'um pouco de curiosidade', microCopy: 'TEMPO PARA AS PEQUENAS COISAS BONITAS', artCaption: 'Siga a brisa. Encontre uma pequena surpresa.', bottomNote: 'Tudo bem ir devagar.', edition: 'PEQUENO MUNDO · CURIOSIDADE SEM FIM', footer: 'Feito de pequenas alegrias.', pause: 'Pausar a brisa', resume: 'Deixar a brisa entrar', reduced: 'Movimento reduzido · sistema', home: 'Página inicial do Boopland', artTitle: 'Um pequeno mundo de papel ao vento', artDescription: 'Colinas de papel cercam um rio e um barquinho que balança suavemente. Nuvens, margaridas e um avião de papel flutuam na brisa.', changed: 'Idioma alterado para português' }
+      };
+      const savedLanguage = storage.get('boopland-language');
+      let language = Object.hasOwn(translations, savedLanguage) ? savedLanguage : 'zh-CN';
+      let userPaused = storage.get('boopland-motion') === 'paused';
+      let paused = userPaused || reducedMotion.matches;
+      const languageToggle = $('language-toggle');
+      const languageMenu = $('language-menu');
+      const languageOptions = [...document.querySelectorAll('[data-lang]')];
+      function updateMotionLabel() {
+        $('motion-button').setAttribute('aria-pressed', String(paused));
+        $('motion-label').textContent = translations[language][reducedMotion.matches ? 'reduced' : paused ? 'resume' : 'pause'];
+        $('motion-button').disabled = reducedMotion.matches;
       }
-      function updateStatus() {
-        nodes['trip-state'].textContent = state.paused ? '停一停，风景不会走远' : state.speed === 0 ? '靠在海边，等一阵风' : state.speed >= 2 ? '和海风一起轻快前行' : '正在收集沿途的风景';
+      function setLanguage(next, announce = false) {
+        language = Object.hasOwn(translations, next) ? next : 'zh-CN';
+        const words = translations[language];
+        root.lang = language;
+        document.title = `Boopland · ${words.title}`;
+        document.querySelector('meta[name="description"]').content = words.description;
+        document.querySelectorAll('[data-i18n]').forEach(node => { node.textContent = words[node.dataset.i18n]; });
+        $('current-language').textContent = words.name;
+        languageToggle.setAttribute('aria-label', `${words.languageLabel} ${words.name}`);
+        $('brand-link').setAttribute('aria-label', words.home);
+        $('world-title').textContent = words.artTitle;
+        $('world-desc').textContent = words.artDescription;
+        languageOptions.forEach(option => option.setAttribute('aria-checked', String(option.dataset.lang === language)));
+        updateMotionLabel();
+        if (announce) { storage.set('boopland-language', language); $('language-status').textContent = words.changed; }
       }
-      function setSpeed(value) {
-        state.speed = clamp(Math.round(value*10)/10,0,3);
-        nodes.speed.value = state.speed;
-        nodes.speed.setAttribute('aria-valuetext', state.speed.toFixed(1) + ' 倍速');
-        nodes['speed-value'].textContent = state.speed.toFixed(1) + ' ×';
-        nodes.speed.style.background = 'linear-gradient(to right,var(--green) ' + state.speed/3*100 + '%,#e0e3d6 ' + state.speed/3*100 + '%)';
-        updateStatus();
+      function closeLanguages(restoreFocus = false) {
+        languageMenu.hidden = true;
+        languageToggle.setAttribute('aria-expanded', 'false');
+        if (restoreFocus) languageToggle.focus();
       }
-      function setPaused(paused) {
-        state.paused = paused;
-        nodes['ride-icon'].setAttribute('href', paused ? '#i-play' : '#i-pause');
-        nodes['ride-label'].textContent = paused ? '继续兜风' : '歇一小会';
-        nodes['ride-button'].setAttribute('aria-label', paused ? '继续旅程' : '暂停旅程');
-        updateStatus();
+      function openLanguages(last = false) {
+        languageMenu.hidden = false;
+        languageToggle.setAttribute('aria-expanded', 'true');
+        (last ? languageOptions.at(-1) : languageOptions.find(option => option.dataset.lang === language)).focus();
       }
-      function setAutomatic(automatic) {
-        state.automatic = automatic;
-        nodes['auto-toggle'].setAttribute('aria-checked', String(automatic));
+      languageToggle.addEventListener('click', () => languageMenu.hidden ? openLanguages() : closeLanguages(true));
+      languageToggle.addEventListener('keydown', event => { if (event.key === 'ArrowDown' || event.key === 'ArrowUp') { event.preventDefault(); openLanguages(event.key === 'ArrowUp'); } });
+      languageOptions.forEach(option => option.addEventListener('click', () => { setLanguage(option.dataset.lang, true); closeLanguages(true); }));
+      languageMenu.addEventListener('keydown', event => {
+        const index = languageOptions.indexOf(document.activeElement);
+        let next;
+        if (event.key === 'ArrowDown' || event.key === 'ArrowRight') next = (index + 1) % languageOptions.length;
+        if (event.key === 'ArrowUp' || event.key === 'ArrowLeft') next = (index - 1 + languageOptions.length) % languageOptions.length;
+        if (event.key === 'Home') next = 0;
+        if (event.key === 'End') next = languageOptions.length - 1;
+        if (next !== undefined) { event.preventDefault(); languageOptions[next].focus(); }
+        if (event.key === 'Tab') closeLanguages(true);
+      });
+      document.addEventListener('keydown', event => { if (event.key === 'Escape' && !languageMenu.hidden) { event.preventDefault(); closeLanguages(true); } });
+      document.addEventListener('pointerdown', event => { if (!$('language-control').contains(event.target)) closeLanguages(); });
+      $('language-control').addEventListener('focusout', event => { if (event.relatedTarget && !$('language-control').contains(event.relatedTarget)) closeLanguages(); });
+
+      const canvas = $('motes');
+      const context = canvas.getContext('2d');
+      let width = 0, height = 0, frameId = 0, lastTime = 0, particles = [];
+      const pointer = { x: -1000, y: -1000 };
+      function makeParticle(scattered = true) { return { x: Math.random() * width, y: scattered ? Math.random() * height : height + 10, size: 1 + Math.random() * 2.1, speed: 5 + Math.random() * 10, phase: Math.random() * Math.PI * 2, opacity: .13 + Math.random() * .2, life: -1 }; }
+      function resizeCanvas() {
+        width = innerWidth; height = innerHeight;
+        const dpr = Math.min(devicePixelRatio || 1, 2);
+        canvas.width = Math.round(width * dpr); canvas.height = Math.round(height * dpr);
+        if (context) context.setTransform(dpr, 0, 0, dpr, 0, 0);
+        particles = Array.from({ length: width < 760 ? 19 : 36 }, () => makeParticle());
       }
-      function chooseMode(mode) {
-        setAutomatic(false);
-        state.targetHour = {day:10,sunset:18,night:23}[mode];
-        // Explicitly requested transitions also work while the ride is paused.
-        if (reducedMotion.matches) { state.hour = state.targetHour; state.targetHour = null; updateEnvironment(); }
-      }
-      function drawRide() {
-        const angle = state.pedal, degrees = angle * 180 / Math.PI;
-        nodes['back-spokes'].setAttribute('transform','rotate(' + degrees*1.8 + ')');
-        nodes['front-spokes'].setAttribute('transform','rotate(' + degrees*1.8 + ')');
-        nodes.crank.setAttribute('transform','rotate(' + degrees + ' 566 411)');
-        const px = 566 + Math.cos(angle)*24, py = 411 + Math.sin(angle)*24;
-        const fx = 566 - Math.cos(angle)*24, fy = 411 - Math.sin(angle)*24;
-        const bob = Math.sin(angle*2)*1.7;
-        const leg = 'M551 ' + (312+bob) + 'Q' + (588+Math.cos(angle)*13) + ' ' + (353+Math.sin(angle)*7) + ' ' + px + ' ' + py;
-        nodes['near-leg'].setAttribute('d',leg); nodes['near-leg-fill'].setAttribute('d',leg);
-        nodes['far-leg'].setAttribute('d','M538 ' + (311+bob) + 'Q' + (525-Math.cos(angle)*12) + ' 355 ' + fx + ' ' + fy);
-        nodes['near-foot'].setAttribute('transform','translate(' + px + ' ' + py + ')');
-        nodes['far-foot'].setAttribute('transform','translate(' + fx + ' ' + fy + ')');
-        nodes['pelican-body'].setAttribute('transform','translate(0 ' + bob + ')');
-        const flutter = Math.sin(state.ambient*4 + state.travel*.015)*3*Math.min(state.speed,2);
-        nodes['scarf-tail'].setAttribute('d','M572 218q-37 ' + (-10+flutter) + '-72 ' + (2+flutter) + 'l-26-6 11 17-9 10q42 ' + (-19-flutter) + ' 94-9Z');
-        nodes['road-stripes'].setAttribute('transform','translate(' + -(state.travel%150) + ' 0)');
-        nodes['road-pebbles'].setAttribute('transform','translate(' + -(state.travel%1200) + ' 0)');
-        nodes['clouds-far'].setAttribute('transform','translate(' + -((state.ambient*2+state.travel*.018)%1320) + ' 0)');
-        nodes['clouds-near'].setAttribute('transform','translate(' + -((state.ambient*3+state.travel*.035)%1320) + ' 0)');
-        nodes['sea-texture'].setAttribute('transform','translate(' + -((state.ambient*6+state.travel*.08)%280) + ' ' + Math.sin(state.ambient*.7)*2 + ')');
-        nodes['shore-wave'].setAttribute('transform','translate(0 ' + Math.sin(state.ambient*.8)*3 + ')');
-        nodes.sailboat.setAttribute('transform','translate(' + (280-Math.sin(state.ambient*.035)*50) + ' ' + (288+Math.sin(state.ambient*1.3)*2) + ')');
-        nodes.birds.setAttribute('transform','translate(' + Math.sin(state.ambient*.08)*18 + ' ' + Math.sin(state.ambient*.6)*3 + ')');
-      }
-      function tick(time) {
-        const dt = lastTime === null ? 0 : Math.min((time-lastTime)/1000,.05);
+      function draw(time) {
+        const dt = lastTime ? Math.min((time - lastTime) / 1000, .05) : 0;
         lastTime = time;
-        if (!state.paused) {
-          state.ambient += dt;
-          state.pedal = (state.pedal + dt*state.speed*3.8) % (Math.PI*2);
-          state.travel += dt*state.speed*115;
-          state.distance += dt*state.speed*12/3600;
-          nodes.distance.textContent = state.distance.toFixed(2);
-          if (state.automatic && state.targetHour === null) state.hour = (state.hour + dt*.25) % 24;
-        }
-        if (state.targetHour !== null) {
-          const difference = state.targetHour - state.hour;
-          if (Math.abs(difference) < .01) { state.hour = state.targetHour; state.targetHour = null; }
-          else state.hour += difference * Math.min(dt*5,1);
-        }
-        if (time-lastPaletteTime > 60 || lastPaletteTime < 0) { updateEnvironment(); lastPaletteTime = time; }
-        drawRide();
-        frameId = requestAnimationFrame(tick);
-      }
-      nodes.speed.addEventListener('input', event => setSpeed(Number(event.target.value)));
-      nodes['ride-button'].addEventListener('click', () => setPaused(!state.paused));
-      nodes['auto-toggle'].addEventListener('click', () => { setAutomatic(!state.automatic); notify(state.automatic ? '日夜流转已开启 · 96 秒走过一天' : '时光停在这一刻'); });
-      modes.forEach(button => button.addEventListener('click', () => chooseMode(button.dataset.mode)));
-      document.addEventListener('keydown', event => {
-        if (event.altKey || event.ctrlKey || event.metaKey || event.repeat || /INPUT|BUTTON|TEXTAREA|SELECT|A/.test(event.target.tagName) || event.target.isContentEditable) return;
-        if (event.code === 'Space') { event.preventDefault(); setPaused(!state.paused); }
-        if (event.code === 'ArrowRight' || event.code === 'ArrowLeft') { event.preventDefault(); setSpeed(state.speed + (event.code === 'ArrowRight' ? .1 : -.1)); }
-      });
-      async function toggleSound() {
-        if (audioBusy) return;
-        audioBusy = true;
-        try {
-          if (!audioContext) {
-            const AudioContextClass = window.AudioContext || window.webkitAudioContext;
-            if (!AudioContextClass) throw new Error('Web Audio is unavailable');
-            audioContext = new AudioContextClass();
-            const length = audioContext.sampleRate*8;
-            const buffer = audioContext.createBuffer(2,length,audioContext.sampleRate);
-            for (let channel=0;channel<2;channel++) {
-              const samples = buffer.getChannelData(channel); let brown = 0;
-              for (let i=0;i<length;i++) { brown = (brown + (Math.random()*2-1)*.025)/1.025; samples[i] = brown * 3.8 * (.62+.3*Math.sin(i/length*Math.PI*4+channel*.4)); }
-            }
-            oceanSource = audioContext.createBufferSource(); oceanSource.buffer = buffer; oceanSource.loop = true;
-            const filter = audioContext.createBiquadFilter(); filter.type = 'lowpass'; filter.frequency.value = 1100;
-            audioGain = audioContext.createGain(); audioGain.gain.value = 0;
-            oceanSource.connect(filter); filter.connect(audioGain); audioGain.connect(audioContext.destination); oceanSource.start();
+        context.clearRect(0, 0, width, height);
+        particles = particles.filter(particle => particle.life !== 0);
+        for (const particle of particles) {
+          if (particle.life > 0) {
+            particle.life = Math.max(0, particle.life - dt);
+            particle.x += particle.vx * dt; particle.y += particle.vy * dt; particle.vy += 9 * dt;
+          } else {
+            particle.y -= particle.speed * dt;
+            particle.x += Math.sin(time * .00035 + particle.phase) * 6 * dt;
+            const dx = particle.x - pointer.x, dy = particle.y - pointer.y, distance = Math.hypot(dx, dy);
+            if (distance < 110 && distance > 0) { particle.x += dx / distance * 18 * dt; particle.y += dy / distance * 18 * dt; }
+            if (particle.y < -12) Object.assign(particle, makeParticle(false));
+            if (particle.x < -20) particle.x = width + 10;
+            if (particle.x > width + 20) particle.x = -10;
           }
-          await audioContext.resume();
-          state.sound = !state.sound;
-          audioGain.gain.setTargetAtTime(state.sound ? .32 : 0,audioContext.currentTime,.45);
-          nodes['sound-button'].setAttribute('aria-pressed', String(state.sound));
-          nodes['sound-button'].setAttribute('aria-label', state.sound ? '关闭海浪声音' : '开启海浪声音');
-          nodes['sound-button'].title = state.sound ? '关闭海浪声音' : '开启海浪声音';
-          nodes['sound-button'].querySelector('use').setAttribute('href', state.sound ? '#i-sound' : '#i-mute');
-          nodes['sound-label'].textContent = state.sound ? '海风轻轻' : '听听海风';
-        } catch (error) { notify('暂时无法播放海浪声音，请稍后再试'); }
-        finally { audioBusy = false; }
+          context.save(); context.translate(particle.x, particle.y); context.rotate(particle.phase + time * .00015);
+          context.globalAlpha = particle.opacity * (particle.life > 0 ? Math.min(particle.life, 1) : 1);
+          context.fillStyle = particle.life > 0 ? '#a9b582' : '#9da984';
+          context.beginPath(); context.ellipse(0, 0, particle.size, particle.size * .48, 0, 0, Math.PI * 2); context.fill(); context.restore();
+        }
+        frameId = requestAnimationFrame(draw);
       }
-      nodes['sound-button'].addEventListener('click',toggleSound);
-      document.addEventListener('visibilitychange', () => {
-        cancelAnimationFrame(frameId); lastTime = null;
-        if (document.hidden) { if (audioContext) audioContext.suspend().catch(() => {}); }
-        else { frameId = requestAnimationFrame(tick); if (audioContext && state.sound) audioContext.resume().catch(() => {}); }
+      function syncMotion() {
+        paused = userPaused || reducedMotion.matches;
+        root.classList.toggle('motion-paused', paused);
+        cancelAnimationFrame(frameId); lastTime = 0;
+        if (context) { context.clearRect(0, 0, width, height); if (!paused && !document.hidden) frameId = requestAnimationFrame(draw); }
+        updateMotionLabel();
+      }
+      $('motion-button').addEventListener('click', () => { userPaused = !userPaused; storage.set('boopland-motion', userPaused ? 'paused' : 'playing'); syncMotion(); });
+      reducedMotion.addEventListener('change', syncMotion);
+      window.addEventListener('resize', resizeCanvas, { passive: true });
+      document.addEventListener('visibilitychange', () => { root.classList.toggle('background-paused', document.hidden); syncMotion(); });
+      document.addEventListener('pointermove', event => {
+        if (paused || !finePointer.matches || event.pointerType === 'touch') return;
+        pointer.x = event.clientX; pointer.y = event.clientY;
+        $('artwork').style.setProperty('--mx', ((event.clientX / innerWidth - .5) * 2).toFixed(3));
+        $('artwork').style.setProperty('--my', ((event.clientY / innerHeight - .5) * 2).toFixed(3));
+      }, { passive: true });
+      document.documentElement.addEventListener('pointerleave', () => { pointer.x = pointer.y = -1000; $('artwork').style.setProperty('--mx', 0); $('artwork').style.setProperty('--my', 0); });
+      document.addEventListener('pointerdown', event => {
+        if (paused || !context || event.target.closest('button, a') || particles.length > 90) return;
+        for (let i = 0; i < 9; i++) { const angle = Math.PI * 2 * i / 9; particles.push({ x: event.clientX, y: event.clientY, size: 2 + Math.random() * 2, phase: angle, opacity: .6, life: 1.6, vx: Math.cos(angle) * 25, vy: Math.sin(angle) * 25 - 12 }); }
+      }, { passive: true });
+
+      let navigating = false, navigationTimer;
+      $('enter-link').addEventListener('click', event => {
+        if (event.button !== 0 || event.ctrlKey || event.metaKey || event.shiftKey || event.altKey || paused) return;
+        event.preventDefault();
+        if (navigating) return;
+        navigating = true;
+        const bounds = $('enter-link').getBoundingClientRect();
+        root.style.setProperty('--wipe-x', `${bounds.left + bounds.width / 2}px`);
+        root.style.setProperty('--wipe-y', `${bounds.top + bounds.height / 2}px`);
+        root.classList.add('leaving');
+        navigationTimer = setTimeout(() => location.assign($('enter-link').href), 560);
       });
-      reducedMotion.addEventListener('change', event => { if (event.matches) setPaused(true); });
-      setPaused(state.paused); setSpeed(1); updateEnvironment(); drawRide();
-      frameId = requestAnimationFrame(tick);
+      window.addEventListener('pageshow', () => { clearTimeout(navigationTimer); navigating = false; root.classList.remove('leaving'); syncMotion(); });
+      setLanguage(language); resizeCanvas(); syncMotion();
     })();
   </script>
 </body>
