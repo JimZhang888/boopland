@@ -72,6 +72,57 @@ window.GAME_LIST = [
       'pt-BR': { title: "Paperline TD · MaxTD", description: "Posicione sua equipe, construa um labirinto e resista a ondas sem fim.", category: "Defesa de torres" }
     }
   },
+  {
+    title: "垂直极限",
+    description: "戴上矿工帽，在铅笔画的地底世界里一路向下，勇闯一百层。",
+    path: "./games/core-descent/index.html",
+    category: "轻松挑战",
+    color: "#eee5d4",
+    cover: "./games/core-descent/cover.svg",
+    locales: {
+      en: { title: "Vertical Limit", description: "Put on your miner’s hat and descend a hundred pencil-drawn floors.", category: "A little challenge" },
+      ja: { title: "垂直の限界", description: "探検帽をかぶって、鉛筆画の地底世界で100階を目指そう。", category: "小さな挑戦" },
+      ko: { title: "수직의 한계", description: "탐험 모자를 쓰고 연필로 그린 지하 세계의 100층을 향해 내려가요.", category: "작은 도전" },
+      fr: { title: "Limite verticale", description: "Enfilez votre casque et descendez cent étages dessinés au crayon.", category: "Un petit défi" },
+      de: { title: "Vertikales Limit", description: "Setz deinen Helm auf und erkunde hundert mit Bleistift gezeichnete Ebenen.", category: "Eine kleine Herausforderung" },
+      es: { title: "Límite vertical", description: "Ponte el casco y desciende cien pisos dibujados a lápiz.", category: "Un pequeño reto" },
+      'pt-BR': { title: "Limite vertical", description: "Coloque seu capacete e desça cem andares desenhados a lápis.", category: "Um pequeno desafio" }
+    }
+  },
+  {
+    title: "纸上贪吃蛇",
+    description: "在方格纸上吃掉小苹果，和铅笔画的小蛇一起慢慢长大。",
+    path: "./games/paper-snake/index.html",
+    category: "经典小游戏",
+    color: "#f2eee3",
+    cover: "./games/paper-snake/cover.svg",
+    locales: {
+      en: { title: "Paper Snake", description: "Eat little apples and grow a pencil-drawn snake on graph paper.", category: "Arcade classics" },
+      ja: { title: "紙のヘビ", description: "方眼紙の上でリンゴを食べて、鉛筆のヘビを少しずつ育てよう。", category: "定番ゲーム" },
+      ko: { title: "종이 뱀", description: "모눈종이 위에서 사과를 먹고 연필로 그린 작은 뱀을 키워요.", category: "클래식 게임" },
+      fr: { title: "Serpent de papier", description: "Mangez des pommes et faites grandir un serpent au crayon sur du papier quadrillé.", category: "Grands classiques" },
+      de: { title: "Papierschlange", description: "Iss kleine Äpfel und lass eine Bleistiftschlange auf kariertem Papier wachsen.", category: "Spieleklassiker" },
+      es: { title: "Serpiente de papel", description: "Come manzanas y haz crecer una serpiente a lápiz en papel cuadriculado.", category: "Clásicos de arcade" },
+      'pt-BR': { title: "Cobrinha de papel", description: "Coma maçãs e faça uma cobrinha a lápis crescer no papel quadriculado.", category: "Clássicos de arcade" }
+    }
+  },
+  {
+    title: "钢铁洪流",
+    description: "驾驶铅笔画的坦克，击破砖墙，在熟悉的炮火声中守住基地。",
+    path: "./games/steel-tide/index.html",
+    category: "经典街机",
+    color: "#edf0e2",
+    cover: "./games/steel-tide/cover.svg",
+    locales: {
+      en: { title: "Steel Tide", description: "Drive a pencil-drawn tank, break through brick walls, and defend your base.", category: "Arcade classics" },
+      ja: { title: "鋼鉄の奔流", description: "鉛筆で描いた戦車を操り、レンガを撃ち抜いて基地を守ろう。", category: "定番アーケード" },
+      ko: { title: "강철의 물결", description: "연필로 그린 탱크를 조종하고 벽돌을 부수며 기지를 지켜요.", category: "클래식 아케이드" },
+      fr: { title: "Marée d’acier", description: "Pilotez un char dessiné au crayon, brisez les murs et défendez votre base.", category: "Classiques d’arcade" },
+      de: { title: "Stahlflut", description: "Steuere einen Bleistiftpanzer, durchbrich Ziegelmauern und verteidige deine Basis.", category: "Arcade-Klassiker" },
+      es: { title: "Marea de acero", description: "Pilota un tanque a lápiz, rompe muros de ladrillo y defiende tu base.", category: "Clásicos de arcade" },
+      'pt-BR': { title: "Maré de aço", description: "Pilote um tanque a lápis, destrua muros de tijolos e defenda sua base.", category: "Clássicos de arcade" }
+    }
+  },
   // 新增示例（删除每行开头的 //，修改内容即可）：
   // {
   //   title: "游戏名字",

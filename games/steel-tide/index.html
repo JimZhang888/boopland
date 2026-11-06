@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-i18n-scope="steel">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#f5f3eb">
+  <meta name="description" content="钢铁洪流：在手绘沙盘上驾驶坦克，击破砖墙，守住基地。" data-i18n-content="steel.description">
+  <title>钢铁洪流 · Boopland</title>
+  <link rel="stylesheet" href="./style.css">
+  <script defer src="../../analytics.js"></script>
+</head>
+<body>
+  <main class="game-shell">
+    <header class="topbar">
+      <a class="back" href="../../games.html"><span aria-hidden="true">←</span> <span data-i18n="common.back">返回大厅</span></a>
+      <div class="game-name"><span class="mini-tank" aria-hidden="true">▥</span><h1 data-i18n="steel.title">钢铁洪流</h1><span class="edition">STEEL TIDE / 01</span></div>
+      <div class="top-actions">
+        <button class="icon-button" id="sound" type="button" aria-pressed="false" data-i18n-label="steel.soundOn"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M11 5 6 9H3v6h3l5 4Z"/><path id="sound-wave" d="m16 9 5 6m0-6-5 6"/></svg></button>
+        <button class="icon-button" id="help" type="button" data-i18n-label="steel.help"><span aria-hidden="true">?</span></button>
+        <button class="icon-button" id="pause" type="button" data-i18n-label="steel.pause" disabled><span id="pause-symbol" aria-hidden="true">Ⅱ</span></button>
+      </div>
+    </header>
+
+    <div class="play-layout">
+      <aside class="left-rail">
+        <div class="mission-heading"><p class="eyebrow" data-i18n="steel.operation">纸上作战计划</p><div class="stage-number"><span id="stage">01</span><span>/ ∞</span></div><h2 id="map-name">初始防线</h2><p data-i18n="steel.objective">守住身后的家园。</p></div>
+        <div class="stats">
+          <div class="stat"><span data-i18n="steel.score">得分</span><strong id="score">00000</strong></div>
+          <div class="stat"><span data-i18n="steel.best">最高纪录</span><strong id="best">00000</strong></div>
+          <div class="stat"><span data-i18n="steel.lives">剩余坦克</span><strong id="lives">03</strong></div>
+          <div class="stat"><span data-i18n="steel.power">火力等级</span><strong id="level">Ⅰ <small>○○○</small></strong></div>
+        </div>
+        <div class="field-note"><svg viewBox="0 0 150 46" aria-hidden="true"><path d="M4 31q37-32 74-7t61-6m-11-4 12 3-4 11"/><path d="m19 35 8-10m-3 14 9-11m40 13 7-10"/></svg><span data-i18n="steel.note">绕过掩体，寻找突破口。</span></div>
+        <div class="base-state"><span class="status-dot"></span><span id="base-state" data-i18n="steel.baseSafe">基地完好</span></div>
+      </aside>
+
+      <section class="arena-column" data-i18n-label="steel.battlefield">
+        <div class="map-topline"><span><span class="live-dot"></span> <span id="phase" data-i18n="steel.standby">等待出发</span></span><span id="progress">00 / 20</span></div>
+        <div class="arena-space" id="arena-space">
+          <div class="board" id="board">
+            <canvas id="battlefield" width="624" height="624" tabindex="0" data-i18n-label="steel.canvasLabel"></canvas>
+            <div class="overlay" id="overlay">
+              <div class="briefing" role="dialog" aria-modal="true" aria-labelledby="overlay-title" id="briefing">
+                <p class="eyebrow" id="overlay-kicker">BOOPLAND FIELD NOTES</p>
+                <svg class="hero-tank" viewBox="0 0 160 100" fill="none" aria-hidden="true"><path d="m20 80 119 2m-107 4 91 1" stroke="#b9bfac"/><path d="m35 23 21-2 1 54-22 2Zm70-1 21 2-1 53-21-2Z" fill="#b6bea2" stroke="#59674f" stroke-width="1.6"/><path d="m37 29 16-1m-16 9 16-1m-16 9 16-1m-16 9 16-1m-16 9 16-1m55-34 15 1m-15 7 15 1m-15 7 15 1m-15 7 15 1m-15 7 15 1" stroke="#7e8c70"/><path d="m55 25 51 1-2 49-49-2Z" fill="#d3d9ba" stroke="#59674f" stroke-width="1.6"/><path d="m67 38 27 1 1 25-29-1Z" fill="#a1b08a" stroke="#59674f" stroke-width="1.5"/><path d="m77 45 1-37 7 1-1 37" fill="#b7c09f" stroke="#59674f" stroke-width="1.6"/><path d="m57 30 43 1m-40 38 36 1m-24-15 10 1" stroke="#faf9ee"/><path d="m13 39 9 1m116 7 11-2M24 13l5 6m110-5-8 7" stroke="#b5a77e" stroke-linecap="round"/></svg>
+                <h2 id="overlay-title" data-i18n="steel.readyTitle">一辆坦克，一道防线。</h2>
+                <p id="overlay-text" data-i18n="steel.readyText">击退 20 辆敌方坦克，守护基地。砖墙可以击破，勇气不必收起。</p>
+                <div class="briefing-controls" id="briefing-controls"><span><kbd>WASD</kbd> / <kbd>↑↓←→</kbd></span><span><kbd data-i18n="steel.space">空格</kbd> <span data-i18n="steel.fire">开火</span></span></div>
+                <button class="primary" id="primary" type="button"><span id="primary-text" data-i18n="steel.start">出发，守住防线</span><span aria-hidden="true">→</span></button>
+                <button class="text-button" id="restart" type="button" data-i18n="steel.restart" hidden>重新开始</button>
+                <p class="briefing-foot" id="briefing-foot" data-i18n="steel.touchHint">手机使用下方方向键与开火键</p>
+              </div>
+            </div>
+            <div class="toast" id="toast" role="status" aria-live="polite" hidden></div>
+          </div>
+        </div>
+        <div class="map-bottomline"><span id="stage-label">第 01 关</span><span data-i18n="steel.mapCaption">铅笔沙盘 · 基地防守</span><span aria-hidden="true">N ↑</span></div>
+      </section>
+
+      <aside class="right-rail">
+        <div class="enemy-panel"><div class="section-label"><span data-i18n="steel.enemyWave">敌方编队</span><span id="remaining">20</span></div><div class="enemy-grid" id="enemy-grid" aria-hidden="true"></div><p data-i18n="steel.enemyHint">清空编队，进入下一道防线。</p></div>
+        <div class="legend"><p class="section-label" data-i18n="steel.terrain">战地手记</p><div><i class="swatch brick"></i><span data-i18n="steel.brick">砖墙 · 可以击破</span></div><div><i class="swatch steel"></i><span data-i18n="steel.steel">钢墙 · 满级击破</span></div><div><i class="swatch water"></i><span data-i18n="steel.water">河流 · 炮弹可穿过</span></div><div><i class="swatch forest"></i><span data-i18n="steel.forest">树林 · 隐蔽行踪</span></div></div>
+        <div class="pickup-note"><span class="star-sketch" aria-hidden="true">☆</span><p data-i18n="steel.pickupHint">击破标记敌人，拾取战场补给。</p></div>
+        <div class="touch-controls" id="touch-controls">
+          <div class="dpad" data-i18n-label="steel.move">
+            <button type="button" data-dir="0" class="up" data-i18n-label="steel.up">↑</button>
+            <button type="button" data-dir="3" class="left" data-i18n-label="steel.left">←</button>
+            <span class="dpad-center" aria-hidden="true">✧</span>
+            <button type="button" data-dir="1" class="right" data-i18n-label="steel.right">→</button>
+            <button type="button" data-dir="2" class="down" data-i18n-label="steel.down">↓</button>
+          </div>
+          <button class="fire-button" id="fire-button" type="button"><span aria-hidden="true">⊕</span><small data-i18n="steel.fire">开火</small></button>
+        </div>
+        <button class="auto-button" id="auto-fire" type="button" aria-pressed="false"><span class="toggle-track" aria-hidden="true"></span><span data-i18n="steel.autoFire">自动开火</span></button>
+      </aside>
+    </div>
+
+    <footer class="footer"><span class="footer-brand">boopland<span>.</span> <span class="footer-divider">/</span> <span data-i18n="steel.footer">把童年的一局，留在今天。</span></span><span class="keyboard-hint"><kbd>WASD</kbd> <span data-i18n="steel.move">移动</span><kbd data-i18n="steel.space">空格</kbd> <span data-i18n="steel.fire">开火</span><kbd>P</kbd> <span data-i18n="steel.pause">暂停</span></span></footer>
+  </main>
+  <dialog id="help-dialog" aria-labelledby="help-title">
+    <div class="help-heading"><h2 id="help-title" data-i18n="steel.help">作战手册</h2><button id="close-help" class="icon-button" type="button" data-i18n-label="steel.close">×</button></div>
+    <p data-i18n="steel.helpGoal">每关消灭 20 辆敌方坦克。基地被击中，或坦克全部损失，战斗结束。</p>
+    <div class="help-keys"><kbd>WASD / ↑↓←→</kbd><span data-i18n="steel.move">移动</span><kbd data-i18n="steel.space">空格</kbd><span data-i18n="steel.fire">开火</span><kbd>P / Esc</kbd><span data-i18n="steel.pause">暂停</span></div>
+    <p data-i18n="steel.helpTouch">手机可同时按住方向键与开火键；也可开启自动开火。转向后，炮口随车身方向移动。</p>
+    <h3 data-i18n="steel.supplies">战场补给</h3>
+    <div class="supply-list" id="supply-list"></div>
+    <p class="help-tip" data-i18n="steel.helpTip">友军炮弹不会伤害基地。复活后有 3 秒护盾；星级火力在中弹后归零。灰色重型坦克需击中 3 次。</p>
+  </dialog>
+  <script src="../../i18n.js"></script>
+  <script src="./locales.js"></script>
+  <script src="./engine.js"></script>
+  <script src="./game.js"></script>
+</body>
+</html>

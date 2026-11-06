@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-i18n-scope="paperSnake">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#f2eee3">
+  <meta name="description" content="在方格纸上，和铅笔画的小蛇一起慢慢长大。" data-i18n-content="paperSnake.description">
+  <title data-i18n="paperSnake.pageTitle">纸上贪吃蛇 · Boopland</title>
+  <link rel="stylesheet" href="style.css">
+  <script defer src="../../analytics.js"></script>
+</head>
+<body>
+  <div class="grain" aria-hidden="true"></div>
+  <main class="game-shell">
+    <header class="topbar">
+      <a class="back-link" href="../../games.html"><span aria-hidden="true">↶</span><span data-i18n="common.back">返回大厅</span></a>
+      <div class="heading"><span class="eyebrow">BOOPLAND / PLAY</span><h1 data-i18n="paperSnake.name">纸上贪吃蛇</h1></div>
+      <div class="top-actions">
+        <button id="sound" class="icon-button" aria-pressed="false" data-i18n-label="paperSnake.soundOn"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9h4l5-4v14l-5-4H4Z"/><path id="sound-mark" d="m17 9 5 6m0-6-5 6"/></svg></button>
+        <button id="help" class="icon-button help-button" data-i18n-label="paperSnake.help">?</button>
+      </div>
+    </header>
+
+    <section class="desk">
+      <aside class="margin-note" aria-hidden="true">
+        <span class="little-label" data-i18n="paperSnake.marginLabel">课间小记</span>
+        <p class="hand-note" data-i18n="paperSnake.margin">一笔一划，\n慢慢长大。</p>
+        <svg class="curved-arrow" viewBox="0 0 150 90"><path d="M11 12c-13 66 102 2 115 54m-15-7 17 12 6-21M13 13c-9 59 96 9 110 49"/></svg>
+        <svg class="apple-study" viewBox="0 0 150 145"><path d="M75 46c-31-23-54 2-41 35 8 21 19 37 41 29 21 8 34-10 42-32 11-31-14-51-42-32Z" fill="#ba756526"/><path d="M75 46c-31-23-54 2-41 35 8 21 19 37 41 29 21 8 34-10 42-32 11-31-14-51-42-32Zm-1-1q-3-18 6-27m-4 17q23 1 26-19-22-1-26 19"/><path class="apple-hatch" d="m37 56 20-15m-19 23 29-22m-25 33 29-22m-25 33 25-19m-20 28 21-16m-12 24 17-14m-4 18 17-12m-3 11 19-14"/><path d="m106 120 18 6m-14-1 15 1-5-10"/><text x="22" y="140">+10</text></svg>
+        <p class="tiny-note" data-i18n="paperSnake.appleNote">今天的快乐，是一个小苹果。</p>
+      </aside>
+
+      <div class="notebook">
+        <div class="binding" aria-hidden="true"></div>
+        <header class="scorebar">
+          <div class="score-item"><span data-i18n="paperSnake.score">得分</span><strong id="score">00</strong></div>
+          <span class="score-divider" aria-hidden="true"></span>
+          <div class="score-item best-item"><span data-i18n="paperSnake.best">本档最佳</span><strong id="best">00</strong></div>
+          <span id="mode-tag" class="mode-tag">慢慢来</span>
+        </header>
+        <div class="board-space">
+          <div class="board-wrap" id="board-wrap">
+            <canvas id="board" width="600" height="600" tabindex="0" data-i18n-label="paperSnake.canvas"></canvas>
+            <section id="overlay" class="overlay" aria-labelledby="overlay-title">
+              <div class="overlay-card">
+                <svg class="snake-doodle" viewBox="0 0 170 75" aria-hidden="true"><path class="doodle-fill" d="M22 51h37V22h43v29h43"/><path d="M22 51h37V22h43v29h43"/><path class="doodle-thin" d="m23 47 33-1V18h50v29h34m-110 8 32-1V26h36v29h43"/><circle cx="146" cy="51" r="14" fill="#dce1ca"/><path d="M137 40c22-12 33 23 9 25-17 2-23-18-9-25Z"/><circle cx="150" cy="46" r="1.8" class="eye"/><circle cx="150" cy="55" r="1.8" class="eye"/><path d="m160 51 7-1"/><path class="doodle-thin" d="m25 46 7 10m1-10 7 10m1-10 7 10m7-16 10 6m-10-15 10 6m5-19 7 12m2-12 7 12m7 2 11-5m-11 13 11-5m10 14 7 10m2-10 7 10"/></svg>
+                <p id="overlay-kicker" class="little-label" data-i18n="paperSnake.kicker">一张纸，一点小快乐</p>
+                <h2 id="overlay-title" data-i18n="paperSnake.ready">来，画一条小蛇。</h2>
+                <p id="overlay-description" data-i18n="paperSnake.intro">吃掉苹果，把快乐画长一点。</p>
+                <p id="result" class="result" hidden></p>
+                <button id="start" class="primary" data-i18n="paperSnake.start">开始涂鸦 →</button>
+                <p id="start-hint" class="start-hint" data-i18n="paperSnake.startHint">方向键 / WASD / 滑动转向</p>
+              </div>
+            </section>
+          </div>
+        </div>
+        <footer class="notebook-footer">
+          <p class="status-note" id="status-note" data-i18n="paperSnake.tip">别急，小蛇会慢慢长大。</p>
+          <div class="game-actions">
+            <button id="pause" class="icon-button" disabled data-i18n-label="paperSnake.pause"><svg viewBox="0 0 24 24" aria-hidden="true"><path id="pause-mark" d="M8 5v14M16 5v14"/></svg></button>
+            <button id="restart" class="icon-button" data-i18n-label="paperSnake.restart"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 10a8 8 0 1 1 1 8M4 4v6h6"/></svg></button>
+          </div>
+        </footer>
+      </div>
+
+      <aside class="side-panel">
+        <div class="speed-block">
+          <p class="little-label" id="speed-label" data-i18n="paperSnake.speed">选个节奏</p>
+          <div class="speed-options" role="group" aria-labelledby="speed-label">
+            <button data-speed="slow" aria-pressed="false" data-i18n="paperSnake.slow">慢慢来</button>
+            <button data-speed="normal" aria-pressed="true" data-i18n="paperSnake.normal">刚刚好</button>
+            <button data-speed="fast" aria-pressed="false" data-i18n="paperSnake.fast">快一点</button>
+          </div>
+          <p class="speed-hint" id="speed-hint" data-i18n="paperSnake.speedHint">开局前，挑一个喜欢的速度。</p>
+        </div>
+        <div class="control-block">
+          <div class="dpad" role="group" data-i18n-label="paperSnake.controls">
+            <button data-direction="up" data-i18n-label="paperSnake.up">↑</button>
+            <button data-direction="left" data-i18n-label="paperSnake.left">←</button>
+            <span class="dpad-center" aria-hidden="true">✧</span>
+            <button data-direction="right" data-i18n-label="paperSnake.right">→</button>
+            <button data-direction="down" data-i18n-label="paperSnake.down">↓</button>
+          </div>
+          <p class="control-hint" data-i18n="paperSnake.controlHint">方向键 / WASD\n也可以在纸上滑动</p>
+        </div>
+        <div class="pencil-note" aria-hidden="true"><svg viewBox="0 0 160 45"><path d="m14 32 21-22 115 8-1 19-114-9Z" fill="#c7b57a40"/><path d="m14 32 21-22 115 8-1 19-114-9Zm21-22v18m0-12 113 8M24 23l2 7m112-13-1 19M14 32l12-2-2-7"/><path d="m42 14 81 5m-77 3 77 6" opacity=".35"/></svg><span data-i18n="paperSnake.pencilNote">铅笔已削好，随时出发。</span></div>
+      </aside>
+    </section>
+    <footer class="page-foot"><span data-i18n="paperSnake.footnote">把片刻，留在方格纸上。</span><span aria-hidden="true">a little pencil, a little play.</span></footer>
+  </main>
+  <dialog id="help-dialog" aria-labelledby="help-title">
+    <button id="close-help" class="icon-button close-help" data-i18n-label="paperSnake.close">×</button>
+    <p class="little-label">BOOPLAND / PLAY</p>
+    <h2 id="help-title" data-i18n="paperSnake.helpTitle">小蛇的涂鸦指南</h2>
+    <p data-i18n="paperSnake.ruleApple">每吃一个苹果得 10 分，小蛇长一格。</p>
+    <p data-i18n="paperSnake.ruleWall">别碰到纸的边缘，也别撞到自己。</p>
+    <p data-i18n="paperSnake.ruleMove">方向键、WASD、屏幕方向按钮或在棋盘上滑动，都能转向。</p>
+    <p data-i18n="paperSnake.rulePause">空格 / P / Esc 暂停；切换页面时会自动暂停。</p>
+    <p data-i18n="paperSnake.ruleSpeed">三档速度各自保存最高分，本局开始后速度固定。</p>
+    <button id="help-done" class="primary" data-i18n="paperSnake.gotIt">知道啦</button>
+  </dialog>
+  <p class="sr-only" id="announcement" aria-live="polite" aria-atomic="true"></p>
+  <script src="../../i18n.js"></script>
+  <script src="translations.js"></script>
+  <script src="engine.js"></script>
+  <script src="game.js"></script>
+</body>
+</html>
