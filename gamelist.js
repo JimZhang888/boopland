@@ -123,6 +123,23 @@ window.GAME_LIST = [
       'pt-BR': { title: "Maré de aço", description: "Pilote um tanque a lápis, destrua muros de tijolos e defenda sua base.", category: "Clássicos de arcade" }
     }
   },
+  {
+    title: "一个消消乐",
+    description: "交换手绘小动物，把同色的小快乐，三个三个连起来。",
+    path: "./games/animal-match/index.html",
+    category: "休闲益智",
+    color: "#f2eddf",
+    cover: "./games/animal-match/cover.svg",
+    locales: {
+      en: { title: "A Little Match", description: "Swap hand-drawn animal friends and line up three little joys.", category: "Cozy puzzles" },
+      ja: { title: "ちいさなマッチ", description: "手描きの動物たちを入れ替えて、同じ色の幸せを3つ並べよう。", category: "のんびりパズル" },
+      ko: { title: "작은 매치", description: "손으로 그린 동물 친구를 바꿔 같은 색의 작은 행복 셋을 맞춰요.", category: "편안한 퍼즐" },
+      fr: { title: "Petits accords", description: "Échangez des animaux dessinés à la main et alignez trois petits bonheurs.", category: "Puzzles détente" },
+      de: { title: "Kleines Tierglück", description: "Tausche handgezeichnete Tierfreunde und verbinde drei kleine Freuden.", category: "Entspannte Rätsel" },
+      es: { title: "Pequeñas coincidencias", description: "Intercambia animales dibujados a mano y une tres pequeñas alegrías.", category: "Puzles tranquilos" },
+      'pt-BR': { title: "Pequenos encontros", description: "Troque bichinhos desenhados à mão e combine três pequenas alegrias.", category: "Quebra-cabeças leves" }
+    }
+  },
   // 新增示例（删除每行开头的 //，修改内容即可）：
   // {
   //   title: "游戏名字",

@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="zh-CN" data-i18n-scope="animalMatch">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#f5f3eb">
+  <meta name="description" content="六只可爱的手绘小动物，一场不赶时间的消消乐。" data-i18n-content="description">
+  <title>一个消消乐 · Boopland</title>
+  <link rel="stylesheet" href="./style.css">
+  <script defer src="../../analytics.js"></script>
+</head>
+<body>
+  <div class="paper-texture" aria-hidden="true"></div>
+  <div class="game-shell">
+    <header class="topbar">
+      <a class="back-link" href="../../games.html"><span aria-hidden="true">←</span><span data-i18n="common.back">返回大厅</span></a>
+      <div class="heading"><span class="tiny-flower" aria-hidden="true">✳</span><h1 data-i18n="name">一个消消乐</h1><span class="edition">NO. 08</span></div>
+      <div class="header-actions">
+        <button id="sound" class="icon-button" aria-pressed="false" data-i18n-label="soundOn"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M11 5 6 9H3v6h3l5 4V5Z"/><path class="sound-waves" d="M15 8q5 4 0 8m3-11q8 7 0 14"/><path class="sound-muted" d="m16 9 6 6m0-6-6 6"/></svg></button>
+        <button id="help" class="icon-button" data-i18n-label="help"><span aria-hidden="true">?</span></button>
+      </div>
+    </header>
+    <main class="play-layout">
+      <aside class="left-panel">
+        <div class="margin-note"><span class="eyebrow" data-i18n="eyebrow">A LITTLE WILD JOY</span><p data-i18n="margin">把同色的快乐，\n凑在一起。</p><svg viewBox="0 0 150 24" aria-hidden="true"><path d="M3 13q61-16 137-1M9 19q68-10 126-1" fill="none" stroke="#b7c19f" stroke-linecap="round"/></svg></div>
+        <section class="score-card"><span class="stat-label" data-i18n="score">本局得分</span><strong id="score">0</strong><div class="best-line"><span data-i18n="best">最高</span><span id="best">0</span></div></section>
+        <section class="goal-card"><div class="goal-heading"><span class="stat-label" data-i18n="target">本关目标</span><span id="target">3,600</span></div><div class="progress-track" role="progressbar" aria-valuemin="0" aria-valuemax="3600" aria-valuenow="0" data-i18n-label="progress" id="progress"><span id="progress-fill"></span></div><div class="stars" id="stars" aria-hidden="true"><span>✦</span><span>✦</span><span>✦</span></div><p class="goal-note" id="goal-note"></p></section>
+        <section class="moves-card"><span class="stat-label" data-i18n="moves">剩余步数</span><strong id="moves">26</strong><span class="no-rush" data-i18n="noRush">没有倒计时，慢慢来。</span></section>
+      </aside>
+      <section class="board-column" data-i18n-label="gameArea">
+        <div class="board-heading"><span class="level-tag"><i aria-hidden="true"></i><span id="level">第 01 关</span></span><span data-i18n="boardNote">小动物的纸上聚会</span></div>
+        <div class="board-slot" id="board-slot"><div class="board-frame" id="board-frame"><span class="tape" aria-hidden="true"></span><div id="board" class="board" role="group" data-i18n-label="board"></div><div id="effects" class="effects" aria-hidden="true"></div></div></div>
+        <div class="status-line"><span class="status-dot" aria-hidden="true"></span><p id="status" role="status" aria-live="polite"></p></div>
+        <div class="tools">
+          <button id="hint" class="tool-button"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 16c0-3-3-3-3-7a7 7 0 0 1 14 0c0 4-3 4-3 7Zm1 4h6m-5-4v-5m4 5v-5"/></svg><span data-i18n="hint">找个灵感</span></button>
+          <button id="shuffle" class="tool-button"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 6h3c4 0 8 12 12 12h3m-4-4 4 4-4 4M3 18h3c4 0 8-12 12-12h3m-4-4 4 4-4 4"/></svg><span data-i18n="shuffle">换个队形</span><span class="tool-count" id="shuffle-count">2</span></button>
+          <button id="restart" class="tool-button restart"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 10a8 8 0 1 1 1 7M4 3v7h7"/></svg><span data-i18n="restart">重新来过</span></button>
+        </div>
+      </section>
+      <aside class="right-panel">
+        <div class="friends-heading"><span class="eyebrow" data-i18n="friends">今日的小伙伴</span><span aria-hidden="true">⌁</span></div>
+        <div class="friend-list" id="friend-list"></div>
+        <div class="how-note"><span class="note-pin" aria-hidden="true"></span><div id="sample-animals" aria-hidden="true"></div><p data-i18n="miniRule">相邻交换，三个成线。\n快乐，就会发生。</p><svg class="note-arrow" viewBox="0 0 80 35" aria-hidden="true"><path d="M73 4Q48 36 9 17m8-3-9 2 4 9"/></svg></div>
+        <p class="small-note" data-i18n="sideNote">给忙碌，按下一个小小的暂停。</p>
+      </aside>
+    </main>
+    <footer><span>boopland<span class="brand-dot">.</span></span><span data-i18n="footer">一点点消除，一点点开心。</span><span class="footer-flower" aria-hidden="true">✳</span></footer>
+  </div>
+  <dialog id="dialog" aria-labelledby="dialog-title"><div class="dialog-paper"><button id="dialog-close" class="icon-button dialog-close" data-i18n-label="close">×</button><div id="dialog-art" aria-hidden="true"></div><span class="eyebrow" id="dialog-eyebrow"></span><h2 id="dialog-title"></h2><p id="dialog-description"></p><ol id="rules" hidden><li data-i18n="ruleSwap"></li><li data-i18n="ruleScore"></li><li data-i18n="ruleGoal"></li><li data-i18n="ruleTools"></li><li data-i18n="ruleKeys"></li></ol><div id="result-stars" class="result-stars" aria-hidden="true" hidden></div><div class="dialog-buttons"><button id="dialog-primary" class="primary-button"></button><button id="dialog-secondary" class="secondary-button" hidden></button></div><a href="../../games.html" class="dialog-back" data-i18n="common.back">返回大厅</a></div></dialog>
+  <script src="../../i18n.js"></script><script src="./translations.js"></script><script src="./engine.js"></script><script src="./art.js"></script><script src="./game.js"></script>
+</body>
+</html>
