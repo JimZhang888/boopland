@@ -3,7 +3,7 @@ const assert = require('node:assert/strict');
 const fs = require('node:fs');
 const path = require('node:path');
 const vm = require('node:vm');
-const { chargePower, jumpDistance, landingPoint, classifyLanding, idealPower } = require('./physics.js');
+const { chargePower, jumpDistance, landingPoint, classifyLanding, idealPower, landingPowerRange } = require('./physics.js');
 test('charge is capped and supports quick taps', () => {
   assert.equal(chargePower(-50), 0); assert.equal(chargePower(600), .5);
   assert.equal(chargePower(1200), 1); assert.equal(chargePower(60000), 1);
@@ -15,12 +15,44 @@ test('ideal charge reaches both directions across the island distance range', ()
     assert.equal(classifyLanding(landingPoint(start, target, idealPower(start, target)), target), 'perfect');
   }
 });
-test('elliptical landing rejects overshoots, undershoots and vertical edges', () => {
+test('elliptical landing rejects overshoots, undershoots and points outside the rim', () => {
   const start = { x: 0, y: 0 }, target = { x: 210, y: -100, rx: 65, ry: 30 };
   assert.equal(classifyLanding(landingPoint(start, target, 0), target), 'miss');
   assert.equal(classifyLanding(landingPoint(start, target, 1), target), 'miss');
   assert.equal(classifyLanding({ x: 240, y: -100 }, target), 'safe');
-  assert.equal(classifyLanding({ x: 210, y: -70 }, target), 'miss');
+  assert.equal(classifyLanding({ x: 210, y: -70 }, target), 'safe');
+  assert.equal(classifyLanding({ x: 210, y: -69.99 }, target), 'miss');
+});
+test('the complete visible island rim is landable, just outside it is not', () => {
+  for (const [rx, ry] of [[62, 28], [70, 30], [83, 35]]) {
+    const island = {x: -205, y: -1080, rx, ry};
+    for (let angle = 0; angle < 2 * Math.PI; angle += .05) {
+      const point = radius => ({x: island.x + Math.cos(angle) * rx * radius, y: island.y + Math.sin(angle) * ry * radius});
+      assert.equal(classifyLanding(point(.97), island), 'safe');
+      assert.equal(classifyLanding(point(1), island), 'safe');
+      assert.equal(classifyLanding(point(1.001), island), 'miss');
+    }
+  }
+});
+test('perfect scoring matches the visible 25 by 10 flower ring', () => {
+  const island = {x: 0, y: 0, rx: 62, ry: 28};
+  for (let angle = 0; angle < 2 * Math.PI; angle += .05) {
+    const point = radius => ({x: Math.cos(angle) * 25 * radius, y: Math.sin(angle) * 10 * radius});
+    assert.equal(classifyLanding(point(1), island), 'perfect');
+    assert.equal(classifyLanding(point(1.001), island), 'safe');
+  }
+});
+test('charge interval matches both landing edges from off-centre starts in either direction', () => {
+  for (const direction of [-1, 1]) for (const offset of [-40, 0, 40]) for (const distance of [172, 209, 280]) {
+    const start = {x: offset, y: 10}, target = {x: direction * distance, y: -110, rx: 62, ry: 28};
+    const range = landingPowerRange(start, target);
+    for (const power of [range.min, (range.min + range.max) / 2, range.max]) {
+      assert.notEqual(classifyLanding(landingPoint(start, target, power), target), 'miss');
+    }
+    for (const power of [range.min - .0001, range.max + .0001]) {
+      assert.equal(classifyLanding(landingPoint(start, target, power), target), 'miss');
+    }
+  }
 });
 test('all eight languages contain every UI message and matching placeholders', () => {
   let dictionaries;

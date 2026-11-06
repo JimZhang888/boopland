@@ -1,6 +1,6 @@
 (() => {
 'use strict';
-const { clamp, chargePower, landingPoint, classifyLanding, idealPower } = window.CloudLeapPhysics;
+const { PERFECT_RX, PERFECT_RY, clamp, chargePower, landingPoint, classifyLanding, landingPowerRange } = window.CloudLeapPhysics;
 const I18n = window.BooplandI18n;
 const t = (key, values) => I18n.t('cloudLeap.' + key, values);
 
@@ -49,7 +49,7 @@ new ResizeObserver(resize).observe(canvas);
 function setPower(value) {power=value;$('power-fill').style.width=`${value*100}%`;$('power-fill').style.background=value>.86?'#ccab79':'#9dba7b';document.querySelector('.power-track').setAttribute('aria-valuenow',String(Math.round(value*100)));}
 // Keep DOM updates small; the meter is also exposed to assistive technology.
 function updateChargeUI(charging){jumpButton.classList.toggle('charging',charging);$('jump-label').textContent=t(charging?'charging':'ready');}
-function updateZone(){const target=platforms[current+1], p=idealPower(player,target);$('power-zone').style.left=`${Math.max(0,p-.055)*100}%`;$('power-zone').style.width='11%';}
+function updateZone(){const range=landingPowerRange(player,platforms[current+1]);$('power-zone').style.left=`${range.min*100}%`;$('power-zone').style.width=`${(range.max-range.min)*100}%`;}
 function tone(freq,duration=.15,type='sine',volume=.035,delay=0) {
   if(!sound)return;
   try {audioContext ||= new (window.AudioContext||window.webkitAudioContext)();if(audioContext.state==='suspended')audioContext.resume();
@@ -167,7 +167,7 @@ function island(p,isTarget) {
   // Ragged moss edges and fine grass keep the little islands handmade.
   for(let i=0;i<13;i++){let a=i/12*Math.PI,x=Math.cos(a)*(r-3),y=Math.sin(a)*(ry-1);ellipse(x,y+2,3+(i%3),3+(i%4),'#9cb37c');}
   for(let i=0;i<8;i++){const a=p.seed+i*14.2,x=Math.sin(a)*(r-13),y=Math.cos(a*1.3)*(ry-9);if(Math.abs(x)>24)grass(x,y,.65);}
-  if(isTarget){const pulse=reducedMotion?1:1+Math.sin(now*.003)*.06;ellipse(0,0,24*pulse,10*pulse,'#faf3cd70');ctx.beginPath();ctx.ellipse(0,0,25,10,0,0,Math.PI*2);ctx.strokeStyle='#e9da9daa';ctx.lineWidth=1;ctx.stroke();flower(0,0,9,'#fff4d5');
+  if(isTarget){ellipse(0,0,PERFECT_RX,PERFECT_RY,'#faf3cd70');ctx.beginPath();ctx.ellipse(0,0,PERFECT_RX,PERFECT_RY,0,0,Math.PI*2);ctx.strokeStyle='#d3c487';ctx.lineWidth=1;ctx.stroke();flower(0,0,9,'#fff4d5');
     const light=ctx.createLinearGradient(0,-80,0,0);light.addColorStop(0,'#fff5c400');light.addColorStop(1,'#fff8d554');ctx.fillStyle=light;ctx.fillRect(-15,-80,30,80);
   } else flower(0,0,5,'#e7dfb9');
   if(p.kind===0){tree(-r*.55,-ry*.34,.68);flower(r*.57,7,3);flower(r*.65,0,3);}
@@ -181,17 +181,19 @@ function island(p,isTarget) {
 }
 function girl(x,y,z,charge=0) {
   const p=screen(x,y);ctx.save();ctx.translate(p.x,p.y);ctx.scale(scale,scale);
-  const facing=platforms[current+1].x>=player.x?1:-1;
+  const facing=flight ? (flight.end.x>=flight.start.x?1:-1) : (platforms[current+1].x>=player.x?1:-1);
   if(state!=='falling')ellipse(0,3,18*(1-z/400),6*(1-z/400),`rgba(65,83,59,${.2*(1-z/300)})`);
   ctx.translate(0,-z);if(state==='falling'){ctx.rotate(Math.min((now-flight.fallStart)/700,.75)*facing);ctx.globalAlpha=clamp(1-(now-flight.fallStart)/650,0,1);}
   ctx.scale(facing,1);const idle=reducedMotion?0:Math.sin(now*.003)*1.2;
-  const crouch=charge*12;ctx.translate(0,crouch);ctx.scale(1+charge*.05,1-charge*.09);
+  // Squash around the soles (y=0), never translate the feet below the surface.
+  ctx.scale(1+charge*.05,1-charge*.2);
   const air=state==='jumping', flutter=air?Math.sin((now-flight.startTime)*.016)*5:Math.sin(now*.004)*2;
   // Ponytail, tied with a little coral ribbon.
   ctx.beginPath();ctx.moveTo(-10,-79);ctx.bezierCurveTo(-26,-81,-20-flutter,-55,-31-flutter,-55);ctx.bezierCurveTo(-9,-50,-7,-70,-8,-76);ctx.fillStyle='#494337';ctx.fill();
   path([[-15,-77],[-23,-83],[-23,-73]],'#bf7771');path([[-15,-77],[-12,-85],[-8,-79]],'#cf8980');ellipse(-15,-77,3,3,'#db9c8c');
   // Legs and soft red shoes.
-  const kick=air?12:0;
+  const progress=air?clamp((now-flight.startTime)/flight.duration,0,1):0;
+  const kick=air?12*Math.sin(progress*Math.PI):0;
   line([[-8,-23],[-9-kick*.6,-12],[-10-kick, -5]],'#e3bc96',7);line([[7,-23],[9+kick*.4,-13],[11+kick,-5-kick*.3]],'#efd1a9',7);
   ellipse(-10-kick,-3,7,3.4,'#985e4f');ellipse(13+kick,-3-kick*.3,8,3.6,'#aa6754');line([[-16-kick,-1],[-5-kick,-1]],'#d5b092',1.2);line([[7+kick,-1-kick*.3],[19+kick,-1-kick*.3]],'#d5b092',1.2);
   path([[-15,-37],[14,-37],[13,-22],[1,-22],[-1,-28],[-3,-21],[-14,-22]],'#b87964');path([[-15,-37],[-3,-35],[-3,-22],[-14,-22]],'#a56b58');
@@ -239,6 +241,16 @@ function draw(){
     const a=screen(player.x,player.y),b=screen(target.x,target.y);ctx.save();ctx.setLineDash([2,7]);ctx.beginPath();ctx.moveTo(a.x+35*scale,a.y-8*scale);ctx.quadraticCurveTo((a.x+b.x)/2,a.y-70*scale,b.x-50*scale,b.y);ctx.strokeStyle='#8ca87a66';ctx.lineWidth=1;ctx.stroke();ctx.restore();
   }
   for(let i=platforms.length-1;i>=0;i--){const p=platforms[i],s=screen(p.x,p.y);if(s.y>-100&&s.y<height+180){ctx.save();if(i>current+1)ctx.globalAlpha=i===current+2?.53:.25;island(p,i===current+1);ctx.restore();}}
+  if(state==='charging'){
+    // Use the exact release calculation and world-to-screen transform for the guide.
+    const point=landingPoint(player,target,power),p=screen(point.x,point.y);
+    const targetResult=classifyLanding(point,target);
+    const result=targetResult==='miss'?classifyLanding(point,platforms[current]):targetResult;
+    ctx.save();ctx.translate(p.x,p.y);ctx.scale(scale,scale);
+    const color=result==='miss'?'#a76c54':'#526d47';
+    ctx.beginPath();ctx.ellipse(0,0,9,4,0,0,Math.PI*2);ctx.strokeStyle=color;ctx.lineWidth=1.5;ctx.stroke();
+    line([[-4,0],[4,0]],color,1);line([[0,-3],[0,3]],color,1);ctx.restore();
+  }
   for(const ring of rings){const p=screen(ring.x,ring.y),progress=(now-ring.start)/700;ctx.save();ctx.globalAlpha=(1-progress)*.7;ctx.beginPath();ctx.ellipse(p.x,p.y,(24+progress*46)*scale,(9+progress*19)*scale,0,0,Math.PI*2);ctx.strokeStyle=ring.perfect?'#fff0ba':'#eef4cb';ctx.lineWidth=2;ctx.stroke();ctx.restore();}
   let z=landBounce>0?Math.sin(landBounce*Math.PI)*5:0;
   if(state==='jumping'){const t=clamp((now-flight.startTime)/flight.duration,0,1);z=Math.sin(t*Math.PI)*flight.height;}
