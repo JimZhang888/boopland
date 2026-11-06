@@ -1,7 +1,7 @@
 /* Fixed logical world; no DOM or external dependencies. */
 (() => {
   'use strict';
-  const W = 480, H = 640, GAP = 82, START = 220;
+  const W = 480, H = 640, GAP = 82, START = 220, MAX_FLOORS = 999;
   const clamp = (n, a, b) => Math.max(a, Math.min(b, n));
   class Descent {
     constructor(random = Math.random) { this.random = random; this.reset(); this.mode = 'ready'; }
@@ -12,16 +12,16 @@
       this.generate();
     }
     generate() {
-      while (START + this.nextRow * GAP < this.camera + H + 240 && this.nextRow <= 100) {
+      while (START + this.nextRow * GAP < this.camera + H + 240 && this.nextRow <= MAX_FLOORS) {
         const row = this.nextRow++, y = START + row * GAP;
         const dir = this.lastX > 330 ? -1 : this.lastX < 150 ? 1 : this.random() < .5 ? -1 : 1;
         const cx = clamp(this.lastX + dir * (72 + this.random() * 54), 90, W - 90);
         const roll = this.random();
-        const type = row < 5 || row === 100 ? 'normal' : roll < .20 ? 'crumble' : roll < .32 ? 'spring' : roll < .49 ? 'belt' : 'normal';
-        const w = row === 100 ? 210 : 124 - Math.min(row,80) * .18 + this.random() * 20;
+        const type = row < 5 || row === MAX_FLOORS ? 'normal' : roll < .20 ? 'crumble' : roll < .32 ? 'spring' : roll < .49 ? 'belt' : 'normal';
+        const w = row === MAX_FLOORS ? 210 : 124 - Math.min(row,80) * .18 + this.random() * 20;
         const x = clamp(cx-w/2,30,W-w-30);
         this.platforms.push({ id:row*2, row, x, y, w, type, dir:this.random()<.5?-1:1, visited:false, timer:null, gem:row%5===0 });
-        if (row > 6 && row < 100 && this.random() < .43) {
+        if (row > 6 && row < MAX_FLOORS && this.random() < .43) {
           const sx = cx < W/2 ? W-115 : 30;
           if (sx+80 < x-18 || sx > x+w+18) this.platforms.push({id:row*2+1,row,x:sx,y:y+8,w:80,type:'spike',visited:false,timer:null});
         }
@@ -47,7 +47,7 @@
       if(platform.type==='crumble' && platform.timer===null)platform.timer=.55;
       if(platform.type==='spring'){p.vy=-335;p.standing=null;this.events.push({type:'spring',x:p.x,y:platform.y});}
       if(platform.gem){platform.gem=false;this.crystals++;this.events.push({type:'gem',x:p.x,y:p.y});}
-      if(platform.row===100)this.finish('won');
+      if(platform.row===MAX_FLOORS)this.finish('won');
     }
     update(dt,direction=0) {
       if(this.mode!=='playing')return;
@@ -73,15 +73,15 @@
           if(hit)this.land(hit);
         }
       }
-      const nextFloor=clamp(Math.floor((p.y+p.height/2-START)/GAP),0,100);
-      if(nextFloor>this.floor){const old=this.floor;this.floor=nextFloor;if(Math.floor(old/20)<Math.floor(this.floor/20)&&this.floor<100)this.events.push({type:'milestone',floor:this.floor});}
+      const nextFloor=clamp(Math.floor((p.y+p.height/2-START)/GAP),0,MAX_FLOORS);
+      if(nextFloor>this.floor){const old=this.floor;this.floor=nextFloor;if(Math.floor(old/20)<Math.floor(this.floor/20)&&this.floor<MAX_FLOORS)this.events.push({type:'milestone',floor:this.floor});}
       if(p.y-p.height/2<this.camera+25){this.hurt('ceiling');p.y=this.camera+25+p.height/2;p.vy=135;p.standing=null;}
       if(p.y-p.height/2>this.camera+H)this.finish('over','fall');
       this.platforms=this.platforms.filter(platform=>platform.y>this.camera-100);
       this.generate();
     }
   }
-  const api={Descent,W,H,GAP,START};
+  const api={Descent,W,H,GAP,START,MAX_FLOORS};
   if(typeof module!=='undefined'&&module.exports)module.exports=api;
   else window.CoreDescent=api;
 })();

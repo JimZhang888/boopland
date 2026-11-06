@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="zh-CN" data-i18n-scope="parcelSorter">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#f5f3eb"><title data-i18n="parcelSorter.title">快递分拣局 · Boopland</title>
+  <link rel="icon" href="favicon.svg" type="image/svg+xml"><link rel="stylesheet" href="style.css"><link rel="stylesheet" href="layout.css">
+  <script defer src="../../analytics.js"></script>
+</head>
+<body>
+<svg class="svg-library" aria-hidden="true"><defs>
+<symbol id="i-box" viewBox="0 0 24 24"><path d="m3 7 9-5 9 5v10l-9 5-9-5V7Zm0 0 9 5 9-5M12 12v10M7.5 4.5l9 5v5"/></symbol>
+<symbol id="i-leaf" viewBox="0 0 24 24"><path d="M19 4C8 2 3 8 6 15c7 4 14-1 13-11ZM5 20 15 9"/></symbol>
+<symbol id="i-cloud" viewBox="0 0 24 24"><path d="M6 18a5 5 0 0 1-1-9 7 7 0 0 1 13-1 5 5 0 0 1 0 10Z"/></symbol>
+<symbol id="i-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M2 12h2m16 0h2M5 5l1.5 1.5m11 11L19 19M5 19l1.5-1.5m11-11L19 5"/></symbol>
+<symbol id="i-arrow" viewBox="0 0 24 24"><path d="M4 12h15m-6-6 6 6-6 6"/></symbol>
+<symbol id="i-heart" viewBox="0 0 24 24"><path d="M12 21 3.5 12.5C-3 5 6-1 12 6c6-7 15-1 8.5 6.5Z"/></symbol>
+<symbol id="i-volume" viewBox="0 0 24 24"><path d="m11 4-6 5H2v6h3l6 5V4Zm4 4c3 2 3 6 0 8m3-11c5 4 5 10 0 14"/></symbol>
+</defs></svg>
+<main class="game-shell">
+  <header class="topbar"><a class="back" href="../../games.html"><span aria-hidden="true">↶</span><span data-i18n="common.back">返回大厅</span></a><h1 data-i18n="parcelSorter.name">快递分拣局</h1><div class="header-actions"><button id="soundButton" class="icon-button" aria-pressed="false" data-i18n-label="parcelSorter.soundOn"><svg><use href="#i-volume"/></svg><span class="mute-slash"></span></button><button id="helpButton" class="icon-button" data-i18n-label="parcelSorter.help">?</button></div></header>
+  <div class="stats-row"><div class="stat"><span data-i18n="parcelSorter.score">积分</span><div><b id="score">000</b></div></div><div class="stat"><span data-i18n="parcelSorter.time">剩余时间</span><div><b id="time">01:30</b></div></div><div class="stat"><span data-i18n="parcelSorter.combo">连击</span><div><b id="combo">0</b><small id="multiplier">×1</small></div></div><div class="stat"><span data-i18n="parcelSorter.lives">机会</span><div id="lives" class="hearts" role="img"></div></div></div>
+  <section class="station" data-i18n-label="parcelSorter.name">
+    <div class="station-toolbar"><div><span class="status-dot"></span><b data-i18n="parcelSorter.desk">一号工作台</b><span id="statusLabel"></span></div><button id="pauseButton" class="pause-button" disabled data-i18n="parcelSorter.pause">暂停</button></div>
+    <div class="scene" id="scene">
+      <div class="warehouse" aria-hidden="true"><div class="wall-line"></div><div class="window"><span></span><span></span><i></i></div><div class="wall-sign"><svg><use href="#i-box"/></svg><div data-i18n="parcelSorter.wall">期待中转站</div></div><div class="shelf"><div class="stored-box one"></div><div class="stored-box two"></div><div class="stored-box three"></div><span></span></div><div class="plant"><i></i><i></i><i></i><span></span></div></div>
+      <div class="conveyor-label" aria-hidden="true"><span>01 — 02 — 03</span><span>→</span></div>
+      <div class="conveyor"><div class="belt-surface"></div><div class="roller-row"></div><div class="belt-leg left"></div><div class="belt-leg right"></div><div class="intake" aria-hidden="true"><span></span><i></i></div><div class="exit-marker" aria-hidden="true"><span>!</span></div></div>
+      <div class="parcels" id="parcels" data-i18n-label="parcelSorter.parcels"></div><div id="feedback" class="feedback" role="status" aria-live="polite"></div>
+      <div class="stage-overlay" id="stageOverlay"><section class="welcome-card" id="welcomeCard" aria-labelledby="overlayTitle"></section></div>
+    </div>
+    <div class="sorting-area"><div class="sorting-caption"><span data-i18n="parcelSorter.destinations">目的地分拣口</span><span id="selectionHint"></span></div><div class="destinations">
+      <button class="destination green" data-destination="0" data-i18n-label="parcelSorter.bin0"><div class="bin-opening"></div><div class="bin-front"><span class="destination-icon"><svg><use href="#i-leaf"/></svg></span><div><b data-i18n="parcelSorter.station0">青禾站</b><small>01</small></div><kbd>1</kbd></div><span class="bin-foot"></span></button>
+      <button class="destination blue" data-destination="1" data-i18n-label="parcelSorter.bin1"><div class="bin-opening"></div><div class="bin-front"><span class="destination-icon"><svg><use href="#i-cloud"/></svg></span><div><b data-i18n="parcelSorter.station1">晴空站</b><small>02</small></div><kbd>2</kbd></div><span class="bin-foot"></span></button>
+      <button class="destination coral" data-destination="2" data-i18n-label="parcelSorter.bin2"><div class="bin-opening"></div><div class="bin-front"><span class="destination-icon"><svg><use href="#i-sun"/></svg></span><div><b data-i18n="parcelSorter.station2">日落站</b><small>03</small></div><kbd>3</kbd></div><span class="bin-foot"></span></button>
+    </div></div>
+    <footer class="station-footer"><span id="deliveredLabel"></span><span id="bestLabel"></span></footer>
+  </section>
+</main>
+<dialog id="helpDialog"><div class="dialog-heading"><h2 data-i18n="parcelSorter.help">玩法说明</h2><button class="icon-button" id="closeHelp" data-i18n-label="parcelSorter.close">×</button></div><div class="help-steps"><p data-i18n="parcelSorter.helpDrag"></p><p data-i18n="parcelSorter.helpKeys"></p><p data-i18n="parcelSorter.helpScore"></p><p data-i18n="parcelSorter.helpLives"></p></div><button id="helpDone" class="primary-button" data-i18n="parcelSorter.gotIt"></button></dialog>
+<script src="../../i18n.js"></script><script src="translations.js"></script><script src="game.js"></script><script src="app.js"></script>
+</body></html>

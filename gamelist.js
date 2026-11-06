@@ -159,19 +159,19 @@ window.GAME_LIST = [
   },
   {
     title: "垂直极限",
-    description: "戴上矿工帽，在铅笔画的地底世界里一路向下，勇闯一百层。",
+    description: "戴上矿工帽，在铅笔画的地底世界里一路向下，勇闯 999 层。",
     path: "./games/core-descent/index.html",
     category: "轻松挑战",
     color: "#eee5d4",
     cover: "./games/core-descent/cover.svg",
     locales: {
-      en: { title: "Vertical Limit", description: "Put on your miner’s hat and descend a hundred pencil-drawn floors.", category: "A little challenge" },
-      ja: { title: "垂直の限界", description: "探検帽をかぶって、鉛筆画の地底世界で100階を目指そう。", category: "小さな挑戦" },
-      ko: { title: "수직의 한계", description: "탐험 모자를 쓰고 연필로 그린 지하 세계의 100층을 향해 내려가요.", category: "작은 도전" },
-      fr: { title: "Limite verticale", description: "Enfilez votre casque et descendez cent étages dessinés au crayon.", category: "Un petit défi" },
-      de: { title: "Vertikales Limit", description: "Setz deinen Helm auf und erkunde hundert mit Bleistift gezeichnete Ebenen.", category: "Eine kleine Herausforderung" },
-      es: { title: "Límite vertical", description: "Ponte el casco y desciende cien pisos dibujados a lápiz.", category: "Un pequeño reto" },
-      'pt-BR': { title: "Limite vertical", description: "Coloque seu capacete e desça cem andares desenhados a lápis.", category: "Um pequeno desafio" }
+      en: { title: "Vertical Limit", description: "Put on your miner’s hat and descend 999 pencil-drawn floors.", category: "A little challenge" },
+      ja: { title: "垂直の限界", description: "探検帽をかぶって、鉛筆画の地底世界で999階を目指そう。", category: "小さな挑戦" },
+      ko: { title: "수직의 한계", description: "탐험 모자를 쓰고 연필로 그린 지하 세계의 999층을 향해 내려가요.", category: "작은 도전" },
+      fr: { title: "Limite verticale", description: "Enfilez votre casque et descendez 999 étages dessinés au crayon.", category: "Un petit défi" },
+      de: { title: "Vertikales Limit", description: "Setz deinen Helm auf und erkunde 999 mit Bleistift gezeichnete Ebenen.", category: "Eine kleine Herausforderung" },
+      es: { title: "Límite vertical", description: "Ponte el casco y desciende 999 pisos dibujados a lápiz.", category: "Un pequeño reto" },
+      'pt-BR': { title: "Limite vertical", description: "Coloque seu capacete e desça 999 andares desenhados a lápis.", category: "Um pequeno desafio" }
     }
   },
   {
@@ -325,6 +325,40 @@ window.GAME_LIST = [
       de: { title: "Neun kleine Schritte", description: "Plane deinen Weg über neun Waldfelder zwischen Monstern, Schätzen und Vorräten.", category: "Rundenstrategie" },
       es: { title: "Nueve pequeños pasos", description: "Planea tu ruta por nueve casillas entre monstruos, tesoros y provisiones.", category: "Estrategia por turnos" },
       'pt-BR': { title: "Nove pequenos passos", description: "Planeje sua rota por nove casas entre monstros, tesouros e provisões.", category: "Estratégia por turnos" }
+    }
+  },
+  {
+    title: "快递分拣局",
+    description: "看清包裹面单，把每一份期待送到对的站点，挑战连续送达。",
+    path: "./games/parcel-sorter/index.html",
+    category: "轻松挑战",
+    color: "#e4e8d8",
+    cover: "./games/parcel-sorter/cover.svg",
+    locales: {
+      en: { title: "Parcel Club", description: "Read the labels, sort parcels into matching stations and build a delivery streak.", category: "Light challenges" },
+      ja: { title: "小包仕分け局", description: "ラベルを見て、小包を正しい届け先へ。連続お届けに挑戦しよう。", category: "気軽なチャレンジ" },
+      ko: { title: "택배 분류소", description: "라벨을 보고 알맞은 목적지로 택배를 보내며 연속 배송에 도전해요.", category: "가벼운 도전" },
+      fr: { title: "Le tri des colis", description: "Lisez les étiquettes, triez les colis et enchaînez les bonnes livraisons.", category: "Petits défis" },
+      de: { title: "Paketpost", description: "Lies die Etiketten, sortiere Pakete zur passenden Station und schaffe eine Liefer-Serie.", category: "Kleine Herausforderungen" },
+      es: { title: "Club de paquetes", description: "Lee las etiquetas, envía los paquetes al destino correcto y encadena entregas.", category: "Retos ligeros" },
+      'pt-BR': { title: "Clube das encomendas", description: "Leia as etiquetas, envie cada encomenda ao destino certo e faça entregas em sequência.", category: "Desafios leves" }
+    }
+  },
+  {
+    title: "反着来",
+    description: "大脑说向左，你偏要向右。用相反的操作，挑战 60 秒条件反射。",
+    path: "./games/reverse-command/index.html",
+    category: "反应挑战",
+    color: "#e6ebde",
+    cover: "./games/reverse-command/cover.svg",
+    locales: {
+      en: { title: "Do the Opposite", description: "Your brain says left. You go right. Reverse directions and colors in a 60-second reflex challenge.", category: "Reflex challenge" },
+      ja: { title: "あべこべ", description: "頭が左と言ったら右へ。方向と色を反対に選ぶ、60秒の反射神経チャレンジ。", category: "反射神経チャレンジ" },
+      ko: { title: "반대로 해요", description: "머리가 왼쪽이라면 오른쪽으로. 방향과 색상을 반대로 고르는 60초 도전.", category: "반응 도전" },
+      fr: { title: "À contre-sens", description: "Votre cerveau dit gauche ? Allez à droite. Inversez directions et couleurs pendant 60 secondes.", category: "Défi de réflexes" },
+      de: { title: "Genau andersherum", description: "Dein Kopf sagt links? Geh nach rechts. Wähle 60 Sekunden lang die entgegengesetzten Richtungen und Farben.", category: "Reflexspiel" },
+      es: { title: "Al revés", description: "Tu mente dice izquierda, tú vas a la derecha. Invierte direcciones y colores durante 60 segundos.", category: "Reto de reflejos" },
+      'pt-BR': { title: "Ao contrário", description: "Sua cabeça diz esquerda, você vai à direita. Inverta direções e cores em um desafio de 60 segundos.", category: "Desafio de reflexos" }
     }
   },
   // 新增示例（删除每行开头的 //，修改内容即可）：

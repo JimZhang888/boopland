@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="zh-CN" data-i18n-scope="reverse">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#f5f3eb">
+  <title data-i18n="reverse.pageTitle">反着来 · Boopland</title>
+  <link rel="stylesheet" href="style.css">
+  <script defer src="../../analytics.js"></script>
+</head>
+<body>
+  <main class="game-shell">
+    <header class="topbar">
+      <a class="back" href="../../games.html"><span aria-hidden="true">↶</span><span data-i18n="common.back">返回大厅</span></a>
+      <h1 data-i18n="reverse.name">反着来</h1>
+      <nav class="tools">
+        <button id="sound" class="icon-button" aria-pressed="false"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 9h4l5-4v14l-5-4H3Z"/><path id="sound-wave" d="m16 9 5 6m0-6-5 6"/></svg></button>
+        <button id="help" class="icon-button" data-i18n-label="reverse.help" data-i18n-title="reverse.help"><span aria-hidden="true">?</span></button>
+        <button id="pause" class="icon-button" disabled><svg viewBox="0 0 24 24" aria-hidden="true"><path id="pause-icon" d="M8 5v14M16 5v14"/></svg></button>
+      </nav>
+    </header>
+    <section class="desk">
+      <div class="margin-note" aria-hidden="true"><span>←</span><p data-i18n="reverse.margin">给直觉放个假。</p><svg viewBox="0 0 120 100"><path d="M13 25c80-16 88 70 48 53S50 44 96 64m-10-13 13 14-18 5"/></svg><small>BOOPLAND · HB</small></div>
+      <section class="notebook" data-i18n-label="reverse.name">
+        <div class="hud">
+          <div class="stat"><span data-i18n="reverse.score">得分</span><strong id="score">0</strong></div>
+          <div class="stat"><span data-i18n="reverse.time">秒数</span><strong id="time">60</strong></div>
+          <div class="stat"><span data-i18n="reverse.combo">连击</span><strong id="combo">×0</strong></div>
+          <div class="stat"><span data-i18n="reverse.lives">机会</span><strong id="lives" role="img">♡ ♡ ♡</strong></div>
+        </div>
+        <div class="stage" id="stage">
+          <div class="round-meta"><span id="round"></span><span id="level"></span></div>
+          <div class="prompt" id="prompt" aria-live="polite" aria-atomic="true" hidden>
+            <p data-i18n="reverse.chooseOpposite">请选择相反项</p>
+            <div class="prompt-art" id="prompt-art" aria-hidden="true"></div>
+            <h2 id="command"></h2>
+          </div>
+          <div class="question-clock" id="question-clock" hidden><div id="question-bar"></div></div>
+          <p class="feedback" id="feedback" role="status"></p>
+          <section class="overlay" id="overlay" aria-labelledby="overlay-title">
+            <div class="overlay-card" id="overlay-card"></div>
+          </section>
+        </div>
+        <div class="input-area">
+          <div class="answers" id="answers" data-i18n-label="reverse.answers"></div>
+          <p id="keyboard-hint" class="keyboard-hint"></p>
+        </div>
+      </section>
+      <div class="margin-note right-note" aria-hidden="true"><svg viewBox="0 0 120 100"><path d="m57 12 11 28 29 3-24 18 7 28-24-18-25 17 8-28-23-19 30-1Z"/><path d="m58 21 7 22 24 2-20 15 7 20-20-14-18 13 5-23-19-13 25 1"/></svg><p data-i18n="reverse.sideNote">慢半拍，也很好。</p><span>→</span></div>
+    </section>
+    <p class="page-foot" data-i18n="reverse.footnote">一场小小的脑内叛逆。</p>
+  </main>
+  <dialog id="help-dialog" aria-labelledby="help-title">
+    <button id="close-help" class="icon-button close-dialog" data-i18n-label="reverse.close">×</button>
+    <h2 id="help-title" data-i18n="reverse.helpTitle">规则只有一条：反着来。</h2>
+    <p data-i18n="reverse.helpIntro">读指令，选择它的相反项。每局 60 秒，答错或单题超时扣一次机会，3 次后结算。</p>
+    <p class="rule-pairs" data-i18n="reverse.pairs">上 ↔ 下 · 左 ↔ 右<br>红 ↔ 蓝 · 黄 ↔ 绿</p>
+    <p data-i18n="reverse.helpScore">连续答对每 5 题提升倍率，最高 ×4；反应越快加分越多。每答对 5 题，单题限时缩短。</p>
+    <p data-i18n="reverse.helpKeys">方向键 / WASD，颜色用 1–4。Esc 或 P 暂停；切换窗口时自动暂停。</p>
+    <button id="got-it" class="primary" data-i18n="reverse.gotIt">知道了</button>
+  </dialog>
+  <script src="../../i18n.js"></script>
+  <script src="translations.js"></script>
+  <script src="engine.js"></script>
+  <script src="game.js"></script>
+</body>
+</html>

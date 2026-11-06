@@ -1,6 +1,6 @@
 const test = require('node:test');
 const assert = require('node:assert/strict');
-const {Descent,H} = require('./engine.js');
+const {Descent,H,GAP,START,MAX_FLOORS} = require('./engine.js');
 function fixture(type='normal') {
   const g=new Descent(()=>.5);g.reset();g.platforms=[{id:2,row:1,x:170,y:302,w:140,type,visited:false,timer:null,dir:1}];
   Object.assign(g.player,{x:230,y:282,vy:150,standing:null});g.hp=4;return g;
@@ -33,13 +33,21 @@ test('paused model remains unchanged and restarting clears a finished run',()=>{
   const g=fixture();g.mode='paused';const before=JSON.stringify(g);g.update(.1,1);assert.equal(JSON.stringify(g),before);
   g.reset();assert.equal(g.hp,6);assert.equal(g.floor,0);assert.equal(g.camera,0);assert.equal(g.player.standing,0);
 });
-test('landing on floor 100 wins and does not mutate after completion',()=>{
-  const g=fixture();g.platforms[0].row=100;g.update(.08);assert.equal(g.mode,'won');const before=g.time;g.update(.1);assert.equal(g.time,before);
+function landAtFloor(row) {
+  const g=fixture(),platform=g.platforms[0];platform.row=row;platform.y=START+row*GAP;
+  g.player.y=platform.y-20;g.camera=platform.y-400;g.floor=row-1;g.nextRow=row+1;
+  g.update(.08);return g;
+}
+test('floors 100 and 998 keep playing; only landing on floor 999 wins',()=>{
+  for(const row of [100,998]){const g=landAtFloor(row);assert.equal(g.mode,'playing');assert.equal(g.floor,row);}
+  const g=landAtFloor(999);assert.equal(g.mode,'won');assert.equal(g.floor,999);const before=JSON.stringify(g);g.update(.1);assert.equal(JSON.stringify(g),before);
 });
 test('generated routes remain bounded and always provide a non-spike route',()=>{
   for(let seed=1;seed<=30;seed++){
     let s=seed;const random=()=>((s=Math.imul(s,1664525)+1013904223>>>0)/4294967296);
-    const g=new Descent(random);g.camera=9000;g.generate();
-    for(let row=1;row<=100;row++){const route=g.platforms.filter(p=>p.row===row&&p.type!=='spike');assert.equal(route.length,1);assert.ok(route[0].x>=30);assert.ok(route[0].x+route[0].w<=450.001);}
+    const g=new Descent(random);g.camera=START+(MAX_FLOORS+2)*GAP;g.generate();
+    for(let row=1;row<=999;row++){const route=g.platforms.filter(p=>p.row===row&&p.type!=='spike');assert.equal(route.length,1);assert.ok(route[0].x>=30);assert.ok(route[0].x+route[0].w<=450.001);}
+    assert.ok(g.platforms.every(p=>p.row<=999));
+    const final=g.platforms.filter(p=>p.row===999);assert.equal(final.length,1);assert.equal(final[0].type,'normal');assert.equal(final[0].w,210);
   }
 });

@@ -26,7 +26,7 @@
       </aside>
       <div class="notebook">
         <div class="hud">
-          <div class="depth-stat"><span data-i18n="core.depth">下潜层数</span><strong><b id="floor">000</b><small>/ 100</small></strong></div>
+          <div class="depth-stat"><span data-i18n="core.depth">下潜层数</span><strong><b id="floor">000</b><small>/ 999</small></strong></div>
           <div class="health-stat"><span data-i18n="core.health">探险体力</span><div id="hearts" role="img"></div></div>
           <button id="pause" class="tool" disabled data-i18n-label="core.pause"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14M16 5v14"/></svg></button>
         </div>
@@ -38,7 +38,7 @@
               <span id="overlay-kicker" class="kicker" data-i18n="core.kicker">一场向下的纸上冒险</span>
               <svg class="intro-art" viewBox="0 0 140 100" fill="none" aria-hidden="true"><g stroke="#555349" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.7"><path d="m40 81 62-2 3 9-68 2Z" fill="#ded8c6"/><path d="m45 85 6-4m5 5 7-5m6 4 8-4m7 3 8-4" opacity=".45"/><path d="M58 42c-6 18-5 26 3 27h19c7-7 4-21-2-27" fill="#c3c4aa"/><path d="m61 67-4 12m19-12 6 10m-26 3h10m11-2h10M55 47l-9 12m36-11 8 10"/><rect x="43" y="43" width="12" height="19" rx="4" fill="#aaa58c"/><path d="M56 26c-3 19 5 22 14 21s15-9 12-22" fill="#f5f0df"/><path d="M52 28q1-21 17-21t19 21Z" fill="#c99569"/><path d="m49 29 41-1M57 18l3-4m0 8 4-9"/><circle cx="73" cy="20" r="6" fill="#f8f2da"/><path d="M64 35v2m12-2v2m-9 5 6-1M101 17l9-4m-11 12h17m-16 7 10 5M30 44l-6 6m-1-6 6 6"/></g></svg>
               <h2 id="overlay-title" data-i18n="core.name">垂直极限</h2>
-              <p id="overlay-description" data-i18n="core.intro">带上一点勇气，去第 100 层看看。</p>
+              <p id="overlay-description" data-i18n="core.intro">带上一点勇气，去第 999 层看看。</p>
               <div id="results" class="results" hidden></div>
               <button id="start" class="primary" data-i18n="core.start">开始下潜 ↓</button>
               <button id="restart" class="text-button" data-i18n="core.restart" hidden>重新出发</button>
@@ -57,13 +57,13 @@
           <li><svg viewBox="0 0 65 30" aria-hidden="true"><path d="M6 10h53M9 25h46M22 12l22 3-22 4 22 3-16 3"/></svg><div><strong data-i18n="core.spring">弹簧平台</strong><small data-i18n="core.springHint">向上弹起，留意头顶</small></div></li>
           <li><svg viewBox="0 0 65 30" aria-hidden="true"><path d="M8 12h48a6 6 0 0 1 0 12H8a6 6 0 0 1 0-12Zm9 2 4 4-4 4m12-8 4 4-4 4m12-8 4 4-4 4"/></svg><div><strong data-i18n="core.belt">传送平台</strong><small data-i18n="core.beltHint">它会悄悄把你推向一边</small></div></li>
         </ul>
-        <div class="route"><div class="route-line"><i id="route-marker"></i></div><span>000</span><span>025</span><span>050</span><span>075</span><span class="destination">100 <b data-i18n="core.core">地心</b></span></div>
+        <div class="route"><div class="route-line"><i id="route-marker"></i></div><span>000</span><span>250</span><span>500</span><span>750</span><span class="destination">999 <b data-i18n="core.core">地心</b></span></div>
         <p class="scribble" data-i18n="core.scribble">下一层，会有什么呢？</p>
       </aside>
     </section>
     <p class="page-foot"><span>—</span><span data-i18n="core.footnote">把好奇心，写进地球的褶皱里。</span><span>—</span></p>
   </main>
-  <dialog id="help-dialog" aria-labelledby="help-title"><form method="dialog"><div class="dialog-heading"><h2 id="help-title" data-i18n="core.help">探险指南</h2><button class="tool" data-i18n-label="core.close">×</button></div><p data-i18n="core.rules">用方向键或 A / D 左右移动，也可以按住屏幕下方的箭头。走出平台边缘就会下落，无需跳跃。抵达第 100 层，发现地心！</p><p data-i18n="core.dangers">平台会不断上升。避开头顶和脚下的尖刺，也别掉出画面底部。体力耗尽，探险就结束了。</p><div id="help-legend"></div><p data-i18n="core.pauseHint">空格 / P 暂停</p><button class="primary" data-i18n="core.gotIt">知道了</button></form></dialog>
+  <dialog id="help-dialog" aria-labelledby="help-title"><form method="dialog"><div class="dialog-heading"><h2 id="help-title" data-i18n="core.help">探险指南</h2><button class="tool" data-i18n-label="core.close">×</button></div><p data-i18n="core.rules">用方向键或 A / D 左右移动，也可以按住屏幕下方的箭头。走出平台边缘就会下落，无需跳跃。抵达第 999 层，发现地心！</p><p data-i18n="core.dangers">平台会不断上升。避开头顶和脚下的尖刺，也别掉出画面底部。体力耗尽，探险就结束了。</p><div id="help-legend"></div><p data-i18n="core.pauseHint">空格 / P 暂停</p><button class="primary" data-i18n="core.gotIt">知道了</button></form></dialog>
   <script src="../../i18n.js"></script><script src="translations.js"></script><script src="engine.js"></script><script src="game.js"></script>
 </body>
 </html>
