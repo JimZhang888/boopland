@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-i18n-scope="nineGrid">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#f5f3eb">
+  <title data-i18n="nineGrid.pageTitle">九宫格探险 · Boopland</title>
+  <link rel="stylesheet" href="style.css">
+  <script defer src="../../analytics.js"></script>
+</head>
+<body>
+  <main class="game-shell">
+    <header class="topbar">
+      <a class="back" href="../../games.html"><span aria-hidden="true">←</span><span data-i18n="common.back">返回大厅</span></a>
+      <span class="brand">boopland<span>.</span></span>
+      <div class="tools"><button id="restart" class="icon-button" data-i18n-label="nineGrid.restart" title="">↻</button><button id="help" class="icon-button" data-i18n-label="nineGrid.help">?</button></div>
+    </header>
+    <section class="desk">
+      <section class="map-panel">
+        <header class="map-header"><div><p class="eyebrow" data-i18n="nineGrid.eyebrow">一页地图，一场小小远行</p><h1 data-i18n="nineGrid.name">九宫格探险</h1></div><div class="chapter"><span id="floor-name"></span><span id="floor-short"></span><div class="floor-dots" id="floor-dots" aria-hidden="true"></div></div></header>
+        <div class="map-area" id="map-area"><span class="map-corner top-left" aria-hidden="true">✳</span><span class="map-corner bottom-right" aria-hidden="true">✧</span><div id="board" class="board" role="group" data-i18n-label="nineGrid.board"></div></div>
+        <div class="map-caption"><span class="route-marker" aria-hidden="true"></span><span id="map-hint"></span><span class="key-hint" data-i18n="nineGrid.keyboard">方向键 / WASD 移动</span></div>
+        <div class="map-footer"><span data-i18n="nineGrid.mapNote">路不必最短，平安就好。</span><span id="turns"></span></div>
+      </section>
+      <aside class="journal">
+        <section class="traveler">
+          <div class="traveler-heading"><div id="portrait" aria-hidden="true"></div><div><p class="eyebrow" data-i18n="nineGrid.traveler">今日的旅人</p><h2 data-i18n="nineGrid.travelerName">背包里的勇气</h2></div><span class="badge" aria-hidden="true">✧</span></div>
+          <div class="meter-row"><span class="meter-label" data-i18n="nineGrid.hp">生命</span><div class="meter health"><span id="hp-bar"></span></div><strong id="hp"></strong></div>
+          <div class="meter-row"><span class="meter-label" data-i18n="nineGrid.food">口粮</span><div class="meter ration"><span id="food-bar"></span></div><strong id="food"></strong></div>
+          <div class="inventory"><span id="attack-stat"></span><span id="armor-stat"></span><span id="gold-stat"></span><button id="potion" class="potion-button"></button></div>
+        </section>
+        <section id="event" class="event" aria-labelledby="event-title"><div class="event-heading"><span id="event-icon" aria-hidden="true"></span><span class="eyebrow" id="event-kicker"></span></div><h2 id="event-title"></h2><p id="event-copy"></p><div id="enemy-stats" class="enemy-stats" hidden></div><div id="actions" class="actions"></div></section>
+        <section class="field-notes"><h2><span data-i18n="nineGrid.notes">沿途手记</span><span aria-hidden="true">〰</span></h2><ol id="log"></ol><div class="best"><span data-i18n="nineGrid.best">最佳旅程</span><strong id="best">—</strong></div></section>
+      </aside>
+    </section>
+    <footer class="page-foot"><span>BOOPLAND · LITTLE ADVENTURES</span><span data-i18n="nineGrid.footer">慢慢想，下一步会有新的风景。</span><span aria-hidden="true">↟</span></footer>
+  </main>
+  <div id="announcement" class="sr-only" aria-live="polite" aria-atomic="true"></div>
+  <dialog id="help-dialog" aria-labelledby="help-title"><form method="dialog"><button class="icon-button close" data-i18n-label="nineGrid.close">×</button></form><p class="eyebrow">BOOPLAND · FIELD GUIDE</p><h2 id="help-title" data-i18n="nineGrid.help">探险指南</h2><ol class="rules"><li data-i18n="nineGrid.rule1"></li><li data-i18n="nineGrid.rule2"></li><li data-i18n="nineGrid.rule3"></li><li data-i18n="nineGrid.rule4"></li><li data-i18n="nineGrid.rule5"></li></ol><p class="help-keys" data-i18n="nineGrid.keys"></p><a href="../../games.html" data-i18n="common.back"></a></dialog>
+  <dialog id="restart-dialog" aria-labelledby="restart-title"><h2 id="restart-title" data-i18n="nineGrid.restartTitle"></h2><p data-i18n="nineGrid.restartCopy"></p><div class="confirm-actions"><button id="cancel-restart" class="secondary" data-i18n="nineGrid.keepPlaying"></button><button id="confirm-restart" class="primary" data-i18n="nineGrid.restart"></button></div></dialog>
+  <script src="../../i18n.js"></script><script src="translations.js"></script><script src="art.js"></script><script src="engine.js"></script><script src="game.js"></script>
+</body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-i18n-scope="oneRoad">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#f5f3eb">
+  <title data-i18n="pageTitle">一笔修路 · Boopland</title>
+  <link rel="icon" type="image/svg+xml" href="./cover.svg">
+  <link rel="stylesheet" href="./style.css">
+  <script defer src="../../analytics.js"></script>
+</head>
+<body>
+  <div class="game-shell">
+    <header class="topbar">
+      <a class="back" href="../../games.html"><span aria-hidden="true">↶</span><span data-i18n="common.back">返回大厅</span></a>
+      <h1><svg viewBox="0 0 32 32" aria-hidden="true"><path d="M4 26V16h12V6h12"/><circle cx="4" cy="26" r="2"/><path d="m23 8 5-3 2 5"/></svg><span data-i18n="name">一笔修路</span></h1>
+      <button id="help" class="icon-button" type="button" data-i18n-label="help" aria-label="玩法说明">?</button>
+    </header>
+    <main class="workspace">
+      <section class="map-panel" data-i18n-label="map" aria-label="村庄地图">
+        <div class="map-heading"><div><span class="eyebrow" data-i18n="eyebrow">村庄修路手记</span><h2 id="level-title"></h2></div><span class="map-number" id="map-number" aria-hidden="true"></span></div>
+        <div class="board-space" id="board-space">
+          <svg id="board" viewBox="0 0 600 600" tabindex="0" role="group" data-i18n-label="boardLabel" aria-describedby="status" aria-label="修路地图，使用方向键延伸道路"></svg>
+        </div>
+        <div class="map-legend"><span><i class="legend-start"></i><span data-i18n="start">起点</span></span><span><i class="legend-house"></i><span data-i18n="house">房屋</span></span><span><i class="legend-finish">⚑</i><span data-i18n="finish">终点</span></span><span class="north" aria-hidden="true">N ↑</span></div>
+      </section>
+      <aside class="notebook">
+        <div class="note-heading"><span data-i18n="plan">今日修路计划</span><span class="tiny-sprig" aria-hidden="true">❧</span></div>
+        <div class="mission"><h2 data-i18n="mission">让每一户，都有路可走。</h2><p data-i18n="subtitle">一条路，串起小小村庄。</p></div>
+        <div class="stats">
+          <div class="stat"><span data-i18n="connected">已连接房屋</span><strong id="houses-count">0 <small>/ 4</small></strong><div class="house-checks" id="house-checks" aria-hidden="true"></div></div>
+          <div class="stat road-stat"><span data-i18n="road">已修路段</span><strong id="steps-count">0</strong><span class="target" id="target"></span></div>
+        </div>
+        <div class="status-box" id="status-box"><span class="status-symbol" id="status-symbol" aria-hidden="true">✎</span><p id="status" role="status" aria-live="polite" aria-atomic="true"></p></div>
+        <button id="next" type="button" class="primary next" hidden><span data-i18n="next">下一座村庄</span><span aria-hidden="true">→</span></button>
+        <div class="note-bottom"><p data-i18n="note">绕一点远路，也有好风景。</p><div class="progress-line"><span id="progress"></span><span id="total-stars"></span></div><button id="levels" class="level-button" type="button"><span aria-hidden="true">▦</span><span data-i18n="levels">村庄地图册</span><span class="arrow" aria-hidden="true">↗</span></button></div>
+      </aside>
+    </main>
+    <footer class="toolbar"><span class="footer-note" data-i18n="controls">拖动修路 · 也可以逐格点击</span><div class="edit-tools"><button id="undo" type="button"><span aria-hidden="true">↶</span><span data-i18n="undo">撤销</span></button><button id="reset" type="button"><span aria-hidden="true">⟲</span><span data-i18n="reset">重画</span></button><button id="hint" type="button" aria-pressed="false"><span aria-hidden="true">✧</span><span data-i18n="hint">提示</span></button></div><span class="brand" aria-hidden="true">boopland <i>✳</i></span></footer>
+  </div>
+  <dialog id="dialog" aria-labelledby="dialog-title"><div class="dialog-heading"><h2 id="dialog-title"></h2><button id="close-dialog" class="icon-button" type="button" data-i18n-label="close" aria-label="关闭">×</button></div><div id="dialog-content"></div></dialog>
+  <noscript>请启用 JavaScript 来玩一笔修路。 / Please enable JavaScript to play One Road.</noscript>
+  <script src="../../i18n.js"></script>
+  <script src="./translations.js"></script>
+  <script src="./engine.js"></script>
+  <script src="./game.js"></script>
+</body>
+</html>

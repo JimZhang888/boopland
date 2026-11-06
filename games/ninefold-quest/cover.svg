@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 400" fill="none" stroke="#718166" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+<defs><filter id="paper"><feTurbulence type="fractalNoise" baseFrequency=".8" numOctaves="3" stitchTiles="stitch"/><feColorMatrix type="saturate" values="0"/><feComponentTransfer><feFuncA type="linear" slope=".055"/></feComponentTransfer></filter><g id="fog"><path fill="#aebca1" fill-opacity=".17" d="M-28 9q-4-20 15-20 8-23 25-11 15 0 16 20 16 0 13 16H-28Z" stroke="none"/><path d="M-31 4q-3-17 17-17 7-23 26-11 14 0 16 20 12 1 12 12M-34 13q15-5 31 0t35 0m-57 11q19-4 40 0"/></g></defs>
+<path fill="#f3f1e6" stroke="none" d="M0 0h640v400H0z"/>
+<path d="M85 59q-7 23 1 43m-15-16 15 17 16-14M554 291q8 31-10 45m-8-16 7 17 20-6" stroke="#a5ae96" stroke-dasharray="3 7"/>
+<g transform="translate(195 50) rotate(-3 125 150)">
+<path fill="#fffef7" stroke="#c6ceb9" d="M-15-10 269-8l-3 314-282-3Z"/>
+<path fill="#dde4d3" stroke="#aebba0" d="M0 0h77v86H0zm88 0h77v86H88zm88 0h77v86h-77zM0 98h77v86H0zm88 0h77v86H88zm88 0h77v86h-77zM0 196h77v86H0zm88 0h77v86H88zm88 0h77v86h-77z"/>
+<path fill="#f0e6cf" stroke="#c1b393" d="M88 98h77v86H88z"/>
+<path fill="#eee2d3" stroke="#c1b393" d="M88 0h77v86H88z"/>
+<use href="#fog" transform="translate(39 42) scale(.8)"/><use href="#fog" transform="translate(215 42) scale(.8)"/><use href="#fog" transform="translate(39 140) scale(.8)"/><use href="#fog" transform="translate(215 140) scale(.8)"/><use href="#fog" transform="translate(39 239) scale(.8)"/><use href="#fog" transform="translate(127 239) scale(.8)"/><use href="#fog" transform="translate(215 239) scale(.8)"/>
+<g stroke="#9b8862"><path fill="#dbc79f" fill-opacity=".25" d="m99 165 25-44 30 45Z"/><path d="m99 165 25-44 30 45-55-1Zm25-44 7 45m-16-1 9-24 7 24M98 172q30 2 57 0"/></g>
+<g stroke="#978261"><path d="m108 26 4-13 11 8 12-9 9 15m-38 4 4 28 17 14 21-18-4-25q-18-8-38 1Zm8 11 8 4m10 0 7-6m-23 17q9-5 19 0"/></g>
+<path fill="#dce2cb" fill-opacity=".8" stroke="none" d="m95-18 66 4-2 22-65-5Z"/>
+</g><path d="M106 250v-52m-27 40 27-49 28 49Zm-19-16-9 7m42-12-12 11M492 160v-49m-25 35 25-43 27 43Zm-18-18-7 5m36-8-9 7M71 260q37-6 76 0m315-89q28-4 60 1" stroke="#9aa98a"/>
+<path d="m490 265 8 9 10-19M151 122l4 7 9-2-6 7 2 9-7-5-8 3 3-8-5-6 8-1Z" stroke="#acb296"/>
+<path filter="url(#paper)" stroke="none" fill="#777" d="M0 0h640v400H0z"/>
+</svg>

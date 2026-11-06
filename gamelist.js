@@ -5,6 +5,57 @@
 // locales 按全局语言提供 title、description、category；缺少翻译时回退到基础字段。
 window.GAME_LIST = [
   {
+    title: "上班摸鱼",
+    description: "按住摸鱼，松手工作。识破老板的假动作，带着快乐准时下班。",
+    path: "./games/office-slacker/index.html",
+    category: "轻松挑战",
+    color: "#e8eadc",
+    cover: "./games/office-slacker/cover.svg",
+    locales: {
+      en: { title: "Office Slacker", description: "Hold to slack, release to work. Dodge the boss’s tricks and make it to clock-out.", category: "Quick challenge" },
+      ja: { title: "こっそりサボり", description: "押してサボる、離して仕事。上司のフェイントを見抜いて定時退社！", category: "気軽に挑戦" },
+      ko: { title: "월급 루팡", description: "누르면 딴짓, 떼면 업무. 사장님의 속임수를 피하고 무사히 퇴근해요.", category: "가벼운 도전" },
+      fr: { title: "Pause au bureau", description: "Maintenez pour flâner, relâchez pour travailler. Déjouez les feintes du patron !", category: "Petit défi" },
+      de: { title: "Büro-Auszeit", description: "Halten zum Faulenzen, loslassen zum Arbeiten. Durchschaue die Tricks des Chefs!", category: "Kleine Herausforderung" },
+      es: { title: "Escapada de oficina", description: "Mantén para holgazanear, suelta para trabajar. ¡Esquiva los trucos del jefe!", category: "Reto ligero" },
+      'pt-BR': { title: "Folga no escritório", description: "Segure para enrolar, solte para trabalhar. Escape dos truques do chefe!", category: "Desafio leve" }
+    }
+  },
+  {
+    title: "九宫格探险·迷雾篇",
+    description: "翻开迷雾中的九宫格，在战斗、补给和奇遇之间取舍，闯过五层手绘秘境。",
+    path: "./games/ninefold-quest/index.html",
+    category: "策略探险",
+    color: "#e5e9dc",
+    cover: "./games/ninefold-quest/cover.svg",
+    locales: {
+      en: { title: "Ninefold Quest", description: "Reveal misty tiles, weigh battles against supplies, and explore five hand-drawn realms.", category: "Strategy adventure" },
+      ja: { title: "九マスの冒険・霧の章", description: "霧のマスをめくり、戦闘と補給を選びながら、手描きの五つの秘境を進もう。", category: "戦略アドベンチャー" },
+      ko: { title: "아홉 칸 모험 · 안개 편", description: "안개 속 칸을 열고 전투와 보급을 선택하며 손으로 그린 다섯 세계를 탐험해요.", category: "전략 모험" },
+      fr: { title: "Neuf cases d’aventure", description: "Dissipez la brume, choisissez vos combats et explorez cinq royaumes dessinés au crayon.", category: "Aventure stratégique" },
+      de: { title: "Neun-Felder-Abenteuer", description: "Lüfte den Nebel, wäge Kämpfe und Vorräte ab und erkunde fünf gezeichnete Welten.", category: "Strategie-Abenteuer" },
+      es: { title: "Aventura en nueve casillas", description: "Despeja la niebla, elige combates y provisiones y explora cinco reinos dibujados a mano.", category: "Aventura estratégica" },
+      'pt-BR': { title: "Aventura em nove casas", description: "Revele a névoa, escolha entre combates e suprimentos e explore cinco reinos desenhados à mão.", category: "Aventura estratégica" }
+    }
+  },
+  {
+    title: "弹珠派对",
+    description: "瞄准，松手！几十颗弹珠连发，炸弹连锁爆破，攒满能量一路击穿。",
+    path: "./games/marble-rush/index.html",
+    category: "爽快街机",
+    color: "#e5e7d8",
+    cover: "./games/marble-rush/cover.svg",
+    locales: {
+      en: { title: "Marble Party", description: "Aim and release a shower of marbles. Chain explosions and charge a piercing burst!", category: "Arcade fun" },
+      ja: { title: "ビー玉パーティー", description: "狙って離してビー玉連射！爆弾を連鎖させ、エネルギーをためて貫こう。", category: "爽快アーケード" },
+      ko: { title: "구슬 파티", description: "조준하고 놓으면 구슬이 쏟아져요! 연쇄 폭발과 관통 난사를 즐겨 보세요.", category: "신나는 아케이드" },
+      fr: { title: "Fête des billes", description: "Visez et lancez une pluie de billes. Explosions en chaîne et tirs perçants !", category: "Arcade détente" },
+      de: { title: "Murmelparty", description: "Zielen und eine Murmelsalve loslassen. Kettenreaktionen und geladene Durchschüsse!", category: "Arcade-Spaß" },
+      es: { title: "Fiesta de canicas", description: "Apunta y suelta una lluvia de canicas. ¡Explosiones en cadena y ráfagas perforantes!", category: "Diversión arcade" },
+      'pt-BR': { title: "Festa de bolinhas", description: "Mire e solte uma chuva de bolinhas. Explosões em cadeia e rajadas perfurantes!", category: "Diversão arcade" }
+    }
+  },
+  {
     title: "迷你割草",
     description: "飞叶绕身，种子开路。在手绘草地上升级成长，守住三分钟。",
     path: "./games/mini-mow/index.html",
@@ -223,6 +274,40 @@ window.GAME_LIST = [
       de: { title: "Parkprofi", description: "Lenke, fahre rückwärts und meistere acht handgezeichnete Parkübungen.", category: "Fahrherausforderung" },
       es: { title: "As del aparcamiento", description: "Gira, retrocede y encuentra el sitio perfecto en ocho retos dibujados a mano.", category: "Reto de conducción" },
       'pt-BR': { title: "Ás do volante", description: "Vire, dê ré e encontre a vaga perfeita em oito desafios desenhados à mão.", category: "Desafio de direção" }
+    }
+  },
+  {
+    title: "一笔修路",
+    description: "用一条不交叉的小路连接每一户，绕过树木、石头和池塘。",
+    path: "./games/one-road/index.html",
+    category: "路线规划",
+    color: "#e6ebdb",
+    cover: "./games/one-road/cover.svg",
+    locales: {
+      en: { title: "One Road", description: "Connect every home with one unbroken road. Wind around trees, rocks and ponds without crossing your path.", category: "Route puzzles" },
+      ja: { title: "ひと筆の道", description: "木、岩、池を避けながら、交差しない一本の道ですべての家をつなごう。", category: "ルートパズル" },
+      ko: { title: "한 줄 길 잇기", description: "나무, 바위, 연못을 피해 교차하지 않는 하나의 길로 모든 집을 이어요.", category: "경로 퍼즐" },
+      fr: { title: "Un seul chemin", description: "Reliez chaque maison par une route sans croisement, en contournant arbres, rochers et mares.", category: "Puzzle de chemins" },
+      de: { title: "Ein Weg", description: "Verbinde jedes Haus mit einem Weg ohne Kreuzungen und umgehe Bäume, Steine und Teiche.", category: "Wege-Rätsel" },
+      es: { title: "Un solo camino", description: "Conecta todas las casas con una ruta sin cruces, rodeando árboles, rocas y estanques.", category: "Puzles de rutas" },
+      'pt-BR': { title: "Um só caminho", description: "Conecte todas as casas com uma estrada sem cruzamentos, contornando árvores, pedras e lagos.", category: "Desafios de caminhos" }
+    }
+  },
+  {
+    title: "九宫格探险",
+    description: "带上口粮与勇气，在九格森林里选择路线，把每一小步走得更远。",
+    path: "./games/nine-grid/index.html",
+    category: "回合策略",
+    color: "#e7e9da",
+    cover: "./games/nine-grid/cover.svg",
+    locales: {
+      en: { title: "Nine Little Steps", description: "Plan a path through nine woodland tiles, balancing battles, treasure and supplies.", category: "Turn-based strategy" },
+      ja: { title: "九マスの旅", description: "食料と勇気を持って、怪物・宝箱・補給の九マスを歩こう。", category: "ターン制戦略" },
+      ko: { title: "아홉 칸의 모험", description: "식량과 용기를 챙겨 전투, 보물, 보급 사이로 안전한 길을 찾아요.", category: "턴제 전략" },
+      fr: { title: "Neuf petits pas", description: "Tracez votre route entre monstres, trésors et provisions sur neuf cases de forêt.", category: "Stratégie au tour par tour" },
+      de: { title: "Neun kleine Schritte", description: "Plane deinen Weg über neun Waldfelder zwischen Monstern, Schätzen und Vorräten.", category: "Rundenstrategie" },
+      es: { title: "Nueve pequeños pasos", description: "Planea tu ruta por nueve casillas entre monstruos, tesoros y provisiones.", category: "Estrategia por turnos" },
+      'pt-BR': { title: "Nove pequenos passos", description: "Planeje sua rota por nove casas entre monstros, tesouros e provisões.", category: "Estratégia por turnos" }
     }
   },
   // 新增示例（删除每行开头的 //，修改内容即可）：

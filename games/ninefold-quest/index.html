@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="zh-CN" data-i18n-scope="nine">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#f5f3eb">
+  <link rel="icon" type="image/svg+xml" href="cover.svg">
+  <title data-i18n="nine.title">九宫格探险·迷雾篇</title>
+  <link rel="stylesheet" href="style.css">
+  <script defer src="../../analytics.js"></script>
+</head>
+<body>
+  <svg class="svg-library" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><defs>
+    <symbol id="art-forest" viewBox="0 0 80 80"><path class="wash" d="M10 57 29 15 48 57ZM32 61 52 9 73 61Z"/><path d="m9 56 19-38 19 38M18 41l10-23 12 24M32 60 51 12 72 60M41 41l10-29 12 29M29 49v19m23-18v20M8 69q29-5 65 1"/><path class="hatch" d="m19 49 9-6m-6 13 14-9m7 5 10-6m-7 13 15-10"/></symbol>
+    <symbol id="art-fog" viewBox="0 0 80 80"><path class="wash" d="M13 47q-4-16 13-18 4-21 24-13 13 2 13 18 17 3 9 17Z"/><path d="M12 44q-3-14 12-15 6-21 23-14 15 1 16 18 13 1 12 12M9 48q13-4 27 0t34 0M17 57q12-4 25 0t23 0M26 65q11-3 24 0"/><path class="hatch" d="m30 27 4-5m2 7 5-5m-25 9 4-2"/></symbol>
+    <symbol id="art-camp" viewBox="0 0 80 80"><path class="wash" d="m7 61 29-45 35 46Z"/><path d="m8 61 28-44 35 45-63-1Zm28-44 8 45m-17-1 8-21 9 22M5 66q32 5 69 0m-56-9-3 9m49-10 5 9"/><path d="M52 14q5-5 9 0m-32 4 6-8 8 8"/><path class="hatch" d="m15 57 14-11m-10 14 11-9m23-2 8 7"/></symbol>
+    <symbol id="art-enemy" viewBox="0 0 80 80"><path class="wash" d="M13 51q4-21 15-24l5 9q13-15 21-10l13 25q-1 14-26 15T13 51"/><path d="M13 51q4-21 15-24l5 9q13-15 21-10l13 25q-1 14-26 15T13 51ZM28 27l-4-11m28 10 5-11M26 50l8 2m11 0 8-2m-17 9q5 3 10-1M10 69q29-5 60 1"/><path class="hatch" d="m19 46 4-6m-2 13 5-5m32 8 4-4"/></symbol>
+    <symbol id="art-boss" viewBox="0 0 80 80"><path class="wash" d="m21 24 4-13 12 8 11-9 9 15 7 31-19 15-22-7-9-14Z"/><path d="m21 25 4-14 12 8 11-9 9 15M20 26q18-8 38 0l6 30-19 15-22-7-9-14 6-24Zm10 14 8 5m8-1 9-5M30 56q12-6 23 0M43 31l-2 22M7 70q32 5 67-1"/><path class="hatch" d="m21 44 6-8m-5 16 6-7m24 14 6-7"/></symbol>
+    <symbol id="art-chest" viewBox="0 0 80 80"><path class="wash" d="M15 32q20-20 50 0v30H15Z"/><path d="M15 32q20-20 50 0v30H15V32Zm0 11h50M23 29v33m34-33v33M37 39h8v12h-8ZM11 68q28-4 59 0"/><path class="hatch" d="m18 51 4-3m2 9 6-4m19 4 5-4M32 15v-5m21 8 3-4"/></symbol>
+    <symbol id="art-spring" viewBox="0 0 80 80"><path class="wash" d="M10 56q0-16 30-14t30 15q-5 18-32 15T10 56"/><path d="M28 45q-18 0-18 12 2 14 30 14 28-1 30-13-1-13-23-13M23 55q16 9 34-1M39 12q-13 18-13 23 0 14 13 14t13-14q0-5-13-23Zm-6 25 3 5M13 25l7 4m-2-10 2 10 8-3"/></symbol>
+    <symbol id="art-trap" viewBox="0 0 80 80"><path class="wash" d="m9 58 13-31 13 31 13-35 18 35Z"/><path d="m9 58 13-31 13 31 13-35 18 35ZM8 65q31 6 63-1M22 38l-5 16m31-20-6 18M39 10v7m0 6v1m24-8 5-5"/><path class="hatch" d="m26 54 2 4m25-9 4 8"/></symbol>
+    <symbol id="art-event" viewBox="0 0 80 80"><path class="wash" d="m22 64 5-43 12-9 14 10 6 43Z"/><path d="m22 64 5-43 12-9 14 10 6 43-37-1ZM39 27l-6 10 7 11 7-11-8-10ZM11 69q27-5 58 0m-54-22 3 14m41-22 3-5m-2-18 4-5M25 57l6-3m21 1-5 4"/></symbol>
+    <symbol id="art-merchant" viewBox="0 0 80 80"><path class="wash" d="m16 19 48 1 7 21-60-1Zm3 22h43v24H19Z"/><path d="m16 19 48 1 7 21-60-1 5-21Zm14 0-2 21m17-20 1 21m10-21 6 20M19 43v22h43V43M15 66h52M27 50h12v15m7-14h9v7h-9ZM8 71q31 3 63-1"/></symbol>
+    <symbol id="art-potion" viewBox="0 0 80 80"><path class="wash" d="M24 43h32l9 12q3 17-25 16T16 55Z"/><path d="M31 12h18v9H31Zm2 10v12L16 55q-7 17 24 17t25-17L47 34V22M25 44q15 5 30 0M40 51v12m-6-6h12"/></symbol>
+    <symbol id="art-sword" viewBox="0 0 80 80"><path class="wash" d="m30 47 23-32 14-5-2 16-26 30Z"/><path d="m30 47 23-32 14-5-2 16-26 30-9-9ZM60 19 35 51M22 42l23 21M29 54 15 69m-5-5 12 11"/></symbol>
+    <symbol id="art-shield" viewBox="0 0 80 80"><path class="wash" d="m17 20 23-10 24 11-3 29q-6 17-21 23-19-11-23-26Z"/><path d="m17 20 23-10 24 11-3 29q-6 17-21 23-19-11-23-26V20Zm7 6 16-8 17 8-2 20q-4 15-15 20-14-9-16-22ZM40 25v29m-10-18h21"/></symbol>
+    <symbol id="art-heart" viewBox="0 0 80 80"><path class="wash" d="M40 65 13 38C-1 15 26 5 40 24 53 5 81 15 67 38Z"/><path d="M40 65 13 38C-1 15 26 5 40 24 53 5 81 15 67 38L40 65ZM15 29q-1-10 10-10m31 28-9 9"/></symbol>
+    <symbol id="art-coin" viewBox="0 0 80 80"><ellipse class="wash" cx="40" cy="40" rx="26" ry="28"/><path d="M66 40c-1 37-53 38-53 0s54-37 53 0ZM58 40c-1 27-37 26-37 0s38-26 37 0ZM40 24v31m7-27H36q-10 9 6 13t-7 12"/></symbol>
+    <symbol id="art-flag" viewBox="0 0 80 80"><path class="wash" d="m24 15 36 2-8 13 10 13-37-2Z"/><path d="m23 12 2 57m-1-54 36 2-8 13 10 13-37-2M11 72q27-7 54 0M31 24l10 8 9-9"/></symbol>
+  </defs></svg>
+  <main class="game-shell">
+    <header class="topbar">
+      <a class="back-link" href="../../games.html" data-i18n-label="common.back"><span aria-hidden="true">←</span><span class="back-text" data-i18n="common.back">返回大厅</span></a>
+      <div class="brand"><span class="tiny-grid" aria-hidden="true">▦</span><h1 data-i18n="nine.name">九宫格探险</h1></div>
+      <button class="icon-button" id="help" data-i18n-label="nine.help">?</button>
+    </header>
+    <section class="stats" data-i18n-label="nine.stats">
+      <div class="health-stat"><div class="health-label"><span><svg class="mini-art"><use href="#art-heart"/></svg><span data-i18n="nine.health">生命</span></span><strong id="health-value">30 / 30</strong></div><div class="health-track"><div id="health-fill"></div></div></div>
+      <div class="stat"><svg class="mini-art"><use href="#art-sword"/></svg><strong id="attack-value">4</strong><span data-i18n="nine.attack">攻击</span></div>
+      <div class="stat"><svg class="mini-art"><use href="#art-shield"/></svg><strong id="armor-value">1</strong><span data-i18n="nine.armor">护甲</span></div>
+      <div class="stat"><svg class="mini-art"><use href="#art-coin"/></svg><strong id="gold-value">0</strong><span data-i18n="nine.gold">金币</span></div>
+    </section>
+    <div class="game-content">
+      <section class="map-area">
+        <div class="chapter"><div><span class="chapter-number" id="floor-number">01</span><span id="biome"></span></div><span class="weather" id="weather"></span></div>
+        <div class="board-space"><div id="board" class="board" role="group" data-i18n-label="nine.board"></div></div>
+        <div class="map-caption"><span id="exploration"></span><div class="journey" id="journey" aria-hidden="true"></div><span id="floor-label"></span></div>
+      </section>
+      <aside class="field-notes"><div class="notes-heading"><span data-i18n="nine.notes">探险手记</span><span aria-hidden="true">✧</span></div><div id="event-panel"></div><div class="recent-note" id="recent-note" role="status" aria-live="polite"></div></aside>
+    </div>
+    <footer class="toolbar"><button class="potion-button" id="potion"><svg class="mini-art"><use href="#art-potion"/></svg><span id="potion-label"></span></button><span id="best" class="best"></span><button class="restart-button" id="restart" data-i18n-label="nine.restart"><span aria-hidden="true">↻</span><span data-i18n="nine.restart">重新出发</span></button></footer>
+  </main>
+  <dialog id="modal"><form method="dialog"><button class="close-dialog" value="close" data-i18n-label="nine.close">×</button></form><div id="modal-content"></div></dialog>
+  <script src="../../i18n.js"></script><script src="translations.js"></script><script src="engine.js"></script><script src="game.js"></script>
+</body>
+</html>

@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="zh-CN" data-i18n-scope="marbleRush">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#f5f3eb">
+  <title data-i18n="marbleRush.pageTitle">弹珠派对 · Boopland</title>
+  <link rel="stylesheet" href="style.css">
+  <script defer src="../../analytics.js"></script>
+</head>
+<body>
+  <main class="game-shell">
+    <header class="topbar">
+      <a class="back" href="../../games.html" data-i18n-label="common.back"><span aria-hidden="true">↶</span><span data-i18n="common.back">返回大厅</span></a>
+      <h1 data-i18n="marbleRush.name">弹珠派对</h1>
+      <div class="top-actions">
+        <button id="sound" class="icon-button" aria-pressed="true" data-i18n-label="marbleRush.mute">♪</button>
+        <button id="help" class="icon-button" data-i18n-label="marbleRush.help">?</button>
+        <button id="pause" class="icon-button" disabled data-i18n-label="marbleRush.pause">Ⅱ</button>
+      </div>
+    </header>
+    <section class="desk">
+      <aside class="margin left-margin" aria-hidden="true">
+        <span class="eyebrow">BOOPLAND /  PLAY NOTES</span>
+        <h2 data-i18n="marbleRush.margin">把烦恼，\n弹个粉碎。</h2>
+        <svg class="doodle" viewBox="0 0 180 150"><path d="M28 125 148 63 61 21M28 126l15-1m-15 1 8-13" stroke-dasharray="4 7"/><rect x="31" y="10" width="49" height="31" rx="4" transform="rotate(-7 55 25)"/><path d="m42 29 21-11m-17 17 23-12M140 20l4 13 14 1-11 8 3 14-11-8-12 8 4-14-11-8 14-1Z"/><circle cx="28" cy="125" r="8"/></svg>
+        <p data-i18n="marbleRush.sideTip">找个好角度。\n剩下的，交给反弹。</p>
+        <span class="pencil-line"></span>
+        <small data-i18n="marbleRush.sideFoot">一点技巧，很多快乐。</small>
+      </aside>
+      <div class="notebook">
+        <div class="hud">
+          <div class="stat"><span data-i18n="marbleRush.score">得分</span><strong id="score">00000</strong></div>
+          <div class="stat best-stat"><span data-i18n="marbleRush.best">最佳</span><strong id="best">00000</strong></div>
+          <div class="stat wave-stat"><span data-i18n="marbleRush.wave">波次</span><strong id="wave">01</strong></div>
+          <div class="ball-badge"><i aria-hidden="true"></i><strong id="balls">30</strong><span data-i18n="marbleRush.balls">弹珠</span></div>
+        </div>
+        <div class="stage" id="stage">
+          <canvas id="game" width="540" height="660" tabindex="0" data-i18n-label="marbleRush.canvas" data-i18n="marbleRush.canvas">弹珠打砖块游戏</canvas>
+          <div id="combo" class="combo" aria-hidden="true"><strong></strong><span data-i18n="marbleRush.combo">连击</span></div>
+          <div id="toast" class="toast" role="status" hidden></div>
+          <section class="overlay" id="overlay" aria-labelledby="overlay-title">
+            <div class="overlay-card">
+              <div class="intro-mark" aria-hidden="true"><span>✳</span><i></i><i></i><i></i></div>
+              <p class="eyebrow" id="overlay-kicker" data-i18n="marbleRush.kicker">一发入魂，连锁快乐</p>
+              <h2 id="overlay-title" data-i18n="marbleRush.name">弹珠派对</h2>
+              <p id="overlay-description" data-i18n="marbleRush.intro">瞄准，松手。让三十颗弹珠替你清空烦恼。</p>
+              <div id="result" class="result" hidden></div>
+              <div id="instructions" class="instructions">
+                <p><b>↗</b><span data-i18n="marbleRush.aimHelp">拖动瞄准，松手连发；方向键 + 空格也可以。</span></p>
+                <p><b class="bomb-ink">✳</b><span data-i18n="marbleRush.bombHelp">击碎炸弹，连锁爆破；收集 +5，弹珠越来越多。</span></p>
+                <p><b class="green-ink">↟</b><span data-i18n="marbleRush.furyHelp">攒满能量，开启穿透齐射。别让砖块碰到底线！</span></p>
+              </div>
+              <button id="start" class="primary" data-i18n="marbleRush.start">开始弹！ ↗</button>
+              <button id="restart" class="text-button" hidden data-i18n="marbleRush.restart">重新开始</button>
+            </div>
+          </section>
+        </div>
+        <div class="energy-row"><span id="energy-label" data-i18n="marbleRush.energy">连击能量</span><div class="energy-track" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-labelledby="energy-label" id="energy-track"><i id="energy-fill"></i></div><b id="energy-number">0%</b></div>
+        <footer class="controls">
+          <button id="speed" class="small-button" aria-pressed="false" data-i18n-label="marbleRush.speedLabel">1×</button>
+          <span id="status" class="status" data-i18n="marbleRush.ready">找个角度，弹起来。</span>
+          <button id="recall" class="small-button" hidden data-i18n="marbleRush.recall">收球</button>
+          <button id="fury" class="fury-button" disabled aria-pressed="false"><span aria-hidden="true">↟</span><span data-i18n="marbleRush.fury">穿透齐射</span></button>
+        </footer>
+      </div>
+      <aside class="margin right-margin">
+        <div class="note-card"><span class="eyebrow" data-i18n="marbleRush.recipe">快乐配方</span><div class="legend-item"><i class="legend bomb">✳</i><div><strong data-i18n="marbleRush.bomb">连锁炸弹</strong><p data-i18n="marbleRush.bombNote">一块破，周围一起破。</p></div></div><div class="legend-item"><i class="legend extra">+5</i><div><strong data-i18n="marbleRush.extra">加点弹珠</strong><p data-i18n="marbleRush.extraNote">越打越多，越弹越爽。</p></div></div><div class="legend-item"><i class="legend power">↟</i><div><strong data-i18n="marbleRush.fury">穿透齐射</strong><p data-i18n="marbleRush.furyNote">能量满格，一路击穿。</p></div></div></div>
+        <p class="margin-hint" data-i18n="marbleRush.keyboard">← → 瞄准 · 空格发射\nP 暂停 · F 穿透</p>
+        <span class="tiny-star" aria-hidden="true">✳</span>
+      </aside>
+    </section>
+    <p class="page-foot" data-i18n="marbleRush.foot">今天的快乐，可以再反弹一下。</p>
+  </main>
+  <script src="../../i18n.js"></script>
+  <script src="translations.js"></script>
+  <script src="engine.js"></script>
+  <script src="game.js"></script>
+</body>
+</html>

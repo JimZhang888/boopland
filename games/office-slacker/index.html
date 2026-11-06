@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-i18n-scope="slacker">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#f5f3eb">
+  <meta name="description" content="按住摸鱼，松手工作。躲过老板的假动作，准时快乐下班。" data-i18n-content="description">
+  <title>上班摸鱼 · Boopland</title>
+  <link rel="stylesheet" href="./style.css">
+  <link rel="icon" href="./cover.svg" type="image/svg+xml">
+  <script defer src="../../analytics.js"></script>
+</head>
+<body>
+  <div class="game-shell">
+    <header class="topbar">
+      <a class="back" href="../../games.html"><span aria-hidden="true">←</span><span data-i18n="common.back">返回大厅</span></a>
+      <div class="title"><span class="tiny-fish" aria-hidden="true">><(((°></span><h1 data-i18n="name">上班摸鱼</h1><span class="edition">NO. 015</span></div>
+      <div class="tools">
+        <button id="sound" class="icon-button" type="button" data-i18n-label="soundOn" aria-pressed="false"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M11 5 6 9H3v6h3l5 4Z"/><path class="sound-waves" d="M15 8q5 4 0 8m3-11q8 7 0 14"/><path class="sound-muted" d="m16 9 5 6m0-6-5 6"/></svg></button>
+        <button id="help" class="icon-button" type="button" data-i18n-label="help"><span aria-hidden="true">?</span></button>
+        <button id="pause" class="icon-button" type="button" data-i18n-label="pause" disabled><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14M16 5v14"/></svg></button>
+      </div>
+    </header>
+
+    <main class="desk">
+      <section class="game-paper" data-i18n-label="name">
+        <div class="hud">
+          <div class="stat"><span data-i18n="score">摸鱼分</span><div><strong id="score">0</strong><small class="score-target">/ 800</small><span id="combo" class="combo">×1</span></div></div>
+          <div class="stat timer-stat"><span data-i18n="time">距离下班</span><strong id="timer">01:00</strong></div>
+          <div class="stat strike-stat"><span data-i18n="warnings">被抓次数</span><div id="strikes" class="strikes" role="img"><i></i><i></i><i></i></div></div>
+        </div>
+        <div id="stage" class="stage" data-phase="safe" data-activity="work">
+          <div class="office-tag"><span class="status-dot"></span><span id="status" role="status">工位已就绪</span></div>
+          <span class="office-number" data-i18n="office">快乐有限公司 · 摸鱼部</span>
+          <svg id="office" class="office" viewBox="0 0 900 570" role="img" data-i18n-label="sceneLabel">
+            <defs>
+              <pattern id="hatch" width="7" height="7" patternUnits="userSpaceOnUse" patternTransform="rotate(-24)"><path d="M0 0v7" stroke="#717966" stroke-width=".7" opacity=".2"/></pattern>
+              <pattern id="floor" width="110" height="58" patternUnits="userSpaceOnUse"><path d="M0 57h110M55 0v57" fill="none" stroke="#d5d5c6" stroke-width="1"/></pattern>
+              <clipPath id="door-clip"><path d="M672 121h140v273H672z"/></clipPath>
+              <clipPath id="screen-clip"><path d="M474 299h156v96H474z"/></clipPath>
+            </defs>
+            <g stroke="#69705f" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M38 423q420-9 824 1v115H38Z" fill="url(#floor)" stroke="none"/>
+              <path d="M35 421q433 3 829-1M36 428q440 3 829 0" fill="none" stroke="#c3c8b7"/>
+              <path d="M53 70q400-7 795 1v351" fill="none" stroke="#d8dbcc"/>
+              <g class="window">
+                <path d="m91 119 220-3 2 177-224-1Z" fill="#dde7e3"/>
+                <path d="M102 130h198v149H101Z" fill="#e9efea" stroke="#a9b7a7" stroke-width="1"/>
+                <circle cx="256" cy="165" r="22" fill="#ebdca8" stroke="none"/>
+                <path d="M103 257v-40h28v-25h34v66m3-1v-25h28v-36h31v62m8 0v-40h20v-26h28v65m3 0v-26h15" fill="#cfdcd4" stroke="none"/>
+                <g fill="#fafaf0" stroke="none" class="cloud"><path d="M123 164q-8-15 9-17 4-16 19-10 11 0 12 13 19 0 18 14Z"/><path d="M219 207q-7-11 5-13 5-13 17-6 12-3 15 8 15 0 14 11Z"/></g>
+                <path d="M201 121v168M92 211h216" stroke="#b6beab" stroke-width="5"/>
+                <path d="m80 293 242-1-1 10H80Z" fill="#e0ddca"/>
+                <path d="m87 305 227-1" fill="none" stroke="#b9bcaa" stroke-width="1"/>
+              </g>
+              <g class="clock" transform="translate(464 135)">
+                <path d="M-34 0a34 33 0 1 1 68 0 34 33 0 1 1-68 0" fill="#fcfbf3"/>
+                <circle r="29" fill="none" stroke="#c3c8b6" stroke-width="1"/>
+                <path d="M0-25v4M25 0h-4M0 25v-4M-25 0h4"/>
+                <path d="M0 0v17M0 0l-3-23" id="clock-hand" stroke-width="2.5"/>
+                <circle r="2.5" fill="#69705f"/>
+              </g>
+              <g transform="rotate(-4 572 198)">
+                <path d="M538 174h68l-2 65h-66Z" fill="#eee2b8" stroke="#cfbf91" stroke-width="1"/>
+                <path d="m552 169 33 1-1 10-33-1" fill="#e2ddc8" stroke="none"/>
+                <path d="m549 194 6 7 14-15m-20 29h40m-39 8h28" fill="none" stroke="#a59c72" stroke-width="1.5"/>
+              </g>
+              <path d="m661 109 162 1 1 298H660Z" fill="#e3dfd0" stroke="#8c927e"/>
+              <path d="m672 121 140 1 1 272-141-1Z" fill="#cbd3c2"/>
+              <path d="m676 125 130 1v263H677Z" fill="url(#hatch)" stroke="none"/>
+              <g clip-path="url(#door-clip)">
+                <g id="boss-position" transform="translate(760 256)">
+                  <g id="boss">
+                    <ellipse cx="0" cy="137" rx="55" ry="9" fill="#768068" opacity=".15" stroke="none"/>
+                    <path d="M-21 89-27 132h23l8-37m9-4 6 40h22L32 86" fill="#6e7867"/>
+                    <path d="m-29 132 27 1v9h-38q-2-8 11-10m49 0 22 1 8 9H19Z" fill="#565f51"/>
+                    <path d="M-30-10q-17 9-18 48l10 49q37 18 78 1l6-59Q43 0 23-12Z" fill="#939f87"/>
+                    <path d="m-12-9 12 35 16-36" fill="#f4efdf"/>
+                    <path d="m0 5 7 1 1 10 8 36-9 13-8-14 3-35Z" fill="#c6947c"/>
+                    <path d="m-33 7-9 30 19 17m57-40 7 25-21 12" fill="none" stroke-width="12" stroke="#939f87"/>
+                    <path d="m-33 7-9 30 19 17m57-40 7 25-21 12" fill="none"/>
+                    <g class="boss-cup"><path d="M-33 41h25l-3 25h-19Z" fill="#f4eddb"/><path d="M-8 46q17-3 11 12-4 5-13 0" fill="none"/><path d="M-26 31q-5-7 1-14m10 15q5-6 0-12" fill="none" stroke="#b9c2ac"/></g>
+                    <g class="boss-head">
+                      <ellipse cy="-41" rx="36" ry="39" fill="#ecd4b6"/>
+                      <path d="M-34-49q-11-13-7 9m75-10q13-10 7 11M-30-61q2-19 12-22m38 0q12 9 13 22" fill="none"/>
+                      <path d="m-21-48 13-4m17 0 14 4" fill="none" stroke-width="3"/>
+                      <g class="boss-eyes"><circle cx="-13" cy="-40" r="3" fill="#515847"/><circle cx="15" cy="-40" r="3" fill="#515847"/></g>
+                      <path d="m2-42-3 14h7m-19 13q15-8 25-1" fill="none"/>
+                      <path d="M-29-32h9m6 22h20" fill="none" stroke="#d0ad90" stroke-width="1"/>
+                    </g>
+                  </g>
+                </g>
+              </g>
+              <path d="m805 124-38 18 1 251 38-1Z" fill="#dfdfce"/>
+              <path d="M786 269v17" stroke-width="4"/>
+              <g id="boss-alert" transform="translate(735 95)"><path d="M-16 0 0-27 17 0Z" fill="#ead1a3" stroke="#ac8a55"/><path d="M0-17v7m0 5v1" stroke="#987244" stroke-width="2.5"/></g>
+              <g class="plant" transform="translate(130 430)">
+                <path d="M-27-39h55l-8 45h-39Z" fill="#d9bba3"/><path d="m-30-40 61-1-1 9h-59Z" fill="#e5cbb4"/>
+                <path d="M0-41q4-37-3-78m5 44 29-36M0-67l-30-24" fill="none"/>
+                <path d="M-3-99q-39-4-29-34 32 1 29 34m7 14q-9-38 25-43 11 32-25 43m-5 22q-33 4-43-23 30-12 43 23m16-24q-2-27 31-26 2 27-31 26" fill="#a5b595"/>
+                <path d="m-23-123 20 24m24-17L5-89m-38 11 31 14m39-40-20 17" stroke="#7c906e" stroke-width="1"/>
+              </g>
+              <ellipse cx="445" cy="496" rx="217" ry="16" fill="#d6d7c6" stroke="none" opacity=".4"/>
+              <g id="chair">
+                <path d="M311 341q-8-16-23-5-15 45 12 87l76 2v-20l-49-10Z" fill="#bcc9b2"/>
+                <path d="M307 421h75v16h-75Z" fill="#a9b99e"/>
+                <path d="M343 438v46m-35 3 35-10 39 10" fill="none" stroke-width="4"/>
+                <circle cx="306" cy="491" r="6" fill="#838d79"/><circle cx="383" cy="491" r="6" fill="#838d79"/>
+              </g>
+              <g id="employee">
+                <g id="legs"><path d="m343 402 6 47 52 15 3-17-36-16 9-30m-6 5 26 28 31-9 9 16-45 13-40-28" fill="#9daaa1"/><path d="m400 443 6 20 25-3q8-11-12-14m7-25 8 20 20-16q-1-13-17-2" fill="#eef0df"/></g>
+                <g id="employee-upper">
+                  <path d="m330 315-13 38 7 54q38 14 70-4l-5-62q-10-30-27-27Z" fill="#e1c584"/>
+                  <path d="m348 316 11 15 14-17m-16 18 1 61m-26-43-4 37" fill="none" stroke="#ab996c" stroke-width="1.3"/>
+                  <g id="employee-head">
+                    <path d="M322 275q-5-41 32-43 40-1 43 37l-2 33q-15 33-47 19-24-10-26-46" fill="#edd8bc"/>
+                    <path d="M321 276q-19-26 1-36-5-19 17-16 3-17 20-5 14-12 24 1 23-3 17 17 13 15-3 37l-4-25q-21 9-43-5-1 17-19 16l-1 17Z" fill="#596252"/>
+                    <path d="m339 229 12-5m17 9 18-3m-64 21 7-8" stroke="#829077" stroke-width="1"/>
+                    <path d="M326 279q-14-9-13 4 0 12 14 9" fill="#edd8bc"/>
+                    <g class="work-face"><path d="m346 277 7-1m24-1 7 1" stroke-width="3"/><path d="m358 299 17-1"/><path d="M339 267h20v18h-20Zm30 0h20v18h-20Zm-10 7h10" fill="none" stroke="#777e6e" stroke-width="1.7"/></g>
+                    <g class="slack-face"><path d="m342 276 8-5 8 5m13-1 8-5 8 5" fill="none"/><path d="M351 292q13 23 27-1Z" fill="#a97765"/><path d="m354 294 19-1" stroke="#fff9e9" stroke-width="3"/><path d="M335 286h9m36 0h10" stroke="#dbb19a" stroke-width="4"/></g>
+                    <g class="caught-face"><ellipse cx="349" cy="277" rx="5" ry="7" fill="#fdfbf3"/><ellipse cx="379" cy="277" rx="5" ry="7" fill="#fdfbf3"/><circle cx="350" cy="278" r="2" fill="#596252"/><circle cx="378" cy="278" r="2" fill="#596252"/><ellipse cx="364" cy="300" rx="6" ry="8" fill="#a97765"/><path d="M404 274q-13 21 0 19 10-1 0-19" fill="#bed4d1" stroke="#91aaa4"/></g>
+                  </g>
+                  <g class="work-arms"><path d="m383 338 14 37 58 3m-118-28 10 37 87 3" fill="none" stroke="#e1c584" stroke-width="15"/><path d="m383 338 14 37 58 3m-118-28 10 37 87 3" fill="none"/><path d="m451 375 15 3m-35 10 14 2" stroke="#dbbfa0" stroke-width="9"/></g>
+                  <g class="slack-arms"><path d="m338 345-13 22-27-29m84-1 13 24 22-29" fill="none" stroke="#e1c584" stroke-width="14"/><path d="m338 345-13 22-27-29m84-1 13 24 22-29" fill="none"/><g class="phone"><path d="m286 302 26-3 5 43-26 3Z" fill="#7f8e7a"/><path d="m290 308 18-2 3 25-17 2Z" fill="#dde5cb" stroke="none"/><circle cx="303" cy="338" r="1.5" fill="#f8f7e9"/></g><path d="M412 330q14-12 11 1l-7 9m-121-3-6-5" stroke="#dbbfa0" stroke-width="9"/></g>
+                  <g class="snack"><path d="M279 328h37q-3 29-17 29-17-1-20-29" fill="#e5a98d"/><path d="m282 325 31 2" stroke="#faf6e7" stroke-width="5"/><path d="m308 321 12-24m-5 27 13-24" stroke="#aa936b"/><path d="M292 312q-6-7 1-13m11 14q5-9-1-15" fill="none" stroke="#bec0a8"/></g>
+                  <g class="music-notes" fill="#8fa17a" stroke="none"><path d="M265 269v-25l21-4v23h-4v-17l-13 2v21Z"/><ellipse cx="261" cy="269" rx="8" ry="5"/><ellipse cx="279" cy="264" rx="7" ry="5"/><path d="M433 251v-23l14 7v5l-10-5v17Z"/><ellipse cx="430" cy="252" rx="7" ry="5"/></g>
+                </g>
+              </g>
+              <g class="desk-art">
+                <path d="m405 416-11 82h13l14-82m227 0 18 81h13l-15-81" fill="#b2b69e"/>
+                <path d="m392 397 283 2 17 17-312-2Z" fill="#e3dac0"/>
+                <path d="m380 414 311 2v10l-312-2Z" fill="#c8bea5"/>
+                <path d="M431 426v40h54v-39" fill="#e6dfca"/><path d="M451 442h13" stroke="#a0a58f"/>
+                <path d="m457 289 184 2-3 113-184-3Z" fill="#cbd3be"/>
+                <path d="m474 299 156 1-1 94-155 1Z" fill="#f9f9ec" stroke-width="1.2"/>
+                <g clip-path="url(#screen-clip)">
+                  <g class="spreadsheet"><path d="M475 300h155v15H475Z" fill="#98ae8b" stroke="none"/><path d="M475 335h155m-155 20h155m-155 20h155m-118-58v78m40-78v78m40-78v78" stroke="#d7decd" stroke-width="1"/><path d="m486 325 15 1m18-1 20 1m18-1 22 1m-92 19h14m18 0h20m18 0h14m-85 20h15m18 0h20" stroke="#a9b49b" stroke-width="2"/><path d="M593 359h37v16h-37Z" fill="#e5ecd9" stroke="#9baa88"/></g>
+                  <g class="screen-fish"><path d="M474 300h156v95H474Z" fill="#deebe2" stroke="none"/><path d="M477 373q25-13 50 0t50 0 53 0m-153 9q25-13 50 0t50 0 53 0" stroke="#b8cfc3" fill="none"/><g class="swimming-fish"><path d="M515 344q20-26 52 0-32 28-52 0l-18 12v-25Z" fill="#e1bf80"/><circle cx="553" cy="341" r="2.2" fill="#69705f"/><path d="m534 333-4 11 5 10" fill="none" stroke="#b19e70"/><circle cx="577" cy="334" r="4" fill="none" stroke="#a7c0b3"/></g><path d="M596 393q-9-20 1-32m0 19 10-9" fill="none" stroke="#a7ba99" stroke-width="3"/></g>
+                </g>
+                <path d="m533 405-4 9h42l-5-9" fill="#c0c7b1"/>
+                <path d="m416 400 69 1 9 9-86-1Z" fill="#edf0de"/><path d="m423 404 55 1m-47-4-3 8m15-8-2 8m15-8v8m12-8 2 8" stroke="#a6b29a" stroke-width="1"/>
+                <path d="m650 365 22 1-3 26h-16Z" fill="#d1a18a"/><path d="M672 371q17-1 7 12l-9 2" fill="none"/><path d="M654 354q-6-8 1-15m8 16q7-6 0-14" fill="none" stroke="#bac1a9" stroke-width="1.5"/>
+                <path d="m603 401 36-1 5 7-39 1Z" fill="#f5efd9"/>
+              </g>
+              <g class="paper-ball"><path d="m727 467 12-9 13 5 5 14-9 10-17-3Z" fill="#f4f1e3" stroke="#aeb49d"/><path d="m739 458 2 18-10 8m10-8 16 1m-16-1 11-13" fill="none" stroke="#c4c9b6" stroke-width="1"/></g>
+              <path d="M204 480q26-8 57-2m-47 8h22" fill="none" stroke="#d0d3bf" stroke-width="1"/>
+            </g>
+          </svg>
+          <div id="reaction" class="reaction" aria-live="polite"></div>
+          <div class="scene-caption"><span class="caption-rule"></span><span id="caption" data-i18n="readyCaption">工位上的是我，灵魂已经下班了。</span><span class="caption-rule"></span></div>
+          <div id="overlay" class="overlay" hidden>
+            <div class="overlay-card">
+              <span id="result-stamp" class="result-stamp" aria-hidden="true">✓</span>
+              <p id="overlay-kicker" class="eyebrow"></p><h2 id="overlay-title"></h2><p id="overlay-note"></p>
+              <div id="result-stats" class="result-stats" hidden><div><span data-i18n="score">摸鱼分</span><strong id="result-score">0</strong></div><div><span data-i18n="dodges">躲过巡查</span><strong id="result-dodges">0</strong></div></div>
+              <button id="overlay-action" class="primary" type="button"></button>
+            </div>
+          </div>
+        </div>
+        <div class="risk-row"><span data-i18n="suspicion">老板怀疑值</span><div id="risk" class="risk-track" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" data-i18n-label="suspicion"><div id="risk-fill"></div></div><span id="risk-value">0%</span></div>
+      </section>
+
+      <aside class="notebook">
+        <div class="note-heading"><span class="eyebrow" data-i18n="memo">今日工位便签</span><span class="note-pin" aria-hidden="true"></span></div>
+        <h2 data-i18n="motto">认真摸鱼，<br>准时下班。</h2>
+        <div class="goal"><div><span data-i18n="target">今日小目标</span><strong><span id="goal-score">0</span><small> / 800</small></strong></div><svg class="goal-fish" viewBox="0 0 80 60" aria-hidden="true"><path d="M21 29q23-28 49 0-26 29-49 0L7 42V17Z"/><path d="m43 16-4 13 5 15m-14-26 4-9 14 5"/><circle cx="58" cy="27" r="2"/></svg></div>
+        <div class="goal-track"><div id="goal-fill"></div></div>
+        <ol class="rules"><li><span class="rule-number">01</span><div><strong data-i18n="tip1">按住，快乐摸鱼</strong><p data-i18n="tip1note">连摸越久，得分越高。</p></div></li><li><span class="rule-number">02</span><div><strong data-i18n="tip2">松手，假装努力</strong><p data-i18n="tip2note">老板盯着你时，赶紧装忙。</p></div></li><li><span class="rule-number">03</span><div><strong data-i18n="tip3">小心，回马枪！</strong><p data-i18n="tip3note">他走了，但可能没完全走。</p></div></li></ol>
+        <div class="best"><span data-i18n="best">我的摸鱼纪录</span><strong id="best">0</strong></div>
+        <p id="storage-note" class="storage-note" data-i18n="saved">小小战绩，自动记下。</p>
+        <div class="memo-footer" aria-hidden="true"><svg viewBox="0 0 140 42"><path d="M8 31q25-28 50-9t35-7m-5 0 7-2-2 7M106 25q12-25 22-7t-17 12"/></svg></div>
+      </aside>
+    </main>
+
+    <footer class="controls">
+      <div class="control-note"><span class="keycap" aria-hidden="true">SPACE</span><div><strong data-i18n="control">按住摸鱼 · 松手工作</strong><span data-i18n="controlNote">鼠标 / 触屏 / 空格都可以</span></div></div>
+      <button id="action" class="primary hold-button" type="button"><svg viewBox="0 0 36 28" aria-hidden="true"><path d="M10 14q10-14 22 0-12 14-22 0L3 21V7Z"/><circle cx="26" cy="12" r="1"/></svg><span id="action-label" data-i18n="start">开始上班</span><span id="action-hint" class="action-hint" data-i18n="roundLength">60 秒，快乐下班</span></button>
+      <div class="brand-note"><span>boopland.</span><small data-i18n="footer">给忙碌，摸个小小的鱼。</small></div>
+    </footer>
+  </div>
+  <dialog id="help-dialog" aria-labelledby="help-title"><div class="dialog-top"><span class="eyebrow" data-i18n="manual">员工生存手册</span><button id="close-help" class="icon-button" type="button" data-i18n-label="close">×</button></div><h2 id="help-title" data-i18n="helpTitle">摸鱼，也是一门技术。</h2><ol><li data-i18n="rule1"></li><li data-i18n="rule2"></li><li data-i18n="rule3"></li><li data-i18n="rule4"></li><li data-i18n="rule5"></li></ol><button id="help-done" class="primary" type="button" data-i18n="understood">明白，回到工位</button></dialog>
+  <noscript>请启用 JavaScript 来游玩。Please enable JavaScript to play.</noscript>
+  <script src="../../i18n.js"></script><script src="./translations.js"></script><script src="./engine.js"></script><script src="./game.js"></script>
+</body>
+</html>
