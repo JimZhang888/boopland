@@ -26,14 +26,14 @@
   let language = valid(requested) ? requested : valid(saved) ? saved : systemLanguage();
 
   catalogues.common = {
-    'zh-CN': { language: '选择语言', back: '返回大厅', home: '回到首页 ↗', blankTitle: '留白 · Boopland' },
-    en: { language: 'Choose language', back: 'Back to the lobby', home: 'Back home ↗', blankTitle: 'Stillness · Boopland' },
-    ja: { language: '言語を選択', back: 'ロビーに戻る', home: 'ホームへ ↗', blankTitle: '余白 · Boopland' },
-    ko: { language: '언어 선택', back: '로비로 돌아가기', home: '홈으로 ↗', blankTitle: '여백 · Boopland' },
-    fr: { language: 'Choisir la langue', back: 'Retour aux jeux', home: 'Accueil ↗', blankTitle: 'Une pause · Boopland' },
-    de: { language: 'Sprache auswählen', back: 'Zurück zur Spielewelt', home: 'Zur Startseite ↗', blankTitle: 'Stille · Boopland' },
-    es: { language: 'Elegir idioma', back: 'Volver a los juegos', home: 'Inicio ↗', blankTitle: 'Una pausa · Boopland' },
-    'pt-BR': { language: 'Escolher idioma', back: 'Voltar aos jogos', home: 'Início ↗', blankTitle: 'Uma pausa · Boopland' }
+    'zh-CN': { language: '选择语言', back: '返回大厅', home: '回到首页 ↗' },
+    en: { language: 'Choose language', back: 'Back to the lobby', home: 'Back home ↗' },
+    ja: { language: '言語を選択', back: 'ロビーに戻る', home: 'ホームへ ↗' },
+    ko: { language: '언어 선택', back: '로비로 돌아가기', home: '홈으로 ↗' },
+    fr: { language: 'Choisir la langue', back: 'Retour aux jeux', home: 'Accueil ↗' },
+    de: { language: 'Sprache auswählen', back: 'Zurück zur Spielewelt', home: 'Zur Startseite ↗' },
+    es: { language: 'Elegir idioma', back: 'Volver a los juegos', home: 'Inicio ↗' },
+    'pt-BR': { language: 'Escolher idioma', back: 'Voltar aos jogos', home: 'Início ↗' }
   };
 
   function t(messageKey, values = {}) {

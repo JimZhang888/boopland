@@ -15,8 +15,6 @@
 ├─ games-i18n.js            # 大厅的八国语言文案
 └─ games/
    ├─ README.md             # 新增游戏的快速说明
-   ├─ blank/
-   │  └─ index.html         # 纯色示例
    └─ <slug>/
       ├─ index.html         # 每个游戏的唯一入口
       └─ assets/            # 可选：图片、音频等独立资源
