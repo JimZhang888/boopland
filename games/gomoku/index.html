@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-i18n-scope="gomoku">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#f5f3eb">
+  <title data-i18n="pageTitle">五子棋 · Boopland</title>
+  <link rel="stylesheet" href="./style.css">
+  <script defer src="../../analytics.js"></script>
+</head>
+<body>
+  <div class="game-shell">
+    <header class="topbar">
+      <a class="back" href="../../games.html"><span aria-hidden="true">↶</span><span data-i18n="common.back">返回大厅</span></a>
+      <h1><svg viewBox="0 0 30 30" aria-hidden="true"><path d="M4 10h23M4 21h23M10 4v23M21 4v23"/><circle cx="10" cy="10" r="6" class="dark"/><circle cx="21" cy="21" r="6" class="light"/></svg><span data-i18n="name">五子棋</span></h1>
+      <button class="icon-button" id="help" type="button" data-i18n-label="rules" aria-label="玩法说明">?</button>
+    </header>
+
+    <main class="workspace">
+      <section class="board-panel" aria-label="五子棋棋盘" data-i18n-label="board">
+        <div class="board-top"><span class="notebook-label" data-i18n="eyebrow">落子之间，慢慢想</span><span class="board-size">15 × 15</span></div>
+        <div class="board-stage" id="board-stage">
+          <div class="board-paper" id="board-paper">
+            <svg class="grid-art" viewBox="0 0 480 480" aria-hidden="true" id="grid-art"></svg>
+            <div id="board" class="board" role="group" data-i18n-label="board" aria-describedby="keyboard-note"></div>
+          </div>
+        </div>
+        <div class="board-bottom"><span class="last-key"><i aria-hidden="true"></i><span data-i18n="lastMove">最后一手</span></span><span id="move-count"></span></div>
+      </section>
+
+      <aside class="sidebar">
+        <section class="turn-card" aria-live="polite" aria-atomic="true">
+          <div class="players"><span><i class="stone black" id="human-stone" aria-hidden="true"></i><span data-i18n="you">你</span></span><span class="versus">vs.</span><span><i class="stone white" id="ai-stone" aria-hidden="true"></i><span id="ai-name"></span></span></div>
+          <div class="status-line"><span id="status-dot" aria-hidden="true"></span><h2 id="status"></h2></div>
+          <p id="status-note"></p>
+        </section>
+
+        <section class="settings">
+          <div class="section-title"><span data-i18n="settings">对弈设置</span><span aria-hidden="true">✳</span></div>
+          <fieldset><legend data-i18n="difficulty">AI 难度</legend><div class="segmented levels">
+            <button type="button" data-level="easy" aria-pressed="false" data-i18n="easy">简单</button>
+            <button type="button" data-level="normal" aria-pressed="true" data-i18n="normal">正常</button>
+            <button type="button" data-level="hard" aria-pressed="false" data-i18n="hard">难</button>
+          </div></fieldset>
+          <p class="level-note" id="level-note"></p>
+          <fieldset><legend data-i18n="yourSide">你的棋子</legend><div class="segmented sides">
+            <button type="button" data-side="1" aria-pressed="true"><i class="stone black" aria-hidden="true"></i><span data-i18n="blackFirst">黑棋 · 先手</span></button>
+            <button type="button" data-side="2" aria-pressed="false"><i class="stone white" aria-hidden="true"></i><span data-i18n="whiteSecond">白棋 · 后手</span></button>
+          </div></fieldset>
+          <p class="pending-note" id="pending-note"></p>
+        </section>
+
+        <div class="actions">
+          <button id="undo" type="button" disabled><span aria-hidden="true">↶</span><span data-i18n="undo">悔棋</span></button>
+          <button id="new-game" class="primary" type="button"><span data-i18n="newGame">新的一局</span><span aria-hidden="true">↗</span></button>
+        </div>
+        <div class="pencil-note" aria-hidden="true"><svg viewBox="0 0 160 48"><path d="M12 28q29-8 62-3t66-3M21 32q44-8 106-4"/><circle cx="46" cy="19" r="7"/><circle cx="68" cy="18" r="7"/><circle cx="90" cy="19" r="7"/><circle cx="112" cy="17" r="7"/><circle cx="134" cy="16" r="7"/><path d="m131 4 3-4m10 9 5-2"/></svg><span data-i18n="littleNote">五子相连，小小圆满。</span></div>
+      </aside>
+    </main>
+    <footer class="footer"><span>boopland<span class="brand-dot">.</span></span><span id="keyboard-note" data-i18n="keyboard">点击落子 · 方向键移动，空格确认</span><span data-i18n="noTimer">不计时，慢慢来</span></footer>
+  </div>
+
+  <dialog id="dialog" aria-labelledby="dialog-title">
+    <div class="dialog-header"><h2 id="dialog-title"></h2><button id="close-dialog" class="icon-button" type="button" data-i18n-label="close" aria-label="关闭">×</button></div>
+    <div id="dialog-content"></div>
+    <div class="dialog-actions" id="confirm-actions" hidden><button id="cancel-restart" data-i18n="keepPlaying" type="button">继续这局</button><button class="primary" id="confirm-restart" data-i18n="startNew" type="button">开始新一局</button></div>
+  </dialog>
+  <noscript>请开启 JavaScript 以游玩五子棋。 / Please enable JavaScript to play Gomoku.</noscript>
+  <script src="../../i18n.js"></script>
+  <script src="./translations.js"></script>
+  <script src="./engine.js"></script>
+  <script src="./game.js"></script>
+</body>
+</html>

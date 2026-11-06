@@ -140,6 +140,23 @@ window.GAME_LIST = [
       'pt-BR': { title: "Pequenos encontros", description: "Troque bichinhos desenhados à mão e combine três pequenas alegrias.", category: "Quebra-cabeças leves" }
     }
   },
+  {
+    title: "五子棋",
+    description: "在纸上落一颗棋子，和三档 AI 慢慢过招。",
+    path: "./games/gomoku/index.html",
+    category: "经典棋类",
+    color: "#e9e8da",
+    cover: "./games/gomoku/cover.svg",
+    locales: {
+      en: { title: "Gomoku", description: "Place a stone on paper and challenge three levels of AI.", category: "Board classics" },
+      ja: { title: "五目並べ", description: "紙の盤に石を打ち、3段階の AI とゆっくり対局。", category: "定番ボードゲーム" },
+      ko: { title: "오목", description: "종이 위에 돌을 놓고 세 가지 난이도의 AI와 겨뤄요.", category: "클래식 보드 게임" },
+      fr: { title: "Gomoku", description: "Posez vos pierres sur le papier et défiez trois niveaux d’IA.", category: "Jeux de plateau" },
+      de: { title: "Gomoku", description: "Setze Steine aufs Papier und spiele gegen drei KI-Stufen.", category: "Brettspielklassiker" },
+      es: { title: "Gomoku", description: "Coloca piedras sobre papel y reta a tres niveles de IA.", category: "Clásicos de mesa" },
+      'pt-BR': { title: "Gomoku", description: "Coloque pedras no papel e desafie três níveis de IA.", category: "Clássicos de tabuleiro" }
+    }
+  },
   // 新增示例（删除每行开头的 //，修改内容即可）：
   // {
   //   title: "游戏名字",
