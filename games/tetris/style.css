@@ -3,13 +3,13 @@
 [hidden] { display: none !important; }
 html, body { margin: 0; width: 100%; min-width: 280px; }
 body { color: var(--ink); background: var(--paper); background-image: radial-gradient(#818b6d14 .65px, transparent .65px); background-size: 5px 5px; font: 14px/1.5 "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif; }
-button, select { font: inherit; color: inherit; }
-button, a, select { -webkit-tap-highlight-color: transparent; }
+button { font: inherit; color: inherit; }
+button, a { -webkit-tap-highlight-color: transparent; }
 button { cursor: pointer; min-height: 44px; border: 1px solid #bdc7b3; border-radius: 7px; background: #fbfaf3; padding: 9px 12px; }
 button:hover:not(:disabled) { background: #e5eadc; }
 button:active:not(:disabled), button.is-held { transform: translateY(1px); background: #dbe3d1; }
 button:disabled { cursor: default; opacity: .45; }
-button:focus-visible, a:focus-visible, select:focus-visible, canvas:focus-visible { outline: 2px solid var(--green); outline-offset: 3px; }
+button:focus-visible, a:focus-visible, canvas:focus-visible { outline: 2px solid var(--green); outline-offset: 3px; }
 .game-shell { height: 100vh; height: 100dvh; min-height: 280px; display: grid; grid-template-rows: auto minmax(0, 1fr) auto; gap: 16px; width: min(100%, 1000px); margin: auto; padding: 16px 28px; padding-top: max(16px, env(safe-area-inset-top)); padding-right: max(28px, env(safe-area-inset-right)); padding-bottom: max(16px, env(safe-area-inset-bottom)); padding-left: max(28px, env(safe-area-inset-left)); }
 .topbar { display: flex; align-items: center; justify-content: space-between; gap: 14px; padding-bottom: 12px; border-bottom: 1px solid var(--line); }
 .back { color: var(--green); text-decoration: none; display: inline-flex; align-items: center; gap: 7px; min-height: 44px; font-size: 13px; }
@@ -20,7 +20,6 @@ h1 { font: 25px/1.2 var(--hand); margin: 0; letter-spacing: 2px; }
 .edition { display: block; font-size: 9px; letter-spacing: 2px; margin-top: 5px; color: var(--muted); }
 .tools { display: flex; gap: 8px; align-items: center; }
 .icon-button { width: 44px; padding: 0; border-radius: 50%; font: 20px Georgia, serif; }
-select { min-height: 44px; width: 106px; border: 1px solid #c4cdb8; border-radius: 7px; padding: 6px; background: #fbfaf3; font-size: 12px; }
 .play-area { display: grid; grid-template-columns: minmax(0, 350px) 170px; justify-content: center; gap: 26px; min-height: 0; min-width: 0; }
 .board-slot { display: flex; align-items: center; justify-content: flex-end; min-width: 0; min-height: 0; }
 .board-frame { position: relative; width: 240px; height: 480px; box-shadow: 0 0 0 7px #e1e5d7, 0 0 0 8px #b4bda6, 5px 10px 20px #566b4510; border-radius: 3px; background: #fbfaf3; flex-shrink: 0; }
@@ -73,7 +72,6 @@ dialog form { text-align: right; }
   .edition { margin: 0; font-size: 8px; letter-spacing: 1px; }
   .back { font-size: 11px; gap: 3px; }
   .tools { gap: 5px; }
-  select { width: 88px; font-size: 11px; }
   .play-area { grid-template-columns: minmax(0, 1fr) 96px; gap: 18px; }
   .sidebar { gap: 9px; }
   .score-card, .next-card { padding: 7px 9px; }
@@ -120,6 +118,6 @@ dialog form { text-align: right; }
   .overlay p { font-size: 11px; margin-bottom: 10px; }
   .little-blocks { display: none; }
 }
-@media (max-width: 350px) { .edition { display: none; } .tools { gap: 4px; } select { width: 82px; } }
+@media (max-width: 350px) { .edition { display: none; } .tools { gap: 4px; } }
 /* Unusually small viewports / enlarged text retain scroll access to controls. */
 @media (max-height: 460px) and (max-width: 479px) { .game-shell { min-height: 460px; } }

@@ -4,7 +4,7 @@
   'use strict';
   if (window.BooplandI18n) return;
   const key = 'boopland-language';
-  const fallback = 'zh-CN';
+  const fallback = 'en';
   const languages = Object.freeze([
     { code: 'zh-CN', name: '简体中文' }, { code: 'en', name: 'English' },
     { code: 'ja', name: '日本語' }, { code: 'ko', name: '한국어' },
@@ -12,14 +12,18 @@
     { code: 'es', name: 'Español' }, { code: 'pt-BR', name: 'Português' }
   ].map(Object.freeze));
   const valid = value => languages.some(item => item.code === value);
+  function systemLanguage() {
+    const preferred = typeof navigator === 'undefined' ? '' : navigator.language || navigator.languages?.[0] || '';
+    const base = preferred.toLowerCase().split(/[-_]/)[0];
+    return languages.find(item => item.code.toLowerCase().split('-')[0] === base)?.code || fallback;
+  }
   const read = () => { try { return localStorage.getItem(key); } catch { return null; } };
   const save = value => { try { localStorage.setItem(key, value); } catch { /* URL propagation remains available. */ } };
   const siteRoot = new URL('./', document.currentScript.src);
   const catalogues = Object.create(null);
-  const selectors = new WeakSet();
   const requested = new URL(location.href).searchParams.get('lang');
   const saved = read();
-  let language = valid(requested) ? requested : valid(saved) ? saved : fallback;
+  let language = valid(requested) ? requested : valid(saved) ? saved : systemLanguage();
 
   catalogues.common = {
     'zh-CN': { language: '选择语言', back: '返回大厅', home: '回到首页 ↗', blankTitle: '留白 · Boopland' },
@@ -37,7 +41,7 @@
     const scope = dot < 0 ? document.documentElement.dataset.i18nScope : messageKey.slice(0, dot);
     const name = dot < 0 ? messageKey : messageKey.slice(dot + 1);
     const catalogue = catalogues[scope];
-    const message = catalogue?.[language]?.[name] ?? catalogue?.[fallback]?.[name] ?? catalogue?.en?.[name];
+    const message = catalogue?.[language]?.[name] ?? catalogue?.[fallback]?.[name] ?? catalogue?.['zh-CN']?.[name];
     if (typeof message !== 'string') return messageKey;
     return message.replace(/\{(\w+)\}/g, (match, name) => Object.hasOwn(values, name) ? String(values[name]) : match);
   }
@@ -73,19 +77,6 @@
       }
     }
     container.querySelectorAll('a[href]').forEach(localizeLink);
-    container.querySelectorAll('[data-language-select]').forEach(select => {
-      if (!selectors.has(select)) {
-        select.replaceChildren(...languages.map(item => {
-          const option = document.createElement('option');
-          option.value = item.code; option.textContent = item.name; option.lang = item.code;
-          return option;
-        }));
-        select.addEventListener('change', () => setLanguage(select.value));
-        selectors.add(select);
-      }
-      select.value = language;
-      select.setAttribute('aria-label', t('common.language'));
-    });
   }
 
   function updatePage() {
@@ -119,7 +110,7 @@
       apply();
     }
   });
-  save(language);
+  // Only an explicit choice is saved; automatic detection stays a default.
   updatePage();
   document.addEventListener('DOMContentLoaded', () => {
     apply();
@@ -133,7 +124,7 @@
     }).observe(document.body, { childList: true, subtree: true });
   });
   window.addEventListener('storage', event => {
-    if (event.key === key || event.key === null) setLanguage(valid(event.newValue) ? event.newValue : fallback, false);
+    if (event.key === key || event.key === null) setLanguage(valid(event.newValue) ? event.newValue : systemLanguage(), false);
   });
   window.addEventListener('pageshow', event => {
     const latest = read();

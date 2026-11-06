@@ -41,7 +41,7 @@ test('HTML bindings resolve and static resources work at the nested file path', 
     assert.ok(fs.existsSync(path.resolve(gameRoot, resource)), resource);
   }
   assert.ok(html.indexOf('../../i18n.js') < html.indexOf('src="i18n.js"'));
-  assert.ok(html.includes('data-language-select'));
+  assert.ok(!html.includes('data-language-select'));
 });
 
 test('lobby has one MaxTD entry with an existing cover and seven translated cards', () => {

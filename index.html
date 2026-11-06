@@ -277,7 +277,7 @@
         $('motion-button').disabled = reducedMotion.matches;
       }
       function setLanguage(next) {
-        language = Object.hasOwn(translations, next) ? next : 'zh-CN';
+        language = Object.hasOwn(translations, next) ? next : 'en';
         const words = translations[language];
         root.lang = language;
         document.title = `Boopland · ${words.title}`;
