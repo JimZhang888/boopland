@@ -5,6 +5,23 @@
 // locales 按全局语言提供 title、description、category；缺少翻译时回退到基础字段。
 window.GAME_LIST = [
   {
+    title: "迷你割草",
+    description: "飞叶绕身，种子开路。在手绘草地上升级成长，守住三分钟。",
+    path: "./games/mini-mow/index.html",
+    category: "生存挑战",
+    color: "#e8eddc",
+    cover: "./games/mini-mow/cover.svg",
+    locales: {
+      en: { title: "Mini Meadow", description: "Orbiting leaves, flying seeds. Grow stronger and survive three minutes in a pencil-drawn meadow.", category: "Survival challenge" },
+      ja: { title: "ちいさな草原", description: "葉と種で戦い、強くなって、手描きの草原で3分間生き延びよう。", category: "サバイバル" },
+      ko: { title: "작은 풀밭", description: "잎과 씨앗으로 싸우며 성장하고 손으로 그린 풀밭에서 3분을 버텨요.", category: "생존 도전" },
+      fr: { title: "Petite prairie", description: "Feuilles en orbite et graines volantes : survivez trois minutes dans une prairie au crayon.", category: "Défi de survie" },
+      de: { title: "Kleine Wiese", description: "Kreisende Blätter und fliegende Samen: Wachse und überlebe drei Minuten auf der Bleistiftwiese.", category: "Überlebensspiel" },
+      es: { title: "Mini pradera", description: "Hojas orbitales y semillas voladoras. Mejora y sobrevive tres minutos en una pradera a lápiz.", category: "Reto de supervivencia" },
+      'pt-BR': { title: "Mini campina", description: "Folhas ao redor e sementes voadoras. Evolua e sobreviva três minutos numa campina a lápis.", category: "Desafio de sobrevivência" }
+    }
+  },
+  {
     title: "俄罗斯方块",
     description: "一块一块慢慢叠，拼出整齐的小快乐。",
     path: "./games/tetris/index.html",
@@ -155,6 +172,57 @@ window.GAME_LIST = [
       de: { title: "Gomoku", description: "Setze Steine aufs Papier und spiele gegen drei KI-Stufen.", category: "Brettspielklassiker" },
       es: { title: "Gomoku", description: "Coloca piedras sobre papel y reta a tres niveles de IA.", category: "Clásicos de mesa" },
       'pt-BR': { title: "Gomoku", description: "Coloque pedras no papel e desafie três níveis de IA.", category: "Clássicos de tabuleiro" }
+    }
+  },
+  {
+    title: "叠叠高",
+    description: "看准时机叠起纸块，把小小的快乐，一层层送向云朵。",
+    path: "./games/paper-stack/index.html",
+    category: "轻松挑战",
+    color: "#e5e8d6",
+    cover: "./games/paper-stack/cover.svg",
+    locales: {
+      en: { title: "Paper Stack", description: "Time each tap and stack little paper blocks up toward the clouds.", category: "A little challenge" },
+      ja: { title: "つみつみタワー", description: "タイミングを合わせて紙のブロックを積み、雲に近づこう。", category: "小さな挑戦" },
+      ko: { title: "차곡차곡 탑", description: "타이밍을 맞춰 종이 블록을 쌓고 구름에 조금 더 가까이 가요.", category: "작은 도전" },
+      fr: { title: "Tour de papier", description: "Empilez des blocs de papier au bon moment pour rejoindre les nuages.", category: "Un petit défi" },
+      de: { title: "Papierturm", description: "Stapele Papierblöcke im richtigen Moment bis hinauf zu den Wolken.", category: "Eine kleine Herausforderung" },
+      es: { title: "Torre de papel", description: "Apila bloques de papel en el momento justo para acercarte a las nubes.", category: "Un pequeño reto" },
+      'pt-BR': { title: "Torre de papel", description: "Empilhe blocos de papel na hora certa para chegar mais perto das nuvens.", category: "Um pequeno desafio" }
+    }
+  },
+  {
+    title: "一键钓鱼",
+    description: "和小猫坐在湖边，抛一竿、等一等，把小小惊喜收进鱼篓。",
+    path: "./games/one-cast/index.html",
+    category: "放空片刻",
+    color: "#e1e8dc",
+    cover: "./games/one-cast/cover.svg",
+    locales: {
+      en: { title: "One Cast", description: "Cast, wait, and reel in little surprises with a cat by the lake.", category: "A quiet moment" },
+      ja: { title: "ひと押し釣り", description: "湖畔の猫と、投げて、待って、小さな驚きを釣り上げよう。", category: "のんびり時間" },
+      ko: { title: "원터치 낚시", description: "호숫가 고양이와 줄을 던지고 기다려 작은 기쁨을 낚아요.", category: "잠깐의 여유" },
+      fr: { title: "Un lancer", description: "Lancez, attendez et pêchez de petites surprises avec un chat au bord du lac.", category: "Un instant de calme" },
+      de: { title: "Ein Wurf", description: "Wirf aus, warte und angle mit einer Katze kleine Überraschungen am See.", category: "Eine ruhige Minute" },
+      es: { title: "Un lance", description: "Lanza, espera y pesca pequeñas sorpresas con un gato junto al lago.", category: "Un rato de calma" },
+      'pt-BR': { title: "Uma fisgada", description: "Lance, espere e pesque pequenas surpresas com um gato à beira do lago.", category: "Um momento de calma" }
+    }
+  },
+  {
+    title: "我是老司机",
+    description: "握好小方向盘，在手绘停车场里慢慢转弯、倒车，把每一格停得刚刚好。",
+    path: "./games/old-driver/index.html",
+    category: "驾驶挑战",
+    color: "#e3e7d7",
+    cover: "./games/old-driver/cover.svg",
+    locales: {
+      en: { title: "Parking Pro", description: "Steer, reverse, and find the perfect spot in eight hand-drawn parking challenges.", category: "Driving challenge" },
+      ja: { title: "駐車の達人", description: "手描きの駐車場でゆっくり曲がって、バックして、8つの課題に挑戦。", category: "運転チャレンジ" },
+      ko: { title: "주차의 달인", description: "손으로 그린 주차장에서 회전과 후진을 연습하고 8개 과제에 도전해요.", category: "운전 도전" },
+      fr: { title: "As du créneau", description: "Braquez, reculez et trouvez la place parfaite dans huit défis dessinés au crayon.", category: "Défi de conduite" },
+      de: { title: "Parkprofi", description: "Lenke, fahre rückwärts und meistere acht handgezeichnete Parkübungen.", category: "Fahrherausforderung" },
+      es: { title: "As del aparcamiento", description: "Gira, retrocede y encuentra el sitio perfecto en ocho retos dibujados a mano.", category: "Reto de conducción" },
+      'pt-BR': { title: "Ás do volante", description: "Vire, dê ré e encontre a vaga perfeita em oito desafios desenhados à mão.", category: "Desafio de direção" }
     }
   },
   // 新增示例（删除每行开头的 //，修改内容即可）：

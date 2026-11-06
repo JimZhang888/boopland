@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="660" height="400" viewBox="0 0 660 400">
+  <defs><pattern id="lines" width="660" height="30" patternUnits="userSpaceOnUse"><path d="M0 29.5h660" fill="none" stroke="#dfe4d7" stroke-width=".8"/></pattern><pattern id="hatch" width="7" height="7" patternUnits="userSpaceOnUse" patternTransform="rotate(25)"><path d="M0 0v7" stroke="#738365" stroke-width=".8" opacity=".3"/></pattern></defs>
+  <path fill="#f3f2e8" d="M0 0h660v400H0z"/><path fill="url(#lines)" d="M0 0h660v400H0z"/>
+  <g fill="none" stroke="#a6b29a" stroke-linecap="round" stroke-linejoin="round"><path d="M99 122c-20 0-24-26-3-30-2-30 41-35 47-7 24-12 46 26 17 35Z"/><path d="M489 215c-21 0-23-24-4-27 0-28 34-32 41-6 30-10 37 28 14 31Z"/><path d="m506 69 3 10 11 2-9 6 2 11-9-6-9 6 3-11-8-7 11-1Z"/><path d="M143 270v15m-7-7 15-1M467 317l8 4m-5-8-1 16"/></g>
+  <ellipse cx="330" cy="334" rx="137" ry="23" fill="#e0e6d5"/>
+  <g stroke="#77856b" stroke-width="1.25" stroke-linejoin="round">
+    <path d="m214 291 116-52 116 52v23l-116 52-116-52Z" fill="#bbcca9"/><path d="m214 291 116-52 116 52-116 52Z" fill="#d7e1c7"/><path d="M330 343v23m0-23 116-52v23l-116 52" fill="url(#hatch)"/>
+    <path d="m219 263 111-50 111 50v23l-111 50-111-50Z" fill="#b5cbc0"/><path d="m219 263 111-50 111 50-111 50Z" fill="#d5e3d7"/><path d="M330 313v23m0-23 111-50v23l-111 50" fill="url(#hatch)"/>
+    <path d="m224 235 106-47 106 47v23l-106 47-106-47Z" fill="#b2c9cd"/><path d="m224 235 106-47 106 47-106 47Z" fill="#d6e4e5"/><path d="M330 282v23m0-23 106-47v23l-106 47" fill="url(#hatch)"/>
+    <path d="m229 207 101-45 101 45v23l-101 45-101-45Z" fill="#c5b9c4"/><path d="m229 207 101-45 101 45-101 45Z" fill="#e1dbe1"/><path d="M330 252v23m0-23 101-45v23l-101 45" fill="url(#hatch)"/>
+    <path d="m234 179 96-43 96 43v23l-96 43-96-43Z" fill="#d6bfa8"/><path d="m234 179 96-43 96 43-96 43Z" fill="#e9decd"/><path d="M330 222v23m0-23 96-43v23l-96 43" fill="url(#hatch)"/>
+    <path d="m270 111 92-41 92 41v23l-92 41-92-41Z" fill="#c9c995"/><path d="m270 111 92-41 92 41-92 41Z" fill="#e5e4bf"/><path d="M362 152v23m0-23 92-41v23l-92 41" fill="url(#hatch)"/>
+  </g><g fill="none" stroke="#8e9d7d" stroke-linecap="round"><path d="m238 104 11 5m-25 0 11 5m162-62 11 5"/><path d="m330 98v28m-5-7 5 7 5-7" stroke-dasharray="3 4"/><path d="m258 179 69-30m-79 36 38-16m-47 66 43-18" opacity=".4"/></g>
+</svg>

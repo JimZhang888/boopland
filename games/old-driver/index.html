@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-i18n-scope="driver">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#f5f3eb">
+  <title data-i18n="driver.pageTitle">我是老司机 · Boopland</title>
+  <link rel="stylesheet" href="style.css">
+  <script defer src="../../analytics.js"></script>
+</head>
+<body>
+  <main class="game-shell">
+    <header class="topbar">
+      <a class="back" href="../../games.html"><span aria-hidden="true">↶</span><span data-i18n="common.back">返回大厅</span></a>
+      <h1 data-i18n="driver.name">我是老司机</h1>
+      <div class="top-actions">
+        <button id="sound" class="icon-button" aria-pressed="false" data-i18n-label="driver.soundOn">♪<span class="sound-slash" aria-hidden="true">╱</span></button>
+        <button id="help" class="icon-button" data-i18n-label="driver.help">?</button>
+      </div>
+    </header>
+    <section class="workspace">
+      <div class="notebook">
+        <div class="dashboard">
+          <button id="courses" class="course-button"><span class="course-number" id="level-number">01</span><span><small data-i18n="driver.course">驾驶练习</small><b id="level-name"></b></span><span class="chevron" aria-hidden="true">⌄</span></button>
+          <div class="stats"><div><small data-i18n="driver.time">用时</small><b id="timer">00:00</b></div><div><small data-i18n="driver.hits">碰撞</small><b id="hits">0 <em>/ 5</em></b></div></div>
+          <button id="restart" class="icon-button" data-i18n-label="driver.restart">↺</button>
+          <button id="pause" class="icon-button" data-i18n-label="driver.pause">Ⅱ</button>
+        </div>
+        <div class="stage" id="stage">
+          <canvas id="game" role="img" tabindex="0" data-i18n-label="driver.canvas" data-i18n="driver.canvas">俯视停车练习场</canvas>
+          <div id="toast" class="toast" role="status" hidden></div>
+          <div class="stage-caption" aria-hidden="true"><span>BOOPLAND MOTOR CLUB</span><span id="sheet-number">PRACTICE / 01</span></div>
+          <section id="overlay" class="overlay" hidden role="dialog" aria-modal="true" aria-labelledby="overlay-title">
+            <div class="overlay-card">
+              <button id="close-overlay" class="close-button icon-button" data-i18n-label="driver.close">×</button>
+              <div id="overlay-art" class="overlay-art" aria-hidden="true">P</div>
+              <p id="overlay-kicker" class="kicker"></p>
+              <h2 id="overlay-title"></h2>
+              <p id="overlay-description" class="overlay-description"></p>
+              <div id="overlay-content"></div>
+              <div class="overlay-actions"><button id="primary-action" class="primary"></button><button id="secondary-action" class="secondary" hidden></button></div>
+            </div>
+          </section>
+        </div>
+        <div class="driving-status"><span class="status-dot" id="status-dot"></span><span id="driving-tip" role="status"></span><div class="hold-track" aria-hidden="true"><i id="hold-progress"></i></div></div>
+        <footer class="controls">
+          <div class="steering controls-group">
+            <button class="drive-button" data-control="left" data-i18n-label="driver.left"><span aria-hidden="true">↶</span><small>A / ←</small></button>
+            <svg id="wheel" class="wheel" viewBox="0 0 60 60" aria-hidden="true"><circle cx="30" cy="30" r="23"/><circle cx="30" cy="30" r="19"/><circle cx="30" cy="30" r="5"/><path d="M9 24l16 5m10 0 16-5M30 35v17"/></svg>
+            <button class="drive-button" data-control="right" data-i18n-label="driver.right"><span aria-hidden="true">↷</span><small>D / →</small></button>
+          </div>
+          <div class="speedometer"><strong><b id="speed">0</b><small>km/h</small></strong><span id="gear">N</span></div>
+          <div class="pedals controls-group">
+            <button class="drive-button reverse" data-control="reverse" data-i18n-label="driver.reverse"><span data-i18n="driver.reverse">倒车</span><small>S / ↓</small></button>
+            <button class="drive-button brake" data-control="brake" data-i18n-label="driver.brake"><span data-i18n="driver.brake">刹车</span><small>SPACE</small></button>
+            <button class="drive-button accelerator" data-control="forward" data-i18n-label="driver.forward"><span data-i18n="driver.forward">前进</span><small>W / ↑</small></button>
+          </div>
+        </footer>
+      </div>
+      <aside class="field-notes">
+        <div class="tape" aria-hidden="true"></div>
+        <p class="note-eyebrow">DRIVER'S NOTEBOOK</p>
+        <svg class="note-car" viewBox="0 0 160 100" aria-hidden="true"><path class="car-fill" d="m29 53 11-25 56-2 20 25 21 6v21H19V59Z"/><path d="m29 53 11-25 56-2 20 25 21 6v21H19V59Zm14-20-9 19 33-1V32Zm32-1v20h33L93 32ZM20 65h14m89 0h12M72 58h10"/><circle cx="44" cy="77" r="12"/><circle cx="112" cy="77" r="12"/><path d="M43 71v12m-6-6h13m62-6v12m-6-6h12M15 94l129-1"/></svg>
+        <h2 data-i18n="driver.noteTitle">慢一点，稳一点。</h2>
+        <p id="mission-note" class="mission-note"></p>
+        <div class="note-divider"></div>
+        <p class="note-label" data-i18n="driver.target">本关目标</p>
+        <ul class="checklist"><li data-i18n="driver.check1">完整停进绿色车位</li><li data-i18n="driver.check2">车头对齐车位箭头</li><li data-i18n="driver.check3">松开油门，停稳 1.2 秒</li></ul>
+        <p class="par-note" id="par-note"></p>
+        <div class="note-divider"></div>
+        <div class="progress-heading"><span data-i18n="driver.license">老司机进度</span><b id="total-stars">0 / 24 ★</b></div>
+        <div id="level-list" class="level-list"></div>
+        <p class="note-foot" data-i18n="driver.noteFoot">每一次调整，都离刚刚好更近。</p>
+      </aside>
+    </section>
+    <p class="page-foot"><span data-i18n="driver.footnote">把方向握在手里，把日子停在喜欢的位置。</span><span class="keyboard-tip" data-i18n="driver.shortcuts">P 暂停 · R 重来</span></p>
+  </main>
+  <script src="../../i18n.js"></script>
+  <script src="translations.js"></script>
+  <script src="engine.js"></script>
+  <script src="game.js"></script>
+</body>
+</html>

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-i18n-scope="paperStack">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#f5f3eb">
+  <title data-i18n="paperStack.pageTitle">叠叠高 · Boopland</title>
+  <link rel="stylesheet" href="style.css">
+  <script defer src="../../analytics.js"></script>
+</head>
+<body>
+  <main class="game-shell">
+    <header class="topbar">
+      <a class="back" href="../../games.html"><span aria-hidden="true">↶</span><span data-i18n="common.back">返回大厅</span></a>
+      <div class="brand">boopland<span aria-hidden="true"> / </span><span class="mobile-name" data-i18n="paperStack.name">叠叠高</span></div>
+      <div class="tools">
+        <button id="sound" class="icon-button" aria-pressed="false" data-i18n-label="paperStack.soundOn"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9h4l5-4v14l-5-4H4Z"/><path id="sound-wave" d="m17 9 5 6m0-6-5 6"/></svg></button>
+        <button id="help" class="icon-button" data-i18n-label="paperStack.help"><span aria-hidden="true">?</span></button>
+        <button id="pause" class="icon-button" disabled data-i18n-label="paperStack.pause"><svg viewBox="0 0 24 24" aria-hidden="true"><path id="pause-symbol" d="M8 5v14M16 5v14"/></svg></button>
+      </div>
+    </header>
+    <section class="desk">
+      <aside class="margin-note">
+        <p class="eyebrow"><span></span><span data-i18n="paperStack.eyebrow">一点一点，向上</span></p>
+        <h1 data-i18n="paperStack.name">叠叠高</h1>
+        <p class="intro" data-i18n="paperStack.intro">把片刻，叠成一座小塔。<br>离云朵再近一点点。</p>
+        <svg class="sketch" viewBox="0 0 220 120" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="m31 76 48-23 49 23-49 25Zm0 0v12l48 24 49-24V76M79 101v11M79 53V35m0 0-6 9m6-9 6 9"/><path d="m137 33 24-12 26 12-26 12Zm0 0v9l24 12 26-12v-9M161 45v9M119 66c29 3 30-5 28-12" stroke-dasharray="3 5"/><path d="M151 10c-6-15-24-7-22 3-18-6-25 16-7 17h11M39 28l3 9 9 1-7 6 1 9-7-5-8 5 2-10-7-6 10-1Z" opacity=".6"/></g></svg>
+        <div class="rules">
+          <div><span class="rule-number">01</span><p data-i18n="paperStack.rule1">看准时机，点击落下方块。</p></div>
+          <div><span class="rule-number">02</span><p data-i18n="paperStack.rule2">没对齐的边缘会掉落，小塔会变窄。</p></div>
+          <div><span class="rule-number">03</span><p data-i18n="paperStack.rule3">连续 3 次完美叠放，补回一点宽度。</p></div>
+        </div>
+        <p class="margin-foot" data-i18n="paperStack.note">不必着急，找到自己的节奏。</p>
+      </aside>
+      <section class="notebook" data-i18n-label="paperStack.name">
+        <div class="hud">
+          <div class="stat current"><span data-i18n="paperStack.height">本次高度</span><strong id="height">00</strong></div>
+          <div class="hud-doodle" aria-hidden="true"><svg viewBox="0 0 90 35"><path d="m8 25 18-9 18 9-18 9Zm18-9V4m-5 7 5-7 5 7m24 15 11-5 11 5-11 6Z"/></svg></div>
+          <div class="stat best"><span data-i18n="paperStack.best">最高纪录</span><strong id="best">00</strong></div>
+        </div>
+        <div class="stage" id="stage">
+          <canvas id="game" tabindex="0" role="button" data-i18n-label="paperStack.canvas" data-i18n="paperStack.canvas">叠叠高游戏画布，按空格落下方块</canvas>
+          <div class="stage-note" id="stage-note"><span class="tiny-star" aria-hidden="true">✧</span><span data-i18n="paperStack.stageNote">一座小塔，一个小小的白日梦</span><span class="tiny-star" aria-hidden="true">✧</span></div>
+          <div id="feedback" class="feedback" role="status" hidden></div>
+          <section id="overlay" class="overlay" aria-labelledby="overlay-title" hidden>
+            <div class="overlay-card">
+              <span class="overlay-star" aria-hidden="true">✧</span>
+              <h2 id="overlay-title"></h2>
+              <p id="overlay-copy"></p>
+              <div id="result" class="result" hidden><strong id="result-height">0</strong><span data-i18n="paperStack.layers">层</span></div>
+              <p id="result-note"></p>
+            </div>
+          </section>
+        </div>
+        <footer class="controls">
+          <div class="control-hint"><span id="hint" data-i18n="paperStack.readyHint">看准了，就轻轻落下。</span><small id="keyboard-hint" data-i18n="paperStack.keyboard">点击画面 / 空格键</small></div>
+          <button id="restart" class="restart" data-i18n="paperStack.restart" hidden>重新开始</button>
+          <button id="action" class="primary"><span id="action-label" data-i18n="paperStack.start">开始叠叠高</span><span id="action-symbol" aria-hidden="true">↗</span></button>
+        </footer>
+      </section>
+    </section>
+    <footer class="page-foot"><span>BOOPLAND</span><span data-i18n="paperStack.footer">一块一块，把小快乐叠起来。</span><span aria-hidden="true">✳</span></footer>
+  </main>
+  <dialog id="help-dialog" aria-labelledby="help-title">
+    <form method="dialog"><button class="icon-button close" data-i18n-label="paperStack.close">×</button></form>
+    <p class="eyebrow">BOOPLAND</p><h2 id="help-title" data-i18n="paperStack.help">怎么玩</h2>
+    <ol><li data-i18n="paperStack.rule1"></li><li data-i18n="paperStack.rule2"></li><li data-i18n="paperStack.rule3"></li></ol>
+    <p data-i18n="paperStack.rule4"></p><p class="help-keys" data-i18n="paperStack.keys"></p>
+  </dialog>
+  <script src="../../i18n.js"></script>
+  <script src="translations.js"></script>
+  <script src="engine.js"></script>
+  <script src="game.js"></script>
+</body>
+</html>

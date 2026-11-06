@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="zh-CN" data-i18n-scope="mow">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#f5f3eb">
+  <title data-i18n="mow.pageTitle">迷你割草 · Boopland</title>
+  <link rel="stylesheet" href="style.css">
+  <script defer src="../../analytics.js"></script>
+</head>
+<body>
+  <main class="game-shell">
+    <header class="topbar">
+      <a class="back" href="../../games.html"><span aria-hidden="true">←</span><span data-i18n="common.back">返回大厅</span></a>
+      <h1 data-i18n="mow.title">迷你割草</h1>
+      <nav class="toolbar" data-i18n-label="mow.controls" aria-label="游戏操作">
+        <button id="sound" class="icon-button" data-i18n-label="mow.soundOff" aria-label="音效关闭" aria-pressed="false">♪<span class="sound-strike" aria-hidden="true"></span></button>
+        <button id="help" class="icon-button" data-i18n-label="mow.help" aria-label="玩法说明">?</button>
+        <button id="pause" class="icon-button" data-i18n-label="mow.pause" aria-label="暂停" disabled><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14M16 5v14"/></svg></button>
+      </nav>
+    </header>
+    <section class="status" data-i18n-label="mow.status" aria-label="本局状态">
+      <div class="health"><span class="heart" aria-hidden="true">♡</span><div class="health-track"><i id="hp-fill"></i></div><span id="hp-value">100</span></div>
+      <div class="timer"><strong id="timer">00:00</strong><span>/ 03:00</span></div>
+      <div class="score"><span data-i18n="mow.kills">击退</span><strong id="kills">0</strong></div>
+      <div class="experience"><span id="level">Lv. 1</span><div class="xp-track"><i id="xp-fill"></i></div><span id="wave"></span></div>
+    </section>
+    <section class="stage" id="stage" data-i18n-label="mow.arena" aria-label="草地战场">
+      <canvas id="game" tabindex="0" data-i18n-label="mow.canvasLabel" aria-label="用方向键或拖动移动，自动攻击"></canvas>
+      <div class="stage-label" aria-hidden="true"><span data-i18n="mow.fieldNote">草地观察手记</span><span>— 01 —</span></div>
+      <div class="toast" id="toast" role="status" hidden></div>
+      <div class="joystick" id="joystick" hidden aria-hidden="true"><i></i></div>
+      <div class="overlay" id="overlay">
+        <section class="paper-card" id="panel" role="dialog" aria-modal="false" aria-labelledby="panel-title"></section>
+      </div>
+    </section>
+    <footer class="bottom-bar">
+      <div class="input-note"><span class="key-cap" aria-hidden="true">W A S D</span><span data-i18n="mow.moveHint">方向键 / 拖动移动</span></div>
+      <span class="auto-note"><i></i><span data-i18n="mow.auto">自动攻击已就绪</span></span>
+      <button class="dash-button" id="dash" disabled><span aria-hidden="true">↝</span><span id="dash-label" data-i18n="mow.dash">冲刺</span><kbd>Space</kbd></button>
+    </footer>
+  </main>
+  <script src="../../i18n.js"></script>
+  <script src="translations.js"></script>
+  <script src="engine.js"></script>
+  <script src="game.js"></script>
+</body>
+</html>
