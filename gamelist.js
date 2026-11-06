@@ -5,6 +5,23 @@
 // locales 按全局语言提供 title、description、category；缺少翻译时回退到基础字段。
 window.GAME_LIST = [
   {
+    title: "云间来信 · 跳一跳",
+    description: "和小夏一起，按住蓄力、松开起跳，在花朵与薄雾间走向下一座浮岛。",
+    path: "./games/cloud-leap/index.html",
+    category: "轻松挑战",
+    color: "#e6eadb",
+    cover: "./games/cloud-leap/cover.svg",
+    locales: {
+      en: { title: "Cloud Letters · Jump", description: "Hold to charge, release to leap, and join a little girl among flowers and floating islands.", category: "A little challenge" },
+      ja: { title: "雲からの手紙 · ジャンプ", description: "長押しで力をため、離してジャンプ。少女と花や霧に包まれた浮島を旅しよう。", category: "小さな挑戦" },
+      ko: { title: "구름 편지 · 점프", description: "눌러 힘을 모으고 놓아서 점프해요. 소녀와 함께 꽃과 안개 사이의 떠 있는 섬을 여행해요.", category: "작은 도전" },
+      fr: { title: "Lettres des nuages · Sauts", description: "Maintenez puis relâchez pour sauter avec une petite fille entre fleurs et îles flottantes.", category: "Un petit défi" },
+      de: { title: "Wolkenpost · Hüpfspiel", description: "Halten, loslassen und mit einem kleinen Mädchen über blühende Inseln in den Wolken springen.", category: "Eine kleine Herausforderung" },
+      es: { title: "Cartas de las nubes · Saltos", description: "Mantén y suelta para saltar con una niña entre flores, niebla e islas flotantes.", category: "Un pequeño reto" },
+      'pt-BR': { title: "Cartas das nuvens · Saltos", description: "Segure e solte para pular com uma menina entre flores, névoa e ilhas flutuantes.", category: "Um pequeno desafio" }
+    }
+  },
+  {
     title: "上班摸鱼",
     description: "按住摸鱼，松手工作。识破老板的假动作，带着快乐准时下班。",
     path: "./games/office-slacker/index.html",

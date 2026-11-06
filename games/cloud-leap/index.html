@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="zh-CN" data-i18n-scope="cloudLeap">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#f5f3eb">
+  <title data-i18n="cloudLeap.pageTitle">云间来信 · 跳一跳 · Boopland</title>
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="style.css">
+  <script defer src="../../analytics.js"></script>
+</head>
+<body>
+  <main class="app">
+    <header class="header">
+      <a class="back" href="../../games.html"><span aria-hidden="true">↶</span><span data-i18n="common.back">返回大厅</span></a>
+      <h1 data-i18n="cloudLeap.name">云间来信</h1>
+      <nav data-i18n-label="cloudLeap.settings">
+        <button class="icon-button" id="sound" aria-label="开启音效" aria-pressed="false"><svg id="sound-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="m11 5-5 4H3v6h3l5 4Z"/><path class="sound-wave" d="M15 8c3 2 3 6 0 8m3-11c5 4 5 10 0 14"/></svg></button>
+        <button class="icon-button" id="help" data-i18n-label="cloudLeap.help" data-i18n-title="cloudLeap.help"><span aria-hidden="true">?</span></button>
+        <button class="icon-button" id="pause" data-i18n-label="cloudLeap.pause" data-i18n-title="cloudLeap.pause"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M8 5v14M16 5v14"/></svg></button>
+      </nav>
+    </header>
+    <section class="game-shell" data-i18n-label="cloudLeap.gameName">
+      <div class="game-top">
+        <div class="scoreboard"><div class="score-label" data-i18n="cloudLeap.score">本次旅程</div><div class="score-value"><strong id="score">0</strong><span data-i18n="cloudLeap.points">分</span></div><div class="best"><span data-i18n="cloudLeap.best">最远足迹</span><strong id="best">0</strong><span aria-hidden="true">✧</span></div></div>
+        <div class="chapter" id="chapter">第一章 · 风起的地方</div>
+        <button id="restart" class="icon-button restart" data-i18n-label="cloudLeap.restart" data-i18n-title="cloudLeap.restart"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M4 9a8 8 0 1 1 0 7M4 3v6h6"/></svg></button>
+      </div>
+      <canvas id="game" tabindex="0" data-i18n-label="cloudLeap.canvas" data-i18n="cloudLeap.canvas">跳一跳游戏区：按住空格或触摸蓄力，松开跳跃。</canvas>
+      <div class="scene-caption" data-i18n="cloudLeap.scene">雾隐之森</div>
+      <div id="toast" class="toast" role="status" aria-live="polite"></div>
+      <div class="first-hint" id="first-hint" data-i18n="cloudLeap.firstHint">第一步，从轻轻一跃开始</div>
+      <div class="game-bottom"><span aria-hidden="true">✧</span><span data-i18n="cloudLeap.note">每一个小小的勇敢，都有风接住。</span><span aria-hidden="true">✧</span></div>
+      <div class="overlay" id="overlay" hidden>
+        <section class="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+          <div class="modal-flower" aria-hidden="true">✿</div><div class="eyebrow" id="modal-eyebrow"></div><h2 id="modal-title"></h2><div id="modal-content"></div><button class="primary" id="modal-action"></button><p class="modal-foot" id="modal-foot"></p>
+        </section>
+      </div>
+    </section>
+    <section class="controls" data-i18n-label="cloudLeap.controls">
+      <p class="instruction" data-i18n="cloudLeap.inputHint">鼠标 / 触屏 / 空格</p>
+      <div class="jump-control"><button id="jump" class="jump-button"><span aria-hidden="true">↟</span><span id="jump-label">按住蓄力 · 松开起跳</span></button><div class="power-track" role="progressbar" data-i18n-label="cloudLeap.power" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><div id="power-zone"></div><div id="power-fill"></div></div><div class="power-label"><span data-i18n="cloudLeap.shortJump">轻轻一跳</span><span data-i18n="cloudLeap.longJump">用力一点</span></div></div>
+      <p class="instruction" data-i18n="cloudLeap.bonusHint">落在花心，收获额外分数</p>
+    </section>
+  </main>
+  <script src="../../i18n.js"></script>
+  <script src="translations.js"></script>
+  <script src="physics.js"></script>
+  <script src="game.js"></script>
+</body>
+</html>
