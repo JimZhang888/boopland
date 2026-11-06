@@ -11,6 +11,7 @@
 ├─ games.html               # 小游戏大厅
 ├─ gamelist.js              # 手动维护的游戏清单
 ├─ i18n.js                  # 全站语言设置、翻译接口与链接传递
+├─ analytics.js             # 全站 Vercel 访问统计（本地文件与回环地址跳过）
 ├─ games-i18n.js            # 大厅的八国语言文案
 └─ games/
    ├─ README.md             # 新增游戏的快速说明
@@ -127,6 +128,14 @@ html, body { margin: 0; width: 100%; }
 - 需要开始、暂停、重开、音效等功能时，控件应有清楚反馈；纯色等特殊极简任务按该任务要求实现，不强行添加功能。
 - 有音效时由用户交互启动，并提供关闭方式。切换标签页或离开游戏时暂停不必要的声音和循环，恢复后避免游戏时间突然跳跃。
 - 不添加无关登录、广告、联网请求和统计；不把调试信息或开发说明摆进正常游玩界面。
+
+### 访问统计
+
+- 全站使用根目录 `analytics.js` 接入 Vercel Web Analytics，保持纯静态，无需 npm 依赖或构建步骤。
+- 欢迎页和大厅在 `<head>` 内引入 `<script defer src="./analytics.js"></script>`；小游戏使用 `<script defer src="../../analytics.js"></script>`，每页只引入一次。
+- 加载器在 HTTP(S) 页面异步加载 Vercel 的 `/_vercel/insights/script.js`，该平台接口必须使用域名根路径；本地文件、`localhost`（含子域）及回环 IP 预览跳过统计。
+- 首次上线需在 Vercel 项目的 Analytics 页面启用 Web Analytics，再重新部署。部署后访问首页、大厅及游戏，确认 Analytics 中开始出现浏览记录；脚本被拦截或服务未启用不会阻止游戏运行。
+- 仅统计页面访问，不额外上报游戏操作、成绩或自定义事件。接入说明见 [Vercel 官方文档](https://vercel.com/docs/analytics/quickstart)。
 
 ### 全局语言（所有页面共同遵守）
 
