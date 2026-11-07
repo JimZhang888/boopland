@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="zh-CN" data-i18n-scope="spider">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#f5f3eb">
+  <meta name="description" data-i18n-content="description" content="一张张理顺纸牌，把八组同花色从 K 排到 A。">
+  <title data-i18n="title">蜘蛛纸牌 · Boopland</title>
+  <link rel="icon" type="image/svg+xml" href="./cover.svg">
+  <link rel="stylesheet" href="./style.css">
+  <script defer src="../../analytics.js"></script>
+</head>
+<body>
+  <div class="game-shell">
+    <header class="topbar">
+      <a class="back-link" href="../../games.html" data-i18n-label="common.back"><span aria-hidden="true">←</span><span class="back-copy" data-i18n="common.back">返回大厅</span></a>
+      <h1><svg class="spider-doodle" viewBox="0 0 42 44" aria-hidden="true"><path d="M21 1v13M15 20 8 15 4 17m11 8-10-2-3 4m13 3-9 3-1 5m21-18 8-5 4 2m-12 8 10-2 3 4m-13 3 9 3 1 5"/><ellipse cx="21" cy="27" rx="8" ry="10"/><path d="M17 19q-3-7 4-7t4 7M18 25h.1M24 25h.1M18 30q3 3 6 0"/></svg><span data-i18n="name">蜘蛛纸牌</span></h1>
+      <div class="header-actions">
+        <button id="pause" class="icon-button" data-i18n-label="pause" data-i18n-title="pause"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14M16 5v14"/></svg></button>
+        <button id="help" class="icon-button" data-i18n-label="help" data-i18n-title="help">?</button>
+      </div>
+    </header>
+
+    <main class="notebook" data-i18n-label="gameArea">
+      <div class="scorebar">
+        <button id="difficulty" class="difficulty-button" data-i18n-title="newGame"><span class="mode-dot" aria-hidden="true"></span><span id="difficulty-label"></span><span aria-hidden="true">⌄</span></button>
+        <div class="stat"><span data-i18n="score">得分</span><strong id="score">500</strong></div>
+        <div class="stat"><span data-i18n="moves">步数</span><strong id="moves">0</strong></div>
+        <div class="stat"><span data-i18n="time">用时</span><strong id="time">00:00</strong></div>
+      </div>
+      <section class="tableau" id="tableau" data-i18n-label="board"></section>
+      <div class="status-line"><span class="status-mark" aria-hidden="true">✧</span><p id="status" role="status" aria-live="polite"></p></div>
+      <div class="collection-row">
+        <div class="collection">
+          <div class="collection-title"><span data-i18n="collected">已收集</span><strong id="collected">0 / 8</strong></div>
+          <div id="foundations" class="foundations" aria-hidden="true"></div>
+        </div>
+        <span class="little-note" data-i18n="note">把纷乱，一点点理顺。</span>
+        <button id="deal" class="deal-button"><span id="stock-art" class="stock-art" aria-hidden="true"><i></i><i></i><i></i><b>♠</b></span><span class="deal-copy"><strong data-i18n="deal">发牌</strong><small id="stock-count"></small></span></button>
+      </div>
+      <nav class="tools" data-i18n-label="tools">
+        <button id="undo" class="tool-button"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m8 4-5 5 5 5M3 9h11a6 6 0 0 1 0 12h-3"/></svg><span data-i18n="undo">撤回</span></button>
+        <button id="hint" class="tool-button"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 16c0-2-3-3-3-7a7 7 0 0 1 14 0c0 4-3 5-3 7Zm1 4h6m-3-4v-5m-2 0h4"/></svg><span data-i18n="hint">提示</span></button>
+        <button id="new-game" class="tool-button"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 10a8 8 0 1 1 1 9M4 3v7h7"/></svg><span data-i18n="newGame">新的一局</span></button>
+      </nav>
+    </main>
+    <footer class="page-foot"><span>♠</span><span data-i18n="footer">不赶时间，慢慢出牌。</span><span>♠</span></footer>
+  </div>
+  <div id="drag-layer" aria-hidden="true"></div>
+  <dialog id="dialog" aria-labelledby="dialog-title">
+    <div class="dialog-sheet">
+      <button id="close-dialog" class="icon-button dialog-close" data-i18n-label="close">×</button>
+      <span id="dialog-art" class="dialog-art" aria-hidden="true">♠</span>
+      <h2 id="dialog-title"></h2>
+      <div id="dialog-copy" class="dialog-copy"></div>
+      <div id="dialog-options" class="dialog-options"></div>
+      <div id="dialog-actions" class="dialog-actions"></div>
+      <a class="dialog-back" href="../../games.html" data-i18n="common.back">返回大厅</a>
+    </div>
+  </dialog>
+  <script src="../../i18n.js"></script>
+  <script src="./translations.js"></script>
+  <script src="./engine.js"></script>
+  <script src="./game.js"></script>
+</body>
+</html>

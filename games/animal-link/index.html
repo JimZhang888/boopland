@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="zh-CN" data-i18n-scope="animalLink">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#f5f3eb">
+  <meta name="description" content="把可爱的小伙伴，一对一对连起来。纸上的动物连连看。" data-i18n-content="description">
+  <title>动物连连看 · Boopland</title>
+  <link rel="icon" href="./favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="./style.css">
+  <script defer src="../../analytics.js"></script>
+</head>
+<body>
+  <div class="paper-grain" aria-hidden="true"></div>
+  <div class="game-shell">
+    <header class="topbar">
+      <a class="back-link" href="../../games.html" data-i18n-label="common.back"><span aria-hidden="true">←</span><span data-i18n="common.back">返回大厅</span></a>
+      <div class="heading"><svg viewBox="0 0 32 32" aria-hidden="true"><path d="M9 25Q8 9 25 7q2 17-16 18Zm0 0L22 11M15 19l-1-7m1 7 8-1"/></svg><h1 data-i18n="name">动物连连看</h1></div>
+      <div class="header-actions">
+        <button id="pause" class="icon-button" data-i18n-label="pause"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14M16 5v14"/></svg></button>
+        <button id="sound" class="icon-button" aria-pressed="false" data-i18n-label="soundOn"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m11 5-5 4H3v6h3l5 4V5Z"/><path class="waves" d="M15 8q5 4 0 8m3-11q8 7 0 14"/><path class="muted" d="m16 9 6 6m0-6-6 6"/></svg></button>
+        <button id="help" class="icon-button" data-i18n-label="help">?</button>
+      </div>
+    </header>
+    <main class="play-layout">
+      <aside class="left-panel">
+        <div class="margin-note"><span class="eyebrow" data-i18n="eyebrow">LITTLE HAPPY CONNECTIONS</span><p data-i18n="margin">绕个小弯，<br>也会遇见你。</p><svg viewBox="0 0 160 20" aria-hidden="true"><path d="M3 12q70-10 151-3M8 17q65-6 136-2"/></svg></div>
+        <section class="score-paper" data-i18n-label="stats">
+          <div class="pair-stat"><span class="stat-label" data-i18n="pairs">已配对</span><div><strong id="matched">0</strong><span id="total">/ 18</span></div></div>
+          <div class="time-stat"><span class="stat-label" data-i18n="time">用时</span><strong id="time">00:00</strong></div>
+          <div class="best-stat"><span data-i18n="best">最快完成</span><span id="best">—</span></div>
+        </section>
+        <div class="settings">
+          <label><span data-i18n="difficulty">难度</span><select id="difficulty"><option value="easy" data-i18n="easy">轻松 · 18 对</option><option value="normal" data-i18n="normal">标准 · 24 对</option><option value="hard" data-i18n="hard">挑战 · 32 对</option></select></label>
+          <label><span data-i18n="theme">图案</span><select id="theme"></select></label>
+        </div>
+        <p class="no-rush" data-i18n="noRush">不倒计时，慢慢找就好。</p>
+      </aside>
+      <section class="board-column" data-i18n-label="gameArea">
+        <div class="board-heading"><span class="round-tag" id="round"></span><span data-i18n="boardNote">每一次相遇，都有迹可循。</span></div>
+        <div class="progress-track" id="progress" role="progressbar" aria-valuemin="0" aria-valuemax="18" aria-valuenow="0" data-i18n-label="pairs"><span id="progress-fill"></span></div>
+        <div class="board-slot" id="board-slot">
+          <div class="board-frame" id="board-frame">
+            <span class="tape" aria-hidden="true"></span>
+            <div class="board" id="board" role="group" data-i18n-label="board"></div>
+            <svg id="connections" class="connections" aria-hidden="true"><polyline class="line-wash"/><polyline class="line-pencil"/></svg>
+          </div>
+        </div>
+        <p class="status-line" id="status" role="status" aria-live="polite"></p>
+        <div class="tools">
+          <button id="hint" class="tool-button"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 16c0-3-3-3-3-7a7 7 0 0 1 14 0c0 4-3 4-3 7Zm1 4h6m-3-4v-6m-3 0 3 3 3-3"/></svg><span data-i18n="hint">提示一下</span></button>
+          <button id="shuffle" class="tool-button"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 6h3c4 0 8 12 12 12h3m-4-4 4 4-4 4M3 18h3c4 0 8-12 12-12h3m-4-4 4 4-4 4"/></svg><span data-i18n="shuffle">换个队形</span></button>
+          <button id="restart" class="tool-button"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 10a8 8 0 1 1 1 7M4 3v7h7"/></svg><span data-i18n="restart">重新开始</span></button>
+        </div>
+      </section>
+      <aside class="right-panel">
+        <div class="friends-heading"><span class="eyebrow" data-i18n="friends">今天，和你一起</span><span aria-hidden="true">✳</span></div>
+        <div class="friend-list" id="friend-list" aria-hidden="true"></div>
+        <div class="rule-note"><span class="note-pin" aria-hidden="true"></span><div class="sample" id="sample" aria-hidden="true"></div><p data-i18n="miniRule">相同的小伙伴，<br>用不超过两个转弯的线相连。</p><svg viewBox="0 0 100 40" aria-hidden="true"><path d="M8 9v21h77V9m-5 5 5-5 5 5"/></svg><span data-i18n="edgeNote">也可以从棋盘外绕过去哦。</span></div>
+        <p class="side-note" data-i18n="sideNote">在小小的连线里，<br>找一点刚刚好的快乐。</p>
+      </aside>
+    </main>
+    <footer><span>boopland<span class="brand-dot">.</span></span><span data-i18n="footer">把快乐，一对一对连起来。</span><span aria-hidden="true">⌁</span></footer>
+  </div>
+  <dialog id="dialog" aria-labelledby="dialog-title" aria-describedby="dialog-description">
+    <div class="dialog-paper"><button id="dialog-close" class="icon-button dialog-close" data-i18n-label="close">×</button><div id="dialog-art" aria-hidden="true"></div><span class="eyebrow" data-i18n="eyebrow"></span><h2 id="dialog-title"></h2><p id="dialog-description"></p><ol id="rules" hidden><li data-i18n="ruleMatch"></li><li data-i18n="ruleRoute"></li><li data-i18n="ruleTools"></li><li data-i18n="ruleKeys"></li></ol><div class="dialog-buttons"><button class="primary-button" id="dialog-primary"></button><button class="secondary-button" id="dialog-secondary" hidden></button></div><a class="dialog-back" href="../../games.html" data-i18n="common.back">返回大厅</a></div>
+  </dialog>
+  <script src="../../i18n.js"></script>
+  <script src="./translations.js"></script>
+  <script src="./engine.js"></script>
+  <script src="./art.js"></script>
+  <script src="./themes.js"></script>
+  <script src="./game.js"></script>
+</body>
+</html>

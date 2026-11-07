@@ -6,6 +6,40 @@
 // locales 按全局语言提供 title、description；缺少翻译时回退到基础字段。
 window.GAME_LIST = [
   {
+    title: "动物连连看",
+    description: "绕个小弯，让相同的小伙伴相遇。动物与水果，两套手绘图案慢慢连。",
+    path: "./games/animal-link/index.html",
+    category: "益智",
+    color: "#e6eadb",
+    cover: "./games/animal-link/cover.svg",
+    locales: {
+      en: { title: "Animal Links", description: "A little detour brings matching friends together. Connect hand-drawn animals and fruit at your own pace." },
+      ja: { title: "どうぶつ四川省", description: "すこし遠回りして、同じ仲間と出会おう。手描きのどうぶつとくだものを、ゆっくりつなぐパズル。" },
+      ko: { title: "동물 연결하기", description: "작은 길을 따라 같은 친구를 만나요. 손그림 동물과 과일을 천천히 연결해 보세요." },
+      fr: { title: "Liens animaux", description: "Un petit détour réunit les amis. Reliez animaux et fruits dessinés à la main, à votre rythme." },
+      de: { title: "Tierpaare", description: "Ein kleiner Umweg bringt Freunde zusammen. Verbinde handgezeichnete Tiere und Früchte in deinem Tempo." },
+      es: { title: "Conecta animales", description: "Un pequeño rodeo reúne a los amigos. Conecta animales y frutas dibujados a mano, sin prisas." },
+      'pt-BR': { title: "Conecta bichinhos", description: "Uma pequena volta reúne os amigos. Conecte animais e frutas desenhados à mão no seu ritmo." }
+    }
+  },
+  {
+    title: "纸间拼图 · 图片华容道",
+    description: "滑动纸片，把风景慢慢拼回来。三种难度，也能用自己的照片挑战数字滑块。",
+    path: "./games/picture-slide/index.html",
+    category: "益智",
+    color: "#e7e9dc",
+    cover: "./games/picture-slide/cover.svg",
+    locales: {
+      en: { title: "Paper Pieces · Sliding Puzzle", description: "Slide little paper tiles to restore a landscape. Three sizes, number hints, and your own photographs." },
+      ja: { title: "紙のパズル · スライドパズル", description: "紙のピースを動かして風景を元どおりに。3つの難しさと番号ヒント、自分の写真でも遊べます。" },
+      ko: { title: "종이 조각 · 슬라이드 퍼즐", description: "종이 조각을 움직여 풍경을 완성해요. 세 가지 크기, 숫자 힌트와 내 사진으로도 즐겨요." },
+      fr: { title: "Puzzle de papier · Taquin", description: "Glissez les pièces pour retrouver un paysage. Trois formats, des numéros et vos propres photos." },
+      de: { title: "Papierpuzzle · Schiebespiel", description: "Schiebe kleine Papierteile zu einem Bild. Drei Größen, Zahlenhilfe und deine eigenen Fotos." },
+      es: { title: "Piezas de papel · Puzzle", description: "Desliza las piezas para recomponer un paisaje. Tres tamaños, pistas numéricas y tus propias fotos." },
+      'pt-BR': { title: "Pedaços de papel · Quebra-cabeça", description: "Deslize as peças para montar uma paisagem. Três tamanhos, dicas numéricas e suas próprias fotos." }
+    }
+  },
+  {
     title: "猫咪推箱子",
     description: "帮小猫收拾新家，把纸箱推到爪印上，在 12 间手绘小屋里慢慢动脑筋。",
     path: "./games/cat-sokoban/index.html",
@@ -445,6 +479,91 @@ window.GAME_LIST = [
       de: { title: "Katzen vereinen", description: "Lass kleine Katzen fallen, vereine gleiche Paare und sammle Kettenpunkte in einem gemütlichen Karton." },
       es: { title: "Fusiona gatitos", description: "Deja caer gatitos, une parejas iguales y encadena puntos en una acogedora caja de cartón." },
       'pt-BR': { title: "Junte os gatinhos", description: "Solte gatinhos, junte pares iguais e faça sequências de pontos em uma caixa aconchegante." }
+    }
+  },
+  {
+    title: "黄金矿工",
+    description: "看准方向放下钩子，抓住黄金和钻石，用一点好运走过六片手绘矿区。",
+    path: "./games/gold-miner/index.html",
+    category: "休闲",
+    color: "#e8dfc8",
+    cover: "./games/gold-miner/cover.svg",
+    locales: {
+      en: { title: "Gold Miner", description: "Time your hook, haul in gold and diamonds, and explore six hand-drawn mines with a little luck." },
+      ja: { title: "金鉱ほり", description: "向きを見てフックを下ろし、金やダイヤを集めよう。手描きの6つの鉱区で小さな幸運探し。" },
+      ko: { title: "황금 광부", description: "방향을 보고 갈고리를 내려 금과 다이아몬드를 모으고, 손그림 광구 여섯 곳을 탐험해요." },
+      fr: { title: "Chercheur d’or", description: "Lancez le crochet au bon moment, remontez or et diamants et explorez six mines dessinées à la main." },
+      de: { title: "Goldgräber", description: "Wirf den Haken im richtigen Moment aus, sammle Gold und Diamanten und erkunde sechs handgezeichnete Minen." },
+      es: { title: "Minero de oro", description: "Lanza el gancho a tiempo, recoge oro y diamantes y explora seis minas dibujadas a mano." },
+      'pt-BR': { title: "Garimpeiro", description: "Solte o gancho na hora certa, recolha ouro e diamantes e explore seis minas desenhadas à mão." }
+    }
+  },
+  {
+    title: "纸间祖玛",
+    description: "转动小青蛙，串起三颗同色彩珠，让连锁消除开满纸上的小花园。",
+    path: "./games/paper-zuma/index.html",
+    category: "休闲",
+    color: "#e5ead9",
+    cover: "./games/paper-zuma/cover.svg",
+    locales: {
+      en: { title: "Paper Zuma", description: "Aim a little frog, match three colorful marbles and set off joyful chains across six paper gardens." },
+      ja: { title: "紙のズーマ", description: "小さなカエルで同じ色を三つつなごう。六つの紙の庭で、連鎖の花を咲かせて。" },
+      ko: { title: "종이 주마", description: "작은 개구리로 같은 색 구슬 셋을 모아요. 여섯 종이 정원에서 즐거운 연쇄를 만들어요." },
+      fr: { title: "Zuma de papier", description: "Visez avec une grenouille, alignez trois billes de même couleur et créez des chaînes dans six jardins de papier." },
+      de: { title: "Papier-Zuma", description: "Ziele mit dem kleinen Frosch, verbinde drei gleichfarbige Kugeln und starte Kettenreaktionen in sechs Papiergärten." },
+      es: { title: "Zuma de papel", description: "Apunta con una ranita, junta tres canicas del mismo color y crea cadenas en seis jardines de papel." },
+      'pt-BR': { title: "Zuma de papel", description: "Mire com um sapinho, junte três bolinhas da mesma cor e crie sequências em seis jardins de papel." }
+    }
+  },
+  {
+    title: "蜘蛛纸牌",
+    description: "一张张理顺纸牌，把八组同花色从 K 排到 A，享受一局安静的经典纸牌。",
+    path: "./games/spider-solitaire/index.html",
+    category: "棋牌",
+    color: "#e4eadb",
+    cover: "./games/spider-solitaire/cover.svg",
+    locales: {
+      en: { title: "Spider Solitaire", description: "Collect eight suited runs from King to Ace in a quiet, hand-drawn card game." },
+      ja: { title: "スパイダー", description: "同じマークをKからAまで並べて8組を完成。紙の風合いで楽しむ定番カードゲーム。" },
+      ko: { title: "스파이더 카드", description: "같은 무늬를 K부터 A까지 정리해 8세트를 모으는 차분한 종이 카드 게임." },
+      fr: { title: "Solitaire Spider", description: "Rassemblez huit suites du Roi à l’As dans un jeu de cartes aux doux traits de crayon." },
+      de: { title: "Spider-Solitär", description: "Sammle acht Folgen vom König bis zum Ass in einem ruhigen Kartenspiel mit Papiercharme." },
+      es: { title: "Solitario Spider", description: "Reúne ocho secuencias del rey al as en un tranquilo juego de cartas dibujado a mano." },
+      'pt-BR': { title: "Paciência Spider", description: "Reúna oito sequências do rei ao ás em um tranquilo jogo de cartas com traços de lápis." }
+    }
+  },
+  {
+    title: "割绳子",
+    description: "划断绳子，收集星星，让糖果荡进小兔子的嘴里。翻开 12 页甜甜的小冒险。",
+    path: "./games/cut-the-rope/index.html",
+    category: "益智",
+    color: "#e9eddf",
+    cover: "./games/cut-the-rope/cover.svg",
+    locales: {
+      en: { title: "Snip & Sweet", description: "Snip ropes, gather stars and swing a candy to a little bunny through 12 sweet puzzles." },
+      ja: { title: "ロープとキャンディ", description: "ロープを切って星を集め、うさぎにキャンディを届けよう。12ページの甘い冒険。" },
+      ko: { title: "밧줄과 사탕", description: "밧줄을 잘라 별을 모으고 토끼에게 사탕을 주세요. 12개의 달콤한 퍼즐이 기다려요." },
+      fr: { title: "Coupe et bonbon", description: "Coupez les cordes, cueillez les étoiles et offrez un bonbon au lapin dans 12 petits puzzles." },
+      de: { title: "Seil & Süßes", description: "Schneide Seile, sammle Sterne und schwinge ein Bonbon zum Häschen in 12 süßen Rätseln." },
+      es: { title: "Corta y endulza", description: "Corta cuerdas, recoge estrellas y lleva un caramelo al conejito en 12 dulces puzles." },
+      'pt-BR': { title: "Corte e doce", description: "Corte cordas, recolha estrelas e leve uma bala ao coelhinho em 12 doces desafios." }
+    }
+  },
+  {
+    title: "纸间飞钩",
+    description: "按住挂钩，松手飞跃。带着一条小围巾，在十二页纸间冒险里收集星光。",
+    path: "./games/paper-hook/index.html",
+    category: "动作",
+    color: "#e3e9d8",
+    cover: "./games/paper-hook/cover.svg",
+    locales: {
+      en: { title: "Paper Hook", description: "Hold to hook, release to fly. Swing a little stick figure through 12 paper adventures and collect starlight." },
+      ja: { title: "紙のフック", description: "長押しでフック、離して空へ。小さな棒人間と12ページの冒険で星のひかりを集めよう。" },
+      ko: { title: "종이 갈고리", description: "꾹 눌러 연결하고 놓아서 날아요. 작은 스틱맨과 12개의 종이 모험에서 별빛을 모으세요." },
+      fr: { title: "Crochet de papier", description: "Accrochez, balancez-vous et envolez-vous dans 12 aventures de papier à la recherche des étoiles." },
+      de: { title: "Papierhaken", description: "Halten, einhaken, losfliegen. Schwinge durch 12 kleine Papierabenteuer und sammle Sternenlicht." },
+      es: { title: "Gancho de papel", description: "Mantén para enganchar y suelta para volar. Recorre 12 aventuras de papel y recoge estrellas." },
+      'pt-BR': { title: "Gancho de papel", description: "Segure para prender e solte para voar. Atravesse 12 aventuras de papel e colete estrelas." }
     }
   },
   // 新增示例（删除每行开头的 //，修改内容即可）：

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-i18n-scope="miner">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#f5f3eb">
+  <title data-i18n="miner.pageTitle">黄金矿工 · Boopland</title>
+  <link rel="stylesheet" href="./style.css">
+  <script defer src="../../analytics.js"></script>
+</head>
+<body>
+  <div class="game-shell">
+    <header class="topbar">
+      <a class="back" href="../../games.html"><span aria-hidden="true">↶</span><span data-i18n="common.back">返回大厅</span></a>
+      <h1><svg viewBox="0 0 32 32" aria-hidden="true"><path d="m8 28 13-21 3 2L11 30M5 9Q19-3 29 17M6 9q13-6 22 7"/></svg><span data-i18n="miner.name">黄金矿工</span></h1>
+      <div class="tools">
+        <button id="sound" class="icon-button" type="button" aria-pressed="false" data-i18n-label="miner.soundOn"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 9h4l5-4v14l-5-4H3Z"/><path id="sound-mark" d="m16 9 5 6m0-6-5 6"/></svg></button>
+        <button id="pause" class="icon-button" type="button" aria-pressed="false" data-i18n-label="miner.pause"><svg viewBox="0 0 24 24" aria-hidden="true"><path id="pause-mark" d="M8 5v14M16 5v14"/></svg></button>
+        <button id="help" class="icon-button help-button" type="button" data-i18n-label="miner.help">?</button>
+      </div>
+    </header>
+
+    <main class="workspace">
+      <section class="mine-panel" data-i18n-label="miner.mine">
+        <div class="scoreboard">
+          <div class="stat level-stat"><span data-i18n="miner.expedition">矿区</span><strong><span id="level">01</span><small> / 06</small></strong></div>
+          <div class="stat haul-stat"><span data-i18n="miner.haul">本关收获</span><strong><span id="score">0</span><small> / <span id="target">650</span></small></strong><div class="progress" id="progress" role="progressbar" aria-valuemin="0" aria-valuemax="650" aria-valuenow="0" data-i18n-label="miner.haul"><span id="progress-fill"></span></div></div>
+          <div class="stat timer-stat"><span data-i18n="miner.time">剩余时间</span><strong><span id="time">60</span><small>s</small></strong></div>
+        </div>
+        <div class="mine" id="mine">
+          <canvas id="canvas" role="img" data-i18n-label="miner.canvasLabel"></canvas>
+          <div class="mine-caption"><span id="mine-name"></span><span aria-hidden="true">✳</span></div>
+          <section class="overlay" id="overlay" aria-labelledby="overlay-title">
+            <div class="overlay-sheet">
+              <div class="overlay-stamp" id="overlay-stamp" aria-hidden="true">✧</div>
+              <p class="eyebrow" id="overlay-eyebrow"></p>
+              <h2 id="overlay-title"></h2>
+              <p class="overlay-note" id="overlay-note"></p>
+              <div class="result-values" id="result-values" hidden></div>
+              <div class="shop" id="shop" hidden>
+                <div class="shop-heading"><span data-i18n="miner.shop">矿工补给站</span><span id="wallet"></span></div>
+                <button id="buy-bomb" class="shop-item" type="button"><span class="item-icon" aria-hidden="true">✹</span><span><b data-i18n="miner.bombName">一支炸药</b><small data-i18n="miner.bombNote">丢掉钩上的重物</small></span><strong id="bomb-price"></strong></button>
+                <button id="buy-power" class="shop-item" type="button"><span class="item-icon" aria-hidden="true">↟</span><span><b data-i18n="miner.powerName">升级卷扬机</b><small data-i18n="miner.powerNote">每级增加 30% 拉力</small></span><strong id="power-price"></strong></button>
+                <button id="buy-time" class="shop-item" type="button"><span class="item-icon" aria-hidden="true">◷</span><span><b data-i18n="miner.timeName">多一点时间</b><small data-i18n="miner.timeNote">下一关增加 10 秒</small></span><strong id="time-price"></strong></button>
+              </div>
+              <button id="primary" type="button" class="primary"></button>
+              <button id="restart" type="button" class="text-button" data-i18n="miner.restart" hidden>重新开始旅程</button>
+            </div>
+          </section>
+        </div>
+        <div class="control-deck">
+          <div class="status" role="status" aria-live="polite" aria-atomic="true"><span class="status-dot" aria-hidden="true"></span><span id="status"></span></div>
+          <div class="action-row">
+            <button id="fire" class="fire-button" type="button"><svg viewBox="0 0 28 28" aria-hidden="true"><path d="M14 2v12m-6-3 6 6 6-6M8 17l-3 7 6-2m9-5 3 7-6-2"/></svg><span data-i18n="miner.fire">放下钩子</span><kbd aria-hidden="true">SPACE / ↓</kbd></button>
+            <button id="bomb" class="bomb-button" type="button"><span aria-hidden="true">✹</span><span data-i18n="miner.bomb">炸药</span><b id="bomb-count">2</b><kbd aria-hidden="true">↑</kbd></button>
+          </div>
+        </div>
+      </section>
+
+      <aside class="notebook">
+        <div class="notebook-heading"><span data-i18n="miner.notebook">淘金手记</span><span aria-hidden="true">✎</span></div>
+        <div class="total-block"><span data-i18n="miner.total">旅途总收获</span><strong id="total">0</strong><div class="best-row"><span data-i18n="miner.best">最佳纪录</span><span id="best">0</span></div></div>
+        <div class="field-guide"><h2 data-i18n="miner.guide">口袋里的矿石图鉴</h2><div class="ore-row"><i class="ore-icon gold large" aria-hidden="true"></i><span data-i18n="miner.gold">黄金</span><b>100–500</b></div><div class="ore-row"><i class="ore-icon diamond" aria-hidden="true"></i><span data-i18n="miner.diamond">钻石</span><b>600</b></div><div class="ore-row"><i class="ore-icon rock" aria-hidden="true"></i><span data-i18n="miner.rock">石头</span><b>20</b></div><div class="ore-row"><i class="ore-icon bag" aria-hidden="true">?</i><span data-i18n="miner.bag">惊喜袋</span><b>100–350</b></div><p data-i18n="miner.guideNote">大金块很诱人，也需要一点耐心。</p></div>
+        <div class="equipment"><span data-i18n="miner.power">卷扬机</span><span id="power-level">Ⅰ · ○ ○ ○</span></div>
+        <div class="side-note"><svg viewBox="0 0 160 56" aria-hidden="true"><path d="M10 42q38 11 54-14t45 1m-8-9 10 9-12 4M128 9v14m-7-7h14M143 34v10m-5-5h10"/></svg><p data-i18n="miner.littleNote">把平凡的日子，<br>挖出一点闪光。</p></div>
+      </aside>
+    </main>
+    <footer class="footer"><span class="brand">boopland.</span><span data-i18n="miner.keys">空格 / ↓ 放钩 · ↑ 炸药 · P 暂停</span><span data-i18n="miner.footerNote">一钩一钩，收集小小的幸运。</span></footer>
+  </div>
+
+  <dialog id="help-dialog" aria-labelledby="help-title"><div class="dialog-heading"><h2 id="help-title" data-i18n="miner.helpTitle">一份小小的淘金指南</h2><button id="close-help" class="icon-button" type="button" data-i18n-label="miner.close">×</button></div><ol><li data-i18n="miner.rule1"></li><li data-i18n="miner.rule2"></li><li data-i18n="miner.rule3"></li><li data-i18n="miner.rule4"></li><li data-i18n="miner.rule5"></li></ol><a class="back" href="../../games.html" data-i18n="common.back">返回大厅</a></dialog>
+  <noscript>Please enable JavaScript to play. / 请启用 JavaScript。</noscript>
+  <script src="../../i18n.js"></script>
+  <script src="./translations.js"></script>
+  <script src="./engine.js"></script>
+  <script src="./scene.js"></script>
+  <script src="./game.js"></script>
+</body>
+</html>

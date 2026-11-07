@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="zh-CN" data-i18n-scope="paperZuma">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#f5f3eb">
+  <meta name="description" content="转动小青蛙，消除彩珠，在纸上的小花园里玩一局祖玛。" data-i18n-content="paperZuma.description">
+  <title data-i18n="paperZuma.pageTitle">纸间祖玛 · Boopland</title>
+  <link rel="stylesheet" href="style.css">
+  <script defer src="../../analytics.js"></script>
+</head>
+<body>
+  <main class="game-shell">
+    <header class="topbar">
+      <a class="back" href="../../games.html"><span aria-hidden="true">↶</span><span data-i18n="common.back">返回大厅</span></a>
+      <div class="heading"><span class="eyebrow">BOOPLAND / LITTLE GARDEN</span><h1 data-i18n="paperZuma.name">纸间祖玛</h1></div>
+      <div class="top-actions">
+        <button class="icon-button" id="sound" aria-pressed="false" data-i18n-label="paperZuma.soundOn"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9h4l5-4v14l-5-4H4Z"/><path id="sound-mark" d="m17 9 5 6m0-6-5 6"/></svg></button>
+        <button class="icon-button" id="help" data-i18n-label="paperZuma.help">?</button>
+      </div>
+    </header>
+    <section class="desk">
+      <aside class="margin-note" aria-hidden="true">
+        <span class="little-label" data-i18n="paperZuma.marginLabel">花园观察手记</span>
+        <p class="hand-note" data-i18n="paperZuma.margin">让颜色，\n轻轻相遇。</p>
+        <svg class="study" viewBox="0 0 170 180"><g fill="none" stroke="#697961" stroke-width="1.5" stroke-linecap="round"><path d="M30 135Q80 114 73 43m-8 61Q30 104 35 78q24-4 34 29m5-36Q107 73 111 43q-31-3-37 28m-1 60q35-4 44-36-35 0-44 36"/><path d="M33 137q43-21 41-91m-31 40 21 15m18-33 22-18m-23 71 28-19" opacity=".35"/><path d="M108 149q40-4 29-43m-7 7 6-12 10 10" stroke-dasharray="3 5"/></g><circle cx="39" cy="155" r="9" fill="#d49b87"/><circle cx="62" cy="153" r="9" fill="#d49b87"/><circle cx="85" cy="155" r="9" fill="#d49b87"/><g fill="none" stroke="#805f53"><circle cx="39" cy="155" r="9"/><circle cx="62" cy="153" r="9"/><circle cx="85" cy="155" r="9"/></g></svg>
+        <p class="tiny-note" data-i18n="paperZuma.marginTip">三颗相遇，就有小小的好事发生。</p>
+      </aside>
+      <section class="notebook" data-i18n-label="paperZuma.name" aria-label="纸间祖玛">
+        <div class="binding" aria-hidden="true"></div>
+        <header class="scorebar">
+          <div class="score-item"><span data-i18n="paperZuma.score">得分</span><strong id="score">0000</strong></div>
+          <div class="score-item best"><span data-i18n="paperZuma.best">最佳</span><strong id="best">0000</strong></div>
+          <span class="level-tag" id="level-tag">01 / 06</span>
+        </header>
+        <div class="board-space" id="board-space">
+          <div class="board-wrap" id="board-wrap">
+            <canvas id="board" width="820" height="720" tabindex="0" data-i18n-label="paperZuma.canvas"></canvas>
+          </div>
+          <section class="overlay" id="overlay" aria-labelledby="overlay-title">
+            <div class="overlay-card">
+              <svg class="frog-doodle" viewBox="0 0 140 100" aria-hidden="true"><path d="M24 69C5 86 32 94 46 80m50 0c16 15 42 5 22-11" fill="#cbd7b5" stroke="#66755c" stroke-width="1.6"/><path d="M27 64c-4-20 2-36 14-34C31 4 61 0 65 26h10C79 0 109 4 99 30c16-2 22 19 14 37-14 29-72 26-86-3Z" fill="#dce4ca" stroke="#66755c" stroke-width="1.8"/><circle cx="50" cy="23" r="3" fill="#424c40"/><circle cx="90" cy="23" r="3" fill="#424c40"/><path d="M50 60q20 15 40 0M31 50l11-3m58 0 11 3" fill="none" stroke="#66755c" stroke-width="1.5"/><circle cx="70" cy="78" r="15" fill="#d49b87" stroke="#805f53" stroke-width="1.5"/><path d="m70 69 6 9-6 9-6-9Z" fill="none" stroke="#805f53"/></svg>
+              <p class="little-label" id="overlay-kicker" data-i18n="paperZuma.kicker">一只青蛙，一小园颜色</p>
+              <h2 id="overlay-title" data-i18n="paperZuma.ready">来，串起一点快乐。</h2>
+              <p id="overlay-description" data-i18n="paperZuma.intro">发射彩珠，连起三颗同色。别让珠串溜进树洞。</p>
+              <p class="result" id="result" hidden></p>
+              <div class="overlay-actions"><button class="primary" id="start" data-i18n="paperZuma.start">开始游玩 →</button><button class="secondary" id="retry" data-i18n="paperZuma.retry" hidden>重玩本关</button></div>
+              <p class="start-hint" id="start-hint" data-i18n="paperZuma.startHint">移动瞄准 · 点击发射 / 触屏松手发射</p>
+            </div>
+          </section>
+        </div>
+        <footer class="notebook-foot"><p id="status" data-i18n="paperZuma.tip">三颗同色，刚好是一份小快乐。</p><div class="footer-actions"><button class="icon-button" id="pause" disabled data-i18n-label="paperZuma.pause"><svg viewBox="0 0 24 24" aria-hidden="true"><path id="pause-mark" d="M8 5v14M16 5v14"/></svg></button></div></footer>
+      </section>
+      <aside class="side-panel">
+        <section class="chapter-note"><span class="little-label" data-i18n="paperZuma.chapter">今日的小花园</span><h2 id="chapter-name">曲径初见</h2><p id="remaining"></p><div class="progress-track" aria-hidden="true"><span id="progress"></span></div></section>
+        <section class="ammo-block"><span class="little-label" data-i18n="paperZuma.palette">手边的颜色</span><button class="swap-button" id="swap" disabled data-i18n-label="paperZuma.swapHint"><span class="ammo-pair" aria-hidden="true"><span class="marble" id="current-ball">◇</span><span class="swap-arrow">⇄</span><span class="marble next" id="next-ball">○</span></span><span class="swap-label"><span data-i18n="paperZuma.swap">交换彩珠</span><kbd>Space</kbd></span></button></section>
+        <section class="slow-block"><button id="slow" class="slow-button" disabled><span class="slow-heading"><span aria-hidden="true">❋</span><span data-i18n="paperZuma.slow">慢一点点</span><kbd>F</kbd></span><span class="charge-track" aria-hidden="true"><span id="charge"></span></span><span class="slow-caption" id="slow-caption"></span></button></section>
+        <p class="control-note" data-i18n="paperZuma.controls">鼠标瞄准，点击发射\n触屏拖动，松手发射\n← → 转向 · Enter 发射</p>
+        <div class="paper-stamp" aria-hidden="true"><span data-i18n="paperZuma.stamp">宜 · 好好玩</span><small>TAKE A LITTLE BREAK</small></div>
+      </aside>
+    </section>
+    <footer class="page-foot"><span data-i18n="paperZuma.footnote">把匆忙放下，让颜色碰个面。</span><span aria-hidden="true">a little frog, a little joy.</span></footer>
+  </main>
+  <dialog id="help-dialog" aria-labelledby="help-title">
+    <button class="icon-button close-help" id="close-help" data-i18n-label="paperZuma.close">×</button>
+    <span class="little-label" data-i18n="paperZuma.marginLabel">花园观察手记</span>
+    <h2 id="help-title" data-i18n="paperZuma.helpTitle">小青蛙的游玩指南</h2>
+    <p data-i18n="paperZuma.ruleAim">鼠标移动瞄准、点击发射；触屏按住拖动瞄准、松手发射。也可用左右方向键转向、Enter 发射。</p>
+    <p data-i18n="paperZuma.ruleMatch">凑齐至少三颗相邻同色彩珠即可消除。断开的珠串会回吸，接上的同色还能再次消除，连锁倍数越高，加分越多。</p>
+    <p data-i18n="paperZuma.ruleSwap">点击彩珠按钮或按空格交换当前与下一颗彩珠。每种颜色还有独立图案，方便辨认。</p>
+    <p data-i18n="paperZuma.ruleSlow">每消除 12 颗彩珠可充满减速技能。点击「慢一点点」或按 F，让珠串减速 7 秒。</p>
+    <p data-i18n="paperZuma.ruleGoal">清空本关所有彩珠即可过关，共 6 关；珠串进入树洞则本关结束，可以重试并保留此前关卡的得分。</p>
+    <p data-i18n="paperZuma.rulePause">P / Esc 暂停。切换标签页或离开窗口时自动暂停；音效可用右上角按钮开启。</p>
+    <button class="primary" id="help-done" data-i18n="paperZuma.gotIt">知道啦</button>
+  </dialog>
+  <p class="sr-only" id="announcement" aria-live="polite" aria-atomic="true"></p>
+  <script src="../../i18n.js"></script>
+  <script src="translations.js"></script>
+  <script src="engine.js"></script>
+  <script src="game.js"></script>
+</body>
+</html>
