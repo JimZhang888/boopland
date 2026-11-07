@@ -4,10 +4,12 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <meta name="theme-color" content="#f4f1e8">
-  <meta name="description" content="在 Boopland，把片刻交给美好。翻开一个装着小游戏与小快乐的纸上世界。">
-  <title>Boopland · 把片刻，交给美好</title>
+  <meta name="description" content="噗通是快乐落进心里的声音。翻开 Boopland 这个装着小游戏与小快乐的纸上世界。">
+  <title>Boopland · 噗通是快乐落进心里的声音</title>
+  <link rel="preload" href="./assets/fonts/huiwen-mincho-welcome.woff2" as="font" type="font/woff2" crossorigin>
   <style>
-    :root { --paper: #f4f1e8; --ink: #344b3e; --green: #657d53; --muted: #7b8172; --line: #d6d9c9; --serif: "Iowan Old Style", "Palatino Linotype", "Noto Serif CJK SC", "Songti SC", "SimSun", serif; --sans: "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif; }
+    @font-face { font-family: "Huiwen Mincho"; src: url("./assets/fonts/huiwen-mincho-welcome.woff2") format("woff2"); font-style: normal; font-weight: 400; font-display: swap; }
+    :root { --paper: #f4f1e8; --ink: #344b3e; --green: #657d53; --muted: #7b8172; --line: #d6d9c9; --serif: "Huiwen Mincho", "Iowan Old Style", "Palatino Linotype", "Noto Serif CJK SC", "Songti SC", "SimSun", serif; --sans: "Huiwen Mincho", "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif; }
     * { box-sizing: border-box; }
     html { background: var(--paper); }
     body { margin: 0; color: var(--ink); font-family: var(--sans); -webkit-font-smoothing: antialiased; overflow-x: clip; }
@@ -25,7 +27,7 @@
     .site-header { min-height: 112px; display: flex; align-items: center; justify-content: space-between; gap: 24px; border-bottom: 1px solid var(--line); position: relative; z-index: 10; }
     .brand { display: inline-flex; align-items: center; gap: 10px; text-decoration: none; }
     .brand-icon { width: 35px; height: 39px; }
-    .wordmark { font: 600 29px/1 Georgia, serif; letter-spacing: -1.4px; }
+    .wordmark { font: 400 29px/1 var(--serif); letter-spacing: -1.4px; }
     .wordmark span { color: #acb18c; }
     .header-note { margin-left: auto; margin-right: 30px; font-family: var(--serif); font-size: 12px; letter-spacing: 2px; color: var(--muted); }
     .language { position: relative; }
@@ -49,6 +51,8 @@
     .heading-line { display: block; }
     .heading-accent { color: var(--green); position: relative; width: fit-content; }
     .heading-accent::after { content: ""; position: absolute; left: 4%; bottom: 0; width: 83%; height: 9px; border-top: 1px solid #a2ae89; border-radius: 50%; transform: rotate(-3deg); opacity: .8; }
+    html[lang="zh-CN"] .heading-brand { font-size: clamp(88px, 8.4vw, 124px); font-weight: 400; line-height: 1.12; letter-spacing: .06em; }
+    html[lang="zh-CN"] .heading-accent { margin-top: 19px; padding-bottom: 10px; font-size: clamp(22px, 2.25vw, 34px); line-height: 1.6; letter-spacing: .04em; }
     .intro { margin: 30px 0 34px; color: #747d6d; font-size: 13px; line-height: 2.15; letter-spacing: 1.3px; max-width: 370px; }
     .intro span { display: block; }
     .entry-row { display: flex; align-items: center; gap: 25px; }
@@ -66,6 +70,7 @@
     .micro-copy { color: #919782; font-size: 8px; letter-spacing: 2.2px; margin: 25px 0 0 6px; }
     .artwork { position: relative; width: calc(100% + 25px); margin-left: -10px; max-width: min(710px, calc(100svh - 285px)); justify-self: center; }
     .paper-world { display: block; width: 100%; height: auto; overflow: visible; }
+    .paper-world text { font-family: var(--serif); }
     .art-caption { display: flex; align-items: center; justify-content: center; gap: 13px; margin: -5px 0 0; color: #899078; font-size: 9px; letter-spacing: 1.6px; }
     .art-caption::before, .art-caption::after { content: ""; height: 1px; width: 27px; background: #bdc5ac; }
     .art-caption span { font-family: var(--serif); font-size: 12px; font-style: italic; letter-spacing: .6px; }
@@ -134,6 +139,8 @@
     @media (max-width: 760px) { .page { padding-inline: 26px; } .site-header { min-height: 88px; } .header-note { display: none; } .wordmark { font-size: 26px; } .brand-icon { width: 30px; height: 34px; } .hero { grid-template-columns: 1fr; gap: 2px; padding: 42px 0 18px; } .hero-copy { text-align: center; padding: 0; } .eyebrow { justify-content: center; margin-bottom: 20px; font-size: 9px; } .eyebrow::after { content: ""; width: 26px; height: 1px; background: #899775; } h1 { font-size: clamp(43px, 8.5vw, 65px); line-height: 1.3; letter-spacing: .05em; } .heading-accent { margin-inline: auto; } .intro { font-size: 12px; margin: 22px auto 25px; line-height: 2; max-width: 410px; } .entry-row { justify-content: center; gap: 0; } .enter-link { min-width: 206px; min-height: 72px; padding: 13px 20px 13px 30px; } .enter-label { font-size: 25px; } .entry-note { display: none; } .micro-copy { font-size: 7px; margin: 19px 0 0; letter-spacing: 2px; } .artwork { width: min(105%, 490px); max-width: none; margin: 1px 0 0; } .art-caption { margin-top: -14px; font-size: 8px; } .art-caption span { font-size: 11px; } .bottom-note { padding: 25px 0; gap: 15px; } .little-note { gap: 10px; } .little-note p { font-size: 11px; letter-spacing: .4px; } .note-flower { width: 25px; height: 25px; } .note-rule { display: none; } .edition { font-size: 7px; letter-spacing: 1px; gap: 7px; } .edition-number { font-size: 21px; } .site-footer { padding: 20px 0 25px; font-size: 7px; letter-spacing: 1px; } .footer-center { display: none; } .motion-button { font-size: 9px; letter-spacing: 0; } html:not([lang="zh-CN"]):not([lang="ja"]):not([lang="ko"]) h1 { font-size: clamp(42px, 8.5vw, 64px); } html[lang="ja"] h1, html[lang="ko"] h1 { font-size: clamp(36px, 7.6vw, 56px); } }
     @media (max-width: 380px) { .page { padding-inline: 20px; } .site-header { gap: 10px; } .language-toggle { padding-inline: 10px; gap: 6px; font-size: 11px; } .wordmark { font-size: 24px; } .brand { gap: 6px; } .brand-icon { width: 26px; } .hero { padding-top: 34px; } .edition-text { display: none; } .intro { font-size: 11px; } .eyebrow { letter-spacing: 1.5px; font-size: 8px; } h1 { font-size: 41px; } }
     @media (max-height: 700px) and (min-width: 761px) { .site-header { min-height: 86px; } .hero { min-height: 460px; padding: 18px 0; } .artwork { width: min(100%, 530px); } .eyebrow { margin-bottom: 19px; } h1 { font-size: 60px; } .intro { margin-block: 20px 25px; } .bottom-note { padding-block: 12px 20px; } }
+    @media (max-width: 760px) { html[lang="zh-CN"] .heading-brand { font-size: clamp(80px, 16vw, 108px); } html[lang="zh-CN"] .heading-accent { margin-top: 16px; font-size: clamp(18px, 4.5vw, 28px); letter-spacing: .02em; } }
+    @media (max-height: 700px) and (min-width: 761px) { html[lang="zh-CN"] .heading-brand { font-size: 88px; } html[lang="zh-CN"] .heading-accent { margin-top: 12px; } }
     @media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation: none !important; transition: none !important; } .parallax { transform: none; } .enter-link:hover, .leaving .page { transform: none; } }
   </style>
   <script defer src="./analytics.js"></script>
@@ -172,7 +179,7 @@
     <main class="hero">
       <div class="hero-copy reveal">
         <p class="eyebrow" data-i18n="eyebrow">A SMALL ESCAPE, A LITTLE JOY</p>
-        <h1><span class="heading-line" data-i18n="heading1">把片刻，</span><span class="heading-line heading-accent" data-i18n="heading2">交给美好。</span></h1>
+        <h1><span class="heading-line heading-brand" data-i18n="heading1">噗通</span><span class="heading-line heading-accent" data-i18n="heading2">是快乐落进心里的声音</span></h1>
         <p class="intro"><span data-i18n="intro1">生活有些匆忙，幸好这里有风。</span><span data-i18n="intro2">翻开这一页，让小小的快乐自然发生。</span></p>
         <div class="entry-row">
           <a class="enter-link" id="enter-link" href="./games.html"><span class="enter-label" data-i18n="enter">进入</span><span class="enter-arrow" aria-hidden="true"><svg class="icon" viewBox="0 0 26 26"><path d="M5 13h15m-6-6 6 6-6 6"/></svg></span></a>
@@ -254,7 +261,7 @@
       const finePointer = matchMedia('(hover: hover) and (pointer: fine)');
       const storage = { get(key) { try { return localStorage.getItem(key); } catch { return null; } }, set(key, value) { try { localStorage.setItem(key, value); } catch { /* Storage is optional. */ } } };
       const translations = {
-        'zh-CN': { name: '简体中文', title: '把片刻，交给美好', description: '在 Boopland，把片刻交给美好。翻开一个装着小游戏与小快乐的纸上世界。', headerNote: '给生活，留一点空白。', chooseLanguage: '用熟悉的语言，遇见小美好', languageLabel: '选择语言，当前为', eyebrow: 'A SMALL ESCAPE, A LITTLE JOY', heading1: '把片刻，', heading2: '交给美好。', intro1: '生活有些匆忙，幸好这里有风。', intro2: '翻开这一页，让小小的快乐自然发生。', enter: '进入', entryNote: '一点好奇，刚刚好', microCopy: '留一点时间，给无用而美好的事', artCaption: '风会带你，去有趣的地方。', bottomNote: '慢一点，也没关系。', edition: '小小世界 · 无限好奇', footer: 'Made of little happy things.', pause: '让风歇一会', resume: '让微风继续', reduced: '已跟随系统减少动态', home: 'Boopland 首页', artTitle: '风里的纸上小世界', artDescription: '层叠的纸雕山丘环抱一条小河，纸船轻轻摇晃。太阳、云朵、雏菊与纸飞机，在微风里慢慢浮动。', changed: '语言已切换为简体中文' },
+        'zh-CN': { name: '简体中文', title: '噗通是快乐落进心里的声音', description: '噗通是快乐落进心里的声音。翻开 Boopland 这个装着小游戏与小快乐的纸上世界。', headerNote: '给生活，留一点空白。', chooseLanguage: '用熟悉的语言，遇见小美好', languageLabel: '选择语言，当前为', eyebrow: 'A SMALL ESCAPE, A LITTLE JOY', heading1: '噗通', heading2: '是快乐落进心里的声音', intro1: '生活有些匆忙，幸好这里有风。', intro2: '翻开这一页，让小小的快乐自然发生。', enter: '进入', entryNote: '一点好奇，刚刚好', microCopy: '留一点时间，给无用而美好的事', artCaption: '风会带你，去有趣的地方。', bottomNote: '慢一点，也没关系。', edition: '小小世界 · 无限好奇', footer: 'Made of little happy things.', pause: '让风歇一会', resume: '让微风继续', reduced: '已跟随系统减少动态', home: 'Boopland 首页', artTitle: '风里的纸上小世界', artDescription: '层叠的纸雕山丘环抱一条小河，纸船轻轻摇晃。太阳、云朵、雏菊与纸飞机，在微风里慢慢浮动。', changed: '语言已切换为简体中文' },
         en: { name: 'English', title: 'A little room for wonder', description: 'A paper world of little games and simple joys. Take a breath, follow your curiosity, and step into Boopland.', headerNote: 'Leave a little room for wonder.', chooseLanguage: 'A little joy, in your language', languageLabel: 'Choose language. Current language:', eyebrow: 'A SMALL ESCAPE, A LITTLE JOY', heading1: 'A moment for', heading2: 'little wonders.', intro1: 'Life moves quickly. Here, a softer breeze.', intro2: 'Turn the page. Let a little happiness find you.', enter: 'Enter', entryNote: 'a little curiosity', microCopy: 'A LITTLE TIME FOR THE LOVELY LITTLE THINGS', artCaption: 'Follow the breeze. Find a little wonder.', bottomNote: 'It’s okay to take your time.', edition: 'SMALL WORLD · ENDLESS CURIOSITY', footer: 'Made of little happy things.', pause: 'Pause the breeze', resume: 'Let the breeze in', reduced: 'Reduced motion · system setting', home: 'Boopland home', artTitle: 'A little paper world in the breeze', artDescription: 'Layered paper hills surround a winding river and a rocking paper boat. Clouds, daisies, and a paper plane drift softly in the breeze.', changed: 'Language changed to English' },
         ja: { name: '日本語', title: '小さな幸せに、ひとやすみ', description: '小さなゲームと喜びがつまった紙の世界。Booplandで、ひとやすみ。', headerNote: '毎日に、少しの余白を。', chooseLanguage: 'いつもの言葉で、小さな幸せを', languageLabel: '言語を選択。現在：', eyebrow: '小さな寄り道、小さなよろこび', heading1: 'ひとときを、', heading2: '小さな幸せに。', intro1: 'あわただしい毎日。ここには、やさしい風。', intro2: 'ページをめくって、小さな喜びに出会おう。', enter: '入る', entryNote: '好奇心を、少しだけ', microCopy: '心がよろこぶことに、少しの時間を', artCaption: '風の向こうに、きっと楽しいこと。', bottomNote: 'ゆっくりでも、大丈夫。', edition: '小さな世界 · 尽きない好奇心', footer: '小さな幸せを、ひとつずつ。', pause: '風をひとやすみ', resume: 'もう一度、そよ風を', reduced: 'システム設定で動きを抑制中', home: 'Boopland ホーム', artTitle: 'そよ風の中の紙の世界', artDescription: '重なる紙の丘と曲がりくねった川。紙の舟、雲、ひなぎく、紙飛行機がそよ風に揺れています。', changed: '日本語に切り替えました' },
         ko: { name: '한국어', title: '작은 행복에 머무는 순간', description: '작은 게임과 소소한 기쁨이 담긴 종이 세상. Boopland에서 잠시 쉬어 가세요.', headerNote: '일상에 작은 여백을.', chooseLanguage: '익숙한 언어로 만나는 작은 기쁨', languageLabel: '언어 선택. 현재 언어:', eyebrow: '잠깐의 쉼, 작은 기쁨', heading1: '잠깐의 여유,', heading2: '작은 행복으로.', intro1: '바쁜 일상 속, 여기에는 산들바람이 불어요.', intro2: '한 페이지를 넘겨 작은 기쁨을 만나 보세요.', enter: '들어가기', entryNote: '작은 호기심 하나', microCopy: '소소하고 아름다운 것들을 위한 시간', artCaption: '바람을 따라, 즐거움이 있는 곳으로.', bottomNote: '천천히 가도 괜찮아요.', edition: '작은 세상 · 끝없는 호기심', footer: '작은 행복들이 모인 곳.', pause: '바람 잠시 멈추기', resume: '다시 산들바람', reduced: '시스템 설정에 따라 동작 줄임', home: 'Boopland 홈', artTitle: '바람 속 작은 종이 세상', artDescription: '겹겹의 종이 언덕 사이로 흐르는 강과 흔들리는 종이배. 구름, 데이지, 종이비행기가 바람에 부드럽게 움직입니다.', changed: '한국어로 변경했어요' },

@@ -5,8 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#f5f3eb">
   <meta name="description" data-i18n-content="description" content="收集一些轻轻的小快乐。找个喜欢的小游戏，让时间慢下来。">
-  <title data-i18n="title">小游戏手记 · Boopland</title>
+  <title data-i18n="title">噗通手札 · Boopland</title>
+  <link rel="preload" href="./assets/fonts/huiwen-mincho-lobby.woff2" as="font" type="font/woff2" crossorigin>
   <style>
+    @font-face { font-family: "Huiwen Mincho"; src: url("./assets/fonts/huiwen-mincho-lobby.woff2") format("woff2"); font-style: normal; font-weight: 400; font-display: swap; }
     :root {
       color-scheme: light;
       --paper: #f5f3eb;
@@ -14,8 +16,9 @@
       --muted: #737c6d;
       --line: #d8dccd;
       --green: #5b7352;
-      --hand: "KaiTi", "STKaiti", "Kaiti SC", "楷体", cursive;
-      --body: "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+      --hand: "Huiwen Mincho", "KaiTi", "STKaiti", "Kaiti SC", "楷体", cursive;
+      --body: "Huiwen Mincho", "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+      --serif: "Huiwen Mincho", Georgia, serif;
     }
     * { box-sizing: border-box; }
     [hidden] { display: none !important; }
@@ -59,15 +62,8 @@
     .home-link { font: 16px var(--hand); color: #63745b; text-decoration: none; padding: 12px 0 12px 12px; }
     .home-link:hover { text-decoration: underline; text-underline-offset: 5px; }
     .header-actions { display: flex; align-items: center; flex-wrap: wrap; justify-content: flex-end; gap: 12px; }
-    .intro { position: relative; display: flex; align-items: center; justify-content: space-between; gap: 24px; padding: 43px 0 40px; }
-    .intro-text { margin: 0 0 10px; font: 25px/1.6 var(--hand); letter-spacing: 1px; }
-    .intro-text .intro-accent { position: relative; }
-    .intro-text .intro-accent::after { content: ""; position: absolute; height: 5px; background: #ddbd886b; left: -2px; right: -3px; bottom: 0; border-radius: 50%; transform: rotate(-2deg); z-index: -1; }
-    .intro-sub { margin: 0; color: var(--muted); font-size: 12px; letter-spacing: .5px; }
-    .postmark { transform: rotate(7deg); border: 1px solid #abb7a0; padding: 7px 16px; text-align: center; color: #788c6d; margin-right: 7px; outline: 1px solid #c3ccb9; outline-offset: 4px; }
-    .postmark span { display: block; font: 17px var(--hand); }
-    .postmark small { font: 8px/2.1 var(--body); letter-spacing: 2px; }
-    .collection { padding-bottom: 25px; }
+    .recommendations { padding: 32px 0 34px; border-bottom: 1px dashed var(--line); }
+    .collection { padding: 30px 0 25px; }
     .collection-bar { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 18px; margin-bottom: 27px; }
     .collection-label { display: flex; align-items: center; flex-wrap: wrap; gap: 11px; }
     .collection-label::before { content: ""; width: 5px; height: 5px; border-radius: 50%; background: #809272; }
@@ -88,6 +84,7 @@
     .search-box input::-webkit-search-cancel-button { cursor: pointer; }
     .shelf { min-height: 355px; position: relative; }
     .game-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); align-items: start; gap: 30px 25px; }
+    .recommendation-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); align-items: stretch; }
     .game-card {
       position: relative; display: block; text-decoration: none; min-width: 0;
       background: #fffef7; padding: 12px 12px 0; border: 1px solid #e0dfd2;
@@ -101,11 +98,12 @@
     .cover::after { content: ""; position: absolute; inset: 9px; border: 1px solid #ffffff69; pointer-events: none; }
     .cover img { width: 100%; height: 100%; object-fit: cover; position: absolute; inset: 0; }
     .cover-mark { font: 38px var(--hand); color: #424c40; opacity: .77; letter-spacing: 8px; padding-left: 8px; max-width: 90%; overflow-wrap: anywhere; text-align: center; }
-    .cover-note { position: absolute; bottom: 15px; max-width: calc(100% - 24px); text-align: center; font: italic 12px Georgia, serif; letter-spacing: .8px; color: #424c40; opacity: .8; }
+    .cover-note { position: absolute; bottom: 15px; max-width: calc(100% - 24px); text-align: center; font: italic 12px var(--serif); letter-spacing: .8px; color: #424c40; opacity: .8; }
+    .recommendation-tag { position: absolute; top: 8px; left: 8px; padding: 2px 8px; color: #536b49; background: #fffef7ed; border: 1px solid #b7c3a6; border-radius: 3px 5px 3px 4px; font-size: 11px; line-height: 1.6; }
     .card-body { padding: 17px 8px 15px; }
     .card-top { display: flex; justify-content: space-between; align-items: center; gap: 12px; }
     .card-title { margin: 0; font: 23px/1.4 var(--hand); letter-spacing: 1px; overflow-wrap: anywhere; }
-    .card-number { font: italic 12px Georgia, serif; color: #77846c; }
+    .card-number { font: italic 12px var(--serif); color: #77846c; }
     .card-description { font-size: 11px; line-height: 1.8; color: #737b6a; margin: 8px 0 18px; overflow-wrap: anywhere; }
     .card-bottom { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; padding-top: 12px; border-top: 1px dashed #d9decf; }
     .category { color: #697c5c; font-size: 10px; letter-spacing: .6px; }
@@ -114,7 +112,7 @@
     .game-card:hover .play svg { transform: translateX(3px); }
     .margin-note { position: absolute; left: 51%; top: 46px; right: 0; display: flex; align-items: center; justify-content: center; gap: 24px; color: #7c866f; pointer-events: none; }
     .margin-note p { margin: 0; font: 19px/2.1 var(--hand); transform: rotate(-4deg); letter-spacing: 1px; }
-    .margin-note small { display: block; font: italic 12px/2 Georgia, serif; margin-top: 12px; letter-spacing: .4px; }
+    .margin-note small { display: block; font: italic 12px/2 var(--serif); margin-top: 12px; letter-spacing: .4px; }
     .flower { width: 90px; height: 154px; flex-shrink: 0; transform: rotate(5deg); }
     .empty { text-align: center; padding: 60px 20px 90px; color: var(--muted); }
     .empty p { font: 21px/1.8 var(--hand); margin: 0 0 8px; }
@@ -125,8 +123,18 @@
     .footnote p { margin: 0; font: 17px/1.7 var(--hand); letter-spacing: .7px; }
     .footer { border-top: 1px solid var(--line); display: flex; justify-content: space-between; gap: 20px; padding: 23px 0 30px; color: #7f8776; }
     .footer span { font: 9px/1.7 var(--body); letter-spacing: 2px; }
-    .footer em { font: italic 12px/1.6 Georgia, serif; }
+    .footer em { font: italic 12px/1.6 var(--serif); }
     noscript p { padding: 30px; text-align: center; }
+    @media (min-width: 1024px) {
+      :where(.recommendation-grid) .game-card { display: grid; grid-template-columns: minmax(0, .85fr) minmax(0, 1.15fr); gap: 14px; padding: 12px; }
+      :where(.recommendation-grid) .game-card::before { left: 24px; }
+      :where(.recommendation-grid) .cover { height: 100%; min-height: 166px; aspect-ratio: auto; }
+      :where(.recommendation-grid) .card-body { display: flex; flex-direction: column; padding: 8px 4px; }
+      :where(.recommendation-grid) .card-title { font-size: 21px; }
+      :where(.recommendation-grid) .card-number { display: none; }
+      :where(.recommendation-grid) .card-description { margin: 10px 0 16px; }
+      :where(.recommendation-grid) .card-bottom { margin-top: auto; }
+    }
     @media (min-width: 1450px) { .page { margin-top: 22px; } .shelf { min-height: 390px; } }
     @media (max-width: 900px) {
       .page { width: calc(100% - 60px); }
@@ -145,10 +153,7 @@
       .brand small { font-size: 8px; letter-spacing: 1.7px; }
       .brand svg { width: 30px; height: 36px; }
       .home-link { font-size: 14px; white-space: nowrap; }
-      .intro { padding: 30px 0; }
-      .intro-text { font-size: 22px; letter-spacing: 0; }
-      .intro-sub { font-size: 11px; max-width: 230px; line-height: 1.9; }
-      .postmark { display: none; }
+      .recommendations { padding: 25px 0 28px; }
       .collection-bar { gap: 14px; margin-bottom: 25px; }
       .collection-tools { width: 100%; gap: 10px; flex-wrap: nowrap; }
       .category-filter { flex: 0 1 44%; }
@@ -157,7 +162,7 @@
       .search-box { flex: 1; min-width: 0; width: auto; }
       .search-box input { padding: 11px 0; }
       .shelf { min-height: 0; }
-      .collection { padding-bottom: 5px; }
+      .collection { padding: 25px 0 5px; }
       .footnote { padding: 24px 0; gap: 9px; }
       .footnote p { font-size: 15px; letter-spacing: 0; }
       .footer { padding: 20px 0 24px; gap: 10px; flex-wrap: wrap; }
@@ -167,14 +172,15 @@
     /* Small screens and touch phones in landscape use compact square cards. */
     @media (max-width: 767px), (max-width: 1023px) and (max-height: 500px) and (pointer: coarse) {
       .game-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px 12px; align-items: stretch; }
-      .game-card { display: flex; flex-direction: column; aspect-ratio: 1; padding: 7px 7px 0; }
+      .game-card { display: flex; flex-direction: column; aspect-ratio: 1; gap: 0; padding: 7px 7px 0; }
       .game-card:hover { transform: none; }
       .game-card::before { width: 42px; height: 14px; top: -6px; left: calc(50% - 21px); }
-      .cover { flex: 1; min-height: 32px; aspect-ratio: auto; }
+      .cover { flex: 1; height: auto; min-height: 32px; aspect-ratio: auto; }
       .cover::after { inset: 5px; }
       .cover-mark { font-size: 22px; letter-spacing: 3px; padding-left: 3px; }
       .cover-note, .card-number, .card-description, .play, .margin-note { display: none; }
-      .card-body { flex: none; min-width: 0; padding: 8px 2px; }
+      .recommendation-tag { top: 5px; left: 5px; padding: 1px 5px; font-size: 10px; }
+      .card-body { display: block; flex: none; min-width: 0; padding: 8px 2px; }
       .card-top { display: block; }
       .card-title { display: -webkit-box; min-height: 2.7em; overflow: hidden; -webkit-box-orient: vertical; -webkit-line-clamp: 2; font-size: 15px; line-height: 1.35; letter-spacing: 0; }
       .card-bottom { display: block; padding-top: 0; margin-top: 3px; border: 0; }
@@ -192,18 +198,17 @@
     <header class="masthead">
       <div class="brand">
         <svg viewBox="0 0 40 46" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 9q7-3 15 1 9-4 15-1l-1 29q-7-2-14 2-8-4-15-2Z"/><path d="m20 10 .3 29M9 16l6 1m-6 5 6 1m9 6c0-7 4-11 7-14-1 6-2 11-7 14Zm0 0-2 4M9 29l6 1"/><path d="m28 4 2-3m5 5 3-1"/></svg>
-        <div><h1 data-i18n="name">小游戏手记</h1><small>BOOPLAND · LITTLE PLAYROOM</small></div>
+        <div><h1 data-i18n="name">噗通手札</h1><small>BOOPLAND · PLAY JOURNAL</small></div>
       </div>
       <div class="header-actions"><a class="home-link" href="./index.html" data-i18n="common.home">回到首页 ↗</a></div>
     </header>
     <main>
-      <div class="intro">
-        <div>
-          <p class="intro-text"><span data-i18n="intro">把空闲，折成一点</span><span class="intro-accent" data-i18n="introAccent">小快乐。</span></p>
-          <p class="intro-sub" data-i18n="introSub">收集一些小小的世界，留给不用赶路的时刻。</p>
+      <section class="recommendations" id="recommendations" aria-labelledby="recommendations-heading" hidden>
+        <div class="collection-bar">
+          <div class="collection-label"><h2 id="recommendations-heading" data-i18n="recommended">推荐</h2></div>
         </div>
-        <div class="postmark" aria-hidden="true"><span data-i18n="stamp">宜 · 偷闲</span><small data-i18n="stampSub">TAKE YOUR TIME</small></div>
-      </div>
+        <div class="game-grid recommendation-grid" id="recommendation-grid"></div>
+      </section>
       <section class="collection" aria-labelledby="collection-heading">
         <div class="collection-bar">
           <div class="collection-label"><h2 id="collection-heading" data-i18n="collection">纸上的游乐园</h2><span class="count" id="game-count" role="status" aria-live="polite"></span></div>
@@ -251,6 +256,8 @@
       const i18n = window.BooplandI18n;
       const t = (key, values) => i18n.t('lobby.' + key, values);
       const grid = document.getElementById('game-grid');
+      const recommendations = document.getElementById('recommendations');
+      const recommendationGrid = document.getElementById('recommendation-grid');
       const search = document.getElementById('search');
       const categoryFilter = document.getElementById('category-filter');
       const empty = document.getElementById('empty-state');
@@ -261,8 +268,8 @@
       const base = new URL('./games/', location.href);
       // Keep a small, fixed set of genres; translations are shared by filters and cards.
       const categoryKeys = new Map([
-        ['休闲', 'categoryCasual'], ['益智', 'categoryPuzzle'], ['动作', 'categoryAction'],
-        ['策略', 'categoryStrategy'], ['棋牌', 'categoryBoard']
+        ['休闲', 'categoryCasual'], ['益智', 'categoryPuzzle'], ['解谜', 'categoryMystery'],
+        ['动作', 'categoryAction'], ['策略', 'categoryStrategy'], ['棋牌', 'categoryBoard']
       ]);
 
       // 清单使用普通脚本加载，因此 file:// 双击打开时也不依赖 fetch。
@@ -284,6 +291,7 @@
           title: game.title.trim(),
           description: typeof game.description === 'string' ? game.description : '',
           category: categoryKeys.has(category) ? category : '休闲',
+          recommended: Array.isArray(game.tags) && game.tags.includes('推荐'),
           locales: game.locales && typeof game.locales === 'object' ? game.locales : {},
           color: /^#[0-9a-f]{6}$/i.test(game.color || '') ? game.color : '#dce5d8',
           cover: localGameUrl(game.cover),
@@ -310,7 +318,7 @@
       function createCard(game) {
         const card = element('a', 'game-card');
         card.href = i18n.withLanguage(game.url);
-        card.setAttribute('aria-label', t('open', { title: game.title }));
+        card.setAttribute('aria-label', t('open', { title: game.title }) + (game.recommended ? ' · ' + t('recommended') : ''));
         const cover = element('div', 'cover');
         cover.style.setProperty('--cover', game.color);
         cover.setAttribute('aria-hidden', 'true');
@@ -324,6 +332,7 @@
           img.src = game.cover;
           cover.append(img);
         }
+        if (game.recommended) cover.append(element('span', 'recommendation-tag', t('recommended')));
         const body = element('div', 'card-body');
         const top = element('div', 'card-top');
         top.append(element('h3', 'card-title', game.title), element('span', 'card-number', 'No. ' + game.number));
@@ -356,6 +365,10 @@
           const text = (key, fallback) => typeof words[key] === 'string' && words[key].trim() ? words[key] : fallback;
           return { ...game, title: text('title', game.title), description: text('description', game.description || t('defaultDescription')), category: t(categoryKeys.get(game.category)), original: game };
         });
+        // Recommendations follow list order and stay independent of collection filters.
+        const recommended = localized.filter(game => game.recommended);
+        recommendationGrid.replaceChildren(...recommended.map(createCard));
+        recommendations.hidden = recommended.length === 0;
         for (const option of categoryFilter.options) {
           if (option.value) option.textContent = t(categoryKeys.get(option.value));
         }

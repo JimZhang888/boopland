@@ -1,0 +1,43 @@
+汇文明朝体 / Huiwen-mincho
+原作者：特里王
+原版：Version 1.00; January 14, 2021
+
+原作者发布页：
+https://zhuanlan.zhihu.com/p/344103391
+
+原版字体及授权声明的下载来源：
+https://github.com/cntrump/imitation_typeface_fonts
+文件：匯文明朝體v1.0.ttf
+原始 TTF 的 SHA-256：
+ce5943311946b3a36772658b2e7c979a35a7067752b1ebb3103c73a984f638b3
+
+下载仓库中「汇文明朝体」的授权声明：
+
+此字体可免费用于印刷、显示、嵌入电子文档、设备。
+此字体可自由转发。
+可以将此字体作为更大规模的套装软件的一部分来销售。
+（但不可单独将此字体文件作为商品转卖）
+可以使用此字体开发新字体。
+
+原始字体文件内的版权字段：Public Domain
+
+本项目的网页版本：
+huiwen-mincho-welcome.woff2 提取 index.html 欢迎页所需字符。
+huiwen-mincho-lobby.woff2 提取 games.html、games-i18n.js、gamelist.js、
+i18n.js 中的大厅界面、游戏名称、简介、分类和动态提示所需字符。
+两份文件均由上述原始字体转换为 WOFF2；未修改字形轮廓，
+保留原字体名称和版权元数据。包含各页面八种语言文案中原字体
+支持的字符和可用的拉丁字符。
+原字体没有收录的字符（例如韩文）由 CSS 中的系统字体回退显示。
+欢迎页和大厅各自引入对应子集，与网站一起部署，不依赖第三方字体服务。
+
+更新页面文案或游戏清单后，如添加了当前子集未包含的字符，使用原版 TTF
+重新生成子集。以下命令在项目根目录执行，需要开发工具 fonttools
+及 Brotli；网站运行和部署本身没有 Python 或构建依赖：
+
+python -m fontTools.subset "原版字体路径.ttf" --text-file=index.html --unicodes=U+0020-017F --flavor=woff2 --name-IDs=* --name-legacy --name-languages=* --output-file=assets/fonts/huiwen-mincho-welcome.woff2
+
+大厅子集（先在 PowerShell 合并大厅的四份文本到临时文件）：
+
+Get-Content -Raw -Encoding utf8 games.html,games-i18n.js,gamelist.js,i18n.js | Set-Content -Encoding utf8 "$env:TEMP/boopland-lobby-font-text.txt"
+python -m fontTools.subset "原版字体路径.ttf" --text-file="$env:TEMP/boopland-lobby-font-text.txt" --unicodes=U+0020-017F --flavor=woff2 --name-IDs=* --name-legacy --name-languages=* --output-file=assets/fonts/huiwen-mincho-lobby.woff2

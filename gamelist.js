@@ -2,7 +2,8 @@
 // 游戏文件放在 games/游戏目录/index.html，path 相对于 games.html。
 // 必填：title、path。其余字段可省略；color 使用 #RRGGBB 格式。
 // 可选：cover: "./games/游戏目录/cover.png"，作为卡片封面。
-// category 只选：休闲、益智、动作、策略、棋牌；分类译名由大厅统一提供。
+// category 只选：休闲、益智、解谜、动作、策略、棋牌；分类译名由大厅统一提供。
+// tags 可选：包含 "推荐" 时展示在大厅推荐区，例如 tags: ["推荐"]。
 // locales 按全局语言提供 title、description；缺少翻译时回退到基础字段。
 window.GAME_LIST = [
   {
@@ -10,6 +11,7 @@ window.GAME_LIST = [
     description: "绕个小弯，让相同的小伙伴相遇。动物与水果，两套手绘图案慢慢连。",
     path: "./games/animal-link/index.html",
     category: "益智",
+    tags: ["推荐"],
     color: "#e6eadb",
     cover: "./games/animal-link/cover.svg",
     locales: {
@@ -61,6 +63,7 @@ window.GAME_LIST = [
     description: "和小夏一起，按住蓄力、松开起跳，在花朵与薄雾间走向下一座浮岛。",
     path: "./games/cloud-leap/index.html",
     category: "动作",
+    tags: ["推荐"],
     color: "#e6eadb",
     cover: "./games/cloud-leap/cover.svg",
     locales: {
@@ -418,6 +421,7 @@ window.GAME_LIST = [
     description: "在玻璃瓶之间轻轻倒水，把同色归到一起，整理一小页温柔的颜色。",
     path: "./games/water-sort/index.html",
     category: "益智",
+    tags: ["推荐"],
     color: "#e9ecdf",
     cover: "./games/water-sort/cover.svg",
     locales: {
@@ -564,6 +568,24 @@ window.GAME_LIST = [
       de: { title: "Papierhaken", description: "Halten, einhaken, losfliegen. Schwinge durch 12 kleine Papierabenteuer und sammle Sternenlicht." },
       es: { title: "Gancho de papel", description: "Mantén para enganchar y suelta para volar. Recorre 12 aventuras de papel y recoge estrellas." },
       'pt-BR': { title: "Gancho de papel", description: "Segure para prender e solte para voar. Atravesse 12 aventuras de papel e colete estrelas." }
+    }
+  },
+  {
+    title: "发条小镇",
+    description: "陪小机器人探索三处手绘场景，组合零件、修复机械，让钟楼的微光重新亮起。",
+    path: "./games/clockwork-town/index.html",
+    category: "解谜",
+    tags: ["推荐"],
+    color: "#e4e7d7",
+    cover: "./games/clockwork-town/cover.svg",
+    locales: {
+      en: { title: "Clockwork Town", description: "Explore three hand-drawn scenes with a little robot. Combine parts, mend machines and light the clock tower." },
+      ja: { title: "ぜんまいの街", description: "小さなロボットと三つの手描きの場所へ。部品を組み合わせ、機械を直し、時計塔に灯りを。" },
+      ko: { title: "태엽 마을", description: "작은 로봇과 세 손그림 장소를 탐험해요. 부품을 조합하고 기계를 고쳐 시계탑을 밝혀요." },
+      fr: { title: "La ville mécanique", description: "Explorez trois décors dessinés avec un petit robot. Assemblez des pièces, réparez les machines et rallumez le beffroi." },
+      de: { title: "Uhrwerkstädtchen", description: "Erkunde drei gezeichnete Orte mit einem kleinen Roboter. Kombiniere Teile, repariere Maschinen und erhelle den Uhrturm." },
+      es: { title: "Pueblo de cuerda", description: "Explora tres escenas dibujadas con un pequeño robot. Combina piezas, repara máquinas e ilumina la torre." },
+      'pt-BR': { title: "Vila de corda", description: "Explore três cenários desenhados com um pequeno robô. Combine peças, conserte máquinas e ilumine a torre." }
     }
   },
   // 新增示例（删除每行开头的 //，修改内容即可）：
