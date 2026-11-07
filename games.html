@@ -55,13 +55,14 @@
       gap: 24px;
       border-bottom: 1px solid var(--line);
     }
-    .brand { display: flex; align-items: center; gap: 13px; }
-    .brand svg { width: 37px; height: 42px; color: var(--green); }
+    .brand { display: flex; align-items: center; gap: 13px; min-width: 0; }
+    .brand > div { min-width: 0; }
+    .brand svg { width: 37px; height: 42px; flex-shrink: 0; color: var(--green); }
     h1 { margin: 0; font: 22px/1.4 var(--hand); letter-spacing: 2px; }
     .brand small { display: block; margin-top: 3px; font-size: 9px; letter-spacing: 2.4px; color: var(--muted); }
     .home-link { font: 16px var(--hand); color: #63745b; text-decoration: none; padding: 12px 0 12px 12px; }
     .home-link:hover { text-decoration: underline; text-underline-offset: 5px; }
-    .header-actions { display: flex; align-items: center; flex-wrap: wrap; justify-content: flex-end; gap: 12px; }
+    .header-actions { display: flex; align-items: center; flex-shrink: 0; justify-content: flex-end; gap: 12px; }
     .recommendations { padding: 32px 0 34px; border-bottom: 1px dashed var(--line); }
     .collection { padding: 30px 0 25px; }
     .collection-bar { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 18px; margin-bottom: 27px; }
@@ -145,10 +146,9 @@
     }
     @media (max-width: 767px) {
       .page { width: calc(100% - 40px); }
-      .masthead { min-height: 86px; gap: 12px; padding-block: 20px; flex-wrap: wrap; }
-      .header-actions { width: 100%; justify-content: space-between; }
+      .masthead { min-height: 86px; gap: 12px; padding-block: 20px; }
       .home-link { padding-left: 0; }
-      h1 { font-size: 20px; letter-spacing: 1px; }
+      h1 { font-size: 20px; letter-spacing: 1px; overflow-wrap: anywhere; }
       .brand { gap: 9px; }
       .brand small { font-size: 8px; letter-spacing: 1.7px; }
       .brand svg { width: 30px; height: 36px; }
