@@ -25,6 +25,60 @@ window.GAME_LIST = [
     }
   },
   {
+    title: "发条小镇",
+    description: "陪小机器人走过六章手绘冒险：点亮钟楼、唤醒温室、平衡吊桥，让星邮列车重新出发。",
+    path: "./games/clockwork-town/index.html",
+    category: "解谜",
+    tags: ["推荐"],
+    color: "#e4e7d7",
+    cover: "./games/clockwork-town/cover.svg",
+    locales: {
+      en: { title: "Clockwork Town", description: "Six hand-drawn chapters with a little robot. Light the tower, revive a greenhouse, balance a bridge and restart the mail train." },
+      ja: { title: "ぜんまいの街", description: "小さなロボットと六章の手描き冒険へ。塔を照らし、温室を育て、橋を直し、星便を出発させよう。" },
+      ko: { title: "태엽 마을", description: "작은 로봇과 손그림 모험 여섯 장을 떠나요. 탑과 온실을 깨우고 다리를 고쳐 우편차를 출발시켜요." },
+      fr: { title: "La ville mécanique", description: "Six chapitres dessinés avec un petit robot. Rallumez la tour, réveillez la serre, équilibrez le pont et relancez le courrier." },
+      de: { title: "Uhrwerkstädtchen", description: "Sechs gezeichnete Kapitel mit einem kleinen Roboter. Erhelle den Turm, belebe das Gewächshaus, repariere die Brücke und starte die Postbahn." },
+      es: { title: "Pueblo de cuerda", description: "Seis capítulos dibujados con un pequeño robot. Ilumina la torre, revive el invernadero, equilibra el puente y reactiva el tren postal." },
+      'pt-BR': { title: "Vila de corda", description: "Seis capítulos desenhados com um pequeno robô. Ilumine a torre, reviva a estufa, equilibre a ponte e reative o trem postal." }
+    }
+  },
+  {
+    title: "纸上防线 · MaxTD",
+    description: "部署小队、搭起迷宫，在手绘沙盘上守住一波又一波。",
+    path: "./games/maxtd/index.html",
+    category: "策略",
+    tags: ["推荐"],
+    color: "#e8ead9",
+    cover: "./games/maxtd/cover.svg",
+    locales: {
+      en: { title: "Paperline TD · MaxTD", description: "Deploy a squad, shape a maze, and hold the line through endless waves." },
+      ja: { title: "紙の防衛線 · MaxTD", description: "部隊を配置して迷路を作り、手描きの戦場で迫る敵を迎え撃とう。" },
+      ko: { title: "종이 방어선 · MaxTD", description: "부대를 배치하고 미로를 만들어 끝없이 밀려오는 적을 막아 보세요." },
+      fr: { title: "Paperline TD · MaxTD", description: "Déployez votre équipe, tracez un labyrinthe et résistez à des vagues sans fin." },
+      de: { title: "Paperline TD · MaxTD", description: "Platziere dein Team, baue ein Labyrinth und halte endlose Gegnerwellen auf." },
+      es: { title: "Paperline TD · MaxTD", description: "Despliega tu equipo, crea un laberinto y resiste oleadas sin fin." },
+      'pt-BR': { title: "Paperline TD · MaxTD", description: "Posicione sua equipe, construa um labirinto e resista a ondas sem fim." }
+    }
+  },
+  {
+    title: "一个消消乐",
+    description: "交换手绘小动物，把同色的小快乐，三个三个连起来。",
+    path: "./games/animal-match/index.html",
+    category: "益智",
+    tags: ["推荐"],
+    color: "#f2eddf",
+    cover: "./games/animal-match/cover.svg",
+    locales: {
+      en: { title: "A Little Match", description: "Swap hand-drawn animal friends and line up three little joys." },
+      ja: { title: "ちいさなマッチ", description: "手描きの動物たちを入れ替えて、同じ色の幸せを3つ並べよう。" },
+      ko: { title: "작은 매치", description: "손으로 그린 동물 친구를 바꿔 같은 색의 작은 행복 셋을 맞춰요." },
+      fr: { title: "Petits accords", description: "Échangez des animaux dessinés à la main et alignez trois petits bonheurs." },
+      de: { title: "Kleines Tierglück", description: "Tausche handgezeichnete Tierfreunde und verbinde drei kleine Freuden." },
+      es: { title: "Pequeñas coincidencias", description: "Intercambia animales dibujados a mano y une tres pequeñas alegrías." },
+      'pt-BR': { title: "Pequenos encontros", description: "Troque bichinhos desenhados à mão e combine três pequenas alegrias." }
+    }
+  },
+  {
     title: "行李箱收纳师",
     description: "转一转，放一放，把旅行小物装得刚刚好。六段旅程，收集六枚出发印章。",
     path: "./games/suitcase-story/index.html",
@@ -97,7 +151,6 @@ window.GAME_LIST = [
     description: "和小夏一起，按住蓄力、松开起跳，在花朵与薄雾间走向下一座浮岛。",
     path: "./games/cloud-leap/index.html",
     category: "动作",
-    tags: ["推荐"],
     color: "#e6eadb",
     cover: "./games/cloud-leap/cover.svg",
     locales: {
@@ -230,23 +283,6 @@ window.GAME_LIST = [
     }
   },
   {
-    title: "纸上防线 · MaxTD",
-    description: "部署小队、搭起迷宫，在手绘沙盘上守住一波又一波。",
-    path: "./games/maxtd/index.html",
-    category: "策略",
-    color: "#e8ead9",
-    cover: "./games/maxtd/cover.svg",
-    locales: {
-      en: { title: "Paperline TD · MaxTD", description: "Deploy a squad, shape a maze, and hold the line through endless waves." },
-      ja: { title: "紙の防衛線 · MaxTD", description: "部隊を配置して迷路を作り、手描きの戦場で迫る敵を迎え撃とう。" },
-      ko: { title: "종이 방어선 · MaxTD", description: "부대를 배치하고 미로를 만들어 끝없이 밀려오는 적을 막아 보세요." },
-      fr: { title: "Paperline TD · MaxTD", description: "Déployez votre équipe, tracez un labyrinthe et résistez à des vagues sans fin." },
-      de: { title: "Paperline TD · MaxTD", description: "Platziere dein Team, baue ein Labyrinth und halte endlose Gegnerwellen auf." },
-      es: { title: "Paperline TD · MaxTD", description: "Despliega tu equipo, crea un laberinto y resiste oleadas sin fin." },
-      'pt-BR': { title: "Paperline TD · MaxTD", description: "Posicione sua equipe, construa um labirinto e resista a ondas sem fim." }
-    }
-  },
-  {
     title: "垂直极限",
     description: "戴上矿工帽，在铅笔画的地底世界里一路向下，勇闯 999 层。",
     path: "./games/core-descent/index.html",
@@ -295,23 +331,6 @@ window.GAME_LIST = [
       de: { title: "Stahlflut", description: "Steuere einen Bleistiftpanzer, durchbrich Ziegelmauern und verteidige deine Basis." },
       es: { title: "Marea de acero", description: "Pilota un tanque a lápiz, rompe muros de ladrillo y defiende tu base." },
       'pt-BR': { title: "Maré de aço", description: "Pilote um tanque a lápis, destrua muros de tijolos e defenda sua base." }
-    }
-  },
-  {
-    title: "一个消消乐",
-    description: "交换手绘小动物，把同色的小快乐，三个三个连起来。",
-    path: "./games/animal-match/index.html",
-    category: "益智",
-    color: "#f2eddf",
-    cover: "./games/animal-match/cover.svg",
-    locales: {
-      en: { title: "A Little Match", description: "Swap hand-drawn animal friends and line up three little joys." },
-      ja: { title: "ちいさなマッチ", description: "手描きの動物たちを入れ替えて、同じ色の幸せを3つ並べよう。" },
-      ko: { title: "작은 매치", description: "손으로 그린 동물 친구를 바꿔 같은 색의 작은 행복 셋을 맞춰요." },
-      fr: { title: "Petits accords", description: "Échangez des animaux dessinés à la main et alignez trois petits bonheurs." },
-      de: { title: "Kleines Tierglück", description: "Tausche handgezeichnete Tierfreunde und verbinde drei kleine Freuden." },
-      es: { title: "Pequeñas coincidencias", description: "Intercambia animales dibujados a mano y une tres pequeñas alegrías." },
-      'pt-BR': { title: "Pequenos encontros", description: "Troque bichinhos desenhados à mão e combine três pequenas alegrias." }
     }
   },
   {
@@ -455,7 +474,6 @@ window.GAME_LIST = [
     description: "在玻璃瓶之间轻轻倒水，把同色归到一起，整理一小页温柔的颜色。",
     path: "./games/water-sort/index.html",
     category: "益智",
-    tags: ["推荐"],
     color: "#e9ecdf",
     cover: "./games/water-sort/cover.svg",
     locales: {
@@ -602,24 +620,6 @@ window.GAME_LIST = [
       de: { title: "Papierhaken", description: "Halten, einhaken, losfliegen. Schwinge durch 12 kleine Papierabenteuer und sammle Sternenlicht." },
       es: { title: "Gancho de papel", description: "Mantén para enganchar y suelta para volar. Recorre 12 aventuras de papel y recoge estrellas." },
       'pt-BR': { title: "Gancho de papel", description: "Segure para prender e solte para voar. Atravesse 12 aventuras de papel e colete estrelas." }
-    }
-  },
-  {
-    title: "发条小镇",
-    description: "陪小机器人走过六章手绘冒险：点亮钟楼、唤醒温室、平衡吊桥，让星邮列车重新出发。",
-    path: "./games/clockwork-town/index.html",
-    category: "解谜",
-    tags: ["推荐"],
-    color: "#e4e7d7",
-    cover: "./games/clockwork-town/cover.svg",
-    locales: {
-      en: { title: "Clockwork Town", description: "Six hand-drawn chapters with a little robot. Light the tower, revive a greenhouse, balance a bridge and restart the mail train." },
-      ja: { title: "ぜんまいの街", description: "小さなロボットと六章の手描き冒険へ。塔を照らし、温室を育て、橋を直し、星便を出発させよう。" },
-      ko: { title: "태엽 마을", description: "작은 로봇과 손그림 모험 여섯 장을 떠나요. 탑과 온실을 깨우고 다리를 고쳐 우편차를 출발시켜요." },
-      fr: { title: "La ville mécanique", description: "Six chapitres dessinés avec un petit robot. Rallumez la tour, réveillez la serre, équilibrez le pont et relancez le courrier." },
-      de: { title: "Uhrwerkstädtchen", description: "Sechs gezeichnete Kapitel mit einem kleinen Roboter. Erhelle den Turm, belebe das Gewächshaus, repariere die Brücke und starte die Postbahn." },
-      es: { title: "Pueblo de cuerda", description: "Seis capítulos dibujados con un pequeño robot. Ilumina la torre, revive el invernadero, equilibra el puente y reactiva el tren postal." },
-      'pt-BR': { title: "Vila de corda", description: "Seis capítulos desenhados com um pequeno robô. Ilumine a torre, reviva a estufa, equilibre a ponte e reative o trem postal." }
     }
   },
   {
