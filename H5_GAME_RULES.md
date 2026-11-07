@@ -47,7 +47,7 @@
      title: "云朵跳跳",
      description: "踩着云朵，往天空走一点点。",
      path: "./games/cloud-jump/index.html",
-     category: "轻松挑战",
+     category: "动作",
      color: "#dce5d8"
    },
    ```
@@ -57,7 +57,7 @@
    | `title` | 必填，游戏名称。 |
    | `path` | 必填，相对于 `games.html` 的游戏入口，必须位于 `games/` 内。 |
    | `description` | 可选，一句简短介绍。 |
-   | `category` | 可选，例如「放空片刻」「轻松挑战」。 |
+   | `category` | 可选，只使用「休闲」「益智」「动作」「策略」「棋牌」五种传统分类，按主要玩法选择，不为单个游戏新建分类；省略或无效时归入「休闲」。 |
    | `color` | 可选，六位十六进制封面底色，例如 `#dce5d8`。 |
    | `cover` | 可选，图片封面路径，例如 `./games/cloud-jump/assets/cover.png`，必须位于 `games/` 内。 |
 
@@ -185,7 +185,7 @@ html, body { margin: 0; width: 100%; }
 - 静态文字用 `data-i18n="作用域.键名"`；占位提示、无障碍标签分别用 `data-i18n-placeholder`、`data-i18n-label`。内容通过 `textContent` 更新，翻译不能包含 HTML。
 - 游戏用唯一作用域注册八国语言文案，动态文本用 `BooplandI18n.t(key, values)`，监听 `boopland:languagechange` 刷新文字；切换语言不得重置游戏进度。网页标题、按钮、玩法说明、状态、提示和无障碍标签都应覆盖。
 - 返回按钮使用公共键 `common.back`；需要更改语言时通过大厅回到欢迎页。
-- `gamelist.js` 每条记录可增加 `locales: { en: { title, description, category }, ... }`。基础字段作为中文和缺失翻译的回退；新增游戏应补齐其余七种语言，不把“保存了语言代码”当成完成界面翻译。
+- `gamelist.js` 每条记录可增加 `locales: { en: { title, description }, ... }`。基础字段作为中文和缺失翻译的回退；新增游戏应补齐其余七种语言，不把“保存了语言代码”当成完成界面翻译。分类名称统一由 `games-i18n.js` 翻译，筛选和卡片共用，单个游戏不再提供分类译名。
 
 ```html
 <a href="../../games.html" data-i18n="common.back">返回大厅</a>

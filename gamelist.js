@@ -2,363 +2,364 @@
 // 游戏文件放在 games/游戏目录/index.html，path 相对于 games.html。
 // 必填：title、path。其余字段可省略；color 使用 #RRGGBB 格式。
 // 可选：cover: "./games/游戏目录/cover.png"，作为卡片封面。
-// locales 按全局语言提供 title、description、category；缺少翻译时回退到基础字段。
+// category 只选：休闲、益智、动作、策略、棋牌；分类译名由大厅统一提供。
+// locales 按全局语言提供 title、description；缺少翻译时回退到基础字段。
 window.GAME_LIST = [
   {
     title: "云间来信 · 跳一跳",
     description: "和小夏一起，按住蓄力、松开起跳，在花朵与薄雾间走向下一座浮岛。",
     path: "./games/cloud-leap/index.html",
-    category: "轻松挑战",
+    category: "动作",
     color: "#e6eadb",
     cover: "./games/cloud-leap/cover.svg",
     locales: {
-      en: { title: "Cloud Letters · Jump", description: "Hold to charge, release to leap, and join a little girl among flowers and floating islands.", category: "A little challenge" },
-      ja: { title: "雲からの手紙 · ジャンプ", description: "長押しで力をため、離してジャンプ。少女と花や霧に包まれた浮島を旅しよう。", category: "小さな挑戦" },
-      ko: { title: "구름 편지 · 점프", description: "눌러 힘을 모으고 놓아서 점프해요. 소녀와 함께 꽃과 안개 사이의 떠 있는 섬을 여행해요.", category: "작은 도전" },
-      fr: { title: "Lettres des nuages · Sauts", description: "Maintenez puis relâchez pour sauter avec une petite fille entre fleurs et îles flottantes.", category: "Un petit défi" },
-      de: { title: "Wolkenpost · Hüpfspiel", description: "Halten, loslassen und mit einem kleinen Mädchen über blühende Inseln in den Wolken springen.", category: "Eine kleine Herausforderung" },
-      es: { title: "Cartas de las nubes · Saltos", description: "Mantén y suelta para saltar con una niña entre flores, niebla e islas flotantes.", category: "Un pequeño reto" },
-      'pt-BR': { title: "Cartas das nuvens · Saltos", description: "Segure e solte para pular com uma menina entre flores, névoa e ilhas flutuantes.", category: "Um pequeno desafio" }
+      en: { title: "Cloud Letters · Jump", description: "Hold to charge, release to leap, and join a little girl among flowers and floating islands." },
+      ja: { title: "雲からの手紙 · ジャンプ", description: "長押しで力をため、離してジャンプ。少女と花や霧に包まれた浮島を旅しよう。" },
+      ko: { title: "구름 편지 · 점프", description: "눌러 힘을 모으고 놓아서 점프해요. 소녀와 함께 꽃과 안개 사이의 떠 있는 섬을 여행해요." },
+      fr: { title: "Lettres des nuages · Sauts", description: "Maintenez puis relâchez pour sauter avec une petite fille entre fleurs et îles flottantes." },
+      de: { title: "Wolkenpost · Hüpfspiel", description: "Halten, loslassen und mit einem kleinen Mädchen über blühende Inseln in den Wolken springen." },
+      es: { title: "Cartas de las nubes · Saltos", description: "Mantén y suelta para saltar con una niña entre flores, niebla e islas flotantes." },
+      'pt-BR': { title: "Cartas das nuvens · Saltos", description: "Segure e solte para pular com uma menina entre flores, névoa e ilhas flutuantes." }
     }
   },
   {
     title: "上班摸鱼",
     description: "按住摸鱼，松手工作。识破老板的假动作，带着快乐准时下班。",
     path: "./games/office-slacker/index.html",
-    category: "轻松挑战",
+    category: "休闲",
     color: "#e8eadc",
     cover: "./games/office-slacker/cover.svg",
     locales: {
-      en: { title: "Office Slacker", description: "Hold to slack, release to work. Dodge the boss’s tricks and make it to clock-out.", category: "Quick challenge" },
-      ja: { title: "こっそりサボり", description: "押してサボる、離して仕事。上司のフェイントを見抜いて定時退社！", category: "気軽に挑戦" },
-      ko: { title: "월급 루팡", description: "누르면 딴짓, 떼면 업무. 사장님의 속임수를 피하고 무사히 퇴근해요.", category: "가벼운 도전" },
-      fr: { title: "Pause au bureau", description: "Maintenez pour flâner, relâchez pour travailler. Déjouez les feintes du patron !", category: "Petit défi" },
-      de: { title: "Büro-Auszeit", description: "Halten zum Faulenzen, loslassen zum Arbeiten. Durchschaue die Tricks des Chefs!", category: "Kleine Herausforderung" },
-      es: { title: "Escapada de oficina", description: "Mantén para holgazanear, suelta para trabajar. ¡Esquiva los trucos del jefe!", category: "Reto ligero" },
-      'pt-BR': { title: "Folga no escritório", description: "Segure para enrolar, solte para trabalhar. Escape dos truques do chefe!", category: "Desafio leve" }
+      en: { title: "Office Slacker", description: "Hold to slack, release to work. Dodge the boss’s tricks and make it to clock-out." },
+      ja: { title: "こっそりサボり", description: "押してサボる、離して仕事。上司のフェイントを見抜いて定時退社！" },
+      ko: { title: "월급 루팡", description: "누르면 딴짓, 떼면 업무. 사장님의 속임수를 피하고 무사히 퇴근해요." },
+      fr: { title: "Pause au bureau", description: "Maintenez pour flâner, relâchez pour travailler. Déjouez les feintes du patron !" },
+      de: { title: "Büro-Auszeit", description: "Halten zum Faulenzen, loslassen zum Arbeiten. Durchschaue die Tricks des Chefs!" },
+      es: { title: "Escapada de oficina", description: "Mantén para holgazanear, suelta para trabajar. ¡Esquiva los trucos del jefe!" },
+      'pt-BR': { title: "Folga no escritório", description: "Segure para enrolar, solte para trabalhar. Escape dos truques do chefe!" }
     }
   },
   {
     title: "九宫格探险·迷雾篇",
     description: "翻开迷雾中的九宫格，在战斗、补给和奇遇之间取舍，闯过五层手绘秘境。",
     path: "./games/ninefold-quest/index.html",
-    category: "策略探险",
+    category: "策略",
     color: "#e5e9dc",
     cover: "./games/ninefold-quest/cover.svg",
     locales: {
-      en: { title: "Ninefold Quest", description: "Reveal misty tiles, weigh battles against supplies, and explore five hand-drawn realms.", category: "Strategy adventure" },
-      ja: { title: "九マスの冒険・霧の章", description: "霧のマスをめくり、戦闘と補給を選びながら、手描きの五つの秘境を進もう。", category: "戦略アドベンチャー" },
-      ko: { title: "아홉 칸 모험 · 안개 편", description: "안개 속 칸을 열고 전투와 보급을 선택하며 손으로 그린 다섯 세계를 탐험해요.", category: "전략 모험" },
-      fr: { title: "Neuf cases d’aventure", description: "Dissipez la brume, choisissez vos combats et explorez cinq royaumes dessinés au crayon.", category: "Aventure stratégique" },
-      de: { title: "Neun-Felder-Abenteuer", description: "Lüfte den Nebel, wäge Kämpfe und Vorräte ab und erkunde fünf gezeichnete Welten.", category: "Strategie-Abenteuer" },
-      es: { title: "Aventura en nueve casillas", description: "Despeja la niebla, elige combates y provisiones y explora cinco reinos dibujados a mano.", category: "Aventura estratégica" },
-      'pt-BR': { title: "Aventura em nove casas", description: "Revele a névoa, escolha entre combates e suprimentos e explore cinco reinos desenhados à mão.", category: "Aventura estratégica" }
+      en: { title: "Ninefold Quest", description: "Reveal misty tiles, weigh battles against supplies, and explore five hand-drawn realms." },
+      ja: { title: "九マスの冒険・霧の章", description: "霧のマスをめくり、戦闘と補給を選びながら、手描きの五つの秘境を進もう。" },
+      ko: { title: "아홉 칸 모험 · 안개 편", description: "안개 속 칸을 열고 전투와 보급을 선택하며 손으로 그린 다섯 세계를 탐험해요." },
+      fr: { title: "Neuf cases d’aventure", description: "Dissipez la brume, choisissez vos combats et explorez cinq royaumes dessinés au crayon." },
+      de: { title: "Neun-Felder-Abenteuer", description: "Lüfte den Nebel, wäge Kämpfe und Vorräte ab und erkunde fünf gezeichnete Welten." },
+      es: { title: "Aventura en nueve casillas", description: "Despeja la niebla, elige combates y provisiones y explora cinco reinos dibujados a mano." },
+      'pt-BR': { title: "Aventura em nove casas", description: "Revele a névoa, escolha entre combates e suprimentos e explore cinco reinos desenhados à mão." }
     }
   },
   {
     title: "弹珠派对",
     description: "瞄准，松手！几十颗弹珠连发，炸弹连锁爆破，攒满能量一路击穿。",
     path: "./games/marble-rush/index.html",
-    category: "爽快街机",
+    category: "休闲",
     color: "#e5e7d8",
     cover: "./games/marble-rush/cover.svg",
     locales: {
-      en: { title: "Marble Party", description: "Aim and release a shower of marbles. Chain explosions and charge a piercing burst!", category: "Arcade fun" },
-      ja: { title: "ビー玉パーティー", description: "狙って離してビー玉連射！爆弾を連鎖させ、エネルギーをためて貫こう。", category: "爽快アーケード" },
-      ko: { title: "구슬 파티", description: "조준하고 놓으면 구슬이 쏟아져요! 연쇄 폭발과 관통 난사를 즐겨 보세요.", category: "신나는 아케이드" },
-      fr: { title: "Fête des billes", description: "Visez et lancez une pluie de billes. Explosions en chaîne et tirs perçants !", category: "Arcade détente" },
-      de: { title: "Murmelparty", description: "Zielen und eine Murmelsalve loslassen. Kettenreaktionen und geladene Durchschüsse!", category: "Arcade-Spaß" },
-      es: { title: "Fiesta de canicas", description: "Apunta y suelta una lluvia de canicas. ¡Explosiones en cadena y ráfagas perforantes!", category: "Diversión arcade" },
-      'pt-BR': { title: "Festa de bolinhas", description: "Mire e solte uma chuva de bolinhas. Explosões em cadeia e rajadas perfurantes!", category: "Diversão arcade" }
+      en: { title: "Marble Party", description: "Aim and release a shower of marbles. Chain explosions and charge a piercing burst!" },
+      ja: { title: "ビー玉パーティー", description: "狙って離してビー玉連射！爆弾を連鎖させ、エネルギーをためて貫こう。" },
+      ko: { title: "구슬 파티", description: "조준하고 놓으면 구슬이 쏟아져요! 연쇄 폭발과 관통 난사를 즐겨 보세요." },
+      fr: { title: "Fête des billes", description: "Visez et lancez une pluie de billes. Explosions en chaîne et tirs perçants !" },
+      de: { title: "Murmelparty", description: "Zielen und eine Murmelsalve loslassen. Kettenreaktionen und geladene Durchschüsse!" },
+      es: { title: "Fiesta de canicas", description: "Apunta y suelta una lluvia de canicas. ¡Explosiones en cadena y ráfagas perforantes!" },
+      'pt-BR': { title: "Festa de bolinhas", description: "Mire e solte uma chuva de bolinhas. Explosões em cadeia e rajadas perfurantes!" }
     }
   },
   {
     title: "迷你割草",
     description: "飞叶绕身，种子开路。在手绘草地上升级成长，守住三分钟。",
     path: "./games/mini-mow/index.html",
-    category: "生存挑战",
+    category: "动作",
     color: "#e8eddc",
     cover: "./games/mini-mow/cover.svg",
     locales: {
-      en: { title: "Mini Meadow", description: "Orbiting leaves, flying seeds. Grow stronger and survive three minutes in a pencil-drawn meadow.", category: "Survival challenge" },
-      ja: { title: "ちいさな草原", description: "葉と種で戦い、強くなって、手描きの草原で3分間生き延びよう。", category: "サバイバル" },
-      ko: { title: "작은 풀밭", description: "잎과 씨앗으로 싸우며 성장하고 손으로 그린 풀밭에서 3분을 버텨요.", category: "생존 도전" },
-      fr: { title: "Petite prairie", description: "Feuilles en orbite et graines volantes : survivez trois minutes dans une prairie au crayon.", category: "Défi de survie" },
-      de: { title: "Kleine Wiese", description: "Kreisende Blätter und fliegende Samen: Wachse und überlebe drei Minuten auf der Bleistiftwiese.", category: "Überlebensspiel" },
-      es: { title: "Mini pradera", description: "Hojas orbitales y semillas voladoras. Mejora y sobrevive tres minutos en una pradera a lápiz.", category: "Reto de supervivencia" },
-      'pt-BR': { title: "Mini campina", description: "Folhas ao redor e sementes voadoras. Evolua e sobreviva três minutos numa campina a lápis.", category: "Desafio de sobrevivência" }
+      en: { title: "Mini Meadow", description: "Orbiting leaves, flying seeds. Grow stronger and survive three minutes in a pencil-drawn meadow." },
+      ja: { title: "ちいさな草原", description: "葉と種で戦い、強くなって、手描きの草原で3分間生き延びよう。" },
+      ko: { title: "작은 풀밭", description: "잎과 씨앗으로 싸우며 성장하고 손으로 그린 풀밭에서 3분을 버텨요." },
+      fr: { title: "Petite prairie", description: "Feuilles en orbite et graines volantes : survivez trois minutes dans une prairie au crayon." },
+      de: { title: "Kleine Wiese", description: "Kreisende Blätter und fliegende Samen: Wachse und überlebe drei Minuten auf der Bleistiftwiese." },
+      es: { title: "Mini pradera", description: "Hojas orbitales y semillas voladoras. Mejora y sobrevive tres minutos en una pradera a lápiz." },
+      'pt-BR': { title: "Mini campina", description: "Folhas ao redor e sementes voadoras. Evolua e sobreviva três minutos numa campina a lápis." }
     }
   },
   {
     title: "俄罗斯方块",
     description: "一块一块慢慢叠，拼出整齐的小快乐。",
     path: "./games/tetris/index.html",
-    category: "经典益智",
+    category: "益智",
     color: "#e4e7dc",
     cover: "./games/tetris/cover.svg",
     locales: {
-      en: { title: "Tetris", description: "Stack a little joy, one block at a time.", category: "Classic puzzle" },
-      ja: { title: "テトリス", description: "ひとつずつ重ねて、小さな喜びをそろえよう。", category: "定番パズル" },
-      ko: { title: "테트리스", description: "한 블록씩 차곡차곡, 작은 기쁨을 쌓아요.", category: "클래식 퍼즐" },
-      fr: { title: "Tetris", description: "Empilez un peu de joie, un bloc à la fois.", category: "Puzzle classique" },
-      de: { title: "Tetris", description: "Stapele kleine Freuden, Stein für Stein.", category: "Puzzle-Klassiker" },
-      es: { title: "Tetris", description: "Apila pequeñas alegrías, un bloque cada vez.", category: "Puzle clásico" },
-      'pt-BR': { title: "Tetris", description: "Empilhe pequenas alegrias, um bloco de cada vez.", category: "Quebra-cabeça clássico" }
+      en: { title: "Tetris", description: "Stack a little joy, one block at a time." },
+      ja: { title: "テトリス", description: "ひとつずつ重ねて、小さな喜びをそろえよう。" },
+      ko: { title: "테트리스", description: "한 블록씩 차곡차곡, 작은 기쁨을 쌓아요." },
+      fr: { title: "Tetris", description: "Empilez un peu de joie, un bloc à la fois." },
+      de: { title: "Tetris", description: "Stapele kleine Freuden, Stein für Stein." },
+      es: { title: "Tetris", description: "Apila pequeñas alegrías, un bloque cada vez." },
+      'pt-BR': { title: "Tetris", description: "Empilhe pequenas alegrias, um bloco de cada vez." }
     }
   },
   {
     title: "24 点",
     description: "四张数字牌，加减乘除，拼出刚刚好的 24。",
     path: "./games/twenty-four/index.html",
-    category: "动动脑筋",
+    category: "益智",
     color: "#e5e9d9",
     cover: "./games/twenty-four/cover.svg",
     locales: {
-      en: { title: "Make 24", description: "Four number cards and a little arithmetic. Can you make 24?", category: "Brain teasers" },
-      ja: { title: "24 パズル", description: "4枚の数字カードと四則演算で、ぴったり24をつくろう。", category: "頭の体操" },
-      ko: { title: "24 만들기", description: "숫자 카드 네 장과 사칙연산으로 정확히 24를 만들어 보세요.", category: "두뇌 놀이" },
-      fr: { title: "Faire 24", description: "Quatre cartes et un peu de calcul pour arriver exactement à 24.", category: "Remue-méninges" },
-      de: { title: "Mach 24", description: "Vier Zahlenkarten und die vier Grundrechenarten. Schaffst du genau 24?", category: "Denksport" },
-      es: { title: "Haz 24", description: "Cuatro cartas y las cuatro operaciones para llegar justo a 24.", category: "Juegos de ingenio" },
-      'pt-BR': { title: "Faça 24", description: "Quatro cartas e as quatro operações para chegar exatamente a 24.", category: "Quebra-cabeças" }
+      en: { title: "Make 24", description: "Four number cards and a little arithmetic. Can you make 24?" },
+      ja: { title: "24 パズル", description: "4枚の数字カードと四則演算で、ぴったり24をつくろう。" },
+      ko: { title: "24 만들기", description: "숫자 카드 네 장과 사칙연산으로 정확히 24를 만들어 보세요." },
+      fr: { title: "Faire 24", description: "Quatre cartes et un peu de calcul pour arriver exactement à 24." },
+      de: { title: "Mach 24", description: "Vier Zahlenkarten und die vier Grundrechenarten. Schaffst du genau 24?" },
+      es: { title: "Haz 24", description: "Cuatro cartas y las cuatro operaciones para llegar justo a 24." },
+      'pt-BR': { title: "Faça 24", description: "Quatro cartas e as quatro operações para chegar exatamente a 24." }
     }
   },
   {
     title: "纸飞机",
     description: "驾驶铅笔画的纸飞机，在草稿纸的天空里躲闪、射击。",
     path: "./games/paper-flight/index.html",
-    category: "轻松挑战",
+    category: "动作",
     color: "#f4f1e6",
     cover: "./games/paper-flight/cover.svg",
     locales: {
-      en: { title: "Paper Flight", description: "Fly a pencil-drawn paper plane. Dodge and shoot across a notebook sky.", category: "A little challenge" },
-      ja: { title: "紙飛行機", description: "鉛筆で描いた紙飛行機で、ノートの空をよけて撃って飛ぼう。", category: "小さな挑戦" },
-      ko: { title: "종이비행기", description: "연필로 그린 종이비행기를 타고 노트 속 하늘에서 피하고 쏘아요.", category: "작은 도전" },
-      fr: { title: "Vol de papier", description: "Pilotez un avion dessiné au crayon. Esquivez et tirez dans un ciel de papier.", category: "Un petit défi" },
-      de: { title: "Papierflug", description: "Fliege durch einen Bleistifthimmel. Weiche aus und schieße mit deinem Papierflieger.", category: "Eine kleine Herausforderung" },
-      es: { title: "Vuelo de papel", description: "Pilota un avión dibujado a lápiz. Esquiva y dispara por un cielo de papel.", category: "Un pequeño reto" },
-      'pt-BR': { title: "Voo de papel", description: "Pilote um avião desenhado a lápis. Desvie e atire pelo céu de um caderno.", category: "Um pequeno desafio" }
+      en: { title: "Paper Flight", description: "Fly a pencil-drawn paper plane. Dodge and shoot across a notebook sky." },
+      ja: { title: "紙飛行機", description: "鉛筆で描いた紙飛行機で、ノートの空をよけて撃って飛ぼう。" },
+      ko: { title: "종이비행기", description: "연필로 그린 종이비행기를 타고 노트 속 하늘에서 피하고 쏘아요." },
+      fr: { title: "Vol de papier", description: "Pilotez un avion dessiné au crayon. Esquivez et tirez dans un ciel de papier." },
+      de: { title: "Papierflug", description: "Fliege durch einen Bleistifthimmel. Weiche aus und schieße mit deinem Papierflieger." },
+      es: { title: "Vuelo de papel", description: "Pilota un avión dibujado a lápiz. Esquiva y dispara por un cielo de papel." },
+      'pt-BR': { title: "Voo de papel", description: "Pilote um avião desenhado a lápis. Desvie e atire pelo céu de um caderno." }
     }
   },
   {
     title: "纸上防线 · MaxTD",
     description: "部署小队、搭起迷宫，在手绘沙盘上守住一波又一波。",
     path: "./games/maxtd/index.html",
-    category: "策略塔防",
+    category: "策略",
     color: "#e8ead9",
     cover: "./games/maxtd/cover.svg",
     locales: {
-      en: { title: "Paperline TD · MaxTD", description: "Deploy a squad, shape a maze, and hold the line through endless waves.", category: "Tower defense" },
-      ja: { title: "紙の防衛線 · MaxTD", description: "部隊を配置して迷路を作り、手描きの戦場で迫る敵を迎え撃とう。", category: "タワーディフェンス" },
-      ko: { title: "종이 방어선 · MaxTD", description: "부대를 배치하고 미로를 만들어 끝없이 밀려오는 적을 막아 보세요.", category: "타워 디펜스" },
-      fr: { title: "Paperline TD · MaxTD", description: "Déployez votre équipe, tracez un labyrinthe et résistez à des vagues sans fin.", category: "Défense de tours" },
-      de: { title: "Paperline TD · MaxTD", description: "Platziere dein Team, baue ein Labyrinth und halte endlose Gegnerwellen auf.", category: "Tower Defense" },
-      es: { title: "Paperline TD · MaxTD", description: "Despliega tu equipo, crea un laberinto y resiste oleadas sin fin.", category: "Defensa de torres" },
-      'pt-BR': { title: "Paperline TD · MaxTD", description: "Posicione sua equipe, construa um labirinto e resista a ondas sem fim.", category: "Defesa de torres" }
+      en: { title: "Paperline TD · MaxTD", description: "Deploy a squad, shape a maze, and hold the line through endless waves." },
+      ja: { title: "紙の防衛線 · MaxTD", description: "部隊を配置して迷路を作り、手描きの戦場で迫る敵を迎え撃とう。" },
+      ko: { title: "종이 방어선 · MaxTD", description: "부대를 배치하고 미로를 만들어 끝없이 밀려오는 적을 막아 보세요." },
+      fr: { title: "Paperline TD · MaxTD", description: "Déployez votre équipe, tracez un labyrinthe et résistez à des vagues sans fin." },
+      de: { title: "Paperline TD · MaxTD", description: "Platziere dein Team, baue ein Labyrinth und halte endlose Gegnerwellen auf." },
+      es: { title: "Paperline TD · MaxTD", description: "Despliega tu equipo, crea un laberinto y resiste oleadas sin fin." },
+      'pt-BR': { title: "Paperline TD · MaxTD", description: "Posicione sua equipe, construa um labirinto e resista a ondas sem fim." }
     }
   },
   {
     title: "垂直极限",
     description: "戴上矿工帽，在铅笔画的地底世界里一路向下，勇闯 999 层。",
     path: "./games/core-descent/index.html",
-    category: "轻松挑战",
+    category: "动作",
     color: "#eee5d4",
     cover: "./games/core-descent/cover.svg",
     locales: {
-      en: { title: "Vertical Limit", description: "Put on your miner’s hat and descend 999 pencil-drawn floors.", category: "A little challenge" },
-      ja: { title: "垂直の限界", description: "探検帽をかぶって、鉛筆画の地底世界で999階を目指そう。", category: "小さな挑戦" },
-      ko: { title: "수직의 한계", description: "탐험 모자를 쓰고 연필로 그린 지하 세계의 999층을 향해 내려가요.", category: "작은 도전" },
-      fr: { title: "Limite verticale", description: "Enfilez votre casque et descendez 999 étages dessinés au crayon.", category: "Un petit défi" },
-      de: { title: "Vertikales Limit", description: "Setz deinen Helm auf und erkunde 999 mit Bleistift gezeichnete Ebenen.", category: "Eine kleine Herausforderung" },
-      es: { title: "Límite vertical", description: "Ponte el casco y desciende 999 pisos dibujados a lápiz.", category: "Un pequeño reto" },
-      'pt-BR': { title: "Limite vertical", description: "Coloque seu capacete e desça 999 andares desenhados a lápis.", category: "Um pequeno desafio" }
+      en: { title: "Vertical Limit", description: "Put on your miner’s hat and descend 999 pencil-drawn floors." },
+      ja: { title: "垂直の限界", description: "探検帽をかぶって、鉛筆画の地底世界で999階を目指そう。" },
+      ko: { title: "수직의 한계", description: "탐험 모자를 쓰고 연필로 그린 지하 세계의 999층을 향해 내려가요." },
+      fr: { title: "Limite verticale", description: "Enfilez votre casque et descendez 999 étages dessinés au crayon." },
+      de: { title: "Vertikales Limit", description: "Setz deinen Helm auf und erkunde 999 mit Bleistift gezeichnete Ebenen." },
+      es: { title: "Límite vertical", description: "Ponte el casco y desciende 999 pisos dibujados a lápiz." },
+      'pt-BR': { title: "Limite vertical", description: "Coloque seu capacete e desça 999 andares desenhados a lápis." }
     }
   },
   {
     title: "纸上贪吃蛇",
     description: "在方格纸上吃掉小苹果，和铅笔画的小蛇一起慢慢长大。",
     path: "./games/paper-snake/index.html",
-    category: "经典小游戏",
+    category: "休闲",
     color: "#f2eee3",
     cover: "./games/paper-snake/cover.svg",
     locales: {
-      en: { title: "Paper Snake", description: "Eat little apples and grow a pencil-drawn snake on graph paper.", category: "Arcade classics" },
-      ja: { title: "紙のヘビ", description: "方眼紙の上でリンゴを食べて、鉛筆のヘビを少しずつ育てよう。", category: "定番ゲーム" },
-      ko: { title: "종이 뱀", description: "모눈종이 위에서 사과를 먹고 연필로 그린 작은 뱀을 키워요.", category: "클래식 게임" },
-      fr: { title: "Serpent de papier", description: "Mangez des pommes et faites grandir un serpent au crayon sur du papier quadrillé.", category: "Grands classiques" },
-      de: { title: "Papierschlange", description: "Iss kleine Äpfel und lass eine Bleistiftschlange auf kariertem Papier wachsen.", category: "Spieleklassiker" },
-      es: { title: "Serpiente de papel", description: "Come manzanas y haz crecer una serpiente a lápiz en papel cuadriculado.", category: "Clásicos de arcade" },
-      'pt-BR': { title: "Cobrinha de papel", description: "Coma maçãs e faça uma cobrinha a lápis crescer no papel quadriculado.", category: "Clássicos de arcade" }
+      en: { title: "Paper Snake", description: "Eat little apples and grow a pencil-drawn snake on graph paper." },
+      ja: { title: "紙のヘビ", description: "方眼紙の上でリンゴを食べて、鉛筆のヘビを少しずつ育てよう。" },
+      ko: { title: "종이 뱀", description: "모눈종이 위에서 사과를 먹고 연필로 그린 작은 뱀을 키워요." },
+      fr: { title: "Serpent de papier", description: "Mangez des pommes et faites grandir un serpent au crayon sur du papier quadrillé." },
+      de: { title: "Papierschlange", description: "Iss kleine Äpfel und lass eine Bleistiftschlange auf kariertem Papier wachsen." },
+      es: { title: "Serpiente de papel", description: "Come manzanas y haz crecer una serpiente a lápiz en papel cuadriculado." },
+      'pt-BR': { title: "Cobrinha de papel", description: "Coma maçãs e faça uma cobrinha a lápis crescer no papel quadriculado." }
     }
   },
   {
     title: "钢铁洪流",
     description: "驾驶铅笔画的坦克，击破砖墙，在熟悉的炮火声中守住基地。",
     path: "./games/steel-tide/index.html",
-    category: "经典街机",
+    category: "动作",
     color: "#edf0e2",
     cover: "./games/steel-tide/cover.svg",
     locales: {
-      en: { title: "Steel Tide", description: "Drive a pencil-drawn tank, break through brick walls, and defend your base.", category: "Arcade classics" },
-      ja: { title: "鋼鉄の奔流", description: "鉛筆で描いた戦車を操り、レンガを撃ち抜いて基地を守ろう。", category: "定番アーケード" },
-      ko: { title: "강철의 물결", description: "연필로 그린 탱크를 조종하고 벽돌을 부수며 기지를 지켜요.", category: "클래식 아케이드" },
-      fr: { title: "Marée d’acier", description: "Pilotez un char dessiné au crayon, brisez les murs et défendez votre base.", category: "Classiques d’arcade" },
-      de: { title: "Stahlflut", description: "Steuere einen Bleistiftpanzer, durchbrich Ziegelmauern und verteidige deine Basis.", category: "Arcade-Klassiker" },
-      es: { title: "Marea de acero", description: "Pilota un tanque a lápiz, rompe muros de ladrillo y defiende tu base.", category: "Clásicos de arcade" },
-      'pt-BR': { title: "Maré de aço", description: "Pilote um tanque a lápis, destrua muros de tijolos e defenda sua base.", category: "Clássicos de arcade" }
+      en: { title: "Steel Tide", description: "Drive a pencil-drawn tank, break through brick walls, and defend your base." },
+      ja: { title: "鋼鉄の奔流", description: "鉛筆で描いた戦車を操り、レンガを撃ち抜いて基地を守ろう。" },
+      ko: { title: "강철의 물결", description: "연필로 그린 탱크를 조종하고 벽돌을 부수며 기지를 지켜요." },
+      fr: { title: "Marée d’acier", description: "Pilotez un char dessiné au crayon, brisez les murs et défendez votre base." },
+      de: { title: "Stahlflut", description: "Steuere einen Bleistiftpanzer, durchbrich Ziegelmauern und verteidige deine Basis." },
+      es: { title: "Marea de acero", description: "Pilota un tanque a lápiz, rompe muros de ladrillo y defiende tu base." },
+      'pt-BR': { title: "Maré de aço", description: "Pilote um tanque a lápis, destrua muros de tijolos e defenda sua base." }
     }
   },
   {
     title: "一个消消乐",
     description: "交换手绘小动物，把同色的小快乐，三个三个连起来。",
     path: "./games/animal-match/index.html",
-    category: "休闲益智",
+    category: "益智",
     color: "#f2eddf",
     cover: "./games/animal-match/cover.svg",
     locales: {
-      en: { title: "A Little Match", description: "Swap hand-drawn animal friends and line up three little joys.", category: "Cozy puzzles" },
-      ja: { title: "ちいさなマッチ", description: "手描きの動物たちを入れ替えて、同じ色の幸せを3つ並べよう。", category: "のんびりパズル" },
-      ko: { title: "작은 매치", description: "손으로 그린 동물 친구를 바꿔 같은 색의 작은 행복 셋을 맞춰요.", category: "편안한 퍼즐" },
-      fr: { title: "Petits accords", description: "Échangez des animaux dessinés à la main et alignez trois petits bonheurs.", category: "Puzzles détente" },
-      de: { title: "Kleines Tierglück", description: "Tausche handgezeichnete Tierfreunde und verbinde drei kleine Freuden.", category: "Entspannte Rätsel" },
-      es: { title: "Pequeñas coincidencias", description: "Intercambia animales dibujados a mano y une tres pequeñas alegrías.", category: "Puzles tranquilos" },
-      'pt-BR': { title: "Pequenos encontros", description: "Troque bichinhos desenhados à mão e combine três pequenas alegrias.", category: "Quebra-cabeças leves" }
+      en: { title: "A Little Match", description: "Swap hand-drawn animal friends and line up three little joys." },
+      ja: { title: "ちいさなマッチ", description: "手描きの動物たちを入れ替えて、同じ色の幸せを3つ並べよう。" },
+      ko: { title: "작은 매치", description: "손으로 그린 동물 친구를 바꿔 같은 색의 작은 행복 셋을 맞춰요." },
+      fr: { title: "Petits accords", description: "Échangez des animaux dessinés à la main et alignez trois petits bonheurs." },
+      de: { title: "Kleines Tierglück", description: "Tausche handgezeichnete Tierfreunde und verbinde drei kleine Freuden." },
+      es: { title: "Pequeñas coincidencias", description: "Intercambia animales dibujados a mano y une tres pequeñas alegrías." },
+      'pt-BR': { title: "Pequenos encontros", description: "Troque bichinhos desenhados à mão e combine três pequenas alegrias." }
     }
   },
   {
     title: "五子棋",
     description: "在纸上落一颗棋子，和三档 AI 慢慢过招。",
     path: "./games/gomoku/index.html",
-    category: "经典棋类",
+    category: "棋牌",
     color: "#e9e8da",
     cover: "./games/gomoku/cover.svg",
     locales: {
-      en: { title: "Gomoku", description: "Place a stone on paper and challenge three levels of AI.", category: "Board classics" },
-      ja: { title: "五目並べ", description: "紙の盤に石を打ち、3段階の AI とゆっくり対局。", category: "定番ボードゲーム" },
-      ko: { title: "오목", description: "종이 위에 돌을 놓고 세 가지 난이도의 AI와 겨뤄요.", category: "클래식 보드 게임" },
-      fr: { title: "Gomoku", description: "Posez vos pierres sur le papier et défiez trois niveaux d’IA.", category: "Jeux de plateau" },
-      de: { title: "Gomoku", description: "Setze Steine aufs Papier und spiele gegen drei KI-Stufen.", category: "Brettspielklassiker" },
-      es: { title: "Gomoku", description: "Coloca piedras sobre papel y reta a tres niveles de IA.", category: "Clásicos de mesa" },
-      'pt-BR': { title: "Gomoku", description: "Coloque pedras no papel e desafie três níveis de IA.", category: "Clássicos de tabuleiro" }
+      en: { title: "Gomoku", description: "Place a stone on paper and challenge three levels of AI." },
+      ja: { title: "五目並べ", description: "紙の盤に石を打ち、3段階の AI とゆっくり対局。" },
+      ko: { title: "오목", description: "종이 위에 돌을 놓고 세 가지 난이도의 AI와 겨뤄요." },
+      fr: { title: "Gomoku", description: "Posez vos pierres sur le papier et défiez trois niveaux d’IA." },
+      de: { title: "Gomoku", description: "Setze Steine aufs Papier und spiele gegen drei KI-Stufen." },
+      es: { title: "Gomoku", description: "Coloca piedras sobre papel y reta a tres niveles de IA." },
+      'pt-BR': { title: "Gomoku", description: "Coloque pedras no papel e desafie três níveis de IA." }
     }
   },
   {
     title: "叠叠高",
     description: "看准时机叠起纸块，把小小的快乐，一层层送向云朵。",
     path: "./games/paper-stack/index.html",
-    category: "轻松挑战",
+    category: "休闲",
     color: "#e5e8d6",
     cover: "./games/paper-stack/cover.svg",
     locales: {
-      en: { title: "Paper Stack", description: "Time each tap and stack little paper blocks up toward the clouds.", category: "A little challenge" },
-      ja: { title: "つみつみタワー", description: "タイミングを合わせて紙のブロックを積み、雲に近づこう。", category: "小さな挑戦" },
-      ko: { title: "차곡차곡 탑", description: "타이밍을 맞춰 종이 블록을 쌓고 구름에 조금 더 가까이 가요.", category: "작은 도전" },
-      fr: { title: "Tour de papier", description: "Empilez des blocs de papier au bon moment pour rejoindre les nuages.", category: "Un petit défi" },
-      de: { title: "Papierturm", description: "Stapele Papierblöcke im richtigen Moment bis hinauf zu den Wolken.", category: "Eine kleine Herausforderung" },
-      es: { title: "Torre de papel", description: "Apila bloques de papel en el momento justo para acercarte a las nubes.", category: "Un pequeño reto" },
-      'pt-BR': { title: "Torre de papel", description: "Empilhe blocos de papel na hora certa para chegar mais perto das nuvens.", category: "Um pequeno desafio" }
+      en: { title: "Paper Stack", description: "Time each tap and stack little paper blocks up toward the clouds." },
+      ja: { title: "つみつみタワー", description: "タイミングを合わせて紙のブロックを積み、雲に近づこう。" },
+      ko: { title: "차곡차곡 탑", description: "타이밍을 맞춰 종이 블록을 쌓고 구름에 조금 더 가까이 가요." },
+      fr: { title: "Tour de papier", description: "Empilez des blocs de papier au bon moment pour rejoindre les nuages." },
+      de: { title: "Papierturm", description: "Stapele Papierblöcke im richtigen Moment bis hinauf zu den Wolken." },
+      es: { title: "Torre de papel", description: "Apila bloques de papel en el momento justo para acercarte a las nubes." },
+      'pt-BR': { title: "Torre de papel", description: "Empilhe blocos de papel na hora certa para chegar mais perto das nuvens." }
     }
   },
   {
     title: "一键钓鱼",
     description: "和小猫坐在湖边，抛一竿、等一等，把小小惊喜收进鱼篓。",
     path: "./games/one-cast/index.html",
-    category: "放空片刻",
+    category: "休闲",
     color: "#e1e8dc",
     cover: "./games/one-cast/cover.svg",
     locales: {
-      en: { title: "One Cast", description: "Cast, wait, and reel in little surprises with a cat by the lake.", category: "A quiet moment" },
-      ja: { title: "ひと押し釣り", description: "湖畔の猫と、投げて、待って、小さな驚きを釣り上げよう。", category: "のんびり時間" },
-      ko: { title: "원터치 낚시", description: "호숫가 고양이와 줄을 던지고 기다려 작은 기쁨을 낚아요.", category: "잠깐의 여유" },
-      fr: { title: "Un lancer", description: "Lancez, attendez et pêchez de petites surprises avec un chat au bord du lac.", category: "Un instant de calme" },
-      de: { title: "Ein Wurf", description: "Wirf aus, warte und angle mit einer Katze kleine Überraschungen am See.", category: "Eine ruhige Minute" },
-      es: { title: "Un lance", description: "Lanza, espera y pesca pequeñas sorpresas con un gato junto al lago.", category: "Un rato de calma" },
-      'pt-BR': { title: "Uma fisgada", description: "Lance, espere e pesque pequenas surpresas com um gato à beira do lago.", category: "Um momento de calma" }
+      en: { title: "One Cast", description: "Cast, wait, and reel in little surprises with a cat by the lake." },
+      ja: { title: "ひと押し釣り", description: "湖畔の猫と、投げて、待って、小さな驚きを釣り上げよう。" },
+      ko: { title: "원터치 낚시", description: "호숫가 고양이와 줄을 던지고 기다려 작은 기쁨을 낚아요." },
+      fr: { title: "Un lancer", description: "Lancez, attendez et pêchez de petites surprises avec un chat au bord du lac." },
+      de: { title: "Ein Wurf", description: "Wirf aus, warte und angle mit einer Katze kleine Überraschungen am See." },
+      es: { title: "Un lance", description: "Lanza, espera y pesca pequeñas sorpresas con un gato junto al lago." },
+      'pt-BR': { title: "Uma fisgada", description: "Lance, espere e pesque pequenas surpresas com um gato à beira do lago." }
     }
   },
   {
     title: "我是老司机",
     description: "握好小方向盘，在手绘停车场里慢慢转弯、倒车，把每一格停得刚刚好。",
     path: "./games/old-driver/index.html",
-    category: "驾驶挑战",
+    category: "休闲",
     color: "#e3e7d7",
     cover: "./games/old-driver/cover.svg",
     locales: {
-      en: { title: "Parking Pro", description: "Steer, reverse, and find the perfect spot in eight hand-drawn parking challenges.", category: "Driving challenge" },
-      ja: { title: "駐車の達人", description: "手描きの駐車場でゆっくり曲がって、バックして、8つの課題に挑戦。", category: "運転チャレンジ" },
-      ko: { title: "주차의 달인", description: "손으로 그린 주차장에서 회전과 후진을 연습하고 8개 과제에 도전해요.", category: "운전 도전" },
-      fr: { title: "As du créneau", description: "Braquez, reculez et trouvez la place parfaite dans huit défis dessinés au crayon.", category: "Défi de conduite" },
-      de: { title: "Parkprofi", description: "Lenke, fahre rückwärts und meistere acht handgezeichnete Parkübungen.", category: "Fahrherausforderung" },
-      es: { title: "As del aparcamiento", description: "Gira, retrocede y encuentra el sitio perfecto en ocho retos dibujados a mano.", category: "Reto de conducción" },
-      'pt-BR': { title: "Ás do volante", description: "Vire, dê ré e encontre a vaga perfeita em oito desafios desenhados à mão.", category: "Desafio de direção" }
+      en: { title: "Parking Pro", description: "Steer, reverse, and find the perfect spot in eight hand-drawn parking challenges." },
+      ja: { title: "駐車の達人", description: "手描きの駐車場でゆっくり曲がって、バックして、8つの課題に挑戦。" },
+      ko: { title: "주차의 달인", description: "손으로 그린 주차장에서 회전과 후진을 연습하고 8개 과제에 도전해요." },
+      fr: { title: "As du créneau", description: "Braquez, reculez et trouvez la place parfaite dans huit défis dessinés au crayon." },
+      de: { title: "Parkprofi", description: "Lenke, fahre rückwärts und meistere acht handgezeichnete Parkübungen." },
+      es: { title: "As del aparcamiento", description: "Gira, retrocede y encuentra el sitio perfecto en ocho retos dibujados a mano." },
+      'pt-BR': { title: "Ás do volante", description: "Vire, dê ré e encontre a vaga perfeita em oito desafios desenhados à mão." }
     }
   },
   {
     title: "一笔修路",
     description: "用一条不交叉的小路连接每一户，绕过树木、石头和池塘。",
     path: "./games/one-road/index.html",
-    category: "路线规划",
+    category: "益智",
     color: "#e6ebdb",
     cover: "./games/one-road/cover.svg",
     locales: {
-      en: { title: "One Road", description: "Connect every home with one unbroken road. Wind around trees, rocks and ponds without crossing your path.", category: "Route puzzles" },
-      ja: { title: "ひと筆の道", description: "木、岩、池を避けながら、交差しない一本の道ですべての家をつなごう。", category: "ルートパズル" },
-      ko: { title: "한 줄 길 잇기", description: "나무, 바위, 연못을 피해 교차하지 않는 하나의 길로 모든 집을 이어요.", category: "경로 퍼즐" },
-      fr: { title: "Un seul chemin", description: "Reliez chaque maison par une route sans croisement, en contournant arbres, rochers et mares.", category: "Puzzle de chemins" },
-      de: { title: "Ein Weg", description: "Verbinde jedes Haus mit einem Weg ohne Kreuzungen und umgehe Bäume, Steine und Teiche.", category: "Wege-Rätsel" },
-      es: { title: "Un solo camino", description: "Conecta todas las casas con una ruta sin cruces, rodeando árboles, rocas y estanques.", category: "Puzles de rutas" },
-      'pt-BR': { title: "Um só caminho", description: "Conecte todas as casas com uma estrada sem cruzamentos, contornando árvores, pedras e lagos.", category: "Desafios de caminhos" }
+      en: { title: "One Road", description: "Connect every home with one unbroken road. Wind around trees, rocks and ponds without crossing your path." },
+      ja: { title: "ひと筆の道", description: "木、岩、池を避けながら、交差しない一本の道ですべての家をつなごう。" },
+      ko: { title: "한 줄 길 잇기", description: "나무, 바위, 연못을 피해 교차하지 않는 하나의 길로 모든 집을 이어요." },
+      fr: { title: "Un seul chemin", description: "Reliez chaque maison par une route sans croisement, en contournant arbres, rochers et mares." },
+      de: { title: "Ein Weg", description: "Verbinde jedes Haus mit einem Weg ohne Kreuzungen und umgehe Bäume, Steine und Teiche." },
+      es: { title: "Un solo camino", description: "Conecta todas las casas con una ruta sin cruces, rodeando árboles, rocas y estanques." },
+      'pt-BR': { title: "Um só caminho", description: "Conecte todas as casas com uma estrada sem cruzamentos, contornando árvores, pedras e lagos." }
     }
   },
   {
     title: "九宫格探险",
     description: "带上口粮与勇气，在九格森林里选择路线，把每一小步走得更远。",
     path: "./games/nine-grid/index.html",
-    category: "回合策略",
+    category: "策略",
     color: "#e7e9da",
     cover: "./games/nine-grid/cover.svg",
     locales: {
-      en: { title: "Nine Little Steps", description: "Plan a path through nine woodland tiles, balancing battles, treasure and supplies.", category: "Turn-based strategy" },
-      ja: { title: "九マスの旅", description: "食料と勇気を持って、怪物・宝箱・補給の九マスを歩こう。", category: "ターン制戦略" },
-      ko: { title: "아홉 칸의 모험", description: "식량과 용기를 챙겨 전투, 보물, 보급 사이로 안전한 길을 찾아요.", category: "턴제 전략" },
-      fr: { title: "Neuf petits pas", description: "Tracez votre route entre monstres, trésors et provisions sur neuf cases de forêt.", category: "Stratégie au tour par tour" },
-      de: { title: "Neun kleine Schritte", description: "Plane deinen Weg über neun Waldfelder zwischen Monstern, Schätzen und Vorräten.", category: "Rundenstrategie" },
-      es: { title: "Nueve pequeños pasos", description: "Planea tu ruta por nueve casillas entre monstruos, tesoros y provisiones.", category: "Estrategia por turnos" },
-      'pt-BR': { title: "Nove pequenos passos", description: "Planeje sua rota por nove casas entre monstros, tesouros e provisões.", category: "Estratégia por turnos" }
+      en: { title: "Nine Little Steps", description: "Plan a path through nine woodland tiles, balancing battles, treasure and supplies." },
+      ja: { title: "九マスの旅", description: "食料と勇気を持って、怪物・宝箱・補給の九マスを歩こう。" },
+      ko: { title: "아홉 칸의 모험", description: "식량과 용기를 챙겨 전투, 보물, 보급 사이로 안전한 길을 찾아요." },
+      fr: { title: "Neuf petits pas", description: "Tracez votre route entre monstres, trésors et provisions sur neuf cases de forêt." },
+      de: { title: "Neun kleine Schritte", description: "Plane deinen Weg über neun Waldfelder zwischen Monstern, Schätzen und Vorräten." },
+      es: { title: "Nueve pequeños pasos", description: "Planea tu ruta por nueve casillas entre monstruos, tesoros y provisiones." },
+      'pt-BR': { title: "Nove pequenos passos", description: "Planeje sua rota por nove casas entre monstros, tesouros e provisões." }
     }
   },
   {
     title: "快递分拣局",
     description: "看清包裹面单，把每一份期待送到对的站点，挑战连续送达。",
     path: "./games/parcel-sorter/index.html",
-    category: "轻松挑战",
+    category: "休闲",
     color: "#e4e8d8",
     cover: "./games/parcel-sorter/cover.svg",
     locales: {
-      en: { title: "Parcel Club", description: "Read the labels, sort parcels into matching stations and build a delivery streak.", category: "Light challenges" },
-      ja: { title: "小包仕分け局", description: "ラベルを見て、小包を正しい届け先へ。連続お届けに挑戦しよう。", category: "気軽なチャレンジ" },
-      ko: { title: "택배 분류소", description: "라벨을 보고 알맞은 목적지로 택배를 보내며 연속 배송에 도전해요.", category: "가벼운 도전" },
-      fr: { title: "Le tri des colis", description: "Lisez les étiquettes, triez les colis et enchaînez les bonnes livraisons.", category: "Petits défis" },
-      de: { title: "Paketpost", description: "Lies die Etiketten, sortiere Pakete zur passenden Station und schaffe eine Liefer-Serie.", category: "Kleine Herausforderungen" },
-      es: { title: "Club de paquetes", description: "Lee las etiquetas, envía los paquetes al destino correcto y encadena entregas.", category: "Retos ligeros" },
-      'pt-BR': { title: "Clube das encomendas", description: "Leia as etiquetas, envie cada encomenda ao destino certo e faça entregas em sequência.", category: "Desafios leves" }
+      en: { title: "Parcel Club", description: "Read the labels, sort parcels into matching stations and build a delivery streak." },
+      ja: { title: "小包仕分け局", description: "ラベルを見て、小包を正しい届け先へ。連続お届けに挑戦しよう。" },
+      ko: { title: "택배 분류소", description: "라벨을 보고 알맞은 목적지로 택배를 보내며 연속 배송에 도전해요." },
+      fr: { title: "Le tri des colis", description: "Lisez les étiquettes, triez les colis et enchaînez les bonnes livraisons." },
+      de: { title: "Paketpost", description: "Lies die Etiketten, sortiere Pakete zur passenden Station und schaffe eine Liefer-Serie." },
+      es: { title: "Club de paquetes", description: "Lee las etiquetas, envía los paquetes al destino correcto y encadena entregas." },
+      'pt-BR': { title: "Clube das encomendas", description: "Leia as etiquetas, envie cada encomenda ao destino certo e faça entregas em sequência." }
     }
   },
   {
     title: "反着来",
     description: "大脑说向左，你偏要向右。用相反的操作，挑战 60 秒条件反射。",
     path: "./games/reverse-command/index.html",
-    category: "反应挑战",
+    category: "益智",
     color: "#e6ebde",
     cover: "./games/reverse-command/cover.svg",
     locales: {
-      en: { title: "Do the Opposite", description: "Your brain says left. You go right. Reverse directions and colors in a 60-second reflex challenge.", category: "Reflex challenge" },
-      ja: { title: "あべこべ", description: "頭が左と言ったら右へ。方向と色を反対に選ぶ、60秒の反射神経チャレンジ。", category: "反射神経チャレンジ" },
-      ko: { title: "반대로 해요", description: "머리가 왼쪽이라면 오른쪽으로. 방향과 색상을 반대로 고르는 60초 도전.", category: "반응 도전" },
-      fr: { title: "À contre-sens", description: "Votre cerveau dit gauche ? Allez à droite. Inversez directions et couleurs pendant 60 secondes.", category: "Défi de réflexes" },
-      de: { title: "Genau andersherum", description: "Dein Kopf sagt links? Geh nach rechts. Wähle 60 Sekunden lang die entgegengesetzten Richtungen und Farben.", category: "Reflexspiel" },
-      es: { title: "Al revés", description: "Tu mente dice izquierda, tú vas a la derecha. Invierte direcciones y colores durante 60 segundos.", category: "Reto de reflejos" },
-      'pt-BR': { title: "Ao contrário", description: "Sua cabeça diz esquerda, você vai à direita. Inverta direções e cores em um desafio de 60 segundos.", category: "Desafio de reflexos" }
+      en: { title: "Do the Opposite", description: "Your brain says left. You go right. Reverse directions and colors in a 60-second reflex challenge." },
+      ja: { title: "あべこべ", description: "頭が左と言ったら右へ。方向と色を反対に選ぶ、60秒の反射神経チャレンジ。" },
+      ko: { title: "반대로 해요", description: "머리가 왼쪽이라면 오른쪽으로. 방향과 색상을 반대로 고르는 60초 도전." },
+      fr: { title: "À contre-sens", description: "Votre cerveau dit gauche ? Allez à droite. Inversez directions et couleurs pendant 60 secondes." },
+      de: { title: "Genau andersherum", description: "Dein Kopf sagt links? Geh nach rechts. Wähle 60 Sekunden lang die entgegengesetzten Richtungen und Farben." },
+      es: { title: "Al revés", description: "Tu mente dice izquierda, tú vas a la derecha. Invierte direcciones y colores durante 60 segundos." },
+      'pt-BR': { title: "Ao contrário", description: "Sua cabeça diz esquerda, você vai à direita. Inverta direções e cores em um desafio de 60 segundos." }
     }
   },
   // 新增示例（删除每行开头的 //，修改内容即可）：
@@ -366,7 +367,7 @@ window.GAME_LIST = [
   //   title: "游戏名字",
   //   description: "用一句话介绍这个小世界。",
   //   path: "./games/my-game/index.html",
-  //   category: "轻松一刻",
+  //   category: "休闲",
   //   color: "#eaded0"
   // },
 ];

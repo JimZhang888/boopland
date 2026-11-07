@@ -78,6 +78,6 @@ test('lobby entry is unique, localized and points to local non-module resources'
   const html = fs.readFileSync(path.join(__dirname, 'index.html'), 'utf8');
   assert.ok(html.includes('href="../../games.html"'));
   assert.ok(!/type="module"|https?:\/\//.test(html));
-  for (const [, resource] of html.matchAll(/(?:src|href)="([^"#]+)"/g)) assert.ok(fs.existsSync(path.resolve(__dirname, resource)), resource);
+  for (const [, resource] of html.matchAll(/(?:src|href)="([^"#]+)"/g)) assert.ok(fs.existsSync(path.resolve(__dirname, resource.split(/[?#]/)[0])), resource);
   assert.ok(!/@import|https?:\/\//.test(fs.readFileSync(path.join(__dirname, 'style.css'), 'utf8')));
 });

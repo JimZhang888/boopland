@@ -51,34 +51,62 @@
     drainEvents() { const events = this.events; this.events = []; return events; }
     makeTank(x, y, dir, player, kind = 0) {
       return { id: this.nextId++, x, y, dir, player, kind, hp: player ? 1 : TYPES[kind].hp,
-        shield: 0, cooldown: 0, think: .3, moving: false, tread: 0, flash: 0, born: player ? 0 : .7, carrier: false };
+        shield: 0, cooldown: 0, think: .3, moving: false, moveTarget: null, queuedDir: null,
+        tread: 0, flash: 0, born: player ? 0 : .7, carrier: false };
     }
-    blocked(x, y, tank) {
-      if (x - HALF < 0 || y - HALF < 0 || x + HALF > SIZE || y + HALF > SIZE) return true;
-      for (let gy = Math.floor((y - HALF + .01) / TILE); gy <= Math.floor((y + HALF - .01) / TILE); gy++) {
-        for (let gx = Math.floor((x - HALF + .01) / TILE); gx <= Math.floor((x + HALF - .01) / TILE); gx++) {
+    blocked(x, y, tank, from = { x, y }) {
+      const left = Math.min(x, from.x), right = Math.max(x, from.x);
+      const top = Math.min(y, from.y), bottom = Math.max(y, from.y);
+      if (left - HALF < 0 || top - HALF < 0 || right + HALF > SIZE || bottom + HALF > SIZE) return true;
+      for (let gy = Math.floor((top - HALF + .01) / TILE); gy <= Math.floor((bottom + HALF - .01) / TILE); gy++) {
+        for (let gx = Math.floor((left - HALF + .01) / TILE); gx <= Math.floor((right + HALF - .01) / TILE); gx++) {
           if (this.grid[gy]?.[gx]) return true;
         }
       }
-      if (this.base.alive && overlap({ x, y }, this.base, 35)) return true;
+      if (this.base.alive && left < this.base.x + 35 && right > this.base.x - 35 &&
+        top < this.base.y + 35 && bottom > this.base.y - 35) return true;
       for (const other of [...this.enemies, this.player]) {
-        if (other && other !== tank && overlap({ x, y }, other)) return true;
+        if (!other || other === tank) continue;
+        // Reserve the rest of each committed step so tanks cannot meet between grid points.
+        const target = other.moveTarget || other;
+        if (left < Math.max(other.x, target.x) + HALF * 2 && right > Math.min(other.x, target.x) - HALF * 2 &&
+          top < Math.max(other.y, target.y) + HALF * 2 && bottom > Math.min(other.y, target.y) - HALF * 2) return true;
       }
       return false;
     }
+    requestMove(tank, dir) {
+      if (!tank || !Number.isInteger(dir) || dir < 0 || dir > 3) return false;
+      // Remember a quick turn even when it is released before the current half-cell ends.
+      if (tank.moveTarget) { tank.queuedDir = dir === tank.dir ? null : dir; return true; }
+      return this.move(tank, dir, 0);
+    }
     move(tank, dir, distance) {
-      const previous = tank.dir; tank.dir = dir;
-      const [dx, dy] = DIRS[dir];
-      // A small lane assist makes ninety-degree turns forgiving, without crossing walls.
-      const axis = dx ? 'y' : 'x';
-      const center = Math.round((tank[axis] - CELL / 2) / CELL) * CELL + CELL / 2;
-      if (previous % 2 !== dir % 2 && Math.abs(tank[axis] - center) <= 8) {
-        const point = { x: tank.x, y: tank.y, [axis]: center };
-        if (!this.blocked(point.x, point.y, tank)) tank[axis] = center;
-      }
-      const x = tank.x + dx * distance, y = tank.y + dy * distance;
-      if (this.blocked(x, y, tank)) { tank.moving = false; return false; }
-      tank.x = x; tank.y = y; tank.moving = true; tank.tread += distance; return true;
+      let budget = Math.max(0, distance), accepted = false;
+      tank.moving = false;
+      do {
+        if (!tank.moveTarget) {
+          let next = tank.queuedDir ?? dir;
+          tank.queuedDir = null;
+          if (!Number.isInteger(next) || next < 0 || next > 3) break;
+          if (!tank.player && tank.think <= 0) { this.steer(tank); next = tank.dir; }
+          tank.dir = next;
+          const [dx, dy] = DIRS[next];
+          const target = { x: tank.x + dx * TILE, y: tank.y + dy * TILE };
+          // Check the whole half-cell before moving, never stop a few pixels short of a wall.
+          if (this.blocked(target.x, target.y, tank, tank)) break;
+          tank.moveTarget = target;
+        }
+        accepted = true;
+        const target = tank.moveTarget, [dx, dy] = DIRS[tank.dir];
+        const remaining = Math.abs(target.x - tank.x) + Math.abs(target.y - tank.y);
+        const travel = Math.min(budget, remaining);
+        tank.x += dx * travel; tank.y += dy * travel; tank.tread += travel;
+        tank.moving ||= travel > 0; budget -= travel;
+        if (remaining - travel > 1e-8) break;
+        tank.x = target.x; tank.y = target.y; tank.moveTarget = null;
+        // Turning and stopping only happen at half-cell boundaries; drawing stays smooth.
+      } while (budget > 1e-8);
+      return accepted;
     }
     fire(tank) {
       if (!tank || tank.born > 0 || tank.cooldown > 0) return false;
@@ -111,7 +139,7 @@
       const target = this.player && this.random() < .3 ? this.player : this.base;
       const candidates = [0, 1, 2, 3].map(dir => {
         const [dx, dy] = DIRS[dir];
-        const open = !this.blocked(tank.x + dx * 7, tank.y + dy * 7, tank);
+        const open = !this.blocked(tank.x + dx * TILE, tank.y + dy * TILE, tank, tank);
         const toward = (target.x - tank.x) * dx + (target.y - tank.y) * dy;
         return { dir, score: (open ? 4 : 0) + (toward > 5 ? 1.8 : 0) + this.random() * 3 + (dir === tank.dir ? .5 : 0) };
       }).sort((a, b) => b.score - a.score);
@@ -222,7 +250,7 @@
       if (this.player) {
         const p = this.player;
         p.shield = Math.max(0, p.shield - dt); p.cooldown = Math.max(0, p.cooldown - dt); p.moving = false;
-        if (Number.isInteger(input.dir) && input.dir >= 0 && input.dir < 4) this.move(p, input.dir, 132 * dt);
+        this.move(p, input.dir, 132 * dt);
         if (input.fire) this.fire(p);
       }
       this.spawnTimer -= dt;
@@ -232,7 +260,6 @@
         tank.born = Math.max(0, tank.born - dt);
         if (tank.born > 0 || this.freeze > 0) continue;
         tank.cooldown = Math.max(0, tank.cooldown - dt); tank.think -= dt;
-        if (tank.think <= 0) this.steer(tank);
         const speed = TYPES[tank.kind].speed * (1 + Math.min(.45, (this.stage - 1) * .06));
         if (!this.move(tank, tank.dir, speed * dt)) { tank.think = 0; this.fire(tank); }
         if (tank.cooldown <= 0) this.fire(tank);

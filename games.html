@@ -73,6 +73,14 @@
     .collection-label::before { content: ""; width: 5px; height: 5px; border-radius: 50%; background: #809272; }
     h2 { margin: 0; font: 18px var(--hand); letter-spacing: 1px; }
     .count { font-size: 10px; color: var(--muted); border-left: 1px solid #cbd2c1; padding-left: 12px; }
+    .collection-tools { display: flex; align-items: center; flex-wrap: wrap; gap: 12px 22px; max-width: 100%; }
+    .category-filter { display: flex; align-items: center; gap: 9px; min-width: 0; color: var(--muted); }
+    .filter-label { font: 15px var(--hand); white-space: nowrap; }
+    .category-filter select {
+      min-width: 0; width: 176px; max-width: 100%; min-height: 44px; padding: 8px 30px 8px 12px;
+      color: var(--ink); background: #fffef7; border: 1px solid #c6cebb;
+      border-radius: 4px 6px 4px 5px; font-size: 13px; cursor: pointer;
+    }
     .search-box { display: flex; align-items: center; width: 244px; border-bottom: 1px solid #bfc7b6; gap: 9px; }
     .search-box svg { width: 17px; height: 17px; flex-shrink: 0; color: #7a8871; }
     .search-box input { min-width: 0; width: 100%; border: 0; border-radius: 0; background: transparent; padding: 9px 0; color: var(--ink); font: 16px var(--hand); }
@@ -127,7 +135,7 @@
       .margin-note p { font-size: 17px; }
       .flower { width: 64px; }
     }
-    @media (max-width: 600px) {
+    @media (max-width: 767px) {
       .page { width: calc(100% - 40px); }
       .masthead { min-height: 86px; gap: 12px; padding-block: 20px; flex-wrap: wrap; }
       .header-actions { width: 100%; justify-content: space-between; }
@@ -142,15 +150,12 @@
       .intro-sub { font-size: 11px; max-width: 230px; line-height: 1.9; }
       .postmark { display: none; }
       .collection-bar { gap: 14px; margin-bottom: 25px; }
-      .search-box { width: 100%; }
+      .collection-tools { width: 100%; gap: 10px; flex-wrap: nowrap; }
+      .category-filter { flex: 0 1 44%; }
+      .filter-label { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0; }
+      .category-filter select { width: 100%; padding-right: 20px; font-size: 16px; }
+      .search-box { flex: 1; min-width: 0; width: auto; }
       .search-box input { padding: 11px 0; }
-      .game-grid { grid-template-columns: minmax(0, 1fr); gap: 29px; }
-      .cover { aspect-ratio: 1.8; }
-      .card-body { padding: 16px 8px 17px; }
-      .card-description { font-size: 12px; }
-      .margin-note { position: static; padding: 28px 0 5px; gap: 30px; }
-      .margin-note p { font-size: 17px; }
-      .flower { height: 122px; width: 68px; }
       .shelf { min-height: 0; }
       .collection { padding-bottom: 5px; }
       .footnote { padding: 24px 0; gap: 9px; }
@@ -158,6 +163,22 @@
       .footer { padding: 20px 0 24px; gap: 10px; flex-wrap: wrap; }
       .footer span { font-size: 8px; letter-spacing: 1px; }
       .footer em { font-size: 11px; }
+    }
+    /* Small screens and touch phones in landscape use compact square cards. */
+    @media (max-width: 767px), (max-width: 1023px) and (max-height: 500px) and (pointer: coarse) {
+      .game-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px 12px; align-items: stretch; }
+      .game-card { display: flex; flex-direction: column; aspect-ratio: 1; padding: 7px 7px 0; }
+      .game-card:hover { transform: none; }
+      .game-card::before { width: 42px; height: 14px; top: -6px; left: calc(50% - 21px); }
+      .cover { flex: 1; min-height: 32px; aspect-ratio: auto; }
+      .cover::after { inset: 5px; }
+      .cover-mark { font-size: 22px; letter-spacing: 3px; padding-left: 3px; }
+      .cover-note, .card-number, .card-description, .play, .margin-note { display: none; }
+      .card-body { flex: none; min-width: 0; padding: 8px 2px; }
+      .card-top { display: block; }
+      .card-title { display: -webkit-box; min-height: 2.7em; overflow: hidden; -webkit-box-orient: vertical; -webkit-line-clamp: 2; font-size: 15px; line-height: 1.35; letter-spacing: 0; }
+      .card-bottom { display: block; padding-top: 0; margin-top: 3px; border: 0; }
+      .category { display: block; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-size: 10px; line-height: 1.5; letter-spacing: 0; }
     }
     @media (prefers-reduced-motion: reduce) {
       *, *::before, *::after { transition: none !important; }
@@ -186,11 +207,19 @@
       <section class="collection" aria-labelledby="collection-heading">
         <div class="collection-bar">
           <div class="collection-label"><h2 id="collection-heading" data-i18n="collection">纸上的游乐园</h2><span class="count" id="game-count" role="status" aria-live="polite"></span></div>
-          <label class="search-box">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true"><circle cx="10" cy="10" r="6.5"/><path d="m15 15 5 5"/></svg>
-            <span class="sr-only" data-i18n="search">搜索小游戏</span>
-            <input id="search" type="search" data-i18n-placeholder="placeholder" placeholder="找一点喜欢的…" autocomplete="off" maxlength="100">
-          </label>
+          <div class="collection-tools">
+            <label class="category-filter">
+              <span class="filter-label" data-i18n="filterCategory">分类</span>
+              <select id="category-filter" aria-controls="game-grid">
+                <option value="" data-i18n="allCategories">全部</option>
+              </select>
+            </label>
+            <label class="search-box">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true"><circle cx="10" cy="10" r="6.5"/><path d="m15 15 5 5"/></svg>
+              <span class="sr-only" data-i18n="search">搜索小游戏</span>
+              <input id="search" type="search" data-i18n-placeholder="placeholder" placeholder="找一点喜欢的…" autocomplete="off" maxlength="100">
+            </label>
+          </div>
         </div>
         <div class="shelf">
           <div class="game-grid" id="game-grid"></div>
@@ -223,12 +252,18 @@
       const t = (key, values) => i18n.t('lobby.' + key, values);
       const grid = document.getElementById('game-grid');
       const search = document.getElementById('search');
+      const categoryFilter = document.getElementById('category-filter');
       const empty = document.getElementById('empty-state');
       const clear = document.getElementById('clear-search');
       const count = document.getElementById('game-count');
       const note = document.getElementById('margin-note');
       const hasList = Array.isArray(window.GAME_LIST);
       const base = new URL('./games/', location.href);
+      // Keep a small, fixed set of genres; translations are shared by filters and cards.
+      const categoryKeys = new Map([
+        ['休闲', 'categoryCasual'], ['益智', 'categoryPuzzle'], ['动作', 'categoryAction'],
+        ['策略', 'categoryStrategy'], ['棋牌', 'categoryBoard']
+      ]);
 
       // 清单使用普通脚本加载，因此 file:// 双击打开时也不依赖 fetch。
       function localGameUrl(value) {
@@ -244,10 +279,11 @@
         if (!game || typeof game.title !== 'string' || !game.title.trim()) return [];
         const url = localGameUrl(game.path);
         if (!url) return [];
+        const category = typeof game.category === 'string' ? game.category.trim() : '';
         return [{
           title: game.title.trim(),
           description: typeof game.description === 'string' ? game.description : '',
-          category: typeof game.category === 'string' ? game.category : '',
+          category: categoryKeys.has(category) ? category : '休闲',
           locales: game.locales && typeof game.locales === 'object' ? game.locales : {},
           color: /^#[0-9a-f]{6}$/i.test(game.color || '') ? game.color : '#dce5d8',
           cover: localGameUrl(game.cover),
@@ -255,6 +291,14 @@
           number: String(index + 1).padStart(2, '0')
         }];
       });
+
+      categoryKeys.forEach((key, category) => {
+        const option = document.createElement('option');
+        option.value = category;
+        option.textContent = t(key);
+        categoryFilter.append(option);
+      });
+      categoryFilter.disabled = games.length === 0;
 
       function element(tag, className, text) {
         const node = document.createElement(tag);
@@ -305,24 +349,33 @@
 
       function render() {
         const query = search.value.trim().toLocaleLowerCase();
+        const selectedCategory = categoryFilter.value;
+        const filtered = query !== '' || selectedCategory !== '';
         const localized = games.map(game => {
           const words = game.locales[i18n.language] || {};
           const text = (key, fallback) => typeof words[key] === 'string' && words[key].trim() ? words[key] : fallback;
-          return { ...game, title: text('title', game.title), description: text('description', game.description || t('defaultDescription')), category: text('category', game.category || t('defaultCategory')), original: game };
+          return { ...game, title: text('title', game.title), description: text('description', game.description || t('defaultDescription')), category: t(categoryKeys.get(game.category)), original: game };
         });
-        const visible = localized.filter(game => [game.title, game.description, game.category, game.original.title, game.original.description, game.original.category].some(text => text.toLocaleLowerCase().includes(query)));
+        for (const option of categoryFilter.options) {
+          if (option.value) option.textContent = t(categoryKeys.get(option.value));
+        }
+        const visible = localized.filter(game =>
+          (selectedCategory === '' || game.original.category === selectedCategory) &&
+          [game.title, game.description, game.category, game.original.title, game.original.description, game.original.category].some(text => text.toLocaleLowerCase().includes(query))
+        );
         grid.replaceChildren(...visible.map(createCard));
-        count.textContent = query ? t('filteredCount', { visible: visible.length, total: games.length }) : t(games.length === 1 ? 'countOne' : 'countMany', { count: games.length });
+        count.textContent = filtered ? t('filteredCount', { visible: visible.length, total: games.length }) : t(games.length === 1 ? 'countOne' : 'countMany', { count: games.length });
         note.hidden = visible.length !== 1;
         empty.hidden = visible.length > 0;
-        clear.hidden = !query;
+        clear.hidden = !filtered;
         if (!visible.length) {
-          document.getElementById('empty-title').textContent = t(query ? 'noResults' : hasList ? 'noGames' : 'missingList');
-          document.getElementById('empty-description').textContent = t(query ? 'searchHelp' : hasList ? 'emptyHelp' : 'loadHelp');
+          document.getElementById('empty-title').textContent = t(filtered ? 'noResults' : hasList ? 'noGames' : 'missingList');
+          document.getElementById('empty-description').textContent = t(filtered ? 'searchHelp' : hasList ? 'emptyHelp' : 'loadHelp');
         }
       }
       search.addEventListener('input', render);
-      clear.addEventListener('click', () => { search.value = ''; render(); search.focus(); });
+      categoryFilter.addEventListener('change', render);
+      clear.addEventListener('click', () => { search.value = ''; categoryFilter.value = ''; render(); search.focus(); });
       window.addEventListener('pageshow', render);
       window.addEventListener('boopland:languagechange', render);
       render();

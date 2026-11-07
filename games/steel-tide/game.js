@@ -6,6 +6,8 @@
   const game = new Game();
   const canvas = $('battlefield'), ctx = canvas.getContext('2d');
   const keys = new Map(), pointers = new Map();
+  const joystick = $('joystick');
+  let joystickPointer = null;
   const symbols = { star: '☆', shield: '◇', freeze: '❄', fortify: '▥', bomb: '✹', life: '+' };
   let autoFire = false, soundEnabled = false, audio = null, best = 0;
   let lastTime = 0, animation = 0, previousStatus = '', toastTime = 0, toastKey = '', helpWasPlaying = false;
@@ -41,7 +43,37 @@
   }
   function releaseInputs() {
     keys.clear(); pointers.clear();
+    resetJoystick();
+    if (game.player) game.player.queuedDir = null;
     document.querySelectorAll('.active').forEach(el => el.classList.remove('active'));
+  }
+  function resetJoystick() {
+    const pointerId = joystickPointer; joystickPointer = null;
+    if (pointerId !== null) {
+      pointers.delete(pointerId);
+      if (joystick.hasPointerCapture(pointerId)) joystick.releasePointerCapture(pointerId);
+    }
+    joystick.style.setProperty('--stick-x', '0px'); joystick.style.setProperty('--stick-y', '0px');
+    joystick.classList.remove('active'); delete joystick.dataset.direction;
+  }
+  function moveJoystick(event) {
+    const bounds = joystick.getBoundingClientRect();
+    const x = event.clientX - bounds.left - bounds.width / 2, y = event.clientY - bounds.top - bounds.height / 2;
+    const distance = Math.hypot(x, y), reach = bounds.width * .28;
+    const scale = distance ? Math.min(1, reach / distance) : 0;
+    joystick.style.setProperty('--stick-x', `${x * scale}px`); joystick.style.setProperty('--stick-y', `${y * scale}px`);
+    const previous = pointers.get(event.pointerId)?.dir;
+    let dir;
+    if (distance > bounds.width * (previous === undefined ? .13 : .1)) {
+      // Favor the current axis near diagonals so a resting thumb does not chatter between turns.
+      const horizontal = previous === undefined ? Math.abs(x) > Math.abs(y) :
+        previous % 2 ? Math.abs(x) * 1.2 >= Math.abs(y) : Math.abs(x) > Math.abs(y) * 1.2;
+      dir = horizontal ? (x > 0 ? 1 : 3) : (y > 0 ? 2 : 0);
+    }
+    pointers.set(event.pointerId, { dir });
+    if (dir === undefined) delete joystick.dataset.direction;
+    else joystick.dataset.direction = String(dir);
+    if (dir !== undefined && dir !== previous) game.requestMove(game.player, dir);
   }
   function input() {
     let dir = null;
@@ -308,20 +340,36 @@
     if (Object.hasOwn(directionKeys,event.code) || ['Space','KeyJ'].includes(event.code)) {
       if (event.code === 'Space' && document.activeElement?.tagName === 'BUTTON') return;
       event.preventDefault(); wakeAudio();
-      if (!keys.has(event.code)) keys.set(event.code,Object.hasOwn(directionKeys,event.code) ? directionKeys[event.code] : 'fire');
+      if (!keys.has(event.code)) {
+        const dir = directionKeys[event.code];
+        keys.set(event.code,dir ?? 'fire');
+        // Commit even a tap shorter than one animation frame to a full half-cell.
+        if (dir !== undefined) game.requestMove(game.player,dir);
+      }
     }
   });
   window.addEventListener('keyup',event => keys.delete(event.code));
-  for (const button of document.querySelectorAll('[data-dir],#fire-button')) {
+  joystick.addEventListener('pointerdown', event => {
+    if (event.button !== 0 || joystickPointer !== null || game.status !== 'playing') return;
+    event.preventDefault(); wakeAudio(); joystickPointer = event.pointerId;
+    joystick.setPointerCapture(event.pointerId); joystick.classList.add('active'); moveJoystick(event);
+  });
+  joystick.addEventListener('pointermove', event => {
+    if (event.pointerId !== joystickPointer) return;
+    event.preventDefault(); moveJoystick(event);
+  });
+  const releaseJoystick = event => { if (event.pointerId === joystickPointer) resetJoystick(); };
+  joystick.addEventListener('pointerup', releaseJoystick);
+  joystick.addEventListener('pointercancel', releaseJoystick);
+  joystick.addEventListener('lostpointercapture', releaseJoystick);
+  joystick.addEventListener('contextmenu', event => event.preventDefault());
+  for (const button of [$('fire-button')]) {
     button.addEventListener('pointerdown',event => {
       if (event.button !== 0 || game.status !== 'playing') return;
       event.preventDefault(); wakeAudio(); button.setPointerCapture(event.pointerId);
-      pointers.set(event.pointerId,button.dataset.dir !== undefined ? {dir:Number(button.dataset.dir),button} : {fire:true,button}); button.classList.add('active');
+      pointers.set(event.pointerId,{fire:true,button}); button.classList.add('active');
       // A quick tap must still register even if no animation frame occurs before release.
-      if (game.player) {
-        if (button.dataset.dir !== undefined) game.move(game.player,Number(button.dataset.dir),2);
-        else game.fire(game.player);
-      }
+      if (game.player) game.fire(game.player);
     });
     const release = event => { pointers.delete(event.pointerId); if (![...pointers.values()].some(p => p.button === button)) button.classList.remove('active'); };
     button.addEventListener('pointerup',release); button.addEventListener('pointercancel',release); button.addEventListener('lostpointercapture',release);
@@ -329,8 +377,7 @@
       // Keyboard and assistive activations do not produce pointerdown events.
       if (event.detail !== 0 || game.status !== 'playing' || !game.player) return;
       wakeAudio();
-      if (button.dataset.dir !== undefined) game.move(game.player,Number(button.dataset.dir),8);
-      else game.fire(game.player);
+      game.fire(game.player);
     });
     button.addEventListener('contextmenu',event => event.preventDefault());
   }

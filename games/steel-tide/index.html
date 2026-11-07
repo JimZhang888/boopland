@@ -48,7 +48,7 @@
                 <div class="briefing-controls" id="briefing-controls"><span><kbd>WASD</kbd> / <kbd>↑↓←→</kbd></span><span><kbd data-i18n="steel.space">空格</kbd> <span data-i18n="steel.fire">开火</span></span></div>
                 <button class="primary" id="primary" type="button"><span id="primary-text" data-i18n="steel.start">出发，守住防线</span><span aria-hidden="true">→</span></button>
                 <button class="text-button" id="restart" type="button" data-i18n="steel.restart" hidden>重新开始</button>
-                <p class="briefing-foot" id="briefing-foot" data-i18n="steel.touchHint">手机使用下方方向键与开火键</p>
+                <p class="briefing-foot" id="briefing-foot" data-i18n="steel.touchHint">手机使用下方摇杆与开火键</p>
               </div>
             </div>
             <div class="toast" id="toast" role="status" aria-live="polite" hidden></div>
@@ -62,13 +62,11 @@
         <div class="legend"><p class="section-label" data-i18n="steel.terrain">战地手记</p><div><i class="swatch brick"></i><span data-i18n="steel.brick">砖墙 · 可以击破</span></div><div><i class="swatch steel"></i><span data-i18n="steel.steel">钢墙 · 满级击破</span></div><div><i class="swatch water"></i><span data-i18n="steel.water">河流 · 炮弹可穿过</span></div><div><i class="swatch forest"></i><span data-i18n="steel.forest">树林 · 隐蔽行踪</span></div></div>
         <div class="pickup-note"><span class="star-sketch" aria-hidden="true">☆</span><p data-i18n="steel.pickupHint">击破标记敌人，拾取战场补给。</p></div>
         <div class="touch-controls" id="touch-controls">
-          <div class="dpad" data-i18n-label="steel.move">
-            <button type="button" data-dir="0" class="up" data-i18n-label="steel.up">↑</button>
-            <button type="button" data-dir="3" class="left" data-i18n-label="steel.left">←</button>
-            <span class="dpad-center" aria-hidden="true">✧</span>
-            <button type="button" data-dir="1" class="right" data-i18n-label="steel.right">→</button>
-            <button type="button" data-dir="2" class="down" data-i18n-label="steel.down">↓</button>
+          <div class="joystick" id="joystick" role="group" tabindex="0" data-i18n-label="steel.joystick" aria-describedby="joystick-help" aria-keyshortcuts="ArrowUp ArrowRight ArrowDown ArrowLeft W A S D">
+            <svg class="joystick-guide" viewBox="0 0 132 132" aria-hidden="true"><path d="M65 15c28-1 52 21 52 50s-20 52-50 52S15 96 15 67s21-51 50-52Z"/><path d="m59 23 7-7 7 7m36 36 7 7-7 7m-36 36-7 7-7-7M23 73l-7-7 7-7"/></svg>
+            <span class="joystick-stick" aria-hidden="true"><svg viewBox="0 0 48 48"><path d="m24 13 3 8 8 3-8 3-3 8-3-8-8-3 8-3Z"/><path d="m12 36 4-4m16-16 4-4"/></svg></span>
           </div>
+          <span class="sr-only" id="joystick-help" data-i18n="steel.joystickHelp">拖动摇杆四向移动，松手回中；也可使用方向键或 WASD。</span>
           <button class="fire-button" id="fire-button" type="button"><span aria-hidden="true">⊕</span><small data-i18n="steel.fire">开火</small></button>
         </div>
         <button class="auto-button" id="auto-fire" type="button" aria-pressed="false"><span class="toggle-track" aria-hidden="true"></span><span data-i18n="steel.autoFire">自动开火</span></button>
@@ -81,7 +79,7 @@
     <div class="help-heading"><h2 id="help-title" data-i18n="steel.help">作战手册</h2><button id="close-help" class="icon-button" type="button" data-i18n-label="steel.close">×</button></div>
     <p data-i18n="steel.helpGoal">每关消灭 20 辆敌方坦克。基地被击中，或坦克全部损失，战斗结束。</p>
     <div class="help-keys"><kbd>WASD / ↑↓←→</kbd><span data-i18n="steel.move">移动</span><kbd data-i18n="steel.space">空格</kbd><span data-i18n="steel.fire">开火</span><kbd>P / Esc</kbd><span data-i18n="steel.pause">暂停</span></div>
-    <p data-i18n="steel.helpTouch">手机可同时按住方向键与开火键；也可开启自动开火。转向后，炮口随车身方向移动。</p>
+    <p data-i18n="steel.helpTouch">拖动摇杆四向移动，可同时按住开火键或开启自动开火。坦克每次移动半格，松手后走完当前半格，转弯时对齐网格。</p>
     <h3 data-i18n="steel.supplies">战场补给</h3>
     <div class="supply-list" id="supply-list"></div>
     <p class="help-tip" data-i18n="steel.helpTip">友军炮弹不会伤害基地。复活后有 3 秒护盾；星级火力在中弹后归零。灰色重型坦克需击中 3 次。</p>

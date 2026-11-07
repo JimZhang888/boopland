@@ -44,20 +44,52 @@ function app(width = 1100, height = 534, dpr = 1) {
   function pointer(type){element('jump').listeners[type]({button:0,pointerId:1,preventDefault(){}});}
   const range=()=>{const style=element('power-zone').style,min=parseFloat(style.left)/100;return {min,max:min+parseFloat(style.width)/100};};
   return {element,events,shapes,advance,pointer,range,
+    elapse(ms){now+=ms;},
     key(type){events[type]({code:'Space',preventDefault(){}});},
     click(id){element(id).listeners.click();},
-    jump(power,frameMs){pointer('pointerdown');advance(power*1200,frameMs);pointer('pointerup');advance(2600,frameMs);}};
+    jump(power,frameMs,releaseDelay=0){pointer('pointerdown');advance(power*1200,frameMs);now+=releaseDelay;pointer('pointerup');advance(2600,frameMs);}};
 }
 
 test('real loop lands at both indicated edges repeatedly, including direction changes and low frame rates',()=>{
-  for(const frameMs of [1000/60,1000/20]){
+  for(const frameMs of [1000/60,1000/20]) for(const releasePhase of [0,.85]){
     const a=app();
     for(let i=0;i<12;i++){
-      const {min,max}=a.range();a.jump(i%2?max-1e-6:min+1e-6,frameMs);
+      const {min,max}=a.range();a.jump(i%2?max-1e-6:min+1e-6,frameMs,frameMs*releasePhase);
       assert.equal(a.element('score').textContent,i+1);
       assert.equal(a.element('overlay').hidden,true);
       assert.equal(a.element('jump').disabled,false);
     }
+  }
+});
+test('visible misses stay misses when released between frames',()=>{
+  for(const side of ['min','max']){
+    const a=app(),range=a.range();
+    a.pointer('pointerdown');a.advance((range[side]+(side==='min'?-.001:.001))*1200);
+    assert.ok(a.shapes.some(s=>s.stroke&&s.color==='#a76c54'),'outside rim is marked as a miss');
+    a.elapse(49);a.pointer('pointerup');a.advance(2600);
+    assert.equal(a.element('score').textContent,'0');
+    assert.equal(a.element('overlay').hidden,false,'miss must not snap onto the island');
+  }
+});
+test('releasing between frames keeps the last visible landing point and charge',()=>{
+  for(const delay of [8,16,49,120]) for(const input of ['pointer','keyboard']){
+    const a=app();
+    const {max}=a.range();
+    if(input==='pointer')a.pointer('pointerdown');else a.key('keydown');
+    a.advance((max-.0001)*1200,50);
+    const displayed=a.element('power-fill').style.width;
+    const guide=a.shapes.find(s=>s.stroke&&s.color==='#526d47');
+    assert.ok(guide,'last visible guide is on the island');
+    a.elapse(delay);
+    if(input==='pointer')a.pointer('pointerup');else a.key('keyup');
+    assert.equal(a.element('power-fill').style.width,displayed,'release must not add unseen charge');
+    a.advance(100);
+    const destination=a.shapes.find(s=>s.stroke&&s.color==='#526d47');
+    assert.ok(destination,'the committed destination stays visible in flight');
+    assert.ok(Math.hypot(destination.x-guide.x,destination.y-guide.y)<1e-8,'destination must not move after release');
+    a.advance(2500);
+    assert.equal(a.element('score').textContent,1,'a visibly safe edge must land safely');
+    assert.equal(a.element('overlay').hidden,true);
   }
 });
 test('full charge keeps the soles anchored on the same island at all tested scales and pixel ratios',()=>{

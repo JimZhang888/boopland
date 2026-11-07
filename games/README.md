@@ -12,12 +12,12 @@
      title: "游戏名字",
      description: "用一句话介绍游戏。",
      path: "./games/my-game/index.html",
-     category: "轻松一刻",
+     category: "休闲",
      color: "#eaded0"
    }
    ```
 
-   `title` 和 `path` 必填；其他字段可省略。`color` 是六位十六进制封面底色，也可以添加 `cover: "./games/my-game/cover.png"` 使用图片封面。大厅按清单顺序排列。
+   `title` 和 `path` 必填；其他字段可省略。`category` 使用统一分类，见 [清单字段规则](../H5_GAME_RULES.md#2-怎样新增小游戏)。`color` 是六位十六进制封面底色，也可以添加 `cover: "./games/my-game/cover.png"` 使用图片封面。大厅按清单顺序排列。
 3. 刷新 `games.html`。无需构建、后端或安装依赖，可以直接双击打开，也可以通过普通静态服务器访问。
 
 游戏内返回大厅的链接：`<a href="../../games.html" data-i18n="common.back">返回大厅</a>`。

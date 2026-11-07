@@ -62,7 +62,9 @@ function begin(input) {
 }
 function release(input) {
   if(state!=='charging'||activeInput!==input)return;
-  const p=chargePower(gameTime()-chargeStart);setPower(p);activeInput=null;state='jumping';updateChargeUI(false);jumpButton.disabled=true;
+  // Commit the power shown by the last rendered meter and guide. Recomputing it
+  // between frames adds invisible distance and can turn a safe edge into a miss.
+  const p=power;activeInput=null;state='jumping';updateChargeUI(false);jumpButton.disabled=true;
   flight={start:{...player},end:landingPoint(player,platforms[current+1],p),startTime:gameTime(),duration:660+p*190,height:100+p*90};
   tone(390,.18,'sine',.035);tone(620,.2,'sine',.022,.07);
 }
@@ -241,9 +243,9 @@ function draw(){
     const a=screen(player.x,player.y),b=screen(target.x,target.y);ctx.save();ctx.setLineDash([2,7]);ctx.beginPath();ctx.moveTo(a.x+35*scale,a.y-8*scale);ctx.quadraticCurveTo((a.x+b.x)/2,a.y-70*scale,b.x-50*scale,b.y);ctx.strokeStyle='#8ca87a66';ctx.lineWidth=1;ctx.stroke();ctx.restore();
   }
   for(let i=platforms.length-1;i>=0;i--){const p=platforms[i],s=screen(p.x,p.y);if(s.y>-100&&s.y<height+180){ctx.save();if(i>current+1)ctx.globalAlpha=i===current+2?.53:.25;island(p,i===current+1);ctx.restore();}}
-  if(state==='charging'){
-    // Use the exact release calculation and world-to-screen transform for the guide.
-    const point=landingPoint(player,target,power),p=screen(point.x,point.y);
+  if(state==='charging'||state==='jumping'){
+    // Keep the committed landing point visible until the feet reach the surface.
+    const point=state==='jumping'?flight.end:landingPoint(player,target,power),p=screen(point.x,point.y);
     const targetResult=classifyLanding(point,target);
     const result=targetResult==='miss'?classifyLanding(point,platforms[current]):targetResult;
     ctx.save();ctx.translate(p.x,p.y);ctx.scale(scale,scale);

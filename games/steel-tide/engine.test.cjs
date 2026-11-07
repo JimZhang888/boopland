@@ -3,7 +3,7 @@ const assert = require('node:assert/strict');
 const fs = require('node:fs');
 const path = require('node:path');
 const vm = require('node:vm');
-const { Game, MAPS, SIZE } = require('./engine.js');
+const { Game, MAPS, SIZE, TILE, CELL, HALF } = require('./engine.js');
 function fresh() { const g = new Game(() => .4); g.start(); g.spawnTimer = 1000; return g; }
 function empty(g) { g.grid.forEach(row => row.fill(0)); g.enemies = []; g.bullets = []; }
 function step(g, seconds, input = {}) { for (let n = 0; n < Math.ceil(seconds * 120); n++) g.update(1 / 120,input); }
@@ -29,10 +29,94 @@ test('walls, steel, water, the base, other tanks and outer bounds block movement
   g.player.x = 312; g.player.y = 560; assert.equal(g.move(g.player,2,8),false);
   g.player.x = 100; g.player.y = 100; g.enemies.push(g.makeTank(140,100,0,false)); assert.equal(g.move(g.player,1,8),false);
 });
-test('turn assistance aligns near a lane and never snaps through an obstacle', () => {
-  const g = fresh(); empty(g); g.player.x = 123; g.player.y = 120; g.player.dir = 1;
-  assert.equal(g.move(g.player,0,2),true); assert.equal(g.player.x,120);
-  g.player.x = 140; g.player.y = 120; g.player.dir = 1; g.move(g.player,0,2); assert.equal(g.player.x,140);
+test('a quick tap in every direction finishes exactly half a cell after release', () => {
+  assert.equal(TILE, CELL / 2);
+  for (const [dir, dx, dy] of [[0,0,-1],[1,1,0],[2,0,1],[3,-1,0]]) {
+    const g = fresh(); empty(g); g.player.x = 240; g.player.y = 240;
+    g.requestMove(g.player,dir);
+    assert.equal(g.player.x,240); assert.equal(g.player.y,240);
+    g.update(1 / 120);
+    assert.ok(Math.abs(g.player.x - 240) + Math.abs(g.player.y - 240) < TILE);
+    step(g,.5);
+    assert.equal(g.player.x,240 + dx * TILE); assert.equal(g.player.y,240 + dy * TILE);
+    assert.equal(g.player.moveTarget,null); assert.equal(g.player.moving,false);
+  }
+});
+
+test('holding keeps the original speed and releasing stops on the next half-cell', () => {
+  for (const dt of [1 / 120,1 / 60,1 / 30,1 / 20]) {
+    const g = fresh(); empty(g); g.player.x = 240; g.player.y = 240;
+    for (let n = 0; n < Math.round(.5 / dt); n++) g.update(dt,{dir:1});
+    assert.ok(Math.abs(g.player.x - 306) < 1e-7,`speed at ${dt}`);
+    step(g,.5);
+    assert.equal(g.player.x,312); assert.equal(g.player.y,240); assert.equal(g.player.moveTarget,null);
+  }
+});
+
+test('turns and reversals wait for the half-cell boundary, including quick queued taps', () => {
+  for (const dir of [0,2,3]) {
+    const g = fresh(); empty(g); g.player.x = 240; g.player.y = 240;
+    g.update(.05,{dir:1}); g.requestMove(g.player,dir);
+    g.update(.05);
+    assert.equal(g.player.y,240); assert.equal(g.player.dir,1);
+    step(g,1);
+    assert.equal(g.player.x,dir === 3 ? 240 : 264);
+    assert.equal(g.player.y,dir === 0 ? 216 : dir === 2 ? 264 : 240);
+    assert.equal(g.player.dir,dir); assert.equal(g.player.moveTarget,null);
+  }
+});
+
+test('blocked half-cell steps do not creep toward walls, water, tanks, base or bounds', () => {
+  for (const material of [1,2,3]) {
+    const g = fresh(); empty(g); g.player.x = 240; g.player.y = 240; g.grid[9][11] = material;
+    step(g,.5,{dir:1}); assert.equal(g.player.x,240); assert.equal(g.player.moveTarget,null);
+    // The tank may turn its turret while blocked, and can leave in an open direction.
+    assert.equal(g.player.dir,1); g.requestMove(g.player,0); step(g,.5); assert.equal(g.player.y,216);
+  }
+  const g = fresh(); empty(g);
+  for (const [x,y,dir] of [[24,240,3],[SIZE - 24,240,1],[240,24,0],[240,SIZE - 24,2],[312,552,2]]) {
+    Object.assign(g.player,{x,y,moveTarget:null}); step(g,.5,{dir});
+    assert.equal(g.player.x,x); assert.equal(g.player.y,y); assert.equal(g.player.moveTarget,null);
+  }
+  Object.assign(g.player,{x:240,y:240}); const enemy = g.makeTank(288,240,3,false); enemy.born = 10; g.enemies.push(enemy);
+  step(g,.5,{dir:1}); assert.equal(g.player.x,240);
+});
+
+test('committed paths prevent opposing tanks colliding between half-cell boundaries', () => {
+  const g = fresh(); empty(g); g.player.x = 240; g.player.y = 240;
+  const enemy = g.makeTank(312,240,3,false); g.enemies.push(enemy);
+  assert.equal(g.move(g.player,1,1),true);
+  assert.equal(g.move(enemy,3,1),false);
+  for (let n = 0; n < 60; n++) {
+    g.move(g.player,null,1); g.move(enemy,3,1);
+    assert.ok(enemy.x - g.player.x >= HALF * 2);
+  }
+  assert.equal(g.player.x,264); assert.equal(enemy.x,312);
+  assert.equal(g.blocked(288,240,null),true,'spawn points respect reserved paths');
+});
+
+test('enemy AI only changes direction at half-cell boundaries', () => {
+  const g = fresh(); empty(g); g.player = null; g.lives = 0; g.base.alive = false;
+  const enemy = g.makeTank(240,240,2,false,1); enemy.born = 0; g.enemies.push(enemy);
+  const steer = g.steer; let turns = 0;
+  g.steer = tank => {
+    assert.equal(tank.x % TILE,0); assert.equal(tank.y % TILE,0);
+    turns++; steer.call(g,tank);
+  };
+  for (let n = 0; n < 1200; n++) {
+    g.update(1 / 120);
+    if (!enemy.moveTarget) { assert.equal(enemy.x % TILE,0); assert.equal(enemy.y % TILE,0); }
+    assert.equal(enemy.dir % 2 ? enemy.y % TILE : enemy.x % TILE,0);
+  }
+  assert.ok(turns > 5,'AI should keep choosing routes while moving');
+});
+
+test('pause preserves a partial step and respawn discards the old movement', () => {
+  const g = fresh(); empty(g); g.update(.05,{dir:0}); const y = g.player.y;
+  g.pause(); step(g,1); assert.equal(g.player.y,y);
+  g.resume(); step(g,.5); assert.equal(g.player.y,576); assert.equal(g.player.moveTarget,null);
+  g.update(.05,{dir:0}); g.player.shield = 0; g.hitPlayer(); step(g,1.2);
+  assert.equal(g.player.y,600); assert.equal(g.player.moveTarget,null); assert.equal(g.player.queuedDir,null);
 });
 test('fire cooldown and per-tank projectile limits respond to upgrades', () => {
   const g = fresh(); empty(g);
