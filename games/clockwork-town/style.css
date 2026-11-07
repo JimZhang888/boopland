@@ -21,7 +21,8 @@ h1{min-width:0}h1>span{overflow:hidden;text-overflow:ellipsis;white-space:nowrap
   dialog[data-mode=drain] .drain-tool,dialog[data-mode=drain] .combine-recipe{grid-column:2;margin:0;padding:4px 8px;gap:8px;font-size:12px}
   dialog[data-mode=drain] .combine-recipe svg{width:28px;height:28px}
   dialog[data-mode=drain] .dialog-actions{grid-column:1 / -1;margin-top:0}
-  dialog[data-mode=gearFound] #dialog-content{display:grid;grid-template-columns:100px minmax(0,1fr);gap:10px 14px;align-items:center}
+  dialog[data-mode=gearFound] #dialog-content,dialog[data-mode=gate] #dialog-content{display:grid;grid-template-columns:100px minmax(0,1fr);gap:10px 14px;align-items:center}
   dialog[data-mode=gearFound] .pickup-art{grid-row:1 / span 2;margin:0}
-  dialog[data-mode=gearFound] .dialog-copy,dialog[data-mode=gearFound] .dialog-actions{grid-column:2;margin:0}
+  dialog[data-mode=gate] .hint-illustration{grid-row:1 / span 2;padding:0;margin:0}
+  dialog[data-mode=gearFound] .dialog-copy,dialog[data-mode=gearFound] .dialog-actions,dialog[data-mode=gate] .dialog-copy,dialog[data-mode=gate] .dialog-actions{grid-column:2;margin:0}
 }

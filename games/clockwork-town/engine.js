@@ -106,7 +106,7 @@
           if (s.flags.gate) return apply(s, { type: 'go', room: 'workshop' }, record);
           if (!s.flags.fitted) {
             if (needs('gear')) { consume('gear'); set('fitted'); modal = 'lock'; message = 'gearFitted'; }
-            else message = s.selected ? 'wrongItem' : 'missingGear';
+            else { modal = 'gate'; message = s.items.includes('gear') ? 'gearReady' : s.selected ? 'wrongItem' : 'missingGear'; }
           } else { modal = 'lock'; message = 'lockPrompt'; }
           break;
         case 'oil':

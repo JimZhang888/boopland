@@ -39,12 +39,19 @@
   function milestones() {
     return ['stepGate','stepPower','stepLight'].map((key, index) => `<li class="${index < E.progress(state) ? 'done' : ''}"><span class="mark" aria-hidden="true">${index < E.progress(state) ? '✓' : String(index+1).padStart(2,'0')}</span><span>${esc(t(key))}</span></li>`).join('');
   }
-  function objective() { return t(['goalGate','goalPower','goalLight','goalDone'][E.progress(state)]); }
+  function objective() {
+    const stage = E.stage(state);
+    return t(stage === 'fit' ? 'h_fit2' : stage === 'lock' ? 'lockPrompt' : ['goalGate','goalPower','goalLight','goalDone'][E.progress(state)]);
+  }
   function sizeScene() {
     const bounds = $('stage').getBoundingClientRect(), frame = $('scene-frame');
     const [, , sceneWidth, sceneHeight] = sceneBounds[state.room];
     const width = Math.max(0, Math.min(bounds.width, bounds.height * sceneWidth / sceneHeight));
     frame.style.width = width + 'px'; frame.style.height = width * sceneHeight / sceneWidth + 'px';
+  }
+  function walkingX(x) {
+    const [left,,width] = sceneBounds[state.room];
+    return Math.max(left + 65, Math.min(left + width - 65, x));
   }
   function renderScene(oldX) {
     const [originX,originY,sceneWidth,sceneHeight] = sceneBounds[state.room];
@@ -126,7 +133,7 @@
     const focus = document.activeElement?.dataset;
     const focusKey = focus?.puzzle ? [focus.puzzle,focus.index] : null;
     const focusAction = focus?.dialogAction;
-    const titleKeys = {help:'help',reset:'resetTitle',clue:'mural',chart:'chart',lock:'lockTitle',pipes:'pipes',mirrors:'beacon',hint:'hint',win:'winTitle',notebook:'notebook',gateDone:'stepGate',powerDone:'stepPower',drain:'drain',gearFound:'gearFound'};
+    const titleKeys = {help:'help',reset:'resetTitle',clue:'mural',chart:'chart',gate:'gate',lock:'lockTitle',pipes:'pipes',mirrors:'beacon',hint:'hint',win:'winTitle',notebook:'notebook',gateDone:'stepGate',powerDone:'stepPower',drain:'drain',gearFound:'gearFound'};
     $('dialog-title').textContent = t(titleKeys[modal] || 'notebook');
     $('dialog-kicker').textContent = t('name');
     dialog.dataset.mode = modal;
@@ -143,7 +150,11 @@
       else if(hasMagnet&&hasCord) html+=`<div class="combine-recipe"><span>${A.icon('magnet')}${esc(t('magnet'))}</span><b aria-hidden="true">+</b><span>${A.icon('cord')}${esc(t('cord'))}</span></div><div class="dialog-actions">${actionButton('tieLine','makeLine')}${actionButton('close','close',false)}</div>`;
       else html+=`<div class="dialog-actions">${actionButton('close','keepLooking')}${actionButton('hint','hint',false)}</div>`;
     }
-    if (modal === 'gearFound') html=`<div class="pickup-art">${A.icon('gear')}<span class="pickup-check" aria-hidden="true">✓</span></div>`+paragraph('gearInPocket')+continueButton();
+    if (modal === 'gearFound') html=`<div class="pickup-art">${A.icon('gear')}<span class="pickup-check" aria-hidden="true">✓</span></div>`+paragraph('gearInPocket')+`<div class="dialog-actions">${actionButton('fitGear','goToGate')}${actionButton('close','close',false)}</div>`;
+    if (modal === 'gate') {
+      const hasGear = state.items.includes('gear');
+      html = `<div class="hint-illustration">${A.icon('gear')}</div>`+paragraph(hasGear?'gearReady':'gateNeedsGear')+`<div class="dialog-actions">${hasGear?actionButton('fitGear','fitGear'):actionButton('close','keepLooking')}${hasGear?actionButton('close','close',false):actionButton('hint','hint',false)}</div>`;
+    }
     if (modal === 'lock') html = paragraph('lockPrompt')+`<div class="lock-dials">${state.dials.map((value,index)=>`<button type="button" class="dial" data-puzzle="dial" data-index="${index}" aria-label="${esc(t('dialLabel',{index:index+1,value}))}">${value}</button>`).join('')}</div><p class="puzzle-tip">${esc(t('dialTip'))}</p>${state.flags.clue?`<div class="clue-art"><span>Ⅱ</span><span>Ⅳ</span><span>Ⅰ</span></div>`:''}`;
     if (modal === 'pipes') html = paragraph('pipePrompt')+`<div class="pipe-board"><span class="pipe-end source" aria-hidden="true">→</span>${state.pipes.map((mask,index)=>`<button class="pipe" type="button" data-puzzle="pipe" data-index="${index}" aria-label="${esc(t('pipeLabel',{index:index+1,ports:[[1,'north'],[2,'east'],[4,'south'],[8,'west']].filter(([bit])=>mask&bit).map(([,key])=>t(key)).join(' / ')}))}">${pipeSvg(mask)}</button>`).join('')}<span class="pipe-end sink" aria-hidden="true">→</span></div><p class="puzzle-tip">${esc(t('pipeTip'))}</p>`;
     if (modal === 'mirrors') html = paragraph('mirrorPrompt')+`<div class="mirror-board">${mirrorSvg()}${[[160,220],[160,100],[360,100]].map(([x,y],index)=>`<button type="button" class="mirror-control" style="left:${x/4.4}%;top:${y/3.3}%" data-puzzle="mirror" data-index="${index}" aria-label="${esc(t('mirrorLabel',{index:'ABC'[index],angle:state.mirrors[index]?'＼':'／'}))}"><span aria-hidden="true">${'ABC'[index]}</span></button>`).join('')}</div><p class="puzzle-tip">${esc(t('mirrorTip'))}</p>`;
@@ -175,7 +186,8 @@
     if (state.room !== priorRoom) robotX = {yard:395,workshop:551,tower:430}[state.room];
     else if (action.type === 'interact') {
       const spot = A.spots[state.room].find(([id])=>id===action.id);
-      if (spot) robotX = Math.max(320,Math.min(590,spot[1]-100));
+      const [left,,width] = sceneBounds[state.room];
+      if (spot) robotX = walkingX(spot[1] + (spot[1] < left + width / 2 ? 100 : -100));
     }
     if (result.changed) save();
     render(priorRoom===state.room?oldX:undefined);
@@ -194,7 +206,14 @@
   }
   $('hotspots').addEventListener('click',event=>{
     const button=event.target.closest('[data-object]');
-    if (!button) return;
+    if (!button) {
+      const frame = $('scene-frame').getBoundingClientRect();
+      if (!frame.width || !event.detail) return;
+      const [left,,width] = sceneBounds[state.room], oldX = robotX;
+      robotX = walkingX(left + (event.clientX - frame.left) / frame.width * width);
+      renderScene(oldX);
+      return;
+    }
     const id=button.dataset.object; perform({type:'interact',id});
     if (!dialog.open) {
       const next=$('hotspots').querySelector(`[data-object="${id}"]`);
@@ -237,6 +256,10 @@
     if(button.dataset.dialogAction==='fish'&&state.room==='yard'&&state.items.includes('hook')){
       if(state.selected!=='hook')perform({type:'select',id:'hook'});
       perform({type:'interact',id:'drain'});
+    }
+    if(button.dataset.dialogAction==='fitGear'&&state.room==='yard'&&state.items.includes('gear')){
+      if(state.selected!=='gear')perform({type:'select',id:'gear'});
+      perform({type:'interact',id:'gate'});
     }
   });
   $('sound').addEventListener('click',()=>{

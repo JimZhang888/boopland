@@ -69,6 +69,34 @@ test('a deselected or restored magnetic line still exposes a clear gear pickup a
   assert.equal(pickup.modal,'gearFound');assert.deepEqual(s.items,['gear']);assert.ok(s.flags.gear);
   click(s,'drain');assert.deepEqual(s.items,['gear']);
 });
+
+test('gate inspection distinguishes a missing gear from one already in the pocket',()=>{
+  const s=E.fresh();
+  const missing=click(s,'gate');
+  assert.equal(missing.modal,'gate');assert.equal(missing.message,'missingGear');
+  assert.equal(s.flags.fitted,undefined);assert.equal(s.flags.gate,undefined);
+  click(s,'cord');click(s,'magnet');select(s,'cord');
+  const wrong=click(s,'gate');
+  assert.equal(wrong.modal,'gate');assert.equal(wrong.message,'wrongItem');
+  assert.deepEqual(s.items,['cord','magnet']);assert.equal(s.selected,'cord');
+  select(s,'magnet');click(s,'drain');
+  const ready=click(s,'gate');
+  assert.equal(ready.modal,'gate');assert.equal(ready.message,'gearReady');
+  assert.deepEqual(s.items,['gear']);assert.equal(s.selected,null);
+  assert.equal(s.flags.fitted,undefined);assert.equal(s.flags.gate,undefined);
+});
+
+test('a saved unselected gear can be fitted and the gate opened without repeating collection',()=>{
+  let s=E.fresh();click(s,'cord');click(s,'magnet');select(s,'cord');select(s,'magnet');click(s,'drain');
+  select(s,'gear');s=E.restore(E.serialize(s));
+  assert.equal(s.selected,null);assert.equal(click(s,'gate').message,'gearReady');
+  select(s,'gear');const fitted=click(s,'gate');
+  assert.equal(fitted.modal,'lock');assert.ok(s.flags.fitted);assert.deepEqual(s.items,[]);
+  s=E.restore(E.serialize(s));assert.equal(click(s,'gate').modal,'lock');
+  assert.equal(act(s,'go',{room:'workshop'}).message,'lockedGate');
+  for(const [index,count] of [2,4,1].entries())for(let n=0;n<count;n++)act(s,'dial',{index});
+  assert.ok(s.flags.gate);click(s,'gate');assert.equal(s.room,'workshop');
+});
 test('pipe connections reject leaks and disconnected outputs; unused isolated pipes are allowed',()=>{
   const solved=[10,12,6,6,9,5,3,10,10];
   assert.ok(E.connected(solved));
