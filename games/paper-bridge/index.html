@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-i18n-scope="paperBridge">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#f5f3eb">
+  <title data-i18n="paperBridge.pageTitle">纸桥工程师 · Boopland</title>
+  <link rel="icon" type="image/svg+xml" href="cover.svg">
+  <link rel="stylesheet" href="style.css">
+  <script defer src="../../analytics.js"></script>
+</head>
+<body>
+  <svg class="svg-defs" aria-hidden="true"><defs>
+    <symbol id="i-road" viewBox="0 0 32 32"><path d="m3 13 26-1v9L3 22Zm0 4 26-1M9 13v9m14-10v9"/><path d="m5 26 22-1" opacity=".35"/></symbol>
+    <symbol id="i-wood" viewBox="0 0 32 32"><path d="M5 27 16 5l11 22ZM5 27l12-2 10 2M15 8l9 17"/><circle cx="16" cy="6" r="2"/><circle cx="5" cy="27" r="2"/><circle cx="27" cy="27" r="2"/></symbol>
+    <symbol id="i-rope" viewBox="0 0 32 32"><path d="M4 7c1 25 23 25 24 0M5 7c2 20 20 21 22 0"/><circle cx="4" cy="6" r="2"/><circle cx="28" cy="6" r="2"/><path d="m11 22 2-4m6 5-1-4"/></symbol>
+    <symbol id="i-undo" viewBox="0 0 24 24"><path d="m9 5-5 5 5 5M4 10h10c7 0 7 10 0 10"/></symbol>
+    <symbol id="i-erase" viewBox="0 0 24 24"><path d="m3 14 10-10 8 8-9 9H9ZM8 9l8 8M12 21h10"/></symbol>
+    <symbol id="i-trash" viewBox="0 0 24 24"><path d="M4 7h16M9 7V4h6v3M6 7l1 14h10l1-14M10 10v7m4-7v7"/></symbol>
+    <symbol id="i-bulb" viewBox="0 0 24 24"><path d="M9 17c0-4-4-4-4-9a7 7 0 0 1 14 0c0 5-4 5-4 9ZM9 20h6M12 1v2M1 9h2m18 0h2M9 8l3 4 3-4m-3 4v5"/></symbol>
+    <symbol id="i-play" viewBox="0 0 24 24"><path d="m7 4 13 8-13 8Z"/></symbol>
+    <symbol id="i-pause" viewBox="0 0 24 24"><path d="M8 5v14m8-14v14"/></symbol>
+    <symbol id="i-pencil" viewBox="0 0 24 24"><path d="m4 15 12-12 5 5L9 20l-6 1ZM13 6l5 5M4 15l5 5M7 16l9-9"/></symbol>
+  </defs></svg>
+  <main class="game-shell">
+    <header class="topbar">
+      <a class="back" href="../../games.html" data-i18n-label="common.back"><span aria-hidden="true">↶</span><span data-i18n="common.back">返回大厅</span></a>
+      <div class="identity"><svg viewBox="0 0 42 30" aria-hidden="true"><path d="M2 24h38M5 24 15 7l12 17L36 9v15M15 7h21M5 24l10-2 12 2"/><circle cx="15" cy="7" r="2"/><circle cx="27" cy="24" r="2"/></svg><h1 data-i18n="paperBridge.name">纸桥工程师</h1></div>
+      <button id="help" class="help-button" data-i18n-label="paperBridge.help"><span aria-hidden="true">?</span><span data-i18n="paperBridge.help">建桥手册</span></button>
+    </header>
+    <section class="notebook" data-i18n-label="paperBridge.workbench" aria-label="建桥工作台">
+      <div class="construction">
+        <div class="projectbar">
+          <button id="levels" class="level-button" data-i18n-label="paperBridge.levels"><span id="level-number" class="page-number">01</span><span class="level-copy"><small id="chapter"></small><strong id="level-name"></strong></span><span class="chevron" aria-hidden="true">⌄</span></button>
+          <div class="project-meta"><span id="load-label"></span><span id="mode" class="mode-pill"></span></div>
+        </div>
+        <div id="stage" class="stage">
+          <canvas id="game" tabindex="0" role="application" data-i18n-label="paperBridge.canvas" data-i18n="paperBridge.canvas">点选网格连接桥面、木条与绳索，再放小车过桥。</canvas>
+          <div id="scene-note" class="scene-note" aria-hidden="true"><span data-i18n="paperBridge.note">把两岸，连成一个小小的世界。</span><svg viewBox="0 0 100 35"><path d="M3 6c35 18 64 4 82 17m-12-1 13 2-4-12"/></svg></div>
+          <div id="toast" class="toast" role="status" hidden></div>
+          <div id="test-hud" class="test-hud" hidden><span id="test-caption"></span><div class="progress-track"><i id="car-progress"></i></div><span id="stress-value"></span></div>
+          <div id="paused-banner" class="paused-banner" hidden><span data-i18n="paperBridge.paused">已暂停</span><button id="resume" data-i18n="paperBridge.resume">继续试车</button></div>
+        </div>
+        <div class="statusbar"><span id="status-dot" class="status-dot" aria-hidden="true"></span><p id="instruction" role="status"></p><span class="grid-label" data-i18n="paperBridge.grid">1 格 = 1 米</span></div>
+      </div>
+      <aside class="toolkit" data-i18n-label="paperBridge.toolbox">
+        <div class="tool-heading"><span data-i18n="paperBridge.toolbox">工具与材料</span><span aria-hidden="true">✎</span></div>
+        <div class="materials" role="group" data-i18n-label="paperBridge.materials">
+          <button class="material selected" data-tool="road" aria-pressed="true"><svg><use href="#i-road"/></svg><span class="material-copy"><b data-i18n="paperBridge.road">木桥面</b><small data-i18n="paperBridge.roadPrice">60 / 米</small></span><span class="stock" id="stock-road">4</span><kbd>1</kbd></button>
+          <button class="material" data-tool="wood" aria-pressed="false"><svg><use href="#i-wood"/></svg><span class="material-copy"><b data-i18n="paperBridge.wood">支撑木条</b><small data-i18n="paperBridge.woodPrice">36 / 米</small></span><span class="stock" id="stock-wood">12</span><kbd>2</kbd></button>
+          <button class="material" data-tool="rope" aria-pressed="false"><svg><use href="#i-rope"/></svg><span class="material-copy"><b data-i18n="paperBridge.rope">绳索</b><small data-i18n="paperBridge.ropePrice">20 / 米</small></span><span class="stock" id="stock-rope">0</span><kbd>3</kbd></button>
+        </div>
+        <p id="material-info" class="material-info"></p>
+        <div class="budget-block"><div class="budget-heading"><span data-i18n="paperBridge.budget">建造预算</span><span><strong id="spent">0</strong><span id="budget-total"> / 1,600</span></span></div><div class="budget-track"><i id="budget-fill"></i><span title="85%"></span></div><p id="budget-note"></p></div>
+        <div class="edit-actions">
+          <button id="undo" class="edit-button" data-i18n-label="paperBridge.undo" data-i18n-title="paperBridge.undo"><svg><use href="#i-undo"/></svg><span data-i18n="paperBridge.undo">撤销</span></button>
+          <button id="erase" class="edit-button" aria-pressed="false" data-i18n-label="paperBridge.erase" data-i18n-title="paperBridge.erase"><svg><use href="#i-erase"/></svg><span data-i18n="paperBridge.erase">橡皮擦</span></button>
+          <button id="clear" class="edit-button" data-i18n-label="paperBridge.clear" data-i18n-title="paperBridge.clear"><svg><use href="#i-trash"/></svg><span data-i18n="paperBridge.clear">清空</span></button>
+        </div>
+        <div class="sketch-note"><svg viewBox="0 0 180 64" aria-hidden="true"><path d="m12 48 37-35 42 35 38-34 39 34M12 48h156M49 13l80 1M13 51l154-1M52 19l32 26"/><circle cx="49" cy="13" r="3"/><circle cx="91" cy="48" r="3"/><path d="m140 16 13-7m-4 5 4-5-6-1"/></svg><p id="level-tip"></p></div>
+        <button id="hint" class="hint-button" aria-pressed="true"><svg><use href="#i-bulb"/></svg><span data-i18n="paperBridge.hint">参考草图</span><span class="switch" aria-hidden="true"></span></button>
+        <div class="test-controls"><button id="test" class="primary"><svg><use href="#i-play"/></svg><span data-i18n="paperBridge.test">放小车过桥</span><span class="key-hint">↵</span></button><div id="running-controls" class="running-controls" hidden><button id="pause" class="edit-button" data-i18n-label="paperBridge.pause"><svg><use href="#i-pause"/></svg></button><button id="speed" class="edit-button" aria-pressed="false" data-i18n-label="paperBridge.speed">1×</button></div></div>
+      </aside>
+    </section>
+    <footer class="page-footer"><span data-i18n="paperBridge.footer">好的桥，从一笔小小的想法开始。</span><span data-i18n="paperBridge.shortcuts">点两下连线 · 右键取消 · 空格试车</span></footer>
+  </main>
+  <dialog id="dialog" aria-labelledby="dialog-title"><div class="dialog-head"><span class="dialog-kicker" data-i18n="paperBridge.notebook">工程师的笔记本</span><button id="close-dialog" class="close-button" data-i18n-label="paperBridge.close">×</button></div><div id="dialog-content"></div></dialog>
+  <script src="../../i18n.js"></script>
+  <script src="translations.js"></script>
+  <script src="engine.js"></script>
+  <script src="scene.js"></script>
+  <script src="game.js"></script>
+</body>
+</html>

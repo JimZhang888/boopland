@@ -7,11 +7,45 @@
 // locales 按全局语言提供 title、description；缺少翻译时回退到基础字段。
 window.GAME_LIST = [
   {
+    title: "纸间衣橱",
+    description: "给手绘纸娃娃搭一身日常：自由穿搭、场景挑战与小店委托，把喜欢的造型存成明信片。",
+    path: "./games/paper-wardrobe/index.html",
+    category: "休闲",
+    tags: ["推荐"],
+    color: "#e4e8d8",
+    cover: "./games/paper-wardrobe/cover.svg",
+    locales: {
+      en: { title: "Paper Wardrobe", description: "Style a hand-drawn paper doll, explore themed scenes and little commissions, and save your favorite looks as postcards." },
+      ja: { title: "紙のクローゼット", description: "手描きの紙人形を自由に着せ替え。シーンへの挑戦や小さな依頼を楽しみ、お気に入りをポストカードに。" },
+      ko: { title: "종이 옷장", description: "손으로 그린 종이 인형을 꾸며요. 자유 코디, 테마 도전과 작은 의뢰를 즐기고 마음에 드는 모습을 엽서로 간직해요." },
+      fr: { title: "Garde-robe de papier", description: "Habillez une poupée dessinée à la main, explorez des scènes et des commandes, puis gardez vos tenues en cartes postales." },
+      de: { title: "Papierkleiderschrank", description: "Style eine gezeichnete Papierpuppe, erfülle Szenen und kleine Aufträge und bewahre Lieblingsoutfits als Postkarten." },
+      es: { title: "Armario de papel", description: "Viste una muñeca dibujada a mano, explora escenas y pequeños encargos y guarda tus conjuntos favoritos como postales." },
+      'pt-BR': { title: "Guarda-roupa de papel", description: "Vista uma boneca desenhada à mão, explore cenas e pequenos pedidos e guarde seus looks favoritos como cartões-postais." }
+    }
+  },
+  {
+    title: "行李箱收纳师",
+    description: "转一转，放一放，把旅行小物装得刚刚好。六段旅程，收集六枚出发印章。",
+    path: "./games/suitcase-story/index.html",
+    category: "解谜",
+    color: "#e3e9dc",
+    cover: "./games/suitcase-story/cover.svg",
+    locales: {
+      en: { title: "Suitcase Stories", description: "Turn, tuck, and find a just-right place for every travel essential. Six little journeys, six stamps to collect." },
+      ja: { title: "スーツケースの物語", description: "回して、並べて、旅の小物をぴったり収納。6つの旅で出発スタンプを集めよう。" },
+      ko: { title: "여행 가방 정리사", description: "돌리고 놓으며 여행 소품의 자리를 찾아요. 여섯 여행에서 출발 도장을 모아 보세요." },
+      fr: { title: "Petite valise", description: "Tournez et rangez chaque objet à sa juste place. Six petits voyages et six tampons à collectionner." },
+      de: { title: "Kleine Kofferreise", description: "Drehen, packen und für jedes Reiseding den richtigen Platz finden. Sechs Reisen, sechs Stempel zum Sammeln." },
+      es: { title: "Pequeña maleta", description: "Gira y encuentra el lugar perfecto para cada objeto. Seis pequeños viajes y seis sellos para coleccionar." },
+      'pt-BR': { title: "Pequena mala", description: "Gire e ache o lugar certinho para cada objeto. Seis pequenas viagens e seis carimbos para colecionar." }
+    }
+  },
+  {
     title: "动物连连看",
     description: "绕个小弯，让相同的小伙伴相遇。动物与水果，两套手绘图案慢慢连。",
     path: "./games/animal-link/index.html",
     category: "益智",
-    tags: ["推荐"],
     color: "#e6eadb",
     cover: "./games/animal-link/cover.svg",
     locales: {
@@ -586,6 +620,108 @@ window.GAME_LIST = [
       de: { title: "Uhrwerkstädtchen", description: "Sechs gezeichnete Kapitel mit einem kleinen Roboter. Erhelle den Turm, belebe das Gewächshaus, repariere die Brücke und starte die Postbahn." },
       es: { title: "Pueblo de cuerda", description: "Seis capítulos dibujados con un pequeño robot. Ilumina la torre, revive el invernadero, equilibra el puente y reactiva el tren postal." },
       'pt-BR': { title: "Vila de corda", description: "Seis capítulos desenhados com um pequeno robô. Ilumine a torre, reviva a estufa, equilibre a ponte e reative o trem postal." }
+    }
+  },
+  {
+    title: "纸上迷你高尔夫",
+    description: "轻轻拖动，松手挥杆。越过斜坡、沙坑和纸上机关，用最少的杆数走完九洞小旅程。",
+    path: "./games/paper-golf/index.html",
+    category: "休闲",
+    color: "#dce5cb",
+    cover: "./games/paper-golf/cover.svg",
+    locales: {
+      en: { title: "Paper Mini Golf", description: "Pull back, release and swing across nine paper holes. Master slopes, sand and little mechanisms in as few strokes as possible." },
+      ja: { title: "紙のミニゴルフ", description: "引いて、離して、小さな一打。坂や砂地、紙の仕掛けを越え、少ない打数で9ホールをめぐろう。" },
+      ko: { title: "종이 미니 골프", description: "살짝 당겼다 놓아 보세요. 경사와 모래, 종이 장치를 넘어 적은 타수로 아홉 홀을 완주해요." },
+      fr: { title: "Mini-golf de papier", description: "Tirez, relâchez et parcourez neuf trous de papier. Franchissez pentes, sable et mécanismes en un minimum de coups." },
+      de: { title: "Papier-Minigolf", description: "Ziehen, loslassen und neun Papierbahnen meistern. Überwinde Hänge, Sand und kleine Mechanismen mit wenigen Schlägen." },
+      es: { title: "Minigolf de papel", description: "Tira, suelta y recorre nueve hoyos de papel. Supera pendientes, arena y mecanismos con el mínimo de golpes." },
+      'pt-BR': { title: "Minigolfe de papel", description: "Puxe, solte e percorra nove buracos de papel. Supere ladeiras, areia e mecanismos com o mínimo de tacadas." }
+    }
+  },
+  {
+    title: "小鸡过马路",
+    description: "找准空隙穿过车流，等火车走远，踩着漂木再往前一步。一次小小的手绘出走。",
+    path: "./games/chicken-crossing/index.html",
+    category: "动作",
+    color: "#dce5d2",
+    cover: "./games/chicken-crossing/cover.svg",
+    locales: {
+      en: { title: "Little Chicken Crossing", description: "Find a gap in traffic, wait for the train, and ride drifting logs. Just one more hop in a hand-drawn world." },
+      ja: { title: "ひよこの道わたり", description: "車のすき間を見つけ、電車を待ち、丸太に乗ってもう一歩。手描きの世界で小さな冒険。" },
+      ko: { title: "병아리 길 건너기", description: "차 사이를 지나고 기차를 기다리고 통나무를 타고 한 걸음 더. 손그림 세상 속 작은 나들이." },
+      fr: { title: "La traversée du poussin", description: "Évitez les voitures, attendez le train et montez sur des rondins. Encore un petit saut dans un monde dessiné au crayon." },
+      de: { title: "Küken auf Wanderschaft", description: "Lücken im Verkehr finden, auf Züge warten und auf Baumstämmen treiben. Noch ein Hüpfer durch eine gezeichnete Welt." },
+      es: { title: "El paseo del pollito", description: "Busca huecos entre coches, espera al tren y viaja en troncos. Un saltito más por un mundo dibujado a mano." },
+      'pt-BR': { title: "A travessia do pintinho", description: "Ache brechas no trânsito, espere o trem e pegue carona em troncos. Mais um pulinho num mundo desenhado à mão." }
+    }
+  },
+  {
+    title: "森林炸弹人",
+    description: "放下炸弹，炸开木箱，捡起道具。用连锁爆炸围住对手，也给自己留一条林间退路。",
+    path: "./games/forest-bomber/index.html",
+    category: "动作",
+    color: "#e4e9d2",
+    cover: "./games/forest-bomber/cover.svg",
+    locales: {
+      en: { title: "Forest Bomber", description: "Plant bombs, break crates and gather power-ups. Chain explosions to corner rivals, and always keep an escape route." },
+      ja: { title: "森のボンバーフォックス", description: "爆弾で木箱を壊し、アイテムを集めよう。連鎖爆発で相手を囲み、自分の逃げ道も忘れずに。" },
+      ko: { title: "숲속 폭탄 여우", description: "폭탄으로 상자를 부수고 아이템을 모아요. 연쇄 폭발로 상대를 몰아넣고 탈출로도 남겨 두세요." },
+      fr: { title: "Bombes en forêt", description: "Posez des bombes, brisez les caisses et ramassez des bonus. Piégez vos rivaux par des réactions en chaîne, en gardant une issue." },
+      de: { title: "Waldbomber", description: "Lege Bomben, sprenge Kisten und sammle Extras. Kreise Gegner mit Kettenreaktionen ein und lass dir einen Fluchtweg." },
+      es: { title: "Bombas del bosque", description: "Coloca bombas, rompe cajas y recoge mejoras. Acorrala rivales con explosiones en cadena y deja siempre una salida." },
+      'pt-BR': { title: "Bombas na floresta", description: "Coloque bombas, quebre caixas e recolha melhorias. Cerque os rivais com explosões em cadeia e deixe sempre uma saída." }
+    }
+  },
+  {
+    title: "深夜煎饼摊",
+    description: "摊饼、翻面、加料、交单，交替照看两口锅，用连续出餐温暖每一位夜归人。",
+    path: "./games/midnight-pancake/index.html",
+    category: "休闲",
+    color: "#e9eadb",
+    cover: "./games/midnight-pancake/cover.svg",
+    locales: {
+      en: { title: "Midnight Pancakes", description: "Spread, flip, fill and serve. Juggle two griddles and keep hungry night owls happy with satisfying combos." },
+      ja: { title: "深夜のクレープ屋", description: "生地を広げ、裏返し、具をのせてお渡し。二つの鉄板で夜帰る人を温め、連続提供を楽しもう。" },
+      ko: { title: "심야 전병 가게", description: "반죽을 펴고 뒤집고 재료를 넣어 전달해요. 두 철판을 번갈아 보며 연속 완성의 즐거움을 느껴요." },
+      fr: { title: "Crêpes de minuit", description: "Étalez, retournez, garnissez et servez. Jonglez entre deux plaques pour régaler les noctambules et enchaîner les commandes." },
+      de: { title: "Mitternachts-Crêpes", description: "Verteilen, wenden, belegen und servieren. Behalte zwei Platten im Blick und verwöhne Nachtschwärmer mit leckeren Serien." },
+      es: { title: "Crepes de medianoche", description: "Extiende, voltea, rellena y sirve. Atiende dos planchas y encadena pedidos para alegrar a los noctámbulos." },
+      'pt-BR': { title: "Crepes da meia-noite", description: "Espalhe, vire, recheie e sirva. Cuide de duas chapas e encadeie pedidos para alegrar os clientes da madrugada." }
+    }
+  },
+  {
+    title: "铅笔数织",
+    description: "跟着行列数字填格子，让小猫、盆栽、咖啡杯慢慢显现，收进十二页日常图鉴。",
+    path: "./games/pencil-nonogram/index.html",
+    category: "益智",
+    color: "#e7eadc",
+    cover: "./games/pencil-nonogram/cover.svg",
+    locales: {
+      en: { title: "Pencil Nonogram", description: "Follow number clues to reveal cats, plants and coffee cups. Collect twelve little pictures in your album." },
+      ja: { title: "えんぴつノノグラム", description: "行と列の数字を頼りに猫や鉢植え、コーヒーカップを描こう。12枚の絵を図鑑に集めよう。" },
+      ko: { title: "연필 네모로직", description: "행과 열의 숫자로 고양이, 화분, 커피잔을 완성하고 열두 장의 그림을 도감에 모아요." },
+      fr: { title: "Nonogramme au crayon", description: "Suivez les nombres pour révéler chats, plantes et tasses de café. Collectionnez douze images dans votre album." },
+      de: { title: "Bleistift-Nonogramm", description: "Entdecke Katzen, Pflanzen und Kaffeetassen mit Zahlenhinweisen. Sammle zwölf kleine Bilder in deinem Album." },
+      es: { title: "Nonograma a lápiz", description: "Sigue las pistas numéricas y descubre gatos, plantas y tazas de café. Reúne doce dibujos en tu álbum." },
+      'pt-BR': { title: "Nonograma a lápis", description: "Siga as pistas numéricas e revele gatos, plantas e xícaras de café. Colecione doze desenhos no seu álbum." }
+    }
+  },
+  {
+    title: "纸桥工程师",
+    description: "用有限的木条、绳索和预算连接两岸。画出你的桥，放小车过桥，在六页工程笔记里收集星星。",
+    path: "./games/paper-bridge/index.html",
+    category: "益智",
+    color: "#e5e9d8",
+    cover: "./games/paper-bridge/cover.svg",
+    locales: {
+      en: { title: "Paper Bridge", description: "Build with limited timber, rope and a little budget. Test your bridge with a car across six hand-drawn crossings." },
+      ja: { title: "紙の橋づくり", description: "限られた木材、ロープ、予算で両岸をつなごう。車で試運転して、6つの橋づくりノートに星を集めよう。" },
+      ko: { title: "종이 다리 공학자", description: "한정된 목재와 밧줄, 예산으로 다리를 지어요. 여섯 장의 공책에서 차를 건너게 하고 별을 모으세요." },
+      fr: { title: "Ponts de papier", description: "Construisez avec du bois, des cordes et un petit budget. Testez vos ponts avec une voiture dans six passages dessinés." },
+      de: { title: "Papierbrücken", description: "Baue mit begrenztem Holz, Seil und Budget. Lass ein Auto über sechs gezeichnete Brücken fahren und sammle Sterne." },
+      es: { title: "Puentes de papel", description: "Construye con madera, cuerdas y presupuesto limitados. Prueba tus puentes con un coche en seis cruces dibujados." },
+      'pt-BR': { title: "Pontes de papel", description: "Construa com madeira, cordas e orçamento limitados. Teste suas pontes com um carro em seis travessias desenhadas." }
     }
   },
   // 新增示例（删除每行开头的 //，修改内容即可）：

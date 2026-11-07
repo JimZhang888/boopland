@@ -1,0 +1,8 @@
+// Rebuild the original vector cover after illustration changes: node make-cover.cjs
+const fs=require('node:fs'),vm=require('node:vm'),path=require('node:path');
+const c={window:{}};vm.createContext(c);
+for(const file of ['engine.js','art.js'])vm.runInContext(fs.readFileSync(path.join(__dirname,file),'utf8'),c);
+const E=c.window.PaperWardrobe,A=c.window.WardrobeArt;
+const cover=`<svg xmlns="http://www.w3.org/2000/svg" width="720" height="480" viewBox="0 0 720 480"><rect width="720" height="480" fill="#eeeede"/><path d="M35 24 690 31 684 459 28 450Z" fill="#faf7ea" stroke="#c3cbb6"/><g fill="#56664b" font-family="KaiTi,Microsoft YaHei,serif"><text x="63" y="130" font-size="44">纸间衣橱</text><text x="65" y="169" font-size="14" letter-spacing="3">PAPER WARDROBE</text><text x="65" y="207" font-size="17">把日常，穿成一首小诗</text></g><path d="M65 233h185" stroke="#b7c2a5" stroke-dasharray="4 5"/><svg x="55" y="256" width="100" height="105">${A.thumbnail(E.byId.oatKnit)}</svg><svg x="163" y="251" width="82" height="125">${A.thumbnail(E.byId.sagePleats)}</svg><svg x="230" y="290" width="70" height="90">${A.thumbnail(E.byId.rainBoots)}</svg><svg x="313" y="22" width="368" height="438">${A.render(E.defaultOutfit)}</svg><path d="M438 12h111l-5 22-103-5Z" fill="#d5ddc1" opacity=".9"/><g fill="#8a977a" font-family="Georgia,serif" font-size="12" letter-spacing="3"><text x="65" y="416">A LITTLE OUTFIT DIARY</text></g></svg>`;
+fs.writeFileSync(path.join(__dirname,'cover.svg'),cover);
+console.log(JSON.stringify({items:E.items.length,initial:E.unlocked(E.freshState()).length,tasks:E.tasks.length,categories:E.categories.map(k=>[k,E.items.filter(x=>x.category===k).length])}));

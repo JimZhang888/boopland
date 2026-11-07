@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-i18n-scope="pancake">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#f5f3eb">
+  <title data-i18n="pancake.pageTitle">深夜煎饼摊 · Boopland</title>
+  <link rel="icon" type="image/svg+xml" href="cover.svg">
+  <link rel="stylesheet" href="style.css">
+  <script defer src="../../analytics.js"></script>
+</head>
+<body>
+  <main class="game-shell" id="shell" data-state="ready">
+    <header class="topbar">
+      <a class="back" href="../../games.html"><span aria-hidden="true">↶</span><span data-i18n="common.back">返回大厅</span></a>
+      <div class="title"><span class="title-moon" aria-hidden="true">☾</span><div><h1 data-i18n="pancake.name">深夜煎饼摊</h1><p data-i18n="pancake.subtitle">一盏小灯，一口热乎。</p></div></div>
+      <div class="tools">
+        <button id="sound" class="icon-button" aria-pressed="false" data-i18n-label="pancake.soundOn"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9h4l5-4v14l-5-4H4Z"/><path id="sound-mark" d="m17 9 5 6m0-6-5 6"/></svg></button>
+        <button id="help" class="icon-button" data-i18n-label="pancake.help"><span aria-hidden="true">?</span></button>
+        <button id="pause" class="icon-button" disabled data-i18n-label="pancake.pause"><svg viewBox="0 0 24 24" aria-hidden="true"><path id="pause-mark" d="M8 5v14M16 5v14"/></svg></button>
+      </div>
+    </header>
+
+    <section class="ledger" data-i18n-label="pancake.stats">
+      <div class="shift"><span class="open-dot"></span><div><b id="phase">晚风刚好</b><small>21:00 — 00:00</small></div><svg class="moon-art" viewBox="0 0 60 50" aria-hidden="true"><path d="M34 7C7 4 5 41 34 43c8-1 14-5 17-12C26 42 17 18 34 7Z"/><path d="m47 6 1 7m-4-4 7 1M9 6l1 4m-3-2 6 1"/></svg></div>
+      <div class="stat"><span data-i18n="pancake.earnings">营业额</span><strong><small>¥</small><span id="coins">0</span></strong></div>
+      <div class="stat"><span data-i18n="pancake.served">已出餐</span><strong id="served">0</strong></div>
+      <div class="stat combo-stat"><span data-i18n="pancake.combo">连续出餐</span><strong id="combo">×0</strong><span class="combo-line"><i id="combo-fill"></i></span></div>
+      <div class="stat timer-stat"><span data-i18n="pancake.remaining">收摊倒计时</span><strong id="timer">2:00</strong></div>
+    </section>
+
+    <section class="play-area" id="play-area" data-i18n-label="pancake.playArea">
+      <div class="orders" id="orders"></div>
+      <div class="kitchen">
+        <section class="stove-board" data-i18n-label="pancake.stoves">
+          <div class="awning" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
+          <div class="stove-heading"><span class="little-star" aria-hidden="true">✧</span><span data-i18n="pancake.stallNote">忙碌的夜，也要好好吃饭。</span><span class="little-star" aria-hidden="true">✧</span></div>
+          <div class="pans" id="pans"></div>
+          <p class="stove-note" data-i18n="pancake.stoveHint">两口锅轮流照看，好味道不用久等。</p>
+        </section>
+        <aside class="prep">
+          <div class="prep-title"><h2 data-i18n="pancake.ingredients">今日备料</h2><span id="selected-pan">①</span></div>
+          <div class="ingredients" id="ingredients"></div>
+          <div class="prep-tip" id="prep-tip"></div>
+          <div class="action-row"><button id="action" class="primary" disabled><span id="action-label" data-i18n="pancake.pour">摊一张饼</span><span aria-hidden="true">↗</span></button><button id="discard" class="discard" disabled data-i18n-label="pancake.discard"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M9 7V4h6v3M6 7l1 14h10l1-14M10 11v6m4-6v6"/></svg></button></div>
+        </aside>
+      </div>
+    </section>
+
+    <footer class="footer"><p id="message" role="status" aria-live="polite"></p><span id="best"></span></footer>
+
+    <section class="overlay" id="overlay" aria-labelledby="overlay-title">
+      <div class="overlay-card">
+        <div class="ticket-top"><span>BOOPLAND</span><span aria-hidden="true">☾</span><span>NO. 021</span></div>
+        <div class="intro-art" id="intro-art" aria-hidden="true"></div>
+        <p class="eyebrow" id="overlay-kicker"></p>
+        <h2 id="overlay-title"></h2>
+        <p class="intro-note" id="overlay-description"></p>
+        <ol class="quick-guide" id="quick-guide"><li><b>01</b><span data-i18n="pancake.quick1">摊饼 · 等火候变绿后翻面</span></li><li><b>02</b><span data-i18n="pancake.quick2">加料 · 按客人的小票来</span></li><li><b>03</b><span data-i18n="pancake.quick3">卷饼 · 点击对应客人交单</span></li></ol>
+        <div class="result-stats" id="result-stats" hidden></div>
+        <button id="start" class="primary"></button>
+        <button id="restart" class="text-button" data-i18n="pancake.restart" hidden>重新开摊</button>
+        <p class="overlay-foot" id="overlay-foot"></p>
+      </div>
+    </section>
+  </main>
+  <dialog id="help-dialog" aria-labelledby="help-title">
+    <div class="help-head"><h2 id="help-title" data-i18n="pancake.helpTitle">摊主的小抄</h2><button id="close-help" class="icon-button" data-i18n-label="pancake.close">×</button></div>
+    <ol class="help-list"><li data-i18n="pancake.rule1"></li><li data-i18n="pancake.rule2"></li><li data-i18n="pancake.rule3"></li><li data-i18n="pancake.rule4"></li><li data-i18n="pancake.rule5"></li></ol>
+    <p class="keyboard-help" data-i18n="pancake.keys"></p>
+    <button id="help-done" class="primary" data-i18n="pancake.gotIt">记住啦</button>
+  </dialog>
+  <script src="../../i18n.js"></script>
+  <script src="translations.js"></script>
+  <script src="engine.js"></script>
+  <script src="art.js"></script>
+  <script src="game.js"></script>
+</body>
+</html>

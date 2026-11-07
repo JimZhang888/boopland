@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="zh-CN" data-i18n-scope="suitcase">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#f5f3eb"><title data-i18n="suitcase.title">行李箱收纳师 · Boopland</title>
+  <link rel="icon" type="image/svg+xml" href="cover.svg"><link rel="stylesheet" href="style.css">
+  <script defer src="../../analytics.js"></script>
+</head>
+<body>
+<main class="game-shell">
+  <header class="topbar">
+    <a class="back" href="../../games.html"><span aria-hidden="true">↶</span><span data-i18n="common.back">返回大厅</span></a>
+    <div class="brand"><svg viewBox="0 0 36 36" aria-hidden="true"><path d="M12 10V6q6-4 12 0v4M6 11q12-2 24 0l1 19q-13 3-26 0ZM11 12v17m14-17v17"/></svg><h1 data-i18n="suitcase.name">行李箱收纳师</h1></div>
+    <div class="top-actions"><button id="quick-trips" class="icon-button" data-i18n-label="suitcase.trips"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 3h15v18H5ZM8 3v18M12 8h5m-5 4h5"/></svg></button><button id="sound" class="icon-button" aria-pressed="false" data-i18n-label="suitcase.soundOn">♪<i></i></button><button id="help" class="icon-button" data-i18n-label="suitcase.help">?</button></div>
+  </header>
+  <section class="travel-note">
+    <div class="travel-number" aria-hidden="true"><small>No.</small><strong id="trip-number">01</strong></div>
+    <div class="travel-copy"><p data-i18n="suitcase.eyebrow">装一点日常，带一点期待</p><h2 id="trip-title"></h2><span id="trip-story"></span></div>
+    <button id="trips" class="passport-button"><svg viewBox="0 0 32 32" aria-hidden="true"><path d="m7 3 20 3v24L7 27ZM7 3 4 5v24l19 2"/><circle cx="17" cy="14" r="6"/><path d="M11 14h12m-6-6q-5 6 0 12 5-6 0-12ZM12 24l10 1"/></svg><span data-i18n="suitcase.trips">旅行手帐</span><b id="stamp-count">0 / 6</b></button>
+  </section>
+  <section class="packing-desk">
+    <div class="suitcase-area">
+      <div class="case-caption"><span><i></i><span data-i18n="suitcase.carryOn">我的小小行李箱</span></span><b id="board-size"></b></div>
+      <div class="case-space" id="case-space">
+        <div class="suitcase" id="suitcase"><div class="case-handle" aria-hidden="true"></div><div class="case-shell"><div class="case-stitch" aria-hidden="true"></div><div id="board" class="board" tabindex="0" role="application" data-i18n-label="suitcase.boardLabel"></div><div class="case-clasp left" aria-hidden="true"></div><div class="case-clasp right" aria-hidden="true"></div></div><div class="case-wheel left" aria-hidden="true"></div><div class="case-wheel right" aria-hidden="true"></div></div>
+        <div class="postcard" aria-hidden="true"><svg id="landscape" viewBox="0 0 140 90"></svg><span id="postcard-label"></span></div>
+        <div class="pencil-doodle" aria-hidden="true">✧<span>✧</span></div>
+      </div>
+      <div class="case-foot"><span id="packed-count"></span><div class="progress-track"><i id="progress"></i></div><b id="packed-percent">0%</b></div>
+    </div>
+    <aside class="inventory-paper">
+      <div class="tape" aria-hidden="true"></div>
+      <div class="inventory-heading"><div><small data-i18n="suitcase.checklistTop">出发之前</small><h2 data-i18n="suitcase.checklist">打包清单</h2></div><span id="remaining"></span></div>
+      <p class="inventory-tip" data-i18n="suitcase.inventoryTip">每件小东西，都有刚刚好的位置。</p>
+      <div class="inventory" id="inventory"></div>
+      <div class="selection-panel"><span class="selection-mark" aria-hidden="true">↳</span><span id="selection-name"></span><small id="selection-size"></small></div>
+      <div class="item-actions"><button id="rotate" disabled><span aria-hidden="true">↻</span><span data-i18n="suitcase.rotate">旋转</span><kbd>R</kbd></button><button id="remove" disabled><span aria-hidden="true">↥</span><span data-i18n="suitcase.remove">取出</span></button></div>
+    </aside>
+  </section>
+  <footer class="bottom-bar"><div class="utility-actions"><button id="mobile-rotate" class="compact-action" disabled><span aria-hidden="true">↻</span><span data-i18n="suitcase.rotate">旋转</span></button><button id="mobile-remove" class="compact-action" disabled><span aria-hidden="true">↥</span><span data-i18n="suitcase.remove">取出</span></button><button id="undo" disabled><span aria-hidden="true">↶</span><span data-i18n="suitcase.undo">撤销</span></button><button id="hint"><span aria-hidden="true">✧</span><span data-i18n="suitcase.hint">小提示</span></button><button id="reset"><span aria-hidden="true">⟲</span><span data-i18n="suitcase.reset">重新收纳</span></button></div><div id="status" class="status" role="status" aria-live="polite"></div><button id="close-case" class="primary-button" disabled><span data-i18n="suitcase.closeCase">合上行李箱</span><span aria-hidden="true">→</span></button></footer>
+</main>
+<div id="drag-ghost" class="drag-ghost" aria-hidden="true" hidden></div>
+<dialog id="dialog"><div class="dialog-heading"><h2 id="dialog-title"></h2><button id="close-dialog" class="icon-button" data-i18n-label="suitcase.close">×</button></div><div id="dialog-content"></div></dialog>
+<script src="../../i18n.js"></script><script src="translations.js"></script><script src="engine.js"></script><script src="art.js"></script><script src="game.js"></script>
+</body>
+</html>

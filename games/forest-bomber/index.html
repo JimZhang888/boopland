@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="zh-CN" data-i18n-scope="forest">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#f5f3eb">
+  <meta name="description" content="森林炸弹人：炸开木箱、收集道具，在手绘森林中为自己留一条退路。" data-i18n-content="forest.description">
+  <title>森林炸弹人 · Boopland</title>
+  <link rel="icon" href="./cover.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="./style.css">
+  <script defer src="../../analytics.js"></script>
+</head>
+<body>
+  <main class="game-shell">
+    <header class="topbar">
+      <a class="back" href="../../games.html"><span aria-hidden="true">←</span><span data-i18n="common.back">返回大厅</span></a>
+      <div class="title-group"><svg viewBox="0 0 32 34" aria-hidden="true"><path d="m16 2-9 12h5L5 25h10v7h3v-7h10l-8-11h5Z"/></svg><h1 data-i18n="forest.title">森林炸弹人</h1></div>
+      <div class="top-actions">
+        <button id="sound" class="icon-button" type="button" aria-pressed="false" data-i18n-label="forest.soundOn"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m11 5-5 4H3v6h3l5 4Z"/><path id="sound-mark" d="m16 9 5 6m0-6-5 6"/></svg></button>
+        <button id="help" class="icon-button" type="button" data-i18n-label="forest.help">?</button>
+        <button id="pause" class="icon-button" type="button" data-i18n-label="forest.pause" disabled><span id="pause-mark" aria-hidden="true">Ⅱ</span></button>
+      </div>
+    </header>
+
+    <div class="main-layout">
+      <aside class="field-notes">
+        <p class="eyebrow" data-i18n="forest.fieldNotes">林间冒险手记</p>
+        <div class="chapter"><span id="round-large">01</span><span>/ 05</span></div>
+        <h2 id="grove-name">苔藓小径</h2>
+        <p class="objective" data-i18n="forest.objective">带着三颗爱心，穿过五片林地。和森林伙伴较量一场。</p>
+        <div class="score-block"><span data-i18n="forest.score">本次得分</span><strong id="score">00000</strong></div>
+        <div class="best-line"><span data-i18n="forest.best">最高纪录</span><b id="best">0</b></div>
+        <div class="sketch-note"><svg viewBox="0 0 170 70" aria-hidden="true"><path d="M12 18c29-9 57 4 56 26s-31 21-30 1 47-24 100-7m-13-9 15 9-14 7"/><path d="m15 49 7-10m-1 16 8-11m64-26 5 5m-2-13 5 5"/></svg><p data-i18n="forest.note">放下炸弹，<br>记得转个弯。</p></div>
+        <span class="edition">BOOPLAND / FOREST CLUB</span>
+      </aside>
+
+      <section class="arena-column" data-i18n-label="forest.arena">
+        <div class="hud">
+          <div class="hud-stat round-stat"><span data-i18n="forest.round">林地</span><strong id="round">01 / 05</strong></div>
+          <div class="hud-stat"><span data-i18n="forest.hearts">爱心</span><strong id="hearts" class="hearts">♥ ♥ ♥</strong></div>
+          <div class="hud-stat"><span data-i18n="forest.rivals">对手</span><strong id="rivals">3</strong></div>
+          <div class="hud-stat timer-stat"><span data-i18n="forest.time">倒计时</span><strong id="timer">02:30</strong></div>
+        </div>
+        <div class="arena-space" id="arena-space">
+          <div class="board" id="board"><canvas id="forest-canvas" width="728" height="616" tabindex="0" data-i18n-label="forest.canvasLabel"></canvas></div>
+          <div class="overlay" id="overlay">
+            <div class="briefing" role="region" aria-labelledby="overlay-title">
+              <div class="intro-illustration" aria-hidden="true"><svg viewBox="0 0 180 100"><path d="M18 85q66 8 144-2" stroke="#b8c3a7"/><path d="m29 11-12 24h7L12 54h15v20h7V54h15L37 35h6Z" fill="#c9d4b7" stroke="#697d60"/><path d="m141 29-13 22h7l-10 18h14v13h5V69h14l-10-18h7Z" fill="#dce3c9" stroke="#83916f"/><path d="m63 51-6-26 24 13h14l23-13-6 29-5 21-19 10-22-10Z" fill="#d3a878" stroke="#7c6b54"/><path d="m64 54 22 8 23-9-4 21-19 8-18-10Z" fill="#fff4d9" stroke="#a08b6b"/><path d="m65 78 17 7 20-6-1 9-19 6-18-7Z" fill="#849b75" stroke="#62765b"/><circle cx="74" cy="52" r="2" fill="#4a5145" stroke="none"/><circle cx="99" cy="52" r="2" fill="#4a5145" stroke="none"/><path d="m83 66 4 4 4-4Z" fill="#4a5145"/><circle cx="126" cy="82" r="10" fill="#657466" stroke="#46584b"/><path d="m127 72 1-7 6-4m-3-5 3 3m5-1-3 2" stroke="#b18c58"/></svg></div>
+              <p class="eyebrow" id="overlay-kicker" data-i18n="forest.readyKicker">一场有退路的小冒险</p>
+              <h2 id="overlay-title" data-i18n="forest.readyTitle">森林里，砰一下。</h2>
+              <p id="overlay-text" data-i18n="forest.readyText">炸开木箱，捡起惊喜。击败三位对手，穿过五片林地。自己的炸弹也会伤到自己！</p>
+              <div id="result-stats" class="result-stats" hidden></div>
+              <button id="primary" class="primary" type="button"><span id="primary-text" data-i18n="forest.start">走进森林</span><span aria-hidden="true">→</span></button>
+              <button id="restart" class="text-button" type="button" data-i18n="forest.restart" hidden>重新开始</button>
+              <p class="intro-controls" id="intro-controls"><span><kbd>WASD / ↑↓←→</kbd> <span data-i18n="forest.move">移动</span></span><span><kbd data-i18n="forest.space">空格</kbd> <span data-i18n="forest.plant">放炸弹</span></span></p>
+            </div>
+          </div>
+          <div class="toast" id="toast" role="status" aria-live="polite" hidden></div>
+        </div>
+        <div class="board-caption"><span><i class="status-dot"></i><span id="status" data-i18n="forest.waiting">等待出发</span></span><span data-i18n="forest.mapCaption">小狐狸的森林地图</span><span aria-hidden="true">N ↑</span></div>
+        <div class="control-deck">
+          <div class="dpad" role="group" data-i18n-label="forest.moveControls">
+            <button type="button" class="direction up" data-dir="0" data-i18n-label="forest.up">↑</button>
+            <button type="button" class="direction left" data-dir="3" data-i18n-label="forest.left">←</button>
+            <span class="dpad-center" aria-hidden="true">✧</span>
+            <button type="button" class="direction right" data-dir="1" data-i18n-label="forest.right">→</button>
+            <button type="button" class="direction down" data-dir="2" data-i18n-label="forest.down">↓</button>
+          </div>
+          <div class="pocket-hud"><div><span data-i18n="forest.bombs">炸弹</span><b id="bomb-stat">1 / 1</b></div><div><span data-i18n="forest.range">火力</span><b id="range-stat">2</b></div><div><span data-i18n="forest.speed">速度</span><b id="speed-stat">1</b><span class="shield-dot" id="shield-stat" hidden>◇</span></div></div>
+          <div class="bomb-control"><button id="bomb" class="bomb-button" type="button" disabled><svg viewBox="0 0 42 42" aria-hidden="true"><path d="m24 12 3-7 6-1m-2-4 3 3m6 1-4 1"/><path d="M32 27c-1 9-11 13-19 8S6 17 16 13s17 5 16 14Z"/><path d="m13 20 3-3"/></svg><span data-i18n="forest.plant">放炸弹</span></button><kbd class="bomb-key" data-i18n="forest.space">空格</kbd></div>
+        </div>
+      </section>
+
+      <aside class="backpack">
+        <div class="section-heading"><span data-i18n="forest.backpack">林间小背包</span><span aria-hidden="true">✳</span></div>
+        <p class="small-note" data-i18n="forest.pickupNote">木箱里，藏着一点好运。</p>
+        <div class="item-list">
+          <div><i class="item-icon capacity" aria-hidden="true">●<small>+</small></i><p><b data-i18n="forest.itemCapacity">炸弹口袋</b><span data-i18n="forest.itemCapacityDesc">多放一颗，上限 5 颗</span></p></div>
+          <div><i class="item-icon range" aria-hidden="true">✦</i><p><b data-i18n="forest.itemRange">小小火花</b><span data-i18n="forest.itemRangeDesc">火力 +1，上限 6 格</span></p></div>
+          <div><i class="item-icon speed" aria-hidden="true">»</i><p><b data-i18n="forest.itemSpeed">轻快靴子</b><span data-i18n="forest.itemSpeedDesc">脚步再快一点</span></p></div>
+          <div><i class="item-icon shield" aria-hidden="true">◇</i><p><b data-i18n="forest.itemShield">叶子护盾</b><span data-i18n="forest.itemShieldDesc">挡住一次爆炸</span></p></div>
+        </div>
+        <div class="rival-heading" data-i18n="forest.forestFriends">今天的森林伙伴</div>
+        <div class="rival-list" id="rival-list"><div data-rival="1"><i class="rival-dot blue"></i><span data-i18n="forest.rival1">蓝莓浣熊</span><span class="rival-state">●</span></div><div data-rival="2"><i class="rival-dot pink"></i><span data-i18n="forest.rival2">桃子小兔</span><span class="rival-state">●</span></div><div data-rival="3"><i class="rival-dot green"></i><span data-i18n="forest.rival3">松果小熊</span><span class="rival-state">●</span></div></div>
+        <div class="tip-card"><span aria-hidden="true">↳</span><p data-i18n="forest.chainTip">爆炸会点燃另一颗炸弹。转过石头，才是安全的退路。</p></div>
+      </aside>
+    </div>
+    <footer><span class="brand">boopland<span>.</span></span><span data-i18n="forest.footer">把一场小冒险，装进今天。</span><span class="footer-keys"><kbd>P / Esc</kbd> <span data-i18n="forest.pause">暂停</span></span></footer>
+  </main>
+  <dialog id="help-dialog" aria-labelledby="help-title">
+    <div class="help-heading"><h2 id="help-title" data-i18n="forest.help">森林手册</h2><button id="close-help" class="icon-button" type="button" data-i18n-label="forest.close">×</button></div>
+    <p data-i18n="forest.helpGoal">击败三位电脑对手，穿过五片林地。每关限时 150 秒；爱心耗尽或超时则冒险结束。过关恢复一颗爱心，保留道具。</p>
+    <div class="help-keys"><kbd>WASD / ↑↓←→</kbd><span data-i18n="forest.move">移动</span><kbd data-i18n="forest.space">空格</kbd><span data-i18n="forest.plant">放炸弹</span><kbd>P / Esc</kbd><span data-i18n="forest.pause">暂停</span></div>
+    <p data-i18n="forest.helpTouch">手机按住方向按钮移动，另一只手点击炸弹。短按走一格；移动中按下炸弹，会在下一格放下。</p>
+    <p data-i18n="forest.helpBomb">炸弹在 2.4 秒后十字爆炸，火焰持续约 0.6 秒。石头挡住火焰；一条火焰最多炸开一个木箱。爆炸会立即点燃碰到的炸弹。</p>
+    <p data-i18n="forest.helpSafety">放下后可以走出炸弹所在格，但不能走回去。自己和对手的炸弹都会造成伤害。受伤后短暂无敌；护盾只抵挡一次，不会叠加。</p>
+    <p data-i18n="forest.helpItems">木箱可能掉落炸弹口袋、火花、靴子或叶盾；火焰散去后才能拾取。露出的道具会被下一次爆炸烧掉，对手也会捡道具。</p>
+    <p class="help-tip" data-i18n="forest.helpScore">炸开木箱 +15，捡道具 +40，对手出局 +250，连锁额外炸弹 +50。过关还有剩余时间奖励。</p>
+  </dialog>
+  <script src="../../i18n.js"></script>
+  <script src="./translations.js"></script>
+  <script src="./engine.js"></script>
+  <script src="./scene.js"></script>
+  <script src="./game.js"></script>
+</body>
+</html>

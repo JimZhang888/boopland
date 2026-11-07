@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-i18n-scope="crossing">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#f5f3eb">
+  <meta name="description" content="一只小鸡，一场纸上冒险。穿过车流，等火车走远，踩着漂木再往前一步。" data-i18n-content="crossing.intro">
+  <title data-i18n="crossing.pageTitle">小鸡过马路 · Boopland</title>
+  <link rel="icon" href="chicken.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="style.css">
+  <script defer src="../../analytics.js"></script>
+</head>
+<body>
+  <main class="game-shell">
+    <header class="topbar">
+      <a class="back" href="../../games.html"><span aria-hidden="true">↶</span><span data-i18n="common.back">返回大厅</span></a>
+      <div class="heading"><img src="chicken.svg" width="36" height="36" alt=""><h1 data-i18n="crossing.name">小鸡过马路</h1></div>
+      <span class="edition" aria-hidden="true">BOOPLAND / 01</span>
+    </header>
+    <section class="notebook">
+      <div class="play-column">
+        <div class="hud">
+          <div class="score-block"><span data-i18n="crossing.distance">走过的路</span><strong id="score">0</strong><small data-i18n="crossing.steps">步</small></div>
+          <div class="best-block"><span aria-hidden="true">⚑</span><span data-i18n="crossing.best">最远</span><strong id="best">0</strong></div>
+          <div class="toolbar">
+            <button id="sound" class="icon-button" aria-pressed="false" aria-label="开启音效"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9h4l5-4v14l-5-4H4Z"/><path id="sound-mark" d="m17 9 5 6m0-6-5 6"/></svg></button>
+            <button id="help" class="icon-button" data-i18n-label="crossing.help"><span aria-hidden="true">?</span></button>
+            <button id="pause" class="icon-button" disabled data-i18n-label="crossing.pause"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14M16 5v14"/></svg></button>
+          </div>
+        </div>
+        <div class="stage" id="stage">
+          <canvas id="game" tabindex="0" role="img" data-i18n-label="crossing.canvas" data-i18n="crossing.canvas">小鸡过马路游戏画面</canvas>
+          <div class="scene-caption" aria-hidden="true"><span>01 /</span><span data-i18n="crossing.sceneNote">往前一点，风景就不一样。</span></div>
+          <div id="notice" class="notice" role="status" hidden></div>
+          <div id="idle" class="idle" hidden><span id="idle-text"></span><span class="idle-track"><i id="idle-fill"></i></span></div>
+          <section id="overlay" class="overlay" aria-labelledby="dialog-title">
+            <div class="dialog" role="dialog" aria-labelledby="dialog-title" aria-describedby="dialog-description">
+              <div class="intro-art" id="intro-art" aria-hidden="true"><span class="doodle">↗</span><img src="chicken.svg" width="108" height="108" alt=""><span class="doodle sprout">✳</span></div>
+              <p class="eyebrow" id="dialog-eyebrow" data-i18n="crossing.eyebrow">一场小小的出走</p>
+              <h2 id="dialog-title" data-i18n="crossing.name">小鸡过马路</h2>
+              <p id="dialog-description" class="dialog-description" data-i18n="crossing.intro">穿过车流，等火车走远，踩着漂木，再往前一步。</p>
+              <div id="result" class="result" hidden><strong id="result-score">0</strong><span data-i18n="crossing.steps">步</span><p id="result-best"></p></div>
+              <div id="help-content" class="help-content" hidden>
+                <p data-i18n="crossing.rule1"></p><p data-i18n="crossing.rule2"></p><p data-i18n="crossing.rule3"></p><p data-i18n="crossing.rule4"></p><p data-i18n="crossing.rule5"></p>
+              </div>
+              <button id="primary" class="primary" data-i18n="crossing.start">出发吧 ↗</button>
+              <button id="secondary" class="text-button" hidden data-i18n="crossing.again">重新出发</button>
+              <p id="intro-controls" class="intro-controls" data-i18n="crossing.introControls">方向键 / WASD · 轻点前进，滑动转向</p>
+            </div>
+          </section>
+        </div>
+        <footer class="controls">
+          <div class="control-note"><span class="little-arrow" aria-hidden="true">↟</span><p id="status-text">看准空隙，再走一步。</p><small data-i18n="crossing.keyboard">方向键 / WASD</small></div>
+          <div class="dpad" role="group" data-i18n-label="crossing.controls">
+            <button data-move="left" data-i18n-label="crossing.left">←</button>
+            <button data-move="down" data-i18n-label="crossing.down">↓</button>
+            <button class="forward" data-move="up" data-i18n-label="crossing.up">↑</button>
+            <button data-move="right" data-i18n-label="crossing.right">→</button>
+          </div>
+        </footer>
+      </div>
+      <aside class="field-notes">
+        <p class="notes-kicker" data-i18n="crossing.notes">小鸡的旅行手记</p>
+        <h2 data-i18n="crossing.oneMore">就再走一步。</h2>
+        <svg class="route-doodle" viewBox="0 0 180 90" aria-hidden="true"><path d="M9 72c32 8 45-19 25-24s-23 30 20 22 21-46 63-36 23-15 44-20M150 12l14 1-3 13"/><path d="m77 12 2 8 8 1-7 4 1 8-6-5-7 4 3-8-5-5 8 1Z"/></svg>
+        <div class="terrain-note"><span class="terrain-symbol road-symbol" aria-hidden="true">↔</span><div><h3 data-i18n="crossing.roadTitle">马路 · 找空隙</h3><p data-i18n="crossing.roadNote">左右看看，别急着赶路。</p></div></div>
+        <div class="terrain-note"><span class="terrain-symbol rail-symbol" aria-hidden="true">╪</span><div><h3 data-i18n="crossing.railTitle">铁路 · 等一等</h3><p data-i18n="crossing.railNote">红灯闪烁时，火车快到了。</p></div></div>
+        <div class="terrain-note"><span class="terrain-symbol water-symbol" aria-hidden="true">≈</span><div><h3 data-i18n="crossing.waterTitle">河流 · 搭个便车</h3><p data-i18n="crossing.waterNote">踩上木头，记得在漂远前跳走。</p></div></div>
+        <div class="milestone"><span data-i18n="crossing.nextStop">下一个小目标</span><strong id="next-stop">25</strong><small data-i18n="crossing.steps">步</small><div class="milestone-track"><i id="milestone-fill"></i></div></div>
+        <p class="notes-foot" data-i18n="crossing.footnote">每一步，都是新风景。</p>
+      </aside>
+    </section>
+    <p class="page-foot" data-i18n="crossing.pageFoot">不必走得很快，只要比上次远一点。</p>
+  </main>
+  <script src="../../i18n.js"></script>
+  <script src="translations.js"></script>
+  <script src="engine.js"></script>
+  <script src="scene.js"></script>
+  <script src="game.js"></script>
+</body>
+</html>

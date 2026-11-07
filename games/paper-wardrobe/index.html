@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="zh-CN" data-i18n-scope="wardrobe">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#f5f3eb">
+  <title data-i18n="wardrobe.title">纸间衣橱 · Boopland</title>
+  <link rel="icon" type="image/svg+xml" href="cover.svg">
+  <link rel="stylesheet" href="style.css">
+  <script defer src="../../analytics.js"></script>
+</head>
+<body>
+<main class="game-shell">
+  <header class="topbar">
+    <a class="back" href="../../games.html"><span aria-hidden="true">↶</span><span data-i18n="common.back">返回大厅</span></a>
+    <div class="brand"><svg viewBox="0 0 40 40" aria-hidden="true"><path d="M17 13c-5-7 7-10 7-4 0 3-4 3-4 6l14 9c2 2 1 4-2 4H8c-3 0-4-2-2-4l14-9M8 32h24"/></svg><div><h1 data-i18n="wardrobe.name">纸间衣橱</h1><small data-i18n="wardrobe.tagline">把日常，穿成一首小诗</small></div></div>
+    <div class="header-actions"><button id="album" class="quiet"><span aria-hidden="true">▧</span><span data-i18n="wardrobe.album">收藏册</span><b id="album-count">0</b></button><button id="help" class="icon" data-i18n-label="wardrobe.help">?</button></div>
+  </header>
+  <nav class="mode-tabs" data-i18n-label="wardrobe.modes"><button data-mode="free" aria-pressed="true"><span aria-hidden="true">✿</span><span data-i18n="wardrobe.free">自由穿搭</span></button><button data-mode="challenge" aria-pressed="false"><span aria-hidden="true">☂</span><span data-i18n="wardrobe.challenge">场景挑战</span></button><button data-mode="order" aria-pressed="false"><span aria-hidden="true">✉</span><span data-i18n="wardrobe.order">小店委托</span></button></nav>
+  <section class="workspace">
+    <section class="studio" data-i18n-label="wardrobe.preview">
+      <div class="studio-label"><span id="studio-label"></span><span class="edition" aria-hidden="true">✦ 01 / 12</span></div>
+      <div id="stage" class="stage" role="img" data-i18n-label="wardrobe.preview"></div>
+      <div class="studio-footer"><div class="skin-picker" id="skin-picker" role="group" data-i18n-label="wardrobe.skin"></div><span id="outfit-caption"></span><button id="inspire" class="quiet"><span aria-hidden="true">✧</span><span data-i18n="wardrobe.inspire">灵感搭配</span></button></div>
+    </section>
+    <aside class="wardrobe-paper">
+      <section class="brief" id="brief"><div class="brief-copy"><small id="brief-eyebrow"></small><h2 id="brief-title"></h2><p id="brief-description"></p></div><button id="choose" class="quiet" hidden></button></section>
+      <div class="wardrobe-heading"><h2 data-i18n="wardrobe.closet">我的衣橱</h2><span id="unlocked-count"></span></div>
+      <div class="category-tabs" id="categories" role="group" data-i18n-label="wardrobe.categories"></div>
+      <div class="closet-scroll" id="closet-scroll"><div class="item-grid" id="items"></div></div>
+      <div class="selection-note" id="selection-note" role="status"></div>
+      <div class="wardrobe-actions"><button id="undo" class="quiet" disabled><span aria-hidden="true">↶</span><span data-i18n="wardrobe.undo">撤销</span></button><button id="reset" class="quiet"><span aria-hidden="true">⟲</span><span data-i18n="wardrobe.reset">重置</span></button><button id="submit" class="primary"><span id="submit-label"></span><span aria-hidden="true">↗</span></button></div>
+    </aside>
+  </section>
+  <footer class="desk-footer"><span id="status" role="status" aria-live="polite"></span><span class="footer-note" data-i18n="wardrobe.footer">一件衣服，一点心情。</span><button id="export" class="quiet"><span aria-hidden="true">↓</span><span data-i18n="wardrobe.export">导出明信片</span></button></footer>
+</main>
+<dialog id="dialog" aria-labelledby="dialog-title"><header class="dialog-heading"><h2 id="dialog-title"></h2><a class="dialog-back" href="../../games.html" data-i18n-label="common.back">↶</a><button id="close-dialog" class="icon" data-i18n-label="wardrobe.close">×</button></header><div id="dialog-content"></div></dialog>
+<script src="../../i18n.js"></script>
+<script src="translations.js"></script>
+<script src="engine.js"></script>
+<script src="art.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
