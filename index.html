@@ -12,68 +12,78 @@
     :root { --paper: #f4f1e8; --ink: #344b3e; --green: #657d53; --muted: #7b8172; --line: #d6d9c9; --serif: "Huiwen Mincho", "Iowan Old Style", "Palatino Linotype", "Noto Serif CJK SC", "Songti SC", "SimSun", serif; --sans: "Huiwen Mincho", "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif; }
     * { box-sizing: border-box; }
     html { background: var(--paper); }
-    body { margin: 0; color: var(--ink); font-family: var(--sans); -webkit-font-smoothing: antialiased; overflow-x: clip; }
+    body { margin: 0; color: var(--ink); font-family: var(--sans); -webkit-font-smoothing: antialiased; }
     button, a { -webkit-tap-highlight-color: transparent; }
     button { font: inherit; color: inherit; cursor: pointer; }
     a { color: inherit; }
-    button:focus-visible, a:focus-visible { outline: 2px solid var(--green); outline-offset: 6px; }
+    button:focus-visible, a:focus-visible { outline: 2px solid var(--green); outline-offset: 5px; }
     [hidden] { display: none !important; }
     ::selection { background: #d5dfc3; color: var(--ink); }
     .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0; }
     .paper-grain { position: fixed; inset: 0; z-index: 8; opacity: .2; pointer-events: none; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Cpath fill='%23000' filter='url(%23n)' opacity='.26' d='M0 0h180v180H0z'/%3E%3C/svg%3E"); }
     .ambient-light { position: fixed; inset: 0; pointer-events: none; background: radial-gradient(ellipse at 72% 36%, #fffdf6 0, transparent 54%), radial-gradient(ellipse at 0 100%, #dfe3d333, transparent 50%); }
     #motes { position: fixed; inset: 0; width: 100%; height: 100%; z-index: 5; pointer-events: none; }
-    .page { position: relative; max-width: 1600px; min-height: 100svh; margin: auto; padding: 0 clamp(24px, 5.2vw, 84px); display: flex; flex-direction: column; }
-    .site-header { min-height: 112px; display: flex; align-items: center; justify-content: space-between; gap: 24px; border-bottom: 1px solid var(--line); position: relative; z-index: 10; }
-    .brand { display: inline-flex; align-items: center; gap: 10px; text-decoration: none; }
-    .brand-icon { width: 35px; height: 39px; }
-    .wordmark { font: 400 29px/1 var(--serif); letter-spacing: -1.4px; }
+    /* Content can grow when text is enlarged; the illustration uses the remaining space. */
+    .page { position: relative; max-width: 1440px; height: 100svh; height: 100dvh; margin: auto; padding: env(safe-area-inset-top, 0px) max(clamp(20px, 5vw, 72px), env(safe-area-inset-right, 0px)) env(safe-area-inset-bottom, 0px) max(clamp(20px, 5vw, 72px), env(safe-area-inset-left, 0px)); display: grid; grid-template-rows: auto minmax(min-content, 1fr) auto; }
+    .site-header { min-height: 80px; display: flex; align-items: center; justify-content: space-between; gap: 16px; border-bottom: 1px solid var(--line); position: relative; z-index: 10; }
+    .brand { display: inline-flex; align-items: center; gap: 8px; text-decoration: none; }
+    .brand-icon { width: 30px; height: 34px; }
+    .wordmark { font: 400 26px/1 var(--serif); letter-spacing: -1.1px; }
     .wordmark span { color: #acb18c; }
-    .header-note { margin-left: auto; margin-right: 30px; font-family: var(--serif); font-size: 12px; letter-spacing: 2px; color: var(--muted); }
     .language { position: relative; }
-    .language-toggle { display: flex; align-items: center; gap: 10px; border: 1px solid #c6ccba; border-radius: 30px; background: #f8f6ee; min-height: 43px; padding: 0 16px; font-size: 12px; transition: background .2s, box-shadow .2s; }
+    .language-toggle { display: flex; align-items: center; gap: 8px; border: 1px solid #c6ccba; border-radius: 30px; background: #f8f6ee; min-height: 44px; padding: 0 14px; font-size: 12px; transition: background .2s, box-shadow .2s; }
     .language-toggle:hover, .language-toggle[aria-expanded="true"] { background: #e9eddf; box-shadow: 0 3px 10px #344b3e08; }
     .icon { width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width: 1.4; stroke-linecap: round; stroke-linejoin: round; flex-shrink: 0; }
     .chevron { width: 12px; height: 12px; transition: transform .25s; }
     [aria-expanded="true"] .chevron { transform: rotate(180deg); }
-    .language-menu { position: absolute; right: 0; top: calc(100% + 14px); width: 290px; max-width: calc(100vw - 48px); border: 1px solid #d8dccb; border-radius: 16px 6px 16px 6px; background: #fbfaf4; padding: 18px 13px 12px; box-shadow: 0 16px 50px #344b3e1c, 3px 4px 0 #e8e8db; animation: menu-in .2s ease both; }
-    .menu-heading { padding: 0 10px 13px; margin: 0; font-size: 11px; letter-spacing: 1px; color: var(--muted); border-bottom: 1px dashed var(--line); }
-    .language-options { display: grid; grid-template-columns: 1fr 1fr; gap: 5px; margin-top: 10px; }
-    .language-option { min-height: 44px; display: flex; align-items: center; justify-content: space-between; gap: 4px; padding: 10px; border: 0; border-radius: 6px; background: transparent; text-align: left; font-size: 12px; }
+    .language-menu { position: absolute; right: 0; top: calc(100% + 8px); width: 280px; max-width: calc(100vw - 40px); max-height: calc(100svh - 90px - env(safe-area-inset-top, 0px) - env(safe-area-inset-bottom, 0px)); max-height: calc(100dvh - 90px - env(safe-area-inset-top, 0px) - env(safe-area-inset-bottom, 0px)); overflow-y: auto; overscroll-behavior: contain; border: 1px solid #d8dccb; border-radius: 16px 6px 16px 6px; background: #fbfaf4; padding: 12px 10px; box-shadow: 0 16px 50px #344b3e1c, 3px 4px 0 #e8e8db; animation: menu-in .2s ease both; }
+    .menu-heading { padding: 0 8px 10px; margin: 0; font-size: 11px; letter-spacing: .5px; color: var(--muted); border-bottom: 1px dashed var(--line); }
+    .language-options { display: grid; grid-template-columns: 1fr 1fr; gap: 4px; margin-top: 8px; }
+    .language-option { min-height: 44px; display: flex; align-items: center; justify-content: space-between; gap: 4px; padding: 8px; border: 0; border-radius: 6px; background: transparent; text-align: left; font-size: 12px; }
     .language-option:hover { background: #eeeee4; }
     .language-option[aria-checked="true"] { background: #e5ebda; }
     .language-option[aria-checked="true"]::after { content: "✓"; color: var(--green); }
-    .hero { flex: 1; display: grid; grid-template-columns: .94fr 1.06fr; align-items: center; gap: 10px; padding: 45px 0 34px; min-height: 610px; }
-    .hero-copy { position: relative; z-index: 2; padding-bottom: 10px; }
-    .eyebrow { display: flex; align-items: center; gap: 11px; color: var(--green); font-size: 10px; font-weight: 600; letter-spacing: 3px; margin: 0 0 30px; }
-    .eyebrow::before { content: ""; width: 26px; height: 1px; background: #899775; }
-    h1 { font-family: var(--serif); font-size: clamp(48px, 5.55vw, 82px); line-height: 1.36; letter-spacing: .035em; font-weight: 400; margin: 0; }
+    .hero { display: grid; grid-template-areas: "copy art"; grid-template-columns: minmax(0, .95fr) minmax(0, 1.05fr); grid-template-rows: minmax(min-content, 1fr); gap: 28px 32px; min-height: 0; padding: clamp(16px, 3svh, 32px) 0; }
+    .hero-copy { grid-area: copy; display: flex; flex-direction: column; gap: 28px; min-width: 0; align-self: center; }
+    h1 { grid-area: copy; align-self: stretch; position: relative; z-index: 2; font-family: var(--serif); font-size: clamp(38px, min(4.8vw, 7.5svh), 68px); line-height: 1.16; letter-spacing: -.025em; font-weight: 400; margin: 0; overflow-wrap: anywhere; }
     .heading-line { display: block; }
-    .heading-accent { color: var(--green); position: relative; width: fit-content; }
-    .heading-accent::after { content: ""; position: absolute; left: 4%; bottom: 0; width: 83%; height: 9px; border-top: 1px solid #a2ae89; border-radius: 50%; transform: rotate(-3deg); opacity: .8; }
-    html[lang="zh-CN"] .heading-brand { font-size: clamp(88px, 8.4vw, 124px); font-weight: 400; line-height: 1.12; letter-spacing: .06em; }
-    html[lang="zh-CN"] .heading-accent { margin-top: 19px; padding-bottom: 10px; font-size: clamp(22px, 2.25vw, 34px); line-height: 1.6; letter-spacing: .04em; }
-    .intro { margin: 30px 0 34px; color: #747d6d; font-size: 13px; line-height: 2.15; letter-spacing: 1.3px; max-width: 370px; }
-    .intro span { display: block; }
-    .entry-row { display: flex; align-items: center; gap: 25px; }
-    .enter-link { position: relative; display: inline-flex; align-items: center; justify-content: space-between; gap: 26px; min-width: 216px; min-height: 80px; padding: 16px 22px 16px 34px; border: 1px solid #5f754e; border-radius: 48% 46% 46% 48% / 65% 65% 65% 65%; color: #fffcef; background: #657d53; text-decoration: none; box-shadow: 0 5px 0 #e0e3d3, 0 9px 18px #4c654914, inset 0 1px 0 #ffffff25; transition: transform .3s, background .3s, box-shadow .3s; isolation: isolate; }
-    .enter-link::before { content: ""; position: absolute; inset: 5px; border: 1px solid #e6edcf3b; border-radius: inherit; pointer-events: none; }
-    .enter-label { font-family: var(--serif); font-size: 27px; letter-spacing: .16em; }
-    .enter-arrow { display: grid; place-items: center; width: 42px; height: 42px; border: 1px solid #e7efd345; border-radius: 50%; transition: transform .3s, background .3s; }
-    .enter-arrow .icon { width: 23px; height: 23px; }
-    .enter-link:hover { transform: translateY(-4px) rotate(-1deg); background: #566f46; box-shadow: 0 8px 0 #e0e3d3, 0 14px 24px #4c65491c; }
-    .enter-link:hover .enter-arrow { transform: translateX(3px); background: #e6edcf18; }
-    .enter-link:active { transform: translateY(2px); box-shadow: 0 2px 0 #e0e3d3; }
-    .entry-note { display: flex; flex-direction: column; gap: 5px; transform: rotate(-7deg); color: #8f967d; }
-    .entry-note svg { width: 49px; height: 25px; margin-left: 9px; fill: none; stroke: #929d7f; stroke-width: 1.15; stroke-linecap: round; }
-    .entry-note span { font-family: var(--serif); font-size: 12px; font-style: italic; letter-spacing: .5px; }
-    .micro-copy { color: #919782; font-size: 8px; letter-spacing: 2.2px; margin: 25px 0 0 6px; }
-    .artwork { position: relative; width: calc(100% + 25px); margin-left: -10px; max-width: min(710px, calc(100svh - 285px)); justify-self: center; }
-    .paper-world { display: block; width: 100%; height: auto; overflow: visible; }
-    .paper-world text { font-family: var(--serif); }
-    .art-caption { display: flex; align-items: center; justify-content: center; gap: 13px; margin: -5px 0 0; color: #899078; font-size: 9px; letter-spacing: 1.6px; }
-    .art-caption::before, .art-caption::after { content: ""; height: 1px; width: 27px; background: #bdc5ac; }
-    .art-caption span { font-family: var(--serif); font-size: 12px; font-style: italic; letter-spacing: .6px; }
+    .heading-accent { color: var(--green); position: relative; width: fit-content; margin-top: .08em; }
+    .heading-accent::after { content: ""; position: absolute; left: 4%; bottom: -5px; width: 83%; height: 7px; border-top: 1px solid #a2ae89; border-radius: 50%; transform: rotate(-3deg); opacity: .8; }
+    html[lang="zh-CN"] .heading-brand { font-size: clamp(72px, min(8.8vw, 16svh), 120px); line-height: 1.12; letter-spacing: .06em; }
+    html[lang="zh-CN"] .heading-accent { margin-top: 14px; padding-bottom: 7px; font-size: clamp(20px, min(2.4vw, 4.2svh), 32px); line-height: 1.5; letter-spacing: .02em; }
+    html[lang="ja"] h1, html[lang="ko"] h1 { font-size: clamp(32px, min(4.2vw, 6.5svh), 56px); }
+    html:not([lang="zh-CN"]):not([lang="ja"]):not([lang="ko"]) .heading-accent { font-style: italic; }
+    .entry-row { grid-area: entry; align-self: start; position: relative; z-index: 2; display: flex; }
+    .enter-link { --arrow-rest: -15px; position: relative; display: inline-flex; align-items: center; justify-content: space-between; gap: 24px; min-width: 180px; min-height: 80px; max-width: 100%; padding: 8px 12px 8px 0; border-radius: 3px 44px 44px 3px; color: var(--ink); text-decoration: none; transition: transform .28s ease; }
+    .enter-label { font-family: var(--serif); font-size: 26px; line-height: 1.2; letter-spacing: .22em; white-space: nowrap; transition: color .28s ease; }
+    html:not([lang="zh-CN"]) .enter-label { letter-spacing: .03em; }
+    .enter-arrow { position: relative; display: grid; place-items: center; flex-shrink: 0; width: 64px; height: 64px; border-radius: 49% 51% 48% 52%; background: #e1e7d5; color: #4e6546; transition: background-color .32s ease, color .32s ease, box-shadow .32s ease; }
+    .enter-orbit { position: absolute; width: 88px; height: 88px; fill: none; stroke: #9aa98a; stroke-width: .85; stroke-linecap: round; overflow: visible; pointer-events: none; transition: transform .4s ease, opacity .32s ease; }
+    .enter-orbit path:first-child { opacity: .75; }
+    .enter-orbit path:last-child { opacity: .45; }
+    .enter-arrow .icon { position: relative; width: 76px; height: 24px; stroke-width: 1.35; transform: translateX(var(--arrow-rest)); transition: transform .32s cubic-bezier(.2,.65,.3,1); }
+    @media (hover: hover) and (pointer: fine) {
+      .enter-link:hover { transform: translateY(-2px); }
+      .enter-link:hover .enter-label { color: #5b7352; }
+      .enter-link:hover .enter-arrow { background: #d0ddc1; color: #3e5536; box-shadow: 0 6px 14px #344b3e0d; }
+      .enter-link:hover .enter-arrow .icon { transform: translateX(-8px); }
+      .enter-link:hover .enter-orbit { transform: rotate(12deg) scale(1.06); opacity: .7; }
+    }
+    .enter-link:focus-visible { outline: 2px solid var(--green); outline-offset: 7px; }
+    .enter-link:focus-visible .enter-arrow { background: #d0ddc1; color: #3e5536; }
+    .enter-link:active { transform: translateY(1px); }
+    .enter-link:active .enter-arrow { background: #c3d2b3; color: #344b3e; box-shadow: none; }
+    .artwork { grid-area: art; position: relative; z-index: 1; width: 100%; height: 100%; min-width: 0; min-height: 0; max-width: 640px; justify-self: center; align-self: stretch; }
+    .paper-world { position: absolute; inset: 0; display: block; width: 100%; height: 100%; min-height: 0; overflow: visible; }
+    .site-footer { display: flex; align-items: center; justify-content: space-between; gap: 16px; min-height: 52px; border-top: 1px solid var(--line); color: #899078; font-size: 9px; letter-spacing: 1.2px; }
+    .motion-button { display: inline-flex; align-items: center; justify-content: flex-end; gap: 7px; min-width: 44px; min-height: 44px; border: 0; padding: 6px 0 6px 10px; background: transparent; color: #737f67; font-size: 11px; letter-spacing: .3px; text-align: right; }
+    .motion-button .icon { width: 16px; height: 16px; }
+    .motion-button:hover { color: #344b3e; }
+    .motion-button:disabled { cursor: default; }
+    .motion-button[aria-pressed="true"] .wind-active, .motion-button[aria-pressed="false"] .wind-paused { display: none; }
+    .reveal { animation: reveal-in .8s cubic-bezier(.2,.65,.3,1) both; }
+    .hero-heading { animation-delay: .05s; }
+    .entry-row.reveal { animation-delay: .2s; }
     .parallax { transform: translate(calc(var(--mx, 0) * var(--depth, 8) * 1px), calc(var(--my, 0) * var(--depth, 8) * 1px)); transition: transform .55s cubic-bezier(.2,.6,.3,1); }
     .float-slow { animation: float-slow 7s ease-in-out infinite; }
     .float-plane { animation: float-plane 7s ease-in-out infinite; transform-origin: 548px 108px; }
@@ -89,24 +99,6 @@
     .orbit-dot { animation: orbit 36s linear infinite; transform-origin: 330px 300px; }
     .spark { animation: twinkle 4s ease-in-out infinite; }
     .spark-late { animation-delay: -2s; }
-    .bottom-note { display: flex; align-items: center; justify-content: space-between; gap: 30px; padding: 20px 0 29px; }
-    .little-note { display: flex; align-items: center; gap: 14px; }
-    .note-flower { width: 32px; height: 32px; animation: tiny-turn 25s linear infinite; }
-    .little-note p { margin: 0; font-family: var(--serif); font-size: 13px; letter-spacing: 1px; color: #707d64; }
-    .note-rule { width: 58px; height: 1px; background: var(--line); }
-    .edition { display: flex; align-items: center; gap: 13px; color: #8c937f; font-size: 8px; letter-spacing: 1.8px; }
-    .edition-number { font: italic 24px/1 var(--serif); color: #899775; }
-    .site-footer { display: flex; align-items: center; justify-content: space-between; gap: 20px; border-top: 1px solid var(--line); padding: 22px 0 25px; color: #969b88; font-size: 9px; letter-spacing: 1.6px; }
-    .footer-center { font-family: var(--serif); font-style: italic; font-size: 12px; letter-spacing: .4px; }
-    .motion-button { display: inline-flex; align-items: center; gap: 7px; border: 0; padding: 8px 0 8px 8px; margin: -8px 0; background: transparent; color: #737f67; font-size: 10px; letter-spacing: .6px; }
-    .motion-button .icon { width: 16px; height: 16px; }
-    .motion-button:hover { color: #344b3e; }
-    .motion-button:disabled { cursor: default; }
-    .motion-button[aria-pressed="true"] .wind-active, .motion-button[aria-pressed="false"] .wind-paused { display: none; }
-    .reveal { animation: reveal-in 1s cubic-bezier(.2,.65,.3,1) both; }
-    .hero-copy { animation-delay: .1s; }
-    .artwork.reveal { animation-delay: .23s; }
-    .bottom-note.reveal { animation-delay: .4s; }
     .page-wipe { position: fixed; inset: 0; z-index: 100; background: #e3e9d7; pointer-events: none; clip-path: circle(0 at var(--wipe-x, 30%) var(--wipe-y, 60%)); transition: clip-path .6s cubic-bezier(.65,0,.2,1); }
     .leaving .page-wipe { clip-path: circle(150vmax at var(--wipe-x, 30%) var(--wipe-y, 60%)); }
     .leaving .page { transition: opacity .4s, transform .5s; opacity: .35; transform: translateY(-8px); }
@@ -115,11 +107,6 @@
     .motion-paused .parallax { transform: none; transition: none; }
     .motion-paused .page-wipe { transition: none; }
     .background-paused * { animation-play-state: paused !important; }
-    html:not([lang="zh-CN"]):not([lang="ja"]):not([lang="ko"]) h1 { font-size: clamp(46px, 4.6vw, 68px); letter-spacing: -.025em; line-height: 1.16; }
-    html:not([lang="zh-CN"]):not([lang="ja"]):not([lang="ko"]) .heading-accent { font-style: italic; margin-top: .08em; }
-    html[lang="ja"] h1, html[lang="ko"] h1 { font-size: clamp(40px, 4.4vw, 66px); letter-spacing: -.025em; }
-    html[lang="ja"] .intro, html[lang="ko"] .intro { letter-spacing: .1px; }
-    html:not([lang="zh-CN"]) .enter-label { font-size: 25px; letter-spacing: .04em; }
     @keyframes reveal-in { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: translateY(0); } }
     @keyframes menu-in { from { opacity: 0; transform: translateY(-7px) rotate(-1deg); } to { opacity: 1; transform: translateY(0); } }
     @keyframes float-slow { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
@@ -133,15 +120,54 @@
     @keyframes wind-travel { to { stroke-dashoffset: -90; } }
     @keyframes orbit { to { transform: rotate(360deg); } }
     @keyframes twinkle { 0%,100% { opacity: .35; } 50% { opacity: 1; } }
-    @keyframes tiny-turn { to { transform: rotate(360deg); } }
-    @media (min-width: 1600px) { .hero { min-height: 700px; } }
-    @media (max-width: 1100px) { .page { padding-inline: 36px; } .hero { min-height: 560px; padding-block: 40px; } .header-note { margin-right: 12px; } .entry-row { gap: 17px; } .enter-link { min-width: 196px; min-height: 74px; padding-left: 29px; } .entry-note span { font-size: 10px; } .intro { font-size: 12px; letter-spacing: .6px; } .artwork { width: calc(100% + 38px); margin-left: -20px; } .eyebrow { font-size: 9px; letter-spacing: 2.2px; } }
-    @media (max-width: 760px) { .page { padding-inline: 26px; } .site-header { min-height: 88px; } .header-note { display: none; } .wordmark { font-size: 26px; } .brand-icon { width: 30px; height: 34px; } .hero { grid-template-columns: 1fr; gap: 2px; padding: 42px 0 18px; } .hero-copy { text-align: center; padding: 0; } .eyebrow { justify-content: center; margin-bottom: 20px; font-size: 9px; } .eyebrow::after { content: ""; width: 26px; height: 1px; background: #899775; } h1 { font-size: clamp(43px, 8.5vw, 65px); line-height: 1.3; letter-spacing: .05em; } .heading-accent { margin-inline: auto; } .intro { font-size: 12px; margin: 22px auto 25px; line-height: 2; max-width: 410px; } .entry-row { justify-content: center; gap: 0; } .enter-link { min-width: 206px; min-height: 72px; padding: 13px 20px 13px 30px; } .enter-label { font-size: 25px; } .entry-note { display: none; } .micro-copy { font-size: 7px; margin: 19px 0 0; letter-spacing: 2px; } .artwork { width: min(105%, 490px); max-width: none; margin: 1px 0 0; } .art-caption { margin-top: -14px; font-size: 8px; } .art-caption span { font-size: 11px; } .bottom-note { padding: 25px 0; gap: 15px; } .little-note { gap: 10px; } .little-note p { font-size: 11px; letter-spacing: .4px; } .note-flower { width: 25px; height: 25px; } .note-rule { display: none; } .edition { font-size: 7px; letter-spacing: 1px; gap: 7px; } .edition-number { font-size: 21px; } .site-footer { padding: 20px 0 25px; font-size: 7px; letter-spacing: 1px; } .footer-center { display: none; } .motion-button { font-size: 9px; letter-spacing: 0; } html:not([lang="zh-CN"]):not([lang="ja"]):not([lang="ko"]) h1 { font-size: clamp(42px, 8.5vw, 64px); } html[lang="ja"] h1, html[lang="ko"] h1 { font-size: clamp(36px, 7.6vw, 56px); } }
-    @media (max-width: 380px) { .page { padding-inline: 20px; } .site-header { gap: 10px; } .language-toggle { padding-inline: 10px; gap: 6px; font-size: 11px; } .wordmark { font-size: 24px; } .brand { gap: 6px; } .brand-icon { width: 26px; } .hero { padding-top: 34px; } .edition-text { display: none; } .intro { font-size: 11px; } .eyebrow { letter-spacing: 1.5px; font-size: 8px; } h1 { font-size: 41px; } }
-    @media (max-height: 700px) and (min-width: 761px) { .site-header { min-height: 86px; } .hero { min-height: 460px; padding: 18px 0; } .artwork { width: min(100%, 530px); } .eyebrow { margin-bottom: 19px; } h1 { font-size: 60px; } .intro { margin-block: 20px 25px; } .bottom-note { padding-block: 12px 20px; } }
-    @media (max-width: 760px) { html[lang="zh-CN"] .heading-brand { font-size: clamp(80px, 16vw, 108px); } html[lang="zh-CN"] .heading-accent { margin-top: 16px; font-size: clamp(18px, 4.5vw, 28px); letter-spacing: .02em; } }
-    @media (max-height: 700px) and (min-width: 761px) { html[lang="zh-CN"] .heading-brand { font-size: 88px; } html[lang="zh-CN"] .heading-accent { margin-top: 12px; } }
-    @media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation: none !important; transition: none !important; } .parallax { transform: none; } .enter-link:hover, .leaving .page { transform: none; } }
+    @media (max-width: 760px) {
+      .site-header { min-height: 64px; gap: 12px; }
+      .hero-copy { display: contents; }
+      .hero { grid-template-areas: "copy" "art" "entry"; grid-template-columns: minmax(0, 1fr); grid-template-rows: auto minmax(0, 1fr) auto; gap: 12px; padding: clamp(12px, 2svh, 24px) 0; }
+      h1 { align-self: center; text-align: center; font-size: clamp(30px, 5.8svh, 48px); }
+      .heading-accent { margin-inline: auto; }
+      html[lang="zh-CN"] .heading-brand { font-size: clamp(56px, 11svh, 96px); }
+      html[lang="zh-CN"] .heading-accent { margin-top: 10px; font-size: clamp(18px, 3svh, 26px); }
+      html[lang="ja"] h1, html[lang="ko"] h1 { font-size: clamp(26px, 5svh, 40px); }
+      .artwork { max-width: 400px; }
+      .entry-row { justify-content: center; }
+      .enter-link { min-width: 168px; min-height: 72px; }
+      .enter-arrow { width: 56px; height: 56px; }
+      .enter-orbit { width: 80px; height: 80px; }
+      .site-footer { min-height: 48px; font-size: 8px; letter-spacing: 1px; }
+      #motion-label { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; }
+    }
+    @media (max-width: 380px) {
+      .page { padding-inline: max(16px, env(safe-area-inset-left, 0px)) max(16px, env(safe-area-inset-right, 0px)); }
+      .brand { gap: 6px; }
+      .brand-icon { width: 26px; height: 30px; }
+      .wordmark { font-size: 23px; }
+      .language-toggle { padding-inline: 10px; gap: 6px; font-size: 11px; }
+    }
+    /* Short landscape screens keep the illustration beside the copy and entry. */
+    @media (max-height: 520px) and (min-width: 480px) {
+      .site-header { min-height: 56px; }
+      .hero-copy { display: flex; gap: 14px; }
+      .hero { grid-template-areas: "copy art"; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); grid-template-rows: minmax(min-content, 1fr); gap: 14px 24px; padding: 10px 0; }
+      h1 { align-self: stretch; text-align: left; font-size: clamp(26px, min(4.8vw, 9svh), 42px); }
+      .heading-accent { margin-inline: 0; }
+      html[lang="zh-CN"] .heading-brand { font-size: clamp(48px, min(10vw, 19svh), 84px); }
+      html[lang="zh-CN"] .heading-accent { margin-top: 8px; font-size: clamp(16px, min(2.6vw, 5svh), 22px); }
+      html[lang="ja"] h1, html[lang="ko"] h1 { font-size: clamp(24px, min(4.2vw, 8svh), 36px); }
+      .entry-row { justify-content: flex-start; }
+      .enter-link { --arrow-rest: -13px; min-width: 152px; min-height: 52px; padding: 4px 8px 4px 0; }
+      .enter-label { font-size: 22px; }
+      .enter-arrow { width: 44px; height: 44px; }
+      .enter-orbit { width: 64px; height: 64px; }
+      .enter-arrow .icon { width: 64px; height: 22px; }
+      .site-footer { min-height: 44px; }
+    }
+    /* Preserve readable text and controls when there is no room for the artwork. */
+    @media (max-width: 479px) and (max-height: 480px) {
+      .artwork { display: none; }
+      .hero { grid-template-areas: "copy" "entry"; grid-template-rows: auto auto; align-content: center; gap: 20px; }
+    }
+    @media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation: none !important; transition: none !important; } .parallax { transform: none; } .enter-link:hover, .enter-link:active, .enter-link:hover .enter-orbit, .leaving .page { transform: none; } .enter-link:hover .enter-arrow .icon { transform: translateX(var(--arrow-rest)); } }
   </style>
   <script defer src="./analytics.js"></script>
 </head>
@@ -155,7 +181,6 @@
         <svg class="brand-icon" viewBox="0 0 38 42" fill="none" aria-hidden="true"><path d="M18 35c-1-10 0-17 6-24" stroke="#657d53" stroke-width="1.5" stroke-linecap="round"/><path d="M21 20C17 10 24 5 33 6c0 9-5 16-12 14Z" fill="#a6b38c"/><path d="M18 27C9 28 4 20 6 13c9 1 15 6 12 14Z" fill="#708762"/><path d="m21 20 7-9M18 27l-8-9" stroke="#f4f1e8" stroke-width=".85"/><path d="M9 37q10 3 19-1" stroke="#bdc6ac" stroke-width="1.2" stroke-linecap="round"/></svg>
         <span class="wordmark">boopland<span>.</span></span>
       </a>
-      <span class="header-note" data-i18n="headerNote">给生活，留一点空白。</span>
       <div class="language" id="language-control">
         <button class="language-toggle" id="language-toggle" type="button" aria-expanded="false" aria-haspopup="menu" aria-controls="language-menu" aria-label="选择语言，当前为简体中文">
           <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><ellipse cx="12" cy="12" rx="4" ry="9"/><path d="M3 12h18M5 6.5h14M5 17.5h14"/></svg>
@@ -177,18 +202,20 @@
       </div>
     </header>
     <main class="hero">
-      <div class="hero-copy reveal">
-        <p class="eyebrow" data-i18n="eyebrow">A SMALL ESCAPE, A LITTLE JOY</p>
-        <h1><span class="heading-line heading-brand" data-i18n="heading1">噗通</span><span class="heading-line heading-accent" data-i18n="heading2">是快乐落进心里的声音</span></h1>
-        <p class="intro"><span data-i18n="intro1">生活有些匆忙，幸好这里有风。</span><span data-i18n="intro2">翻开这一页，让小小的快乐自然发生。</span></p>
-        <div class="entry-row">
-          <a class="enter-link" id="enter-link" href="./games.html"><span class="enter-label" data-i18n="enter">进入</span><span class="enter-arrow" aria-hidden="true"><svg class="icon" viewBox="0 0 26 26"><path d="M5 13h15m-6-6 6 6-6 6"/></svg></span></a>
-          <div class="entry-note" aria-hidden="true"><span data-i18n="entryNote">一点好奇，刚刚好</span><svg viewBox="0 0 55 28"><path d="M51 4C45 21 24 25 5 15m7-3-8 2 5 7"/></svg></div>
+      <div class="hero-copy">
+        <h1 class="hero-heading reveal"><span class="heading-line heading-brand" data-i18n="heading1">噗通</span><span class="heading-line heading-accent" data-i18n="heading2">是快乐落进心里的声音</span></h1>
+        <div class="entry-row reveal">
+          <a class="enter-link" id="enter-link" href="./games.html">
+            <span class="enter-label" data-i18n="enter">进入</span>
+            <span class="enter-arrow" aria-hidden="true">
+              <svg class="enter-orbit" viewBox="0 0 88 88"><path d="M78 42c1 20-14 36-34 36S9 64 10 44 24 10 44 10s33 13 34 32Z"/><path d="M12 21C24 5 49 2 66 13M72 73c-13 10-32 13-48 5"/></svg>
+              <svg class="icon" viewBox="0 0 76 24"><path d="M3 12c22-.7 46-.5 68 0M63 5l8 7-8 7"/></svg>
+            </span>
+          </a>
         </div>
-        <p class="micro-copy" data-i18n="microCopy">留一点时间，给无用而美好的事</p>
       </div>
-      <div class="artwork reveal" id="artwork">
-        <svg class="paper-world" viewBox="0 0 660 590" role="img" aria-labelledby="world-title world-desc">
+      <div class="artwork" id="artwork">
+        <svg class="paper-world" width="660" height="590" viewBox="0 0 660 590" role="img" aria-labelledby="world-title world-desc">
           <title id="world-title">风里的纸上小世界</title><desc id="world-desc">层叠的纸雕山丘环抱一条小河，纸船轻轻摇晃。太阳、云朵、雏菊与纸飞机，在微风里慢慢浮动。</desc>
           <defs>
             <filter id="paper-shadow" x="-30%" y="-30%" width="170%" height="180%"><feDropShadow dx="2" dy="8" stdDeviation="8" flood-color="#596144" flood-opacity=".14"/></filter>
@@ -238,16 +265,10 @@
           <g class="float-slow"><path d="M552 365c7-15 17-17 23-12-3 14-10 20-23 12Z" fill="#c9cda7"/><path d="m551 369 18-12" fill="none" stroke="#8f9e77" stroke-width="1"/></g>
           <g fill="none" stroke="#aeb996" stroke-width="1.2" stroke-linecap="round"><path class="spark" d="M173 79v11m-5.5-5.5h11"/><path class="spark spark-late" d="M591 310v10m-5-5h10"/><path class="spark" d="M101 454v9m-4.5-4.5h9"/></g>
           <g fill="#b4bd9c"><circle class="spark" cx="466" cy="65" r="2.5"/><circle class="spark spark-late" cx="66" cy="266" r="2"/><circle class="spark" cx="555" cy="476" r="2.5"/></g>
-          <path d="M263 563q16-7 32 0t32 0" fill="none" stroke="#b4bd9d" stroke-width="1" stroke-linecap="round"/><text x="342" y="566" fill="#9aa58a" font-size="9" letter-spacing="2" font-family="Georgia, serif">a little wonder</text>
         </svg>
-        <p class="art-caption"><span data-i18n="artCaption">风会带你，去有趣的地方。</span></p>
       </div>
     </main>
-    <div class="bottom-note reveal">
-      <div class="little-note"><svg class="note-flower" viewBox="0 0 36 36" fill="none" aria-hidden="true"><g stroke="#93a17b" stroke-width="1"><ellipse cx="18" cy="11" rx="3.5" ry="8"/><ellipse cx="18" cy="11" rx="3.5" ry="8" transform="rotate(60 18 18)"/><ellipse cx="18" cy="11" rx="3.5" ry="8" transform="rotate(120 18 18)"/><ellipse cx="18" cy="11" rx="3.5" ry="8" transform="rotate(180 18 18)"/><ellipse cx="18" cy="11" rx="3.5" ry="8" transform="rotate(240 18 18)"/><ellipse cx="18" cy="11" rx="3.5" ry="8" transform="rotate(300 18 18)"/></g><circle cx="18" cy="18" r="3" fill="#d9bf85"/></svg><p data-i18n="bottomNote">慢一点，也没关系。</p><span class="note-rule" aria-hidden="true"></span></div>
-      <div class="edition"><span class="edition-text" data-i18n="edition">小小世界 · 无限好奇</span><span class="edition-number" aria-hidden="true">∞</span></div>
-    </div>
-    <footer class="site-footer"><span>© 2026 BOOPLAND</span><span class="footer-center" data-i18n="footer">Made of little happy things.</span><button class="motion-button" id="motion-button" type="button" aria-pressed="false"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><g class="wind-active"><path d="M3 8h12a3 3 0 1 0-3-3M2 12h17a3 3 0 1 1-3 3M5 17h5a2 2 0 1 1-2 2"/></g><g class="wind-paused"><path d="M9 5v14M15 5v14"/></g></svg><span id="motion-label">让风歇一会</span></button></footer>
+    <footer class="site-footer"><span>© 2026 BOOPLAND</span><button class="motion-button" id="motion-button" type="button" aria-pressed="false"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><g class="wind-active"><path d="M3 8h12a3 3 0 1 0-3-3M2 12h17a3 3 0 1 1-3 3M5 17h5a2 2 0 1 1-2 2"/></g><g class="wind-paused"><path d="M9 5v14M15 5v14"/></g></svg><span id="motion-label">让风歇一会</span></button></footer>
   </div>
   <div class="page-wipe" aria-hidden="true"></div>
   <div class="sr-only" id="language-status" role="status" aria-live="polite"></div>
@@ -261,14 +282,14 @@
       const finePointer = matchMedia('(hover: hover) and (pointer: fine)');
       const storage = { get(key) { try { return localStorage.getItem(key); } catch { return null; } }, set(key, value) { try { localStorage.setItem(key, value); } catch { /* Storage is optional. */ } } };
       const translations = {
-        'zh-CN': { name: '简体中文', title: '噗通是快乐落进心里的声音', description: '噗通是快乐落进心里的声音。翻开 Boopland 这个装着小游戏与小快乐的纸上世界。', headerNote: '给生活，留一点空白。', chooseLanguage: '用熟悉的语言，遇见小美好', languageLabel: '选择语言，当前为', eyebrow: 'A SMALL ESCAPE, A LITTLE JOY', heading1: '噗通', heading2: '是快乐落进心里的声音', intro1: '生活有些匆忙，幸好这里有风。', intro2: '翻开这一页，让小小的快乐自然发生。', enter: '进入', entryNote: '一点好奇，刚刚好', microCopy: '留一点时间，给无用而美好的事', artCaption: '风会带你，去有趣的地方。', bottomNote: '慢一点，也没关系。', edition: '小小世界 · 无限好奇', footer: 'Made of little happy things.', pause: '让风歇一会', resume: '让微风继续', reduced: '已跟随系统减少动态', home: 'Boopland 首页', artTitle: '风里的纸上小世界', artDescription: '层叠的纸雕山丘环抱一条小河，纸船轻轻摇晃。太阳、云朵、雏菊与纸飞机，在微风里慢慢浮动。', changed: '语言已切换为简体中文' },
-        en: { name: 'English', title: 'A little room for wonder', description: 'A paper world of little games and simple joys. Take a breath, follow your curiosity, and step into Boopland.', headerNote: 'Leave a little room for wonder.', chooseLanguage: 'A little joy, in your language', languageLabel: 'Choose language. Current language:', eyebrow: 'A SMALL ESCAPE, A LITTLE JOY', heading1: 'A moment for', heading2: 'little wonders.', intro1: 'Life moves quickly. Here, a softer breeze.', intro2: 'Turn the page. Let a little happiness find you.', enter: 'Enter', entryNote: 'a little curiosity', microCopy: 'A LITTLE TIME FOR THE LOVELY LITTLE THINGS', artCaption: 'Follow the breeze. Find a little wonder.', bottomNote: 'It’s okay to take your time.', edition: 'SMALL WORLD · ENDLESS CURIOSITY', footer: 'Made of little happy things.', pause: 'Pause the breeze', resume: 'Let the breeze in', reduced: 'Reduced motion · system setting', home: 'Boopland home', artTitle: 'A little paper world in the breeze', artDescription: 'Layered paper hills surround a winding river and a rocking paper boat. Clouds, daisies, and a paper plane drift softly in the breeze.', changed: 'Language changed to English' },
-        ja: { name: '日本語', title: '小さな幸せに、ひとやすみ', description: '小さなゲームと喜びがつまった紙の世界。Booplandで、ひとやすみ。', headerNote: '毎日に、少しの余白を。', chooseLanguage: 'いつもの言葉で、小さな幸せを', languageLabel: '言語を選択。現在：', eyebrow: '小さな寄り道、小さなよろこび', heading1: 'ひとときを、', heading2: '小さな幸せに。', intro1: 'あわただしい毎日。ここには、やさしい風。', intro2: 'ページをめくって、小さな喜びに出会おう。', enter: '入る', entryNote: '好奇心を、少しだけ', microCopy: '心がよろこぶことに、少しの時間を', artCaption: '風の向こうに、きっと楽しいこと。', bottomNote: 'ゆっくりでも、大丈夫。', edition: '小さな世界 · 尽きない好奇心', footer: '小さな幸せを、ひとつずつ。', pause: '風をひとやすみ', resume: 'もう一度、そよ風を', reduced: 'システム設定で動きを抑制中', home: 'Boopland ホーム', artTitle: 'そよ風の中の紙の世界', artDescription: '重なる紙の丘と曲がりくねった川。紙の舟、雲、ひなぎく、紙飛行機がそよ風に揺れています。', changed: '日本語に切り替えました' },
-        ko: { name: '한국어', title: '작은 행복에 머무는 순간', description: '작은 게임과 소소한 기쁨이 담긴 종이 세상. Boopland에서 잠시 쉬어 가세요.', headerNote: '일상에 작은 여백을.', chooseLanguage: '익숙한 언어로 만나는 작은 기쁨', languageLabel: '언어 선택. 현재 언어:', eyebrow: '잠깐의 쉼, 작은 기쁨', heading1: '잠깐의 여유,', heading2: '작은 행복으로.', intro1: '바쁜 일상 속, 여기에는 산들바람이 불어요.', intro2: '한 페이지를 넘겨 작은 기쁨을 만나 보세요.', enter: '들어가기', entryNote: '작은 호기심 하나', microCopy: '소소하고 아름다운 것들을 위한 시간', artCaption: '바람을 따라, 즐거움이 있는 곳으로.', bottomNote: '천천히 가도 괜찮아요.', edition: '작은 세상 · 끝없는 호기심', footer: '작은 행복들이 모인 곳.', pause: '바람 잠시 멈추기', resume: '다시 산들바람', reduced: '시스템 설정에 따라 동작 줄임', home: 'Boopland 홈', artTitle: '바람 속 작은 종이 세상', artDescription: '겹겹의 종이 언덕 사이로 흐르는 강과 흔들리는 종이배. 구름, 데이지, 종이비행기가 바람에 부드럽게 움직입니다.', changed: '한국어로 변경했어요' },
-        fr: { name: 'Français', title: 'Un instant pour les petits bonheurs', description: 'Un monde de papier, de petits jeux et de joies simples. Prenez le temps de découvrir Boopland.', headerNote: 'Un peu de place pour rêver.', chooseLanguage: 'Les petits bonheurs dans votre langue', languageLabel: 'Choisir la langue. Langue actuelle :', eyebrow: 'UNE PETITE PAUSE, UN PEU DE JOIE', heading1: 'Un instant de', heading2: 'douceur.', intro1: 'La vie va vite. Ici, la brise prend son temps.', intro2: 'Tournez la page. Un petit bonheur vous attend.', enter: 'Entrer', entryNote: 'un peu de curiosité', microCopy: 'DU TEMPS POUR LES JOLIES PETITES CHOSES', artCaption: 'Suivez la brise, laissez-vous surprendre.', bottomNote: 'Prenez le temps qu’il vous faut.', edition: 'PETIT MONDE · CURIOSITÉ INFINIE', footer: 'Fait de petits bonheurs.', pause: 'Suspendre la brise', resume: 'Retrouver la brise', reduced: 'Animations réduites · système', home: 'Accueil Boopland', artTitle: 'Un petit monde de papier dans la brise', artDescription: 'Des collines de papier entourent une rivière et un petit bateau. Nuages, marguerites et avion de papier dansent dans la brise.', changed: 'La langue est maintenant le français' },
-        de: { name: 'Deutsch', title: 'Ein Moment für kleine Wunder', description: 'Eine Papierwelt voller kleiner Spiele und stiller Freuden. Entdecke Boopland in deinem Tempo.', headerNote: 'Ein wenig Platz zum Träumen.', chooseLanguage: 'Kleine Freuden in deiner Sprache', languageLabel: 'Sprache auswählen. Aktuelle Sprache:', eyebrow: 'KLEINE AUSZEIT, KLEINES GLÜCK', heading1: 'Zeit für', heading2: 'kleine Wunder.', intro1: 'Das Leben eilt. Hier weht eine sanfte Brise.', intro2: 'Blättere um. Ein kleines Glück wartet auf dich.', enter: 'Eintreten', entryNote: 'ein wenig Neugier', microCopy: 'ZEIT FÜR DIE KLEINEN, SCHÖNEN DINGE', artCaption: 'Folge dem Wind. Entdecke etwas Schönes.', bottomNote: 'Du darfst dir Zeit lassen.', edition: 'KLEINE WELT · GROSSE NEUGIER', footer: 'Aus kleinen Glücksmomenten gemacht.', pause: 'Wind anhalten', resume: 'Wind wehen lassen', reduced: 'Weniger Bewegung · System', home: 'Boopland Startseite', artTitle: 'Eine kleine Papierwelt im Wind', artDescription: 'Geschichtete Papierhügel umgeben einen Fluss mit einem schaukelnden Papierboot. Wolken, Blumen und ein Papierflieger bewegen sich sanft im Wind.', changed: 'Sprache auf Deutsch geändert' },
-        es: { name: 'Español', title: 'Un momento para las pequeñas alegrías', description: 'Un mundo de papel, pequeños juegos y alegrías sencillas. Respira y descubre Boopland.', headerNote: 'Un espacio para soñar.', chooseLanguage: 'Pequeñas alegrías en tu idioma', languageLabel: 'Elegir idioma. Idioma actual:', eyebrow: 'UNA PEQUEÑA PAUSA, UN POCO DE ALEGRÍA', heading1: 'Un momento', heading2: 'para sonreír.', intro1: 'La vida va deprisa. Aquí sopla una brisa suave.', intro2: 'Pasa la página. Deja que la alegría te encuentre.', enter: 'Entrar', entryNote: 'un poco de curiosidad', microCopy: 'TIEMPO PARA LAS PEQUEÑAS COSAS BONITAS', artCaption: 'Sigue la brisa. Descubre algo bonito.', bottomNote: 'Está bien ir sin prisa.', edition: 'PEQUEÑO MUNDO · CURIOSIDAD INFINITA', footer: 'Hecho de pequeñas alegrías.', pause: 'Pausar la brisa', resume: 'Dejar pasar la brisa', reduced: 'Movimiento reducido · sistema', home: 'Inicio de Boopland', artTitle: 'Un pequeño mundo de papel en la brisa', artDescription: 'Colinas de papel rodean un río y un barquito que se mece suavemente. Nubes, margaritas y un avión de papel flotan en la brisa.', changed: 'Idioma cambiado a español' },
-        'pt-BR': { name: 'Português', title: 'Um instante para pequenas alegrias', description: 'Um mundo de papel, pequenos jogos e alegrias simples. Respire e descubra Boopland.', headerNote: 'Um espaço para sonhar.', chooseLanguage: 'Pequenas alegrias no seu idioma', languageLabel: 'Escolher idioma. Idioma atual:', eyebrow: 'UMA PEQUENA PAUSA, UM POUCO DE ALEGRIA', heading1: 'Um instante', heading2: 'de leveza.', intro1: 'A vida corre. Aqui, a brisa é mais suave.', intro2: 'Vire a página. Deixe a alegria encontrar você.', enter: 'Entrar', entryNote: 'um pouco de curiosidade', microCopy: 'TEMPO PARA AS PEQUENAS COISAS BONITAS', artCaption: 'Siga a brisa. Encontre uma pequena surpresa.', bottomNote: 'Tudo bem ir devagar.', edition: 'PEQUENO MUNDO · CURIOSIDADE SEM FIM', footer: 'Feito de pequenas alegrias.', pause: 'Pausar a brisa', resume: 'Deixar a brisa entrar', reduced: 'Movimento reduzido · sistema', home: 'Página inicial do Boopland', artTitle: 'Um pequeno mundo de papel ao vento', artDescription: 'Colinas de papel cercam um rio e um barquinho que balança suavemente. Nuvens, margaridas e um avião de papel flutuam na brisa.', changed: 'Idioma alterado para português' }
+        'zh-CN': { name: '简体中文', title: '噗通是快乐落进心里的声音', description: '噗通是快乐落进心里的声音。翻开 Boopland 这个装着小游戏与小快乐的纸上世界。', chooseLanguage: '用熟悉的语言，遇见小美好', languageLabel: '选择语言，当前为', heading1: '噗通', heading2: '是快乐落进心里的声音', enter: '进入', pause: '让风歇一会', resume: '让微风继续', reduced: '已跟随系统减少动态', home: 'Boopland 首页', artTitle: '风里的纸上小世界', artDescription: '层叠的纸雕山丘环抱一条小河，纸船轻轻摇晃。太阳、云朵、雏菊与纸飞机，在微风里慢慢浮动。', changed: '语言已切换为简体中文' },
+        en: { name: 'English', title: 'A little room for wonder', description: 'A paper world of little games and simple joys. Take a breath, follow your curiosity, and step into Boopland.', chooseLanguage: 'A little joy, in your language', languageLabel: 'Choose language. Current language:', heading1: 'A moment for', heading2: 'little wonders.', enter: 'Enter', pause: 'Pause the breeze', resume: 'Let the breeze in', reduced: 'Reduced motion · system setting', home: 'Boopland home', artTitle: 'A little paper world in the breeze', artDescription: 'Layered paper hills surround a winding river and a rocking paper boat. Clouds, daisies, and a paper plane drift softly in the breeze.', changed: 'Language changed to English' },
+        ja: { name: '日本語', title: '小さな幸せに、ひとやすみ', description: '小さなゲームと喜びがつまった紙の世界。Booplandで、ひとやすみ。', chooseLanguage: 'いつもの言葉で、小さな幸せを', languageLabel: '言語を選択。現在：', heading1: 'ひとときを、', heading2: '小さな幸せに。', enter: '入る', pause: '風をひとやすみ', resume: 'もう一度、そよ風を', reduced: 'システム設定で動きを抑制中', home: 'Boopland ホーム', artTitle: 'そよ風の中の紙の世界', artDescription: '重なる紙の丘と曲がりくねった川。紙の舟、雲、ひなぎく、紙飛行機がそよ風に揺れています。', changed: '日本語に切り替えました' },
+        ko: { name: '한국어', title: '작은 행복에 머무는 순간', description: '작은 게임과 소소한 기쁨이 담긴 종이 세상. Boopland에서 잠시 쉬어 가세요.', chooseLanguage: '익숙한 언어로 만나는 작은 기쁨', languageLabel: '언어 선택. 현재 언어:', heading1: '잠깐의 여유,', heading2: '작은 행복으로.', enter: '들어가기', pause: '바람 잠시 멈추기', resume: '다시 산들바람', reduced: '시스템 설정에 따라 동작 줄임', home: 'Boopland 홈', artTitle: '바람 속 작은 종이 세상', artDescription: '겹겹의 종이 언덕 사이로 흐르는 강과 흔들리는 종이배. 구름, 데이지, 종이비행기가 바람에 부드럽게 움직입니다.', changed: '한국어로 변경했어요' },
+        fr: { name: 'Français', title: 'Un instant pour les petits bonheurs', description: 'Un monde de papier, de petits jeux et de joies simples. Prenez le temps de découvrir Boopland.', chooseLanguage: 'Les petits bonheurs dans votre langue', languageLabel: 'Choisir la langue. Langue actuelle :', heading1: 'Un instant de', heading2: 'douceur.', enter: 'Entrer', pause: 'Suspendre la brise', resume: 'Retrouver la brise', reduced: 'Animations réduites · système', home: 'Accueil Boopland', artTitle: 'Un petit monde de papier dans la brise', artDescription: 'Des collines de papier entourent une rivière et un petit bateau. Nuages, marguerites et avion de papier dansent dans la brise.', changed: 'La langue est maintenant le français' },
+        de: { name: 'Deutsch', title: 'Ein Moment für kleine Wunder', description: 'Eine Papierwelt voller kleiner Spiele und stiller Freuden. Entdecke Boopland in deinem Tempo.', chooseLanguage: 'Kleine Freuden in deiner Sprache', languageLabel: 'Sprache auswählen. Aktuelle Sprache:', heading1: 'Zeit für', heading2: 'kleine Wunder.', enter: 'Eintreten', pause: 'Wind anhalten', resume: 'Wind wehen lassen', reduced: 'Weniger Bewegung · System', home: 'Boopland Startseite', artTitle: 'Eine kleine Papierwelt im Wind', artDescription: 'Geschichtete Papierhügel umgeben einen Fluss mit einem schaukelnden Papierboot. Wolken, Blumen und ein Papierflieger bewegen sich sanft im Wind.', changed: 'Sprache auf Deutsch geändert' },
+        es: { name: 'Español', title: 'Un momento para las pequeñas alegrías', description: 'Un mundo de papel, pequeños juegos y alegrías sencillas. Respira y descubre Boopland.', chooseLanguage: 'Pequeñas alegrías en tu idioma', languageLabel: 'Elegir idioma. Idioma actual:', heading1: 'Un momento', heading2: 'para sonreír.', enter: 'Entrar', pause: 'Pausar la brisa', resume: 'Dejar pasar la brisa', reduced: 'Movimiento reducido · sistema', home: 'Inicio de Boopland', artTitle: 'Un pequeño mundo de papel en la brisa', artDescription: 'Colinas de papel rodean un río y un barquito que se mece suavemente. Nubes, margaritas y un avión de papel flotan en la brisa.', changed: 'Idioma cambiado a español' },
+        'pt-BR': { name: 'Português', title: 'Um instante para pequenas alegrias', description: 'Um mundo de papel, pequenos jogos e alegrias simples. Respire e descubra Boopland.', chooseLanguage: 'Pequenas alegrias no seu idioma', languageLabel: 'Escolher idioma. Idioma atual:', heading1: 'Um instante', heading2: 'de leveza.', enter: 'Entrar', pause: 'Pausar a brisa', resume: 'Deixar a brisa entrar', reduced: 'Movimento reduzido · sistema', home: 'Página inicial do Boopland', artTitle: 'Um pequeno mundo de papel ao vento', artDescription: 'Colinas de papel cercam um rio e um barquinho que balança suavemente. Nuvens, margaridas e um avião de papel flutuam na brisa.', changed: 'Idioma alterado para português' }
       };
       const i18n = window.BooplandI18n;
       i18n.register('welcome', translations);

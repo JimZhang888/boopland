@@ -5,7 +5,11 @@ const path = require('node:path');
 const vm = require('node:vm');
 const E = require('./engine.js');
 const translations = require('./translations.js');
-const act = (s,type,extra={}) => E.apply(s,{type,...extra});
+const act = (s,type,extra={}) => {
+  const result=E.apply(s,{type,...extra});
+  if(result.message)assert.ok(translations.en[result.message],`missing message: ${result.message}`);
+  return result;
+};
 const click = (s,id) => act(s,'interact',{id});
 const select = (s,id) => act(s,'select',{id});
 function openGate(s) {
@@ -23,14 +27,124 @@ function finish(s) {
   click(s,'drawer');act(s,'go',{room:'tower'});select(s,'lens');click(s,'beacon');
   for(let index=0;index<3;index++)act(s,'mirror',{index});
 }
-test('complete adventure: combine, retrieve, unlock, stretch, oil, route steam and reflect light',()=>{
+test('the original three chapters still complete and now unlock the greenhouse',()=>{
   const s=E.fresh();
   assert.equal(E.progress(s),0);
   openGate(s); assert.ok(s.flags.gate);assert.equal(E.progress(s),1);assert.deepEqual(s.items,[]);
   powerOn(s);assert.ok(s.flags.power);assert.equal(E.progress(s),2);
   finish(s);assert.ok(s.flags.won);assert.equal(E.progress(s),3);assert.deepEqual(s.items,[]);
-  assert.equal(E.stage(s),'done');
+  assert.equal(E.stage(s),'garden');assert.equal(s.flags.finished,undefined);assert.ok(E.canVisit(s,'greenhouse'));
   act(s,'go',{room:'yard'});assert.ok(s.flags.won);assert.equal(s.room,'yard');
+});
+
+function preparePump(s) {
+  act(s,'go',{room:'greenhouse'});click(s,'arm');click(s,'grip');select(s,'arm');select(s,'grip');click(s,'pump');
+}
+function waterGarden(s) {
+  preparePump(s);for(let n=0;n<3;n++)act(s,'transfer',{index:2});act(s,'transfer',{index:0});click(s,'planter');
+}
+function lowerBridge(s) {
+  act(s,'go',{room:'bridge'});select(s,'bridgeKey');click(s,'cabinet');
+  for(const index of [0,3,1,3,2,3])act(s,'weight',{index});
+  click(s,'bridgeLever');click(s,'toolbox');
+}
+function sendMail(s) {
+  act(s,'go',{room:'station'});click(s,'timetable');select(s,'mainspring');click(s,'clockDrive');
+  for(const index of [0,2,1,0,3])act(s,'stamp',{index});click(s,'mailcar');
+}
+function oldEnding() {const s=E.fresh();openGate(s);powerOn(s);finish(s);return s;}
+
+test('six-chapter journey assembles a crank, waters plants, balances a bridge and sends mail',()=>{
+  const s=oldEnding();
+  waterGarden(s);assert.equal(E.progress(s),4);assert.deepEqual(s.items,['bridgeKey']);
+  lowerBridge(s);assert.equal(E.progress(s),5);assert.deepEqual(s.items,['mainspring']);
+  sendMail(s);assert.equal(E.progress(s),6);assert.ok(s.flags.finished);assert.equal(E.stage(s),'done');assert.deepEqual(s.items,[]);
+  for(const room of E.rooms){act(s,'go',{room});assert.equal(s.room,room);assert.equal(E.progress(s),6);}
+});
+
+test('old version-one completion saves continue without resetting the tower or inventory',()=>{
+  const old=oldEnding(),save=JSON.parse(E.serialize(old));
+  assert.equal(save.version,1);assert.ok(save.actions.every(a=>!['transfer','weight','stamp'].includes(a.type)));
+  let s=E.restore(JSON.stringify(save));assert.ok(s.flags.won);assert.equal(s.room,'tower');assert.equal(E.progress(s),3);
+  waterGarden(s);s=E.restore(E.serialize(s));lowerBridge(s);s=E.restore(E.serialize(s));sendMail(s);
+  s=E.restore(E.serialize(s));assert.ok(s.flags.finished);assert.equal(E.progress(s),6);
+});
+
+test('new chapter locks and remote puzzle actions cannot bypass prerequisites',()=>{
+  const s=E.fresh();
+  for(const room of ['greenhouse','bridge','station']){act(s,'go',{room});assert.equal(s.room,'yard');}
+  for(const type of ['transfer','weight','stamp'])act(s,type,{index:0});
+  for(const id of ['water','balance','signal'])act(s,'resetPuzzle',{id});
+  for(const id of ['arm','planter','bridgeLever','toolbox','mailcar'])click(s,id);
+  assert.equal(s.history.length,0);assert.equal(E.progress(s),0);
+  const lit=oldEnding();act(lit,'go',{room:'greenhouse'});
+  assert.equal(click(lit,'planter').message,'planterDry');act(lit,'transfer',{index:2});assert.deepEqual(lit.water,[0,3,6]);
+  act(lit,'go',{room:'station'});assert.equal(lit.room,'greenhouse');
+});
+
+test('all reachable water configurations conserve water and retain a route to the target',()=>{
+  const base=oldEnding();preparePump(base);
+  const queue=[base],seen=new Set([base.water.join(',')]),reverse=new Map();
+  for(let q=0;q<queue.length;q++){
+    const s=queue[q];if(s.flags.watered)continue;
+    for(let index=0;index<3;index++){
+      const next=structuredClone(s);act(next,'transfer',{index});
+      assert.equal(next.water.reduce((a,b)=>a+b,0),9);assert.ok(next.water.every(v=>Number.isInteger(v)&&v>=0&&v<=6));
+      const key=next.water.join(','),from=s.water.join(',');
+      if(!reverse.has(key))reverse.set(key,new Set());reverse.get(key).add(from);
+      if(!seen.has(key)){seen.add(key);queue.push(next);}
+    }
+  }
+  const reachable=new Set(['2,4,3']),back=['2,4,3'];
+  for(let q=0;q<back.length;q++)for(const key of reverse.get(back[q])||[])if(!reachable.has(key)){reachable.add(key);back.push(key);}
+  assert.ok(seen.size>20);assert.deepEqual(reachable,seen);
+});
+
+test('new puzzles reject invalid inputs and preserve unfinished progress across reloads',()=>{
+  let s=oldEnding();preparePump(s);
+  for(const index of [-1,3,1.5,NaN,'2'])act(s,'transfer',{index});assert.deepEqual(s.water,[0,3,6]);
+  act(s,'transfer',{index:2});s=E.restore(E.serialize(s));assert.deepEqual(s.water,[1,3,5]);
+  act(s,'resetPuzzle',{id:'water'});assert.deepEqual(s.water,[0,3,6]);
+  for(let n=0;n<3;n++)act(s,'transfer',{index:2});act(s,'transfer',{index:0});click(s,'planter');
+  act(s,'go',{room:'bridge'});select(s,'bridgeKey');click(s,'cabinet');
+  for(const index of [-1,4,1.5,NaN,'0'])act(s,'weight',{index});assert.equal(s.weightChoice,null);
+  act(s,'weight',{index:0});s=E.restore(E.serialize(s));assert.equal(s.weightChoice,0);
+  act(s,'weight',{index:3});assert.deepEqual(s.weights,[1,3,2,4]);
+  act(s,'resetPuzzle',{id:'balance'});assert.deepEqual(s.weights,[4,3,2,1]);assert.equal(s.weightChoice,null);
+  for(const index of [0,3,1,3,2,3])act(s,'weight',{index});click(s,'bridgeLever');click(s,'toolbox');
+  act(s,'go',{room:'station'});select(s,'mainspring');click(s,'clockDrive');act(s,'stamp',{index:0});act(s,'stamp',{index:2});
+  s=E.restore(E.serialize(s));assert.deepEqual(s.signals,[0,2]);
+  for(const index of [-1,4,1.5,NaN,'0'])act(s,'stamp',{index});assert.deepEqual(s.signals,[0,2]);
+  for(const index of [1,0,3])act(s,'stamp',{index});click(s,'mailcar');assert.ok(s.flags.finished);
+});
+
+test('wrong signal patterns can be retried and the mailcar requires an explicit departure',()=>{
+  const s=oldEnding();waterGarden(s);lowerBridge(s);act(s,'go',{room:'station'});
+  assert.equal(click(s,'mailcar').message,'trainWaits');assert.equal(click(s,'signal').modal,'clockDrive');
+  select(s,'mainspring');click(s,'clockDrive');
+  let wrong;for(let n=0;n<5;n++)wrong=act(s,'stamp',{index:1});
+  assert.equal(wrong.message,'signalWrong');assert.deepEqual(s.signals,[]);assert.equal(s.flags.routeReady,undefined);
+  for(const index of [0,2,1,0,3])act(s,'stamp',{index});assert.ok(s.flags.routeReady);assert.equal(s.flags.finished,undefined);
+  click(s,'mailcar');assert.ok(s.flags.finished);assert.equal(E.progress(s),6);
+});
+
+test('return trips recover missed chapter rewards and wrong items are not consumed',()=>{
+  const s=oldEnding();preparePump(s);for(let n=0;n<3;n++)act(s,'transfer',{index:2});act(s,'transfer',{index:0});
+  act(s,'go',{room:'bridge'});assert.equal(click(s,'cabinet').modal,'cabinet');assert.equal(click(s,'toolbox').message,'toolboxFar');
+  act(s,'go',{room:'greenhouse'});click(s,'planter');act(s,'go',{room:'bridge'});select(s,'bridgeKey');click(s,'bridgeLever');assert.deepEqual(s.items,['bridgeKey']);
+  click(s,'cabinet');for(const index of [0,3,1,3,2,3])act(s,'weight',{index});click(s,'bridgeLever');
+  act(s,'go',{room:'station'});assert.equal(click(s,'clockDrive').message,'springMissing');
+  act(s,'go',{room:'bridge'});click(s,'toolbox');click(s,'toolbox');assert.deepEqual(s.items,['mainspring']);sendMail(s);assert.ok(s.flags.finished);
+});
+
+test('each chapter has art, translated hotspots and two translated hint levels',()=>{
+  const A=require('./art.js'),s=oldEnding();
+  for(const room of E.rooms){
+    assert.ok(A.spots[room].length>=3);assert.ok(A.scene({...s,room}).includes('scene-robot'));
+    for(const [id] of A.spots[room])for(const locale of Object.keys(translations))assert.ok(translations[locale][id],`${locale}.${id}`);
+  }
+  for(const stage of ['garden','water','key','balance','lower','spring','signal','depart','done'])
+    for(const level of [1,2])for(const locale of Object.keys(translations))assert.ok(translations[locale]['h_'+stage+level],`${locale}.h_${stage}${level}`);
 });
 test('wrong items, inaccessible rooms and remote actions cannot skip dependencies or consume items',()=>{
   const s=E.fresh();

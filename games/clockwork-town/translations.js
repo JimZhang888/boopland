@@ -166,7 +166,8 @@
     h_done1: '你已经点亮小镇了。可以再看看风景，也可以重新出发。|You lit the town. Enjoy the view, or start a new journey.|街に灯りが戻った。景色を眺めても、再出発してもいい。|마을을 밝혔어요. 풍경을 보거나 다시 떠나도 좋아요.|La ville est éclairée. Admirez la vue ou repartez.|Die Stadt leuchtet. Genieße die Aussicht oder beginne neu.|La ciudad brilla. Disfruta la vista o empieza de nuevo.|A vila brilha. Aproveite a vista ou recomece.',
     h_done2: '所有机关都修好了。谢谢你，耐心的小小修理师。|Every mechanism is repaired. Thank you, patient little tinkerer.|すべて直った。ありがとう、小さな修理屋さん。|모든 장치를 고쳤어요. 고마워요, 작은 수리공.|Tout est réparé. Merci, petit artisan patient.|Alles ist repariert. Danke, geduldiger kleiner Tüftler.|Todo está reparado. Gracias, pequeño artesano paciente.|Tudo consertado. Obrigado, pequeno artesão paciente.'
   };
-  Object.assign(rows, extra);
+  const chapters = typeof module === 'object' && module.exports ? require('./chapters-i18n.js') : root.ClockworkChapterRows;
+  Object.assign(rows, extra, chapters);
   const messages = Object.fromEntries(languages.map((lang, index) => [lang, Object.fromEntries(Object.entries(rows).map(([key, row]) => [key, row.split('|')[index]]))]));
   if (typeof module === 'object' && module.exports) module.exports = messages;
   else { root.ClockworkTranslations = messages; root.BooplandI18n.register('clockwork', messages); }

@@ -572,20 +572,20 @@ window.GAME_LIST = [
   },
   {
     title: "发条小镇",
-    description: "陪小机器人探索三处手绘场景，组合零件、修复机械，让钟楼的微光重新亮起。",
+    description: "陪小机器人走过六章手绘冒险：点亮钟楼、唤醒温室、平衡吊桥，让星邮列车重新出发。",
     path: "./games/clockwork-town/index.html",
     category: "解谜",
     tags: ["推荐"],
     color: "#e4e7d7",
     cover: "./games/clockwork-town/cover.svg",
     locales: {
-      en: { title: "Clockwork Town", description: "Explore three hand-drawn scenes with a little robot. Combine parts, mend machines and light the clock tower." },
-      ja: { title: "ぜんまいの街", description: "小さなロボットと三つの手描きの場所へ。部品を組み合わせ、機械を直し、時計塔に灯りを。" },
-      ko: { title: "태엽 마을", description: "작은 로봇과 세 손그림 장소를 탐험해요. 부품을 조합하고 기계를 고쳐 시계탑을 밝혀요." },
-      fr: { title: "La ville mécanique", description: "Explorez trois décors dessinés avec un petit robot. Assemblez des pièces, réparez les machines et rallumez le beffroi." },
-      de: { title: "Uhrwerkstädtchen", description: "Erkunde drei gezeichnete Orte mit einem kleinen Roboter. Kombiniere Teile, repariere Maschinen und erhelle den Uhrturm." },
-      es: { title: "Pueblo de cuerda", description: "Explora tres escenas dibujadas con un pequeño robot. Combina piezas, repara máquinas e ilumina la torre." },
-      'pt-BR': { title: "Vila de corda", description: "Explore três cenários desenhados com um pequeno robô. Combine peças, conserte máquinas e ilumine a torre." }
+      en: { title: "Clockwork Town", description: "Six hand-drawn chapters with a little robot. Light the tower, revive a greenhouse, balance a bridge and restart the mail train." },
+      ja: { title: "ぜんまいの街", description: "小さなロボットと六章の手描き冒険へ。塔を照らし、温室を育て、橋を直し、星便を出発させよう。" },
+      ko: { title: "태엽 마을", description: "작은 로봇과 손그림 모험 여섯 장을 떠나요. 탑과 온실을 깨우고 다리를 고쳐 우편차를 출발시켜요." },
+      fr: { title: "La ville mécanique", description: "Six chapitres dessinés avec un petit robot. Rallumez la tour, réveillez la serre, équilibrez le pont et relancez le courrier." },
+      de: { title: "Uhrwerkstädtchen", description: "Sechs gezeichnete Kapitel mit einem kleinen Roboter. Erhelle den Turm, belebe das Gewächshaus, repariere die Brücke und starte die Postbahn." },
+      es: { title: "Pueblo de cuerda", description: "Seis capítulos dibujados con un pequeño robot. Ilumina la torre, revive el invernadero, equilibra el puente y reactiva el tren postal." },
+      'pt-BR': { title: "Vila de corda", description: "Seis capítulos desenhados com um pequeno robô. Ilumine a torre, reviva a estufa, equilibre a ponte e reative o trem postal." }
     }
   },
   // 新增示例（删除每行开头的 //，修改内容即可）：

@@ -41,6 +41,13 @@
     oil:'<path d="m17 29 23-4 7 25-32 3Z" fill="#b2c2aa" stroke="#697760"/><path d="M21 28v-7l12-2v7M43 32l15-13-8 21" fill="#d7ddc6" stroke="#697760"/><path d="M15 34Q3 23 9 46l7-3" fill="none" stroke="#697760"/><path d="m23 36 13-2M25 42l11-2" stroke="#eef0dd" stroke-width="2"/>',
     lens:'<circle cx="32" cy="32" r="23" fill="#d8e4df" stroke="#8d957a" stroke-width="3"/><circle cx="32" cy="32" r="18" fill="#e9f0e7" stroke="#a9bcb1"/><path d="m20 31 12-12M24 40l18-18" stroke="#fffef3" stroke-width="4"/>'
   };
+  Object.assign(iconParts, {
+    arm:'<path d="M15 46V29h28V14" fill="none" stroke="#7d9384" stroke-width="9"/><path d="M15 46V29h28V14" fill="none" stroke="#cddbd0" stroke-width="4"/><circle cx="15" cy="47" r="7" fill="#a4b49b" stroke="#74826c"/>',
+    grip:'<rect x="22" y="10" width="20" height="43" rx="8" fill="#cbb28c" stroke="#887d61"/><path d="M28 17v28m8-28v28" stroke="#e9d7b5"/>',
+    crank:'<path d="M13 48V30h29V15" fill="none" stroke="#819586" stroke-width="8"/><rect x="35" y="7" width="14" height="23" rx="5" fill="#cbb28c" stroke="#887d61"/><circle cx="13" cy="48" r="7" fill="#b5c5a5" stroke="#78886d"/>',
+    bridgeKey:'<circle cx="21" cy="20" r="12" fill="#e8d7a7" stroke="#94805a" stroke-width="3"/><circle cx="21" cy="20" r="5" stroke="#b09c70"/><path d="m30 29 23 23m-8-8-6 6m0-12-6 6" stroke="#b09a68" stroke-width="6"/>',
+    mainspring:'<path d="M53 31c0-29-45-30-45 0s41 30 41 2-34-25-34-1 27 23 27 1-20-16-20-1 13 14 13 0" stroke="#9b8c6a" stroke-width="3" fill="none"/><path d="M53 31v20h-9" fill="none" stroke="#9b8c6a" stroke-width="3"/>'
+  });
   function icon(id) { return `<svg viewBox="0 0 64 64" fill="none" stroke-width="1.5" aria-hidden="true">${iconParts[id]||''}</svg>`; }
   function placed(id,x,y,size=64) { return `<svg x="${x}" y="${y}" width="${size}" height="${size}" viewBox="0 0 64 64" stroke-width="1.5">${iconParts[id]}</svg>`; }
   function yard(s) {
@@ -109,16 +116,69 @@
       <path d="M103 533q363 18 788-4" fill="none" stroke="#b8c4a6" stroke-width="1.3"/>
       <g transform="translate(774 404)"><g class="bird" fill="#a7b698" stroke="#7a916d" stroke-width="1.5"><path d="M-18 0q-13-26 10-22 18-18 26-2 1 17-18 22Z"/><path d="m17-23 13 5-14 3M-8-1v9m11-9v9"/><circle cx="10" cy="-23" r="1.5" fill="#55664e"/></g></g>`;
   }
+  function greenhouse(s) {
+    const f=s.flags;
+    return `${cloud(72,83,.8)}${cloud(777,72,.75)}<path d="M63 480q454-33 875 0l-15 80q-457 28-867-1Z" fill="#e0e6d3"/>
+      <path d="M111 477V246q0-139 382-149 383 9 383 149v232Z" fill="#e7eddf" stroke="#94a68a" stroke-width="2"/>
+      <path d="M111 247h765M111 359h765M286 123v354M492 98v379M698 124v353" stroke="#b3c1a4" stroke-width="5" fill="none"/><path d="M137 238q66-90 129-97m42 94 67-110m179 110 56-110m111 118 40-75" stroke="#fffdf2" stroke-width="5" opacity=".75" fill="none"/>
+      <path d="M97 250h25v238m741-240h25v239" stroke="#8fa38b" stroke-width="7" fill="none"/><path d="M100 476h793" stroke="#9eac8f" stroke-width="6"/>
+      <path d="M124 360h198v17H124zM140 377v102m163-102v102" fill="#c0c9ac" stroke="#8d9e7e" stroke-width="3"/>
+      ${!f.arm?placed('arm',143,293,64):''}${!f.grip?placed('grip',264,189,64):''}<path d="M267 180h50" stroke="#91a482" stroke-width="4"/>
+      <path d="M388 468V325h167v143Z" fill="#b8c9b4" stroke="#819b81" stroke-width="2"/>${rivets(388,325,167,143)}<circle cx="436" cy="403" r="27" fill="#e0e7d6" stroke="#7e947b" stroke-width="2"/>
+      ${f.pumpFitted?placed('crank',401,368,70):'<circle cx="436" cy="403" r="9" fill="#94a889"/>'}
+      ${s.water.map((v,i)=>`<rect x="${390+i*57}" y="234" width="44" height="78" rx="9" fill="#f3f4e8" stroke="#90a48d" stroke-width="2"/><rect x="${394+i*57}" y="${307-v*10}" width="36" height="${v*10}" rx="4" fill="#a9c9c4"/><path d="M${399+i*57} ${307-[2,4,3][i]*10}h28" stroke="#aa946c" stroke-width="2" stroke-dasharray="4 3"/>`).join('')}
+      <path d="M555 432h96v-30h151" fill="none" stroke="#99ad90" stroke-width="9"/>${f.watered?'<path d="M555 432h96v-30h151" fill="none" stroke="#b8d4cc" stroke-width="4"/>':''}
+      <path d="M635 440h183l-13 40H647Z" fill="#c6b28d" stroke="#958a6e" stroke-width="2"/>${[659,715,778].map((x,i)=>f.watered?leaf(x,441,[1.15,.88,1.32][i]):`<path d="M${x} 439q-12-25-25-20m25 20q12-29 24-23" stroke="#a7a584" stroke-width="2" fill="none"/>`).join('')}
+      ${f.watered&&!f.bridgeKey?placed('bridgeKey',699,414,46):''}<path d="M849 476V278q30-29 58 0v198" fill="${f.watered?'#c8d7b7':'#d6deca'}" stroke="#8d9f7d" stroke-width="2"/><path d="M860 374h33m-10-10 10 10-10 10" stroke="#829572" stroke-width="3" fill="none"/>
+      <path d="M130 518q350 22 735 0" stroke="#b6c4a6" fill="none"/><g fill="#c7d8ce" stroke="#9fb7ab">${[192,349,602,744].map((x,i)=>`<path d="M${x} ${125+i%2*26}q-9 13 0 16 9-3 0-16Z"/>`).join('')}</g>`;
+  }
+  function bridge(s) {
+    const f=s.flags;
+    return `${cloud(111,106,1)}${cloud(706,94,.9)}<g transform="translate(0 75) scale(1 .8)">${skyline(true)}</g>
+      <path d="M46 465q429-27 913 0v93H46Z" fill="#c9dcd5"/><path d="M62 510q160-20 284 0t276 0 303-1M90 541q174-17 351 0t468-3" stroke="#eef2e5" stroke-width="4" fill="none"/>
+      <path d="M51 452h481v39H51ZM793 452h155v39H793Z" fill="#d6dbc3" stroke="#98a789" stroke-width="2"/>
+      <path d="M533 478v-261m266 261V217M513 216h307" stroke="#849b84" stroke-width="10" fill="none"/><path d="M539 224h253" stroke="#c8d4b9" stroke-width="3"/>
+      ${f.bridgeOpen?'<path d="M532 464h265v22H532Z" fill="#c5b48f" stroke="#8e866d" stroke-width="2"/><path d="M553 465v21m37-21v21m37-21v21m37-21v21m37-21v21m37-21v21m37-21v21" stroke="#a49579"/><path d="M543 223v223m246-223v223" stroke="#a9b7a0" stroke-width="2"/>':'<path d="m536 480 120-198 18 10-118 193Z" fill="#c5b48f" stroke="#8e866d" stroke-width="2"/><path d="M659 280 793 223" stroke="#889d88" stroke-width="3"/>'}
+      <path d="M112 269h116v180H112Z" fill="#c4cdb6" stroke="#879a7a" stroke-width="2"/>${rivets(112,269,116,180)}<path d="M123 281h94v155h-94Z" fill="#e3e6d5" stroke="#a5b294"/><circle cx="202" cy="360" r="7" fill="#b5a171"/>
+      ${f.cabinetOpen?gear(170,337,26,'#cbbb8c'):placed('bridgeKey',143,309,55)}<path d="M332 411h128M396 412V237" stroke="#8c9c7d" stroke-width="8"/>
+      <g transform="rotate(${Math.max(-10,Math.min(10,(s.weights[2]+s.weights[3]*2-s.weights[0]*3-s.weights[1])*.9))} 396 242)"><path d="M278 242h207" stroke="#9cae8e" stroke-width="7"/>${s.weights.map((v,i)=>`<path d="M${[291,361,431,466][i]} 242v53" stroke="#8d9e80" stroke-width="2"/><rect x="${[277,347,417,452][i]}" y="295" width="28" height="${v*10+15}" rx="6" fill="#c7b58c" stroke="#8b866a"/><text x="${[291,361,431,466][i]}" y="316" text-anchor="middle" fill="#686d57" font-size="14">${v}</text>`).join('')}</g>
+      <path d="M490 458h61v18h-61Z" fill="#b9c5a6" stroke="#839778"/><path d="M519 456l${f.bridgeOpen?'18 -25':'-14 -53'}" stroke="#8b9e7b" stroke-width="7"/><circle cx="${f.bridgeOpen?537:505}" cy="${f.bridgeOpen?431:403}" r="10" fill="#cbb38c" stroke="#8d8769"/>
+      <path d="M814 415h66v38h-66Z" fill="#c6b28e" stroke="#8a8c71"/><path d="M836 415v-9h23v9M816 431h62" fill="none" stroke="#899377" stroke-width="3"/>${f.bridgeOpen&&!f.mainspring?placed('mainspring',832,413,32):''}
+      <path d="M901 446V302m-30 0h62l-8 31h-54Z" fill="#dfe4cf" stroke="#8f9f7d" stroke-width="3"/><path d="M885 315h30m-9-6 9 6-9 6" fill="none" stroke="#869776" stroke-width="2"/>
+      <path d="M277 189h47v37h-47Z" fill="#d8c695" stroke="#9e936e"/><path d="M283 188q17-36 35 0M276 227h49" fill="none" stroke="#8d9879" stroke-width="3"/>${leaf(86,466,.8)}${leaf(938,472,.7)}`;
+  }
+  function station(s) {
+    const f=s.flags;
+    return `${cloud(98,106,.9)}${cloud(782,123,.7)}<g opacity=".5" transform="translate(0 30)">${skyline(true)}</g>
+      <path d="M56 468h900v89H56Z" fill="#e2dfca"/><path d="M62 506h885M65 539h880" stroke="#91a18a" stroke-width="4"/>${Array.from({length:22},(_,i)=>`<path d="M${83+i*39} 502l-8 41" stroke="#c3b38f" stroke-width="7"/>`).join('')}
+      <path d="M78 249 130 164h451l54 86Z" fill="#c1cdb3" stroke="#8b9c7b" stroke-width="2"/><path d="M99 248h516M116 254v219m485-219v219" stroke="#91a283" stroke-width="9"/><path d="m147 177-31 58m100-58-15 58m91-58v58m89-58 13 58m81-58 29 58" stroke="#dbe2cd" stroke-width="3"/>
+      <path d="M139 266h102v117H139Z" fill="#f1eddb" stroke="#aaa88b" stroke-width="2"/><path d="M151 293h79m-79 25h79m-79 25h79" stroke="#c0b99a" stroke-width="2"/><circle cx="177" cy="281" r="4" fill="#98ae89"/><path d="m199 276 5 10 5-10" stroke="#ad9d6b" fill="none"/>
+      <path d="M271 305h118v166H271Z" fill="#b8c6b1" stroke="#869a7d" stroke-width="2"/><circle cx="329" cy="352" r="32" fill="#eae9d4" stroke="#8e9c7d" stroke-width="3"/>${f.springFitted?placed('mainspring',302,325,54):'<circle cx="329" cy="352" r="13" fill="#a1b296"/>'}<path d="M289 415h82" stroke="#8b9d7f" stroke-width="3"/>${gear(329,434,20,'#d2bd91',!!f.springFitted)}
+      <path d="M433 278h112v136H433Z" fill="#d5ddc6" stroke="#91a383" stroke-width="2"/>${rivets(433,278,112,136)}${[0,1,2].map((v)=>`<circle cx="488" cy="${302+v*32}" r="10" fill="${f.routeReady&&v===2?'#98b77e':'#c7c9ad'}" stroke="#91a17f"/>`).join('')}<path d="M488 415v56" stroke="#91a383" stroke-width="8"/>
+      <g transform="translate(${f.finished?35:0} 0)"><path d="M642 340q13-30 52-30h121q38 0 47 30v117H642Z" fill="#b8c9b8" stroke="#809987" stroke-width="2"/><path d="M629 342q126-14 245 0l-9-18q-113-17-227 0Z" fill="#9faf98" stroke="#7e947e" stroke-width="2"/>
+      <path d="M661 355h69v51h-69zM746 355h93v51h-93Z" fill="#e5ecdb" stroke="#91a98d" stroke-width="2"/><path d="M642 423h220" stroke="#e0dbc0" stroke-width="7"/><rect x="722" y="416" width="44" height="29" rx="2" fill="#ece5c8" stroke="#9f9978"/><path d="m722 416 22 16 22-16" stroke="#9f9978" fill="none"/><circle cx="679" cy="459" r="20" fill="#9cae97" stroke="#7d927b" stroke-width="3"/><circle cx="821" cy="459" r="20" fill="#9cae97" stroke="#7d927b" stroke-width="3"/><path d="M677 451v16m-8-8h16m134-8v16m-8-8h16" stroke="#dce1ca" stroke-width="2"/></g>
+      <circle cx="357" cy="215" r="29" fill="#f4edda" stroke="#94a184" stroke-width="3"/><path d="M357 195v21l14 8" stroke="#839677" stroke-width="3" fill="none"/>${leaf(76,480,.6)}${f.finished?'<path d="M729 171q43-27 89 0m-53 12 18-5 17 8" fill="none" stroke="#a5b5a0" stroke-width="2"/>':''}`;
+  }
+  const symbols = [
+    '<path d="M15 47q-9-28 34-33 0 37-34 33ZM15 47l25-24"/>',
+    '<path d="M16 42h32l-5-8V24a11 11 0 0 0-22 0v10ZM26 49q6 8 12 0M32 9v4"/>',
+    '<path d="m32 9 7 15 17 2-12 12 3 17-15-8-15 8 3-17L8 26l17-2Z"/>',
+    '<path d="M42 11a23 23 0 1 0 12 33A24 24 0 0 1 42 11Z"/>'
+  ];
+  const symbol = index => `<svg viewBox="0 0 64 64" aria-hidden="true" fill="#d6dec5" stroke="#7d9370" stroke-width="2.2">${symbols[index]||''}</svg>`;
   const spots = {
     yard:[['cord',217,437,88,85],['magnet',165,281,80,80],['drain',554,510,205,90],['mural',452,272,125,90],['gate',793,310,190,340]],
     workshop:[['oil',283,174,80,82],['generator',214,360,140,170],['pipes',496,289,170,176],['drawer',724,432,112,95],['stairs',861,332,105,190]],
-    tower:[['beacon',664,341,126,156],['chart',239,317,140,108],['town',420,291,175,110]]
+    tower:[['beacon',664,341,126,156],['chart',239,317,140,108],['town',420,291,175,110]],
+    greenhouse:[['arm',175,326,85,75],['grip',295,222,75,80],['pump',475,350,186,242],['planter',726,423,174,116],['gardenExit',878,361,78,237]],
+    bridge:[['cabinet',170,355,117,185],['balance',396,279,208,171],['bridgeLever',521,439,76,85],['toolbox',847,432,83,75],['bridgeExit',904,338,76,120]],
+    station:[['timetable',190,323,103,118],['clockDrive',329,388,124,172],['signal',488,347,115,143],['mailcar',752,395,252,173]]
   };
-  function scene(s, x) { return defs+`<rect width="1000" height="620" fill="#fffdf5"/><g stroke-linecap="round" stroke-linejoin="round">${({yard,workshop,tower})[s.room](s)}${robot(x??(s.room==='yard'?395:s.room==='workshop'?551:430),s.tall)}<rect x="40" y="55" width="920" height="515" fill="url(#paperDots)" pointer-events="none"/></g>`; }
+  function scene(s, x) { return defs+`<rect width="1000" height="620" fill="#fffdf5"/><g stroke-linecap="round" stroke-linejoin="round">${({yard,workshop,tower,greenhouse,bridge,station})[s.room](s)}${robot(x??(s.room==='yard'?395:s.room==='workshop'?551:430),s.tall)}<rect x="40" y="55" width="920" height="515" fill="url(#paperDots)" pointer-events="none"/></g>`; }
   function sketch() { return `<svg viewBox="0 0 220 170" fill="none" stroke="${ink}"><path d="M24 147q84 11 172-4" stroke="#bdc5ad"/>${gear(91,98,39,'#d9d2ad')}${gear(145,69,26,'#cad4b9')}<path d="m41 41 5-12m10 17 8-3m92 74 12 5" stroke="#acb69b"/>${leaf(177,146,.6)}</svg>`; }
   function drainSketch() {
     return `<svg class="drain-sketch" viewBox="0 0 440 230" aria-hidden="true"><g stroke-linecap="round" stroke-linejoin="round"><path d="M67 62v115q150 66 306-1V62" fill="#e0e6d4" stroke="#9ba98a" stroke-width="2"/><path d="M91 83v79q136 49 258 0V83" fill="#c4d0b6" stroke="#a2b294"/><path d="M95 183q131 39 248-1" fill="none" stroke="#98b3a5" stroke-width="3"/><ellipse cx="220" cy="61" rx="153" ry="31" fill="#d2d9c1" stroke="#8c9c7a" stroke-width="2"/><ellipse cx="220" cy="61" rx="130" ry="20" fill="#9ead8d"/><path d="M104 53h231M91 65h259M117 77h209" stroke="#dce3cd" stroke-width="8"/>${gear(228,155,38,'#cfb77f')}<path d="M219 148h18M228 139v32" stroke="#687b66" stroke-width="3"/><path d="M275 128l10-8M281 143l13 1M174 157l-12 3" stroke="#a3b48f" stroke-width="2"/></g></svg>`;
   }
-  const api={scene,spots,icon,sketch,gear,robot,drainSketch};
+  const api={scene,spots,icon,sketch,gear,robot,drainSketch,symbol};
   if(typeof module==='object'&&module.exports) module.exports=api; else root.ClockworkArt=api;
 })(typeof window!=='undefined'?window:globalThis);
