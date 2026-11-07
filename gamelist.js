@@ -6,6 +6,23 @@
 // locales 按全局语言提供 title、description；缺少翻译时回退到基础字段。
 window.GAME_LIST = [
   {
+    title: "猫咪推箱子",
+    description: "帮小猫收拾新家，把纸箱推到爪印上，在 12 间手绘小屋里慢慢动脑筋。",
+    path: "./games/cat-sokoban/index.html",
+    category: "益智",
+    color: "#e9eadc",
+    cover: "./games/cat-sokoban/cover.svg",
+    locales: {
+      en: { title: "Cat & Crates", description: "Help a little cat move in. Push crates onto paw prints in twelve cozy, hand-drawn rooms." },
+      ja: { title: "ねこの箱運び", description: "ねこのお引っ越しをお手伝い。12の手描きのお部屋で、箱を肉球マークへ運ぼう。" },
+      ko: { title: "고양이 상자 밀기", description: "고양이의 새집 정리를 도와요. 손으로 그린 12개 방에서 상자를 발자국 위로 밀어요." },
+      fr: { title: "Chat & cartons", description: "Aidez un petit chat à emménager : poussez les cartons sur les empreintes dans douze pièces dessinées au crayon." },
+      de: { title: "Katze & Kisten", description: "Hilf einer Katze beim Einzug und schiebe Kisten auf Pfotenspuren in zwölf gemütlichen, gezeichneten Räumen." },
+      es: { title: "Gato y cajas", description: "Ayuda a un gatito con la mudanza. Lleva las cajas a las huellas en doce acogedoras habitaciones dibujadas a mano." },
+      'pt-BR': { title: "Gato e caixas", description: "Ajude um gatinho na mudança. Leve as caixas até as patinhas em doze quartos aconchegantes desenhados à mão." }
+    }
+  },
+  {
     title: "云间来信 · 跳一跳",
     description: "和小夏一起，按住蓄力、松开起跳，在花朵与薄雾间走向下一座浮岛。",
     path: "./games/cloud-leap/index.html",
@@ -360,6 +377,74 @@ window.GAME_LIST = [
       de: { title: "Genau andersherum", description: "Dein Kopf sagt links? Geh nach rechts. Wähle 60 Sekunden lang die entgegengesetzten Richtungen und Farben." },
       es: { title: "Al revés", description: "Tu mente dice izquierda, tú vas a la derecha. Invierte direcciones y colores durante 60 segundos." },
       'pt-BR': { title: "Ao contrário", description: "Sua cabeça diz esquerda, você vai à direita. Inverta direções e cores em um desafio de 60 segundos." }
+    }
+  },
+  {
+    title: "水彩分类",
+    description: "在玻璃瓶之间轻轻倒水，把同色归到一起，整理一小页温柔的颜色。",
+    path: "./games/water-sort/index.html",
+    category: "益智",
+    color: "#e9ecdf",
+    cover: "./games/water-sort/cover.svg",
+    locales: {
+      en: { title: "Watercolor Sort", description: "Pour between little glass bottles and bring matching colors together through 24 gentle puzzles." },
+      ja: { title: "水彩ソート", description: "小さな瓶の水を注いで、同じ色をひとつに。24ページの色のパズル。" },
+      ko: { title: "수채화 정렬", description: "유리병 사이로 물을 옮겨 같은 색을 모아요. 24개의 차분한 퍼즐을 즐겨요." },
+      fr: { title: "Tri aquarelle", description: "Versez entre les flacons et réunissez les mêmes couleurs dans 24 petits puzzles." },
+      de: { title: "Wasserfarben", description: "Gieße zwischen kleinen Fläschchen und sammle gleiche Farben in 24 entspannten Rätseln." },
+      es: { title: "Ordena colores", description: "Vierte entre frascos y reúne los mismos colores en 24 tranquilos rompecabezas." },
+      'pt-BR': { title: "Separe as cores", description: "Despeje entre frascos e reúna as mesmas cores em 24 quebra-cabeças tranquilos." }
+    }
+  },
+  {
+    title: "铅笔扫雷",
+    description: "在方格纸上读懂数字、画下小旗，慢慢解开一页扫雷。",
+    path: "./games/pencil-mines/index.html",
+    category: "益智",
+    color: "#e2e7d5",
+    cover: "./games/pencil-mines/cover.svg",
+    locales: {
+      en: { title: "Pencil Mines", description: "Follow the numbers, sketch little flags, and clear a minefield on squared paper." },
+      ja: { title: "えんぴつマイン", description: "方眼紙の数字を読み、小さな旗を描いて地雷を探そう。" },
+      ko: { title: "연필 지뢰찾기", description: "모눈종이의 숫자를 읽고 작은 깃발을 그리며 지뢰를 피해요." },
+      fr: { title: "Démineur au crayon", description: "Suivez les chiffres et dessinez des drapeaux sur une page de démineur." },
+      de: { title: "Bleistift-Minen", description: "Lies die Zahlen und zeichne kleine Flaggen auf dein Minenfeld aus Papier." },
+      es: { title: "Minas a lápiz", description: "Sigue los números y dibuja banderitas para despejar un campo de minas de papel." },
+      'pt-BR': { title: "Minas a lápis", description: "Siga os números e desenhe bandeirinhas para desvendar um campo minado de papel." }
+    }
+  },
+  {
+    title: "弹弓快递",
+    description: "拉动弹弓，借一点风和反弹，把每个包裹稳稳送进远处的邮箱。",
+    path: "./games/slingshot-post/index.html",
+    category: "益智",
+    color: "#e4e8d5",
+    cover: "./games/slingshot-post/cover.svg",
+    locales: {
+      en: { title: "Slingshot Post", description: "Pull, aim and deliver parcels with a little wind, a clever bounce and a trusty slingshot." },
+      ja: { title: "ぱちんこ郵便", description: "ぱちんこを引いて、風と跳ね返りを味方に、遠くのポストへ小包を届けよう。" },
+      ko: { title: "새총 우체국", description: "새총을 당겨 바람과 반사를 이용하고, 먼 우체통에 작은 소포를 배달해요." },
+      fr: { title: "Poste au lance-pierre", description: "Visez et livrez vos colis grâce au vent, aux rebonds et à un fidèle lance-pierre." },
+      de: { title: "Schleuderpost", description: "Zieh die Schleuder zurück und bringe Pakete mit Wind und geschickten Abprallern zum Briefkasten." },
+      es: { title: "Correo con tirachinas", description: "Apunta y entrega paquetes con ayuda del viento, los rebotes y tu fiel tirachinas." },
+      'pt-BR': { title: "Correio de estilingue", description: "Mire e entregue pacotes com a ajuda do vento, dos saltos e de um fiel estilingue." }
+    }
+  },
+  {
+    title: "合成小猫",
+    description: "投下小猫，碰一碰长大；挤挤碰碰连锁合成，装满一纸箱的快乐。",
+    path: "./games/cat-merge/index.html",
+    category: "休闲",
+    color: "#e7e8d8",
+    cover: "./games/cat-merge/cover.svg",
+    locales: {
+      en: { title: "Kitty Merge", description: "Drop little cats, merge matching pairs and build scoring chains in a cozy cardboard box." },
+      ja: { title: "ねこ合体", description: "小さなねこを落として、同じ子同士を合体。連鎖で箱いっぱいの幸せを育てよう。" },
+      ko: { title: "고양이 합치기", description: "고양이를 떨어뜨리고 같은 냥이를 합쳐요. 연쇄 합성으로 상자 가득 행복과 점수를 쌓아요." },
+      fr: { title: "Chats à fusionner", description: "Lâchez des chats, fusionnez les paires et enchaînez les points dans un carton douillet." },
+      de: { title: "Katzen vereinen", description: "Lass kleine Katzen fallen, vereine gleiche Paare und sammle Kettenpunkte in einem gemütlichen Karton." },
+      es: { title: "Fusiona gatitos", description: "Deja caer gatitos, une parejas iguales y encadena puntos en una acogedora caja de cartón." },
+      'pt-BR': { title: "Junte os gatinhos", description: "Solte gatinhos, junte pares iguais e faça sequências de pontos em uma caixa aconchegante." }
     }
   },
   // 新增示例（删除每行开头的 //，修改内容即可）：

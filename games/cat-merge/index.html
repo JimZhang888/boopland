@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="zh-CN" data-i18n-scope="catMerge">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#f5f3eb">
+  <meta name="description" data-i18n-content="catMerge.description" content="投下一只小猫，让相同的猫咪碰一碰，合成满纸箱的快乐。">
+  <title data-i18n="catMerge.pageTitle">合成小猫 · Boopland</title>
+  <link rel="icon" href="cover.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="style.css?v=3">
+  <script defer src="../../analytics.js"></script>
+</head>
+<body>
+  <main class="game-shell">
+    <header class="topbar">
+      <a class="back" href="../../games.html" data-i18n-label="common.back"><span aria-hidden="true">↶</span><span class="back-text" data-i18n="common.back">返回大厅</span></a>
+      <h1><svg viewBox="0 0 32 32" aria-hidden="true"><path d="M7 12 6 4l8 5h5l7-5-1 10c7 17-25 19-20 3Z"/><path d="M11 17v2m10-2v2m-7 3 2 1 2-1"/></svg><span data-i18n="catMerge.name">合成小猫</span></h1>
+      <div class="top-actions">
+        <button id="sound" class="icon-button" aria-pressed="false" data-i18n-label="catMerge.soundOn"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M11 5 6 9H3v6h3l5 4Z"/><path id="sound-wave" d="m16 9 6 6m0-6-6 6"/></svg></button>
+        <button id="help" class="icon-button" data-i18n-label="catMerge.help">?</button>
+        <button id="pause" class="icon-button" disabled data-i18n-label="catMerge.pause"><svg viewBox="0 0 24 24" aria-hidden="true"><path id="pause-mark" d="M8 5v14M16 5v14"/></svg></button>
+      </div>
+    </header>
+
+    <section class="desk">
+      <aside class="margin left-margin" aria-hidden="true">
+        <span class="eyebrow">BOOPLAND / CAT CLUB</span>
+        <h2 data-i18n="catMerge.marginTitle">把小小的快乐，\n养得大一点。</h2>
+        <svg class="margin-doodle" viewBox="0 0 200 150"><path d="M34 99c-9-23-5-46 8-57l-1-24 26 15c18-7 39-7 55 0l24-17-1 29c25 30 13 65-18 72-21 8-64 3-81-6"/><path d="M64 65q7-7 14 0m28 0q7-7 14 0M88 80l7 4 7-4m-7 4q-2 10-10 6m10-6q2 10 10 6M48 80l-21-3m20 12-19 3m111-12 22-4m-21 13 20 4m-93 11 3 12m44-12-3 14M43 113c-39 5-29 30-4 21m108-2c12-2 29-10 31-24"/><path d="m160 35 6-7m6 14 9-2m-14 12 7 3" stroke="#ab987c"/></svg>
+        <p data-i18n="catMerge.marginCopy">一只、两只、挤一挤。\n今天也被可爱填满。</p>
+        <span class="pencil-line"></span>
+        <small data-i18n="catMerge.marginFoot">不着急，猫咪会自己找到彼此。</small>
+      </aside>
+
+      <section class="notebook" data-i18n-label="catMerge.name">
+        <div class="hud">
+          <div class="stat score-stat"><span data-i18n="catMerge.score">本局得分</span><strong id="score">0</strong></div>
+          <div class="stat"><span data-i18n="catMerge.best">最高分</span><strong id="best">0</strong></div>
+          <div class="stat level-stat"><span data-i18n="catMerge.biggest">最大猫咪</span><strong id="highest">01<span>/10</span></strong></div>
+          <div class="next"><span data-i18n="catMerge.next">下一只</span><canvas id="next-cat" width="88" height="88" aria-hidden="true"></canvas></div>
+        </div>
+
+        <div class="stage" id="stage">
+          <canvas id="game" width="440" height="580" tabindex="0" data-i18n-label="catMerge.canvas" data-i18n="catMerge.canvas">移动瞄准，点击或松手投下小猫。</canvas>
+          <div class="feedback" id="feedback" role="status" hidden></div>
+          <section class="overlay" id="overlay" aria-labelledby="overlay-title">
+            <div class="overlay-card">
+              <span class="eyebrow" id="overlay-kicker" data-i18n="catMerge.kicker">小猫碰一碰，快乐大一号</span>
+              <h2 id="overlay-title" data-i18n="catMerge.name">合成小猫</h2>
+              <p id="overlay-copy" data-i18n="catMerge.intro">投下一只小猫。让相同的猫咪靠在一起，看看能养到多大？</p>
+              <div class="result" id="result" hidden><strong id="result-score">0</strong><span id="result-note"></span></div>
+              <button class="primary" id="overlay-action"><span id="overlay-action-label" data-i18n="catMerge.start">开始养猫</span><span aria-hidden="true"> ↗</span></button>
+              <button class="text-button" id="restart" hidden data-i18n="catMerge.restart">重新开始</button>
+            </div>
+          </section>
+        </div>
+
+        <div class="growth-strip"><span data-i18n="catMerge.growth">成长记</span><div class="growth-cats" id="growth-cats" data-i18n-label="catMerge.growth"></div><span aria-hidden="true">♔</span></div>
+        <footer class="controls">
+          <p id="status" data-i18n="catMerge.readyHint">装一箱软乎乎的快乐。</p>
+          <button class="primary drop-button" id="drop"><span aria-hidden="true">↓</span><span id="drop-label" data-i18n="catMerge.start">开始养猫</span></button>
+        </footer>
+      </section>
+
+      <aside class="margin right-margin">
+        <div class="recipe-note">
+          <span class="eyebrow" data-i18n="catMerge.recipe">快乐合成法</span>
+          <canvas id="recipe" width="440" height="180" aria-hidden="true"></canvas>
+          <h3 data-i18n="catMerge.recipeTitle">一样的猫，更大的拥抱。</h3>
+          <p data-i18n="catMerge.recipeCopy">同级相碰就长大。连续合成，最高获得 5 倍加分。</p>
+          <div class="note-divider"></div>
+          <p class="danger-tip"><span aria-hidden="true">- - -</span><span data-i18n="catMerge.dangerTip">别让猫咪在虚线上方停留太久。</span></p>
+        </div>
+        <p class="keyboard-hint" data-i18n="catMerge.keyboard">← → 移动 · 空格投放\nP 暂停 · 拖动后松手也可以</p>
+        <span class="little-star" aria-hidden="true">✳</span>
+      </aside>
+    </section>
+    <p class="page-foot" data-i18n="catMerge.foot">再来一只，就再来一只。</p>
+  </main>
+
+  <dialog id="help-dialog" aria-labelledby="help-title">
+    <form method="dialog"><div class="dialog-heading"><h2 id="help-title" data-i18n="catMerge.helpTitle">小猫饲养手记</h2><button class="icon-button" data-i18n-label="catMerge.close" value="close">×</button></div></form>
+    <ol class="help-list">
+      <li><strong data-i18n="catMerge.helpAim">找个舒服的位置</strong><p data-i18n="catMerge.helpAimCopy">鼠标移动后点击投放；手机拖动瞄准，松手投放。也可以用方向键移动、空格投放。</p></li>
+      <li><strong data-i18n="catMerge.helpMerge">碰一碰，就长大</strong><p data-i18n="catMerge.helpMergeCopy">相同颜色和等级的猫咪接触后，合成更大一级。短时间连续合成会增加奖励，最高 5 倍。</p></li>
+      <li><strong data-i18n="catMerge.helpLine">给纸箱留一点空位</strong><p data-i18n="catMerge.helpLineCopy">新投下的猫可以经过虚线；落下后持续越线 2 秒，本局结束。两只 10 级猫合成会一起离开，腾出位置并奖励分数。</p></li>
+    </ol>
+    <p class="help-note" data-i18n="catMerge.helpSave">最高分保存在当前浏览器。离开页面或查看说明会自动暂停。</p>
+    <form method="dialog"><button class="primary" value="close" data-i18n="catMerge.gotIt">知道啦</button></form>
+  </dialog>
+
+  <script src="../../i18n.js"></script>
+  <script src="translations.js"></script>
+  <script src="engine.js"></script>
+  <script src="art.js"></script>
+  <script src="game.js"></script>
+</body>
+</html>

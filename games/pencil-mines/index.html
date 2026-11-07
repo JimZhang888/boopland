@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-i18n-scope="pencilMines">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#f5f3eb">
+  <meta name="description" content="在方格纸上寻找线索，插一面小旗，解开一页铅笔扫雷。" data-i18n-content="pencilMines.description">
+  <title data-i18n="pencilMines.pageTitle">铅笔扫雷 · Boopland</title>
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="style.css">
+  <script defer src="../../analytics.js"></script>
+</head>
+<body>
+  <svg class="svg-library" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><defs>
+    <symbol id="icon-flag" viewBox="0 0 32 32"><path d="M10 27 11 5m1 1q7-3 14 1l-5 5 5 5q-8-4-15-1"/><path d="M12 7q6-2 12 0l-4 5 4 3q-7-2-12 0Z" fill="currentColor" opacity=".22"/><path d="m6 28 12-1M14 9l7 1m-7 3 5 1" opacity=".5"/></symbol>
+    <symbol id="icon-mine" viewBox="0 0 32 32"><path d="M10 9c8-6 17 2 14 11s-17 7-18-2q-1-6 4-9ZM15 3l1 4m10-2-4 5m6 6-4 1M24 26l-4-4m-5 3-1 5M4 26l5-5M2 14l5 1M5 5l5 5"/><path d="m10 17 8-7m-8 12 11-10m-7 12 8-8" opacity=".35"/><path d="m11 12 3-2" stroke-width="2.5"/></symbol>
+    <symbol id="icon-pencil" viewBox="0 0 32 32"><path d="m6 20 14-15q2-2 5 1t1 5L12 26l-8 2Zm1 0 5 5M20 5l6 6M9 22 23 8M5 24l3 3"/><path d="m12 23 12-13" opacity=".4"/></symbol>
+    <symbol id="icon-clock" viewBox="0 0 32 32"><path d="M17 5C3 4 1 25 15 27s18-18 5-21M16 11v7l5 2M13 2h7"/></symbol>
+    <symbol id="icon-restart" viewBox="0 0 32 32"><path d="M6 12C10 0 30 6 27 20S5 31 4 21M5 4l1 9 9-1"/></symbol>
+    <symbol id="icon-sprout" viewBox="0 0 32 32"><path d="M15 28q-1-15 9-22M17 16C13 8 21 2 29 4q-1 13-12 12ZM14 24C4 26 1 16 4 11q12 1 10 13Z"/><path d="m17 16 8-9M14 24 7 16" opacity=".5"/></symbol>
+  </defs></svg>
+  <div class="paper-grain" aria-hidden="true"></div>
+  <main class="game-shell">
+    <header class="topbar">
+      <a class="back-link" href="../../games.html"><span aria-hidden="true">↶</span><span data-i18n="common.back">返回大厅</span></a>
+      <a class="wordmark" href="../../games.html" aria-label="Boopland">boopland<span>.</span></a>
+      <div class="top-actions">
+        <button id="pause" class="icon-button" data-i18n-label="pencilMines.pause" title="暂停" disabled><svg id="pause-icon" viewBox="0 0 32 32" aria-hidden="true"><path d="M11 8v16M21 8v16"/></svg></button>
+        <button id="help" class="icon-button" data-i18n-label="pencilMines.help" data-i18n-title="pencilMines.help">?</button>
+      </div>
+    </header>
+
+    <section class="desk">
+      <aside class="margin-note" aria-hidden="true">
+        <span class="eyebrow" data-i18n="pencilMines.marginLabel">课间 · 小小推理</span>
+        <p class="hand-note" data-i18n="pencilMines.margin">慢一点，\n线索就在脚边。</p>
+        <svg class="note-arrow" viewBox="0 0 150 65"><path d="M8 8c4 51 89 6 117 38m-18-1 19 4-3-17M8 12c8 43 85 5 113 32"/></svg>
+        <div class="number-study"><span class="study-two">2</span><svg class="icon"><use href="#icon-flag"/></svg><svg class="icon"><use href="#icon-flag"/></svg></div>
+        <p class="margin-caption" data-i18n="pencilMines.marginCaption">一个数字，\n是周围八格的小秘密。</p>
+        <svg class="flower" viewBox="0 0 80 105"><path d="M40 98q8-23 0-56m4 32C23 76 24 60 25 59q17 0 19 15Zm-1 10q23-3 21-17-20 0-21 17ZM40 18c-13-28-28 5-12 11-30-1-16 29-2 18-12 24 20 29 19 9 16 24 31-5 15-13 26 0 12-30-2-22 9-27-22-30-18-3Z"/><circle cx="43" cy="35" r="11"/><path d="m40 29 7 9m-11-4 8 9" opacity=".4"/></svg>
+      </aside>
+
+      <section class="notebook" aria-labelledby="game-title">
+        <div class="tape" aria-hidden="true"></div>
+        <header class="notebook-heading"><div><span class="eyebrow">NO. 08 / PENCIL & PAPER</span><h1 id="game-title" data-i18n="pencilMines.name">铅笔扫雷</h1></div><svg class="title-sprout icon" aria-hidden="true"><use href="#icon-sprout"/></svg></header>
+        <div class="scorebar">
+          <div class="stat"><svg class="icon" aria-hidden="true"><use href="#icon-flag"/></svg><div><span data-i18n="pencilMines.flags">剩余旗帜</span><strong id="flags">10</strong></div></div>
+          <div class="stat"><svg class="icon" aria-hidden="true"><use href="#icon-clock"/></svg><div><span data-i18n="pencilMines.time">用时</span><strong id="time">00:00</strong></div></div>
+          <div class="stat best-stat"><span class="best-star" aria-hidden="true">✧</span><div><span data-i18n="pencilMines.best">本档最佳</span><strong id="best">—</strong></div></div>
+        </div>
+        <div class="board-space" id="board-space">
+          <div class="board-wrap" id="board-wrap">
+            <div class="board" id="board" role="group" data-i18n-label="pencilMines.board" aria-describedby="board-instructions"></div>
+            <div class="pause-cover" id="pause-cover" hidden><svg class="icon" aria-hidden="true"><use href="#icon-pencil"/></svg><h2 data-i18n="pencilMines.paused">铅笔也歇一歇</h2><button class="primary" id="resume" data-i18n="pencilMines.resume">继续这一页</button></div>
+          </div>
+        </div>
+        <footer class="notebook-footer"><div class="status-line"><span class="status-dot" aria-hidden="true"></span><p id="status" role="status" aria-live="polite">第一笔，放心落下。</p><span id="progress" class="progress">0 / 54</span></div><div class="progress-track" aria-hidden="true"><span id="progress-fill"></span></div></footer>
+      </section>
+
+      <aside class="tools-panel">
+        <section class="difficulty-section"><h2 class="eyebrow" id="difficulty-label" data-i18n="pencilMines.difficulty">今天，想挑战几格？</h2><div class="difficulty-options" role="group" aria-labelledby="difficulty-label">
+          <button class="difficulty" data-level="easy" aria-pressed="true"><span class="level-number" aria-hidden="true">01</span><span><b data-i18n="pencilMines.easy">随手一页</b><small>8 × 8 · <span data-i18n="pencilMines.easyMines">10 颗雷</span></small></span><span class="level-check" aria-hidden="true">✓</span></button>
+          <button class="difficulty" data-level="normal" aria-pressed="false"><span class="level-number" aria-hidden="true">02</span><span><b data-i18n="pencilMines.normal">认真一点</b><small>10 × 10 · <span data-i18n="pencilMines.normalMines">18 颗雷</span></small></span><span class="level-check" aria-hidden="true">✓</span></button>
+          <button class="difficulty" data-level="hard" aria-pressed="false"><span class="level-number" aria-hidden="true">03</span><span><b data-i18n="pencilMines.hard">推理时刻</b><small>12 × 12 · <span data-i18n="pencilMines.hardMines">28 颗雷</span></small></span><span class="level-check" aria-hidden="true">✓</span></button>
+        </div></section>
+        <section class="pencil-case"><h2 class="eyebrow" id="mode-label" data-i18n="pencilMines.tools">选一支笔</h2><div class="mode-switch" role="group" aria-labelledby="mode-label">
+          <button id="reveal-mode" aria-pressed="true"><svg class="icon" aria-hidden="true"><use href="#icon-pencil"/></svg><span data-i18n="pencilMines.reveal">翻开</span></button>
+          <button id="flag-mode" aria-pressed="false"><svg class="icon" aria-hidden="true"><use href="#icon-flag"/></svg><span data-i18n="pencilMines.flag">插旗</span></button>
+        </div><p class="control-hint" id="board-instructions" data-i18n="pencilMines.controlHint">点击翻开 · 右键 / 长按插旗</p></section>
+        <button class="new-page" id="restart"><svg class="icon" aria-hidden="true"><use href="#icon-restart"/></svg><span data-i18n="pencilMines.restart">新的一页</span></button>
+        <div class="pencil-drawing" aria-hidden="true"><svg viewBox="0 0 215 50"><path d="m12 35 25-25 161 9-1 19-161-9Z" fill="#cbbd833d"/><path d="m12 35 25-25 161 9-1 19-161-9Zm25-25-1 19M38 16l147 8M38 23l147 8M184 18l-1 19M12 35l12-3-3-7"/><path d="m191 21-1 14m3-14-1 14m-148-17 106 6m-100-1 97 6" opacity=".35"/></svg><span data-i18n="pencilMines.pencilNote">把小小的胜利，写在纸上。</span></div>
+      </aside>
+    </section>
+    <footer class="page-footer"><span data-i18n="pencilMines.footer">一格线索，一点灵光。</span><span aria-hidden="true">a little pencil, a little play.</span></footer>
+  </main>
+
+  <dialog id="help-dialog" aria-labelledby="help-title"><button class="icon-button dialog-close" id="close-help" data-i18n-label="pencilMines.close">×</button><p class="eyebrow">PENCIL NOTES</p><h2 id="help-title" data-i18n="pencilMines.helpTitle">一页扫雷小抄</h2><ol class="rules"><li data-i18n="pencilMines.ruleGoal"></li><li data-i18n="pencilMines.ruleNumber"></li><li data-i18n="pencilMines.ruleFlag"></li><li data-i18n="pencilMines.ruleChord"></li><li data-i18n="pencilMines.ruleSafe"></li></ol><p class="keyboard-note" data-i18n="pencilMines.ruleKeyboard"></p><button class="primary" id="help-done" data-i18n="pencilMines.gotIt">记住了</button></dialog>
+  <dialog id="restart-dialog" aria-labelledby="restart-title"><p class="eyebrow">A FRESH PAGE</p><h2 id="restart-title" data-i18n="pencilMines.restartTitle">翻到新的一页？</h2><p data-i18n="pencilMines.restartCopy"></p><div class="dialog-actions"><button id="cancel-restart" class="secondary" data-i18n="pencilMines.cancel">接着玩</button><button id="confirm-restart" class="primary" data-i18n="pencilMines.confirm">翻页</button></div></dialog>
+  <dialog id="result-dialog" aria-labelledby="result-title"><button class="icon-button dialog-close" id="close-result" data-i18n-label="pencilMines.inspect">×</button><div class="result-art" id="result-art" aria-hidden="true"></div><p class="eyebrow" id="result-kicker"></p><h2 id="result-title"></h2><p id="result-copy"></p><p class="result-record" id="result-record" hidden data-i18n="pencilMines.newBest"></p><div class="dialog-actions"><button class="secondary" id="inspect" data-i18n="pencilMines.inspect">看看棋盘</button><button class="primary" id="play-again" data-i18n="pencilMines.again">再来一页</button></div></dialog>
+  <p class="sr-only" id="announcement" aria-live="polite" aria-atomic="true"></p>
+  <script src="../../i18n.js"></script>
+  <script src="translations.js"></script>
+  <script src="engine.js"></script>
+  <script src="game.js"></script>
+</body>
+</html>
