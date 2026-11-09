@@ -7,6 +7,23 @@
 // locales 按全局语言提供 title、description；缺少翻译时回退到基础字段。
 window.GAME_LIST = [
   {
+    title: "街角咖啡店",
+    description: "接一张小票，亲手做一杯咖啡。照看排队的客人，打烊算账，让街角小店慢慢长大。",
+    path: "./games/corner-coffee/index.html",
+    category: "休闲",
+    color: "#eae5d5",
+    cover: "./games/corner-coffee/cover.svg",
+    locales: {
+      en: { title: "Corner Coffee", description: "Take orders and craft each cup. Serve your waiting guests, settle the day and grow a little corner café." },
+      ja: { title: "街角の喫茶店", description: "注文を受け、一杯ずつ手作り。待つお客さんをもてなし、閉店後に帳簿をつけて小さなお店を育てよう。" },
+      ko: { title: "모퉁이 커피숍", description: "주문을 받고 한 잔씩 직접 만들어요. 기다리는 손님을 대접하고 마감 후 정산하며 작은 가게를 키워요." },
+      fr: { title: "Café du coin", description: "Prenez les commandes et préparez chaque tasse. Servez vos clients, faites les comptes et développez votre petit café." },
+      de: { title: "Eckcafé", description: "Nimm Bestellungen an und bereite jede Tasse selbst zu. Bediene deine Gäste, rechne ab und lass dein kleines Café wachsen." },
+      es: { title: "Café de la esquina", description: "Toma pedidos y prepara cada taza. Atiende a tus clientes, cierra las cuentas y haz crecer tu pequeño café." },
+      'pt-BR': { title: "Café da esquina", description: "Aceite pedidos e prepare cada xícara. Atenda os clientes, feche as contas e faça seu pequeno café crescer." }
+    }
+  },
+  {
     title: "纸间升级 · 拖拉机",
     description: "与电脑队友搭档，亮主、扣底、连对争分。双副牌的一桌默契，从 2 打到 A。",
     path: "./games/tractor/index.html",
@@ -62,7 +79,6 @@ window.GAME_LIST = [
     description: "一盏茶，一副长牌。与两位电脑牌友玩双将，碰杠听胡，慢慢过招。",
     path: "./games/nantong-changpai/index.html",
     category: "棋牌",
-    tags: ["推荐"],
     color: "#e6ebdc",
     cover: "./games/nantong-changpai/cover.svg",
     locales: {

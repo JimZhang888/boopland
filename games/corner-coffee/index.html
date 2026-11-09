@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-i18n-scope="coffee">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#f5f3eb">
+  <title data-i18n="coffee.pageTitle">街角咖啡店 · Boopland</title>
+  <link rel="icon" type="image/svg+xml" href="cover.svg">
+  <link rel="stylesheet" href="style.css">
+  <script defer src="../../analytics.js"></script>
+</head>
+<body>
+<main class="game-shell">
+  <header class="topbar">
+    <a href="../../games.html" class="back" data-i18n="common.back">返回大厅</a>
+    <div class="brand"><h1 data-i18n="coffee.name">街角咖啡店</h1><span>COFFEE & A LITTLE JOY</span></div>
+    <div class="tools"><button id="help" class="icon-button" data-i18n-label="coffee.help">?</button><button id="pause" class="icon-button" data-i18n-label="coffee.pause">Ⅱ</button></div>
+  </header>
+  <section class="ledger" data-i18n-label="coffee.ledger">
+    <div class="day-stat"><span id="day"></span><strong id="day-progress"></strong></div>
+    <div><span data-i18n="coffee.revenue">收入</span><strong id="revenue">¥0</strong></div>
+    <div><span data-i18n="coffee.costShort">成本</span><strong id="cost">¥0</strong></div>
+    <div><span data-i18n="coffee.wallet">店铺资金</span><strong id="wallet">¥30</strong></div>
+  </section>
+  <div class="play-area" id="play-area">
+    <section class="order-board" data-i18n-label="coffee.orders">
+      <div class="section-heading"><h2 data-i18n="coffee.orders">窗前的客人</h2><span id="queue-note"></span></div>
+      <div class="orders" id="orders"></div>
+    </section>
+    <section class="bar">
+      <div class="workbench">
+        <div class="awning" aria-hidden="true"></div>
+        <div class="bench-title"><span>✳</span><p data-i18n="coffee.benchNote">把日子，慢慢冲好。</p><span>✳</span></div>
+        <div class="counter-art" id="counter-art" aria-hidden="true"></div>
+        <div class="cup-info"><strong id="cup-state"></strong><p id="cup-parts"></p></div>
+        <div class="extraction">
+          <div class="meter-heading"><span id="extraction-label"></span><b id="extraction-value">0%</b></div>
+          <div class="meter" id="meter" role="progressbar" aria-valuemin="0" aria-valuemax="100" data-i18n-label="coffee.extraction"><span id="safe-zone"></span><i id="needle"></i></div>
+          <p id="extraction-tip"></p>
+        </div>
+      </div>
+      <aside class="prep">
+        <div class="recipe-card"><div class="section-heading"><h2 data-i18n="coffee.recipe">配方小抄</h2><span id="recipe-price"></span></div><strong id="recipe-name"></strong><div class="recipe-steps" id="recipe-steps"></div></div>
+        <div class="ingredients" id="ingredients"></div>
+        <div class="serve-row"><button id="discard" data-i18n="coffee.discard">倒掉重做</button><button id="serve" class="primary" data-i18n="coffee.serve">交付 · 收钱 ↗</button></div>
+        <button id="restock" class="text-button" data-i18n="coffee.restock">补货 +4 份 · 配送 ¥6</button>
+      </aside>
+    </section>
+  </div>
+  <footer><p id="message" role="status" aria-live="polite"></p><span id="save-status"></span></footer>
+  <section class="overlay" id="overlay" aria-labelledby="overlay-title">
+    <div class="paper-card">
+      <div class="ticket-top"><span>CORNER COFFEE</span><span>✳</span><span id="ticket-day"></span></div>
+      <img class="intro-cover" id="intro-cover" src="cover.svg" alt="">
+      <p class="eyebrow" id="overlay-eyebrow"></p><h2 id="overlay-title"></h2><p id="overlay-description"></p>
+      <div id="intro-guide" class="intro-guide"><p data-i18n="coffee.quick1"></p><p data-i18n="coffee.quick2"></p><p data-i18n="coffee.quick3"></p></div>
+      <div class="result-grid" id="results" hidden></div>
+      <section id="upgrade-panel" hidden><div class="section-heading"><h3 data-i18n="coffee.upgrades">添一点新设备</h3><strong id="upgrade-wallet"></strong></div><div id="upgrades"></div></section>
+      <button id="start" class="primary wide"></button>
+      <div class="overlay-actions"><button id="close-day" class="text-button" data-i18n="coffee.closeDay">提前打烊</button><button id="new-shop" class="text-button" data-i18n="coffee.newShop">重新开店</button></div>
+      <p class="save-note" id="overlay-save"></p>
+    </div>
+  </section>
+</main>
+<dialog id="help-dialog" aria-labelledby="help-title"><div class="section-heading"><h2 id="help-title" data-i18n="coffee.helpTitle">店主的口袋手册</h2><button id="help-close" class="icon-button" data-i18n-label="coffee.close">×</button></div><ol class="help-list"><li data-i18n="coffee.rule1"></li><li data-i18n="coffee.rule2"></li><li data-i18n="coffee.rule3"></li><li data-i18n="coffee.rule4"></li><li data-i18n="coffee.rule5"></li></ol><p data-i18n="coffee.keys"></p><button id="help-done" class="primary wide" data-i18n="coffee.gotIt">记住啦</button></dialog>
+<dialog id="confirm-dialog" aria-labelledby="confirm-title"><h2 id="confirm-title"></h2><p id="confirm-description"></p><div class="confirm-actions"><button id="confirm-cancel" data-i18n="coffee.cancel">取消</button><button id="confirm-ok" class="primary" data-i18n="coffee.confirm">确定</button></div></dialog>
+<script src="../../i18n.js"></script>
+<script src="translations.js"></script>
+<script src="engine.js"></script>
+<script src="art.js"></script>
+<script src="game.js"></script>
+</body>
+</html>
