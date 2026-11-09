@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="zh-CN" data-i18n-scope="gin">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#f5f3eb">
+  <meta name="description" data-i18n-content="description" content="在纸间收集顺子与同点数组，和电脑玩一局轻松的金拉米。">
+  <title data-i18n="title">金拉米 · Boopland</title>
+  <link rel="icon" href="./cover.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="./style.css?v=1">
+  <script defer src="../../analytics.js"></script>
+</head>
+<body>
+  <div class="game-shell">
+    <header class="topbar">
+      <a class="back-link" href="../../games.html" data-i18n-label="common.back"><span aria-hidden="true">←</span><span data-i18n="common.back"></span></a>
+      <h1><span class="title-art" aria-hidden="true">♧</span><span data-i18n="name">金拉米</span><small>GIN RUMMY</small></h1>
+      <div class="header-tools"><button id="new-game" class="icon-button" data-i18n-label="newGame" data-i18n-title="newGame">↻</button><button id="help" class="icon-button" data-i18n-label="help" data-i18n-title="help">?</button></div>
+    </header>
+    <main class="notebook" data-i18n-label="gameArea">
+      <div class="scorebar">
+        <div class="score-player"><span data-i18n="you"></span><strong id="your-score">0</strong></div>
+        <div class="round-info"><strong id="round"></strong><span data-i18n="target"></span></div>
+        <div class="score-player opponent-score"><strong id="opponent-score">0</strong><span data-i18n="opponent"></span></div>
+      </div>
+      <section class="opponent-area" data-i18n-label="opponentHand">
+        <div class="opponent-label"><span class="seat-dot"></span><span data-i18n="opponent"></span><span id="opponent-state"></span></div>
+        <div id="opponent-hand" class="opponent-hand" aria-hidden="true"></div>
+      </section>
+      <section class="table-area" data-i18n-label="table">
+        <aside class="memo meld-memo"><span class="tape" aria-hidden="true"></span><span class="eyebrow" data-i18n="littleNote"></span><div class="example" aria-hidden="true"><i>3♧</i><i>4♧</i><i>5♧</i></div><span data-i18n="runLabel"></span><div class="example" aria-hidden="true"><i>7♠</i><i class="red">7♥</i><i>7♣</i></div><span data-i18n="setLabel"></span></aside>
+        <div class="piles-area">
+          <div class="table-ring" aria-hidden="true"></div>
+          <div class="pile-column"><button id="stock" class="pile stock" data-i18n-label="drawStock"><span class="card-back"><span>♧</span></span></button><strong data-i18n="stock"></strong><span id="stock-count" class="pile-note"></span></div>
+          <div class="between-piles" aria-hidden="true">↝</div>
+          <div class="pile-column"><button id="discard-pile" class="pile discard-pile" data-i18n-label="takeDiscard"></button><strong data-i18n="discardPile"></strong><span id="discard-note" class="pile-note"></span></div>
+        </div>
+        <aside class="memo log-memo"><span class="eyebrow" data-i18n="tableNotes"></span><svg class="pencil-art" viewBox="0 0 120 42" aria-hidden="true"><path d="m18 29 72-18 4 14-72 17-9-4Z"/><path d="m18 29 4 13m-9-4 7-2m6-3 62-15m-4-5 4 13M9 9q22-8 39 0t33 0"/></svg><p id="last-event"></p><span class="quiet" id="turn-count"></span></aside>
+      </section>
+      <section class="hand-area" data-i18n-label="yourHand">
+        <div class="hand-heading"><div><strong data-i18n="yourHand"></strong><span class="meld-key" data-i18n="meldKey"></span></div><div class="deadwood-badge"><span id="deadwood-label" data-i18n="deadwood"></span><strong id="deadwood">0</strong></div></div>
+        <div id="hand" class="hand"></div>
+      </section>
+      <div class="status-line"><span class="status-dot" aria-hidden="true"></span><p id="status" role="status" aria-live="polite"></p></div>
+      <nav class="actions" data-i18n-label="actions">
+        <div class="secondary-actions"><button id="sort" class="soft-button" data-i18n="sort"></button><button id="hint" class="soft-button" data-i18n="hint"></button></div>
+        <div class="primary-actions"><button id="primary" class="primary-button"></button><button id="knock" class="knock-button" data-i18n="knock" disabled></button></div>
+      </nav>
+    </main>
+    <footer class="page-foot"><span aria-hidden="true">· ♧ ·</span><span data-i18n="footer"></span><span aria-hidden="true">· ♧ ·</span></footer>
+  </div>
+  <dialog id="dialog" aria-labelledby="dialog-title">
+    <div class="dialog-sheet"><header class="dialog-header"><h2 id="dialog-title"></h2><button id="close-dialog" class="icon-button" data-i18n-label="close">×</button></header><div id="dialog-content"></div><div id="dialog-actions"></div><a class="dialog-back" href="../../games.html" data-i18n="common.back"></a></div>
+  </dialog>
+  <script src="../../i18n.js"></script>
+  <script src="./translations.js"></script>
+  <script src="./engine.js"></script>
+  <script src="./game.js"></script>
+</body>
+</html>

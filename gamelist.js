@@ -7,6 +7,23 @@
 // locales 按全局语言提供 title、description；缺少翻译时回退到基础字段。
 window.GAME_LIST = [
   {
+    title: "金拉米",
+    description: "十张纸牌，一位牌友。收集顺子与同点数组，巧妙敲牌，向 100 分慢慢靠近。",
+    path: "./games/gin-rummy/index.html",
+    category: "棋牌",
+    color: "#e5e9dc",
+    cover: "./games/gin-rummy/cover.svg",
+    locales: {
+      en: { title: "Gin Rummy", description: "Ten cards and a computer friend. Collect runs and sets, choose when to knock, and race to 100 points." },
+      ja: { title: "ジンラミー", description: "10枚の札とコンピューターの友だち。連番と同じ数字を集め、ノックの時機を選んで100点を目指そう。" },
+      ko: { title: "진 러미", description: "열 장의 카드와 컴퓨터 친구. 연속 카드와 같은 숫자를 모아 노크하고 먼저 100점에 도전해요." },
+      fr: { title: "Gin Rami", description: "Dix cartes et un ami virtuel. Formez suites et brelans, frappez au bon moment et atteignez 100 points." },
+      de: { title: "Gin Rommé", description: "Zehn Karten und ein Computerfreund. Sammle Folgen und Sätze, klopfe im richtigen Moment und erreiche 100 Punkte." },
+      es: { title: "Gin Rummy", description: "Diez cartas y un amigo virtual. Forma grupos y escaleras, elige cuándo cerrar y llega a 100 puntos." },
+      'pt-BR': { title: "Gin Rummy", description: "Dez cartas e um amigo virtual. Forme trincas e sequências, escolha quando bater e chegue a 100 pontos." }
+    }
+  },
+  {
     title: "街角咖啡店",
     description: "接一张小票，亲手做一杯咖啡。照看排队的客人，打烊算账，让街角小店慢慢长大。",
     path: "./games/corner-coffee/index.html",
