@@ -42,7 +42,7 @@
   }
   function cardButton(uid, options) {
     const card = E.type(uid), isSelected = selected === uid;
-    return '<button type="button" class="card' + (isSelected ? ' selected' : '') + (E.old(card) || card === 7 || card === 8 ? ' special' : '') + (state.lastDraw === uid ? ' new-card' : '') + (options.some(a => a.card === card && ['dragon','angang','jiagang'].includes(a.kind)) ? ' eligible' : '') + '" data-uid="' + uid + '" aria-label="' + esc(label(card)) + '" aria-pressed="' + isSelected + '">' + A.card(card) + '<span class="card-tag" aria-hidden="true">' + esc(label(card,true)) + '</span></button>';
+    return '<button type="button" class="card' + (isSelected ? ' selected' : '') + (E.old(card) || card === 7 || card === 8 ? ' special' : '') + (state.lastDraw === uid ? ' new-card' : '') + (options.some(a => a.card === card && ['dragon','angang','jiagang'].includes(a.kind)) ? ' eligible' : '') + '" data-uid="' + uid + '" aria-label="' + esc(label(card)) + '" aria-pressed="' + isSelected + '">' + A.card(card) + '</button>';
   }
   function render() {
     const p = state.players[0], options = E.actions(state);
