@@ -7,6 +7,24 @@
 // locales 按全局语言提供 title、description；缺少翻译时回退到基础字段。
 window.GAME_LIST = [
   {
+    title: "南通长牌",
+    description: "一盏茶，一副长牌。与两位电脑牌友玩双将，碰杠听胡，慢慢过招。",
+    path: "./games/nantong-changpai/index.html",
+    category: "棋牌",
+    tags: ["推荐"],
+    color: "#e6ebdc",
+    cover: "./games/nantong-changpai/cover.svg",
+    locales: {
+      en: { title: "Nantong Long Cards", description: "A cup of tea and a traditional card game. Play two computer opponents, form sets, and discover double-general scoring." },
+      ja: { title: "南通長牌", description: "お茶と一緒に、二人のコンピューターと長牌対戦。ポン・カン・和了で楽しむ双将ルール。" },
+      ko: { title: "난퉁 장패", description: "차 한 잔과 전통 카드 놀이. 컴퓨터 친구 둘과 쌍장 규칙으로 퐁, 깡, 승리를 즐겨요." },
+      fr: { title: "Cartes de Nantong", description: "Un thé et un jeu traditionnel. Affrontez deux adversaires virtuels et découvrez les règles des deux généraux." },
+      de: { title: "Nantong-Langkarten", description: "Eine Tasse Tee und ein traditionelles Kartenspiel gegen zwei Computer. Entdecke die Regeln mit zwei Generälen." },
+      es: { title: "Cartas de Nantong", description: "Un té y un juego tradicional. Juega contra dos rivales y descubre las reglas de los dos generales." },
+      'pt-BR': { title: "Cartas de Nantong", description: "Um chá e um jogo tradicional. Enfrente dois oponentes e descubra as regras dos dois generais." }
+    }
+  },
+  {
     title: "纸间衣橱",
     description: "给手绘纸娃娃搭一身日常：自由穿搭、场景挑战与小店委托，把喜欢的造型存成明信片。",
     path: "./games/paper-wardrobe/index.html",

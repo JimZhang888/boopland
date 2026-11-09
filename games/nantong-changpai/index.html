@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="zh-CN" data-i18n-scope="nantong">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#eef0e4">
+  <title data-i18n="nantong.title">南通长牌</title>
+  <link rel="icon" href="./cover.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="./style.css">
+  <script defer src="../../analytics.js"></script>
+</head>
+<body>
+  <main class="shell">
+    <header class="topbar">
+      <a class="back icon-button" href="../../games.html" data-i18n-label="common.back" data-i18n-title="common.back">←</a>
+      <div class="heading"><h1 data-i18n="nantong.title">南通长牌</h1><p data-i18n="nantong.subtitle">一盏茶，一副长牌。</p></div>
+      <span class="round" id="round"></span>
+      <nav class="tools">
+        <button class="icon-button" id="sound" type="button">♪</button>
+        <button class="icon-button" id="restart" type="button" data-i18n-label="nantong.restart" data-i18n-title="nantong.restart">↻</button>
+        <button class="icon-button" id="rules" type="button" data-i18n-label="nantong.rules" data-i18n-title="nantong.rules">?</button>
+      </nav>
+    </header>
+    <section class="table" data-i18n-label="nantong.table">
+      <div class="opponents">
+        <section class="opponent" id="opponent-2"></section>
+        <section class="opponent" id="opponent-1"></section>
+      </div>
+      <div class="table-center">
+        <div class="generals"><span class="eyebrow" data-i18n="nantong.generals">本局双将</span><div id="generals"></div></div>
+        <div class="last-play"><div id="last-card"></div><span id="last-label"></span></div>
+        <div class="stock"><div id="stock-art"></div><span id="deck"></span></div>
+      </div>
+      <div class="table-bottom">
+        <div class="event" id="event" role="status" aria-live="polite"></div>
+        <button class="river" id="river" type="button" data-i18n-label="nantong.history"><span id="recent"></span><span class="river-label" data-i18n="nantong.history">牌河 ↗</span></button>
+      </div>
+    </section>
+    <section class="hand-panel">
+      <div class="hand-caption"><strong id="you"></strong><span id="status" role="status" aria-live="polite"></span><span id="score"></span></div>
+      <div class="own-melds" id="own-melds"></div>
+      <div class="hand-grid" id="hand" role="group" data-i18n-label="nantong.yourHand"></div>
+      <div class="hand-note"><span id="selection"></span><span id="waits"></span></div>
+    </section>
+    <footer class="action-bar" id="actions"></footer>
+  </main>
+  <dialog id="modal"><div class="modal-inner"><button id="modal-close" class="icon-button close" data-i18n-label="nantong.close">×</button><div id="modal-content"></div></div></dialog>
+  <script src="../../i18n.js"></script>
+  <script src="./translations.js"></script>
+  <script src="./engine.js"></script>
+  <script src="./art.js"></script>
+  <script src="./game.js"></script>
+</body>
+</html>
