@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="zh-CN" data-i18n-scope="climbUp">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#f5f3eb">
+  <meta name="description" data-i18n-content="description" content="和两位纸上牌友一起争上游，先出完手牌的人获胜。">
+  <title data-i18n="title">争上游 · Boopland</title>
+  <link rel="icon" href="./cover.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="./style.css">
+  <script defer src="../../analytics.js"></script>
+</head>
+<body>
+  <div class="game-shell">
+    <header class="topbar">
+      <a href="../../games.html" class="back" data-i18n-label="common.back"><span aria-hidden="true">←</span><span data-i18n="common.back">返回大厅</span></a>
+      <h1><span aria-hidden="true">♧</span> <span data-i18n="name">争上游</span></h1>
+      <div class="header-actions"><button id="pause" class="icon-button" data-i18n-label="pause">Ⅱ</button><button id="help" class="icon-button" data-i18n-label="help">?</button></div>
+    </header>
+    <main class="sheet">
+      <div class="round-bar"><span data-i18n="edition">三人小牌桌</span><span id="record"></span></div>
+      <section class="table" data-i18n-label="table">
+        <svg class="table-lines" viewBox="0 0 900 400" preserveAspectRatio="none" aria-hidden="true"><path d="M74 105Q48 42 142 36L760 39Q845 40 831 112L820 310Q818 357 742 358L156 362Q64 362 71 301Z"/><path d="M78 109Q54 47 145 42L757 44M815 310Q815 352 741 352L160 356"/><path d="m125 290 12 14m-2-28 13 14m608-184 12 13m-3-28 13 14"/></svg>
+        <div class="opponents"><div id="seat-1" class="opponent"></div><div id="seat-2" class="opponent"></div></div>
+        <div class="table-center">
+          <div id="table-caption" class="table-caption"></div>
+          <div id="table-cards" class="table-cards"></div>
+          <div id="table-note" class="table-note"></div>
+        </div>
+        <div class="table-foot"><span data-i18n="tableMotto">一手好牌，慢慢出。</span><span aria-hidden="true">3 · · · A · 2 · ♧</span></div>
+      </section>
+      <section class="hand-area" data-i18n-label="yourHand">
+        <div class="hand-heading"><strong id="your-label"></strong><span id="selection-label"></span><button id="clear" class="clear-button" data-i18n="clear">清空</button></div>
+        <div id="hand" class="hand"></div>
+      </section>
+      <div class="status-line"><span aria-hidden="true">✎</span><p id="status" role="status" aria-live="polite"></p></div>
+      <nav class="tools" data-i18n-label="tools"><button id="restart" data-i18n="restart">重开</button><button id="hint"><span aria-hidden="true">✧ </span><span data-i18n="hint">提示</span></button><button id="pass" data-i18n="pass">不要</button><button id="play" class="primary" data-i18n="play">出牌</button></nav>
+    </main>
+    <footer data-i18n="footer">纸上的小小较量，也是片刻好时光。</footer>
+  </div>
+  <dialog id="dialog" aria-labelledby="dialog-title"><div class="dialog-sheet"><div class="dialog-heading"><h2 id="dialog-title"></h2><button id="close-dialog" class="icon-button" data-i18n-label="close">×</button></div><div id="dialog-content"></div><div id="dialog-actions"></div><a class="dialog-back" href="../../games.html" data-i18n="common.back">返回大厅</a></div></dialog>
+  <script src="../../i18n.js"></script>
+  <script src="./translations.js"></script>
+  <script src="./engine.js"></script>
+  <script src="./game.js"></script>
+</body>
+</html>

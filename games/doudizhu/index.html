@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="zh-CN" data-i18n-scope="ddz">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#f5f3eb">
+  <meta name="description" data-i18n-content="description" content="与两位电脑牌友，来一局纸上的斗地主。">
+  <title data-i18n="title">斗地主 · Boopland</title>
+  <link rel="icon" type="image/svg+xml" href="./cover.svg">
+  <link rel="stylesheet" href="./style.css">
+  <script defer src="../../analytics.js"></script>
+</head>
+<body>
+  <svg class="svg-library" aria-hidden="true"><defs>
+    <symbol id="cat" viewBox="0 0 80 80"><path class="avatar-fill" d="M13 36 14 12 31 23Q41 19 50 24L67 12 68 38Q79 69 41 71 4 70 13 36Z"/><path d="m18 27 1-8 8 8m29 0 7-8 1 9M26 42v4m27-4v4m-18 7 5 3 5-3m-5 3v4m-17-7-14-2m15 8-13 3m45-9 13-2m-14 8 14 3"/><path class="cheek" d="M22 50h7m21 0h7"/></symbol>
+    <symbol id="rabbit" viewBox="0 0 80 80"><path class="avatar-fill" d="M24 34Q9 3 22 5 33 7 35 31h10Q48 0 60 6 71 11 56 35 76 47 65 64 56 75 34 71 9 69 13 49 14 40 24 34Z"/><path d="m23 15 6 15m27-14-5 14M28 46v4m24-4v4m-18 6 6 3 6-3m-6 3v4"/><path class="cheek" d="M22 55h7m22 0h7"/></symbol>
+    <symbol id="sprig" viewBox="0 0 80 110"><path d="M39 103Q42 61 35 14m5 69Q17 84 15 66 32 63 40 77m0-20Q61 60 65 39 47 41 40 51m-2-12Q20 38 20 22 33 22 38 35m-3-18Q44 9 39 2"/></symbol>
+  </defs></svg>
+  <div class="game-shell">
+    <header class="topbar">
+      <a class="back" href="../../games.html" data-i18n-label="common.back"><span aria-hidden="true">←</span><span data-i18n="common.back"></span></a>
+      <h1><span class="title-suit" aria-hidden="true">♧</span><span data-i18n="name">斗地主</span></h1>
+      <div class="header-actions"><button id="restart" class="icon-button" data-i18n-label="newGame" data-i18n-title="newGame">↻</button><button id="help" class="icon-button" data-i18n-label="help" data-i18n-title="help">?</button></div>
+    </header>
+    <main class="notebook" data-i18n-label="table">
+      <div class="table-top"><span class="edition" data-i18n="edition">纸上牌友 · 三人一桌</span><div class="score-strip"><span><span data-i18n="base">底分</span> <b id="base">—</b></span><span><span data-i18n="multiplier">倍数</span> <b id="multiplier">×1</b></span><span><span data-i18n="total">总分</span> <b id="total">0</b></span></div></div>
+      <section class="arena" data-i18n-label="opponents">
+        <article class="opponent left" id="player-2"><div class="profile"><div class="avatar rabbit"><svg aria-hidden="true"><use href="#rabbit"/></svg></div><div><h2 data-i18n="player2">小麦</h2><span class="role" id="role-2"></span></div><span class="card-count" id="count-2"></span></div><div class="mini-hand" aria-hidden="true"><i></i><i></i><i></i></div><div class="player-action" id="action-2"></div></article>
+        <div class="table-center"><div class="bottom-label" data-i18n="bottom">地主底牌</div><div id="bottom-cards" class="bottom-cards"></div><div class="center-note" id="center-note"><span class="table-doodle" aria-hidden="true">♧</span><span data-i18n="note">好牌坏牌，都慢慢来。</span></div><div class="trick-label" id="trick-label"></div><div id="trick-cards" class="trick-cards"></div></div>
+        <article class="opponent right" id="player-1"><div class="profile"><div class="avatar cat"><svg aria-hidden="true"><use href="#cat"/></svg></div><div><h2 data-i18n="player1">阿栗</h2><span class="role" id="role-1"></span></div><span class="card-count" id="count-1"></span></div><div class="mini-hand" aria-hidden="true"><i></i><i></i><i></i></div><div class="player-action" id="action-1"></div></article>
+        <svg class="table-sprig" aria-hidden="true"><use href="#sprig"/></svg>
+      </section>
+      <section class="play-area" data-i18n-label="controls">
+        <p class="status" id="status" role="status" aria-live="polite"></p>
+        <div class="actions" id="actions">
+          <button id="start" class="primary" data-i18n="start">坐下，发牌</button>
+          <div id="bid-actions" class="action-group" hidden><button data-bid="0" data-i18n="noBid">不叫</button><button data-bid="1" data-i18n="bid1">1 分</button><button data-bid="2" data-i18n="bid2">2 分</button><button data-bid="3" class="primary" data-i18n="bid3">3 分</button></div>
+          <div id="play-actions" class="action-group" hidden><button id="pass" data-i18n="pass">不出</button><button id="hint" data-i18n="hint">提示</button><button id="clear" data-i18n="clear">重选</button><button id="play" class="primary" data-i18n="play">出牌</button></div>
+          <button id="next" class="primary" data-i18n="next" hidden>再来一局</button>
+        </div>
+      </section>
+      <section class="hand-area" data-i18n-label="hand"><div class="hand-heading"><div><strong data-i18n="you">你</strong><span id="role-0" class="role"></span><span id="count-0" class="hand-count"></span></div><span id="selection-label" class="selection-label"></span></div><div class="hand" id="hand"></div><div class="hand-foot"><span id="hand-note" data-i18n="handNote">点选纸牌，再点「出牌」</span><span class="keyboard-note" data-i18n="keyboard">H 提示 · Enter 出牌 · Esc 重选</span></div></section>
+    </main>
+    <footer class="page-foot"><span aria-hidden="true">✧</span><span data-i18n="footer">不赶时间，打完这一手。</span><span aria-hidden="true">✧</span></footer>
+  </div>
+  <dialog id="dialog" aria-labelledby="dialog-title"><div class="dialog-sheet"><header><h2 id="dialog-title"></h2><button id="close-dialog" class="icon-button" data-i18n-label="close">×</button></header><div id="dialog-copy" class="dialog-copy"></div><div id="dialog-actions" class="dialog-actions"></div><a href="../../games.html" class="dialog-back" data-i18n="common.back"></a></div></dialog>
+  <script src="../../i18n.js"></script><script src="./translations.js"></script><script src="./engine.js"></script><script src="./game.js"></script>
+</body>
+</html>

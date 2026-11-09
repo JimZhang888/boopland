@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 400" fill="none">
+  <defs><pattern id="grain" width="9" height="9" patternUnits="userSpaceOnUse"><circle cx="2" cy="3" r=".5" fill="#899579" opacity=".15"/></pattern></defs>
+  <path fill="#e6eadc" d="M0 0h640v400H0z"/><path fill="url(#grain)" d="M0 0h640v400H0z"/>
+  <path d="M92 320q-8-186 28-230 208-37 397 10 31 66 8 213-216 32-433 7Z" fill="#eff0e5" stroke="#b4bea6" stroke-width="1.5"/>
+  <path d="M100 315q-9-179 26-220m-4-2q206-30 390 14M136 333q203 21 365-14" stroke="#bbc4ad" stroke-width="1"/>
+  <g transform="translate(179 104) rotate(-14 63 90)"><rect width="126" height="181" rx="9" fill="#fffef7" stroke="#77886a" stroke-width="2"/><rect x="5" y="6" width="116" height="169" rx="7" stroke="#d2d8c5"/><text x="14" y="37" font-size="29" font-family="Georgia" fill="#5b7352">3</text><text x="13" y="62" font-size="25" fill="#5b7352">♣</text><text x="43" y="119" font-size="62" fill="#5b7352">♣</text></g>
+  <g transform="translate(259 88) rotate(0 63 90)"><rect width="126" height="181" rx="8" fill="#fffef7" stroke="#77886a" stroke-width="2"/><rect x="5" y="6" width="116" height="169" rx="7" stroke="#d2d8c5"/><text x="14" y="37" font-size="29" font-family="Georgia" fill="#ac6159">A</text><text x="13" y="62" font-size="25" fill="#ac6159">♥</text><path d="M64 133Q17 103 39 84q17-12 25 8 9-20 26-8 21 20-26 49Z" fill="#d4a79e" stroke="#a5655c" stroke-width="1.5"/><path d="m40 95 3 13m5 3 5 6" stroke="#fffef7" stroke-width="2"/></g>
+  <g transform="translate(340 106) rotate(14 63 90)"><rect width="126" height="181" rx="9" fill="#fffef7" stroke="#77886a" stroke-width="2"/><rect x="5" y="6" width="116" height="169" rx="7" stroke="#d2d8c5"/><text x="14" y="37" font-size="29" font-family="Georgia" fill="#5b7352">2</text><text x="13" y="62" font-size="25" fill="#5b7352">♠</text><text x="42" y="123" font-size="65" fill="#5b7352">♠</text></g>
+  <path d="m308 59 12-14 12 14m-12-12v27M145 185l-18-3m24-13-10-13m357 44 18-7m-19 25 16 4" stroke="#8a9d79" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M254 323q69 13 132-2m-114 11q47 6 91-2" stroke="#a1af90" stroke-width="1.6" stroke-linecap="round"/>
+</svg>

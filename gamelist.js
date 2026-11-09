@@ -7,6 +7,57 @@
 // locales 按全局语言提供 title、description；缺少翻译时回退到基础字段。
 window.GAME_LIST = [
   {
+    title: "纸间升级 · 拖拉机",
+    description: "与电脑队友搭档，亮主、扣底、连对争分。双副牌的一桌默契，从 2 打到 A。",
+    path: "./games/tractor/index.html",
+    category: "棋牌",
+    color: "#e4e9dc",
+    cover: "./games/tractor/cover.svg",
+    locales: {
+      en: { title: "Paper Tractor · Shengji", description: "Team up with a computer, declare trumps and capture points with pairs and tractors. Two decks, from 2 to ace." },
+      ja: { title: "紙のトラクター · 升級", description: "コンピューターの相棒と切り札を宣言し、連続ペアで得点を集めよう。2組のカードで2からAへ。" },
+      ko: { title: "종이 트랙터 · 승급", description: "컴퓨터 팀원과 으뜸패를 정하고 연속 쌍으로 점수를 모아요. 두 벌의 카드로 2에서 A까지." },
+      fr: { title: "Tractor de papier · Shengji", description: "Faites équipe avec un ordinateur, annoncez l’atout et marquez avec des paires. Deux jeux, du 2 à l’as." },
+      de: { title: "Papier-Tractor · Shengji", description: "Mit einem Computerpartner Trumpf ansagen und Punkte mit Paarfolgen sammeln. Zwei Decks, von 2 bis Ass." },
+      es: { title: "Tractor de papel · Shengji", description: "Forma equipo con la computadora, anuncia triunfos y suma puntos con parejas. Dos barajas, del 2 al as." },
+      'pt-BR': { title: "Tractor de papel · Shengji", description: "Junte-se a um parceiro virtual, declare trunfos e marque pontos com pares. Dois baralhos, do 2 ao ás." }
+    }
+  },
+  {
+    title: "斗地主",
+    description: "一副纸牌，两位牌友。叫分、出牌、巧配飞机，慢慢打完这一手。",
+    path: "./games/doudizhu/index.html",
+    category: "棋牌",
+    color: "#e4e9da",
+    cover: "./games/doudizhu/cover.svg",
+    locales: {
+      en: { title: "Dou Dizhu", description: "A deck of cards and two computer friends. Bid, play clever combinations, and enjoy a quiet round." },
+      ja: { title: "闘地主", description: "一組のカードと二人の友だち。宣言して、札を組み合わせて、ゆっくり一局。" },
+      ko: { title: "더우디주", description: "카드 한 벌과 컴퓨터 친구 둘. 입찰하고 조합을 골라 천천히 한 판 즐겨요." },
+      fr: { title: "Dou Dizhu", description: "Un jeu de cartes et deux amis virtuels. Enchérissez, combinez les cartes et prenez votre temps." },
+      de: { title: "Dou Dizhu", description: "Ein Kartenspiel und zwei Computerfreunde. Biete, kombiniere geschickt und genieße eine ruhige Runde." },
+      es: { title: "Dou Dizhu", description: "Una baraja y dos amigos virtuales. Puja, combina tus cartas y disfruta una partida con calma." },
+      'pt-BR': { title: "Dou Dizhu", description: "Um baralho e dois amigos virtuais. Dê lances, combine as cartas e aproveite sem pressa." }
+    }
+  },
+  {
+    title: "红心大战",
+    description: "一桌纸牌，三个牌友。避开红心与黑桃 Q，让分数轻一点。",
+    path: "./games/hearts/index.html",
+    category: "棋牌",
+    color: "#e9e8dc",
+    cover: "./games/hearts/cover.svg",
+    locales: {
+      en: { title: "Hearts", description: "One paper table, three friends. Dodge hearts and the queen of spades, and keep your score light." },
+      ja: { title: "ハーツ", description: "紙のテーブルで三人の仲間と。ハートとスペードのQを避けて、点数を軽く。" },
+      ko: { title: "하트", description: "종이 테이블에서 세 친구와 함께. 하트와 스페이드 Q를 피하고 점수를 가볍게 해요." },
+      fr: { title: "Dame de pique", description: "Une table de papier et trois amis. Évitez les cœurs et la dame de pique pour garder un score léger." },
+      de: { title: "Hearts", description: "Ein Papiertisch, drei Freunde. Meide Herzen und die Pik-Dame und halte deinen Punktestand niedrig." },
+      es: { title: "Corazones", description: "Una mesa de papel y tres amigos. Evita los corazones y la reina de picas para mantener pocos puntos." },
+      'pt-BR': { title: "Copas", description: "Uma mesa de papel e três amigos. Desvie das copas e da dama de espadas e mantenha poucos pontos." }
+    }
+  },
+  {
     title: "南通长牌",
     description: "一盏茶，一副长牌。与两位电脑牌友玩双将，碰杠听胡，慢慢过招。",
     path: "./games/nantong-changpai/index.html",
@@ -740,6 +791,23 @@ window.GAME_LIST = [
       de: { title: "Papierbrücken", description: "Baue mit begrenztem Holz, Seil und Budget. Lass ein Auto über sechs gezeichnete Brücken fahren und sammle Sterne." },
       es: { title: "Puentes de papel", description: "Construye con madera, cuerdas y presupuesto limitados. Prueba tus puentes con un coche en seis cruces dibujados." },
       'pt-BR': { title: "Pontes de papel", description: "Construa com madeira, cordas e orçamento limitados. Teste suas pontes com um carro em seis travessias desenhadas." }
+    }
+  },
+  {
+    title: "争上游",
+    description: "和两位纸上牌友轻松过招，组合手牌，抢先出完。",
+    path: "./games/climb-up/index.html",
+    category: "棋牌",
+    color: "#e6eadc",
+    cover: "./games/climb-up/cover.svg",
+    locales: {
+      en: { title: "Climb Up", description: "A friendly card game for three. Make combinations and empty your hand first." },
+      ja: { title: "争上游", description: "紙の友だち2人とカード遊び。手札を組み合わせ、先に出し切ろう。" },
+      ko: { title: "정상으로", description: "종이 친구 둘과 카드 한 판. 조합을 만들어 손패를 먼저 비워요." },
+      fr: { title: "Vers le sommet", description: "Une partie amicale à trois. Formez des combinaisons et videz votre main en premier." },
+      de: { title: "Ganz nach oben", description: "Eine freundliche Kartenrunde zu dritt. Bilde Kombinationen und lege zuerst alle Karten ab." },
+      es: { title: "A la cima", description: "Una partida amistosa para tres. Forma combinaciones y vacía tu mano primero." },
+      'pt-BR': { title: "Rumo ao topo", description: "Uma partida entre três amigos. Faça combinações e esvazie sua mão primeiro." }
     }
   },
   // 新增示例（删除每行开头的 //，修改内容即可）：

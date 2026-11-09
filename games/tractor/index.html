@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="zh-CN" data-i18n-scope="tractor">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#f5f3eb">
+  <meta name="description" data-i18n-content="description" content="与电脑队友一起，打一桌纸间拖拉机。双副牌、亮主、扣底，从 2 升到 A。">
+  <title data-i18n="title">纸间升级 · Boopland</title>
+  <link rel="icon" href="cover.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="style.css">
+  <script defer src="../../analytics.js"></script>
+</head>
+<body>
+  <div class="shell">
+    <header class="topbar">
+      <a class="back" href="../../games.html"><span aria-hidden="true">←</span><span data-i18n="common.back">返回大厅</span></a>
+      <h1><span aria-hidden="true">♧</span> <span data-i18n="name">纸间升级</span><small data-i18n="subtitle">拖拉机 · 双副牌</small></h1>
+      <div class="top-actions"><button id="pause" class="icon" data-i18n-label="pause" title="暂停">Ⅱ</button><button id="help" class="icon" data-i18n-label="help" title="玩法">?</button></div>
+    </header>
+    <main class="sheet">
+      <section class="scoreboard" data-i18n-label="scores">
+        <div class="team-score"><span data-i18n="ourTeam">我方</span><strong id="our-level">2</strong><span class="versus">:</span><strong id="their-level">2</strong><span data-i18n="theirTeam">对方</span></div>
+        <div class="contract"><span id="round"></span><strong id="contract"></strong></div>
+        <div class="points-box"><span id="score-label"></span><strong><span id="score">0</span><small> / 80</small></strong><div class="score-track"><i id="score-fill"></i></div></div>
+      </section>
+      <section id="table" class="table" data-i18n-label="table">
+        <svg class="table-art" viewBox="0 0 900 400" preserveAspectRatio="none" aria-hidden="true"><path d="M120 85Q435 17 784 84Q858 192 782 308Q443 380 116 311Q42 211 120 85Z"/><path d="M126 92Q432 28 779 91M112 310Q443 371 777 310"/><path class="hatch" d="m88 162 10-19m-13 35 10-18m703 116 12-20m-15 31 10-16"/></svg>
+        <div id="seat-2" class="seat seat-top"></div>
+        <div id="seat-1" class="seat seat-left"></div>
+        <div id="seat-3" class="seat seat-right"></div>
+        <div id="center-note" class="center-note"></div>
+        <div id="plays" class="plays"></div>
+        <div class="table-foot"><span data-i18n="pointCards">分牌</span><b>5</b><span>·</span><b>10</b><span>·</span><b>K</b><span class="bottom-note" id="bottom-note"></span></div>
+      </section>
+      <section class="hand-area" data-i18n-label="yourHand">
+        <div class="hand-heading"><span id="you"></span><span id="selection"></span><button id="clear" class="link-button" data-i18n="clear">清空选择</button></div>
+        <div id="hand" class="hand"></div>
+      </section>
+      <div class="status"><span class="status-dot" aria-hidden="true"></span><p id="status" role="status" aria-live="polite"></p></div>
+      <nav class="controls" data-i18n-label="controls">
+        <button id="hint"><span aria-hidden="true">✧ </span><span data-i18n="hint">提示</span></button>
+        <button id="last" data-i18n="last">上一墩</button>
+        <button id="restart" data-i18n="restart">新对局</button>
+        <button id="primary" class="primary">开始发牌</button>
+      </nav>
+    </main>
+    <footer><span aria-hidden="true">✎</span> <span data-i18n="footer">一副好牌，也要一位好搭档。</span><span id="save-note"></span></footer>
+  </div>
+  <dialog id="dialog" aria-labelledby="dialog-title">
+    <div class="dialog-sheet"><header><h2 id="dialog-title"></h2><button id="close" class="icon" data-i18n-label="close">×</button></header><div id="dialog-body"></div><div id="dialog-actions"></div><a class="dialog-back" href="../../games.html" data-i18n="common.back">返回大厅</a></div>
+  </dialog>
+  <script src="../../i18n.js"></script>
+  <script src="translations.js"></script>
+  <script src="engine.js"></script>
+  <script src="game.js"></script>
+</body>
+</html>
