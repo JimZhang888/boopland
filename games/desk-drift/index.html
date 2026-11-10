@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="zh-CN" data-i18n-scope="deskDrift">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#f5f3eb">
+  <title data-i18n="deskDrift.pageTitle">桌面漂移 · Boopland</title>
+  <link rel="icon" href="cover.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="style.css">
+  <script defer src="../../analytics.js"></script>
+</head>
+<body>
+  <main class="game-shell">
+    <header class="topbar">
+      <a href="../../games.html" class="back"><span aria-hidden="true">↶</span> <span data-i18n="common.back">返回大厅</span></a>
+      <h1 data-i18n="deskDrift.title">桌面漂移</h1>
+      <div class="actions">
+        <button id="sound" class="icon" aria-pressed="false" data-i18n-label="deskDrift.soundOn">♪</button>
+        <button id="help" class="icon" data-i18n-label="deskDrift.help">?</button>
+      </div>
+    </header>
+    <section class="workspace">
+      <div class="notebook">
+        <div class="dashboard">
+          <div class="lap-clock"><small data-i18n="deskDrift.thisLap">这一圈</small><strong id="timer">00.00</strong></div>
+          <div class="best-clock"><small data-i18n="deskDrift.best">个人最佳</small><b id="best">— —</b></div>
+          <div class="delta-clock"><small data-i18n="deskDrift.vsGhost">对比幽灵</small><b id="delta">— —</b></div>
+          <div class="dashboard-actions"><button id="restart" class="icon" data-i18n-label="deskDrift.retry">↺</button><button id="pause" class="icon" data-i18n-label="deskDrift.pause">Ⅱ</button></div>
+        </div>
+        <div id="stage" class="stage">
+          <canvas id="game" tabindex="0" role="img" data-i18n-label="deskDrift.canvas" data-i18n="deskDrift.canvas">课桌上的玩具车计时赛道</canvas>
+          <div class="stage-label" aria-hidden="true"><span>BOOPLAND MOTOR CLUB</span><span>01 / DESK CIRCUIT</span></div>
+          <div id="toast" class="toast" role="status" hidden></div>
+        </div>
+        <div class="telemetry"><span id="status" role="status"></span><span><span data-i18n="deskDrift.hits">碰撞</span> <b id="hits">0</b></span><span class="speed"><i id="speed-bar"></i><b id="speed">0</b></span></div>
+        <footer class="controls">
+          <div class="steering"><button class="drive" data-control="left" data-i18n-label="deskDrift.left"><span>↶</span><small>A / ←</small></button><button class="drive" data-control="right" data-i18n-label="deskDrift.right"><span>↷</span><small>D / →</small></button></div>
+          <p class="control-note" data-i18n="deskDrift.auto">自动油门，专心过弯。</p>
+          <button class="drive drift" data-control="drift"><span data-i18n="deskDrift.drift">漂移</span><small>SPACE</small></button>
+        </footer>
+      </div>
+      <aside class="journal">
+        <div class="tape" aria-hidden="true"></div>
+        <p class="eyebrow">ONE MORE LITTLE LAP</p>
+        <h2 data-i18n="deskDrift.noteTitle">就差零点几秒。</h2>
+        <p class="note-intro" data-i18n="deskDrift.noteIntro">每一次转弯，都比上一圈更懂一点。</p>
+        <div class="journal-rule"></div>
+        <div class="section-label"><span data-i18n="deskDrift.sectors">分段手记</span><small data-i18n="deskDrift.vsBest">对比最佳圈</small></div>
+        <ol class="sectors">
+          <li><span class="sector-num">01</span><div><b data-i18n="deskDrift.sector1">尺边直道</b><small id="sector-time-0">— —</small></div><strong id="sector-delta-0">—</strong></li>
+          <li><span class="sector-num">02</span><div><b data-i18n="deskDrift.sector2">笔筒回弯</b><small id="sector-time-1">— —</small></div><strong id="sector-delta-1">—</strong></li>
+          <li><span class="sector-num">03</span><div><b data-i18n="deskDrift.sector3">橡皮擦弯</b><small id="sector-time-2">— —</small></div><strong id="sector-delta-2">—</strong></li>
+        </ol>
+        <div class="ghost-note"><span class="ghost-dot" aria-hidden="true"></span><p id="ghost-note"></p></div>
+        <div class="journal-rule"></div>
+        <p class="section-label" data-i18n="deskDrift.recent">最近的几圈</p>
+        <div id="history" class="history"></div>
+        <p class="journal-foot" data-i18n="deskDrift.noteFoot">早一点入弯，少一次碰撞。<br>再来一圈就好。</p>
+      </aside>
+    </section>
+    <p class="page-foot"><span data-i18n="deskDrift.foot">一张课桌，一辆小车，一点点进步。</span><span data-i18n="deskDrift.shortcuts">R 重试 · P 暂停</span></p>
+  </main>
+  <dialog id="dialog" aria-labelledby="dialog-title">
+    <div class="dialog-paper">
+      <p id="dialog-kicker" class="eyebrow"></p>
+      <h2 id="dialog-title"></h2>
+      <p id="dialog-description"></p>
+      <div id="dialog-content"></div>
+      <button id="primary" class="primary"></button>
+      <p class="dialog-hint" data-i18n="deskDrift.shortcuts">R 重试 · P 暂停</p>
+    </div>
+  </dialog>
+  <script src="../../i18n.js"></script>
+  <script src="translations.js"></script>
+  <script src="engine.js"></script>
+  <script src="game.js"></script>
+</body>
+</html>

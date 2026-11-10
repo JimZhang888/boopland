@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="zh-CN" data-i18n-scope="jianghu">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#f5f3eb">
+  <title data-i18n="jianghu.title">骰隐江湖</title>
+  <link rel="icon" href="cover.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="style.css">
+  <script defer src="../../analytics.js"></script>
+</head>
+<body>
+<main class="game-shell">
+  <header class="topbar">
+    <a class="back" href="../../games.html" data-i18n-label="common.back"><span aria-hidden="true">←</span><span data-i18n="common.back">返回大厅</span></a>
+    <h1><span class="seal" aria-hidden="true">⚄</span><span data-i18n="jianghu.title">骰隐江湖</span></h1>
+    <button id="help" class="icon-button" data-i18n-label="jianghu.help">?</button>
+  </header>
+  <div class="journey-bar"><span id="chapter"></span><div id="journey" class="journey" aria-hidden="true"></div><span id="round"></span></div>
+  <div class="play-layout">
+    <section class="duel-paper" data-i18n-label="jianghu.duel">
+      <div class="fighter-stats">
+        <div class="fighter-stat"><div><strong data-i18n="jianghu.hero">无名少侠</strong><span id="hero-hp"></span></div><div class="health-track"><i id="hero-fill"></i></div></div>
+        <span class="versus" aria-hidden="true">/</span>
+        <div class="fighter-stat enemy-stat"><div><strong id="foe-name"></strong><span id="foe-hp"></span></div><div class="health-track"><i id="foe-fill"></i></div></div>
+      </div>
+      <div class="landscape">
+        <div class="scene-label"><span id="place"></span><small data-i18n="jianghu.subtitle">一掷有数，进退由心。</small></div>
+        <svg class="scene" viewBox="0 0 600 340" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <defs><pattern id="hatch" width="8" height="8" patternUnits="userSpaceOnUse" patternTransform="rotate(25)"><path d="M0 0v8" stroke="#637561" stroke-width="1" opacity=".14"/></pattern></defs>
+          <circle cx="439" cy="72" r="38" fill="#e5d5b4" opacity=".65"/>
+          <g fill="#dce2d5" opacity=".65"><path d="M0 224 58 141 87 159 164 56 233 157 276 131 360 228Z"/><path d="m216 227 94-120 35 36 77-95 116 167 62-33v87Z"/></g>
+          <g stroke="#8c9a86" fill="none" stroke-linecap="round" stroke-linejoin="round" opacity=".55"><path d="m0 224 58-82 29 18 78-103 68 101 42-26 86 97M218 226l91-117 37 36 76-94 117 166 61-34"/><path d="m123 131 42-74 24 87-25-25-27 41m230-36 55-73 19 82-19-28-20 36M35 234q116-21 200 5t222-3M298 182q95-13 232 10"/><path d="m150 107-19 46m27-38-18 46m13-11-16 32m274-78-21 45m30-32-26 49"/></g>
+          <g stroke="#6f8269" stroke-linecap="round" fill="none"><path d="M40 292 46 47M57 290 68 83M45 95l-18-21m18 58 25-20m-26 68-25-17m26 63 28-31M64 166l23-25M41 94h9m-10 45h9m-10 43h9m-10 46h9" stroke-width="2"/><path fill="#acb99e" d="M29 75q-23-3-21-21 18 2 21 21Zm39 37q3-23 23-22-3 17-23 22Zm-46 52Q1 168 0 147q20 0 22 17Zm64-24q3-20 19-21-2 18-19 21ZM73 196q6-20 22-18-5 18-22 18Z"/></g>
+          <path d="M61 292q195-20 474-3" stroke="#7d876e" fill="none" stroke-width="2"/><path d="M80 300q205-16 446-2m-375 10 41-3m232 1 52-1" stroke="#a7ae97" fill="none"/>
+          <ellipse cx="206" cy="290" rx="61" ry="9" fill="#cdd2be" opacity=".5"/><ellipse cx="432" cy="290" rx="52" ry="8" fill="#cdd2be" opacity=".5"/>
+          <g id="hero-art" stroke="#4e6351" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+            <path d="m198 241-19 43-16 7h28l23-42 10 37 20 3-11-49" fill="#e1e5d7"/>
+            <path d="m198 171-29 64 30 12 36-7-10-66Z" fill="#9ba98b"/>
+            <path d="m198 171-29 64 30 12 36-7-10-66Z" fill="url(#hatch)"/>
+            <path d="m199 179 13 47 14-49m-45 49 51 4m-39-40-5 35m23 13-12 8" fill="none"/>
+            <path d="m225 183 23 26 37-16 5 9-45 22-26-24" fill="#b3bda4"/>
+            <path d="m180 196-15 30 20 11" fill="none"/>
+            <path d="m284 187 15 24m-11-15 55-54 12-5-6 12-55 53" fill="#fffef7"/>
+            <path d="m278 208 13-12"/>
+            <path d="M195 146q-5 25 12 29 16-1 18-25" fill="#efe7d3"/>
+            <path d="m177 149 31-36 37 37q-31 10-68-1Z" fill="#e0d0aa"/>
+            <path d="m183 146 25-27 27 28m-37-3 10-25 7 25m-7 12 8 1" fill="none"/>
+            <path d="M191 167q-19 19-42 10 23 21 50 0" fill="#9ba98b"/>
+          </g>
+          <g id="enemy-art" stroke="#78675c" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+            <path d="m416 244-15 41-17 6h27l21-40 13 34 18 5-7-9-14-44" fill="#e8ded0"/>
+            <path d="m415 176-23 63q28 14 62 2l-15-65" fill="#c1a995"/>
+            <path d="m415 176-23 63q28 14 62 2l-15-65" fill="url(#hatch)"/>
+            <path d="m418 181 13 43 8-44m-42 46 53 2m-26 4-7 11" fill="none"/>
+            <path d="m416 186-26 16-27-10-4 10 29 17 25-11" fill="#dac5b0"/>
+            <path d="m354 181 13 26m-8-15-40-55-10-6 3 13 44 55" fill="#fffef7"/>
+            <path d="m444 195 20 29-19 10" fill="none"/>
+            <path d="M413 144q-5 26 13 30 17-4 17-28" fill="#efe7d3"/>
+            <path d="M412 149q-7-24 15-25 20-2 18 24l-15-12-18 13Z" fill="#918477"/>
+            <path d="M420 125q-9-16 6-16t8 17m-19 29 7-2m13 1 6 1" fill="none"/>
+            <path d="M441 166q15 14 32 4-5 20-28 5" fill="#c1a995"/>
+          </g>
+          <g fill="none" stroke="#9caa8e" stroke-linecap="round"><path d="m101 278 4-16 6 13m396 9 7-18 3 15m-227-62 10-4m-3 15 13-3"/><path d="m350 78 6-3 6 3m15-14 6-3 6 3"/></g>
+        </svg>
+        <div id="battle-flash" class="battle-flash" aria-hidden="true"></div>
+      </div>
+      <div class="intent-strip"><span class="intent-mark" aria-hidden="true">↗</span><div><small data-i18n="jianghu.intent">对手下一招</small><strong id="intent"></strong></div></div>
+      <div class="dice-area"><div class="dice-heading"><strong data-i18n="jianghu.dice">掌中四骰</strong><span id="dice-hint"></span></div><div id="dice-pool" class="dice-pool" role="group" data-i18n-label="jianghu.dice"></div><button id="roll" class="roll-button"></button></div>
+    </section>
+    <section class="manual-paper" data-i18n-label="jianghu.manual">
+      <div class="manual-heading"><div><small data-i18n="jianghu.manualCaption">江湖手记 · 招式篇</small><h2 data-i18n="jianghu.manual">以骰入招</h2></div><span id="upgrade-badge"></span></div>
+      <div id="lanes" class="lanes"></div>
+      <div class="harmony" id="harmony"></div>
+      <div class="forecast" id="forecast" role="status" aria-live="polite"></div>
+      <button id="commit" class="primary">见招拆招</button>
+      <div class="battle-note" id="battle-note" aria-live="polite"></div>
+    </section>
+  </div>
+  <footer class="footer"><span id="best"></span><span class="footer-note" data-i18n="jianghu.autosave">随手落骰，随时续局</span><button id="restart" data-i18n="jianghu.restart">重新闯荡</button></footer>
+</main>
+<dialog id="modal"><div class="dialog-nav"><a href="../../games.html" data-i18n="common.back">返回大厅</a><button id="close-modal" data-i18n-label="jianghu.close">×</button></div><div id="modal-content"></div></dialog>
+<script src="../../i18n.js"></script><script src="translations.js"></script><script src="engine.js"></script><script src="game.js"></script>
+</body>
+</html>

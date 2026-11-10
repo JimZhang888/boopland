@@ -7,6 +7,74 @@
 // locales 按全局语言提供 title、description；缺少翻译时回退到基础字段。
 window.GAME_LIST = [
   {
+    title: "小小流水线",
+    description: "铺设传送带，切割、染色与旋转，让纸上小工厂自动完成一张张订单。",
+    path: "./games/tiny-factory/index.html",
+    category: "策略",
+    color: "#e5e9d9",
+    cover: "./games/tiny-factory/cover.svg",
+    locales: {
+      en: { title: "Tiny Factory", description: "Build conveyor belts, cut, paint and rotate shapes. Let your little paper factory fulfill each order." },
+      ja: { title: "ちいさな生産ライン", description: "ベルトを敷き、形を切って色を塗り、回転させよう。紙の工場が小さな注文を自動で完成。" },
+      ko: { title: "작은 생산 라인", description: "벨트를 놓고 모양을 자르고 색칠하고 회전시켜요. 종이 공장이 주문을 자동으로 완성해요." },
+      fr: { title: "Petite usine", description: "Posez des tapis, découpez, colorez et tournez les formes. Votre usine de papier réalise les commandes." },
+      de: { title: "Kleine Fabrik", description: "Baue Förderbänder, schneide, färbe und drehe Formen. Deine Papierfabrik erfüllt kleine Aufträge von selbst." },
+      es: { title: "Pequeña fábrica", description: "Construye cintas, corta, pinta y gira figuras. Tu pequeña fábrica de papel completará los pedidos." },
+      'pt-BR': { title: "Pequena fábrica", description: "Monte esteiras, corte, pinte e gire formas. Sua pequena fábrica de papel completa cada pedido sozinha." }
+    }
+  },
+  {
+    title: "骰隐江湖",
+    description: "四枚骰子，六场比武。分配出招、格挡与调息，让小点数化作出奇制胜的武侠连招。",
+    path: "./games/dice-jianghu/index.html",
+    category: "策略",
+    color: "#e7e9db",
+    cover: "./games/dice-jianghu/cover.svg",
+    locales: {
+      en: { title: "Dice & Jianghu", description: "Four dice, six martial duels. Strike, guard and recover; turn small rolls into powerful skill combinations." },
+      ja: { title: "骰子の江湖", description: "四つの骰子で六つの決闘へ。攻撃・防御・調息に振り分け、小さな目を強力な連携技に変えよう。" },
+      ko: { title: "주사위 강호", description: "네 주사위와 여섯 대결. 공격, 방어, 회복에 배치하고 작은 눈을 강력한 무공 조합으로 바꿔 보세요." },
+      fr: { title: "Dés du Jianghu", description: "Quatre dés, six duels. Frappez, parez et soignez-vous : les petits résultats révèlent de grandes techniques." },
+      de: { title: "Würfel des Jianghu", description: "Vier Würfel, sechs Duelle. Angreifen, blocken und heilen: Kleine Würfe entfesseln starke Techniken." },
+      es: { title: "Dados del Jianghu", description: "Cuatro dados, seis duelos. Ataca, bloquea y cura; convierte las tiradas pequeñas en poderosas técnicas." },
+      'pt-BR': { title: "Dados do Jianghu", description: "Quatro dados, seis duelos. Ataque, defenda e cure; transforme números pequenos em técnicas poderosas." }
+    }
+  },
+  {
+    title: "昨天的我",
+    description: "录下几秒钟前的自己，让分身踩住开关、搬箱和托住桥台。和过去的你，一起走到出口。",
+    path: "./games/yesterday-me/index.html",
+    category: "解谜",
+    color: "#e5e8d8",
+    cover: "./games/yesterday-me/cover.svg",
+    locales: {
+      en: { title: "Yesterday, Me", description: "Record your past self. Let echoes hold switches, carry boxes and support bridges as you find the way out together." },
+      ja: { title: "昨日のぼく", description: "数秒前の自分を記録。分身とスイッチを押し、箱を運び、橋を支えて、一緒に出口へ向かおう。" },
+      ko: { title: "어제의 나", description: "몇 초 전의 나를 기록해요. 분신과 스위치를 누르고 상자를 옮기며 다리를 받쳐 함께 출구로 가요." },
+      fr: { title: "Moi, hier", description: "Enregistrez votre ancien vous. Avec vos échos, pressez les boutons, portez les caisses et soutenez les ponts jusqu’à la sortie." },
+      de: { title: "Mein gestriges Ich", description: "Zeichne dein früheres Ich auf. Haltet Schalter, tragt Kisten und stützt Brücken, um gemeinsam den Ausgang zu erreichen." },
+      es: { title: "Mi yo de ayer", description: "Graba a tu yo anterior. Colabora con tus ecos para pulsar interruptores, llevar cajas y sostener puentes hasta la salida." },
+      'pt-BR': { title: "Meu eu de ontem", description: "Grave seu eu anterior. Seus ecos seguram botões, carregam caixas e sustentam pontes para chegarem juntos à saída." }
+    }
+  },
+  {
+    title: "桌面漂移",
+    description: "绕过课桌上的文具，漂移过弯，追上自己的最佳圈幽灵。就差零点几秒，再来一圈。",
+    path: "./games/desk-drift/index.html",
+    category: "动作",
+    color: "#e6e9da",
+    cover: "./games/desk-drift/cover.svg",
+    locales: {
+      en: { title: "Desk Drift", description: "Drift around desk stationery and chase your best-lap ghost. Just a fraction away. One more lap." },
+      ja: { title: "机上ドリフト", description: "机の文具を回り、ドリフトで自己ベストのゴーストを追おう。あとほんの少し、もう一周。" },
+      ko: { title: "책상 드리프트", description: "책상 위 문구를 돌아 드리프트하며 최고 기록의 고스트를 쫓아요. 아주 조금만 더, 한 바퀴 더." },
+      fr: { title: "Drift de bureau", description: "Dérapez autour des fournitures et poursuivez le fantôme de votre record. À quelques dixièmes. Encore un tour." },
+      de: { title: "Schreibtisch-Drift", description: "Drifte um Schreibwaren und jage den Geist deiner Bestzeit. Nur ein paar Zehntel. Noch eine Runde." },
+      es: { title: "Derrape de escritorio", description: "Derrapa entre útiles de escritorio y persigue el fantasma de tu mejor vuelta. A unas décimas. Otra vuelta." },
+      'pt-BR': { title: "Drift na mesa", description: "Derrape entre materiais de papelaria e persiga o fantasma da sua melhor volta. Por alguns décimos. Mais uma volta." }
+    }
+  },
+  {
     title: "猫咪潜行",
     description: "观察巡逻和视野，躲进纸箱、扔出纸团，引开守卫，带着小鱼干悄悄回家。",
     path: "./games/cat-stealth/index.html",
@@ -909,6 +977,23 @@ window.GAME_LIST = [
       de: { title: "Wolle entwirren", description: "Bewege Fadenenden und Punkte, um zwölf kleine Knäuel zu entwirren. Löse die letzte Kreuzung und sieh zu, wie sich alles entfaltet." },
       es: { title: "Desenredar lana", description: "Mueve las puntas y los puntos para desenredar doce ovillos. Deshaz el último cruce y mira cómo los hilos se despliegan." },
       'pt-BR': { title: "Desenrolar lã", description: "Mova as pontas e os pontos para soltar doze novelos. Desfaça o último cruzamento e veja os fios se abrirem suavemente." }
+    }
+  },
+  {
+    title: "纸上地铁",
+    description: "画线连接车站，调配小列车。随城市与客流一起成长，把快堵住的网络重新理顺。",
+    path: "./games/paper-metro/index.html",
+    category: "策略",
+    color: "#e6eadc",
+    cover: "./games/paper-metro/cover.svg",
+    locales: {
+      en: { title: "Paper Metro", description: "Draw lines, connect stations and dispatch little trains. Keep a growing city's passengers moving." },
+      ja: { title: "紙の地下鉄", description: "駅を線でつなぎ、小さな列車を配車。育つ街の路線を整えて、増える乗客を目的地へ。" },
+      ko: { title: "종이 지하철", description: "역을 잇고 작은 열차를 배치해요. 자라는 도시의 노선을 다듬어 늘어나는 승객을 목적지로 보내요." },
+      fr: { title: "Métro de papier", description: "Tracez des lignes, reliez les stations et répartissez les trains pour accompagner une ville qui grandit." },
+      de: { title: "Papiermetro", description: "Zeichne Linien, verbinde Stationen und verteile kleine Züge. Halte die Fahrgäste einer wachsenden Stadt in Bewegung." },
+      es: { title: "Metro de papel", description: "Dibuja líneas, une estaciones y asigna pequeños trenes. Mantén en marcha una ciudad que no deja de crecer." },
+      'pt-BR': { title: "Metrô de papel", description: "Desenhe linhas, conecte estações e distribua pequenos trens. Mantenha os passageiros de uma cidade crescente em movimento." }
     }
   },
   // 新增示例（删除每行开头的 //，修改内容即可）：

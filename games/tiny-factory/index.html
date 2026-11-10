@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-i18n-scope="factory">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#f5f3eb">
+  <meta name="description" content="在纸上工作台铺设传送带，切割、染色，让小小工厂自动完成订单。" data-i18n-content="description">
+  <title data-i18n="pageTitle">小小流水线 · Boopland</title>
+  <link rel="stylesheet" href="./style.css">
+  <script defer src="../../analytics.js"></script>
+</head>
+<body>
+  <div class="paper-grain" aria-hidden="true"></div>
+  <div class="game-shell">
+    <header class="topbar">
+      <a class="back" href="../../games.html" data-i18n-label="common.back"><span aria-hidden="true">←</span><span data-i18n="common.back">返回大厅</span></a>
+      <h1><svg viewBox="0 0 32 32" aria-hidden="true"><path d="M4 25V13l9 5v-7l8 5V5h6v20Z M9 25v-4h4v4m5-4h3m3 0h2M23 2l3 1"/></svg><span data-i18n="name">小小流水线</span><small>TINY FACTORY</small></h1>
+      <div class="top-actions"><button id="help" class="icon-button" data-i18n-label="help" data-i18n-title="help">?</button><button id="restart" class="icon-button" data-i18n-label="restart" data-i18n-title="restart">↻</button></div>
+    </header>
+    <main class="workspace">
+      <section class="workbench" data-i18n-label="workbench">
+        <div class="bench-heading"><span><i class="status-dot"></i><span id="running-label"></span></span><span class="bench-note" data-i18n="benchNote">把一点点想法，连成一条流水线。</span><span id="machine-count"></span></div>
+        <div class="board-space" id="board-space"><canvas id="board" tabindex="0" data-i18n-label="boardLabel" role="application"></canvas></div>
+        <div class="bench-bottom"><span id="message" role="status" aria-live="polite"></span><button id="hint" class="text-button" aria-pressed="false"><span aria-hidden="true">✧</span><span data-i18n="hint">路线提示</span></button></div>
+      </section>
+      <aside class="order-sheet" data-i18n-label="currentOrder">
+        <div class="order-heading"><span class="eyebrow" data-i18n="currentOrder">今日的小订单</span><span id="order-number"></span></div>
+        <div class="target-row"><div class="target-art" id="target-art" aria-hidden="true"></div><div><h2 id="order-title"></h2><p id="target-name"></p></div></div>
+        <div class="delivery-row"><span data-i18n="delivered">已交付</span><strong id="progress-label">0 / 8</strong></div>
+        <div class="progress-track"><div id="progress-fill"></div></div>
+        <div class="recipe"><span class="eyebrow" data-i18n="recipe">配方小抄</span><div id="recipe-icons" aria-hidden="true"></div><p id="recipe-text"></p></div>
+        <div class="order-note"><svg viewBox="0 0 110 80" aria-hidden="true"><path d="M15 57q37 9 79-3M24 53V26l21 7 19-8v25M24 26l20-7 20 6-20 8v23M42 18l5-9M64 16l7-5M76 31l10-1"/><path d="m32 40 7 3m11-3 8-3"/></svg><p data-i18n="noRush">没有倒计时。让小机器慢慢忙起来。</p></div>
+        <div class="order-meta"><span id="reject-label"></span><span id="save-label"></span></div>
+        <button id="orders" class="text-button"><span data-i18n="orders">订单手册</span><span aria-hidden="true">↗</span></button>
+      </aside>
+    </main>
+    <section class="toolbox" data-i18n-label="toolbox">
+      <div id="build-tools" class="build-tools"></div>
+      <div class="tool-settings"><button id="rotate" class="rotate-button" data-i18n-title="rotate"><span id="direction-arrow" aria-hidden="true">→</span><span data-i18n="rotate">转向</span><kbd>R</kbd></button><div id="palette" class="palette" role="group" data-i18n-label="paintColor"></div><button id="undo" class="icon-button" data-i18n-label="undo" data-i18n-title="undo">↶</button></div>
+      <div class="play-tools"><button id="speed" class="speed-button" data-i18n-label="speed">1×</button><button id="play" class="play-button"><span aria-hidden="true">▶</span><span id="play-label"></span></button></div>
+    </section>
+    <footer class="footnote"><span data-i18n="shortcuts">拖动铺设 · R 转向 · 1–5 选工具 · 空格暂停</span><span data-i18n="footer">一张工作台，一点创造力。</span><span>BOOPLAND · PAPER WORKSHOP</span></footer>
+  </div>
+  <dialog id="dialog" aria-labelledby="dialog-title"><div class="dialog-heading"><span class="eyebrow" data-i18n="workshop">纸上小工坊</span><button id="close-dialog" class="icon-button" data-i18n-label="close">×</button></div><h2 id="dialog-title"></h2><div id="dialog-body"></div><div id="dialog-actions"></div><a class="dialog-back" href="../../games.html" data-i18n="common.back">返回大厅</a></dialog>
+  <script src="../../i18n.js"></script><script src="./translations.js"></script><script src="./engine.js"></script><script src="./art.js"></script><script src="./game.js"></script>
+</body>
+</html>

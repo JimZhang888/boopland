@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-i18n-scope="metro">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#f5f3eb">
+  <title data-i18n="metro.title">纸上地铁</title>
+  <link rel="stylesheet" href="./style.css">
+  <script defer src="../../analytics.js"></script>
+</head>
+<body>
+  <main class="game-shell">
+    <header class="topbar">
+      <a class="back" href="../../games.html" data-i18n-label="common.back"><span aria-hidden="true">↖</span><span class="back-text" data-i18n="common.back">返回大厅</span></a>
+      <div class="brand"><span class="brand-mark" aria-hidden="true">m</span><h1 data-i18n="metro.title">纸上地铁</h1><span class="edition">BOOPLAND / 01</span></div>
+      <div class="top-actions"><button id="help" class="icon-button" data-i18n-label="metro.help">?</button><button id="restart" class="icon-button" data-i18n-label="metro.restart">↻</button></div>
+    </header>
+    <section class="workspace">
+      <div class="map-panel">
+        <div class="map-heading"><div><span class="eyebrow" data-i18n="metro.city">青苔市 · 运行图</span><span id="mode-label"></span></div><div class="week-block"><span id="week"></span><div class="week-track"><i id="week-progress"></i></div></div></div>
+        <div id="map-stage" class="map-stage">
+          <svg id="map" role="group" data-i18n-label="metro.map" xmlns="http://www.w3.org/2000/svg">
+            <defs><pattern id="grid" width="26" height="26" patternUnits="userSpaceOnUse"><circle cx="1" cy="1" r=".65" fill="#9b9f8c" opacity=".24"/></pattern></defs>
+            <rect width="100%" height="100%" fill="url(#grid)"/>
+            <g id="terrain" aria-hidden="true"></g><g id="tracks" aria-hidden="true"></g><g id="draft-track" aria-hidden="true"></g><g id="stations"></g><g id="trains" aria-hidden="true"></g>
+          </svg>
+          <div class="map-stamp" aria-hidden="true"><span>N</span><span>↑</span></div>
+          <div class="pause-badge" id="pause-badge" hidden></div>
+          <div class="map-caption" aria-hidden="true" data-i18n="metro.mapCaption">一座城市，几根彩色铅笔。</div>
+        </div>
+        <div class="map-bottom"><p id="status" role="status" aria-live="polite"></p><span class="shape-legend" aria-hidden="true">○ △ □ ◇ ☆</span></div>
+      </div>
+      <aside class="desk">
+        <section class="stats" aria-label="Statistics" data-i18n-label="metro.stats">
+          <div class="score"><span class="eyebrow" data-i18n="metro.delivered">已送达</span><strong id="score">0</strong><span class="score-note" data-i18n="metro.passengers">位乘客，抵达日常</span></div>
+          <div class="small-stats"><div><span data-i18n="metro.waiting">候车</span><strong id="waiting">0</strong></div><div><span data-i18n="metro.best">最佳</span><strong id="best">0</strong></div></div>
+        </section>
+        <section class="line-section"><div class="section-heading"><h2 data-i18n="metro.lines">我的线路</h2><span id="line-count">3 / 5</span></div><div id="line-list" class="line-list"></div></section>
+        <section class="dispatch">
+          <div class="section-heading"><h2 id="selected-line"></h2><span id="route-count"></span></div>
+          <div class="train-control"><span class="train-doodle" aria-hidden="true">▰</span><button id="remove-train" class="icon-button" data-i18n-label="metro.removeTrain">−</button><strong id="train-count">0</strong><button id="add-train" class="icon-button" data-i18n-label="metro.addTrain">+</button></div>
+          <p id="fleet-note" class="muted"></p>
+          <div class="edit-buttons"><button id="redraw" data-i18n="metro.redraw">重画线路</button><button id="clear" data-i18n="metro.clear">收回线路</button></div>
+          <div id="draft-controls" class="draft-controls" hidden><button id="undo" data-i18n-label="metro.undo">↶</button><button id="cancel-draw" data-i18n="metro.cancel">取消</button><button id="apply" class="primary" data-i18n="metro.apply">完成</button></div>
+        </section>
+        <div class="desk-note"><svg viewBox="0 0 160 38" aria-hidden="true"><path d="M6 25h43l20-16h40l29 19h17"/><circle cx="12" cy="25" r="5"/><path d="m64 13 6-10 6 10Z"/><rect x="134" y="23" width="10" height="10"/></svg><p data-i18n="metro.note">让每一条线，都通向某个人的目的地。</p></div>
+      </aside>
+    </section>
+    <footer class="toolbar"><span class="footer-note" data-i18n="metro.footer">城市慢慢长大，路线由你来画。</span><div class="playback"><button id="pause" data-i18n-label="metro.pause">Ⅱ</button><button id="speed" aria-label="Speed" data-i18n-label="metro.speed">1×</button></div><div class="capacity" id="capacity"></div></footer>
+  </main>
+  <dialog id="dialog" aria-labelledby="dialog-title"><div class="dialog-paper"><span class="eyebrow" id="dialog-kicker"></span><h2 id="dialog-title"></h2><div id="dialog-body"></div><div id="dialog-actions"></div><a class="dialog-back" href="../../games.html" data-i18n="common.back">返回大厅</a></div></dialog>
+  <script src="../../i18n.js"></script><script src="./translations.js"></script><script src="./engine.js"></script><script src="./game.js"></script>
+</body>
+</html>
