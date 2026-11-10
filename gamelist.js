@@ -7,6 +7,23 @@
 // locales 按全局语言提供 title、description；缺少翻译时回退到基础字段。
 window.GAME_LIST = [
   {
+    title: "六角小田园",
+    description: "拼接森林、河流与村庄，完成相邻组合的小心愿，让一块块地长成喜欢的风景。",
+    path: "./games/hex-meadow/index.html",
+    category: "策略",
+    color: "#dce5c9",
+    cover: "./games/hex-meadow/cover.svg",
+    locales: {
+      en: { title: "Hex Meadow", description: "Join forests, rivers and villages. Fulfill little wishes as each tile grows into a peaceful landscape." },
+      ja: { title: "六角の小さな田園", description: "森、川、村をつなぎ、小さな願いを叶えながら、好きな風景を少しずつ育てよう。" },
+      ko: { title: "육각 작은 전원", description: "숲, 강, 마을을 이어 작은 소원을 이루고 한 조각씩 나만의 풍경을 키워요." },
+      fr: { title: "Petit pré hexagonal", description: "Reliez forêts, rivières et villages. Réalisez de petits souhaits et faites grandir un paysage paisible." },
+      de: { title: "Kleine Sechseckwiese", description: "Verbinde Wälder, Flüsse und Dörfer. Erfülle kleine Wünsche und lass eine friedliche Landschaft wachsen." },
+      es: { title: "Pequeño prado hexagonal", description: "Une bosques, ríos y pueblos. Cumple pequeños deseos y crea un paisaje tranquilo, pieza a pieza." },
+      'pt-BR': { title: "Pequeno campo hexagonal", description: "Una florestas, rios e vilas. Realize pequenos desejos e cultive uma paisagem tranquila, peça por peça." }
+    }
+  },
+  {
     title: "金拉米",
     description: "十张纸牌，一位牌友。收集顺子与同点数组，巧妙敲牌，向 100 分慢慢靠近。",
     path: "./games/gin-rummy/index.html",
@@ -841,6 +858,23 @@ window.GAME_LIST = [
       de: { title: "Ganz nach oben", description: "Eine freundliche Kartenrunde zu dritt. Bilde Kombinationen und lege zuerst alle Karten ab." },
       es: { title: "A la cima", description: "Una partida amistosa para tres. Forma combinaciones y vacía tu mano primero." },
       'pt-BR': { title: "Rumo ao topo", description: "Uma partida entre três amigos. Faça combinações e esvazie sua mão primeiro." }
+    }
+  },
+  {
+    title: "纸间节拍",
+    description: "左手敲桌，右手拍手。接住音符、按住长音、左右交替，让连击把日常敲成小小音乐会。",
+    path: "./games/paper-beat/index.html",
+    category: "休闲",
+    color: "#e6eadc",
+    cover: "./games/paper-beat/cover.svg",
+    locales: {
+      en: { title: "Paper Beat", description: "Tap, clap and catch the rhythm. Hold long notes and alternate hands through three little desk concerts." },
+      ja: { title: "紙のビート", description: "左でトン、右でパン。長い音を伸ばし、左右交互にリズムを刻む、机の上の小さな音楽会。" },
+      ko: { title: "종이 비트", description: "왼쪽은 톡톡, 오른쪽은 짝짝. 긴 음을 누르고 좌우로 번갈아 세 곡의 작은 음악회를 즐겨요." },
+      fr: { title: "Rythme de papier", description: "Tapez, applaudissez et suivez le rythme. Tenez les notes longues et alternez les mains dans trois petits concerts." },
+      de: { title: "Papiertakt", description: "Klopfen, klatschen und den Takt treffen. Halte lange Noten und wechsle die Hände in drei kleinen Tischkonzerten." },
+      es: { title: "Ritmo de papel", description: "Toca, aplaude y atrapa el ritmo. Mantén notas largas y alterna las manos en tres pequeños conciertos." },
+      'pt-BR': { title: "Batida de papel", description: "Toque, bata palmas e pegue o ritmo. Segure notas longas e alterne as mãos em três pequenos concertos." }
     }
   },
   // 新增示例（删除每行开头的 //，修改内容即可）：

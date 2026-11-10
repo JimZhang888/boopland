@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-i18n-scope="hex">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#f5f3eb">
+  <meta name="description" content="拼接森林、河流与村庄，慢慢长出一幅小风景。" data-i18n-content="description">
+  <title data-i18n="pageTitle">六角小田园 · Boopland</title>
+  <link rel="stylesheet" href="./style.css">
+  <script defer src="../../analytics.js"></script>
+</head>
+<body>
+  <div class="paper-grain" aria-hidden="true"></div>
+  <div class="game-shell">
+    <header class="topbar">
+      <a class="back" href="../../games.html" data-i18n-label="common.back"><span aria-hidden="true">←</span><span data-i18n="common.back">返回大厅</span></a>
+      <h1><svg viewBox="0 0 36 36" aria-hidden="true"><path d="m18 3 14 8v15l-14 8-14-8V11Z"/><path d="m10 23 5-10 5 10Zm14-5v9m-5-8 5-9 5 9"/></svg><span data-i18n="name">六角小田园</span></h1>
+      <div class="tools"><button id="sound" class="icon-button" aria-pressed="false"></button><button id="help" class="icon-button" data-i18n-label="help" data-i18n-title="help">?</button><button id="restart" class="icon-button" data-i18n-label="restart" data-i18n-title="restart">↻</button></div>
+    </header>
+    <main class="workspace">
+      <section class="landscape" data-i18n-label="landscape">
+        <div class="map-heading"><div><span class="eyebrow" data-i18n="eyebrow">A LITTLE WORLD, PIECE BY PIECE</span><p data-i18n="tagline">把日子，拼成喜欢的模样。</p></div><span id="mode-badge" class="mode-badge"></span></div>
+        <div class="stage" id="stage">
+          <svg id="board" tabindex="0" role="group" data-i18n-label="boardLabel"><defs id="board-defs"></defs><g id="world"><g id="slots"></g><g id="tiles"></g><g id="ghost" pointer-events="none"></g></g></svg>
+          <div class="map-mark" aria-hidden="true"><svg viewBox="0 0 50 60"><path d="M25 8v37M9 27h32M25 11l-4 11 4-2 4 2ZM20 43l5 6 5-6"/></svg><span>N</span></div>
+          <div class="zoom-tools"><button id="zoom-out" class="icon-button" data-i18n-label="zoomOut">−</button><button id="fit" class="icon-button" data-i18n-label="fit" data-i18n-title="fit">⌖</button><button id="zoom-in" class="icon-button" data-i18n-label="zoomIn">+</button></div>
+          <div id="floating-score" class="floating-score" aria-hidden="true"></div>
+        </div>
+        <div class="map-footer"><span class="map-dot" aria-hidden="true"></span><p id="status" role="status" aria-live="polite"></p><span class="map-number" id="map-number"></span></div>
+      </section>
+      <aside class="journal">
+        <div class="journal-heading"><span class="eyebrow" data-i18n="journal">田园手记</span><span aria-hidden="true">✳</span></div>
+        <div class="stats"><div><span data-i18n="score">风景分</span><strong id="score">0</strong></div><div><span data-i18n="remaining">剩余地块</span><strong id="remaining">36<small>▱</small></strong></div></div>
+        <div class="quests-heading"><h2 data-i18n="quests">三个小心愿</h2><span id="completed"></span></div>
+        <div id="quests" class="quests"></div>
+        <div class="reward-note" data-i18n="rewardNote">每个心愿，换来 5 块新风景。</div>
+        <div class="journal-bottom"><svg viewBox="0 0 180 70" aria-hidden="true"><path d="M9 58q30-14 56-7t48-3 58 6M16 62q63-9 144 0M61 49V24l18-10 19 11v24M58 25l21-15 22 16M70 49V35h10v14m8-20h5v6h-5ZM121 47V24m-9 8 9-18 10 18Zm-76 17V30m-8 7 8-18 9 18Z"/><path d="M17 22q5-6 10 0 5-6 10 0m99-12q5-6 10 0 5-6 10 0"/></svg><p data-i18n="noRush">没有倒计时。<br>小世界，慢慢来。</p></div>
+      </aside>
+    </main>
+    <section class="tile-tray" data-i18n-label="tray">
+      <div class="current-tile"><div id="tile-preview" class="tile-preview"></div><div class="tile-name"><span class="eyebrow" data-i18n="current">手中的地块</span><strong id="tile-name"></strong><span id="rotation-label"></span></div></div>
+      <div class="next-tiles"><span class="eyebrow" data-i18n="next">接下来</span><div id="next-previews"></div></div>
+      <div class="placement-controls"><div class="rotate-controls"><button id="rotate-left" data-i18n-label="rotateLeft" data-i18n-title="rotateLeft">↶</button><span data-i18n="rotate">旋转</span><button id="rotate-right" data-i18n-label="rotateRight" data-i18n-title="rotateRight">↷</button></div><button id="place" class="primary" disabled><span data-i18n="place">放在这里</span><span aria-hidden="true">↗</span></button></div>
+      <div class="secondary-controls"><button id="undo" data-i18n-label="undo" data-i18n-title="undo"><span aria-hidden="true">↶</span><span data-i18n="undo">撤回一步</span></button><button id="swap"><span aria-hidden="true">⇄</span><span id="swap-label"></span></button></div>
+    </section>
+    <footer class="bottom-line"><span id="save-status"></span><span data-i18n="controls">拖动看风景 · 滚轮缩放 · Q / E 旋转</span><span aria-hidden="true">BOOPLAND · HEX MEADOW</span></footer>
+  </div>
+  <dialog id="dialog" aria-labelledby="dialog-title"><div class="dialog-heading"><h2 id="dialog-title"></h2><button id="close-dialog" class="icon-button" data-i18n-label="close">×</button></div><div id="dialog-content"></div><div class="dialog-footer"><a href="../../games.html" data-i18n="common.back">返回大厅</a><span data-i18n="noRushShort">小世界，慢慢来。</span></div></dialog>
+  <noscript>请开启 JavaScript 以游玩。 / Please enable JavaScript to play.</noscript>
+  <script src="../../i18n.js"></script><script src="./translations.js"></script><script src="./engine.js"></script><script src="./art.js"></script><script src="./game.js"></script>
+</body>
+</html>

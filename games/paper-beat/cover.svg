@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 660 400">
+  <defs><pattern id="paper" width="660" height="30" patternUnits="userSpaceOnUse"><path d="M0 29H660" stroke="#b8c4a7" stroke-opacity=".22"/></pattern><filter id="grain"><feTurbulence baseFrequency=".65" numOctaves="3" stitchTiles="stitch"/><feColorMatrix type="saturate" values="0"/><feComponentTransfer><feFuncA type="linear" slope=".045"/></feComponentTransfer></filter></defs>
+  <path fill="#e6eadc" d="M0 0h660v400H0z"/><path fill="#fffdf3" stroke="#c4cbb9" d="m124 39 413 14-9 311-417-6Z"/><path fill="url(#paper)" d="m124 39 413 14-9 311-417-6Z"/><path fill="#d5dcc496" d="m282 31 107 3-3 29-108-2Z"/>
+  <g fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="#b7c3ab" stroke-dasharray="5 8" d="M326 91v208"/><path stroke="#78876b" stroke-width="2" d="m156 280 343 3m-339 4 331-1"/><path stroke="#9baa8b" stroke-width="1.5" d="M228 254c34-4 36 44 5 45s-42-39-5-45Z"/><path stroke="#8ca5ad" stroke-width="1.5" d="M414 256c33-4 36 43 5 45s-42-39-5-45Z"/>
+    <path stroke="#8a9c78" fill="#d9e4cc" stroke-width="1.8" d="m220 120 23 1 1 93-24-1Z"/><path stroke="#afbea0" d="m223 135 16-8m-16 25 16-8m-16 24 16-8m-16 25 16-8m-16 26 16-8"/>
+    <g stroke="#71875e" stroke-width="2"><ellipse fill="#c9d9b8" cx="231" cy="219" rx="22" ry="17" transform="rotate(-12 231 219)"/><path d="M250 215v-44"/></g>
+    <g stroke="#79949e" stroke-width="2"><ellipse fill="#cfdee0" cx="417" cy="155" rx="22" ry="17" transform="rotate(-12 417 155)"/><path d="M436 151v-45q28 8 12 27"/></g>
+    <path stroke="#8e9b80" stroke-width="1.5" d="m213 320-15 1m51-1-16 1m169-1-16 1m52-1-15 1M67 131l7 12 14-2-9 11 5 13-13-5-11 8 1-14-10-9 14-2ZM568 255l11 17 22-1-15 16 7 19-20-8-17 12 1-22-17-13 21-5Z"/><path stroke="#a7b39a" d="m75 219 13-8m-6 24 15-3m465-108 8-13m6 23 14-5"/>
+  </g><path filter="url(#grain)" d="M0 0h660v400H0z"/>
+</svg>
