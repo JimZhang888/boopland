@@ -7,6 +7,23 @@
 // locales 按全局语言提供 title、description；缺少翻译时回退到基础字段。
 window.GAME_LIST = [
   {
+    title: "猫咪潜行",
+    description: "观察巡逻和视野，躲进纸箱、扔出纸团，引开守卫，带着小鱼干悄悄回家。",
+    path: "./games/cat-stealth/index.html",
+    category: "策略",
+    color: "#e6e7d7",
+    cover: "./games/cat-stealth/cover.svg",
+    locales: {
+      en: { title: "Sneaky Little Cat", description: "Watch patrols, hide in boxes and toss paper to distract guards. Bring every little fish safely home." },
+      ja: { title: "こっそりねこ", description: "巡回と視界を観察し、箱に隠れて紙玉で番人を誘おう。干し魚を持ってそっと帰ろう。" },
+      ko: { title: "살금살금 고양이", description: "순찰과 시야를 살피고 상자에 숨어 종이공으로 경비를 유인해요. 생선을 챙겨 조용히 집으로!" },
+      fr: { title: "Chat en douce", description: "Observez les patrouilles, cachez-vous dans les cartons et lancez du papier pour rapporter les poissons." },
+      de: { title: "Leise Katzenpfoten", description: "Beobachte Patrouillen, verstecke dich in Kartons und lenke Wachen mit Papier ab. Bring alle Fische heim." },
+      es: { title: "Gato sigiloso", description: "Observa patrullas, escóndete en cajas y distrae a los guardias con papel. Lleva los peces a casa." },
+      'pt-BR': { title: "Gatinho furtivo", description: "Observe patrulhas, esconda-se em caixas e distraia os guardas com papel. Leve todos os peixes para casa." }
+    }
+  },
+  {
     title: "六角小田园",
     description: "拼接森林、河流与村庄，完成相邻组合的小心愿，让一块块地长成喜欢的风景。",
     path: "./games/hex-meadow/index.html",
@@ -875,6 +892,23 @@ window.GAME_LIST = [
       de: { title: "Papiertakt", description: "Klopfen, klatschen und den Takt treffen. Halte lange Noten und wechsle die Hände in drei kleinen Tischkonzerten." },
       es: { title: "Ritmo de papel", description: "Toca, aplaude y atrapa el ritmo. Mantén notas largas y alterna las manos en tres pequeños conciertos." },
       'pt-BR': { title: "Batida de papel", description: "Toque, bata palmas e pegue o ritmo. Segure notas longas e alterne as mãos em três pequenos concertos." }
+    }
+  },
+  {
+    title: "毛线解结",
+    description: "捏住线头，挪动圆点，让交叉的毛线慢慢分开。解开最后一个结，看整团线轻轻舒展。",
+    path: "./games/yarn-untangle/index.html",
+    category: "解谜",
+    color: "#e8ebdd",
+    cover: "./games/yarn-untangle/cover.svg",
+    locales: {
+      en: { title: "Yarn Untangle", description: "Gently move yarn ends and dots to untangle twelve little puzzles. Undo the last crossing and watch the threads unfold." },
+      ja: { title: "毛糸ほどき", description: "糸の端や丸い点をそっと動かして、12玉の毛糸をほどこう。最後の交差が消えると、糸がのびのび広がります。" },
+      ko: { title: "실타래 풀기", description: "실 끝과 동그란 점을 옮겨 열두 실타래를 풀어요. 마지막 교차가 사라지면 실이 부드럽게 펼쳐져요." },
+      fr: { title: "Fils emmêlés", description: "Déplacez doucement les points pour démêler douze pelotes. Défaites le dernier croisement et regardez les fils se déployer." },
+      de: { title: "Wolle entwirren", description: "Bewege Fadenenden und Punkte, um zwölf kleine Knäuel zu entwirren. Löse die letzte Kreuzung und sieh zu, wie sich alles entfaltet." },
+      es: { title: "Desenredar lana", description: "Mueve las puntas y los puntos para desenredar doce ovillos. Deshaz el último cruce y mira cómo los hilos se despliegan." },
+      'pt-BR': { title: "Desenrolar lã", description: "Mova as pontas e os pontos para soltar doze novelos. Desfaça o último cruzamento e veja os fios se abrirem suavemente." }
     }
   },
   // 新增示例（删除每行开头的 //，修改内容即可）：

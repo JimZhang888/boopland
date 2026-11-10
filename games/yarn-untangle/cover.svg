@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 400">
+  <defs><filter id="paper"><feTurbulence type="fractalNoise" baseFrequency=".7" numOctaves="3" stitchTiles="stitch"/><feColorMatrix type="saturate" values="0"/><feComponentTransfer><feFuncA type="linear" slope=".05"/></feComponentTransfer><feBlend in="SourceGraphic" mode="multiply"/></filter><pattern id="dots" width="27" height="27" patternUnits="userSpaceOnUse"><circle cx="12" cy="12" r=".7" fill="#78866e" opacity=".22"/></pattern></defs>
+  <g filter="url(#paper)"><path fill="#e8ebdd" d="M0 0h640v400H0z"/><path d="m72 44 493 7-6 309-491-8z" fill="#faf9ef" stroke="#c9cfbd"/><path d="m259 35 112 5-3 23-112-6z" fill="#d5dcc4" opacity=".8"/><path d="M100 75h438v248H100z" fill="url(#dots)"/>
+  <g fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M153 133 333 267 478 108M145 285 319 113 490 279" stroke="#65705a" stroke-width="10" opacity=".3"/><path d="M153 133 333 267 478 108" stroke="#c89595" stroke-width="7"/><path d="M145 285 319 113 490 279" stroke="#99ad84" stroke-width="7"/><path d="M153 133 333 267 478 108M145 285 319 113 490 279" stroke="#fffef7" stroke-width="1.2" stroke-dasharray="2 6"/>
+  <path d="M82 319q19 30 51 16m368-256q26-8 43 10" stroke="#8a977a" stroke-width="1.2" stroke-dasharray="3 5"/></g>
+  <g stroke="#6b755f" stroke-width="1.5"><g fill="#c89595"><circle cx="153" cy="133" r="12"/><circle cx="333" cy="267" r="12"/><circle cx="478" cy="108" r="12"/></g><g fill="#99ad84"><circle cx="145" cy="285" r="12"/><circle cx="319" cy="113" r="12"/><circle cx="490" cy="279" r="12"/></g></g>
+  <g fill="none" stroke="#fffef7" stroke-width="1.4" stroke-linecap="round"><path d="m150 127q8 6 1 12m179 122q8 6 1 12m145-165q8 6 1 12m-333 159q7 6 0 12m6-12q7 6 0 12m167-178q7 6 0 12m6-12q7 6 0 12m166 154q7 6 0 12m6-12q7 6 0 12"/></g>
+  <g stroke="#ad806c" fill="#faf9ef"><circle cx="238" cy="196" r="8"/><circle cx="403" cy="195" r="8"/><path d="m235 193 6 6m0-6-6 6m165-7 6 6m0-6-6 6" fill="none" stroke-width="1.2"/></g>
+  <path d="M546 303c20-12 20-32 3-36s-23 24-4 31c15 6 28-4 29 13" fill="none" stroke="#9ca486" stroke-width="1.2"/>
+  <g fill="none" stroke="#9ca486" stroke-width="1"><path d="m539 272 20 22m-24-14 27 5m-21-17 6 29"/></g></g>
+</svg>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-i18n-scope="catStealth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#f5f3eb">
+  <title data-i18n="pageTitle">猫咪潜行 · Boopland</title>
+  <link rel="stylesheet" href="./style.css">
+  <script defer src="../../analytics.js"></script>
+</head>
+<body>
+  <div class="game-shell">
+    <header class="topbar">
+      <a class="back" href="../../games.html"><span aria-hidden="true">↶</span><span data-i18n="common.back">返回大厅</span></a>
+      <h1><svg class="paw" aria-hidden="true" width="29" height="29" viewBox="0 0 32 32"><g fill="#dce5d8" stroke="#718268" stroke-width="1.3"><path d="M7 24q-1-5 4-8 5-6 10 0 6 4 4 8-2 5-8 2-7 3-10-2Z"/><ellipse cx="5" cy="13" rx="3" ry="4" transform="rotate(-22 5 13)"/><ellipse cx="12" cy="7" rx="3" ry="4"/><ellipse cx="21" cy="7" rx="3" ry="4"/><ellipse cx="28" cy="13" rx="3" ry="4" transform="rotate(22 28 13)"/></g></svg><span data-i18n="name">猫咪潜行</span></h1>
+      <div class="tools"><button id="sound" class="icon" data-i18n-label="soundOff" aria-pressed="false">♪</button><button id="help" class="icon" data-i18n-label="help">?</button></div>
+    </header>
+    <main class="desk">
+      <section class="play-sheet">
+        <div class="board-heading"><div><span class="eyebrow" id="chapter"></span><h2 id="level-name"></h2></div><div class="heading-actions"><button id="routes" class="quiet" aria-pressed="true" data-i18n="routes">巡逻路线</button><button id="pause" class="icon" data-i18n-label="pause">Ⅱ</button></div></div>
+        <div class="board-wrap" id="board-wrap"><canvas id="board" tabindex="0" data-i18n-label="board" aria-describedby="control-hint"></canvas></div>
+        <div class="board-caption"><span id="status-dot" class="status-dot"></span><p id="status" role="status" aria-live="polite"></p><span id="clock">00:00</span></div>
+      </section>
+      <aside class="notebook">
+        <div class="note-title"><span class="eyebrow" data-i18n="mission">小猫的秘密计划</span><span aria-hidden="true">✧</span></div>
+        <div class="cat-sketch" aria-hidden="true"><img src="./cover.svg" alt=""></div>
+        <h2 class="motto" data-i18n="motto">轻一点，再轻一点。</h2>
+        <div class="fish-counter"><span data-i18n="loot">小鱼干</span><strong id="fish-count">0 / 3</strong></div>
+        <div class="fish-track" id="fish-track" aria-hidden="true"></div>
+        <div class="risk-label"><span data-i18n="suspicion">守卫警觉</span><span id="risk-value">0%</span></div>
+        <div id="risk" class="risk-track" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" data-i18n-label="suspicion"><div id="risk-fill"></div></div>
+        <ol class="rules"><li><b>01</b><p data-i18n="tip1">绕开视野，借货架遮挡。</p></li><li><b>02</b><p data-i18n="tip2">钻进纸箱，等脚步走远。</p></li><li><b>03</b><p data-i18n="tip3">纸团引开守卫，带鱼回家。</p></li></ol>
+        <div class="chapters" id="chapters" data-i18n-label="levels"></div>
+        <div class="best-row"><span data-i18n="best">本关最佳</span><span id="best">—</span></div>
+        <button id="restart" class="quiet restart"><span aria-hidden="true">↻</span> <span data-i18n="restart">重新来过</span></button>
+      </aside>
+    </main>
+    <footer class="controls">
+      <div class="dpad" role="group" data-i18n-label="move"><button data-dir="up" data-i18n-label="up">↑</button><button data-dir="left" data-i18n-label="left">←</button><span aria-hidden="true">·</span><button data-dir="right" data-i18n-label="right">→</button><button data-dir="down" data-i18n-label="down">↓</button></div>
+      <p id="control-hint" class="control-hint" data-i18n="controls">WASD / 方向键移动，也可以点地面</p>
+      <div class="action-buttons"><button id="hide" class="action"><span class="action-symbol" aria-hidden="true">▱</span><span id="hide-label" data-i18n="hide">躲进纸箱</span><kbd>E</kbd></button><button id="noise" class="action"><span class="action-symbol" aria-hidden="true">◎</span><span id="noise-label" data-i18n="noise">扔纸团</span><span id="charges" class="charge">4</span><kbd>Q</kbd></button></div>
+      <span class="footer-brand">boopland<span data-i18n="footer">小小爪子，大大计划。</span></span>
+    </footer>
+  </div>
+  <dialog id="dialog" aria-labelledby="dialog-title"><div class="dialog-top"><span class="eyebrow" id="dialog-kicker"></span><button id="close-dialog" class="icon" data-i18n-label="close">×</button></div><div class="dialog-mark" id="dialog-mark" aria-hidden="true">✧</div><h2 id="dialog-title"></h2><p id="dialog-note"></p><div id="dialog-body"></div><div class="dialog-actions"><button id="dialog-action" class="primary"></button><button id="dialog-secondary" class="quiet" hidden></button></div></dialog>
+  <noscript>请开启 JavaScript 以游玩。 / Please enable JavaScript to play.</noscript>
+  <script src="../../i18n.js"></script><script src="./translations.js"></script><script src="./engine.js"></script><script src="./art.js"></script><script src="./game.js"></script>
+</body>
+</html>
