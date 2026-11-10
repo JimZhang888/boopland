@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-i18n-scope="farm">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#f5f3eb">
+  <meta name="description" data-i18n-content="description" content="开垦、播种、养殖与加工，在纸上慢慢种出自己的小小农场。">
+  <title data-i18n="pageTitle">纸上农场 · Boopland</title>
+  <link rel="icon" href="./cover.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="./style.css">
+  <script defer src="../../analytics.js"></script>
+</head>
+<body>
+  <div class="grain" aria-hidden="true"></div>
+  <div class="game-shell">
+    <header class="topbar">
+      <a class="back" href="../../games.html" data-i18n-label="common.back"><span aria-hidden="true">←</span><span data-i18n="common.back">返回大厅</span></a>
+      <h1><span class="title-icon" id="title-icon" aria-hidden="true"></span><span data-i18n="name">纸上农场</span><small>PAPER FARM</small></h1>
+      <div class="top-actions"><button id="pause" class="icon-button" data-i18n-label="pause">Ⅱ</button><button id="help" class="icon-button" data-i18n-label="help">?</button></div>
+    </header>
+    <section class="farm-summary" data-i18n-label="summary">
+      <div class="farm-level"><span class="sun" aria-hidden="true">☼</span><div><strong id="level-label"></strong><span class="level-note" id="level-note"></span></div></div>
+      <div class="summary-right"><span class="save-status" id="save-label"></span><span class="coin-balance"><i aria-hidden="true">◎</i><strong id="coins">100</strong><span data-i18n="coins">金币</span></span></div>
+    </section>
+    <main class="workspace">
+      <section class="farm-sheet" data-i18n-label="farm">
+        <div class="scene-heading"><span><i class="status-dot"></i><span data-i18n="weather">晴 · 适合种一点希望</span></span><span class="scene-number">FIELD NOTES / 01</span></div>
+        <div class="farm-scene" id="farm-scene">
+          <div id="landscape" aria-hidden="true"></div>
+          <div id="plots" class="plots" role="group" data-i18n-label="plots"></div>
+          <button class="building coop" data-tab="animals"><span id="coop-art" aria-hidden="true"></span><span class="building-label" data-i18n="animals">小牧场</span><span class="building-dot" id="animal-dot" hidden></span></button>
+          <button class="building workshop" data-tab="workshop"><span id="workshop-art" aria-hidden="true"></span><span class="building-label" data-i18n="workshop">加工坊</span><span class="building-dot" id="machine-dot" hidden></span></button>
+          <span class="scene-caption" data-i18n="sceneCaption">把日子，种成喜欢的样子。</span>
+          <div class="pause-curtain" id="pause-curtain" hidden><span data-i18n="paused">农场正在小憩</span><button id="resume" class="primary" data-i18n="resume">继续照料</button></div>
+        </div>
+        <div class="scene-bottom"><span id="hint"></span><button class="text-button" id="harvest-all" data-i18n="harvestAll">收获成熟作物</button></div>
+      </section>
+      <aside class="ledger" data-i18n-label="ledger">
+        <nav class="tabs" id="tabs" data-i18n-label="tabs">
+          <button data-tab="crops" aria-pressed="true"><span class="tab-icon" data-icon="sprout" aria-hidden="true"></span><span data-i18n="crops">种植</span></button>
+          <button data-tab="animals" aria-pressed="false"><span class="tab-icon" data-icon="chicken" aria-hidden="true"></span><span data-i18n="animals">小牧场</span></button>
+          <button data-tab="workshop" aria-pressed="false"><span class="tab-icon" data-icon="mill" aria-hidden="true"></span><span data-i18n="workshop">加工坊</span></button>
+          <button data-tab="market" aria-pressed="false"><span class="tab-icon" data-icon="basket" aria-hidden="true"></span><span data-i18n="market">集市</span></button>
+        </nav>
+        <div class="panel" id="panel"></div>
+        <section class="order-card" id="order-card" data-i18n-label="order">
+          <div class="order-heading"><span data-i18n="order">邻里的小订单</span><span id="order-count"></span></div>
+          <div class="order-details"><div id="order-needs"></div><button id="deliver" class="primary"></button></div>
+        </section>
+      </aside>
+    </main>
+    <footer class="footer"><span id="message" role="status" aria-live="polite"></span><span class="footer-mark">GROW A LITTLE, LIVE A LITTLE.</span></footer>
+  </div>
+  <dialog id="dialog" aria-labelledby="dialog-title"><div class="dialog-top"><span>PAPER FARM / FIELD GUIDE</span><button id="close-dialog" class="icon-button" data-i18n-label="close">×</button></div><h2 id="dialog-title"></h2><div id="dialog-body"></div><div id="dialog-actions"></div><a class="dialog-back" href="../../games.html" data-i18n="common.back">返回大厅</a></dialog>
+  <script src="../../i18n.js"></script><script src="./translations.js"></script><script src="./engine.js"></script><script src="./art.js"></script><script src="./game.js"></script>
+</body>
+</html>

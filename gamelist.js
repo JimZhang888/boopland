@@ -7,6 +7,74 @@
 // locales 按全局语言提供 title、description；缺少翻译时回退到基础字段。
 window.GAME_LIST = [
   {
+    title: "纸上农场",
+    description: "开垦播种、养鸡养牛，把收获做成面包与果酱，慢慢经营自己的治愈农场。",
+    path: "./games/paper-farm/index.html",
+    category: "休闲",
+    color: "#e5e9d8",
+    cover: "./games/paper-farm/cover.svg",
+    locales: {
+      en: { title: "Paper Farm", description: "Sow crops, raise animals and make bread and jam. Grow your own peaceful little farm." },
+      ja: { title: "紙の農場", description: "畑を耕し、鶏や牛を育て、パンとジャムを作ろう。のんびり育つ癒やしの農場。" },
+      ko: { title: "종이 농장", description: "밭을 일구고 동물을 키우며 빵과 잼을 만들어요. 나만의 편안한 농장을 가꿔요." },
+      fr: { title: "Ferme de papier", description: "Cultivez, élevez des animaux et préparez pain et confiture. Votre petite ferme paisible grandit." },
+      de: { title: "Papierfarm", description: "Baue Pflanzen an, halte Tiere und mache Brot und Marmelade. Deine kleine Farm wächst in Ruhe." },
+      es: { title: "Granja de papel", description: "Cultiva, cría animales y prepara pan y mermelada. Haz crecer tu pequeña y tranquila granja." },
+      'pt-BR': { title: "Fazenda de papel", description: "Plante, crie animais e prepare pão e geleia. Cultive sua pequena fazenda com tranquilidade." }
+    }
+  },
+  {
+    title: "小鱼化鲲",
+    description: "吃掉小鱼，灵巧冲刺，历经六种形态，最终成为自在吞潮的北冥鲲。",
+    path: "./games/little-kun/index.html",
+    category: "动作",
+    color: "#dfe8dc",
+    cover: "./games/little-kun/cover.svg",
+    locales: {
+      en: { title: "Little Fish, Great Kun", description: "Eat smaller fish, dash past danger and grow through six forms into Kun, a mythical giant of the sea." },
+      ja: { title: "小魚から鯤へ", description: "小魚を食べ、すいっと危険をかわそう。六つの姿を経て、魚群を引き寄せる北冥の鯤へ。" },
+      ko: { title: "작은 물고기, 전설의 곤", description: "작은 물고기를 먹고 돌진으로 위험을 피하세요. 여섯 모습을 거쳐 바다의 전설 곤이 되세요." },
+      fr: { title: "Petit poisson, grand Kun", description: "Mangez les petits poissons, évitez le danger et passez par six formes jusqu’au géant mythique Kun." },
+      de: { title: "Kleiner Fisch, großer Kun", description: "Friss kleine Fische, sprinte an Gefahren vorbei und wachse durch sechs Gestalten zum sagenhaften Kun." },
+      es: { title: "Pequeño pez, gran Kun", description: "Come peces pequeños, esquiva peligros y crece a través de seis formas hasta ser el mítico Kun." },
+      'pt-BR': { title: "Pequeno peixe, grande Kun", description: "Coma peixes menores, desvie dos perigos e cresça por seis formas até virar o lendário Kun." }
+    }
+  },
+  {
+    title: "一页侦探",
+    description: "一张现场速写，几份证词。寻找物证中的矛盾，把三个小小悬案还原成完整的故事。",
+    path: "./games/one-page-detective/index.html",
+    category: "解谜",
+    color: "#e6e8da",
+    cover: "./games/one-page-detective/cover.svg",
+    locales: {
+      en: { title: "One-Page Detective", description: "One scene, a few witnesses. Find clues, challenge contradictions and piece together three little mysteries." },
+      ja: { title: "一枚の探偵", description: "一枚の現場といくつかの証言。証拠から矛盾を見つけ、三つの小さな事件を解き明かそう。" },
+      ko: { title: "한 장의 탐정", description: "한 장의 현장과 몇 가지 증언. 증거로 모순을 찾고 세 가지 작은 사건의 진실을 맞춰요." },
+      fr: { title: "Détective sur une page", description: "Un lieu, quelques témoins. Trouvez les indices, confrontez les contradictions et résolvez trois petits mystères." },
+      de: { title: "Ein-Seiten-Detektiv", description: "Ein Schauplatz, ein paar Aussagen. Sammle Beweise, entdecke Widersprüche und löse drei kleine Rätsel." },
+      es: { title: "Detective de una página", description: "Un lugar y varios testigos. Reúne pruebas, descubre contradicciones y resuelve tres pequeños misterios." },
+      'pt-BR': { title: "Detetive de uma página", description: "Um cenário e algumas testemunhas. Encontre provas, revele contradições e resolva três pequenos mistérios." }
+    }
+  },
+  {
+    title: "纸上台球",
+    description: "一方绿绒，一段闲暇。瞄准、蓄力、落袋，独自清台或与朋友来一局八球。",
+    path: "./games/paper-billiards/index.html",
+    category: "休闲",
+    color: "#dce4d6",
+    cover: "./games/paper-billiards/cover.svg",
+    locales: {
+      en: { title: "Paper Billiards", description: "A quiet moment on green felt. Aim, set your power and sink each shot. Practice solo or play local 8-ball with a friend." },
+      ja: { title: "紙のビリヤード", description: "緑のラシャでひと休み。狙って、引いて、ポケットへ。ひとりで練習、ふたりでエイトボール。" },
+      ko: { title: "종이 당구", description: "초록 천 위에서 잠깐의 여유. 조준하고 힘을 조절해 넣어요. 혼자 연습하거나 친구와 8볼 한 판." },
+      fr: { title: "Billard sur papier", description: "Un moment calme sur le tapis vert. Visez et dosez vos coups, en solo ou à deux au jeu de la 8." },
+      de: { title: "Papierbillard", description: "Eine ruhige Runde auf grünem Tuch. Zielen, dosieren und versenken. Allein üben oder 8-Ball zu zweit spielen." },
+      es: { title: "Billar de papel", description: "Un rato de calma sobre el tapete verde. Apunta y ajusta la potencia. Practica a solas o juega bola 8 con un amigo." },
+      'pt-BR': { title: "Bilhar de papel", description: "Um momento de calma no pano verde. Mire e ajuste a força. Treine sozinho ou jogue bola 8 com um amigo." }
+    }
+  },
+  {
     title: "小小流水线",
     description: "铺设传送带，切割、染色与旋转，让纸上小工厂自动完成一张张订单。",
     path: "./games/tiny-factory/index.html",

@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="500" viewBox="0 0 800 500">
+  <defs><filter id="paper"><feTurbulence type="fractalNoise" baseFrequency=".8" numOctaves="3" stitchTiles="stitch"/><feColorMatrix type="saturate" values="0"/><feComponentTransfer><feFuncA type="linear" slope=".07"/></feComponentTransfer></filter></defs>
+  <path fill="#e5ece0" d="M0 0h800v500H0z"/><path d="M0 355Q160 300 330 349T800 319V500H0Z" fill="#cfdfd5" opacity=".5"/>
+  <g fill="none" stroke="#9db4a6" stroke-width="1.4" opacity=".65"><path d="M63 110q50-14 98 0m449 25q55-17 115-3M65 358q41-12 93-1m432 51q47-11 111-3M300 72q28-9 61 0"/><circle cx="671" cy="223" r="6"/><circle cx="694" cy="199" r="3"/><circle cx="152" cy="224" r="4"/></g>
+  <g transform="translate(410 255) rotate(-9)" fill="#88a8a4" stroke="#587675" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
+    <path d="M-122 0-229-65-207 0-241 63-116 34Z"/><path d="M-42-46q-30-90 29-108l56 101"/><path d="M169 0C174-83 16-119-126-11C-96 91 148 103 169 0Z"/>
+    <path d="M-117 16q138 92 273-1" fill="none" stroke="#d2ded1" stroke-width="14"/>
+    <path d="M5 17q-31 131-117 90l59-111M-10-15q-122-148-151-79l28 75"/>
+    <path d="M78-68q-20-52 28-67m-25 31-24-17" fill="none" stroke="#a99b67" stroke-width="3"/>
+    <path d="M148 20q73 7 64 38t48 6" fill="none"/><path d="M64-29q-14 26 0 52M58-32q-15 27 0 52" fill="none" stroke-width="1.3"/>
+    <circle cx="119" cy="-19" r="7" fill="#f6f2df" stroke="none"/><circle cx="121" cy="-19" r="4" fill="#3d595b" stroke="none"/>
+    <path d="M139 17q17 9 23-3" fill="none"/><g fill="none" stroke="#d9d2af" stroke-width="2"><path d="M-62-25q10 18 20 0m9-7q10 18 20 0m9-7q10 18 20 0"/></g>
+  </g>
+  <g fill="#c6b575" stroke="#777e60" stroke-width="1.5"><path d="M155 377q-30-36-67-3l-24-17 7 24-11 17 29-11q43 25 66-10Z"/><circle cx="139" cy="374" r="2.5" fill="#435951"/></g>
+  <g fill="none" stroke="#92aa8d" stroke-width="2" opacity=".6"><path d="M50 475q26-39 3-77m9 77q37-57 25-98m-9 98q-3-36 25-55M726 487q-24-43-11-75m22 75q30-49 18-94"/></g>
+  <path d="m636 75 5 15 16 4-16 6-5 16-6-16-15-6 15-4Z" fill="#cabb82"/>
+  <path fill="#000" filter="url(#paper)" d="M0 0h800v500H0z"/>
+</svg>
