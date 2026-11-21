@@ -34,13 +34,30 @@
       <div class="shot-info"><div class="status-line"><span id="status-dot"></span><p id="status" role="status" aria-live="polite"></p></div><div class="ball-tray" id="ball-tray" aria-hidden="true"></div></div>
       <div class="shot-controls">
         <div class="fine-aim"><button id="aim-left" class="icon-button" data-i18n-label="billiards.aimLeft">↶</button><span><small data-i18n="billiards.aim">微调</small><output id="angle-value">0°</output></span><button id="aim-right" class="icon-button" data-i18n-label="billiards.aimRight">↷</button></div>
+        <button class="tip-trigger" id="tip-open" type="button" aria-haspopup="dialog" aria-controls="dialog"><span class="tip-mini" aria-hidden="true"></span><span data-i18n="billiards.tip">击点</span></button>
         <label class="power-control" for="power"><span><small data-i18n="billiards.power">击球力度</small><output id="power-value">70%</output></span><input id="power" type="range" min="5" max="100" value="70"></label>
         <button class="primary strike" id="strike"><span id="strike-label" data-i18n="billiards.strike">击球</span><svg viewBox="0 0 28 20" aria-hidden="true"><path d="M2 10h23m-7-6 7 6-7 6"/></svg></button>
       </div>
     </section>
     <footer><span data-i18n="billiards.hint">点击球桌瞄准 · 拉动白球蓄力 · 松手击球</span><span class="footer-note" data-i18n="billiards.footer">一方绿绒，一段闲暇。</span></footer>
   </main>
-  <dialog id="dialog" aria-labelledby="dialog-title"><div class="dialog-head"><h2 id="dialog-title"></h2><button id="close-dialog" class="icon-button" data-i18n-label="billiards.close">×</button></div><div id="help-content"><h3 data-i18n="billiards.controls"></h3><p data-i18n="billiards.helpAim"></p><p data-i18n="billiards.helpKeys"></p><h3 data-i18n="billiards.solo"></h3><p data-i18n="billiards.helpSolo"></p><h3 data-i18n="billiards.versus"></h3><p data-i18n="billiards.helpVersus"></p><p data-i18n="billiards.helpFoul"></p><p data-i18n="billiards.helpEight"></p></div><div id="confirm-content" hidden><p data-i18n="billiards.confirmText"></p><div class="dialog-actions"><button class="secondary" id="cancel" data-i18n="billiards.cancel"></button><button class="primary" id="confirm" data-i18n="billiards.newGame"></button></div></div></dialog>
+  <dialog id="dialog" aria-labelledby="dialog-title">
+    <div class="dialog-head"><h2 id="dialog-title"></h2><button id="close-dialog" class="icon-button" data-i18n-label="billiards.close">×</button></div>
+    <div id="tip-content" hidden>
+      <div class="tip-map">
+        <button class="tip-high" data-tip-high="1" data-i18n="billiards.follow">高杆</button>
+        <button class="tip-left" data-tip-side="-1" data-i18n="billiards.leftSpin">左塞</button>
+        <div class="tip-pad" id="tip-pad" tabindex="0" role="group" data-i18n-label="billiards.tipTitle" aria-describedby="tip-help tip-readout"><i class="tip-ring" aria-hidden="true"></i></div>
+        <button class="tip-right" data-tip-side="1" data-i18n="billiards.rightSpin">右塞</button>
+        <button class="tip-low" data-tip-high="-1" data-i18n="billiards.draw">低杆</button>
+      </div>
+      <output id="tip-readout" aria-live="polite"></output>
+      <p id="tip-help" data-i18n="billiards.tipHint"></p>
+      <div class="dialog-actions"><button class="secondary" id="tip-reset" data-i18n="billiards.center">中心</button><button class="primary" id="tip-done" data-i18n="billiards.done">完成</button></div>
+    </div>
+    <div id="help-content"><h3 data-i18n="billiards.controls"></h3><p data-i18n="billiards.helpAim"></p><p data-i18n="billiards.helpTip"></p><p data-i18n="billiards.helpKeys"></p><h3 data-i18n="billiards.solo"></h3><p data-i18n="billiards.helpSolo"></p><h3 data-i18n="billiards.versus"></h3><p data-i18n="billiards.helpVersus"></p><p data-i18n="billiards.helpFoul"></p><p data-i18n="billiards.helpEight"></p></div>
+    <div id="confirm-content" hidden><p data-i18n="billiards.confirmText"></p><div class="dialog-actions"><button class="secondary" id="cancel" data-i18n="billiards.cancel"></button><button class="primary" id="confirm" data-i18n="billiards.newGame"></button></div></div>
+  </dialog>
   <script src="../../i18n.js"></script><script src="translations.js"></script><script src="engine.js"></script><script src="scene.js"></script><script src="game.js"></script>
 </body>
 </html>

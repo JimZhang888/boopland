@@ -5,6 +5,60 @@
   const COLORS=['#f7f5df','#e9b531','#2f65aa','#c54236','#714b87','#de7c35','#347b5b','#983d3b','#202c2a','#e9b531','#2f65aa','#c54236','#714b87','#de7c35','#347b5b','#983d3b'];
   const circle=(c,x,y,r)=>{c.beginPath();c.arc(x,y,r,0,Math.PI*2);};
   const rounded=(c,x,y,w,h,r)=>{c.beginPath();c.roundRect(x,y,w,h,r);};
+  const TAU=2*Math.PI;
+  const cueDots=[[Math.sqrt(3)/2,0,.5],[-.25,Math.sqrt(3)/2,Math.sqrt(3)/4],[-Math.sqrt(3)/4,-.5,.75]];
+
+  // Outline of a circular decal on the visible hemisphere of a unit sphere.
+  // The rim projects to an ellipse; a decal crossing the silhouette ends at the limb.
+  function capPath(c,x,y,z,height) {
+    const radius=Math.sqrt(1-height*height);
+    if(z<=-radius) return false;
+    const horizontal=Math.hypot(x,y);
+    c.save();c.rotate(Math.atan2(y,x));c.beginPath();
+    const cx=height*horizontal;
+    if(z>=radius) {
+      c.ellipse(cx,0,radius*z,radius,0,0,TAU);
+    } else {
+      const angle=Math.acos(E.clamp(height*z/(radius*horizontal),-1,1));
+      if(Math.abs(z)<1e-7) {
+        c.moveTo(cx,radius*Math.sin(angle));c.lineTo(cx,-radius*Math.sin(angle));
+      } else if(z>0) {
+        c.ellipse(cx,0,radius*z,radius,0,angle,TAU-angle);
+      } else {
+        c.ellipse(cx,0,-radius*z,radius,0,Math.PI-angle,angle-Math.PI,true);
+      }
+      const limb=Math.acos(E.clamp(height/horizontal,-1,1));
+      c.arc(0,0,1,-limb,limb);
+    }
+    c.closePath();c.restore();return true;
+  }
+
+  function ballMarkings(c,b) {
+    const [w,x,y,z]=b.orientation;
+    // Local basis vectors in table space, shared by the stripe, numbers and cue dots.
+    const xx=1-2*(y*y+z*z), xy=2*(x*y+w*z), xz=2*(x*z-w*y);
+    const yx=2*(x*y-w*z), yy=1-2*(x*x+z*z), yz=2*(y*z+w*x);
+    const zx=2*(x*z+w*y), zy=2*(y*z-w*x), zz=1-2*(x*x+y*y);
+    if(!b.n) {
+      c.fillStyle='#aa4b40';
+      for(const [u,v,t] of cueDots) {
+        const dx=u*xx+v*yx+t*zx,dy=u*xy+v*yy+t*zy,dz=u*xz+v*yz+t*zz;
+        for(const sign of [-1,1]) if(capPath(c,sign*dx,sign*dy,sign*dz,.979)) c.fill();
+      }
+      return;
+    }
+    c.fillStyle='#f7f4e7';
+    for(const sign of [1,-1]) {
+      if(b.n>8&&capPath(c,sign*yx,sign*yy,sign*yz,.55)) c.fill();
+      if(!capPath(c,sign*zx,sign*zy,sign*zz,.88)) continue;
+      c.fill();
+      if(sign*zz<=.04) continue;
+      c.save();c.clip();
+      c.transform(sign*xx,sign*xy,yx,yy,sign*zx,sign*zy);
+      c.scale(.05,.05);c.font='bold 15px Georgia';c.textAlign='center';c.textBaseline='middle';
+      c.fillStyle='#233129';c.fillText(b.n,0,.5);c.restore();
+    }
+  }
   class Scene {
     constructor(canvas) {
       this.canvas=canvas;this.ctx=canvas.getContext('2d');this.w=0;this.h=0;this.scale=1;this.rotated=false;
@@ -72,8 +126,7 @@
       const r=E.R*scale;c.save();c.globalAlpha=alpha;
       c.save();c.translate(b.x+2.7,b.y+4);c.scale(1,.8);const shadow=c.createRadialGradient(0,0,2,0,0,r+5);shadow.addColorStop(0,'#00170db0');shadow.addColorStop(1,'#00170d00');circle(c,0,0,r+5);c.fillStyle=shadow;c.fill();c.restore();
       circle(c,b.x,b.y,r);c.fillStyle=COLORS[b.n];c.fill();c.save();c.clip();
-      if(b.n>8) {c.translate(b.x,b.y);c.rotate(Math.sin(b.roll*.35)*.8);c.fillStyle='#f2f1e6';c.fillRect(-r,-r,r*2,r*.44);c.fillRect(-r,r*.56,r*2,r*.44);c.rotate(-Math.sin(b.roll*.35)*.8);c.translate(-b.x,-b.y);}
-      if(b.n) {circle(c,b.x,b.y,r*.46);c.fillStyle='#f8f6e8';c.fill();c.save();c.translate(b.x,b.y);if(this.rotated)c.rotate(-Math.PI/2);c.fillStyle='#27342e';c.font=`bold ${r*.67}px Georgia`;c.textAlign='center';c.textBaseline='middle';c.fillText(b.n,0,.8);c.restore();}
+      c.save();c.translate(b.x,b.y);c.scale(r,r);ballMarkings(c,b);c.restore();
       const shade=c.createRadialGradient(b.x-r*.32,b.y-r*.38,r*.08,b.x+r*.05,b.y+r*.08,r*1.15);shade.addColorStop(0,'#ffffff65');shade.addColorStop(.42,'#ffffff06');shade.addColorStop(.75,'#0000000b');shade.addColorStop(1,'#061a13ae');circle(c,b.x,b.y,r);c.fillStyle=shade;c.fill();
       c.beginPath();c.ellipse(b.x-r*.3,b.y-r*.42,r*.29,r*.15,-.5,0,Math.PI*2);c.fillStyle='#fffff8bd';c.fill();c.restore();c.restore();
     }
@@ -86,17 +139,26 @@
         c.save();c.beginPath();c.rect(80,90,880,440);c.clip();
         c.setLineDash([5,7]);c.lineWidth=1.2;c.strokeStyle='#f5f4d998';c.beginPath();c.moveTo(cue.x+dx*16,cue.y+dy*16);c.lineTo(path.x,path.y);c.stroke();c.setLineDash([]);
         circle(c,path.x,path.y,E.R);c.strokeStyle='#f5f4d995';c.lineWidth=1;c.stroke();
-        if(path.hit) {const tx=(path.hit.x-path.x)/(E.R*2),ty=(path.hit.y-path.y)/(E.R*2);c.strokeStyle=E.legalTarget(s,path.hit.n)?'#f4ecbda8':'#ecad8fc9';c.lineWidth=1.5;c.beginPath();c.moveTo(path.hit.x+tx*16,path.hit.y+ty*16);c.lineTo(path.hit.x+tx*95,path.hit.y+ty*95);c.stroke();const dot=dx*tx+dy*ty;const vx=dx-dot*tx,vy=dy-dot*ty;c.strokeStyle='#f5f4d94d';c.beginPath();c.moveTo(path.x,path.y);c.lineTo(path.x+vx*75,path.y+vy*75);c.stroke();}
+        if(path.hit) {
+          const guides=E.contactGuide(s,angle,power,options.tip,path);
+          for(const [index,points] of guides.entries()) {
+            c.strokeStyle=index===0?'#f5f4d99a':E.legalTarget(s,path.hit.n)?'#f4ecbda8':'#ecad8fc9';
+            c.lineWidth=1.5;c.beginPath();c.moveTo(points[0].x,points[0].y);
+            for(const p of points.slice(1)) c.lineTo(p.x,p.y);
+            c.stroke();
+          }
+        }
         c.restore();
         // A tapered maple shaft with ferrule, blue chalk and a dark wrapped grip.
-        c.save();c.translate(cue.x,cue.y);c.rotate(angle);const back=22+(options.dragging?power*75:power*15);
+        c.save();c.translate(cue.x,cue.y);c.rotate(angle);c.translate(0,(options.tip?.side||0)*E.MAX_TIP_OFFSET*E.R);
+        const back=22+(options.dragging?power*75:power*15);
         const g=c.createLinearGradient(0,-5,0,5);g.addColorStop(0,'#795b33');g.addColorStop(.3,'#e3c794');g.addColorStop(.6,'#f0d7a8');g.addColorStop(1,'#9b7848');
         c.shadowColor='#041e1750';c.shadowBlur=3;c.shadowOffsetY=4;c.beginPath();c.moveTo(-back,-2.5);c.lineTo(-back-205,-5);c.lineTo(-back-205,5);c.lineTo(-back,2.5);c.closePath();c.fillStyle=g;c.fill();
         c.fillStyle='#eee5ca';c.fillRect(-back-8,-2.6,7,5.2);c.fillStyle='#70989e';c.fillRect(-back-2,-2.7,2.5,5.4);
         c.fillStyle='#46392e';c.fillRect(-back-205,-4.8,55,9.6);c.strokeStyle='#b1976b';c.lineWidth=1;c.strokeRect(-back-150,-4.4,3,8.8);c.restore();
       }
       for(const b of s.balls) if(b.active) this.drawBall(c,b);
-      for(const p of options.effects||[]) {const t=p.age/.32;if(t<1){const dest=E.POCKETS[p.pocket];this.drawBall(c,{n:p.n,x:p.x+(dest.x-p.x)*t,y:p.y+(dest.y-p.y)*t,roll:0},1-t,1-t*.6);}}
+      for(const p of options.effects||[]) {const t=p.age/.32;if(t<1){const dest=E.POCKETS[p.pocket];this.drawBall(c,{...p,x:p.x+(dest.x-p.x)*t,y:p.y+(dest.y-p.y)*t},1-t,1-t*.6);}}
       if(s.phase==='placing') {const p=options.placement||cue,valid=E.canPlace(s,p.x,p.y);this.drawBall(c,{...cue,x:p.x,y:p.y},.6);circle(c,p.x,p.y,18);c.setLineDash([3,4]);c.strokeStyle=valid?'#fff9c5':'#ed8a72';c.lineWidth=1.5;c.stroke();c.setLineDash([]);}
       c.restore();
     }

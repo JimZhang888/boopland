@@ -18,7 +18,83 @@ test('rack has 16 non-overlapping balls and the 8 centered',()=>{
 });
 test('head-on collision transfers velocity and records first contact',()=>{
   const s=sparse();Object.assign(b(s,0),{x:300,y:300});Object.assign(b(s,1),{x:380,y:300});E.shoot(s,0,.3);
-  for(let i=0;i<40;i++)E.tick(s);assert.equal(s.shot.first,1);assert.ok(b(s,1).vx>300);assert.ok(Math.abs(b(s,0).vx)<30);
+  for(let i=0;i<40&&s.shot.first===null;i++)E.tick(s);
+  assert.equal(s.shot.first,1);assert.ok(b(s,1).vx>300);assert.ok(Math.abs(b(s,0).vx)<30);
+});
+test('close straight shots follow or draw after contact in any aiming direction',()=>{
+  for(const angle of [0, Math.PI/2, Math.PI, -Math.PI/2]) {
+    const dx=Math.cos(angle),dy=Math.sin(angle);
+    const travels=[-1,0,1].map(high=>{
+      const s=sparse(),cue=b(s,0);
+      Object.assign(cue,{x:500,y:310});
+      Object.assign(b(s,1),{x:cue.x+80*dx,y:cue.y+80*dy});
+      E.shoot(s,angle,.55,{side:0,high});
+      for(let i=0;i<60&&s.shot.first===null;i++) E.tick(s);
+      assert.equal(s.shot.first,1);
+      const x=cue.x,y=cue.y;
+      for(let i=0;i<60;i++) E.tick(s);
+      return (cue.x-x)*dx+(cue.y-y)*dy;
+    });
+    assert.ok(travels[0]<-12 && travels[1]>=0 && travels[2]>travels[1]+12,travels);
+  }
+});
+test('left and right tips give mirrored cushion rebounds and transfer opposite throw to the target',()=>{
+  for(const side of [-1,0,1]) {
+    const bank=sparse(),cue=b(bank,0);
+    Object.assign(cue,{x:300,y:160});
+    E.shoot(bank,-Math.PI/2,.55,{side,high:0});
+    for(let i=0;i<64&&cue.vy<0;i++) {
+      assert.ok(Math.abs(cue.x-300)<1e-8,'side spin alone must travel straight on open cloth');
+      E.tick(bank);
+    }
+    assert.ok(cue.vy>0);
+    if(side) assert.ok(cue.vx*side>30);else assert.ok(Math.abs(cue.vx)<1e-8);
+    const shot=sparse();
+    Object.assign(b(shot,1),{x:352,y:310});
+    E.shoot(shot,0,.55,{side,high:0});
+    for(let i=0;i<60&&shot.shot.first===null;i++) E.tick(shot);
+    assert.equal(shot.shot.first,1);
+    if(side) assert.ok(b(shot,1).vy*side < -5);else assert.equal(b(shot,1).vy,0);
+  }
+});
+test('cloth converts sliding into rolling, with rotation tied to distance and spin decaying to rest',()=>{
+  const s=sparse(),cue=b(s,0);
+  Object.assign(cue,{x:180,y:200});
+  E.shoot(s,0,.4,{side:.5,high:0});
+  const initialSide=Math.abs(cue.wz);
+  for(let i=0;i<85;i++) E.tick(s);
+  assert.ok(Math.abs(cue.vx-E.R*cue.wy)<1e-7);
+  assert.ok(Math.abs(cue.wz)<initialSide);
+  assert.ok(Math.abs(Math.hypot(...cue.orientation)-1)<1e-9);
+  assert.notDeepEqual(cue.orientation,[1,0,0,0]);
+  settle(s);
+  for(const axis of ['vx','vy','wx','wy','wz']) assert.equal(Math.abs(cue[axis]),0);
+
+  const pure=sparse(),roller=b(pure,0);
+  E.shoot(pure,0,.25);
+  roller.wy=roller.vx/E.R;
+  const startX=roller.x;
+  for(let i=0;i<10;i++) E.tick(pure);
+  const radians=(roller.x-startX)/E.R;
+  assert.ok(Math.abs(roller.orientation[0]-Math.cos(radians/2))<1e-9);
+  assert.ok(Math.abs(roller.orientation[2]-Math.sin(radians/2))<1e-9);
+});
+test('a diagonal tip respects the circular limit and the center remains the default',()=>{
+  const diagonal=sparse(),edge=sparse(),center=sparse(),legacy=sparse();
+  const tip=E.limitTip(4,-3);
+  assert.deepEqual(tip,{side:.8,high:-.6});
+  E.shoot(diagonal,0,.75,{side:4,high:-3});E.shoot(edge,0,.75,tip);
+  assert.deepEqual(b(diagonal,0),b(edge,0));
+  assert.ok(b(diagonal,0).wz<0&&b(diagonal,0).wy<0);
+  assert.equal(E.shoot(center,0,.75,{side:NaN,high:0}),false);
+  E.shoot(center,0,.75,{side:0,high:0});E.shoot(legacy,0,.75);
+  assert.deepEqual(center,legacy);
+});
+test('a ball spinning at rest keeps turning until it stops, with no sideways drift',()=>{
+  const s=sparse(),cue=b(s,0);
+  E.shoot(s,0,.3);Object.assign(cue,{vx:0,vy:0,wx:0,wy:0,wz:18});
+  E.tick(s);assert.equal(s.phase,'moving');assert.ok(cue.orientation[3]>0);
+  settle(s);assert.equal(cue.x,280);assert.equal(cue.y,310);assert.equal(cue.wz,0);
 });
 test('cushion reflects a fast shot without tunneling',()=>{
   const s=sparse('solo',[0,1]);Object.assign(b(s,0),{x:300,y:130});Object.assign(b(s,1),{x:800,y:400});E.shoot(s,-Math.PI/2,1);
@@ -40,6 +116,22 @@ test('opening shot breaks the rack and remains finite',()=>{
 });
 test('prediction identifies first target and leaves game unchanged',()=>{
   const s=E.create(),before=JSON.stringify(s),a=E.aim(s,0);assert.equal(a.hit.n,1);assert.equal(a.x,671);assert.equal(JSON.stringify(s),before);
+});
+test('contact guides follow the shot physics, including draw and insufficient power',()=>{
+  for(const high of [-1,1]) {
+    const s=sparse();Object.assign(b(s,1),{x:360,y:310});
+    const before=JSON.stringify(s),tip={side:0,high},path=E.aim(s,0);
+    const [cueLine,targetLine]=E.contactGuide(s,0,.55,tip,path);
+    assert.equal(JSON.stringify(s),before);
+    assert.ok((cueLine.at(-1).x-path.x)*high>12);
+    assert.ok(targetLine.at(-1).x>b(s,1).x);
+    E.shoot(s,0,.55,tip);
+    while(s.shot.first===null) E.tick(s);
+    for(let i=1;i<60;i++) E.tick(s);
+    assert.ok(Math.abs(b(s,0).x-cueLine.at(-1).x)<1e-7);
+  }
+  const far=sparse();Object.assign(b(far,1),{x:910,y:310});
+  assert.deepEqual(E.contactGuide(far,0,.05,{side:0,high:-1},E.aim(far,0)),[]);
 });
 test('first legal pot assigns groups and retains the turn',()=>{
   const s=E.create('versus');resolved(s,{pots:[10],first:10});assert.deepEqual(s.groups,['stripes','solids']);assert.equal(s.player,0);assert.equal(s.reason,'again');

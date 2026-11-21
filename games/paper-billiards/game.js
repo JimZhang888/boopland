@@ -2,9 +2,18 @@
   'use strict';
   const E=PaperBilliards,$=id=>document.getElementById(id),t=(key,values)=>BooplandI18n.t('billiards.'+key,values);
   const scene=new BilliardsScene.Scene($('game')),saveKey='boopland-paper-billiards-v1';
-  let state=E.create(),angle=0,power=.7,paused=false,dirty=true,drag=null,placement=null,effects=[];
+  scene.resize();
+  function rack(mode) {
+    const game=E.create(mode);
+    // Place the numbered faces upright for the player before the opening break.
+    if(scene.rotated) for(const b of game.balls) b.orientation=[Math.SQRT1_2,0,0,-Math.SQRT1_2];
+    return game;
+  }
+  let state=rack('solo'),angle=0,power=.7,paused=false,dirty=true,drag=null,placement=null,effects=[];
   let lastTime=0,accumulator=0,frameId=0,best=null,newRecord=false,saveFailed=false,handledResult=false,pendingMode=null;
   let sound=false,audio=null,lastSound=0;
+  let tip=E.limitTip(),tipPointer=null,dialogTitle='help';
+  $('tip-pad').style.setProperty('--tip-diameter',E.MAX_TIP_OFFSET*100+'%');
   try { const saved=JSON.parse(localStorage.getItem(saveKey)||'{}');if(Number.isInteger(saved.best)&&saved.best>0&&saved.best<100000)best=saved.best;sound=saved.sound===true; } catch { /* Playing never depends on storage. */ }
   function save() {try{localStorage.setItem(saveKey,JSON.stringify({best,sound}));return true;}catch{return false;}}
   function wakeAudio() {
@@ -23,6 +32,21 @@
   function groupName() {const g=state.groups[state.player];return t(g&&E.remaining(state,g)===0?'eightTarget':g||'open');}
   function setText(id,text) {if($(id).textContent!==String(text))$(id).textContent=text;}
   function setStatus(text) {setText('status',text);}
+  function showTip() {
+    const amount=value=>Math.round(Math.abs(value)*100);
+    const parts=[];
+    if(amount(tip.high)) parts.push(t(tip.high>0?'follow':'draw')+' '+amount(tip.high)+'%');
+    if(amount(tip.side)) parts.push(t(tip.side>0?'rightSpin':'leftSpin')+' '+amount(tip.side)+'%');
+    const description=parts.join(' · ')||t('center');
+    setText('tip-readout',description);
+    const label=t('tipTitle')+' · '+description;
+    $('tip-open').setAttribute('aria-label',label);$('tip-open').title=label;
+    for(const el of [$('tip-pad'),$('tip-open')]) {
+      el.style.setProperty('--tip-x',(50+50*E.MAX_TIP_OFFSET*tip.side)+'%');
+      el.style.setProperty('--tip-y',(50-50*E.MAX_TIP_OFFSET*tip.high)+'%');
+    }
+  }
+  function setTip(side=0,high=0) { tip=E.limitTip(side,high);showTip();dirty=true; }
   function sync() {
     setText('pots',state.potted.length);setText('shots',state.shots);setText('best',best??'—');
     setText('mode-caption',state.mode==='solo'?t('soloCaption'):t('versusCaption',{player:state.player+1,group:groupName()}));
@@ -34,6 +58,7 @@
     setText('angle-value',((Math.round(angle*180/Math.PI)%360+360)%360)+'°');
     $('power').setAttribute('aria-valuetext',Math.round(power*100)+'%');
     const enabled=!paused&&!$('dialog').open&&state.phase==='aim';
+    $('tip-open').disabled=!enabled;
     $('power').disabled=!enabled;$('aim-left').disabled=!enabled;$('aim-right').disabled=!enabled;
     $('strike').disabled=paused||$('dialog').open||!['aim','placing'].includes(state.phase);
     $('strike-label').removeAttribute('data-i18n');setText('strike-label',t(state.phase==='placing'?'place':'strike'));
@@ -58,13 +83,13 @@
     dirty=true;
   }
   function start(mode=state.mode) {
-    cancelDrag();state=E.create(mode);$('mode').value=mode;angle=0;power=.7;paused=false;placement=null;effects=[];accumulator=0;lastTime=0;handledResult=false;newRecord=false;saveFailed=false;sync();
+    cancelDrag();setTip();state=rack(mode);$('mode').value=mode;angle=0;power=.7;paused=false;placement=null;effects=[];accumulator=0;lastTime=0;handledResult=false;newRecord=false;saveFailed=false;sync();
   }
   function strike() {
     if(paused||$('dialog').open)return;
     wakeAudio();
     if(state.phase==='placing') {const p=placement||state.balls[0];if(!E.placeCue(state,p.x,p.y)){setStatus(t('invalidPlace'));return;}placement=null;sync();return;}
-    if(E.shoot(state,angle,power)){accumulator=0;sync();}
+    if(E.shoot(state,angle,power,tip)){accumulator=0;sync();}
   }
   function pause(value=!paused) {
     if(state.phase==='over')return;
@@ -112,9 +137,36 @@
   $('sound').addEventListener('click',()=>{sound=!sound;if(sound){wakeAudio();tone('strike',.35);}else audio?.suspend().catch(()=>{});save();sync();});
   $('result-action').addEventListener('click',()=>{if(paused)pause(false);else start();});
   function openDialog(kind,mode=null) {
-    cancelDrag();pendingMode=mode;setText('dialog-title',t(kind==='help'?'help':mode!==state.mode?'modeTitle':'restartTitle'));
-    $('help-content').hidden=kind!=='help';$('confirm-content').hidden=kind==='help';$('dialog').showModal();accumulator=0;sync();
+    cancelDrag();pendingMode=mode;
+    dialogTitle=kind==='tip'?'tipTitle':kind==='help'?'help':mode!==state.mode?'modeTitle':'restartTitle';
+    setText('dialog-title',t(dialogTitle));
+    $('help-content').hidden=kind!=='help';$('confirm-content').hidden=kind!=='confirm';$('tip-content').hidden=kind!=='tip';
+    $('dialog').showModal();accumulator=0;sync();
+    if(kind==='tip') $('tip-pad').focus({preventScroll:true});
   }
+  $('tip-open').addEventListener('click',()=>openDialog('tip'));
+  $('tip-done').addEventListener('click',()=>$('dialog').close());
+  $('tip-reset').addEventListener('click',()=>setTip());
+  for(const button of document.querySelectorAll('[data-tip-side],[data-tip-high]')) {
+    button.addEventListener('click',()=>setTip(Number(button.dataset.tipSide||0),Number(button.dataset.tipHigh||0)));
+  }
+  const pad=$('tip-pad');
+  function pointTip(event) {
+    const rect=pad.getBoundingClientRect(),radius=rect.width*E.MAX_TIP_OFFSET/2;
+    const side=(event.clientX-rect.left-rect.width/2)/radius,high=(rect.top+rect.height/2-event.clientY)/radius;
+    if(Math.hypot(side,high)<.06) setTip();else setTip(side,high);
+  }
+  pad.addEventListener('pointerdown',event=>{
+    if(event.button!==0||tipPointer!==null) return;
+    tipPointer=event.pointerId;pad.setPointerCapture(tipPointer);pointTip(event);
+  });
+  pad.addEventListener('pointermove',event=>{if(event.pointerId===tipPointer)pointTip(event);});
+  pad.addEventListener('lostpointercapture',()=>{tipPointer=null;});
+  pad.addEventListener('keydown',event=>{
+    const delta={ArrowLeft:[-.1,0],ArrowRight:[.1,0],ArrowUp:[0,.1],ArrowDown:[0,-.1]}[event.key];
+    if(delta) {event.preventDefault();setTip(tip.side+delta[0],tip.high+delta[1]);}
+    if(event.key==='Home') {event.preventDefault();setTip();}
+  });
   $('help').addEventListener('click',()=>openDialog('help'));
   $('restart').addEventListener('click',()=>{if(!state.shots)start();else openDialog('confirm',state.mode);});
   $('mode').addEventListener('change',()=>{const next=$('mode').value;$('mode').value=state.mode;if(!state.shots)start(next);else openDialog('confirm',next);});
@@ -122,7 +174,12 @@
   $('confirm').addEventListener('click',()=>{const mode=pendingMode||state.mode;$('dialog').close();start(mode);});
   // Native close events may arrive after a new dialog has already opened.
   // Keep its requested mode until the next openDialog call replaces it.
-  $('dialog').addEventListener('close',()=>{if($('dialog').open)return;accumulator=0;lastTime=0;sync();});
+  $('dialog').addEventListener('close',()=>{
+    if($('dialog').open)return;
+    if(tipPointer!==null&&pad.hasPointerCapture(tipPointer)) pad.releasePointerCapture(tipPointer);
+    tipPointer=null;accumulator=0;lastTime=0;sync();
+    if(dialogTitle==='tipTitle'&&!$('tip-open').disabled) $('tip-open').focus({preventScroll:true});
+  });
   window.addEventListener('keydown',event=>{
     if($('dialog').open)return;
     const key=event.key.toLowerCase();
@@ -142,7 +199,7 @@
     if(document.hidden){pause(true);if(frameId)cancelAnimationFrame(frameId);frameId=0;}
     else {lastTime=0;dirty=true;if(!frameId)frameId=requestAnimationFrame(frame);}
   });
-  window.addEventListener('boopland:languagechange',()=>{sync();if($('dialog').open)setText('dialog-title',t(!$('help-content').hidden?'help':pendingMode!==state.mode?'modeTitle':'restartTitle'));});
+  window.addEventListener('boopland:languagechange',()=>{showTip();sync();if($('dialog').open)setText('dialog-title',t(dialogTitle));});
   new ResizeObserver(()=>{cancelDrag();scene.resize();sync();}).observe($('stage'));
   function frame(now) {
     frameId=0;const dt=lastTime?Math.min((now-lastTime)/1000,.05):0;lastTime=now;
@@ -155,11 +212,11 @@
       if(effects.length){for(const p of effects)p.age+=dt;effects=effects.filter(p=>p.age<.32);dirty=true;}
     }
     if(state.events.length){
-      for(const event of state.events){if(event.type==='pocket'){effects.push({...event,age:0});tone('pocket',.5);}else if(event.type==='settled')sync();else tone(event.type,event.strength);}
+      for(const event of state.events){if(event.type==='pocket'){effects.push({...event,age:0});tone('pocket',.5);}else if(event.type==='settled'){setTip();sync();}else tone(event.type,event.strength);}
       state.events.length=0;setText('pots',state.potted.length);
     }
-    if(dirty){scene.draw(state,angle,power,{paused:paused||$('dialog').open,dragging:drag?.moved,placement,effects});dirty=false;}
+    if(dirty){scene.draw(state,angle,power,{paused:paused||$('dialog').open,dragging:drag?.moved,placement,effects,tip});dirty=false;}
     if(!document.hidden)frameId=requestAnimationFrame(frame);
   }
-  scene.resize();sync();frameId=requestAnimationFrame(frame);
+  showTip();sync();frameId=requestAnimationFrame(frame);
 })();
