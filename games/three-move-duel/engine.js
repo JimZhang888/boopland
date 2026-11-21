@@ -4,7 +4,7 @@
   const MOVES = Object.freeze(['advance', 'retreat', 'thrust', 'guard']);
   const RIVALS = Object.freeze(['pine', 'rain', 'swallow']);
   const MAX_ROUNDS = 6;
-  const initial = () => ({ player: 1, rival: 3, playerHP: 3, rivalHP: 3, round: 1 });
+  const initial = () => ({ player: 1, rival: 3, playerHP: 3, rivalHP: 3, initiative: null, round: 1 });
   const step = move => move === 'advance' ? 1 : move === 'retreat' ? -1 : 0;
   const onBridge = value => Math.max(0, Math.min(4, value));
 
@@ -17,18 +17,25 @@
       rival = board.rival;
     }
     const inReach = rival - player === 1;
-    function result(move, other, shifted) {
-      if (move === 'thrust') return !inReach ? 'miss' : other === 'guard' ? 'parried' : 'hit';
+    function result(side, move, other, shifted) {
+      if (move === 'thrust') {
+        if (!inReach) return 'miss';
+        if (other === 'guard') return 'parried';
+        if (board.initiative === side) return 'riposte';
+        if (board.initiative && other === 'thrust') return 'interrupted';
+        return 'hit';
+      }
       if (move === 'guard') return inReach && other === 'thrust' ? 'block' : 'ready';
       if (clash) return 'clash';
       return shifted ? 'step' : 'edge';
     }
-    const playerResult = result(playerMove, rivalMove, player !== board.player);
-    const rivalResult = result(rivalMove, playerMove, rival !== board.rival);
+    const playerResult = result('player', playerMove, rivalMove, player !== board.player);
+    const rivalResult = result('rival', rivalMove, playerMove, rival !== board.rival);
+    const initiative = playerResult === 'block' ? 'player' : rivalResult === 'block' ? 'rival' : null;
     return {
-      board: { ...board, player, rival,
-        playerHP: board.playerHP - Number(rivalResult === 'hit'),
-        rivalHP: board.rivalHP - Number(playerResult === 'hit') },
+      board: { ...board, player, rival, initiative,
+        playerHP: board.playerHP - Number(rivalResult === 'hit' || rivalResult === 'riposte'),
+        rivalHP: board.rivalHP - Number(playerResult === 'hit' || playerResult === 'riposte') },
       playerMove, rivalMove, playerResult, rivalResult
     };
   }
@@ -45,10 +52,12 @@
     let forecast = board;
     const script = [];
     for (let beat = 0; beat < 3; beat++) {
-      const expected = previousPlayer[beat] || (beat === 0 ? 'advance' : 'thrust');
+      const expected = previousPlayer[beat] || 'thrust';
       const distance = forecast.rival - forecast.player;
       let move;
-      if (style === 'pine') {
+      if (distance === 1 && expected === 'thrust') {
+        move = forecast.initiative === 'rival' ? 'thrust' : 'guard';
+      } else if (style === 'pine') {
         move = distance > 1 ? 'advance' : 'thrust';
         if (distance === 2 && expected === 'advance' && beat > 0) move = 'thrust';
       } else if (style === 'rain') {

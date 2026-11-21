@@ -50,6 +50,35 @@ test('double hits, instant KO, double KO and sixth-round decisions',()=>{
     assert.equal(E.verdict(final,3),w);
   }
 });
+test('a successful parry gives either fighter one beat to interrupt a thrust, even across rounds',()=>{
+  for (const side of ['player','rival']) {
+    const playerParries=side==='player';
+    const parry=E.resolveBeat(board(1,2,{playerHP:1,rivalHP:1}),
+      playerParries?'guard':'thrust',playerParries?'thrust':'guard');
+    assert.equal(parry.board.initiative,side);
+    const reply=E.resolveBeat({...parry.board,round:2},'thrust','thrust');
+    assert.equal(reply[side+'Result'],'riposte');
+    assert.equal(reply[playerParries?'rivalResult':'playerResult'],'interrupted');
+    assert.equal(reply.board[side+'HP'],1);
+    assert.equal(reply.board.initiative,null);
+    assert.equal(E.verdict(reply.board,1),playerParries?'win':'loss');
+  }
+});
+test('a riposte can be parried or dodged, and an unused opening expires',()=>{
+  const poised=E.resolveBeat(board(1,2),'guard','thrust').board;
+  const returned=E.resolveBeat(poised,'thrust','guard');
+  assert.equal(returned.playerResult,'parried');
+  assert.equal(returned.board.rivalHP,3);
+  assert.equal(returned.board.initiative,'rival');
+  const dodged=E.resolveBeat(poised,'thrust','retreat');
+  assert.equal(dodged.playerResult,'miss');
+  assert.equal(dodged.board.initiative,null);
+  const expired=E.resolveBeat(poised,'guard','guard').board;
+  assert.equal(expired.initiative,null);
+  const trade=E.resolveBeat(expired,'thrust','thrust');
+  assert.deepEqual([trade.playerResult,trade.rivalResult],['hit','hit']);
+  assert.equal(E.resolveBeat(board(1,3),'guard','thrust').board.initiative,null);
+});
 const scripts=E.MOVES.flatMap(a=>E.MOVES.flatMap(b=>E.MOVES.map(c=>[a,b,c])));
 test('all 64 player drafts face the same precommitted script for each style and public snapshot',()=>{
   for(const rival of E.RIVALS){
@@ -79,28 +108,31 @@ test('all 64 player drafts face the same precommitted script for each style and 
   }
   assert.deepEqual(E.RIVALS.map(x=>E.planRival(x,E.initial())[0]),['advance','guard','retreat']);
 });
-test('each rival can be beaten using a repeatable sequence from the starting board',()=>{
-  const replays = {
-    pine: ['111','123','333'],
-    rain: ['112','123','123','133'],
-    swallow: ['111','212','323','133']
-  };
-  for (const [style, rounds] of Object.entries(replays)) {
-    let state=E.initial(), previous=[], outcome=null;
-    for (const digits of rounds) {
-      const opponent=E.planRival(style,state,previous);
-      const moves=[...digits].map(d=>E.MOVES[Number(d)-1]);
-      for (let i=0;i<3;i++) {
-        state=E.resolveBeat(state,moves[i],opponent[i]).board;
-        outcome=E.verdict(state,i+1);
-        if (outcome) break;
-      }
-      if (outcome) break;
-      state={...state,round:state.round+1};
-      previous=moves;
+function playDuel(style, rounds) {
+  let state=E.initial(), previous=[];
+  for (const moves of rounds) {
+    const opponent=E.planRival(style,state,previous);
+    for (let i=0;i<3;i++) {
+      state=E.resolveBeat(state,moves[i],opponent[i]).board;
+      const outcome=E.verdict(state,i+1);
+      if (outcome) return outcome;
     }
-    assert.equal(outcome,'win',style);
+    state={...state,round:state.round+1};
+    previous=moves;
   }
+  return null;
+}
+test('every rival defeats repeated triple thrusts from a fresh duel',()=>{
+  const spam=Array(E.MAX_ROUNDS).fill(['thrust','thrust','thrust']);
+  for (const style of E.RIVALS) assert.equal(playDuel(style,spam),'loss',style);
+});
+test('each rival can be beaten by mixing moves from the starting board',()=>{
+  const replays = {
+    pine: [['thrust','retreat','guard'],['thrust','guard','thrust']],
+    rain: [['guard','thrust','retreat'],['advance','thrust','thrust']],
+    swallow: [['advance','thrust','guard'],['retreat','thrust','advance'],['thrust','thrust','guard']]
+  };
+  for (const style of E.RIVALS) assert.equal(playDuel(style,replays[style]),'win',style);
 });
 test('integration record and all eight dictionaries match, including substitution fields',()=>{
   const manifest=require('./lobby-entry.json');

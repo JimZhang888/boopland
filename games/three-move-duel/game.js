@@ -95,11 +95,13 @@
         return;
       }
       const result=E.resolveBeat(board,queue[log.length],locked[log.length]);
+      const heroStruck=result.board.playerHP<board.playerHP;
+      const rivalStruck=result.board.rivalHP<board.rivalHP;
       log.push(result); board=result.board;
       outcome=E.verdict(board,log.length);
       render();
-      animate('hero-actor',result.playerMove,result.rivalResult==='hit');
-      animate('rival-actor',result.rivalMove,result.playerResult==='hit');
+      animate('hero-actor',result.playerMove,heroStruck);
+      animate('rival-actor',result.rivalMove,rivalStruck);
     }
     schedule();
   }
@@ -136,6 +138,9 @@
     $('world').setAttribute('aria-label',t('boardLabel',{name:t('hero'),p:shown.player+1,foe:t(style),e:shown.rival+1}));
     drawHP('player-hp',t('hero'),board.playerHP);
     drawHP('rival-hp',t(style),board.rivalHP);
+    for (const side of ['player','rival']) {
+      $(side+'-initiative').hidden=Boolean(outcome || rehearsal) || board.initiative!==side;
+    }
     $('rival-name').textContent=t(style);
     $('round').textContent=t('round',{n:board.round,max:E.MAX_ROUNDS});
   }

@@ -38,6 +38,7 @@ h1{font-size:clamp(24px,3.1vw,43px);font-weight:650;line-height:1.12;letter-spac
 .side-label{font-size:10px;font-weight:700;color:var(--soft)}
 .hp{flex-basis:100%;display:flex;align-items:center;gap:5px;height:11px}
 .foe .hp{justify-content:flex-end}
+.initiative{font-size:11px;font-weight:650;line-height:1.2}
 .hp i{height:7px;width:13px;display:block;background:var(--blue);transform:skewX(-18deg);border:1px solid #4a6560}
 .foe .hp i{background:#a26c56;border-color:#90604e}
 .hp i.empty{background:transparent;border-color:#93998c}
