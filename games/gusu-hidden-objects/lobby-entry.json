@@ -1,0 +1,43 @@
+{
+  "title": "姑苏寻物记",
+  "description": "拖开平江河街的画卷，摇铃唤船、拨柳寻簪，把八件水乡小事收入手记。",
+  "category": "解谜",
+  "order": 67,
+  "path": "./games/gusu-hidden-objects/index.html",
+  "cover": "./games/gusu-hidden-objects/cover.svg",
+  "color": "#d9dfcc",
+  "locales": {
+    "zh-CN": {
+      "title": "姑苏寻物记",
+      "description": "拖开平江河街的画卷，摇铃唤船、拨柳寻簪，把八件水乡小事收入手记。"
+    },
+    "en": {
+      "title": "Hidden in Gusu",
+      "description": "Explore a painted canal in Suzhou. Ring for a boat, part the willow branches and find eight treasures."
+    },
+    "ja": {
+      "title": "姑蘇の探しもの",
+      "description": "蘇州の水路を描いた絵巻を歩こう。鈴で舟を呼び、柳の枝を分けて八つの探しものを手帳に集めよう。"
+    },
+    "ko": {
+      "title": "고소의 숨은 물건",
+      "description": "쑤저우 물길을 그린 두루마리를 펼쳐 보세요. 방울로 배를 부르고 버들가지를 젖혀 여덟 물건을 찾아요."
+    },
+    "fr": {
+      "title": "Les secrets de Gusu",
+      "description": "Parcourez un canal peint de Suzhou. Appelez la barque, écartez les branches du saule et découvrez huit trésors."
+    },
+    "de": {
+      "title": "Verborgen in Gusu",
+      "description": "Erkunde einen gemalten Kanal in Suzhou. Läute nach dem Boot, teile die Weidenzweige und entdecke acht kleine Schätze."
+    },
+    "es": {
+      "title": "Los secretos de Gusu",
+      "description": "Recorre un canal pintado de Suzhou. Llama a la barca, aparta las ramas del sauce y descubre ocho tesoros."
+    },
+    "pt-BR": {
+      "title": "Os segredos de Gusu",
+      "description": "Percorra um canal pintado de Suzhou. Chame o barco, afaste os galhos do salgueiro e encontre oito tesouros."
+    }
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "order": 90,
+  "title": "五骰记分簿",
+  "description": "摇动五枚骰子，留下喜欢的点数。八轮里，每个组合只有一次落笔的机会。",
+  "category": "棋牌",
+  "path": "./games/five-dice-scorebook/index.html",
+  "cover": "./games/five-dice-scorebook/cover.svg",
+  "color": "#c7d3c3",
+  "locales": {
+    "zh-CN": { "title": "五骰记分簿", "description": "摇动五枚骰子，留下喜欢的点数。八轮里，每个组合只有一次落笔的机会。" },
+    "en": { "title": "Five Dice Scorebook", "description": "Roll five dice and hold your favorites. Over eight rounds, each line in your scorebook can be filled just once." },
+    "ja": { "title": "五つのサイコロ手帳", "description": "五つのサイコロを振り、好きな目を残そう。全8回、同じマスに得点を入れられるのは一度だけ。" },
+    "ko": { "title": "다섯 주사위 점수첩", "description": "주사위 다섯 개를 굴리고 마음에 드는 눈을 남겨 보세요. 여덟 라운드 동안 각 칸에는 한 번만 점수를 쓸 수 있어요." },
+    "fr": { "title": "Le carnet des cinq dés", "description": "Lancez cinq dés et gardez ceux qui vous plaisent. En huit manches, chaque ligne du carnet ne peut servir qu’une fois." },
+    "de": { "title": "Fünf Würfel im Heft", "description": "Wirf fünf Würfel und behalte, was dir gefällt. In acht Runden darfst du jede Zeile deines Hefts nur einmal füllen." },
+    "es": { "title": "El cuaderno de cinco dados", "description": "Lanza cinco dados y conserva los que quieras. A lo largo de ocho rondas, cada casilla del cuaderno se rellena una sola vez." },
+    "pt-BR": { "title": "Caderno dos cinco dados", "description": "Role cinco dados e guarde os que quiser. Ao longo de oito rodadas, cada linha do caderno só pode ser preenchida uma vez." }
+  }
+}

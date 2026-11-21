@@ -1,0 +1,43 @@
+{
+  "order": 95,
+  "title": "赶海日记",
+  "description": "循着沙孔、气泡和水纹探访三片滩涂，赶在涨潮前把六种海边生物记进图鉴。",
+  "category": "休闲",
+  "path": "./games/tidepool-journal/index.html",
+  "cover": "./games/tidepool-journal/cover.svg",
+  "color": "#c6dcd6",
+  "locales": {
+    "zh-CN": {
+      "title": "赶海日记",
+      "description": "循着沙孔、气泡和水纹探访三片滩涂，赶在涨潮前把六种海边生物记进图鉴。"
+    },
+    "en": {
+      "title": "Tidepool Journal",
+      "description": "Read the sand, bubbles and ripples across three tidal flats. Bring six shore creatures back to your journal before high tide."
+    },
+    "ja": {
+      "title": "潮干狩り日記",
+      "description": "砂穴や泡、水の波紋をたよりに三つの干潟を歩こう。満潮までに岸へ戻り、六種類の生き物を図鑑に記そう。"
+    },
+    "ko": {
+      "title": "갯벌 일기",
+      "description": "모래 구멍과 기포, 물결을 따라 세 갯벌을 탐사하세요. 밀물이 차기 전에 돌아와 여섯 생물을 도감에 기록하세요."
+    },
+    "fr": {
+      "title": "Carnet de l’estran",
+      "description": "Explorez trois estrans en suivant les trous, les bulles et les rides de l’eau. Rentrez avant la marée haute pour consigner six espèces."
+    },
+    "de": {
+      "title": "Watt-Tagebuch",
+      "description": "Folge Sandlöchern, Blasen und Wellen durch drei Wattgebiete. Bring deine Funde vor der Flut heim und halte sechs Arten im Tagebuch fest."
+    },
+    "es": {
+      "title": "Diario de la bajamar",
+      "description": "Sigue agujeros, burbujas y ondas por tres playas de marea. Vuelve antes de la pleamar para anotar seis especies en tu diario."
+    },
+    "pt-BR": {
+      "title": "Diário da maré",
+      "description": "Siga furos na areia, bolhas e ondulações por três praias de maré. Volte antes da maré alta para registrar seis espécies no diário."
+    }
+  }
+}

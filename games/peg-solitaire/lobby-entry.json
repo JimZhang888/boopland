@@ -1,0 +1,19 @@
+{
+  "order": 92,
+  "title": "孤子跳棋",
+  "description": "在铅笔画的棋盘上，让青豆一颗跳过一颗。从四道小残局到经典十字盘，试着留下最后一颗。",
+  "category": "益智",
+  "path": "./games/peg-solitaire/index.html",
+  "cover": "./games/peg-solitaire/cover.svg",
+  "color": "#dce4d0",
+  "locales": {
+    "zh-CN": { "title": "孤子跳棋", "description": "在铅笔画的棋盘上，让青豆一颗跳过一颗。从四道小残局到经典十字盘，试着留下最后一颗。" },
+    "en": { "title": "Peg Solitaire", "description": "Hop one garden pea over another on a pencil-drawn board. Leave a single pea in four little endgames and the classic cross." },
+    "ja": { "title": "ペグ・ソリティア", "description": "鉛筆描きの盤で豆をひとつずつ飛び越えよう。四つの小さな詰め問題と定番の十字盤で、最後の一粒を残せるかな。" },
+    "ko": { "title": "페그 솔리테어", "description": "연필로 그린 판 위에서 완두콩을 뛰어넘어 보세요. 짧은 끝내기 네 판과 고전 십자판에서 콩을 한 알만 남기면 성공이에요." },
+    "fr": { "title": "Solitaire à billes", "description": "Sur un plateau dessiné au crayon, sautez un petit pois par-dessus un autre. N’en gardez qu’un dans quatre fins de partie et sur la croix classique." },
+    "de": { "title": "Stecksolitär", "description": "Auf dem gezeichneten Brett springen Erbsen übereinander. Löse vier kurze Endspiele und das klassische Kreuz, bis nur noch eine Erbse übrig ist." },
+    "es": { "title": "Solitario de clavijas", "description": "Salta un guisante sobre otro en un tablero dibujado a lápiz. Deja solo uno en cuatro finales breves y en la cruz clásica." },
+    "pt-BR": { "title": "Resta Um", "description": "Salte uma ervilha sobre a outra num tabuleiro desenhado a lápis. Deixe apenas uma em quatro finais curtos e no clássico tabuleiro em cruz." }
+  }
+}

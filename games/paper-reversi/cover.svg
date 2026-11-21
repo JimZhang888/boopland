@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 390">
+  <title>纸间黑白棋 · Paper Reversi</title>
+  <defs>
+    <pattern id="ruling" width="30" height="30" patternUnits="userSpaceOnUse"><path d="M0 29.5h30" stroke="#aaa894" stroke-width="1" opacity=".35"/></pattern>
+    <pattern id="hatch" width="7" height="7" patternUnits="userSpaceOnUse" patternTransform="rotate(33)"><path d="M1 0v7" stroke="#73816c" stroke-width="1"/></pattern>
+    <filter id="grain"><feTurbulence type="fractalNoise" baseFrequency=".68" numOctaves="3" stitchTiles="stitch"/></filter>
+    <g id="b"><path d="M-12-1c0-7 6-11 13-11 7 0 12 5 12 11v3c-1 8-9 12-15 11-6-1-10-5-10-11Z" fill="#364439" stroke="#364439"/><ellipse cy="-2" rx="12" ry="11" fill="#4b5949" stroke="#374437"/><path d="M-9-6q3-4 8-4m4 16q4-1 6-4" stroke="#99a48a" fill="none" stroke-width=".9"/></g>
+    <g id="w"><ellipse cy="2" rx="12" ry="11.5" fill="#b4b69d" stroke="#5c6654"/><ellipse cy="-1" rx="12" ry="11.5" fill="#fbf5dc" stroke="#5c6654"/><path d="M-9-5q2-4 8-5m4 16 4-2" stroke="#c0bfa8" fill="none"/></g>
+  </defs>
+  <rect width="640" height="390" fill="#ece7d6"/><rect width="640" height="390" fill="url(#ruling)"/>
+  <path d="M27 0v390m4-390v390" stroke="#bd9684" opacity=".42"/>
+  <g transform="translate(80 61) rotate(-6.5 128 128)">
+    <rect x="-16" y="-16" width="294" height="293" rx="3" fill="#a9ad95" opacity=".48"/>
+    <path d="m-24-22 300-1 1 303-302-1z" fill="#faf4de" stroke="#69715c" stroke-width="1.8"/>
+    <path d="m-21-18 292-1 2 294" fill="none" stroke="#ccc6af"/>
+    <path d="m0 0 256 .2.4 255.7L0 256Z" fill="#cdd8b9" stroke="#55634e" stroke-width="2"/>
+    <path d="M0 0q-1 122 .3 256M0 0q125 -1 256 .5 M32 0q0 122 .3 256M0 32q125 0 256 .5 M64 0q1 122 .3 256M0 64q125 -1 256 .5 M96 0q-1 122 .3 256M0 96q125 0 256 .5 M128 0q0 122 .3 256M0 128q125 -1 256 .5 M160 0q1 122 .3 256M0 160q125 0 256 .5 M192 0q-1 122 .3 256M0 192q125 -1 256 .5 M224 0q0 122 .3 256M0 224q125 0 256 .5 M256 0q1 122 .3 256M0 256q125 -1 256 .5" fill="none" stroke="#6c7a60" stroke-width="1.1"/>
+    <use href="#w" x="80" y="80"/>
+    <use href="#w" x="112" y="80"/>
+    <use href="#b" x="144" y="80"/>
+    <use href="#b" x="48" y="112"/>
+    <use href="#b" x="80" y="112"/>
+    <use href="#w" x="112" y="112"/>
+    <use href="#w" x="144" y="112"/>
+    <use href="#b" x="176" y="112"/>
+    <use href="#b" x="80" y="144"/>
+    <use href="#b" x="112" y="144"/>
+    <use href="#w" x="144" y="144"/>
+    <use href="#w" x="176" y="144"/>
+    <use href="#b" x="112" y="176"/>
+    <use href="#w" x="144" y="176"/>
+    <g fill="#657959"><circle cx="80" cy="48" r="3"/><circle cx="176" cy="80" r="3"/><circle cx="208" cy="144" r="3"/><circle cx="176" cy="176" r="3"/></g>
+    <path d="m-38 12 40-46 14 12-41 45z" fill="#c2b891" opacity=".76"/>
+  </g>
+  <g fill="none" stroke="#73806a" stroke-linecap="round"><path d="M340 180c29-56 90-46 87-18-3 25-46 17-38-16 5-19 24-36 47-41" stroke-dasharray="5 6" stroke-width="2"/><path d="m429 99 11 5-8 9" stroke-width="2"/></g>
+  <g transform="rotate(-24 493 106)" stroke="#42513f" stroke-width="2.5">
+    <ellipse cx="498" cy="108" rx="45" ry="63" fill="#b4b79c"/><ellipse cx="492" cy="105" rx="45" ry="63" fill="#fff7df"/>
+    <path d="M455 91q7-36 37-42m29 99 6-11m-13 18 5-7m-14 12 5-5m-15 7 5-3" fill="none" stroke="#949a81" stroke-width="2"/>
+  </g>
+  <g stroke="#45533f" stroke-width="2.5">
+    <path d="M395 263c0-17 28-31 65-31 38 0 65 11 65 28v18c-1 19-32 31-67 30-36 0-62-12-63-27z" fill="#424e3f"/>
+    <ellipse cx="460" cy="261" rx="65" ry="28" transform="rotate(-3 460 261)" fill="#56614e"/>
+    <ellipse cx="460" cy="261" rx="62" ry="25" transform="rotate(-3 460 261)" fill="url(#hatch)" opacity=".56" stroke="none"/>
+    <path d="M404 257c7-13 27-19 46-21m-49 45c10 10 27 15 46 16m36-3q23-4 34-14" fill="none" stroke="#a5ac94" stroke-width="1.6"/>
+  </g>
+  <g transform="rotate(-18 496 318)" stroke="#6c624d" stroke-width="1.7" stroke-linejoin="round">
+    <path d="m367 316 22-7 197 1 1 14-198-1z" fill="#c6ae77"/><path d="m367 316 22-7 1 14z" fill="#efdfb4"/>
+    <path d="m367 316 7-2-.4 4z" fill="#434c41"/><path d="m391 314 177 .8m-175 5 177 1" fill="none" stroke="#e2d3a7"/>
+    <path d="m568 310 9 .3v14l-9-.2z" fill="#d8d3b7"/><path d="m577 310 9 .2q8 5 1 14l-10-.2z" fill="#ba9d87"/>
+  </g>
+  <g fill="none" stroke="#79826a" stroke-width="2" stroke-linecap="round"><path d="m546 69 12-9m-9 18 15-2m-23-17 5-10m-166 241 9-4m-6 10 12-6m-7 9 7-4"/></g>
+  <rect width="640" height="390" filter="url(#grain)" opacity=".07" pointer-events="none"/>
+</svg>

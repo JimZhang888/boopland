@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-124 -78 248 161" fill="none" stroke="#343e3e" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round">
+<defs>
+  <pattern id="fiber" width="7" height="7" patternUnits="userSpaceOnUse" patternTransform="rotate(-33)"><path d="M0 1h7" stroke="#393e3b" stroke-width=".55" opacity=".33"/></pattern>
+  <g id="wing">
+    <path d="M1-10C-25-18-62-42-115-67q4 23 19 43 2-9 5-11-1 22 16 42 0-10 4-13 4 20 23 32 1-8 4-12 17 10 43 11Z" fill="#586665"/>
+    <path d="M-4-9Q-55-34-109-62q17 22 36 30C-47-19-28-1-15 17l13 4Z" fill="#cf8269"/>
+    <path d="M-6-6Q-51-26-88-45q13 15 30 21 19 7 39 33l15 10Z" fill="#e3bd83"/>
+    <path d="M-4-5Q-33-20-65-32q5 9 20 16 14 5 29 25l12 9Z" fill="#f4e7c5"/>
+    <path d="M-2-9Q-47-37-112-65M-13 15Q-48-16-91-35M-16 21Q-46 3-72-6" stroke="#38433f" stroke-width="1.25"/>
+    <path d="M-44-11q-13-7-17-12 11 1 19 10m-15 4q-10-5-14-11 9 1 16 9m-15 1q-9-5-13-11 8 0 15 9" stroke="#e5ddbd" stroke-width="2.2"/>
+    <path d="M-15 23q-21-3-29-15m33 17q-16 0-25-7" stroke="#c7ba93" stroke-width="1.5"/>
+    <path d="M-2-9Q-64-41-114-66q5 20 18 41l5-11q-2 20 17 42l3-13q5 21 23 31l4-12q21 11 43 11Z" fill="url(#fiber)" stroke="none"/>
+  </g>
+</defs>
+<path d="M-10 20q-6 30-38 57 32-4 49-25 19 14 47 14Q21 43 12 18" fill="#616f69"/>
+<path d="M-6 24q-12 26-33 47 21-8 37-28 21 14 36 17Q16 43 9 26" fill="#d79373"/>
+<path d="M-9 28q-4 20-19 32m37-32 14 21" stroke="#f6e6c4" stroke-width="2.3"/>
+<use href="#wing"/><use href="#wing" transform="scale(-1 1)"/>
+<path d="M-16-23q2-25 16-27 18 3 17 28l-3 33Q12 32 0 47q-14-12-17-36Z" fill="#e7d8b6"/>
+<path d="M-15-24q3-24 16-25 15 0 16 25L5-12H-6Z" fill="#536762"/>
+<path d="M-15-28q3-12 11-10l3 11-4 8q-7 0-10-9Zm30-1q-2-12-10-9L2-27l4 7q7-1 9-9Z" fill="#f5e7bf"/>
+<path d="M-7-32v5m14-6v5" stroke-width="3.6"/>
+<path d="m-4-24 4-4 5 3-5 10Z" fill="#b87755"/>
+<path d="M-15-16Q0-7 15-18l-1 13Q0 12-14-3Z" fill="#c57b64"/>
+<path d="M-13 0Q0 12 13-1m-24 9q10 11 22-1m-20 8q8 10 17 0m-14 7q6 6 12-1" stroke="#627a75" stroke-width="2.4"/>
+<path d="M0-12v57m-12-35 12 22 11-21" stroke-width=".8" opacity=".7"/>
+</svg>

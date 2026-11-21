@@ -1,0 +1,44 @@
+{
+  "order": 81,
+  "title": "林间快门",
+  "description": "循着枝叶和足迹移动取景框，用六张底片拍下六种林鸟的招牌动作。",
+  "category": "休闲",
+  "path": "./games/woodland-shutter/index.html",
+  "cover": "./games/woodland-shutter/cover.svg",
+  "color": "#d6decb",
+  "locales": {
+    "zh-CN": {
+      "title": "林间快门",
+      "description": "循着枝叶和足迹移动取景框，用六张底片拍下六种林鸟的招牌动作。"
+    },
+    "en": {
+      "title": "Woodland Shutter",
+      "description": "Follow rustling leaves and tiny tracks. Use six frames of film to catch six woodland birds in action."
+    },
+    "ja": {
+      "title": "森のシャッター",
+      "description": "枝の揺れや足跡を頼りに、6枚のフィルムで森の小鳥6種のしぐさを撮ろう。"
+    },
+    "ko": {
+      "title": "숲속 셔터",
+      "description": "흔들리는 잎과 작은 발자국을 따라가며 필름 여섯 장에 숲새 여섯 종의 몸짓을 담아 보세요."
+    },
+    "fr": {
+      "title": "À l’affût",
+      "description": "Suivez les feuilles et les traces. Six vues pour saisir les gestes de six oiseaux des bois."
+    },
+    "de": {
+      "title": "Wald im Sucher",
+      "description": "Folge raschelnden Zweigen und kleinen Spuren. Halte mit sechs Aufnahmen sechs Waldvögel in Aktion fest."
+    },
+    "es": {
+      "title": "Aves en el visor",
+      "description": "Sigue las hojas y las huellas. Usa seis fotos para captar los gestos de seis aves del bosque."
+    },
+    "pt-BR": {
+      "title": "Aves em foco",
+      "description": "Siga as folhas e as pegadas. Use seis poses do filme para registrar os gestos de seis aves da mata."
+    }
+  }
+}
+

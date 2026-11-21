@@ -1,0 +1,44 @@
+{
+  "order": 65,
+  "title": "纸上弹珠台",
+  "description": "拨动铅笔挡板，让弹珠敲响三枚星铃，点亮 LUNA，追逐十五秒双倍分。",
+  "category": "动作",
+  "path": "./games/paper-pinball/index.html",
+  "cover": "./games/paper-pinball/cover.svg",
+  "color": "#e4ddc5",
+  "locales": {
+    "zh-CN": {
+      "title": "纸上弹珠台",
+      "description": "拨动铅笔挡板，让弹珠敲响三枚星铃，点亮 LUNA，追逐十五秒双倍分。"
+    },
+    "en": {
+      "title": "Paper Pinball",
+      "description": "Flip a marble into three star bells and light up LUNA for fifteen seconds of double scoring."
+    },
+    "ja": {
+      "title": "紙のピンボール",
+      "description": "鉛筆描きのフリッパーで3つの星のベルを鳴らそう。LUNAをそろえると15秒間スコアが2倍に。"
+    },
+    "ko": {
+      "title": "종이 핀볼",
+      "description": "연필로 그린 플리퍼로 별 종 세 개를 울려 보세요. LUNA를 모두 밝히면 15초 동안 점수가 두 배가 됩니다."
+    },
+    "fr": {
+      "title": "Flipper de papier",
+      "description": "Faites sonner les trois cloches étoilées et allumez LUNA pour doubler vos points pendant quinze secondes."
+    },
+    "de": {
+      "title": "Papierflipper",
+      "description": "Triff die drei Sternenglocken und lass LUNA aufleuchten. Dann zählen deine Punkte 15 Sekunden lang doppelt."
+    },
+    "es": {
+      "title": "Pinball de papel",
+      "description": "Haz sonar las tres campanas estelares y enciende LUNA para duplicar tus puntos durante quince segundos."
+    },
+    "pt-BR": {
+      "title": "Pinball de papel",
+      "description": "Acerte os três sinos estelares e acenda LUNA para marcar o dobro de pontos por quinze segundos."
+    }
+  }
+}
+

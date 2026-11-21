@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 390" preserveAspectRatio="none" fill="none" stroke-linejoin="round" stroke-linecap="round">
+<defs>
+  <pattern id="roof" width="21" height="10" patternUnits="userSpaceOnUse" patternTransform="skewX(-26)"><path d="M0 9.2h20m-15-7L4 6m12-5-1 5" stroke="#a1624e" stroke-width="1" opacity=".66"/></pattern>
+  <pattern id="wood" width="74" height="9" patternUnits="userSpaceOnUse"><path d="M0 8.7h74M7 5q13-2 19-1m30 1h10" stroke="#9d876c" stroke-width=".8" opacity=".55"/></pattern>
+  <g id="pine"><path d="m0-76-10 20 5-2-11 18 6-2-12 19 9-3-15 18 23-4 2 13h5l-1-14 20 3-11-16 6 3-11-18 5 1-10-16 5 2z" fill="currentColor" stroke="#53675c" stroke-width="1.1"/><path d="M0-66-1-1m0-17-13 6m13-17 10 5m-10-15-9 5m10-14 5 3" stroke="#4e6658" stroke-width="1.2" opacity=".8"/></g>
+  <g id="rock" stroke="#7b8170" fill="#c8c8b5"><path d="m0 0 4-7 9-2 7 4 4 5z"/><path d="m5-6 5 1m4-2 4 5"/></g>
+</defs>
+<path fill="#e5e9df" d="M0 0h680v390H0z"/>
+<circle cx="546" cy="48" r="24" fill="#edce98"/>
+<g stroke="#c6cfbf" stroke-width="1.4"><path d="M35 37q15 1 23-3m-4 5 35 1m293-17 41-1m-15 5h31m160 22 41-2m-53 6 22 1"/></g>
+<path d="m0 120 52-34 19 7 48-49 20 18 43-47 29 31 24-12 28 39 44 17 60-62 22 19 33-30 57 52 26-17 35 20 35-33 43 30 29-11 33 18 0 140H0z" fill="#c4d0c2" stroke="#a9b6a7" stroke-width="1.3"/>
+<g stroke="#a3b5a6" stroke-width="1.1"><path d="m76 98 43-54-10 24 12-8-22 30m44-30 39-45-19 35 14-10-23 31m13-13 15-18m159 21 26-33-8 21 8-3-14 21m39-18 30-32-10 17 9-4-13 17m158 9 10-17 6 11"/><path d="M32 123 58 99m93-16 8-11m256-11 15-19m15 9-6-9m-72 32 9-10"/></g>
+<path d="M-3 133q43-36 80-30 43-29 90-24 54-18 112 15 62 11 105-6 69-23 129 10 78-32 170-20v196H0z" fill="#a5b7a0"/>
+<path d="M0 153q47-28 111-22 49-24 143-7 69 19 135-6 46-14 100 2 102-6 191-28v182H0z" fill="#93a88d"/>
+<path d="M0 170q96-23 167-21 70-21 135-7 105 19 149-5 91-27 229-11v264H0z" fill="#c5cfb4"/>
+<g color="#859c85"><use href="#pine" transform="translate(14 204) scale(.9)"/><use href="#pine" transform="translate(35 181) scale(.65)"/><use href="#pine" transform="translate(647 183) scale(.87)"/><use href="#pine" transform="translate(668 168) scale(.77)"/></g>
+<path d="M0 293q134-42 292-13 192 18 388-20v130H0z" fill="#b4bd9f"/>
+<path d="M0 340q115-19 252-16 211 12 428-9v75H0z" fill="#c8c7a8"/>
+<path d="M284 347q-32 11-83 19-58 9-81 24h152q29-15 85-28l49-17z" fill="#e1d4b7"/>
+<g stroke="#a5a88d" stroke-width="1.2"><path d="m2 350 29-2m-12 8 20-1m15 15 44-5m3 6 16-2m307-5 28 1m147-7 47 1m-18 9 37-1M266 377l13-3m-237-55 19-3"/><path d="m45 350 2-5 2 4 3-6m469 23 3-4 1 4 4-7m70-12 2-6 2 5 3-4m71-42 4-6m-71 51 2-6"/></g>
+<g color="#708b77"><use href="#pine" transform="translate(24 334) scale(1.52)"/><use href="#pine" transform="translate(-6 319) scale(1.12)"/><use href="#pine" transform="translate(651 325) scale(1.38)"/><use href="#pine" transform="translate(679 342) scale(1.74)"/></g>
+<path d="M44 346q227-11 578 0l-15 6-542 2z" fill="#6e7562" opacity=".24"/>
+<!-- Timber guesthouse, open on the front like a dollhouse. -->
+<g stroke="#625d50" stroke-width="2">
+<path d="m468 91-1-49 20-2 2 49z" fill="#a88d7c"/><path d="m463 44 1-8 27-1 1 8z" fill="#978372"/><path d="m469 55 7 1m3 7h8m-12-14 5-1" stroke-width="1"/>
+<path d="m557 103 53 48-3 192-31 2z" fill="#b8a88e"/>
+<path d="m56 141 93-58 364-1 85 66-1 195-543 1z" fill="#d4c1a0"/>
+<path d="M54 143h545v200H54z" fill="url(#wood)"/>
+<path d="m47 143 91-83 380-1 96 84-10 9-48-16-471 1-28 13z" fill="#bb8369"/>
+<path d="m47 143 91-83 380-1 96 84-10 9-48-16-471 1-28 13z" fill="url(#roof)"/>
+<path d="m41 145 95-90 385-1 99 89-3 7-100-88-377 1-93 89z" fill="#92745d"/>
+<path d="m54 145 547-1 1 9-549 2z" fill="#a48c6e"/>
+<path d="m123 137 63-62 67 63z" fill="#c8b798"/><path d="m113 140 72-72 73 71-6 5-66-62-66 63z" fill="#94755f"/>
+<path d="M165 134v-17q18-27 38-1v18z" fill="#e8cea1"/><path d="M183 104v30m-18-14h37m-54 16 7-1m-2-6 5-1m54 6h13" stroke-width="1.5"/>
+<path d="m61 337-7 9 546 1-1-10z" fill="#a39479"/>
+<path d="m598 337 7-1 28-76-5-3z" fill="#b49d7f"/><path d="m593 336 3-15 7-1 1-13 7-1 1-13 7-1 1-13 6-1 2-14 8-1" stroke="#736b59" stroke-width="3"/>
+<path d="m600 318 30-80m-29 81v-16m14-19v-15m15-14v-16" stroke-width="2"/>
+<path d="M55 148v190m546-184-2 183m-546-91 547 1" stroke="#88745f" stroke-width="6"/>
+</g>
+<path d="M470 28q-12-6 4-14 8-5 5-11m7 24q-4-4 2-8" stroke="#a5aca0" stroke-width="2"/>
+<g><use href="#rock" transform="translate(23 350) scale(.7)"/><use href="#rock" transform="translate(637 344)"/><use href="#rock" transform="translate(659 345) scale(.52)"/></g>
+<g stroke="#6d7966" stroke-width="1.1"><path d="m13 342 3-8 1 7 4-5m46 12 2-4 2 3 2-6m543 8 3-6 2 4m28 1 2-4 2 2m9 5 5-5"/></g>
+</svg>

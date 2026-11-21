@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="zh-CN" data-i18n-scope="last-ferry">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#f5f1e5">
+  <title data-i18n="last-ferry.title">最后一班渡船</title>
+  <link rel="icon" href="boat.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="style.css">
+  <script defer src="../../analytics.js"></script>
+  <script defer src="../../i18n.js"></script>
+  <script defer src="words.js"></script>
+  <script defer src="puzzles.js"></script>
+  <script defer src="ferry.js"></script>
+</head>
+<body>
+<svg class="symbols" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+  <symbol id="glyph-fisher" viewBox="0 0 64 56"><g stroke="#414f49" stroke-width="1.55" stroke-linecap="round" stroke-linejoin="round"><path d="m24 36-11 5q-6 3-8 13h54q-3-12-10-15l-10-4-7 6Z" fill="#859b90"/><path d="m22 37 8 8 8-9m-21 9-3 7m31-9 4 9" fill="none"/><path d="m19 40 9 10 11-10m-4 13 7-12" fill="none"/><path d="M23 23q-3-3-4 1.3t4 5q2 9 8 11 8 0 12-11 3-1 3-4t-4-1l-2-10-16 1Z" fill="#d5b28b"/><path d="m27 24 2 .3m6-.5 2-.5m-5 2-1 5 2 .2m-3 3.2 5-.4" fill="none" stroke-width="1.2"/><path d="M8 22Q17 18 28 6q5-4 8 0l20 15q-17 5-48 1Z" fill="#c3ab79"/><path d="m16 21 14-10m-6 11 7-12m5 11-2-11m10 11-7-10M22 31q4 4 9 5l5-2-2 7-7-2Z" fill="#b5ab90"/><path d="m8 22 47-1" fill="none"/></g></symbol>
+  <symbol id="glyph-post" viewBox="0 0 64 56"><g stroke="#414f49" stroke-width="1.55" stroke-linecap="round" stroke-linejoin="round"><path d="m24 36-11 5q-6 3-8 13h54q-3-12-10-15l-10-4-7 6Z" fill="#a89c7b"/><path d="m22 37 8 8 8-9m-21 9-3 7m31-9 4 9" fill="none"/><path d="m18 39 21 15h7L23 37Z" fill="#8b7255"/><path d="M23 23q-3-3-4 1.3t4 5q2 9 8 11 8 0 12-11 3-1 3-4t-4-1l-2-10-16 1Z" fill="#d5b28b"/><path d="m27 24 2 .3m6-.5 2-.5m-5 2-1 5 2 .2m-3 3.2 5-.4" fill="none" stroke-width="1.2"/><path d="m20 22-1-8q6-10 18-7l8 7-5 7-12-2-4 6Z" fill="#718a84"/><path d="m23 18 22-5q8 1 8 4l-11 3-13 1Z" fill="#8d9e91"/><path d="m28 10 6 .3-1 4-5-1Z" fill="#cbb58b"/></g></symbol>
+  <symbol id="glyph-artist" viewBox="0 0 64 56"><g stroke="#414f49" stroke-width="1.55" stroke-linecap="round" stroke-linejoin="round"><path d="m24 36-11 5q-6 3-8 13h54q-3-12-10-15l-10-4-7 6Z" fill="#b58c75"/><path d="m22 37 8 8 8-9m-21 9-3 7m31-9 4 9" fill="none"/><path d="m25 37 7 4 8-5-3 10-6-2-5 7-4-2 7-8Z" fill="#9a735d"/><path d="M23 23q-3-3-4 1.3t4 5q2 9 8 11 8 0 12-11 3-1 3-4t-4-1l-2-10-16 1Z" fill="#d5b28b"/><path d="m27 24 2 .3m6-.5 2-.5m-5 2-1 5 2 .2m-3 3.2 5-.4" fill="none" stroke-width="1.2"/><path d="m20 25q-5-6-1-13 12-10 24 0l2 5-4 7-3-6-12-1-3 10Z" fill="#5d5b50"/><path d="M16 14q-6-6 6-10 12-4 21 2l6 7-7 4-21 1Z" fill="#968b7f"/><path d="m21 13 20-2m-6-7 2-4" fill="none"/></g></symbol>
+  <symbol id="glyph-trader" viewBox="0 0 64 56"><g stroke="#414f49" stroke-width="1.55" stroke-linecap="round" stroke-linejoin="round"><path d="m24 36-11 5q-6 3-8 13h54q-3-12-10-15l-10-4-7 6Z" fill="#9b9e7d"/><path d="m22 37 8 8 8-9m-21 9-3 7m31-9 4 9" fill="none"/><path d="m23 37 11 9 8-10m-14 17 14-14m-6 6 6 1m-9 3 6 .7" fill="none"/><path d="M23 23q-3-3-4 1.3t4 5q2 9 8 11 8 0 12-11 3-1 3-4t-4-1l-2-10-16 1Z" fill="#d5b28b"/><path d="m27 24 2 .3m6-.5 2-.5m-5 2-1 5 2 .2m-3 3.2 5-.4" fill="none" stroke-width="1.2"/><path d="m19 20 2-11q9-8 18-3l6 9-2 6Z" fill="#707d70"/><path d="M19 18q10-5 26-2v5l-26 2Z" fill="#a59475"/><path d="M25 31q5-3 7 0 2-4 7-1l-4 3-3-.3-3 1Z" fill="#6b6856"/><path d="m32 39 4-3" fill="none"/></g></symbol>
+  <symbol id="glyph-smith" viewBox="0 0 64 56"><g stroke="#414f49" stroke-width="1.55" stroke-linecap="round" stroke-linejoin="round"><path d="m24 36-11 5q-6 3-8 13h54q-3-12-10-15l-10-4-7 6Z" fill="#a88b6e"/><path d="m22 37 8 8 8-9m-21 9-3 7m31-9 4 9" fill="none"/><path d="M21 38v8l4 7h15l5-9-2-7-2 1-1 6-14 1-2-7Z" fill="#697f75"/><path d="M23 23q-3-3-4 1.3t4 5q2 9 8 11 8 0 12-11 3-1 3-4t-4-1l-2-10-16 1Z" fill="#d5b28b"/><path d="m27 24 2 .3m6-.5 2-.5m-5 2-1 5 2 .2m-3 3.2 5-.4" fill="none" stroke-width="1.2"/><path d="M20 23q-6-13 3-16l1-3 6 2q12-5 16 9l-3 9-4-7-14-.3-3 9Z" fill="#65695a"/><path d="m18 15 26-3 2 5-27 3Z" fill="#bb9577"/><path d="m44 14 8-4-3 6 4 4-8-2Z" fill="#bb9577"/></g></symbol>
+  <symbol id="glyph-lutist" viewBox="0 0 64 56"><g stroke="#414f49" stroke-width="1.55" stroke-linecap="round" stroke-linejoin="round"><path d="m24 36-11 5q-6 3-8 13h54q-3-12-10-15l-10-4-7 6Z" fill="#899b9c"/><path d="m22 37 8 8 8-9m-21 9-3 7m31-9 4 9" fill="none"/><path d="m19 41 17 12m-8-9 14-9" fill="none"/><path d="M23 23q-3-3-4 1.3t4 5q2 9 8 11 8 0 12-11 3-1 3-4t-4-1l-2-10-16 1Z" fill="#d5b28b"/><path d="m27 24 2 .3m6-.5 2-.5m-5 2-1 5 2 .2m-3 3.2 5-.4" fill="none" stroke-width="1.2"/><path d="M19 26q-4-10 1-16l8-4q-4-10 5-5 6-3 7 6 8 4 6 17l3 9-7-4-2-10q-5-2-8-6-3 7-11 11l-1 10-4 2Z" fill="#686c63"/><path d="m28 7 12-.8" fill="none" stroke="#c9aa88" stroke-width="2"/></g></symbol>
+  <symbol id="glyph-tea" viewBox="0 0 64 56"><g stroke="#414f49" stroke-width="1.55" stroke-linecap="round" stroke-linejoin="round"><path d="m10 22 22-9 23 8-1 24-23 8-21-9Z" fill="#b4a385"/><path d="m10 22 21 9 24-10m-24 10 .4 21m-19-25 17 7m6-2 16-6m-38 9 14 6m9-1 15-5" fill="none"/><path d="m17 19 22 9v21l4-1V26L22 17ZM38 15 17 25v22l4 1V27l22-10Z" fill="#879385"/><path d="m26 18 7-8q6-4 7 1l-5 5" fill="none" stroke-width="2"/></g></symbol>
+  <symbol id="glyph-lantern" viewBox="0 0 64 56"><g stroke="#414f49" stroke-width="1.55" stroke-linecap="round" stroke-linejoin="round"><path d="M14 21q17 7 37 0l-1 25q-17 7-35 0Z" fill="#c59873"/><path d="M14 19q18-6 36 0l3 5q-23 8-41-.5Z" fill="#a8906c"/><path d="M20 20q1-18 14-16 10 .2 13 16m-25-.5q4-14 12-13 8 2 9 13M15 40q19 6 35 0m-33 4q19 4 31 0m-25-15v11m10-10v11m12-12v10" fill="none"/><path d="m29 31 6 .1v6l-6-.3Z" fill="#daca9e"/></g></symbol>
+  <symbol id="glyph-oar" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20 16 8m-2 1 2 1 5-6-1-2-6 5Z"/></g></symbol>
+  <symbol id="glyph-boat" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round"><path d="m2 13 20-1-4 6H7Zm4-2 2-5h7l3 5M3 21q2-2 5 0t5 0 6 0"/></g></symbol>
+  <symbol id="glyph-back" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round"><path d="M20 12H4m6-6-6 6 6 6"/></g></symbol>
+  <symbol id="glyph-arrow" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12h17m-7-7 7 7-7 7"/></g></symbol>
+  <symbol id="glyph-undo" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round"><path d="m9 5-6 5 6 5m-5-5h10q7 0 6 6t-7 4"/></g></symbol>
+  <symbol id="glyph-map" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round"><path d="m3 5 6-2 6 3 6-2v15l-6 2-6-3-6 2Zm6-2v15m6-12v15"/></g></symbol>
+  <symbol id="glyph-chevron" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></g></symbol>
+  <symbol id="glyph-west" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round"><path d="m3 15 3-10h6l2 10Zm-1 0h15m-5-6h6l3 6m-17 3q3-2 6 0t6 0 5 0"/></g></symbol>
+  <symbol id="glyph-east" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round"><path d="M5 20V4q4-3 7 0t7 0v8q-4 3-7 0t-7 0m-3 8h8"/></g></symbol>
+  <symbol id="glyph-flag" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round"><path d="M5 21V4q4-3 7 0t7 0v8q-4 3-7 0t-7 0"/></g></symbol>
+  <symbol id="glyph-weight" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round"><path d="M6 8h12l4 13H2Zm3-.5V6a3 3 0 0 1 6 0v1.5"/></g></symbol>
+  <symbol id="glyph-pair" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="8" r="3"/><circle cx="17" cy="8" r="2.4"/><path d="M2 20v-2q0-5 6-5t6 5v2m1-7q6-1 6 5v2"/></g></symbol>
+  <symbol id="glyph-paper" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round"><path d="m4 3 16 .5L19 21l-15-.5Zm4 6h8m-8 4h7m-7 4h4"/></g></symbol>
+  <symbol id="glyph-help" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M9 9q1-4 4-3 4 1 1 5-2 1-2 4m0 3v.1"/></g></symbol>
+  <symbol id="glyph-close" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round"><path d="m6 6 12 12M6 18 18 6"/></g></symbol>
+  <symbol id="glyph-check" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round"><path d="m4 13 5 5L20 6"/></g></symbol>
+  <symbol id="glyph-reset" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round"><path d="M5 9a8 8 0 1 1-1 6m1-13v7h7"/></g></symbol>
+  <symbol id="glyph-compass" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8.2"/><path d="m17 5-3.5 9L6 19l4.7-9Z"/></g></symbol>
+  <symbol id="glyph-alert" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round"><path d="m12 3 10 17H2Zm0 6v4m0 4v.2"/></g></symbol>
+</svg>
+<main class="folio">
+  <header class="masthead">
+    <a class="back" href="../../games.html" data-i18n-label="common.back"><svg class="icon" aria-hidden="true"><use href="#glyph-back"/></svg><span data-i18n="common.back">返回大厅</span></a>
+    <h1><span class="mark"><svg class="icon" aria-hidden="true"><use href="#glyph-boat"/></svg></span><span data-i18n="last-ferry.title">最后一班渡船</span></h1>
+    <button id="help" class="plain help" data-i18n-label="last-ferry.help"><svg class="icon" aria-hidden="true"><use href="#glyph-help"/></svg><span data-i18n="last-ferry.help">玩法</span></button>
+  </header>
+  <div class="spread">
+    <section class="chart" aria-labelledby="place">
+      <div class="chart-head">
+        <div class="number" id="chart-number">01</div>
+        <div class="chart-title"><small id="stage-label"></small><h2 id="place"></h2></div>
+        <button class="atlas-button" id="atlas" data-i18n-label="last-ferry.routes"><svg class="icon" aria-hidden="true"><use href="#glyph-map"/></svg><span data-i18n="last-ferry.routes">航线图</span><svg class="icon" aria-hidden="true"><use href="#glyph-chevron"/></svg></button>
+      </div>
+      <div class="map-mat">
+        <svg class="map" viewBox="0 0 840 490" aria-hidden="true" preserveAspectRatio="xMidYMid meet">
+          <image href="estuary.svg" width="840" height="490"/>
+          <g class="pier-sign" id="west-sign" transform="translate(58 340)">
+            <path class="post" d="m-2-14 .5 16 3 1 .7-17Z"/>
+            <rect x="-53" y="-38" width="106" height="26" rx="2"/>
+            <text y="-19" data-i18n="last-ferry.west">西岸</text>
+          </g>
+          <g class="pier-sign" id="east-sign" transform="translate(777 325)">
+            <path class="post" d="m-2-14 .5 16 3 1 .7-17Z"/>
+            <rect x="-53" y="-38" width="106" height="26" rx="2"/>
+            <text y="-19" data-i18n="last-ferry.east">东岸</text>
+          </g>
+          <g id="vessel"><g id="orientation">
+            <image x="-108" y="-90" width="214" height="115" href="boat.svg"/>
+            <g id="aboard"></g>
+          </g></g>
+        </svg>
+      </div>
+      <section class="notice" aria-labelledby="notice-title">
+        <h3 id="notice-title"><svg class="icon" aria-hidden="true"><use href="#glyph-paper"/></svg><span data-i18n="last-ferry.notice">渡口告示</span></h3>
+        <dl>
+          <div><svg class="icon" aria-hidden="true"><use href="#glyph-weight"/></svg><dt data-i18n="last-ferry.capacity">限载</dt><dd id="capacity"></dd></div>
+          <div><svg class="icon" aria-hidden="true"><use href="#glyph-oar"/></svg><dt data-i18n="last-ferry.pilots">掌舵</dt><dd id="pilots"></dd></div>
+          <div><svg class="icon" aria-hidden="true"><use href="#glyph-pair"/></svg><dt data-i18n="last-ferry.pairs">不可独处</dt><dd id="pairs"></dd></div>
+        </dl>
+      </section>
+    </section>
+    <section class="manifest" aria-labelledby="list-title">
+      <div class="manifest-head"><h2 id="list-title" data-i18n="last-ferry.manifest">登船名册</h2><div class="trip-counter"><span data-i18n="last-ferry.trips">航次</span><strong id="trips">00</strong></div></div>
+      <div class="banks">
+        <section class="bank" data-bank="west">
+          <div class="bank-head"><h3><svg class="icon" aria-hidden="true"><use href="#glyph-west"/></svg><span data-i18n="last-ferry.west">西岸</span></h3><span class="dock"><svg class="icon" aria-hidden="true"><use href="#glyph-boat"/></svg><span data-i18n="last-ferry.docked">船在此岸</span></span></div>
+          <div class="cards" id="west-list"></div>
+        </section>
+        <section class="bank" data-bank="east">
+          <div class="bank-head"><h3><svg class="icon" aria-hidden="true"><use href="#glyph-east"/></svg><span data-i18n="last-ferry.east">东岸</span></h3><span class="dock"><svg class="icon" aria-hidden="true"><use href="#glyph-boat"/></svg><span data-i18n="last-ferry.docked">船在此岸</span></span></div>
+          <div class="cards" id="east-list"></div>
+        </section>
+      </div>
+      <div class="dispatch">
+        <div class="load-line"><span><svg class="icon" aria-hidden="true"><use href="#glyph-weight"/></svg><span data-i18n="last-ferry.load">已选载重</span></span><strong><b id="load">0</b> / <span id="max-load"></span> kg</strong></div>
+        <div class="gauge" aria-hidden="true"><i></i></div>
+        <div class="feedback" role="status" aria-live="polite"><span id="message"></span></div>
+        <div class="actions">
+          <button class="undo" id="undo" data-i18n-label="last-ferry.undo"><svg class="icon" aria-hidden="true"><use href="#glyph-undo"/></svg><span data-i18n="last-ferry.undo">撤销</span></button>
+          <button class="sail" id="sail"><span id="sail-text"></span><svg class="icon" aria-hidden="true"><use href="#glyph-arrow"/></svg></button>
+        </div>
+      </div>
+    </section>
+  </div>
+</main>
+<dialog id="dialog" aria-labelledby="dialog-title">
+  <div class="dialog-content">
+    <button id="close" class="close" data-i18n-label="last-ferry.close"><svg class="icon" aria-hidden="true"><use href="#glyph-close"/></svg></button>
+    <div class="dialog-mark"><svg class="icon" aria-hidden="true"><use href="#glyph-compass"/></svg></div>
+    <h2 id="dialog-title"></h2>
+    <div id="dialog-body"></div>
+    <a class="dialog-back" href="../../games.html"><svg class="icon" aria-hidden="true"><use href="#glyph-back"/></svg><span data-i18n="common.back">返回大厅</span></a>
+  </div>
+</dialog>
+</body>
+</html>

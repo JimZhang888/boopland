@@ -1,0 +1,43 @@
+{
+  "order": 79,
+  "title": "纸偶杂耍",
+  "description": "在纸戏台上交替抛接三只花球，接得越连贯，每球得分越高。",
+  "category": "动作",
+  "path": "./games/paper-juggler/index.html",
+  "cover": "./games/paper-juggler/cover.svg",
+  "color": "#eadbbf",
+  "locales": {
+    "zh-CN": {
+      "title": "纸偶杂耍",
+      "description": "在纸戏台上交替抛接三只花球，接得越连贯，每球得分越高。"
+    },
+    "en": {
+      "title": "Paper Juggler",
+      "description": "Toss three patterned balls between a paper puppet’s hands. Each catch in a streak is worth one more point."
+    },
+    "ja": {
+      "title": "紙人形の玉芸",
+      "description": "紙人形の両手で三つの模様玉を投げ渡そう。連続で受けるほど一球の得点が上がる。"
+    },
+    "ko": {
+      "title": "종이 인형의 저글링",
+      "description": "종이 인형의 양손으로 무늬 공 세 개를 주고받으세요. 연속으로 받을수록 공 하나의 점수가 올라갑니다."
+    },
+    "fr": {
+      "title": "Jongleur de papier",
+      "description": "Faites passer trois balles à motifs d’une main à l’autre. Chaque prise en série rapporte un point de plus."
+    },
+    "de": {
+      "title": "Papierjongleur",
+      "description": "Wirf drei gemusterte Bälle von Hand zu Hand. Jeder Fang in einer Serie bringt einen Punkt mehr."
+    },
+    "es": {
+      "title": "Malabarista de papel",
+      "description": "Lanza tres pelotas estampadas de mano en mano. Cada acierto en una racha vale un punto más."
+    },
+    "pt-BR": {
+      "title": "Malabarista de papel",
+      "description": "Passe três bolas estampadas de uma mão à outra. Cada acerto em sequência vale um ponto a mais."
+    }
+  }
+}

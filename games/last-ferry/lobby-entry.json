@@ -1,0 +1,19 @@
+{
+  "order": 84,
+  "title": "最后一班渡船",
+  "description": "暮色里还剩一条小船。安排谁掌舵、谁留岸，把六处渡口的旅客和行李送过河。",
+  "category": "解谜",
+  "path": "./games/last-ferry/index.html",
+  "cover": "./games/last-ferry/cover.svg",
+  "color": "#cbd8cd",
+  "locales": {
+    "zh-CN": { "title": "最后一班渡船", "description": "暮色里还剩一条小船。安排谁掌舵、谁留岸，把六处渡口的旅客和行李送过河。" },
+    "en": { "title": "The Last Ferry", "description": "One boat is left at dusk. Choose who rows and who waits to ferry passengers and luggage across six crossings." },
+    "ja": { "title": "最後の渡し舟", "description": "夕暮れの渡し場に舟が一艘。漕ぐ人と岸で待つ人を決め、六つの渡し場で旅人と荷物を対岸へ届けよう。" },
+    "ko": { "title": "마지막 나룻배", "description": "해 질 무렵 남은 배는 한 척. 노를 저을 사람과 기다릴 사람을 정해 여섯 나루의 손님과 짐을 건네주세요." },
+    "fr": { "title": "Le dernier bac", "description": "Au crépuscule, il reste une barque. À chacune des six escales, décidez qui rame et qui attend pour faire passer voyageurs et bagages." },
+    "de": { "title": "Die letzte Fähre", "description": "In der Abenddämmerung bleibt ein Boot. Entscheide an sechs Fährstellen, wer rudert und wer wartet, und bring alle mit ihrem Gepäck ans andere Ufer." },
+    "es": { "title": "La última barca", "description": "Al anochecer queda una barca. Decide quién rema y quién espera para llevar a viajeros y equipaje a la otra orilla en seis embarcaderos." },
+    "pt-BR": { "title": "A última balsa", "description": "Ao anoitecer, resta um barco. Escolha quem rema e quem espera para levar viajantes e bagagens à outra margem em seis travessias." }
+  }
+}

@@ -1,0 +1,44 @@
+{
+  "order": 99,
+  "title": "九十九号邮局",
+  "description": "读六封来自小镇的信，用方向和地标邮戳排出邮路，集齐六枚纪念戳。",
+  "category": "解谜",
+  "path": "./games/post-office-99/index.html",
+  "cover": "./games/post-office-99/cover.svg",
+  "color": "#e3e6d6",
+  "locales": {
+    "zh-CN": {
+      "title": "九十九号邮局",
+      "description": "读六封来自小镇的信，用方向和地标邮戳排出邮路，集齐六枚纪念戳。"
+    },
+    "en": {
+      "title": "Post Office No. 99",
+      "description": "Read six letters from town, chart each delivery with direction and landmark stamps, and fill your stamp album."
+    },
+    "ja": {
+      "title": "九十九番郵便局",
+      "description": "町から届いた六通の手紙を読み、方角と目印のはんこで配達ルートを組み、記念切手を集めよう。"
+    },
+    "ko": {
+      "title": "99번 우체국",
+      "description": "마을에서 온 편지 여섯 통을 읽고 방향과 명소 도장으로 배달길을 짜서 기념 우표를 모으세요."
+    },
+    "fr": {
+      "title": "Bureau de poste n° 99",
+      "description": "Lisez six lettres du village, tracez les tournées avec des tampons de direction et de lieu, puis complétez votre album."
+    },
+    "de": {
+      "title": "Postamt Nr. 99",
+      "description": "Lies sechs Briefe aus dem Städtchen, stemple mit Pfeilen und Ortsmotiven deine Postwege und fülle dein Markenalbum."
+    },
+    "es": {
+      "title": "Oficina de Correos n.º 99",
+      "description": "Lee seis cartas del pueblo, traza las rutas con sellos de dirección y de lugares, y completa tu álbum."
+    },
+    "pt-BR": {
+      "title": "Agência Postal Nº 99",
+      "description": "Leia seis cartas da vila, marque os caminhos com carimbos de direção e de lugares e complete seu álbum."
+    }
+  }
+}
+

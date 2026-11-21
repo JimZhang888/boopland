@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="zh-CN" data-i18n-scope="tidepool">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#f4f1e6">
+  <title data-i18n="tidepool.title">赶海日记</title>
+  <link rel="icon" type="image/svg+xml" href="cover.svg">
+  <link rel="stylesheet" href="style.css">
+  <script src="../../i18n.js"></script>
+  <script defer src="../../analytics.js"></script>
+</head>
+<body>
+<main class="shell">
+  <header class="mast">
+    <div class="brand"><span class="brand-mark" data-art="wave"></span><h1 data-i18n="tidepool.title">赶海日记</h1></div>
+    <nav class="head-nav">
+      <button id="teach" class="nav-btn"><span class="question" aria-hidden="true">?</span><span id="teach-name"></span></button>
+      <button id="journal" class="nav-btn"><i data-art="book"></i><span data-i18n="tidepool.journal">图鉴</span><small id="book-count"></small></button>
+      <a class="lobby" href="../../games.html" data-i18n-label="common.back" data-i18n-title="common.back"><i data-art="back"></i><span data-i18n="common.back">返回大厅</span></a>
+    </nav>
+  </header>
+  <div class="meters">
+    <div class="tide-icon" data-art="wave"></div>
+    <div class="tide-text"><span class="caption" data-i18n="tidepool.tide">潮位</span><strong id="tide-name"></strong></div>
+    <div class="gauge"><div id="tide-fill"></div></div>
+    <span class="remaining" id="remaining"></span>
+    <div class="walk-meter"><i data-art="foot"></i><span class="caption" data-i18n="tidepool.walk">回岸耗时</span><strong id="walk-time"></strong></div>
+  </div>
+  <div class="spread">
+    <section class="atlas">
+      <header class="map-head"><div class="map-heading"><i data-art="pin"></i><h2 id="site"></h2><span class="depth" id="depth"></span></div><span class="map-number" id="map-number"></span></header>
+      <div class="map" id="map" role="group" data-i18n-label="tidepool.map">
+        <div id="seascape" aria-hidden="true"></div>
+        <div class="north" aria-hidden="true"><b>N</b><i data-art="compass"></i></div>
+        <div id="spots"></div>
+      </div>
+      <div class="flats" id="flats" role="group" data-i18n-label="tidepool.map"></div>
+    </section>
+    <aside class="kit">
+      <section class="bucket-box">
+        <div class="panel-title"><h2 data-i18n="tidepool.bucket">随身小桶</h2><span class="counter" id="bucket-count"></span></div>
+        <div class="bucket-art" aria-hidden="true" id="bucket-art"></div>
+        <div id="bucket-slots" class="slots"></div>
+      </section>
+      <section class="tools-box">
+        <div class="panel-title"><h2 data-i18n="tidepool.tools">采集工具</h2></div>
+        <div class="tools" id="tools"></div>
+      </section>
+      <div class="note"><span class="note-icon" id="note-icon"></span><div aria-live="polite" aria-atomic="true"><strong id="note-title"></strong><p id="note-detail"></p></div></div>
+      <button class="go-back" id="return"><i data-art="flag"></i><span data-i18n="tidepool.return">回岸</span><i data-art="arrow"></i></button>
+    </aside>
+  </div>
+</main>
+<dialog id="sheet" aria-labelledby="sheet-heading">
+  <header class="sheet-head"><h2 id="sheet-heading"></h2><button class="close" id="close" data-i18n-label="tidepool.close" data-i18n-title="tidepool.close">×</button></header>
+  <div id="sheet-body"></div>
+  <footer class="sheet-foot"><a href="../../games.html" data-i18n="common.back">返回大厅</a><button class="primary" id="sheet-action"></button></footer>
+</dialog>
+<script src="shore.js"></script><script src="drawings.js"></script><script src="atlas.js"></script>
+<script src="words.js"></script><script src="journal.js"></script>
+</body>
+</html>

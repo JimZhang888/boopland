@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="zh-CN" data-i18n-scope="kiteWind">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#f5f2e8">
+<title data-i18n="kiteWind.title">追风纸鸢</title>
+<link rel="icon" href="kite.svg" type="image/svg+xml">
+<link rel="stylesheet" href="style.css">
+<script defer src="../../analytics.js"></script>
+</head>
+<body>
+<svg class="symbols" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+ <symbol id="i-kite" viewBox="0 0 32 32"><path d="m3 5 25-2-6 22-8-11Z M28 3 14 14m8 11q-5 7-9 1t-9 1"/></symbol>
+ <symbol id="i-book" viewBox="0 0 24 24"><path d="M12 6Q7 3 2 5v14q5-2 10 1 5-3 10-1V5q-5-2-10 1Zm0 0v14"/></symbol>
+ <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M3 12q6-.6 17 0m-7-7 7 7-7 7"/></symbol>
+ <symbol id="i-pause" viewBox="0 0 24 24"><path d="M8 5v14m8-14v14" stroke-width="3"/></symbol>
+ <symbol id="i-reel" viewBox="0 0 40 32"><g transform="rotate(-19 18 16)"><path d="m7 10 18-1v13L7 23Z" fill="#ded3b4"/><path d="M6 6q-3 1-2 4l1 15q1 4 5 2L9 7Zm18-2q-2 0-2 3l1 16q1 4 5 2l-1-19Z" fill="#b59b70"/><path d="m10 12 11-1m-11 5 11-1m-11 5 11-1M0 17h4m23-2h7"/></g><path d="M29 20q7 2 8-3"/></symbol>
+ <symbol id="i-wind" viewBox="0 0 28 24"><path d="M3 10h14q7 0 5-5-2-3-5 0M1 14h21m-16 4h9q5 0 3 4"/></symbol>
+</svg>
+<main class="shell">
+ <header>
+  <div class="identity"><span class="logo"><svg><use href="#i-kite"/></svg></span><div><div class="brand">BOOPLAND</div><h1 data-i18n="kiteWind.title">追风纸鸢</h1></div></div>
+  <nav><a class="lobby" href="../../games.html" data-i18n-label="common.back" data-i18n-title="common.back"><svg class="reverse"><use href="#i-arrow"/></svg><span data-i18n="common.back">返回大厅</span></a><button id="guide" class="icon" data-i18n-label="kiteWind.guide" data-i18n-title="kiteWind.guide"><svg><use href="#i-book"/></svg></button><button id="pause" hidden class="icon" data-i18n-label="kiteWind.pause" data-i18n-title="kiteWind.pause"><svg><use href="#i-pause"/></svg></button></nav>
+ </header>
+ <section class="flight-sheet">
+  <ol id="route" class="route">
+   <li><span class="token">1</span><span data-i18n="kiteWind.calm">平静</span><small>34 m</small></li>
+   <li><span class="token">2</span><span data-i18n="kiteWind.gust">阵风</span><small>61 m</small></li>
+   <li><span class="token">3</span><span data-i18n="kiteWind.turn">风向切换</span><small>43 m</small></li>
+  </ol>
+  <div id="field" class="field">
+   <img class="terrain" src="landscape.svg" alt="" draggable="false">
+   <canvas id="sky" role="img" data-i18n-label="kiteWind.scene"></canvas>
+   <div class="fiber"></div>
+   <div id="instruments" hidden><div class="altimeter"><span data-i18n="kiteWind.alt">高度</span><b id="altitude">22</b><span>m</span></div><div class="breeze"><svg><use href="#i-wind"/></svg><span id="weather"></span></div></div>
+   <div id="status" class="status" role="status" hidden></div>
+   <section class="launch" id="launch">
+    <div class="sky-rule" aria-hidden="true"><i></i><svg><use href="#i-wind"/></svg></div>
+    <h2 data-i18n="kiteWind.liftOff">借风起飞</h2>
+    <p data-i18n="kiteWind.intro">收线抬头，放线降高。带燕子纸鸢穿过三道风标。</p>
+    <div class="launch-actions"><button class="primary" id="start"><span data-i18n="kiteWind.start">放飞纸鸢</span><svg><use href="#i-arrow"/></svg></button><button class="text-btn" id="choose" data-i18n="kiteWind.practice">单段练习</button></div>
+   </section>
+   <div id="veil" class="veil" hidden><section id="dialog" class="dialog" role="dialog" aria-labelledby="sheetTitle">
+    <div class="sheet-head"><h2 id="sheetTitle"></h2><button class="close" id="close" data-i18n-label="kiteWind.close">×</button></div>
+    <div id="sheetBody"></div><div id="sheetActions" class="sheet-actions"></div>
+   </section></div>
+  </div>
+  <footer>
+   <button id="reel" class="hold" disabled><svg><use href="#i-reel"/></svg><b data-i18n="kiteWind.reel">收线</b><kbd>↑</kbd></button>
+   <div class="meter"><div class="meter-label"><span data-i18n="kiteWind.tension">线张力</span><b id="condition"></b></div><div class="track"><div class="scale"></div><i id="needle"></i></div></div>
+   <button id="feed" class="hold" disabled><svg class="reverse"><use href="#i-reel"/></svg><b data-i18n="kiteWind.feed">放线</b><kbd>↓</kbd></button>
+  </footer>
+ </section>
+</main>
+<script src="../../i18n.js"></script>
+<script src="strings.js"></script>
+<script src="flight.js"></script>
+<script src="sky.js"></script>
+<script src="game.js"></script>
+</body>
+</html>

@@ -1,0 +1,43 @@
+{
+  "order": 72,
+  "title": "猜色密码",
+  "description": "用六枚彩色印章推理四位密码。读懂每次留下的线索，在八次内打开信封。",
+  "path": "./games/color-code/index.html",
+  "category": "益智",
+  "color": "#e4d9c3",
+  "cover": "./games/color-code/cover.svg",
+  "locales": {
+    "zh-CN": {
+      "title": "猜色密码",
+      "description": "用六枚彩色印章推理四位密码。读懂每次留下的线索，在八次内打开信封。"
+    },
+    "en": {
+      "title": "Color Code",
+      "description": "Use six ink stamps to crack a four-place code. Read each clue and open the envelope in eight guesses."
+    },
+    "ja": {
+      "title": "色の暗号",
+      "description": "6色のスタンプで4つの暗号を推理。手がかりを読み、8回以内に封筒を開けよう。"
+    },
+    "ko": {
+      "title": "색 암호",
+      "description": "여섯 색 도장으로 네 자리 암호를 추리하세요. 단서를 모아 여덟 번 안에 봉투를 여세요."
+    },
+    "fr": {
+      "title": "Code couleur",
+      "description": "Déchiffrez un code de quatre tampons en huit essais grâce aux indices de chaque rangée."
+    },
+    "de": {
+      "title": "Farbcode",
+      "description": "Knacke mit sechs Farbstempeln einen vierstelligen Code. Acht Versuche und die Hinweise auf dem Bogen helfen dir."
+    },
+    "es": {
+      "title": "Código de colores",
+      "description": "Descifra un código de cuatro sellos. Lee las pistas y abre el sobre en ocho intentos."
+    },
+    "pt-BR": {
+      "title": "Código de cores",
+      "description": "Decifre um código de quatro carimbos. Leia as pistas e abra o envelope em oito tentativas."
+    }
+  }
+}

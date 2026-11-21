@@ -1,6 +1,7 @@
 (() => {
   'use strict';
   const E=PaperBilliards;
+  const rail = { x: 28, y: 38, width: 984, height: 544, radius: 36 };
   const COLORS=['#f7f5df','#e9b531','#2f65aa','#c54236','#714b87','#de7c35','#347b5b','#983d3b','#202c2a','#e9b531','#2f65aa','#c54236','#714b87','#de7c35','#347b5b','#983d3b'];
   const circle=(c,x,y,r)=>{c.beginPath();c.arc(x,y,r,0,Math.PI*2);};
   const rounded=(c,x,y,w,h,r)=>{c.beginPath();c.roundRect(x,y,w,h,r);};
@@ -13,8 +14,13 @@
     resize() {
       const box=this.canvas.getBoundingClientRect(),dpr=Math.min(window.devicePixelRatio||1,2);
       this.w=box.width;this.h=box.height;this.canvas.width=Math.round(this.w*dpr);this.canvas.height=Math.round(this.h*dpr);
-      this.dpr=dpr;this.rotated=this.h>this.w*1.05;
-      this.scale=Math.min(this.w/(this.rotated?E.H:E.W),this.h/(this.rotated?E.W:E.H));
+      const closeFit = getComputedStyle(this.canvas).getPropertyValue('--table-framing').trim() === 'close';
+      // Fit the wood frame with a small margin on phones. Both frames share the world center.
+      const width = closeFit ? rail.width + 12 : E.W;
+      const height = closeFit ? rail.height + 12 : E.H;
+      this.dpr = dpr;
+      this.rotated = this.h > this.w * (closeFit ? 1 : 1.05);
+      this.scale = Math.min(this.w / (this.rotated ? height : width), this.h / (this.rotated ? width : height));
     }
     point(clientX,clientY) {
       const r=this.canvas.getBoundingClientRect(),x=(clientX-r.left-this.w/2)/this.scale,y=(clientY-r.top-this.h/2)/this.scale;
@@ -22,9 +28,9 @@
     }
     paintTable(c) {
       c.save();c.shadowColor='#2c38264d';c.shadowBlur=24;c.shadowOffsetY=14;
-      rounded(c,28,38,984,544,36);c.fillStyle='#3b3027';c.fill();c.restore();
+      rounded(c,rail.x,rail.y,rail.width,rail.height,rail.radius);c.fillStyle='#3b3027';c.fill();c.restore();
       const wood=c.createLinearGradient(0,38,0,582);wood.addColorStop(0,'#98764e');wood.addColorStop(.025,'#b59262');wood.addColorStop(.08,'#674b32');wood.addColorStop(.47,'#856142');wood.addColorStop(.88,'#64462e');wood.addColorStop(1,'#3b2a20');
-      rounded(c,28,38,984,544,36);c.fillStyle=wood;c.fill();c.save();c.clip();
+      rounded(c,rail.x,rail.y,rail.width,rail.height,rail.radius);c.fillStyle=wood;c.fill();c.save();c.clip();
       for(let i=0;i<160;i++) {
         const y=40+i*3.4;c.beginPath();c.moveTo(20,y);c.bezierCurveTo(240,y+Math.sin(i)*5,660,y-6,1030,y+Math.sin(i*2)*4);
         c.strokeStyle=i%3?'#e8ba7930':'#201a1426';c.lineWidth=i%5===0?1.3:.5;c.stroke();

@@ -1,0 +1,122 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 400" fill="none">
+<title>相册翻翻</title>
+<defs>
+  <pattern id="linen" width="5" height="5" patternUnits="userSpaceOnUse"><rect width="5" height="5" fill="#dfddca"/><path d="M0 1h5M1 0v5" stroke="#c8c8b1" opacity=".4" stroke-width=".7"/></pattern>
+  <pattern id="cloth" width="4" height="4" patternUnits="userSpaceOnUse"><rect width="4" height="4" fill="#798674"/><path d="m0 0 4 4" stroke="#b1baa0" opacity=".4" stroke-width=".7"/></pattern>
+  <filter id="grain"><feTurbulence type="fractalNoise" baseFrequency=".65" numOctaves="3" stitchTiles="stitch"/></filter>
+</defs>
+<defs><symbol id="album-back" viewBox="0 0 100 100"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M14 50C13 29 27 12 49 12c21-1 37 14 37 36 2 23-15 39-35 40-21 0-37-15-37-38Z" stroke-width="1.2"/>
+    <path d="M18 50c-1-20 13-34 32-34s32 13 32 32c2 21-12 35-31 36-18 0-33-14-33-34Z" stroke-width="1.8"/>
+    <circle cx="60" cy="34" r="5" fill="currentColor" stroke="none"/>
+    <path d="m20 57 14-15 4 3 12-14 20 22 5-5 6 5m-54-2 7-8 2 6m7-9 7-9-3 12 6-4 9 9m2-4 5 8m-47 7q15-5 28-3t29-3m-56 9 12-2m32-1 11-3m-48 9 9-2m22 4 13-3m-44 7 14-2m6 4 14-3" stroke-width="1.5"/>
+    <path d="M34 64q14 3 29-3l-5 6q-10 3-19 1zm12-4 6-13 1 13z" fill="currentColor" stroke-width=".9"/>
+    <path d="M9 48h6m70 0h6M49 8v5m1 75v5m-27-70 3 4m47 45 3 4m-52-2 3-4m46-45 3-3" stroke-width="1.3"/>
+  </g></symbol><symbol id="album-teapot" viewBox="0 0 100 100"><g stroke="#525a4d" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"><path d="M66 35q23-16 24 4 1 18-18 23l-1-7q12-5 12-14 0-9-14 0z" fill="#aeb9a1"/><path d="M33 40q17-12 34-3 19 13 11 31-6 14-25 15-17 0-25-11l-9-11-11-22 9-2q4 14 16 14z" fill="#9eaf98"/><path d="M33 39q15-15 32-5l4 4q-18 8-36 1z" fill="#c2c8ae"/><path d="M43 28q1-6 7-5 6 0 5 7l-6 3z" fill="#718975"/><path d="M8 39q3-4 10-2l1 3zM40 81l1 4 19 1 4-4" fill="#899c83"/><g fill="none" stroke-width="1.4"><path d="M38 47q-7 13 1 22m5 4q10 6 20-1m-17-4q3-12 18-18m-9 8q1-8 6-9 1 6-6 9m1 1q7-4 10-1-5 4-10 1"/></g></g></symbol><symbol id="album-ferry" viewBox="0 0 100 100"><g stroke="#525a4d" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"><path d="M6 62q29 8 56 3 23-4 32-11-7 16-23 22-29 10-52 1z" fill="#a59878"/><path d="M13 64q43 5 74-7M22 74q29 6 56-7" fill="none"/><path d="M31 61q-2-25 11-29l19-3q15 0 18 25-22 10-48 7z" fill="#a5ae99"/><path d="M31 61q0-25 12-29 11 4 12 25-12 5-24 4z" fill="#64746a"/><path d="M48 31q11 1 13 24m-5-26q10 2 12 23m-5-22q7 2 10 20" fill="none" stroke-width="1.4"/><path d="m18 62 4-17 5 1 3 16" fill="#9b8970"/><circle cx="24" cy="40" r="4" fill="#ceb79a"/><path d="m17 40 7-7 8 6z" fill="#b6aa84"/><path d="m14 78 21-35m-26 38 5-4m10 8 20 .5m21-5 17-5" fill="none" stroke-width="1.5"/></g></symbol></defs>
+<rect width="640" height="400" fill="url(#linen)"/>
+<g transform="translate(36 31) rotate(-4 282 168)" stroke="#666b58" stroke-linejoin="round">
+  <path d="M14 16Q148 2 268 15q122-17 272-3l8 303q-145-8-275 10-135-8-268 4z" fill="#a0a68d" opacity=".5" transform="translate(4 6)"/>
+  <path d="M10 12Q145 0 268 12q129-19 275-5l6 305q-145-5-275 11-143-8-273 2z" fill="url(#cloth)" stroke-width="2.3"/>
+  <path d="M20 18q122-14 249 1Q411 0 534 15l6 286q-131-4-267 13-145-11-263 2z" fill="#d3ceb6"/>
+  <path d="M22 14q141-9 247 5 128-25 264-8l5 283q-143-4-266 12-121-17-259 2z" fill="#f7f0db"/>
+  <path d="M268 20q-1 148 4 285m3-283q-3 167 2 279" stroke="#b9b096"/>
+  <g transform="translate(40 53) rotate(-3 105 82)">
+    <path d="m-3-3 218 .4-.6 163-218 1z" fill="#c2bba4" stroke="none" transform="translate(1 3)"/>
+    <rect x="-4" y="-5" width="218" height="164" fill="#fff9e8" stroke="#c3bba2"/>
+    <svg x="2" y="1" width="206" height="143" viewBox="0 0 460 248" preserveAspectRatio="xMidYMid slice" stroke="none" stroke-linecap="round" stroke-linejoin="round">
+  <defs>
+    <pattern id="water" width="56" height="18" patternUnits="userSpaceOnUse"><path d="M1 11q7 1 14-1m22-7 10 .2" stroke="#738b85" stroke-width=".8" opacity=".65"/></pattern>
+    <pattern id="roof" width="7" height="5" patternUnits="userSpaceOnUse" patternTransform="rotate(-18)"><path d="M0 1h5" stroke="#d4cfad" stroke-width=".8"/></pattern>
+    <g id="house" stroke="#555c50" stroke-width="1.45">
+      <path d="m2 19 42-7 24 10-1 30-65 3z" fill="#e7dfc7"/><path d="m44 13 1 40 22-2 1-29z" fill="#cbc9af"/>
+      <path d="m-4 20 15-15 31-3 1-2 4 2q9 10 25 16l-5 5-21-8-2-2-3 4-44 7z" fill="#6d766b"/><path d="m-4 20 15-15 31-3 1-2 4 2q9 10 25 16l-5 5-21-8-2-2-3 4-44 7z" fill="url(#roof)"/>
+      <path d="m9 28 9-1v9l-9 1zm19-3 7-1v9l-7 1zm23 3 6 1v11l-6-1z" fill="#67766a"/><path d="m21 54 .4-14 6-1v15" fill="#948a73"/>
+      <path d="m5 41 9-1m18-20 5-.8m22 23 4 1" stroke-width=".7"/>
+    </g>
+    <g id="tree" stroke="#646f58" stroke-width="1.3">
+      <path d="M0 1q3-13 1-22m0 8-7-6m8 1 6-9" fill="none"/>
+      <path d="M-10-16q-6-5 0-10-2-6 4-8 1-7 7-6 6-3 10 4 8 0 7 8 5 6-1 10-3 5-9 3-5 5-10-1z" fill="#9da689"/>
+      <path d="m-9-22 4-4m1 6 5-5m1 4 5-4m-2-6 4-3m1 11 3-2" stroke-width=".9"/>
+    </g>
+  </defs>
+  <rect width="460" height="248" fill="#eae0c5"/>
+  <circle cx="306" cy="53" r="22" fill="#ce997b" opacity=".84"/>
+  <g stroke="#a9b1a0" stroke-width="1">
+    <path d="M0 114 42 88l17 3 45-37 12 4 12-10 16 8 22-20 21 14 15-5 29 23 32-21 13 1 28-21 39 33 16-4 17 13 44-37 31 24 12-1v78H0z" fill="#bac0a9"/>
+    <path d="m0 113 67-19 34-21 9 3 31-21 23 15 17-10 43 29 50-19 14-12 11 5 25-16 25 19 20-4 43 22 50-17v77H0z" fill="#a6b099"/>
+    <path d="m0 112 33-10 10 2 40-15 24 4 34-14 18 3 26 10 33-8 30 10 31-9 26 6 49-15 31 9 42-11 37 17v50H0z" fill="#919d87"/>
+  </g>
+  <g stroke="#7f8b78" opacity=".72" stroke-width="1"><path d="m83 84 21-18-6 9m16-13 12-9m20 12 18-18-6 10m24 8 12-8m90-2 19-14-9 10m104 14 19-18-10 13m-65 11 11-8"/></g>
+  <path d="M0 125q60-13 102-8t81 3q58 2 106-5t88-1l83-5v139H0z" fill="#b8c7ba"/>
+  <path d="M0 125q60-13 102-8t81 3q58 2 106-5t88-1l83-5v139H0z" fill="url(#water)"/>
+  <g stroke="#677665" stroke-width="1.4"><path d="m-5 127 47-8 42-4 51 2 20 6-49 8-85 8-26 4z" fill="#9ca78c"/>
+    <path d="M-5 141q89-13 145-17l-11 8Q40 144-5 153z" fill="#b8b49a"/>
+  </g>
+  <use href="#tree" transform="translate(107 112) scale(.75)"/><use href="#tree" transform="translate(84 114) scale(.59)"/>
+  <use href="#house" transform="translate(102 102) scale(.35)"/><use href="#house" transform="translate(54 96) scale(.62)"/>
+  <use href="#house" transform="translate(6 91) scale(.88)"/><use href="#house" transform="translate(-25 112) scale(.68)"/>
+  <path d="M-3 157q27-7 66-11l53-5q37-5 65-13l5 4q-31 10-65 14L0 170z" fill="#aaa88d" stroke="#687665" stroke-width="1.5"/>
+  <g stroke="#737a69" stroke-width="1"><path d="m0 160 54-9m13-3 43-5m-81 12-1 5m17-8-1 4m10-7-1 6m20-9-2 5m17-8-2 5m17-6-1 3"/></g>
+  <path d="M264 126q13-4 30-2c16-2 27-7 44-10l80-3 42-6v27l-63 5q-23-3-45-4l-34-5-50 2z" fill="#89967d" stroke="#6d7767" stroke-width="1.4"/>
+  <use href="#tree" transform="translate(380 116) scale(.64)"/><use href="#tree" transform="translate(399 119) scale(.82)"/><use href="#house" transform="translate(324 101) scale(.43)"/>
+  <!-- A single arched footbridge and its broken reflection -->
+  <g stroke="#606d60" stroke-width="1.5">
+    <path d="M124 137q13-4 23-11l14-13c13-12 29-17 44-11l30 16q12 6 34 7l2 7q-24 1-49-5-8-15-24-15-18 0-27 20l-47 13z" fill="#d6cfb3"/>
+    <path d="M126 138q18-6 35-23 20-21 44-12l30 17q17 7 33 7M168 134q12-30 32-26 15 0 26 19"/>
+    <path d="m176 120 4 3m3-13 3 5m6-8 1 6m7-8v6m8-3-2 6m10-1-3 5m8-1-4 5"/>
+    <path d="m144 129 1-7m15-6v-8m12-2v-7m14 2v-7m15 8v-7m15 13v-7m15 15v-7m14 13v-7M145 123l15-15q21-17 41-13l30 15 14 6"/>
+  </g>
+  <g stroke="#8e9c8e" stroke-width="1.3"><path d="m129 148 34-7m13 2 12-2m25-2 19 2m11-6 25 1m-76 9h17m-39 6 24-2m65-10h21"/></g>
+  <!-- Ink drawing of a covered ferry -->
+  <g transform="translate(213 165) rotate(-5)" stroke="#505e54" stroke-width="1.7">
+    <path d="M-8 8q17 7 44 6 33 1 56-6l-7 9q-30 10-72 5z" fill="#8d826b"/>
+    <path d="M7 12q8-6 25-6l39-1 10 6q-34 10-74 1z" fill="#c4ac82"/>
+    <path d="M26 9q1-21 13-22l21 .2q12 1 13 18l.5 3q-22 6-47 1z" fill="#929888"/>
+    <path d="M27 8q1-18 12-21 8 0 11 19l-3 4z" fill="#58645c"/>
+    <path d="M42-13q10 1 12 21m-4-21q9 2 11 20m-3-19q7 3 10 17" stroke="#d0c6a6" stroke-width="1"/>
+    <path d="m11 8 3-14 4 1 4 12" fill="#697566"/><circle cx="16" cy="-10" r="3.1" fill="#a98c72"/><path d="m11-11 5-4 6 4zm7 8 7 6M4 24 28-7"/>
+    <path d="M11 17q37 9 69-2" stroke="#c3b494" stroke-width="1"/>
+  </g>
+  <g stroke="#81968d" stroke-width="1.3"><path d="m212 196 22 1m3-6q39 1 60-5m-45 9 29-3m-82 10h20m-46-15 20-.5m108-9 14-2"/></g>
+  <g fill="#677862" stroke="#5e6d59" stroke-width="1.2">
+    <path d="M460 160q-37 8-55 23-9 7-39 8 23 4 52 2-13 11-50 17 54 3 92-3z" fill="#97a286"/>
+    <path d="M460 187q-19 2-29 9 20 1 29-2m-2 6q-15 0-25 6"/>
+    <path d="M398 190q-13-19-17-20 7 12 8 21m12-2q-7-28-11-31 3 17 4 32m8-3q1-17 6-24-2 18-2 24m7-1q6-18 12-20-7 12-8 19"/>
+  </g>
+  <g stroke="#677865" fill="none" stroke-width="2">
+    <path d="M-7 6q42 11 83-10M-5 1q44 19 89 6m-52 1q19 18 47 21M20 8q9 18 26 28"/>
+    <path d="M38 12q4 17-2 45m15-42q7 15 1 34m14-26q9 16 4 39m3-48q7 11 6 29m7-36q9 13 8 27m-69-12q0 15-7 33M9 14q2 26-4 45" stroke-width="1.1"/>
+  </g>
+  <g fill="#838f72">
+    <path d="M36 54q-6-7-2-15 3 7 2 15m1-13q6-9 3-15-4 8-3 15m14 10q-5-6-3-13 4 5 3 13m2-12q6-8 3-13-4 5-3 13m18 24q-6-6-4-14 4 5 4 14m0-14q6-7 4-14-4 5-4 14m9-6q-6-6-4-13 4 5 4 13m14-8q-5-6-3-12 3 2 3 12M18 52q-4-7 0-14 3 6 0 14M5 60q-5-7-1-15 3 6 1 15"/>
+  </g>
+  <g stroke="#626c5f" stroke-width="1.3"><path d="M209 49q4-2 8 2 2-5 7-6m5 11q3-1 5 1 2-3 5-4m-46-9q2-1 5 1 1-3 4-4"/></g>
+  <path d="M1 236q63-7 98-6m-96 10 49-3m268-15q32-4 67-2m-59 5 33-.5" stroke="#889a8e"/>
+
+</svg>
+    <path d="m70-10 65 1-2 4 2 5-3 5-65-2 3-6-2-2z" fill="#d3c59b" opacity=".82" stroke="none"/>
+  </g>
+  <g stroke="#ac755d" stroke-width="2" transform="translate(198 217) rotate(-9)">
+    <circle r="25"/><circle r="20" stroke-width="1"/><path d="m-15 2 11-11 5 4 6-6 10 12m-31 5q13-4 26-1m-22 5 19-1M-29-5q-8 3-17 1t-21 0m37 6q-9 2-18 0t-19 1m37 6q-9 2-17 0t-20 1"/>
+  </g>
+  <g transform="translate(303 32) rotate(8 95 90)">
+    <rect x="87" y="2" width="108" height="150" rx="3" fill="#f9f3df"/>
+    <rect x="92" y="7" width="98" height="140" rx="2" fill="url(#cloth)"/>
+    <rect x="98" y="13" width="86" height="128" rx="3" stroke="#d4d9bb"/>
+    <use href="#album-back" x="96" y="27" width="91" height="100" color="#e6e7cf" stroke="none"/>
+  </g>
+  <g transform="translate(298 72) rotate(-6 61 78)">
+    <rect width="126" height="159" rx="2" fill="#fff9ea" stroke="#aba58c"/>
+    <rect x="6" y="6" width="114" height="130" fill="#c4ceb8" stroke="#b3b99e"/>
+    <use href="#album-teapot" x="9" y="16" width="109" height="111"/>
+    <path d="m42-7 44 1-2 12-42-1z" fill="#d6c79d" fill-opacity=".9" stroke="none"/>
+  </g>
+  <g transform="translate(409 166) rotate(10 51 56)">
+    <rect width="102" height="123" rx="2" fill="#fff9e9" stroke="#aba58c"/>
+    <rect x="5" y="5" width="92" height="96" fill="#ccdad0" stroke="#adb8a6"/>
+    <use href="#album-ferry" x="6" y="6" width="90" height="90"/>
+  </g>
+  <g stroke="#81765e" stroke-width="4" stroke-linecap="round"><path d="M259 58q9-8 18-2m-18 63q10-8 19-2m-19 64q10-7 20-2m-19 65q10-8 19-2"/></g>
+</g>
+<rect width="100%" height="100%" filter="url(#grain)" opacity=".055" pointer-events="none"/>
+</svg>

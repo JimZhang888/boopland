@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="zh-CN" data-i18n-scope="hillside-inn">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title data-i18n="hillside-inn.title">山间小旅馆</title>
+<link rel="icon" href="./cover.svg" type="image/svg+xml">
+<link rel="stylesheet" href="./style.css">
+<script src="../../i18n.js"></script>
+<script defer src="../../analytics.js"></script>
+<script defer src="./locales.js"></script>
+<script defer src="./inn.js"></script>
+<script defer src="./desk.js"></script>
+</head>
+<body>
+<svg aria-hidden="true" class="sprite" xmlns="http://www.w3.org/2000/svg"><defs>
+<symbol id="i-mountain" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.65" fill="none" stroke-linejoin="round" stroke-linecap="round"><path d="m2 18 7-12 3.6 5.2L16 4l7 14H2z"/><path d="m6.5 10.2 2.6 1.3 1.2-1.7m3.3-1.2 2.6 2 1.6-2M5 20l15.5-.2"/></symbol>
+<symbol id="i-back" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.65" fill="none" stroke-linejoin="round" stroke-linecap="round"><path d="m13 5-7 7 7 7m-6-7h14"/></symbol>
+<symbol id="i-forward" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.65" fill="none" stroke-linejoin="round" stroke-linecap="round"><path d="m11 5 7 7-7 7M4 12h13"/></symbol>
+<symbol id="i-help" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.65" fill="none" stroke-linejoin="round" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M9 9a3 3 0 0 1 6 0c0 2-3 2-3 5m0 3h.01"/></symbol>
+<symbol id="i-reset" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.65" fill="none" stroke-linejoin="round" stroke-linecap="round"><path d="M5 8a8 8 0 1 1-1 7m1-12v5h5"/></symbol>
+<symbol id="i-moon" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.65" fill="none" stroke-linejoin="round" stroke-linecap="round"><path d="M18.7 15.5A8.5 8.5 0 0 1 8.5 4a8.8 8.8 0 1 0 10.2 11.5z"/></symbol>
+<symbol id="i-quiet" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.65" fill="none" stroke-linejoin="round" stroke-linecap="round"><path d="M4 21 17 7m-10 11c-2-5 1-10 5-13 3-2 7-2 9-2-.2 5-1.8 10-6 13-2 1.5-5 2-8 2zm4.5-5.5 5-.8"/></symbol>
+<symbol id="i-sun" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.65" fill="none" stroke-linejoin="round" stroke-linecap="round"><path d="M2 16h20M4 20h16M7 15a5 5 0 0 1 10 0M12 3v3M3.5 7.5l2 2m15-2-2 2"/></symbol>
+<symbol id="i-pair" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.65" fill="none" stroke-linejoin="round" stroke-linecap="round"><path d="m10.2 14 3.7-4.1M9 15.7l-1.7 1.8a3.8 3.8 0 0 1-5.4-5.4L6 8a3.8 3.8 0 0 1 5.5.2m1-1.2 2.1-2.1a3.8 3.8 0 1 1 5.4 5.4l-4.1 4.1a3.8 3.8 0 0 1-5.4 0"/></symbol>
+<symbol id="i-coin" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.65" fill="none" stroke-linejoin="round" stroke-linecap="round"><circle cx="12" cy="12" r="8.5"/><path d="m10 9.5 4-.2.2 4.6-4.3-.1z"/></symbol>
+<symbol id="i-praise" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.65" fill="none" stroke-linejoin="round" stroke-linecap="round"><path d="m12 2.5 2.7 6 6.6.7-5 4.6 1.4 6.7-5.7-3.3-5.8 3.3 1.3-6.6-4.9-4.7 6.6-.7z"/></symbol>
+<symbol id="i-key" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.65" fill="none" stroke-linejoin="round" stroke-linecap="round"><circle cx="8" cy="9" r="4.2"/><path d="m11.5 11.5 8.5 8.1m-4-4.1 2.7-2.8m-.5 4.9 2.4-2.4"/></symbol>
+<symbol id="i-book" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.65" fill="none" stroke-linejoin="round" stroke-linecap="round"><path d="m4 4 13-1 3 2v15l-14 1-2-2zm2 1v14m4-11 6-1m-6 5 6-1"/></symbol>
+<symbol id="i-stairs" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.65" fill="none" stroke-linejoin="round" stroke-linecap="round"><path d="M2 19h5v-5h5V9h5V4h5"/></symbol>
+<symbol id="i-check" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.65" fill="none" stroke-linejoin="round" stroke-linecap="round"><path d="m4 12 5 5L20 6"/></symbol>
+<symbol id="i-close" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.65" fill="none" stroke-linejoin="round" stroke-linecap="round"><path d="m5 5 14 14m0-14L5 19"/></symbol>
+<symbol id="i-lock" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.65" fill="none" stroke-linejoin="round" stroke-linecap="round"><rect x="5.5" y="10" width="13" height="10" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3m-4 4v2"/></symbol>
+<symbol id="i-pin" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.65" fill="none" stroke-linejoin="round" stroke-linecap="round"><path d="M18 9c0 4-6 10-6 10S6 13 6 9a6 6 0 1 1 12 0z"/><circle cx="12" cy="9" r="1.6"/></symbol>
+<symbol id="i-return" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.65" fill="none" stroke-linejoin="round" stroke-linecap="round"><path d="m9 6-5 5 5 5m-4-5h9q5 0 5 6"/></symbol>
+<symbol id="tag-pack" viewBox="0 0 36 36" stroke="#5d6256" stroke-width="1.35" fill="none" stroke-linecap="round" stroke-linejoin="round"><path fill="#a5b49b" d="m12 13 2-5 3-2 4 1 2 5 3 2 1 14-4 3H11l-4-3 2-12z"/><path fill="#c1c8a8" d="m10 13 13-1 2 8-6 3-9-3z"/><path d="m14 7-1 4m3 9v4m6-3v5m-11 1h5"/><path d="m9 19-2 1-1 6 2 2"/></symbol>
+<symbol id="tag-camera" viewBox="0 0 36 36" stroke="#5d6256" stroke-width="1.35" fill="none" stroke-linecap="round" stroke-linejoin="round"><path fill="#bd9477" d="m5 13 7-1 2-4h8l2 3 5 1 1 14-24 1z"/><path fill="#ebdbb7" d="m6 14 23-1v5H6z"/><circle cx="18" cy="20" r="6" fill="#899a94"/><circle cx="18" cy="20" r="3.2" fill="#b7c8bd"/><path d="M8 10h4m12 5h2"/></symbol>
+<symbol id="tag-flask" viewBox="0 0 36 36" stroke="#5d6256" stroke-width="1.35" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="m13 12-3 4-1 12q5 5 15 0l-1-13-4-4z" fill="#adbbb5"/><path d="m13 8 7-1v5h-7z" fill="#a4987d"/><path d="M10 18q7 4 13-1v7q-7 3-14 0z" fill="#d8c7a1"/><path d="m20 9 4-2q5 1 4 6l-3 6M15 21h3"/></symbol>
+<symbol id="tag-journal" viewBox="0 0 36 36" stroke="#5d6256" stroke-width="1.35" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="m6 12 16-6 7 18-17 7-4-2z" fill="#af9d94"/><path d="m7 10 16-6 6 18-17 7z" fill="#a7b6a5"/><path d="m11 9 6 17m1-16 5-2m-4 6 5-2"/><path d="m22 25 1 6-3-1-1 2-1-6" fill="#b8806a"/></symbol>
+<symbol id="tag-hat" viewBox="0 0 36 36" stroke="#5d6256" stroke-width="1.35" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M5 22q6-4 7-10 2-5 7-4 6 2 6 11l5 3q-10 8-25 2z" fill="#c7ab7f"/><path d="M10 19q7 4 16-2l1 3q-8 6-18 2z" fill="#9b806b"/><path d="m14 13 2-2m7 15 3-1"/></symbol>
+</defs></svg>
+<div class="shell">
+<header>
+  <a class="back" href="../../games.html" data-i18n-label="common.back"><svg class="ico" aria-hidden="true"><use href="#i-back"/></svg><span data-i18n="common.back">返回大厅</span></a>
+  <h1><svg class="ico" aria-hidden="true"><use href="#i-mountain"/></svg><span data-i18n="hillside-inn.title">山间小旅馆</span></h1>
+  <div class="tools"><button id="restart" class="iconBtn" data-i18n-label="hillside-inn.restart" data-i18n-title="hillside-inn.restart"><svg class="ico" aria-hidden="true"><use href="#i-reset"/></svg></button><button id="help" class="iconBtn" data-i18n-label="hillside-inn.help" data-i18n-title="hillside-inn.help"><svg class="ico" aria-hidden="true"><use href="#i-help"/></svg></button></div>
+</header>
+<main>
+<div class="status">
+  <div class="day"><svg class="ico" aria-hidden="true"><use href="#i-sun"/></svg><strong id="day"></strong><span class="daydots" aria-hidden="true"><i></i><i></i><i></i></span></div>
+  <div class="totals"><span><svg class="ico" aria-hidden="true"><use href="#i-coin"/></svg><span data-i18n="hillside-inn.fees">房费</span><b id="cash">0</b></span><span><svg class="ico" aria-hidden="true"><use href="#i-praise"/></svg><span data-i18n="hillside-inn.praise">好评</span><b id="stars">0</b></span></div>
+</div>
+<section class="desk">
+  <section class="floorplan">
+    <div class="sectionHead"><h2 data-i18n="hillside-inn.rooms">客房图</h2><span class="counter" id="occupancy"></span></div>
+    <div class="land"><div class="model"><img class="lodge" src="./lodge.svg" alt="" draggable="false"><div id="rooms" class="rooms"></div></div></div>
+    <div class="legend"><span><svg class="ico" aria-hidden="true"><use href="#i-quiet"/></svg><span data-i18n="hillside-inn.quiet"></span></span><span><svg class="ico" aria-hidden="true"><use href="#i-sun"/></svg><span data-i18n="hillside-inn.sun"></span></span><span><svg class="ico" aria-hidden="true"><use href="#i-stairs"/></svg><span data-i18n="hillside-inn.eastStairs"></span></span></div>
+  </section>
+  <section class="orders">
+    <div class="sectionHead"><h2 data-i18n="hillside-inn.arrivals">今日预订</h2><span class="counter" id="waiting"></span></div>
+    <div class="cards" id="cards"></div>
+  </section>
+</section>
+<footer><div id="guidance" role="status" aria-live="polite"></div><button class="secondary" id="unassign" hidden><svg class="ico" aria-hidden="true"><use href="#i-return"/></svg><span data-i18n="hillside-inn.remove"></span></button><button class="primary" id="confirm"><span>确认入住</span><svg class="ico" aria-hidden="true"><use href="#i-forward"/></svg></button></footer>
+</main>
+</div>
+<dialog id="sheet" aria-labelledby="sheetTitle"><div class="sheetHead"><h2 id="sheetTitle"></h2><button class="iconBtn" id="dismiss" data-i18n-label="hillside-inn.close"><svg class="ico" aria-hidden="true"><use href="#i-close"/></svg></button></div><div class="sheetBody" id="sheetBody"></div><div class="actions" id="actions"></div></dialog>
+<div id="ghost" hidden aria-hidden="true"></div>
+</body></html>

@@ -1,0 +1,43 @@
+{
+  "title": "皮影戏班",
+  "description": "拨动影偶、灯距与关节，在一方小戏台上拼出六幕皮影短戏。",
+  "order": 68,
+  "category": "解谜",
+  "path": "./games/shadow-theatre/index.html",
+  "cover": "./games/shadow-theatre/cover.svg",
+  "color": "#e8d7b7",
+  "locales": {
+    "zh-CN": {
+      "title": "皮影戏班",
+      "description": "拨动影偶、灯距与关节，在一方小戏台上拼出六幕皮影短戏。"
+    },
+    "en": {
+      "title": "Shadow Theatre",
+      "description": "Move, layer and light paper puppets to bring six shadow plays to life."
+    },
+    "ja": {
+      "title": "影絵一座",
+      "description": "人形を重ね、灯りとの距離や関節を調節して、六幕の影絵を上演しよう。"
+    },
+    "ko": {
+      "title": "그림자 극단",
+      "description": "인형을 겹치고 등불 거리와 관절을 조절해 여섯 막의 그림자극을 완성하세요."
+    },
+    "fr": {
+      "title": "Théâtre d’ombres",
+      "description": "Déplacez et articulez les figurines à la lumière d’une lampe pour jouer six scènes d’ombres."
+    },
+    "de": {
+      "title": "Schattentheater",
+      "description": "Bewege und drehe die Figuren im Lampenlicht und spiele sechs kleine Schattenstücke."
+    },
+    "es": {
+      "title": "Teatro de sombras",
+      "description": "Mueve y articula figuras a la luz de una lámpara para representar seis pequeñas obras de sombras."
+    },
+    "pt-BR": {
+      "title": "Teatro de sombras",
+      "description": "Mova e articule os bonecos à luz de uma lâmpada para encenar seis peças de teatro de sombras."
+    }
+  }
+}

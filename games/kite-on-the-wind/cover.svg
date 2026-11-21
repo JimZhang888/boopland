@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 360" fill="none">
+<title>追风纸鸢</title>
+<defs><linearGradient id="sky" x2=".3" y2="1"><stop stop-color="#dbe7e2"/><stop offset="1" stop-color="#f4eedb"/></linearGradient><filter id="paper"><feTurbulence type="fractalNoise" baseFrequency=".81" numOctaves="3" stitchTiles="stitch"/><feColorMatrix type="matrix" values="0 0 0 0 .30 0 0 0 0 .36 0 0 0 0 .28 0 0 0 .13 -.025"/></filter></defs>
+<path fill="url(#sky)" d="M0 0h720v360H0z"/><circle cx="581" cy="74" r="28" fill="#e3c89e" stroke="#d8bf95"/>
+<g fill="#f7f5e9" stroke="#bdcbbf" stroke-linejoin="round"><path d="M55 90q8-4 18-4 5-11 17-8 7-15 21-10 10-12 20-2 7 2 7 12 11-3 17 5 13 0 19 6-71 6-119 1Z"/><path d="M491 163q11-7 27-5 7-11 19-8 15-14 29-2 14-6 24 8 18-1 27 7-69 5-126 0Z"/></g>
+<g stroke="#adc0af" stroke-linecap="round"><path d="M208 52q29-11 53-6t60-9m-82 19q16 1 38-5m220 63 40-4m-24 9 15-2M89 176q29 2 51-7m-38 11 17-3"/></g>
+<svg x="0" y="207" width="720" height="153" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 210" preserveAspectRatio="none">
+<defs>
+ <pattern id="scr" width="8" height="8" patternUnits="userSpaceOnUse" patternTransform="rotate(24)"><path d="M0 0v8" stroke="#64746b" opacity=".25" stroke-width="1"/></pattern>
+ <g id="house" stroke="#59675e" stroke-width="1.3" stroke-linejoin="round"><path d="m-15-1 24-2v14l-24 1Z" fill="#f5e8ca"/><path d="m9-3 6 3v11H9Z" fill="#c8c4a7"/><path d="m-21 0 9-9 21-2 11 9-11-1Z" fill="#73847b"/><path d="m-19 1 29-3 9 1M-8-6l12-1" fill="none"/><path d="M-10 4h4v4h-4zm10-1h4v8H0z" fill="#788778"/></g>
+ <g id="shrub" fill="#7e9484" stroke="#687f71" stroke-width=".8"><path d="m-1 0 1-23 1 23"/><path d="M0-18q-8-4-8-10-4-5 0-9 0-8 7-10 6 0 8 9 5 5 0 12 0 6-7 8Z"/><path d="m0-11 0-25m0 11 4-5m-4 2-4-4" fill="none"/></g>
+</defs>
+<!-- Ridgelines use long, broken pencil strokes above layered rice fields. -->
+<path d="M0 69Q32 61 58 65l62-19 23 5 50-18 15 4 28-9 59 24 49-10 24 5 56-25 23-2 33-17 18-2 58 24 56-15 21 5 20-11 66 24 49-10 89 32 47-21 24 6 38-19 16 4 28-14 24 1 61 23 56-6 52 13v101H0Z" fill="#cbd7cb" stroke="#a9bcb2" stroke-width="1.2"/>
+<path d="m66 70 72-18 22-2m22-3 26-8 25-7 33 12m132-12 26-8 23-1 31-16m1 4 14-7 44 18m81-1 26-7 44 18m225 4 31-15 12 4 40-16m8 1 33 13" fill="none" stroke="#98aea2" stroke-width="1.15"/>
+<path d="M0 83q55-17 101 0t106-6q60-31 111-20 50 11 91 8 54-5 97-28 30-16 68-7 76 20 113 13 41-9 88-6 69 4 117 36 43 9 93-5 37-12 78-6 68 17 137-4v94H0Z" fill="#acbfaf" stroke="#93aa9a" stroke-width="1.4"/>
+<path d="M0 109q86-13 176-4t197-8q89-25 157-13 97 17 167-13t127-4q111 35 211 6 79-20 165 0v106H0Z" fill="#92aa95" stroke="#7f9785" stroke-width="1.5"/>
+<path d="M0 113q85-11 177-3m-98 6 51-2m90-6q53 1 95-7m288-6 48-10 30-10m64-8 34 2m201 13 44-9 38-3" fill="none" stroke="#758b7d" stroke-width="1.1"/>
+<path d="M0 117q135-10 235-2t202-1q162-18 276-15t291-2q89-5 196-3v116H0Z" fill="#c2d2c7" stroke="#91a89b" stroke-width="1.35"/>
+<path d="M0 129q133-8 213 0t163 0q72-6 116-5-86 5-152 14 135-5 223 1-36 9-111 13-87 7-121 14l-331 23Z" fill="#d8d6b7" stroke="#9fae96"/>
+<path d="M0 145q125-13 250-7M0 151q97-8 182-7m-4 8q56-4 91-3m33 2 91-7m-299 8-40 14m78-18-24 10" fill="none" stroke="#afba9f"/>
+<path d="M1200 112q-119-11-206 1-111 17-252 18l-84 6q119 0 196 6 133 9 346-3Z" fill="#b1c0a4" stroke="#8f9f89"/>
+<g fill="none" stroke="#97aca1" opacity=".85" stroke-linecap="round"><path d="M428 117h53m26-2h20m62-7h53m-36 10h47m-81 9h40m56 21h65m-108 5h43m-91 8h46m117 6h65m65-13h51m170-2h51m-164-27h25"/></g>
+<g><use href="#house" transform="translate(356 103) scale(.66)"/><use href="#house" transform="translate(378 103) scale(.55)"/><use href="#shrub" transform="translate(391 111) scale(.48)"/><use href="#house" transform="translate(980 108) scale(.72)"/><use href="#house" transform="translate(1008 105) scale(.8)"/><use href="#house" transform="translate(1036 110) scale(.58)"/><use href="#shrub" transform="translate(1056 117) scale(.67)"/></g>
+<path d="M0 158q51-17 104-12 66 8 113 23t120 18q109 3 198 23H0Z" fill="#9dab8d" stroke="#7e937d" stroke-width="1.5"/>
+<path d="M0 161q65-16 114-8t108 22l-19 10-203 4Z" fill="url(#scr)"/>
+<path d="M1200 146q-78-6-144 10-57 14-113 20-92 5-168 34h425Z" fill="#aab99c" stroke="#859a84" stroke-width="1.4"/>
+<path d="M0 174q82-3 162 14m-138-6q30 0 48 4m971-18q77-20 157-15m-107 19q42-8 91-10m-320 37 74-14" fill="none" stroke="#8c9f87"/>
+<g stroke="#717e6f" stroke-linecap="round" stroke-width="1.3"><path d="M699 135q12 4 25-2-3 6-14 6-7-1-11-4Z" fill="#77897a"/><path d="m709 134 5-9-1 10Z" fill="#e5dcc0"/><path d="M714 125v11m6-1 5-6" fill="none"/></g>
+</svg>
+<path d="M79 351Q258 316 409 137" stroke="#697566" stroke-width="1.4"/>
+<g transform="translate(411 137) rotate(-17) scale(.93)"><path d="M-44 73q-22 39 14 63t31 64" stroke="#727567" stroke-width="1.4"/><g fill="#c78a70" stroke="#737568"><path d="m-53 104 13 8 -12 6Zm13 8 13-6-2 14ZM-31 145l11 5-12 6Zm11 5 12-5-1 12Z"/></g><svg x="-155" y="-101" width="310" height="202" xmlns="http://www.w3.org/2000/svg" viewBox="-124 -78 248 161" fill="none" stroke="#343e3e" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round">
+<defs>
+  <pattern id="fiber" width="7" height="7" patternUnits="userSpaceOnUse" patternTransform="rotate(-33)"><path d="M0 1h7" stroke="#393e3b" stroke-width=".55" opacity=".33"/></pattern>
+  <g id="wing">
+    <path d="M1-10C-25-18-62-42-115-67q4 23 19 43 2-9 5-11-1 22 16 42 0-10 4-13 4 20 23 32 1-8 4-12 17 10 43 11Z" fill="#586665"/>
+    <path d="M-4-9Q-55-34-109-62q17 22 36 30C-47-19-28-1-15 17l13 4Z" fill="#cf8269"/>
+    <path d="M-6-6Q-51-26-88-45q13 15 30 21 19 7 39 33l15 10Z" fill="#e3bd83"/>
+    <path d="M-4-5Q-33-20-65-32q5 9 20 16 14 5 29 25l12 9Z" fill="#f4e7c5"/>
+    <path d="M-2-9Q-47-37-112-65M-13 15Q-48-16-91-35M-16 21Q-46 3-72-6" stroke="#38433f" stroke-width="1.25"/>
+    <path d="M-44-11q-13-7-17-12 11 1 19 10m-15 4q-10-5-14-11 9 1 16 9m-15 1q-9-5-13-11 8 0 15 9" stroke="#e5ddbd" stroke-width="2.2"/>
+    <path d="M-15 23q-21-3-29-15m33 17q-16 0-25-7" stroke="#c7ba93" stroke-width="1.5"/>
+    <path d="M-2-9Q-64-41-114-66q5 20 18 41l5-11q-2 20 17 42l3-13q5 21 23 31l4-12q21 11 43 11Z" fill="url(#fiber)" stroke="none"/>
+  </g>
+</defs>
+<path d="M-10 20q-6 30-38 57 32-4 49-25 19 14 47 14Q21 43 12 18" fill="#616f69"/>
+<path d="M-6 24q-12 26-33 47 21-8 37-28 21 14 36 17Q16 43 9 26" fill="#d79373"/>
+<path d="M-9 28q-4 20-19 32m37-32 14 21" stroke="#f6e6c4" stroke-width="2.3"/>
+<use href="#wing"/><use href="#wing" transform="scale(-1 1)"/>
+<path d="M-16-23q2-25 16-27 18 3 17 28l-3 33Q12 32 0 47q-14-12-17-36Z" fill="#e7d8b6"/>
+<path d="M-15-24q3-24 16-25 15 0 16 25L5-12H-6Z" fill="#536762"/>
+<path d="M-15-28q3-12 11-10l3 11-4 8q-7 0-10-9Zm30-1q-2-12-10-9L2-27l4 7q7-1 9-9Z" fill="#f5e7bf"/>
+<path d="M-7-32v5m14-6v5" stroke-width="3.6"/>
+<path d="m-4-24 4-4 5 3-5 10Z" fill="#b87755"/>
+<path d="M-15-16Q0-7 15-18l-1 13Q0 12-14-3Z" fill="#c57b64"/>
+<path d="M-13 0Q0 12 13-1m-24 9q10 11 22-1m-20 8q8 10 17 0m-14 7q6 6 12-1" stroke="#627a75" stroke-width="2.4"/>
+<path d="M0-12v57m-12-35 12 22 11-21" stroke-width=".8" opacity=".7"/>
+</svg></g>
+<g transform="translate(77 345) rotate(-18)" stroke="#697362" stroke-linecap="round"><path fill="#c7ad81" d="M-12-5h25v12h-25z"/><path d="M-12-8V9m25-18v18m-21-12H9M-8 1H9m-17 4H9" stroke-width="2"/></g>
+<path d="M0 0h720v360H0z" filter="url(#paper)" opacity=".84"/>
+</svg>

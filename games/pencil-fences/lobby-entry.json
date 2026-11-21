@@ -1,0 +1,43 @@
+{
+  "title": "一笔围栏",
+  "description": "在六张手绘田图上按数字落笔，把田埂连成一圈围栏。",
+  "category": "益智",
+  "path": "./games/pencil-fences/index.html",
+  "cover": "./games/pencil-fences/cover.svg",
+  "color": "#e3e6cf",
+  "order": 75,
+  "locales": {
+    "zh-CN": {
+      "title": "一笔围栏",
+      "description": "在六张手绘田图上按数字落笔，把田埂连成一圈围栏。"
+    },
+    "en": {
+      "title": "Pencil Fences",
+      "description": "Follow the clues across six hand-drawn fields and pencil in one unbroken fence."
+    },
+    "ja": {
+      "title": "ひと筆の柵",
+      "description": "手描きの畑を六つ巡り、数字を頼りに一本の輪になる柵を描こう。"
+    },
+    "ko": {
+      "title": "한 줄 울타리",
+      "description": "손으로 그린 여섯 밭에서 숫자를 따라 울타리를 하나의 고리로 이으세요."
+    },
+    "fr": {
+      "title": "Clôtures au crayon",
+      "description": "Suivez les indices de six champs dessinés à la main pour tracer une clôture en boucle."
+    },
+    "de": {
+      "title": "Bleistiftzäune",
+      "description": "Zeichne auf sechs handgemalten Feldkarten einen geschlossenen Zaun nach den Zahlenhinweisen."
+    },
+    "es": {
+      "title": "Cercas a lápiz",
+      "description": "Sigue las pistas de seis campos dibujados a mano y traza una cerca de un solo lazo."
+    },
+    "pt-BR": {
+      "title": "Cercas a lápis",
+      "description": "Siga as pistas em seis campos desenhados à mão e trace uma cerca que forme um único circuito."
+    }
+  }
+}

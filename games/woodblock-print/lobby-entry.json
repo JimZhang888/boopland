@@ -1,0 +1,19 @@
+{
+  "order": 87,
+  "title": "木版套色",
+  "description": "选版、调墨，对准十字逐层落印，让荷花、飞鸟和江南窗景在纸上显现。",
+  "category": "益智",
+  "path": "./games/woodblock-print/index.html",
+  "cover": "./games/woodblock-print/cover.svg",
+  "color": "#d9e2d5",
+  "locales": {
+    "zh-CN": {"title": "木版套色", "description": "选版、调墨，对准十字逐层落印，让荷花、飞鸟和江南窗景在纸上显现。"},
+    "en": {"title": "Woodblock Studio", "description": "Choose a block and ink, line up the crosses, and print lotus blossoms, birds and riverside windows one layer at a time."},
+    "ja": {"title": "木版の重ね刷り", "description": "版木とインクを選び、十字の見当を合わせて、蓮や小鳥、江南の窓辺を一色ずつ刷り上げよう。"},
+    "ko": {"title": "목판 색맞춤", "description": "목판과 먹빛을 고르고 십자 표식을 맞춰 연꽃과 새, 강남의 창가 풍경을 한 겹씩 찍어 보세요."},
+    "fr": {"title": "L’atelier d’estampes", "description": "Choisissez vos bois et vos encres, alignez les repères et imprimez des lotus, des oiseaux et des fenêtres au bord de l’eau."},
+    "de": {"title": "Die Holzschnittwerkstatt", "description": "Wähle Druckstöcke und Farben, richte die Passkreuze aus und drucke Lotusblüten, Vögel und Fenster am Fluss Schicht für Schicht."},
+    "es": {"title": "Taller de xilografía", "description": "Elige un bloque y una tinta, alinea las cruces e imprime lotos, aves y ventanas junto al río, capa a capa."},
+    "pt-BR": {"title": "Ateliê de xilogravura", "description": "Escolha matrizes e tintas, alinhe as cruzes e imprima flores de lótus, pássaros e janelas à beira do rio, camada por camada."}
+  }
+}

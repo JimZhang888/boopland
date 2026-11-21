@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="zh-CN" data-i18n-scope="school-goalkeeper">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#e4eadb">
+  <title data-i18n="school-goalkeeper.title">放学守门员</title>
+  <link rel="stylesheet" href="style.css">
+  <script defer src="../../analytics.js"></script>
+  <script defer src="../../i18n.js"></script>
+  <script defer src="messages.js"></script>
+  <script defer src="game.js"></script>
+</head>
+<body>
+<main class="shell">
+  <header><a href="../../games.html"><span aria-hidden="true">‹</span> <span data-i18n="common.back">返回大厅</span></a><h1 data-i18n="school-goalkeeper.title">放学守门员</h1><button id="help" data-i18n-label="school-goalkeeper.rules" aria-haspopup="dialog">?</button></header>
+  <div class="layout">
+  <section class="field" data-i18n-label="school-goalkeeper.pitch">
+    <svg id="pitch" viewBox="0 0 640 400" xmlns="http://www.w3.org/2000/svg" aria-labelledby="pitch-title">
+      <title id="pitch-title" data-i18n="school-goalkeeper.pitch">学校球场</title>
+      <defs>
+        <pattern id="net" width="15" height="13" patternUnits="userSpaceOnUse"><path d="m0 0 7.5 6.5L15 0m0 13L7.5 6.5 0 13" fill="none" stroke="#798d83" stroke-width=".85"/></pattern>
+        <pattern id="windows" width="22" height="17" patternUnits="userSpaceOnUse"><path d="M3 3h12v9H3z" fill="#91a49e" stroke="#798b84" stroke-width=".75"/><path d="M9 3v9" stroke="#e4e4d2"/></pattern>
+        <pattern id="grass" width="47" height="33" patternUnits="userSpaceOnUse"><path d="m5 26 2-3 1 3m25-17 3-1" fill="none" stroke="#718b6b" stroke-width=".8" opacity=".5"/></pattern>
+        <g id="football"><circle r="11.5" fill="#faf5dd" stroke="#3f4940" stroke-width="1.7"/><path d="m0-4 4 2-1 5-5 1-2-5zM-10-5l4-3 1-3m11 1 1 4 4 2M6 9l-1-3m-14-2 4 1 1 4" fill="#46534a" stroke="#46534a" stroke-width="1.1"/></g>
+        <path id="chalk-corners" d="M11 0H0v10m80-10h11v10M0 32v10h11m69 0h11V32" fill="none" stroke-linecap="round"/>
+      </defs>
+      <rect width="640" height="400" fill="#e8e9d8"/>
+      <path d="M0 91q43-29 86-9l42-27 50 29q62-28 111 4 61-37 107-15 47-34 98-10 76-28 146 6v115H0" fill="#c7d2bd"/>
+      <g stroke="#818a7c" stroke-linejoin="round"><path d="m-8 60 149-3 1 87H-8z" fill="#daceb4"/><path d="m-8 57 154-4v7L-8 64z" fill="#b0aca0"/><path d="M0 72h134v57H0z" fill="url(#windows)" stroke="none"/>
+      <path d="m445 76 63-2V56l123-2v88H445z" fill="#dfd5bd"/><path d="m514 67 110-1v55H514z" fill="url(#windows)" stroke="none"/></g>
+      <g fill="#abc0a2" stroke="#81977f" stroke-width="1.2"><path d="M128 136q-10-11 3-23-7-11 5-18 4-17 18-12 10-8 18 5 15 3 10 16 12 15-1 27zM390 134q-11-10-4-21-6-9 5-20 3-12 17-9 15-5 21 10 12 6 8 18 7 19-7 22z"/><path d="m154 111-3 36m259-38-2 34" fill="none" stroke="#707d64"/></g>
+      <path d="M0 146q280-6 640-1v255H0z" fill="#a7bc94"/>
+      <path d="M0 167q323-12 640-2v40H0zM0 280l640-7v60L0 349z" fill="#b7c8a2"/>
+      <path d="M0 148h640v252H0z" fill="url(#grass)"/>
+      <g fill="none" stroke="#f3efd6" stroke-width="3"><path d="m65 235-54 49 617-1-53-49M0 357q320 8 640-4"/><ellipse cx="318" cy="325" rx="5" ry="2"/></g>
+      <path d="m80 233 12-47 453-2 22 47Z" fill="#718f782e"/>
+      <path d="M65 233 86 88l464-2 25 146" fill="none" stroke="#7e8b7c" stroke-width="3"/>
+      <path d="M65 234V61l510 1v172z" fill="#eef1df35"/>
+      <path d="M65 234V61l510 1v172z" fill="url(#net)"/>
+      <path d="M65 235V61l510 1v173" fill="none" stroke="#566a5b" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M65 235V61l510 1v173" fill="none" stroke="#fff9e6" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M235 65v166m170-166v166M69 148h502" stroke="#687b69" stroke-dasharray="5 6" stroke-width="1.2" opacity=".68"/>
+      <g fill="none" stroke="#f9f6d9" stroke-width="3" aria-hidden="true" pointer-events="none">
+        <use href="#chalk-corners" x="104" y="85"/><use href="#chalk-corners" x="274" y="85"/><use href="#chalk-corners" x="444" y="85"/>
+        <use href="#chalk-corners" x="104" y="169"/><use href="#chalk-corners" x="274" y="169"/><use href="#chalk-corners" x="444" y="169"/>
+      </g>
+      <g id="targets"></g>
+      <g id="keeper" transform="translate(320 200)" fill="none" stroke="#39483e" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round" pointer-events="none">
+        <ellipse id="keeper-shadow" cy="32" rx="21" ry="4" fill="#405a4428" stroke="none"/>
+        <path d="m-7 10-5 13-7 7m25-20 7 13 7 6" stroke-width="7"/><path d="m-14 29-8 2m39-3 7 3" stroke-width="5"/>
+        <path d="m-10-15-12 3-7-11m39 8 12 3 7-11" stroke="#bc9562" stroke-width="7"/>
+        <g fill="#f8eee0"><path d="m-30-18-6-9 2-6 3 4 2-6 4 4 1 8zM28-18l7-8-1-7-4 4-1-6-4 4-1 8z"/></g>
+        <path d="m-9-16 8-3 11 3 3 24-23 1z" fill="#d8aa62"/><path d="M-9 6h22l-2 9H1l-2-5-2 5h-8z" fill="#566558"/>
+        <path d="m-3-9 5-2v10" stroke="#fff5d4" stroke-width="2.5"/>
+        <circle cy="-26" r="8.3" fill="#cfaa83"/><path d="M-8-26q-2-13 10-10 6 2 6 8l-5-3-8 1z" fill="#515344"/>
+      </g>
+      <g id="shooter" transform="translate(264 312)" stroke="#484a42" stroke-linecap="round" stroke-linejoin="round" fill="none" pointer-events="none">
+        <ellipse cx="0" cy="23" rx="26" ry="4" fill="#405a4433" stroke="none"/>
+        <path id="plant-leg" stroke="#675f52" stroke-width="8"/><path id="swing-leg" stroke="#936f54" stroke-width="8"/>
+        <path id="boot" stroke="#3f4a42" stroke-width="6"/>
+        <g id="chest"><path d="m-10-38-14 11-7-3m42-9 12 11 9-2" stroke="#a78262" stroke-width="6"/>
+        <path d="m-12-41 10-5 13 4 6 12-6 3 1 23-27-1 2-22-6-3z" fill="#9b6859" stroke-width="2"/>
+        <path d="m-14-6 27 1-2 13H1l-2-6-4 6-10-1z" fill="#ede5ce" stroke-width="2"/>
+        <path d="m-4-31 10-1-7 15" stroke="#fae6c8" stroke-width="2.7"/>
+        <circle cx="-1" cy="-53" r="10" fill="#c9a27a" stroke-width="2"/>
+        <path d="M-11-53q-2-15 12-14 12 2 9 15l-5 4-13-2z" fill="#555246" stroke-width="2"/></g>
+      </g>
+      <g id="ball" transform="translate(320 326)" pointer-events="none"><use href="#football"/></g>
+    </svg>
+  </section>
+  <aside class="sheet">
+    <div class="scoreline"><h2 data-i18n="school-goalkeeper.shots">点球记录</h2><strong id="counter">1 / 10</strong></div>
+    <div id="history" aria-live="off"></div>
+    <div class="signal"><div id="arrow" aria-hidden="true">⚽</div><div><h2 id="phase" aria-live="polite"></h2><p id="message" role="status"></p></div></div>
+    <div class="meter-block"><div class="meter-caption"><span data-i18n="school-goalkeeper.timing">起扑时机</span><span aria-hidden="true">◷</span></div><div id="meter"><i id="window"></i><b id="needle"></b></div></div>
+    <button id="action"></button>
+    <p id="play-hint" hidden><svg viewBox="0 0 24 16" aria-hidden="true"><path d="M1 1h22v14H1zM8 1v14m8-14v14M1 8h22"/></svg><span data-i18n="school-goalkeeper.pick">点球门扑救</span></p>
+  </aside>
+  </div>
+</main>
+<dialog id="dialog"><form method="dialog"><h2 data-i18n="school-goalkeeper.rules">玩法</h2><p data-i18n="school-goalkeeper.how"></p><p data-i18n="school-goalkeeper.keys"></p><button data-i18n="school-goalkeeper.close">知道了</button></form></dialog>
+</body></html>

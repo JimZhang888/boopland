@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-i18n-scope="weather-florist">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title data-i18n="weather-florist.title">晴雨花铺</title>
+  <link rel="icon" href="botanicals.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="style.css">
+  <script src="../../i18n.js"></script>
+  <script defer src="../../analytics.js"></script>
+  <script defer src="engine.js"></script>
+  <script defer src="locales.js"></script>
+  <script defer src="game.js"></script>
+</head>
+<body>
+  <main class="shell">
+    <header class="mast">
+      <div class="brand"><svg viewBox="0 0 40 46" aria-hidden="true"><g fill="none" stroke="#68765e" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M18 42q7-15 5-27m-4 24Q6 37 6 27q10 2 13 12zm3-10q10-1 13-12-9 2-13 12z" fill="#c2c8aa"/><path d="M23 17c-8 5-13-2-7-6-6-6 1-11 6-6 5-7 12-2 8 4 9 0 8 8 0 9-1 7-8 8-7-1Z" fill="#d9aa9f"/><circle cx="24" cy="12" r="3.5" fill="#e6d4a4"/></g></svg><h1 data-i18n="weather-florist.title">晴雨花铺</h1></div>
+      <nav><a class="back" href="../../games.html" data-i18n-label="common.back"><span aria-hidden="true">←</span><span data-i18n="common.back">返回大厅</span></a>
+      <button class="help" id="help" data-i18n-label="weather-florist.guide" data-i18n-title="weather-florist.guide">?</button></nav>
+    </header>
+    <div class="spread">
+      <section class="street">
+        <div class="skybar"><div><div class="day" id="day"></div><div class="daymarks" id="marks" aria-hidden="true"></div></div><div id="sky"></div></div>
+        <div class="picture"><img src="cover.svg" alt=""><div id="rain" hidden aria-hidden="true"></div></div>
+        <div class="tickets" id="tickets"></div>
+      </section>
+      <section class="paper" id="paper" aria-labelledby="paperTitle">
+        <div class="paperhead"><div class="heading"><span class="binding" aria-hidden="true"></span><h2 id="paperTitle"></h2></div><div class="wallet"><span id="walletIcon" aria-hidden="true"></span><span class="walletLabel" data-i18n="weather-florist.cash">现金</span><b id="cash"></b></div></div>
+        <div id="work" class="work"></div>
+        <div id="actions" class="actions"></div>
+      </section>
+    </div>
+  </main>
+  <dialog id="dialog"><div class="dialoghead"><h2 id="dialogTitle"></h2><button id="dismiss" data-i18n-label="weather-florist.dismiss">×</button></div><div class="dialogbody" id="dialogBody"></div></dialog>
+  <div role="status" aria-live="polite" id="notice" class="notice" hidden></div>
+</body></html>

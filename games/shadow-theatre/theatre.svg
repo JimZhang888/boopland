@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 800 448" preserveAspectRatio="none">
+<defs>
+  <radialGradient id="silk" cx=".54" cy=".42" r=".71" gradientUnits="objectBoundingBox"><stop stop-color="#fff1c9"/><stop offset=".7" stop-color="#f1dfb1"/><stop offset="1" stop-color="#d8c49b"/></radialGradient>
+  <pattern id="weft" width="17" height="15" patternUnits="userSpaceOnUse"><path d="M0 1h17m-3 9h3M3 8h6M2 0v15m9-8v6" fill="none" stroke="#876f4e" opacity=".12" stroke-width=".65"/></pattern>
+  <pattern id="key" width="32" height="12" patternUnits="userSpaceOnUse"><path d="M0 10h29V2H9v5h13V4M0 2h5v8" stroke="#e0c495" fill="none" stroke-width="1.4"/></pattern>
+  <g id="flower"><path id="petal" d="M0-1C-8-2-9-9-5-11-1-14 3-8 0-1Z" fill="#d5b77d" stroke="#553e38" stroke-width=".8"/><use xlink:href="#petal" transform="rotate(72)"/><use xlink:href="#petal" transform="rotate(144)"/><use xlink:href="#petal" transform="rotate(216)"/><use xlink:href="#petal" transform="rotate(288)"/><circle r="2.6" fill="#e7d3a4"/></g>
+  <pattern id="brocade" width="38" height="34" patternUnits="userSpaceOnUse"><path d="m0 17 19-16 19 16-19 16Z" fill="none" stroke="#c79979" opacity=".33" stroke-width=".9"/><path d="m15 17 4-5 4 5-4 5Z" fill="none" stroke="#deb789" opacity=".55"/></pattern>
+  <g id="lantern" stroke="#655344" stroke-linejoin="round"><path d="M0-33v28m-4 2 4-7 5 7" fill="none" stroke-width="1.4"/><path d="M-12-3q-10 7-7 24 2 10 11 13H8q10-3 12-14 3-15-8-23Z" fill="#b68967" stroke-width="1.3"/><path d="M-8-3q-10 18 0 37m6-37q-5 17 0 37m5-37q5 17 0 37M9-3q10 18 0 37" fill="none" stroke="#ead2a0" stroke-width="1.35"/><path d="M-12-4h24v4h-24zm3 36H9v4H-9Z" fill="#637268"/><path d="M0 36v6m0 1-3 10h6l-3-10" fill="#a16b56"/></g>
+  <g id="curtain" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M8 21h184q-13 13-29 21-10 14-26 17-12 16-28 18-20 25-62 56 8 44 2 67-9 8-18-4-10 11-20 1Z" fill="#a16e63" stroke="#5e4941" stroke-width="2"/>
+    <path d="M8 21h184q-13 13-29 21-10 14-26 17-12 16-28 18-20 25-62 56 8 44 2 67-9 8-18-4-10 11-20 1Z" fill="url(#brocade)"/>
+    <path d="M22 23q4 59 11 104M51 22q-3 49-14 103M91 22q-12 45-50 104M134 23q-23 41-78 83M166 25q-17 19-40 32M38 140q-4 35-7 52m11-51q4 27 1 46" fill="none" stroke="#714f48" opacity=".82" stroke-width="2"/>
+    <path d="M26 28q2 42 6 61M59 24q-1 22-10 49m49-48q-11 33-34 56m81-56-24 20M13 189q9 10 17 2 7 10 17 4" fill="none" stroke="#c79b80" stroke-width="2.2"/>
+    <path d="M193 24q-14 12-30 21-11 12-26 17-15 15-27 17-30 34-63 57" fill="none" stroke="#d5b480" stroke-width="3"/>
+    <path d="m13 122 36 8-2 8-35-9Z" fill="#c3a36a" stroke="#6f5b40"/><path d="M42 132q23 17 14 32m0-3-5 15 8 1-3-16" fill="#c4a269" stroke="#887046"/>
+    <use xlink:href="#lantern" transform="translate(76 97) scale(.72)"/>
+  </g>
+  <g id="bracket" fill="none" stroke="#b99b6f" stroke-width="1.8"><path d="M0 0h44q-9 4-10 13-15-6-23 6-5 5-5 15H0Zm7 5h24q-14 4-18 9H7Z"/><path d="M6 24q5-12 16-11"/></g>
+  <g id="grass" fill="none" stroke="#787e68" stroke-linecap="round"><path d="M0 0q-4-29-17-47M1 0q2-40 20-64M1 0q-9-15-27-25M5 0q14-24 28-28M3 0q-4-40 3-78" stroke-width="1.6"/><path d="M-16-45q-10-4-13-15 7 2 13 15m36-17q1-10 12-20-2 10-12 20M5-74q-4-12 2-23 3 11-2 23" fill="#8b8c72"/></g>
+</defs>
+<!-- A silk screen laced into a carved, painted travelling stage. -->
+<rect x="4" y="5" width="792" height="437" rx="3" fill="#716154" stroke="#544a40" stroke-width="2"/>
+<rect x="15" y="17" width="770" height="406" fill="url(#silk)"/>
+<rect x="15" y="17" width="770" height="406" fill="url(#weft)"/>
+<g opacity=".5" stroke-linecap="round" stroke-linejoin="round">
+  <path d="M20 360q43-12 78-8 34-11 50-23 23-4 37-15 14 2 32 12 26 3 55 18 29-8 62-23 30 5 52 17 42 0 80 10 58-15 80-30 26-6 49-24 18 4 42 18 48 14 82 34l60-6v75H20Z" fill="#c0bc99" stroke="#a6aa8f"/>
+  <path d="M23 342q65 1 106 28 64 3 105 18 57-7 99-22 47-4 87-26 30 2 64 19 52 5 103 20 75 3 121-15 33-11 76-17v68H20Z" fill="#aaad91" stroke="#959e85"/>
+  <path d="M24 393q69-13 118-5 69 9 121 1m183-2q38-9 61-6m-160 17q36-3 49-7m231-44 18 5m-122-16 20-6m-371-7-14 9" fill="none" stroke="#838f77"/>
+  <path d="M19 402q89-23 153 0 56 8 128 0 78-10 187-2 86 5 138-8 45-8 72-8 46-11 87-7v39H19Z" fill="#9ba28a"/>
+  <use xlink:href="#grass" transform="translate(64 410) scale(.72)"/><use xlink:href="#grass" transform="translate(78 409) scale(-.47 .47)"/>
+  <use xlink:href="#grass" transform="translate(733 402) scale(-.7 .7)"/>
+</g>
+<g><use xlink:href="#curtain"/><use xlink:href="#curtain" transform="translate(800) scale(-1 1)"/></g>
+<g stroke-linejoin="round">
+  <path d="M9 7h782v16l-17 2H26L9 22Z" fill="#51655b" stroke="#514e43" stroke-width="2"/>
+  <path d="M17 8h765v7H17z" fill="url(#key)"/><path d="M12 20h776" stroke="#d0b083" stroke-width="2.4"/>
+  <path d="M157 22h486q-25 18-55 8-29 16-57 5-33 16-64 4-23 13-67 8-35 5-65-8-31 12-63-4-31 11-60-5-32 9-55-8Z" fill="#78867a" stroke="#5c6154" stroke-width="1.7"/>
+  <path d="M175 25q22 10 37 3 30 15 60 5 35 15 63 4 36 15 65 8 40 6 67-8 34 10 64-4 28 9 57-5 20 4 37-3" fill="none" stroke="#d9bf92" stroke-width="2"/>
+  <path d="M306 25q61-1 94 8 43-10 96-8" fill="none" stroke="#d0bc91"/><use xlink:href="#flower" transform="translate(400 29) scale(.94)"/>
+  <path d="M6 24h12v389H6Zm776 0h12v389h-12Z" fill="#757465" stroke="#514d42" stroke-width="1.2"/><path d="M10 29v379m778-379v379" stroke="#c7ac83"/>
+  <path d="M4 412h792v22H4Z" fill="#647469" stroke="#554f43" stroke-width="2"/><path d="M8 415h784v13H8z" fill="url(#key)"/>
+  <path d="M2 433h796v7H2z" fill="#9c7961" stroke="#67574a" stroke-width="1.4"/><path d="M8 434h784" stroke="#d9be8c"/>
+  <use xlink:href="#bracket" transform="translate(18 412) scale(1 -1)"/><use xlink:href="#bracket" transform="translate(782 412) scale(-1 -1)"/>
+</g></svg>

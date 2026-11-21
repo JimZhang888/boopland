@@ -1,0 +1,44 @@
+{
+  "title": "三招定胜负",
+  "description": "五格短桥上，看破对手起手，将进、退、刺、挡排成三招，逐拍过招。",
+  "category": "策略",
+  "path": "./games/three-move-duel/index.html",
+  "cover": "./games/three-move-duel/cover.svg",
+  "color": "#dbe0cf",
+  "order": 69,
+  "locales": {
+    "zh-CN": {
+      "title": "三招定胜负",
+      "description": "五格短桥上，看破对手起手，将进、退、刺、挡排成三招，逐拍过招。"
+    },
+    "en": {
+      "title": "Three-Move Duel",
+      "description": "On a five-space bridge, read your rival’s opening and line up three moves. Advance, retreat, thrust or guard as each beat unfolds."
+    },
+    "ja": {
+      "title": "三手で決着",
+      "description": "五マスの橋で相手の初手を読み、前進・後退・突き・防御から三手を組んで一手ずつ勝負。"
+    },
+    "ko": {
+      "title": "세 수의 결투",
+      "description": "다섯 칸 다리에서 상대의 첫 수를 읽고 전진, 후퇴, 찌르기, 막기로 세 수를 짜서 겨뤄 보세요."
+    },
+    "fr": {
+      "title": "Duel en trois coups",
+      "description": "Sur un pont de cinq cases, lisez le premier geste du rival. Composez trois coups pour avancer, reculer, piquer ou parer."
+    },
+    "de": {
+      "title": "Duell in drei Zügen",
+      "description": "Lies den ersten Zug des Gegners auf einer Brücke mit fünf Feldern. Plane drei Züge aus Vorstoß, Rückzug, Stich und Deckung."
+    },
+    "es": {
+      "title": "Duelo en tres pasos",
+      "description": "En un puente de cinco casillas, lee el primer gesto del rival. Encadena tres golpes para avanzar, retirarte, estocar o cubrirte."
+    },
+    "pt-BR": {
+      "title": "Duelo em três golpes",
+      "description": "Em uma ponte de cinco casas, leia o primeiro gesto do rival. Combine três golpes para avançar, recuar, estocar ou aparar."
+    }
+  }
+}
+

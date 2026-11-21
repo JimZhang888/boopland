@@ -1,0 +1,43 @@
+{
+  "title": "手摇八音盒",
+  "description": "对照参考谱，在纸带上打孔，摇出四段小曲，也可以谱一首自己的旋律。",
+  "category": "益智",
+  "path": "./games/music-box-roll/index.html",
+  "cover": "./games/music-box-roll/cover.svg",
+  "color": "#e9e6d8",
+  "order": 98,
+  "locales": {
+    "zh-CN": {
+      "title": "手摇八音盒",
+      "description": "对照参考谱，在纸带上打孔，摇出四段小曲，也可以谱一首自己的旋律。"
+    },
+    "en": {
+      "title": "Hand-Crank Music Box",
+      "description": "Punch a paper roll to restore four little tunes, then turn the crank on a melody of your own."
+    },
+    "ja": {
+      "title": "手回しオルゴール",
+      "description": "見本を見ながら紙の帯に穴を開け、四つの小曲を仕上げよう。自由に作曲してハンドルを回すこともできます。"
+    },
+    "ko": {
+      "title": "손잡이 오르골",
+      "description": "견본 악보를 보고 종이 띠에 구멍을 뚫어 네 곡을 완성하세요. 나만의 곡을 쓰고 손잡이를 돌려 들어 보세요."
+    },
+    "fr": {
+      "title": "Boîte à musique à manivelle",
+      "description": "Perforez une bande de papier pour retrouver quatre airs, puis tournez la manivelle pour jouer votre propre mélodie."
+    },
+    "de": {
+      "title": "Die Kurbelspieluhr",
+      "description": "Stanze Löcher in einen Papierstreifen, ergänze vier kleine Melodien und spiele mit der Kurbel dein eigenes Lied."
+    },
+    "es": {
+      "title": "Caja de música de manivela",
+      "description": "Perfora una tira de papel para completar cuatro melodías y gira la manivela para escuchar tu propia composición."
+    },
+    "pt-BR": {
+      "title": "Caixinha de música de manivela",
+      "description": "Perfure uma tira de papel para completar quatro melodias e gire a manivela para tocar uma composição sua."
+    }
+  }
+}

@@ -1,0 +1,107 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 660 400" lang="zh-CN" role="img" aria-labelledby="title">
+  <title id="title">孤子跳棋</title><defs>
+<pattern id="hatch" width="5" height="5" patternUnits="userSpaceOnUse" patternTransform="rotate(28)"><path d="M0 0v5" stroke="#877d61" stroke-width="1"/></pattern>
+              <pattern id="fibres" width="59" height="47" patternUnits="userSpaceOnUse"><path d="m2 9 7-1m22 19 4-.6m15 9 4-.5M13 45l3-.5" stroke="#8e7956" opacity=".18" stroke-width=".8"/></pattern>
+              <g id="well"><ellipse cy="1.5" rx="10.3" ry="8.8" fill="#f8eed6"/><path d="M-9.6 0c-.4-5.6 4-9 9-9 5.8-.4 10.7 3.6 10.5 8.8S6 8.3.1 8.6C-5 8.6-9 6-9.6 0Z" fill="#b9ab88" stroke="#736b52" stroke-width="1.15"/><path d="M-8.2 1.6q-.5-10.5 12.3-8.1M-6-3l2-2m-2.2 4 4.8-4.6" fill="none" stroke="#807557" stroke-width="1"/><path d="M2.5 6.6q3.7-.6 5.1-3" fill="none" stroke="#e1d6b6" stroke-width="1.2"/></g>
+              <g id="pea"><ellipse cx="1.7" cy="4.6" rx="15.4" ry="12.8" fill="#756e51" opacity=".24"/><path d="M-15.4.7c-.7-8.7 5-15.3 13.4-16.1 7.2-1.3 16.2 2.5 17.6 11.8C17.2 5.6 11.6 13.9 3 15.1c-9.7 1.8-17.1-3.9-18.4-14.4Z" fill="#91a878" stroke="#485e43" stroke-width="1.55"/><path d="M-13.8 4.1c4.3 7.1 10.6 10.3 18 7.6 6.6-1.6 10.7-7.5 10.6-13-.7 10-5.7 15.7-13.2 16.5-8.8 1.1-13.6-3.9-15.4-11.1Z" fill="#768e63"/><path d="M-11-4.5q2.4-6.2 9-7.2" fill="none" stroke="#d9dfb6" stroke-width="2.1" stroke-linecap="round"/><path d="m3.2 11.2 4.4-2.4m-.2 1.8 4-3.8m-23-1 3.5 3.7M5.7-5.4q-1.8 1 .3 2.4" fill="none" stroke="#627c54" stroke-width=".9" stroke-linecap="round"/></g>
+              <marker id="tip" markerWidth="6" markerHeight="6" refX="4.4" refY="3" orient="auto"><path d="m1 1 3.5 2L1 5" fill="none" stroke="#7c5039" stroke-width="1.4"/></marker>
+
+    <pattern id="graph" width="26" height="26" patternUnits="userSpaceOnUse"><path d="M26 0H0v26" stroke="#718468" fill="none" opacity=".17"/></pattern>
+    <filter id="paper"><feTurbulence type="fractalNoise" baseFrequency=".75" numOctaves="3" stitchTiles="stitch"/><feColorMatrix type="saturate" values="0"/></filter>
+    <g id="vine" fill="none" stroke="#57684d" stroke-linecap="round" stroke-linejoin="round">
+
+  <defs>
+    <pattern id="vein" patternUnits="userSpaceOnUse" width="4" height="4" patternTransform="rotate(34)"><path d="M0 0v4" stroke="#788668" stroke-width=".75"/></pattern>
+    <g id="leaf">
+      <path d="M0 0C7-18 26-23 44-19 39-5 18 5 0 0Z" fill="#dae0c8" stroke-width="1.35"/>
+      <path d="M0 0Q23-10 44-19 29 0 0 0Z" fill="url(#vein)" stroke="none"/>
+      <path d="M1 0q25-13 41-18m-28 12 7-11m0 8 6-10M13-5l11 1m4-9 8 1" stroke-width=".85"/>
+    </g>
+  </defs>
+  <path d="M-3 10C30 28 46 56 84 69s63 20 87 37M1 10c29 17 51 50 87 61 35 12 55 14 77 31" stroke-width="1.5"/>
+  <path d="M28 34C32 22 30 15 27 12m17 36Q43 62 37 67m20-11q14-1 21-12m-1 20q4-17 17-24m-2 33q8-4 17-15m-3 20q7 21 18 28m8-21q18 1 26-10"/>
+  <use href="#leaf" transform="translate(29 35) rotate(-72) scale(.66)"/>
+  <use href="#leaf" transform="translate(43 48) rotate(136) scale(.83)"/>
+  <use href="#leaf" transform="translate(49 50) rotate(-65) scale(.86)"/>
+  <use href="#leaf" transform="translate(82 62) rotate(-28) scale(.96)"/>
+  <use href="#leaf" transform="translate(93 73) rotate(130) scale(.95)"/>
+  <use href="#leaf" transform="translate(138 87) rotate(-18) scale(.7)"/>
+  <path d="M65 60c-8 20-25 17-22 28 3 9 16 6 12-1-3-5-8 0-4 2m66-9c18-5 25-15 20-20-8-7-17 6-8 8 4 0 4-5 2-5m36 36c15 6 20 21 32 18 15-4 4-18 0-11-2 3 2 4 4 3" stroke-width="1.4"/>
+  <path d="M98 72c9-6 12-14 18-18 4-3 7-3 10-2m-6 4q7 4 15 2" stroke-width="1.7"/>
+  <path d="M119 53c5-5 8-6 13-4l-3 4 6 1-7 4-6-2-4 2Z" fill="#a2b28a"/>
+  <path d="M126 54c20-16 47-19 65-13 11 4 16 2 22-1-10 18-38 36-65 34-11 0-18-9-22-20Z" fill="#c1cda9" stroke-width="1.5"/>
+  <path d="M128 55c17-10 30-14 49-14 13 0 23 7 33 1-17 10-43 26-65 25-8-1-13-6-17-12Z" fill="#f1eed9" stroke-width="1"/>
+  <g fill="#90a579" stroke-width="1">
+    <circle cx="142" cy="56" r="7.4"/><circle cx="157" cy="52" r="7.3"/><circle cx="172" cy="49" r="6.8"/><circle cx="186" cy="48" r="5.8"/>
+  </g>
+  <path d="M137 54q2-4 5-4m11 0q2-4 5-4m10 1q1-3 4-3m10 3q2-3 4-3" stroke="#edf0d9" stroke-width="1.6"/>
+  <path d="M129 61q14 15 42 4m-34 2 0 3m4-2 1 3m4-2 1 3m5-3 1 2m5-3 1 2m7-4 1 1m22-13 12-6" stroke-width=".8"/>
+  <path d="M124 106c4 3 8 6 15 7m-15-6c1 6 3 11 7 15" stroke-width="1.3"/>
+  <use href="#leaf" transform="translate(131 121) rotate(49) scale(.63)"/>
+
+</g>
+  </defs>
+  <rect width="660" height="400" fill="#e6ebda"/>
+  <rect width="660" height="400" fill="url(#graph)"/>
+  <path d="M50-15 555 17 534 418 26 399Z" fill="#d4d8c4" opacity=".65"/>
+  <path d="M46-17 547 15 527 413 23 390Z" fill="#faf6e6" stroke="#bdc3aa"/>
+  <use href="#vine" transform="translate(-45 -8) rotate(-10) scale(1.26)"/>
+  <use href="#vine" transform="translate(718 407) rotate(174) scale(1.05)"/>
+  <g transform="translate(331 198) rotate(-8)">
+<path d="M-59-151Q-63-151-63-146V-69Q-63-64-69-64H-144Q-150-64-150-57V58Q-150 65-143 65H-69Q-63 65-63 71V145Q-63 151-57 151H57Q64 151 64 144V71Q64 65 70 65H144Q151 65 151 58V-57Q151-64 145-64H70Q64-64 64-70V-145Q64-151 58-151Z" transform="translate(3 7)" fill="#c3b996" stroke="#8e8566" stroke-width="2"/>
+<path d="M-59-151Q-63-151-63-146V-69Q-63-64-69-64H-144Q-150-64-150-57V58Q-150 65-143 65H-69Q-63 65-63 71V145Q-63 151-57 151H57Q64 151 64 144V71Q64 65 70 65H144Q151 65 151 58V-57Q151-64 145-64H70Q64-64 64-70V-145Q64-151 58-151Z" transform="translate(3 7)" fill="url(#hatch)"/>
+<path d="M-59-151Q-63-151-63-146V-69Q-63-64-69-64H-144Q-150-64-150-57V58Q-150 65-143 65H-69Q-63 65-63 71V145Q-63 151-57 151H57Q64 151 64 144V71Q64 65 70 65H144Q151 65 151 58V-57Q151-64 145-64H70Q64-64 64-70V-145Q64-151 58-151Z" fill="#e6dbba" stroke="#6d7054" stroke-width="2.4"/>
+<path d="M-59-151Q-63-151-63-146V-69Q-63-64-69-64H-144Q-150-64-150-57V58Q-150 65-143 65H-69Q-63 65-63 71V145Q-63 151-57 151H57Q64 151 64 144V71Q64 65 70 65H144Q151 65 151 58V-57Q151-64 145-64H70Q64-64 64-70V-145Q64-151 58-151Z" fill="url(#fibres)"/><path d="M-59-151Q-63-151-63-146V-69Q-63-64-69-64H-144Q-150-64-150-57V58Q-150 65-143 65H-69Q-63 65-63 71V145Q-63 151-57 151H57Q64 151 64 144V71Q64 65 70 65H144Q151 65 151 58V-57Q151-64 145-64H70Q64-64 64-70V-145Q64-151 58-151Z" transform="scale(.975)" fill="none" stroke="#aaa17f" stroke-width="1.5"/>
+<use href="#well" transform="translate(-43 -129)"/>
+<use href="#pea" transform="translate(-43 -129) rotate(-12) scale(1.05)"/>
+<use href="#well" transform="translate(0 -129)"/>
+<use href="#pea" transform="translate(0 -129) rotate(5) scale(1.05)"/>
+<use href="#well" transform="translate(43 -129)"/>
+<use href="#well" transform="translate(-43 -86)"/>
+<use href="#well" transform="translate(0 -86)"/>
+<use href="#pea" transform="translate(0 -86) rotate(-13) scale(1.05)"/>
+<use href="#well" transform="translate(43 -86)"/>
+<use href="#well" transform="translate(-129 -43)"/>
+<use href="#well" transform="translate(-86 -43)"/>
+<use href="#well" transform="translate(-43 -43)"/>
+<use href="#pea" transform="translate(-43 -43) rotate(14) scale(1.05)"/>
+<use href="#well" transform="translate(0 -43)"/>
+<use href="#well" transform="translate(43 -43)"/>
+<use href="#well" transform="translate(86 -43)"/>
+<use href="#well" transform="translate(129 -43)"/>
+<use href="#well" transform="translate(-129 0)"/>
+<use href="#well" transform="translate(-86 0)"/>
+<use href="#pea" transform="translate(-86 0) rotate(10) scale(1.05)"/>
+<use href="#well" transform="translate(-43 0)"/>
+<use href="#pea" transform="translate(-43 0) rotate(-4) scale(1.05)"/>
+<use href="#well" transform="translate(0 0)"/>
+<use href="#well" transform="translate(43 0)"/>
+<use href="#well" transform="translate(86 0)"/>
+<use href="#pea" transform="translate(86 0) rotate(-15) scale(1.05)"/>
+<use href="#well" transform="translate(129 0)"/>
+<use href="#well" transform="translate(-129 43)"/>
+<use href="#well" transform="translate(-86 43)"/>
+<use href="#well" transform="translate(-43 43)"/>
+<use href="#well" transform="translate(0 43)"/>
+<use href="#well" transform="translate(43 43)"/>
+<use href="#pea" transform="translate(43 43) rotate(12) scale(1.05)"/>
+<use href="#well" transform="translate(86 43)"/>
+<use href="#well" transform="translate(129 43)"/>
+<use href="#well" transform="translate(-43 86)"/>
+<use href="#pea" transform="translate(-43 86) rotate(-9) scale(1.05)"/>
+<use href="#well" transform="translate(0 86)"/>
+<use href="#pea" transform="translate(0 86) rotate(8) scale(1.05)"/>
+<use href="#well" transform="translate(43 86)"/>
+<use href="#well" transform="translate(-43 129)"/>
+<use href="#well" transform="translate(0 129)"/>
+<use href="#pea" transform="translate(0 129) rotate(-10) scale(1.05)"/>
+<use href="#well" transform="translate(43 129)"/>
+<path d="M-72-17Q-40-58-5-20" fill="none" stroke="#80573c" stroke-linecap="round" stroke-width="3" stroke-dasharray="5 5" marker-end="url(#tip)"/>
+  </g>
+  <g transform="translate(559 47) rotate(23)" stroke="#766e54" stroke-width="1.3" stroke-linejoin="round">
+    <path d="M0 0q3-3 8-1l1 132-4 19-5-19Z" fill="#c0ad87"/>
+    <path d="M0 129l2 2 2-2 3 2 2-2-4 21Z" fill="#e7d2a9"/>
+    <path d="m3 144 2 6 1-7Z" fill="#5e6352"/><path d="M3 3v124m3-124 1 125" fill="none" opacity=".7"/>
+  </g>
+  <rect width="660" height="400" filter="url(#paper)" opacity=".07" pointer-events="none"/>
+</svg>

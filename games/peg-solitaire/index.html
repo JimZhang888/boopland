@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="zh-CN" data-i18n-scope="peg">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#f5f3e9">
+  <title data-i18n="peg.title">孤子跳棋</title>
+  <link rel="icon" href="data:,">
+  <link rel="stylesheet" href="style.css">
+  <script defer src="../../analytics.js"></script>
+</head>
+<body>
+  <svg class="defs" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <defs>
+      <symbol id="i-brand" viewBox="0 0 36 36"><path d="M4 27C5 10 16 8 28 7l4-3c-2 14-10 27-25 25Z" fill="#c3d0a9"/><path d="M5 27C9 18 19 13 31 6M4 27l-2 5" fill="none"/><g fill="#72916a"><circle cx="11" cy="23" r="3"/><circle cx="17" cy="18" r="3.3"/><circle cx="23" cy="13" r="3"/></g></symbol>
+      <symbol id="i-back" viewBox="0 0 24 24"><path d="m10 5-7 7 7 7M4 12h17"/></symbol>
+      <symbol id="i-help" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M9.4 9c.7-3.3 6.2-3.2 6.2.3 0 2.6-3.5 2.7-3.5 5m0 2.5v.2"/></symbol>
+      <symbol id="i-hint" viewBox="0 0 24 24"><path d="M5 19c0-7 6-11 14-13-1 7-5 13-12 12m-4 3L15 10M6 6 5 3m-2 7-2-1m12-5 1-3"/></symbol>
+      <symbol id="i-undo" viewBox="0 0 24 24"><path d="m9 5-6 6 6 5m-6-5h10c8 0 9 10 0 10"/></symbol>
+      <symbol id="i-reset" viewBox="0 0 24 24"><path d="M4 11a8 8 0 1 1 1 6m-1-6V4m0 7h7"/></symbol>
+      <symbol id="i-note" viewBox="0 0 24 24"><path d="m4 16 11-12 5 4L9 20l-6 1Zm9-10 5 4M4 16l5 4"/></symbol>
+      <symbol id="i-list" viewBox="0 0 24 24"><path d="M5 4h14l1 16H5ZM3 8h4m-4 5h4m-4 4h4m3-9h6m-6 5h6"/></symbol>
+      <symbol id="i-next" viewBox="0 0 24 24"><path d="M3 12h17m-6-6 6 6-6 6"/></symbol>
+      <symbol id="i-tick" viewBox="0 0 24 24"><path d="m4 12 5 6L21 5"/></symbol>
+    </defs>
+  </svg>
+  <main class="shell">
+    <header class="mast">
+      <span class="brand"><svg class="icon" aria-hidden="true"><use href="#i-brand"/></svg>BOOPLAND</span>
+      <nav>
+        <a class="back" href="../../games.html"><svg class="icon" aria-hidden="true"><use href="#i-back"/></svg><span data-i18n="common.back">返回大厅</span></a>
+        <button id="help" data-i18n-label="peg.help" data-i18n-title="peg.help"><svg class="icon" aria-hidden="true"><use href="#i-help"/></svg></button>
+      </nav>
+    </header>
+    <div class="heading"><h1 data-i18n="peg.title">孤子跳棋</h1><p data-i18n="peg.goal">横竖跳吃，最后只留一颗。</p></div>
+    <div class="desk">
+      <section class="plate" aria-labelledby="levelName">
+        <div class="plate-head">
+          <div class="current"><small id="index">01 / 05</small><h2 id="levelName"></h2></div>
+          <dl class="stats"><div><dt data-i18n="peg.pegs">余子</dt><dd id="count"></dd></div><div><dt data-i18n="peg.jumps">跳数</dt><dd id="steps"></dd></div></dl>
+        </div>
+        <div class="stage">
+          <img class="sprig upper" src="sprig.svg" alt="" draggable="false">
+          <img class="sprig lower" src="sprig.svg" alt="" draggable="false">
+          <svg id="board" xmlns="http://www.w3.org/2000/svg" role="group" data-i18n-label="peg.board">
+            <defs>
+              <pattern id="hatch" width="5" height="5" patternUnits="userSpaceOnUse" patternTransform="rotate(28)"><path d="M0 0v5" stroke="#877d61" stroke-width="1"/></pattern>
+              <pattern id="fibres" width="59" height="47" patternUnits="userSpaceOnUse"><path d="m2 9 7-1m22 19 4-.6m15 9 4-.5M13 45l3-.5" stroke="#8e7956" opacity=".18" stroke-width=".8"/></pattern>
+              <g id="well"><ellipse cy="1.5" rx="10.3" ry="8.8" fill="#f8eed6"/><path d="M-9.6 0c-.4-5.6 4-9 9-9 5.8-.4 10.7 3.6 10.5 8.8S6 8.3.1 8.6C-5 8.6-9 6-9.6 0Z" fill="#b9ab88" stroke="#736b52" stroke-width="1.15"/><path d="M-8.2 1.6q-.5-10.5 12.3-8.1M-6-3l2-2m-2.2 4 4.8-4.6" fill="none" stroke="#807557" stroke-width="1"/><path d="M2.5 6.6q3.7-.6 5.1-3" fill="none" stroke="#e1d6b6" stroke-width="1.2"/></g>
+              <g id="pea"><ellipse cx="1.7" cy="4.6" rx="15.4" ry="12.8" fill="#756e51" opacity=".24"/><path d="M-15.4.7c-.7-8.7 5-15.3 13.4-16.1 7.2-1.3 16.2 2.5 17.6 11.8C17.2 5.6 11.6 13.9 3 15.1c-9.7 1.8-17.1-3.9-18.4-14.4Z" fill="#91a878" stroke="#485e43" stroke-width="1.55"/><path d="M-13.8 4.1c4.3 7.1 10.6 10.3 18 7.6 6.6-1.6 10.7-7.5 10.6-13-.7 10-5.7 15.7-13.2 16.5-8.8 1.1-13.6-3.9-15.4-11.1Z" fill="#768e63"/><path d="M-11-4.5q2.4-6.2 9-7.2" fill="none" stroke="#d9dfb6" stroke-width="2.1" stroke-linecap="round"/><path d="m3.2 11.2 4.4-2.4m-.2 1.8 4-3.8m-23-1 3.5 3.7M5.7-5.4q-1.8 1 .3 2.4" fill="none" stroke="#627c54" stroke-width=".9" stroke-linecap="round"/></g>
+              <marker id="tip" markerWidth="6" markerHeight="6" refX="4.4" refY="3" orient="auto"><path d="m1 1 3.5 2L1 5" fill="none" stroke="#7c5039" stroke-width="1.4"/></marker>
+            </defs>
+            <g id="geometry"></g><g id="holes"></g><g id="instruction" pointer-events="none" aria-hidden="true"></g>
+          </svg>
+        </div>
+        <div class="message"><svg class="icon" aria-hidden="true"><use id="stateIcon" href="#i-note"/></svg><span id="message" role="status" aria-live="polite"></span></div>
+      </section>
+      <aside class="sidebar">
+        <section class="selection" aria-labelledby="selectTitle">
+          <h2 id="selectTitle"><svg class="icon" aria-hidden="true"><use href="#i-list"/></svg><span data-i18n="peg.levels">选择棋局</span></h2>
+          <div id="levels"></div>
+        </section>
+        <div class="actions">
+          <button class="primary" id="hint"><svg class="icon" aria-hidden="true"><use id="actionIcon" href="#i-hint"/></svg><span id="actionLabel"></span></button>
+          <button id="undo"><svg class="icon" aria-hidden="true"><use href="#i-undo"/></svg><span data-i18n="peg.undo">撤销一步</span></button>
+          <button id="restart"><svg class="icon" aria-hidden="true"><use href="#i-reset"/></svg><span data-i18n="peg.restart">重新摆盘</span></button>
+        </div>
+      </aside>
+    </div>
+  </main>
+  <dialog id="rules" aria-labelledby="rulesTitle">
+    <h2 id="rulesTitle" data-i18n="peg.help">玩法</h2>
+    <svg class="demo" viewBox="0 0 210 64" aria-hidden="true"><path d="M12 48h183" stroke="#c3bba4" stroke-dasharray="3 5"/><use href="#well" x="166" y="41"/><use href="#pea" x="103" y="40"/><use href="#pea" x="40" y="40"/><path d="M53 25Q102-11 156 26" fill="none" stroke="#7c5039" stroke-width="2" stroke-dasharray="5 4" marker-end="url(#tip)"/></svg>
+    <p data-i18n="peg.rules">点选一枚棋子，横向或纵向跳过相邻的一枚，落到紧接着的空孔。被跳过的棋子会移走，剩一枚即通关。</p>
+    <p data-i18n="peg.keys">也可用方向键选择孔位，按回车或空格确认。</p>
+    <form method="dialog"><button class="primary" data-i18n="peg.close">回到棋盘</button></form>
+  </dialog>
+  <script src="../../i18n.js"></script>
+  <script src="translations.js"></script>
+  <script src="puzzles.js"></script>
+  <script src="game.js"></script>
+</body>
+</html>

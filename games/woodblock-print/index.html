@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="zh-CN" data-i18n-scope="woodblock">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#f5f2e8">
+  <title data-i18n="woodblock.title">木版套色</title>
+  <link rel="icon" type="image/svg+xml" href="./mark.svg">
+  <link rel="stylesheet" href="./studio.css">
+  <script defer src="../../analytics.js"></script>
+  <script defer src="../../i18n.js"></script>
+  <script defer src="./art.js"></script>
+  <script defer src="./words.js"></script>
+  <script defer src="./studio.js"></script>
+</head>
+<body>
+<svg class="symbols" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><defs>
+  <symbol id="i-back" viewBox="0 0 24 24"><path d="M19 12H5m6-6-6 6 6 6"/></symbol>
+  <symbol id="i-book" viewBox="0 0 24 24"><path d="M3 5q5-1 9 2 4-3 9-2v14q-5-1-9 1-4-2-9-1zM12 7v13"/></symbol>
+  <symbol id="i-gallery" viewBox="0 0 24 24"><path d="M3 4h8v7H3zm11 0h7v7h-7zM3 14h8v7H3zm11 0h7v7h-7z"/></symbol>
+  <symbol id="i-undo" viewBox="0 0 24 24"><path d="m9 5-6 5 6 5M4 10h10q7 0 7 7v2"/></symbol>
+  <symbol id="i-print" viewBox="0 0 24 24"><path d="M4 16h16v4H4zM7 16v-3q5 0 4-5-1-4 2-4t2 4q-2 5 3 5v3M4 22h16"/></symbol>
+  <symbol id="i-pin" viewBox="0 0 24 24"><circle cx="12" cy="12" r="6"/><path d="M12 2v7m0 6v7M2 12h7m6 0h7"/></symbol>
+  <symbol id="i-turn" viewBox="0 0 24 24"><path d="M19 11a7.5 7.5 0 1 0 0 6M19 5v6h-6"/></symbol>
+</defs></svg>
+<header class="bar">
+  <div class="brand"><img src="./mark.svg" alt=""><h1 data-i18n="woodblock.title">木版套色</h1></div>
+  <nav>
+    <button id="help" class="navlink"><svg><use href="#i-book"/></svg><span data-i18n="woodblock.guide">印制指南</span></button>
+    <a class="navlink" href="../../games.html"><svg><use href="#i-back"/></svg><span data-i18n="common.back">返回大厅</span></a>
+  </nav>
+</header>
+<main>
+  <div class="work-title">
+    <div class="caption"><span id="folio"></span><h2 id="work-name"></h2></div>
+    <button id="collection" class="text-btn"><svg><use href="#i-gallery"/></svg><span data-i18n="woodblock.gallery">作品册</span></button>
+  </div>
+  <div class="bench">
+    <section class="desk" data-i18n-label="woodblock.studio">
+      <div class="print-pair">
+        <figure class="sample"><figcaption><span class="type-dot"></span><span data-i18n="woodblock.proof">样张</span></figcaption>
+          <div class="mount"><div class="sheet"><svg id="reference" viewBox="0 0 240 280" role="img" data-i18n-label="woodblock.proof"></svg></div></div>
+        </figure>
+        <figure class="edition"><figcaption><span class="type-dot"></span><span data-i18n="woodblock.sheet">我的印张</span></figcaption>
+          <div class="mount"><div class="sheet"><svg id="surface" viewBox="0 0 240 280" tabindex="0" role="group" data-i18n-label="woodblock.board"></svg></div></div>
+        </figure>
+      </div>
+      <div class="desk-note"><svg><use href="#i-pin"/></svg><span id="tip" aria-live="polite"></span></div>
+    </section>
+    <aside class="tools">
+      <div class="tray-head"><span data-i18n="woodblock.progress">印制进度</span><div id="progress"></div></div>
+      <div id="settings">
+        <section class="choice blocks"><div class="heading"><h3 data-i18n="woodblock.blocks">木版</h3><span id="block-code"></span></div><div id="blocks" class="picks"></div></section>
+        <section class="choice inks"><div class="heading"><h3 data-i18n="woodblock.inks">墨色</h3><span id="ink-name"></span></div><div id="inks" class="picks"></div></section>
+        <section class="align"><div class="heading"><h3 data-i18n="woodblock.align">对位</h3><span id="angle"></span></div>
+          <div class="move-row"><div id="moves"><button data-dx="-1" data-dy="0" data-i18n-label="woodblock.left">←</button><button data-dx="0" data-dy="-1" data-i18n-label="woodblock.up">↑</button><button data-dx="0" data-dy="1" data-i18n-label="woodblock.down">↓</button><button data-dx="1" data-dy="0" data-i18n-label="woodblock.right">→</button></div>
+          <div id="turns"><button data-turn="-1" data-i18n-label="woodblock.ccw"><svg class="reverse"><use href="#i-turn"/></svg></button><button data-turn="1" data-i18n-label="woodblock.cw"><svg><use href="#i-turn"/></svg></button></div></div>
+        </section>
+        <div class="actions"><button id="undo" class="secondary"><svg><use href="#i-undo"/></svg><span data-i18n="woodblock.undo">撤销</span></button><button id="print" class="primary"><svg><use href="#i-print"/></svg><span data-i18n="woodblock.print">落印</span></button></div>
+      </div>
+      <div id="result" hidden>
+        <div class="result-heading"><h3 data-i18n="woodblock.finished">印成</h3><strong id="score"></strong></div>
+        <div id="scores"></div>
+        <div class="result-actions"><button id="revise" class="secondary" data-i18n="woodblock.undo">撤销</button><button id="retry" class="secondary" data-i18n="woodblock.retry">重印此作</button><button id="next" class="primary"></button></div>
+      </div>
+    </aside>
+  </div>
+</main>
+<dialog id="dialog"><div class="dialog-head"><h2 id="dialog-title"></h2><button id="close" data-i18n-label="woodblock.close">×</button></div><div id="dialog-content"></div></dialog>
+</body>
+</html>

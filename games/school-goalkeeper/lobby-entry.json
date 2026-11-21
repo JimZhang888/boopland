@@ -1,0 +1,43 @@
+{
+  "order": 77,
+  "title": "放学守门员",
+  "description": "放学后的十次点球。看支撑脚猜方向，看摆腿猜高低，踩准时机扑救。",
+  "path": "./games/school-goalkeeper/index.html",
+  "category": "动作",
+  "color": "#d9e3ce",
+  "cover": "./games/school-goalkeeper/cover.svg",
+  "locales": {
+    "zh-CN": {
+      "title": "放学守门员",
+      "description": "放学后的十次点球。看支撑脚猜方向，看摆腿猜高低，踩准时机扑救。"
+    },
+    "en": {
+      "title": "After-School Keeper",
+      "description": "Face ten after-school penalties. Read the planted foot and backswing, then time your dive."
+    },
+    "ja": {
+      "title": "放課後のキーパー",
+      "description": "放課後のPK10本勝負。軸足で方向、蹴り足で高さを読み、タイミングよく飛ぼう。"
+    },
+    "ko": {
+      "title": "방과 후 골키퍼",
+      "description": "방과 후 페널티킥 열 개에 도전하세요. 디딤발과 다리의 높이를 읽고 제때 뛰어 막으세요."
+    },
+    "fr": {
+      "title": "Gardien après la classe",
+      "description": "Dix penalties après la classe. Lisez le pied d’appui et le mouvement de la jambe pour plonger au bon moment."
+    },
+    "de": {
+      "title": "Torwart nach Schulschluss",
+      "description": "Halte zehn Elfmeter nach Schulschluss. Lies Standfuß und Beinschwung und spring im richtigen Moment."
+    },
+    "es": {
+      "title": "Portero después de clase",
+      "description": "Defiende diez penaltis después de clase. Lee el pie de apoyo y la altura de la pierna para lanzarte a tiempo."
+    },
+    "pt-BR": {
+      "title": "Goleiro depois da aula",
+      "description": "Defenda dez pênaltis depois da aula. Leia o pé de apoio e a altura da perna para saltar na hora certa."
+    }
+  }
+}

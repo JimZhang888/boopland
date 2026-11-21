@@ -1,0 +1,112 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 510" fill="none">
+  <defs>
+    <pattern id="sky-grain" width="19" height="21" patternUnits="userSpaceOnUse">
+      <path d="m3 5 1.2-.3m8 10 1.6-.2m4-13 .7-.2" stroke="#ddd0ab" opacity=".14" stroke-width=".8"/>
+    </pattern>
+    <pattern id="slates" width="13" height="8" patternUnits="userSpaceOnUse" patternTransform="rotate(-4)">
+      <path d="m0 3.5 13 .5m-6.5-4L5 4m6 0-1 4" stroke="#adb09b" opacity=".29" stroke-width="1"/>
+    </pattern>
+    <pattern id="wall" width="11" height="11" patternUnits="userSpaceOnUse">
+      <path d="m2 8 2-3m2-1 1-1" stroke="#d3c8ab" opacity=".18" stroke-width=".75"/>
+    </pattern>
+    <g id="spark" fill="#d8c99c"><path d="m0-4 1 3 3 1-3 1-1 3-1-3-3-1 3-1Z"/></g>
+    <g id="pane" stroke="#233a40" stroke-width="1.8">
+      <path d="m0 0 13-.6-.3 19L1 19Z" fill="#cfb582"/>
+      <path d="m6.6 0 .2 19M.4 9.5l12.5-.6"/>
+      <path d="m-1 21 16-.7" stroke="#a3a18b"/>
+    </g>
+    <g id="dormer" stroke="#303f42" stroke-linejoin="round" stroke-width="2">
+      <path d="m0 4 10-12L21 4l-1 16-19 1Z" fill="#a7a18c"/>
+      <path d="m-4 5 14-15L25 4l-3 2-12-11L0 8Z" fill="#445457"/>
+      <path d="m6 6 8-1 .2 11-8 .5Z" fill="#dcc395"/>
+      <path d="m10 6-.1 10"/>
+    </g>
+    <g id="chimney" stroke="#35454a" stroke-width="1.8" stroke-linejoin="round">
+      <path d="m1 0 12-1 .8 28L2 28Z" fill="#918d7d"/>
+      <path d="M-1 1v-5l16-1 .3 5Zm3 7 5-.2m2 5 4-.1" fill="#a09a85"/>
+    </g>
+  </defs>
+  <path fill="#374d59" d="M0 0h800v510H0z"/>
+  <path d="M0 278Q119 261 214 282T420 280t211-8 169 6v232H0Z" fill="#536670" opacity=".35"/>
+  <g fill="#cebfa0" opacity=".84">
+    <circle cx="24" cy="48" r="1"/><circle cx="70" cy="102" r="1.6"/><circle cx="101" cy="36" r="1.3"/>
+    <circle cx="150" cy="92" r="1.2"/><circle cx="193" cy="43" r=".9"/><circle cx="262" cy="67" r="1.3"/>
+    <circle cx="326" cy="28" r="1.3"/><circle cx="566" cy="37" r="1.2"/><circle cx="598" cy="133" r="1.5"/>
+    <circle cx="665" cy="47" r="1.1"/><circle cx="757" cy="81" r="1.5"/><circle cx="717" cy="149" r="1"/>
+    <circle cx="790" cy="183" r="1.2"/><circle cx="646" cy="215" r="1.2"/><circle cx="38" cy="253" r=".9"/>
+    <circle cx="221" cy="171" r="1.2"/><circle cx="165" cy="225" r="1.1"/><circle cx="87" cy="202" r="1.4"/>
+  </g>
+  <g><use href="#spark" x="58" y="62"/><use href="#spark" x="177" y="132"/><use href="#spark" x="111" y="180"/>
+    <use href="#spark" x="613" y="70"/><use href="#spark" x="739" y="114"/><use href="#spark" x="674" y="163"/>
+  </g>
+  <g stroke-linecap="round" stroke-linejoin="round">
+    <path d="M706 43c-18 1-29 16-24 32 5 16 25 23 39 12-14 1-26-9-26-23 0-9 4-16 11-21Z" fill="#e2cca2" stroke="#eddbb4" stroke-width="1.1"/>
+    <path d="M685 67q-1 14 13 20m-13-11 5 7" stroke="#998f77" stroke-width="1.2"/>
+    <g stroke="#a3afa9" opacity=".66">
+      <path d="M1 147q23 1 32-2c7-9 17-12 27-8 8-14 25-14 34-2 8-3 17 1 21 6l28 1M9 151l73-2m18-2 32-.5"/>
+      <path d="M603 190l24-2c5-5 11-7 20-5 7-9 18-9 25-2 8-2 14 0 18 4l32 1m-86 5 49-1"/>
+    </g>
+    <!-- The far bank is a single, lightly hatched silhouette. -->
+    <path d="M0 359v-38l15-8 16 6v-17l21-14 21 14v17h11v-34l16-9 19 12v18l18-1v-15l19-12 25 14 2 31 16-3v-24l20-14 22 15v27l12-3 1-46 8-3 9-21 8 20 8 3v39l17 4v-30l24-10 18 12v18h18v-34l18-10 17 11v31l31-1v-23l26-13 23 11v26l16 2v-37l16-11 17 11v25l23 1 1-17 20-14 22 12v18h23v-45l15-12 15 11v34l20-4v-36l18-16 18 16v23l26-2v-16l22-10 23 12v24l23-4v-20l22-15 23 15v-11l19-8 22 14v100H0Z" fill="#6d7b7c"/>
+    <path d="M0 383q151-41 288-22t281-4 231-27v123H0Z" fill="#56696e"/>
+    <!-- A bell tower, the uneven roofs and a few remaining lighted windows. -->
+    <g stroke="#36474b" stroke-width="2">
+      <path d="m-12 292 63-4 4 178h-65Z" fill="#8b9187"/>
+      <path d="m-10 286 31-44 37 41 2 8-68 3Z" fill="#526268"/>
+      <path d="m-9 286 30-42 36 40Z" fill="url(#slates)"/>
+      <path d="m20 244 .5-13m-4 7 8-.5" fill="none"/>
+      <path d="M9 314q7-13 14 0v15l-14 .6Zm25-1q6-12 11-1v15l-11 1Z" fill="#47595d"/>
+      <path d="m-2 335 56-3m-54 7 49-3" fill="none"/>
+      <path d="m23 351 132-10 5 128-138 3Z" fill="#9a9c8e"/>
+      <path d="m24 352 132-9 2 116-133 9Z" fill="url(#wall)"/>
+      <use href="#chimney" transform="translate(106 279) rotate(-4)"/>
+      <path d="m10 353 20-45 98-13 39 46-3 7-151 12Z" fill="#52626a"/>
+      <path d="m12 352 20-42 95-12 36 44Z" fill="url(#slates)" stroke="none"/>
+      <path d="m8 354 157-13m-145 20 138-11" stroke="#b4b09a"/>
+      <use href="#dormer" transform="translate(42 322) rotate(-5)"/>
+      <use href="#dormer" transform="translate(91 316) rotate(-5)"/>
+      <use href="#pane" x="34" y="370"/><use href="#pane" x="70" y="367"/><use href="#pane" x="110" y="364"/>
+      <path d="m131 462-3-101 49-29 50 27 3 108Z" fill="#929589"/>
+      <path d="m120 361 56-40 59 35-4 6-55-30-49 36Z" fill="#4d6064"/>
+      <path d="m172 343 9-.7v10l-9 .5Z" fill="#5d6a68"/>
+      <use href="#pane" x="147" y="372"/><use href="#pane" x="192" y="372"/>
+      <path d="m211 380 132-4 3 93-137 2Z" fill="#7c8982"/>
+      <path d="m202 382 29-32 82-4 35 29 1 6-145 7Z" fill="#52636a"/>
+      <path d="m204 381 27-29 81-5 34 29Z" fill="url(#slates)" stroke="none"/>
+      <use href="#pane" x="234" y="397"/><use href="#pane" x="275" y="397"/>
+      <path d="m331 407 50-24 55 22 1 71H329Zm104-12 113-5 2 89-116-1Z" fill="#859086"/>
+      <path d="m325 405 54-32 63 30-3 7-60-23-49 26Zm100-12 22-29 77-5 32 28v7l-128 6Z" fill="#52656a"/>
+      <use href="#pane" x="367" y="414"/><use href="#pane" x="492" y="408"/>
+      <path d="m521 371 109-5 7 105-116 2Z" fill="#909789"/>
+      <path d="m516 370 26-38 53-8 47 40-4 8-118 7Z" fill="#526368"/>
+      <path d="m519 368 25-34 51-8 43 37Z" fill="url(#slates)" stroke="none"/>
+      <use href="#dormer" transform="translate(551 345) scale(.8)"/>
+      <use href="#pane" x="542" y="392"/><use href="#pane" x="585" y="387"/>
+      <path d="m610 342 93 5-1 131-91-1Z" fill="#9fa297"/>
+      <use href="#chimney" transform="translate(665 276)"/>
+      <path d="m599 346 33-49 42-3 44 50-4 8-112 1Z" fill="#495e65"/>
+      <path d="m604 343 30-44 39-3 40 47Z" fill="url(#slates)" stroke="none"/>
+      <use href="#dormer" transform="translate(632 316)"/>
+      <use href="#pane" x="625" y="368"/><use href="#pane" x="665" y="369"/>
+      <path d="m690 473 2-152 51-50 51 55 3 149Z" fill="#a3a697"/>
+      <path d="m681 324 61-66 62 65-5 8-57-58-55 60Z" fill="#4f6368"/>
+      <path d="m704 323 38-38 39 39m-43-31 3 17" fill="none" stroke="#7b8379"/>
+      <circle cx="742" cy="321" r="8" fill="#697775"/>
+      <path d="m741 313 .5 15m-6-8 14 1" fill="none"/>
+      <use href="#pane" x="709" y="348"/><use href="#pane" x="757" y="349"/>
+      <path d="m784 379 27-9v108l-27 1Z" fill="#869285"/>
+    </g>
+    <!-- Near roofs fill the bottom edge like cut paper. -->
+    <g stroke="#273e45" stroke-width="2">
+      <path d="m-14 418 93-31 84 34 114-9 70 45 119-9 49-21 79 2 58-42 85 9 76-31v159H-14Z" fill="#445b60"/>
+      <path d="m-12 417 90-32 84 34-2 5-82-28-90 30Zm170 6 118-15 72 45-3 6-69-38-118 10ZM460 449l53-27 81 2 57-42 87 9 74-31v9l-72 32-83-9-59 42-83-1-48 24Z" fill="#7d8983"/>
+      <path d="m-8 423 86-28 80 29v23l-167 23Zm174 8 109-12 66 38-182 12Zm432 4 56-42 82 10-17 34Z" fill="url(#slates)" stroke="none"/>
+      <path d="m0 478 85-16 106 6 96-9 84 18 144-12 86 1 74-20 124 5v64H0Z" fill="#314b50"/>
+      <path d="m-10 481 95-15 107 6 95-10m333 5 57-17 125 6" stroke="#829088" fill="none" stroke-width="1.3"/>
+      <path d="m49 477 .4-22 18-3 1 23Z" fill="#c2ae83"/><path d="m57 454 .3 22m-10-11 20-3"/>
+      <path d="m705 474 14 1v20l-15-1Z" fill="#c5ad83"/><path d="m711 474-.4 21m-8-12 17 1"/>
+    </g>
+    <path d="M94 388c-1-5 0-11 4-16l1-9 5 4 5-4 2 9c5 5 7 12 6 18 4 4 10 3 11-3 1-3-1-5-3-5 6-3 10 4 6 10-3 6-11 7-17 4Z" fill="#2e434a" stroke="#263b42" stroke-width="1.5"/>
+  </g>
+  <path fill="url(#sky-grain)" d="M0 0h800v510H0z"/>
+</svg>

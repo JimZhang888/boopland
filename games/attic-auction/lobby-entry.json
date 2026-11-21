@@ -1,0 +1,43 @@
+{
+  "order": 96,
+  "title": "旧物拍卖会",
+  "description": "翻看旧相机的落款与补痕，查一查同款成交价。在六场竞拍中，决定何时举牌、何时收手。",
+  "category": "策略",
+  "path": "./games/attic-auction/index.html",
+  "cover": "./games/attic-auction/cover.svg",
+  "color": "#cdd6c1",
+  "locales": {
+    "zh-CN": {
+      "title": "旧物拍卖会",
+      "description": "翻看旧相机的落款与补痕，查一查同款成交价。在六场竞拍中，决定何时举牌、何时收手。"
+    },
+    "en": {
+      "title": "Attic Auction",
+      "description": "Inspect maker’s marks and old repairs, then check past sales. Choose when to raise your paddle across six lots."
+    },
+    "ja": {
+      "title": "屋根裏の競売会",
+      "description": "古いカメラの銘や修理跡を確かめ、過去の落札例を手がかりに、六つの品に値を付けよう。"
+    },
+    "ko": {
+      "title": "다락방 경매",
+      "description": "오래된 카메라의 각인과 수리 흔적을 살피고 낙찰 기록을 비교하세요. 여섯 번의 경매에서 언제 팻말을 들지 정해 보세요."
+    },
+    "fr": {
+      "title": "Les enchères du grenier",
+      "description": "Examinez les signatures et les réparations, puis comparez les ventes passées. À vous de choisir quand enchérir sur les six lots."
+    },
+    "de": {
+      "title": "Die Dachbodenauktion",
+      "description": "Prüfe Signaturen und alte Reparaturen, vergleiche frühere Verkaufspreise und entscheide bei sechs Losen, wann du mitbietest."
+    },
+    "es": {
+      "title": "Subasta en el desván",
+      "description": "Examina las firmas y los arreglos, y compara ventas anteriores. Decide cuándo levantar la paleta en seis subastas."
+    },
+    "pt-BR": {
+      "title": "Leilão no sótão",
+      "description": "Examine marcas e reparos, compare vendas anteriores e decida quando levantar a placa ao longo de seis lotes."
+    }
+  }
+}

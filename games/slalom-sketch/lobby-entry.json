@@ -1,0 +1,43 @@
+{
+  "title": "山道速降",
+  "description": "在三条手绘雪道上左右压刃，依次穿过旗门，挑战自己的最快用时。",
+  "category": "动作",
+  "path": "./games/slalom-sketch/index.html",
+  "cover": "./games/slalom-sketch/cover.svg",
+  "color": "#dce5dc",
+  "order": 76,
+  "locales": {
+    "zh-CN": {
+      "title": "山道速降",
+      "description": "在三条手绘雪道上左右压刃，依次穿过旗门，挑战自己的最快用时。"
+    },
+    "en": {
+      "title": "Slalom Sketch",
+      "description": "Carve through three hand-drawn ski courses, thread the gates in order and race your personal best."
+    },
+    "ja": {
+      "title": "山道スラローム",
+      "description": "手描きの雪道をエッジで滑り、三つのコースで旗門を順に抜けて自己ベストを狙おう。"
+    },
+    "ko": {
+      "title": "산길 슬라럼",
+      "description": "손으로 그린 세 설원을 누비며 기문을 차례로 통과하고 개인 최고 기록을 경신하세요."
+    },
+    "fr": {
+      "title": "Slalom alpin",
+      "description": "Enchaînez les virages sur trois pistes dessinées à la main, passez les portes dans l’ordre et battez votre record."
+    },
+    "de": {
+      "title": "Bergslalom",
+      "description": "Ziehe deine Spuren durch drei gezeichnete Pisten, durchfahre die Tore der Reihe nach und schlage deine Bestzeit."
+    },
+    "es": {
+      "title": "Eslalon de montaña",
+      "description": "Traza curvas en tres pistas dibujadas a mano, pasa las puertas en orden y supera tu mejor tiempo."
+    },
+    "pt-BR": {
+      "title": "Slalom na serra",
+      "description": "Faça curvas em três pistas desenhadas à mão, passe pelos portões em ordem e supere seu melhor tempo."
+    }
+  }
+}

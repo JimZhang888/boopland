@@ -1,0 +1,19 @@
+{
+  "order": 91,
+  "title": "点格成方",
+  "description": "和电脑轮流在点间画线。封上最后一条边，收下一格，再走一笔。",
+  "category": "棋牌",
+  "path": "./games/dots-and-boxes/index.html",
+  "cover": "./games/dots-and-boxes/cover.svg",
+  "color": "#dce4d8",
+  "locales": {
+    "zh-CN": { "title": "点格成方", "description": "和电脑轮流在点间画线。封上最后一条边，收下一格，再走一笔。" },
+    "en": { "title": "Dots and Boxes", "description": "Take turns drawing lines with the computer. Close the fourth side to claim a box and draw again." },
+    "ja": { "title": "点と四角", "description": "コンピューターと交互に点をつなごう。四本目の辺を引くと、そのマスをもらえてもう一手。" },
+    "ko": { "title": "점과 상자", "description": "컴퓨터와 번갈아 점을 이으세요. 네 번째 변을 그으면 한 칸을 차지하고 한 번 더 둘 수 있어요." },
+    "fr": { "title": "La Pipopipette", "description": "Reliez deux points à tour de rôle avec l’ordinateur. Tracez le quatrième côté pour gagner la case et rejouer." },
+    "de": { "title": "Käsekästchen", "description": "Verbinde abwechselnd mit dem Computer zwei Punkte. Wer die vierte Seite zeichnet, bekommt das Kästchen und ist noch einmal dran." },
+    "es": { "title": "Timbiriche", "description": "Tú y la computadora se turnan para unir puntos. Cierra el cuarto lado para ganar una casilla y volver a jugar." },
+    "pt-BR": { "title": "Pontos e quadrados", "description": "Ligue os pontos em turnos com o computador. Feche o quarto lado para ganhar o quadrado e jogar de novo." }
+  }
+}

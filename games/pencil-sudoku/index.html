@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="zh-CN" data-i18n-scope="pencil-sudoku">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#eeeae0">
+  <title data-i18n="pencil-sudoku.title">铅笔数独</title>
+  <link rel="icon" href="cover.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="style.css">
+  <script defer src="../../analytics.js"></script>
+  <script defer src="../../i18n.js"></script>
+  <script defer src="locales.js"></script>
+  <script defer src="sudoku.js"></script>
+  <script defer src="game.js"></script>
+</head>
+<body>
+  <svg class="symbols" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <symbol id="i-back" viewBox="0 0 24 24"><path d="m10 5-7 7 7 7M4 12l17-.3"/></symbol>
+    <symbol id="i-help" viewBox="0 0 24 24"><path d="M21.5 12c0 5-4 9.5-9.5 9.5S2.5 17 2.5 12 6.7 2.5 12 2.5 21.5 6 21.5 12Z"/><path d="M9 9c.1-3.6 6.4-3.7 6.2.2 0 2.3-3.5 2.4-3.4 5m0 2.8h.2"/></symbol>
+    <symbol id="i-book" viewBox="0 0 24 24"><path d="M12 6c-2-1.6-5.3-2.5-9-1.8l.2 14.3c3.6-.8 6.7.2 8.8 2 2.5-1.8 5.6-2.8 9-2l.1-14.4c-3.5-.6-6.4.2-9.1 1.9Zm0 .3v13M5.7 8.4l3.5.6m6.2.1 2.9-.6"/></symbol>
+    <symbol id="i-time" viewBox="0 0 24 24"><path d="M21 13c.3 5.2-4 9-9.1 9-5.2 0-9-4-8.9-9s4-9 9-9 9 4 9 9ZM12 8v5l3 2M9.6 1.6h4.8m-2.3.1v2m6.8 2.1 1.5-1.8"/></symbol>
+    <symbol id="i-best" viewBox="0 0 24 24"><path d="M18.2 9c-.1 4.6-3 7.4-7 7.1-4-.2-6.5-3.1-6.4-7.3.2-4.2 3.3-6.8 7-6.7 3.8 0 6.6 2.8 6.4 6.9ZM7.5 15l-1.8 6.6 4.5-1.9 1.8 1.6 1.6-5.1m1-.3 2.1 5.3 1.2-2.7 3.1.4-3.2-6.1"/><path d="m8.9 9 1.8 2 3.7-4"/></symbol>
+    <symbol id="i-pencil" viewBox="0 0 24 24"><path d="m3 21 1.5-6.3L17.2 2.2q1.2-.8 3.2 1.2t1.1 3.2L8.9 19.4 3 21Zm1.5-6.2 4.2 4.3M15.2 4.4l4.3 4.1M6.8 16.8l10.4-10M3.6 18.8l1.5 1.5"/></symbol>
+    <symbol id="i-erase" viewBox="0 0 24 24"><path d="m3.1 12.7 9.8-10q1-.9 2.2.1l6 5.8q1 1.1-.2 2.4l-9.7 9.7-3.2.1L3 15.5q-1.5-1.3.1-2.8ZM6.9 9l7.9 7.6M9 21h12"/></symbol>
+    <symbol id="i-undo" viewBox="0 0 24 24"><path d="M8.1 4.9 2.5 11l5.9 4.7m-5.6-4.6c7.2-1.5 16.7-3.1 17.8 3.6.6 3.2-2.3 5.8-6.1 5.9"/></symbol>
+    <symbol id="i-close" viewBox="0 0 24 24"><path d="m6 6 12 12M18 6 6 18"/></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24"><path d="m3 13 6 6L21 5"/></symbol>
+    <symbol id="i-lock" viewBox="0 0 24 24"><path d="M5 11h14v10H5Zm3-.5V7a4 4 0 0 1 8 0v3.5M12 15v2"/></symbol>
+  </svg>
+  <main class="desk">
+    <nav class="nav">
+      <a class="plain-link" href="../../games.html"><svg aria-hidden="true"><use href="#i-back"/></svg><span data-i18n="common.back">返回大厅</span></a>
+      <button id="help-button" class="plain-link"><svg aria-hidden="true"><use href="#i-help"/></svg><span data-i18n="pencil-sudoku.help">玩法</span></button>
+    </nav>
+    <header class="mast">
+      <div class="identity">
+        <svg class="brand" viewBox="0 0 58 57" fill="none" aria-hidden="true">
+          <path d="m7 9 36-3.5 4 38.8-36.5 3.4Z" fill="#b8c6a7" stroke="#556349" stroke-width="2"/>
+          <path d="m4 5 37-3 3.3 38.7-36.8 3.1Z" fill="#e1e8d3" stroke="#51604b" stroke-width="2"/>
+          <path d="m16.5 4 3 38m9-39 3.2 38M5.2 18l36.9-3M6.4 30.5l36.6-3.2" stroke="#73826b" stroke-width="1.6"/>
+          <path d="m19 47 3-10.4L46.8 8.9q1.1-1.2 2.8.1l4 3.4q1.4 1.3.2 2.7L29.3 43.6Z" fill="#dac49b" stroke="#586049" stroke-width="1.9" stroke-linejoin="round"/>
+          <path d="m24.2 37.4 4.2 3.8m-6.7 1.6 3 2m18.7-31.4 6 5.3m-24 18.4 19.7-22" stroke="#6e7059" stroke-width="1.3"/>
+        </svg>
+        <h1 data-i18n="pencil-sudoku.title">铅笔数独</h1>
+      </div>
+      <button id="album-button" class="book-button"><svg aria-hidden="true"><use href="#i-book"/></svg><span data-i18n="pencil-sudoku.album">题本</span></button>
+    </header>
+    <article class="notebook">
+      <div class="binding" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+      <div class="puzzle-head"><div><span class="page-number" id="page-number"></span><h2 id="level"></h2></div><span class="dimension" id="dimension">4 × 4</span></div>
+      <div class="stats">
+        <div><span><svg aria-hidden="true"><use href="#i-time"/></svg><span data-i18n="pencil-sudoku.time">用时</span></span><b id="clock">00:00</b></div>
+        <div><span><svg aria-hidden="true"><use href="#i-best"/></svg><span data-i18n="pencil-sudoku.best">本题最佳</span></span><b id="best">—</b></div>
+      </div>
+      <div class="board-wrap"><div id="board" role="group"></div></div>
+      <div class="progress"><div class="track" aria-hidden="true"><i id="fill"></i></div><span id="progress-label"></span></div>
+      <section class="controls">
+        <div class="numbers"><h3 id="pad-title"></h3><div id="pad" role="group" aria-labelledby="pad-title"></div></div>
+        <div class="tools">
+          <button id="notes" aria-pressed="false"><svg aria-hidden="true"><use href="#i-pencil"/></svg><span data-i18n="pencil-sudoku.notes">笔记</span></button>
+          <button id="erase"><svg aria-hidden="true"><use href="#i-erase"/></svg><span data-i18n="pencil-sudoku.erase">擦除</span></button>
+          <button id="undo"><svg aria-hidden="true"><use href="#i-undo"/></svg><span data-i18n="pencil-sudoku.undo">撤销</span></button>
+        </div>
+        <p id="status" role="status"></p>
+        <img src="stationery.svg" class="stationery" alt="" draggable="false">
+      </section>
+    </article>
+  </main>
+  <dialog id="dialog" aria-labelledby="dialog-title">
+    <header class="dialog-head"><h2 id="dialog-title"></h2><button id="close" class="icon-button" data-i18n-label="pencil-sudoku.close"><svg aria-hidden="true"><use href="#i-close"/></svg></button></header>
+    <div id="dialog-body"></div>
+  </dialog>
+</body>
+</html>

@@ -1,0 +1,82 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 440 540">
+<defs>
+  <pattern id="grain" width="13" height="17" patternUnits="userSpaceOnUse"><path d="m1 4 1.6-.4m6 6 .9.2m-4 5 .7-.2" stroke="#746c54" stroke-width=".7" opacity=".27"/></pattern>
+  <pattern id="hatch" width="4.5" height="5" patternUnits="userSpaceOnUse"><path d="m-1 4 5-5m-1 7 4-4" stroke="#4b5353" stroke-width=".65" opacity=".56"/></pattern>
+  <pattern id="apron" width="7" height="7" patternUnits="userSpaceOnUse"><path d="m0 7 7-7" stroke="#f9e6b6" stroke-width=".55" opacity=".27"/></pattern>
+  <g id="star"><path d="m0-6 1.5 4.4L6 0 1.4 1.3 0 6l-1.5-4.5L-6 0l4.5-1.5Z" fill="#f5dfad" stroke="#505958" stroke-width=".85"/></g>
+  <g id="pin"><circle r="3.6" fill="#dad4bd" stroke="#62665d" stroke-width="1"/><path d="m-1.7 1.2 3.2-2.5" stroke="#62665d" stroke-width="1"/></g>
+  <g id="shoot" fill="none" stroke="#59665d" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M-6 7C-8-4-5-15 0-22 5-15 8-4 6 7Z" fill="#eeeacf" stroke-width="1.5"/>
+    <path d="M-5-11Q0-8 5-11M-6 0l-6 9 7-2m11-7 6 9-7-2M-4 8l4 9 4-9" fill="#c58d76" stroke-width="1.25"/>
+    <circle cy="-3" r="2.7" fill="#9caeae"/><path d="m-3 15-2 9m6-6-2 11m6-12-2 7" stroke-width="1"/>
+  </g>
+  <g id="sprig" fill="none" stroke="#748575" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M0 0Q-20-5-35-26" stroke-width="1.35"/>
+    <path d="M-9-4q-7 2-13-2 7-1 13 2m-5-3q-1-7-6-11 0 7 6 11m-9-7q-6-1-11-6 7 0 11 6m-3-4q0-7-3-11-2 6 3 11" fill="#bac5a8" stroke-width=".85"/>
+  </g>
+</defs>
+<!-- The cabinet is a worn, inked drawing on warm cartridge paper. -->
+<path d="M20 5 417 6q15 0 16 15l-1 499q-1 13-15 14L20 532q-14-1-14-15L7 22Q7 7 20 5Z" fill="#d9cfb6" stroke="#444d4d" stroke-width="3.3"/>
+<path d="m16 12 405 1q5 0 5 8l-1 493q0 10-9 11l-394-1q-9 0-9-11l1-490Z" fill="#f5efdc" stroke="#6d7263" stroke-width="1.3"/>
+<path d="M19 13h400v507H19z" fill="url(#grain)"/>
+<!-- The dark sweep around the head of the table is an ink wash, edged in ivory. -->
+<path d="M18 21q0-5 7-5l390 1q7 0 7 7v113l-9-3q1-53-39-83-26-23-89-25L150 25Q58 21 35 83q-8 22-9 63l-8 3Z" fill="#46555b" stroke="#414c50" stroke-width="1.3"/>
+<path d="M20 147V25q0-5 6-5m390 1 3 1v94M30 75q10-33 37-46m304 1q31 15 40 44" fill="none" stroke="#e6d8ae" stroke-width="1"/>
+<g fill="#e6d7ad"><circle cx="29" cy="47" r="1.3"/><circle cx="44" cy="28" r="1"/><circle cx="409" cy="49" r="1"/><circle cx="394" cy="29" r="1.3"/></g>
+<!-- Arced star chart over the letter rollover bank. -->
+<g fill="none" stroke="#a29978" stroke-linecap="round">
+  <path d="M67 95q51-74 140-62 69-6 127 63" stroke-width="1" stroke-dasharray="2 4"/>
+  <path d="M100 71q39-30 80-30m43 0q45 2 81 29" stroke-width="1"/>
+  <path d="M114 64q30-16 56-18m63 0q35 5 58 18" stroke-width=".7"/>
+</g>
+<g transform="translate(201 49)"><path d="m0-13 3.4 9.6L13 0 3.4 3.1 0 13-3.4 3.1-13 0l9.6-3.4Z" fill="#ddbf83" stroke="#60685d" stroke-width="1.3"/><path d="M0-9v18m-9-9H9" stroke="#f7edce" stroke-width="1"/><circle cx="-22" r="2" fill="#baa675"/><circle cx="22" r="2" fill="#baa675"/></g>
+<path d="M77 128q121-19 238 0" stroke="#aea788" stroke-width=".85" stroke-dasharray="3 6" fill="none"/>
+<!-- Orbital tracks tie the three bells into a single playfield. -->
+<g fill="none" stroke="#a9ad91" stroke-linecap="round">
+ <ellipse cx="196" cy="201" rx="104" ry="44" transform="rotate(-20 196 201)" stroke-width="1" stroke-dasharray="5 4 1 4"/>
+ <ellipse cx="198" cy="195" rx="80" ry="61" transform="rotate(22 198 195)" stroke-width=".75"/>
+ <path d="M84 189q1-28 19-43m164 96q31-16 45-42m-187 32q11 12 27 16" stroke-width="1.1"/>
+</g>
+<g fill="#b0b99f" stroke="#52645e" stroke-width="1.1"><circle cx="156" cy="250" r="3.6"/><circle cx="244" cy="140" r="2.8"/><circle cx="289" cy="204" r="2.3"/></g>
+<!-- A little Saturn in the left margin, with etched rings. -->
+<g transform="translate(61 231) rotate(-24)" stroke="#616e65" stroke-linecap="round">
+ <ellipse rx="21" ry="6.8" fill="none" stroke-width="1.4"/><circle r="11.1" fill="#c8cfb2" stroke-width="1.4"/>
+ <path d="M-10-3Q0 1 9-4m-19 6Q0 7 9 2" fill="none" stroke="#91a08a" stroke-width="1"/>
+ <path d="M-21 0q0 7 21 6.7T21 0" fill="none" stroke="#667366" stroke-width="2"/>
+ <path d="M-19 1q7 7 30 3.5" fill="none" stroke="#f5eac9" stroke-width="1"/>
+</g>
+<use href="#shoot" transform="translate(340 224) rotate(24) scale(.9)"/>
+<!-- The moon is printed into the playfield, beneath the ball. -->
+<g transform="translate(200 325)" stroke-linecap="round" stroke-linejoin="round">
+ <path d="M-59 2q6-44 47-54m32 1q37 12 44 47M-60 10q5 21 18 32m95-11 8-15" fill="none" stroke="#a5aa96" stroke-width=".95" stroke-dasharray="2 4"/>
+ <g fill="none" stroke="#929982"><path d="m-47-24-6-3m10-6-5-4m13-2-3-5m85 16 5-4m-9-3 3-5m-12 1 2-5m-73 66-5 3m93-4 6 3" stroke-width="1.1"/></g>
+ <path d="M-6-40C-25-30-27-8-15 4-4 16 13 17 27 7 20 33-7 43-29 28-53 12-51-25-22-38q10-4 16-2Z" fill="#dfc38b" stroke="#52625c" stroke-width="2"/>
+ <path d="M-9-38c-23 13-24 34-10 47 10 10 26 14 42 3" fill="none" stroke="#a8946c" stroke-width=".9"/>
+ <path d="M-37-15q-6 18 4 32m-7-17 4-1m-4 7 5-1m-4 7 5-2m-1 7 4-2m0 6 4-2m1 5 4-2" fill="none" stroke="#9a8965" stroke-width="1"/>
+ <path d="M-27-9q4 4 9 0m-7-2 1 1m7 2 3 8-4 1m3 5q3 3 6 1" fill="none" stroke="#535c51" stroke-width="1.35"/>
+ <g fill="#c3a777"><circle cx="-31" cy="10" r="2"/><circle cx="-27" cy="16" r="1.3"/><circle cx="-34" cy="-18" r="1.6"/></g>
+ <path d="m12-30 3.5 10L26-16l-10.5 3.6L12-2l-3.5-10.4L-2-16l10.5-4Z" fill="#e1c68e" stroke="#626b5b" stroke-width="1.2"/>
+ <use href="#star" transform="translate(30 -32) scale(.65)"/><use href="#star" transform="translate(41 -9) scale(.55)"/>
+ <use href="#sprig" transform="translate(-5 49) rotate(-8)"/><use href="#sprig" transform="translate(4 49) scale(-1 1) rotate(-8)"/>
+ <path d="m0 44 3 4-3 5-3-5Z" fill="#ae9c72" stroke="#6f745f"/>
+</g>
+<g fill="none" stroke="#96a091" stroke-width=".95"><path d="m51 287 15-16 16 9 15-19m201 43 14-14 11 3 17-18m-214 95-13-12-16 1" stroke-dasharray="2 3"/></g>
+<g fill="#a9b39b" stroke="#6e7c6d" stroke-width=".8"><circle cx="51" cy="287" r="2"/><circle cx="66" cy="271" r="2.6"/><circle cx="82" cy="280" r="1.8"/><circle cx="97" cy="261" r="2"/><circle cx="298" cy="304" r="2"/><circle cx="312" cy="290" r="2.5"/><circle cx="323" cy="293" r="1.5"/><circle cx="340" cy="275" r="2"/></g>
+<g><use href="#star" transform="translate(61 153) scale(.7)"/><use href="#star" transform="translate(333 154) scale(.58)"/><use href="#star" transform="translate(109 308) scale(.65)"/><use href="#star" transform="translate(270 336) scale(.9)"/><use href="#star" transform="translate(162 210) scale(.62)"/><use href="#star" transform="translate(174 145) scale(.6)"/><use href="#star" transform="translate(238 259) scale(.5)"/></g>
+<!-- Inlane chevrons and plunger ruler. -->
+<g fill="none" stroke="#899886" stroke-linecap="round" stroke-linejoin="round">
+ <path d="M44 303q-4 52 5 73m4 9q4 16 25 32m278-114q4 52-5 73m-4 9q-4 16-25 32" stroke-width="1.4" stroke-dasharray="6 4"/>
+ <path d="m44 365 5 10 3-11m10 38 8 8-2-10m286-35-5 10-3-11m-10 38-8 8 2-10" stroke-width="2"/>
+</g>
+<g fill="none" stroke="#a49372"><path d="M408 170v252" stroke-width=".8"/><path d="M408 185h-6m6 17h-3m3 17h-6m6 17h-3m3 17h-6m6 17h-3m3 17h-6m6 17h-3m3 17h-6m6 17h-3m3 17h-6m6 17h-3m3 17h-6" stroke-width="1.2"/></g>
+<path d="m389 198 7-10 7 10m-12 0 5-7 5 7" stroke="#858f7d" stroke-width="1.2" fill="none"/>
+<!-- Bottom apron and the open drain. -->
+<path d="M18 407q18 22 49 42l82 48 14 22-144-1Z" fill="#c5ceba" stroke="#677368" stroke-width="1.3"/>
+<path d="M378 408q-17 21-49 41l-82 48-14 22h143Z" fill="#c5ceba" stroke="#677368" stroke-width="1.3"/>
+<path d="m22 420 5 87 125 3-10-11-76-44m308-36-3 87-127 3 10-11 76-44" fill="none" stroke="#eff0d9" stroke-width="1.6"/>
+<path d="m30 491 70 1-40-24Zm335 0-70 1 40-24Z" fill="url(#hatch)" opacity=".65"/>
+<path d="M23 506q81 0 126 3l10 10h77l12-10 127-3v15l-351-1Z" fill="#45575a" stroke="#475153"/>
+<path d="M162 517h72l-8 6h-57Z" fill="#454e4c"/>
+<g stroke="#a29776" fill="none" stroke-width="1.1"><path d="m196 497 4 4 4-4m-8 5 4 4 4-4"/></g>
+<use href="#pin" x="17" y="17"/><use href="#pin" x="422" y="18"/><use href="#pin" x="18" y="518"/><use href="#pin" x="420" y="519"/>
+</svg>

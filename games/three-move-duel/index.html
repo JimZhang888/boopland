@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="zh-CN" data-i18n-scope="bridgeDuel">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#f5f2e8">
+  <title data-i18n="bridgeDuel.title">三招定胜负</title>
+  <link rel="icon" href="./cover.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="./style.css">
+  <script defer src="../../analytics.js"></script>
+  <script defer src="../../i18n.js"></script>
+  <script defer src="./translations.js"></script>
+  <script defer src="./engine.js"></script>
+  <script defer src="./art.js"></script>
+  <script defer src="./game.js"></script>
+</head>
+<body>
+<svg class="symbols" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><defs>
+  <symbol id="i-advance" viewBox="0 0 48 48"><path d="M5 30q10-13 29-12m-8-7 12 7-9 10M8 36q8-6 15-7M5 24l9-7"/><path d="m24 33 4-4" opacity=".55"/></symbol>
+  <symbol id="i-retreat" viewBox="0 0 48 48"><path d="M41 28q-7-13-28-10m9-9-13 9 11 8M39 35q-7-7-15-7m14-10-7-5"/><path d="m15 32-4-3" opacity=".55"/></symbol>
+  <symbol id="i-thrust" viewBox="0 0 48 48"><path d="m14 31 3 3L40 8l2-5-6 3Z" fill="currentColor" fill-opacity=".13"/><path d="m12 27 9 9m-4-5-9 10-3-3 9-10M7 40q-3 3-5 2m20-22 7-8m-5 17 8-6"/></symbol>
+  <symbol id="i-guard" viewBox="0 0 48 48"><path d="M24 5q7 5 15 6l-1 12q-2 12-14 20Q12 36 9 24L8 11q9-1 16-6Z" fill="currentColor" fill-opacity=".10"/><path d="m24 10 10 4-1 10q-2 8-9 13m0-22v15m-6-8 6 5 7-9"/></symbol>
+  <symbol id="i-eye" viewBox="0 0 48 48"><path d="M3 25Q23 1 45 24Q25 45 3 25Z"/><circle cx="24" cy="24" r="6"/></symbol>
+  <symbol id="i-undo" viewBox="0 0 48 48"><path d="m15 10-9 11 12 5M8 21q29-11 31 4 2 12-19 13"/></symbol>
+  <symbol id="i-arrow" viewBox="0 0 48 48"><path d="M7 24h32M27 12l13 12-13 12"/></symbol>
+  <symbol id="i-book" viewBox="0 0 48 48"><path d="M5 9q12-3 19 2 8-5 19-3v30q-11-2-19 3-9-5-19-3Zm19 2v30M10 17q4-1 8 1m12-1q4-2 8-2"/></symbol>
+  <symbol id="i-swap" viewBox="0 0 48 48"><path d="M6 15h33L28 7M42 32H9l11 9"/></symbol>
+  <symbol id="i-close" viewBox="0 0 48 48"><path d="m12 12 24 24m0-24L12 36"/></symbol>
+  <symbol id="i-swords" viewBox="0 0 48 48"><path d="m7 5 5 2 24 25-4 4L9 11Zm34 0-5 2L12 32l4 4 23-25ZM8 29l12 12m8 0 12-12M13 35l-8 9m30-9 8 9"/></symbol>
+</defs></svg>
+<main class="shell">
+  <header class="mast">
+    <div class="identity"><span class="seal" aria-hidden="true"><svg><use href="#i-swords"/></svg></span><h1 data-i18n="bridgeDuel.title">三招定胜负</h1></div>
+    <nav>
+      <a class="nav-link back" href="../../games.html" data-i18n-label="common.back"><svg class="ico"><use href="#i-arrow"/></svg><span data-i18n="common.back">返回大厅</span></a>
+      <button class="nav-link" id="help"><svg class="ico"><use href="#i-book"/></svg><span data-i18n="bridgeDuel.rules">对决规则</span></button>
+    </nav>
+  </header>
+
+  <section class="arena" data-i18n-label="bridgeDuel.arena">
+    <div class="hud">
+      <div class="fighter-card own"><span class="fighter-name" data-i18n="bridgeDuel.hero">青衫客</span><span class="side-label" data-i18n="bridgeDuel.you">你</span><div class="hp" id="player-hp" role="img"></div></div>
+      <div class="arena-title"><b data-i18n="bridgeDuel.arena">五步桥</b><span id="round"></span></div>
+      <div class="fighter-card foe"><span class="side-label" data-i18n="bridgeDuel.rival">对手</span><span class="fighter-name" id="rival-name"></span><div class="hp" id="rival-hp" role="img"></div></div>
+    </div>
+    <div class="picture" id="picture"><svg id="world" role="img" viewBox="0 0 1000 365" xmlns="http://www.w3.org/2000/svg"></svg></div>
+    <div class="intel">
+      <div class="tell" role="status"><span class="tell-icon"><svg class="ico"><use id="tell-icon" href="#i-eye"/></svg></span><div><b id="tell-label"></b><span id="tell-text"></span></div></div>
+      <button class="quiet" id="rivals"><svg class="ico"><use href="#i-swap"/></svg><span data-i18n="bridgeDuel.opponents">切换对手</span></button>
+    </div>
+  </section>
+
+  <div class="desk">
+    <section class="techniques">
+      <div class="section-head"><h2 id="actions-title"></h2><span id="action-hint"></span></div>
+      <div class="move-grid" id="moves"></div>
+      <div id="records" hidden></div>
+    </section>
+    <section class="sequence">
+      <div class="section-head"><h2 data-i18n="bridgeDuel.sequence">我的三招</h2>
+        <div class="mini-tools">
+          <button class="text-btn" id="preview"><svg class="ico"><use href="#i-eye"/></svg><span id="preview-label"></span></button>
+          <button class="text-btn" id="undo"><svg class="ico"><use href="#i-undo"/></svg><span data-i18n="bridgeDuel.undo">撤回</span></button>
+        </div>
+      </div>
+      <div class="slots" id="slots"></div>
+      <button class="commit" id="primary"><svg class="ico"><use href="#i-swords"/></svg><span id="primary-label"></span><svg class="ico end-arrow"><use href="#i-arrow"/></svg></button>
+    </section>
+  </div>
+</main>
+
+<dialog id="sheet" aria-labelledby="sheet-title">
+  <div class="sheet-head"><h2 id="sheet-title"></h2><button class="close" id="close" data-i18n-label="bridgeDuel.close"><svg class="ico"><use href="#i-close"/></svg></button></div>
+  <div class="sheet-body" id="sheet-body"></div>
+  <a class="sheet-back" href="../../games.html" data-i18n="common.back">返回大厅</a>
+</dialog>
+</body>
+</html>
+

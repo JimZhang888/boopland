@@ -1,0 +1,43 @@
+{
+  "order": 94,
+  "title": "晴雨花铺",
+  "description": "经营街角花铺的七天。看晴雨备花，按订单扎束，赶在花谢前把生意做好。",
+  "category": "策略",
+  "path": "./games/weather-florist/index.html",
+  "cover": "./games/weather-florist/cover.svg",
+  "color": "#eae2cf",
+  "locales": {
+    "zh-CN": {
+      "title": "晴雨花铺",
+      "description": "经营街角花铺的七天。看晴雨备花，按订单扎束，赶在花谢前把生意做好。"
+    },
+    "en": {
+      "title": "Rain or Shine Florist",
+      "description": "Run a corner flower shop for seven days. Read the weather, stock fresh stems and fill orders before the flowers wilt."
+    },
+    "ja": {
+      "title": "晴雨の花屋",
+      "description": "街角の花屋を営む7日間。空模様を読み、花を仕入れ、しおれる前に注文の花束を届けよう。"
+    },
+    "ko": {
+      "title": "맑음비 꽃집",
+      "description": "일주일 동안 골목 꽃집을 운영하세요. 날씨에 맞춰 꽃을 들이고 시들기 전에 주문받은 꽃다발을 만드세요."
+    },
+    "fr": {
+      "title": "Fleurs de saison",
+      "description": "Tenez une boutique de fleurs pendant sept jours. Suivez la météo et composez vos bouquets avant que les fleurs ne fanent."
+    },
+    "de": {
+      "title": "Blumen bei jedem Wetter",
+      "description": "Führe sieben Tage lang einen Blumenladen. Plane deinen Einkauf nach dem Wetter und binde die Sträuße, bevor die Blumen verwelken."
+    },
+    "es": {
+      "title": "Flores entre sol y lluvia",
+      "description": "Lleva una floristería de barrio durante siete días. Compra según el tiempo y prepara los ramos antes de que se marchiten."
+    },
+    "pt-BR": {
+      "title": "Floricultura Sol e Chuva",
+      "description": "Cuide de uma floricultura de bairro por sete dias. Compre conforme o clima e monte os buquês antes que as flores murchem."
+    }
+  }
+}

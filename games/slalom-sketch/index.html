@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="zh-CN" data-i18n-scope="slalom">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#f4f1e8">
+  <title data-i18n="slalom.title">山道速降</title>
+  <link rel="icon" href="cover.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="style.css">
+  <script defer src="../../analytics.js"></script>
+</head>
+<body>
+  <svg class="symbols" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><defs>
+    <symbol id="mountains" viewBox="0 0 64 64"><path d="M4 47 20 21l6 9L37 10l23 37-13-8-7 4-9-8-7 6-5-2z" fill="#ebe5d7" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"/><path d="m27 27 10-17 12 20-8-4-3 3-3-7-4 7zm-15 7 8-13 7 11-6-2-2 4-2-3z" fill="#687d78"/><path d="M5 51q24 3 52-2m-41 7 29-2" fill="none" stroke="currentColor" stroke-width="1.4"/></symbol>
+    <symbol id="flag" viewBox="0 0 24 24"><path d="M5 21V4q4-3 8 0t7 0l-1 9q-4 2-8-1t-6 0"/></symbol>
+    <symbol id="clock" viewBox="0 0 24 24"><circle cx="12" cy="14" r="8"/><path d="M9 2h6m-3 0v4m5 1 2-2m-7 4v5l3 1"/></symbol>
+    <symbol id="watch" viewBox="0 0 24 24"><path d="m7 9 3-7h5l3 7m-9 7-1 5 4-2 4 2-1-5"/><circle cx="12" cy="12" r="5.5"/></symbol>
+    <symbol id="pause-icon" viewBox="0 0 24 24"><path d="M8 5v14m8-14v14" stroke-width="3"/></symbol>
+    <symbol id="left-arrow" viewBox="0 0 24 24"><path d="m11 5-7 7 7 7M4 12h16"/></symbol>
+    <symbol id="right-arrow" viewBox="0 0 24 24"><path d="m13 5 7 7-7 7m7-7H4"/></symbol>
+    <symbol id="route-one" viewBox="0 0 51 46"><path d="M12 6c22-4 40 6 20 13S2 29 16 34s21 0 21 7"/><circle cx="12" cy="6" r="2.7"/><path class="dot" d="m34 39 3 4 3-4"/></symbol>
+    <symbol id="route-two" viewBox="0 0 51 46"><path d="M33 5C7 6 5 11 29 16s17 8-4 10-19 8 1 10l5 4"/><circle cx="33" cy="5" r="2.7"/><path class="dot" d="m27 41 5 1-1-5"/></symbol>
+    <symbol id="route-three" viewBox="0 0 51 46"><path d="M12 6c28-2 38 3 19 11S8 25 23 28s16 4 5 8l-5 5"/><circle cx="12" cy="6" r="2.7"/><path class="dot" d="m23 37-1 5 5-1"/></symbol>
+  </defs></svg>
+  <main class="shell">
+    <header class="mast">
+      <div class="brand"><svg class="brand-mark" aria-hidden="true"><use href="#mountains"/></svg>
+        <div><p data-i18n="slalom.discipline">单人滑雪计时赛</p><h1 data-i18n="slalom.title">山道速降</h1></div>
+      </div>
+      <a class="back" href="../../games.html"><svg class="icon"><use href="#left-arrow"/></svg><span data-i18n="common.back">返回大厅</span></a>
+    </header>
+    <div class="spread">
+      <section class="race">
+        <div class="hud">
+          <div class="stat timer"><svg class="icon"><use href="#clock"/></svg><div><span data-i18n="slalom.time">滑行用时</span><strong id="time">00:00.00</strong></div></div>
+          <div class="stat"><div><span data-i18n="slalom.gates">已穿旗门</span><strong id="gates">0 / 6</strong></div></div>
+          <div class="stat"><div><span data-i18n="slalom.penalty">罚秒</span><strong id="penalty">+0 s</strong></div></div>
+          <button id="pause" class="pause" disabled data-i18n-label="slalom.pause" data-i18n-title="slalom.pause"><svg class="icon"><use href="#pause-icon"/></svg></button>
+        </div>
+        <div class="slope">
+          <canvas id="scene" data-i18n-label="slalom.canvas" role="img"></canvas>
+          <div id="feedback" role="status" class="feedback"></div>
+          <div id="overlay" hidden>
+            <section class="slip" aria-labelledby="state-title">
+              <svg class="slip-icon icon"><use href="#flag"/></svg>
+              <h2 id="state-title"></h2>
+              <span id="course-state"></span>
+              <strong id="total" hidden></strong>
+              <p id="breakdown" hidden></p>
+              <div class="actions"><button id="resume" class="primary"></button><button id="secondary" class="secondary"></button></div>
+            </section>
+          </div>
+        </div>
+        <div class="edges">
+          <button class="edge" data-dir="-1" data-i18n-label="slalom.left"><svg class="icon"><use href="#left-arrow"/></svg><span data-i18n="slalom.left">左压刃</span></button>
+          <span id="steer-note" data-i18n="slalom.steer">长按转弯，松开回正</span>
+          <button class="edge" data-dir="1" data-i18n-label="slalom.right"><span data-i18n="slalom.right">右压刃</span><svg class="icon"><use href="#right-arrow"/></svg></button>
+        </div>
+      </section>
+      <aside class="course-paper">
+        <div class="panorama"><img src="ridge.svg" alt=""></div>
+        <div class="side-content">
+          <h2 class="courses-title"><svg class="icon"><use href="#flag"/></svg><span data-i18n="slalom.courses">选择赛道</span></h2>
+          <div id="routes" role="group" data-i18n-label="slalom.courses"></div>
+          <select id="mobile-route" data-i18n-label="slalom.courses"></select>
+          <p id="lesson"></p>
+          <div class="best"><span><svg class="icon"><use href="#watch"/></svg><span data-i18n="slalom.best">个人最佳</span></span><strong id="best">—</strong></div>
+          <button id="go" class="primary"><span></span><svg class="icon"><use href="#right-arrow"/></svg></button>
+        </div>
+      </aside>
+    </div>
+  </main>
+  <script src="../../i18n.js"></script>
+  <script src="translations.js"></script>
+  <script src="engine.js"></script>
+  <script src="scene.js"></script>
+  <script src="game.js"></script>
+</body>
+</html>

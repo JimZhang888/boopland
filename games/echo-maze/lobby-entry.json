@@ -1,0 +1,43 @@
+{
+  "title": "回声迷宫",
+  "description": "带小蝙蝠穿过六座暗色纸迷宫。借三次回声照亮岩壁，循罗盘找到出口。",
+  "category": "解谜",
+  "order": 86,
+  "path": "./games/echo-maze/index.html",
+  "cover": "./games/echo-maze/cover.svg",
+  "color": "#d8c9a9",
+  "locales": {
+    "zh-CN": {
+      "title": "回声迷宫",
+      "description": "带小蝙蝠穿过六座暗色纸迷宫。借三次回声照亮岩壁，循罗盘找到出口。"
+    },
+    "en": {
+      "title": "Echo Maze",
+      "description": "Guide a little bat through six dark paper mazes. Sound three echoes in each cave to reveal its walls and find the way out."
+    },
+    "ja": {
+      "title": "こだまの迷路",
+      "description": "小さなコウモリと六つの暗い紙の迷路へ。各洞窟で3回使えるこだまで岩壁を照らし、出口を探そう。"
+    },
+    "ko": {
+      "title": "메아리 미로",
+      "description": "작은 박쥐와 함께 어두운 종이 미로 여섯 곳을 탐험하세요. 동굴마다 세 번의 메아리로 암벽을 밝히고 출구를 찾으세요."
+    },
+    "fr": {
+      "title": "Le labyrinthe des échos",
+      "description": "Guidez une chauve-souris à travers six labyrinthes de papier plongés dans le noir. Trois échos par grotte révèlent les parois."
+    },
+    "de": {
+      "title": "Echolabyrinth",
+      "description": "Hilf einer Fledermaus durch sechs dunkle Papierlabyrinthe. Drei Echos pro Höhle machen die Felswände sichtbar."
+    },
+    "es": {
+      "title": "El laberinto de los ecos",
+      "description": "Guía a un murciélago por seis laberintos de papel a oscuras. Usa tres ecos por cueva para ver las paredes y hallar la salida."
+    },
+    "pt-BR": {
+      "title": "Labirinto dos Ecos",
+      "description": "Guie um morcego por seis labirintos de papel no escuro. Use três ecos por caverna para iluminar as paredes e encontrar a saída."
+    }
+  }
+}

@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="zh-CN" data-i18n-scope="seven-day-island">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#f5f2e8">
+  <title data-i18n="seven-day-island.title">荒岛七日</title>
+  <link rel="icon" href="cover.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="style.css">
+  <script defer src="../../analytics.js"></script>
+  <script defer src="../../i18n.js"></script>
+  <script defer src="strings.js"></script>
+  <script defer src="island.js"></script>
+  <script defer src="play.js"></script>
+</head>
+<body>
+<svg class="symbol-bank" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><defs><symbol id="i-back" viewBox="0 0 24 24"><path d="M20 12H4m6-6-6 6 6 6"/></symbol>
+<symbol id="i-book" viewBox="0 0 24 24"><path d="M4 4q5-1 8 2 4-3 8-2v14q-4-1-8 2-4-3-8-2zM12 6v14"/></symbol>
+<symbol id="i-flag" viewBox="0 0 24 24"><path d="m5 21 1-18m0 1q4-2 7 1t6 0l-1 9q-3 1-6-1t-6 0"/></symbol>
+<symbol id="i-next" viewBox="0 0 24 24"><path d="m8 5 7 7-7 7"/></symbol>
+<symbol id="i-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4.4"/><path d="M12 1v3m0 16v3M1 12h3m16 0h3M4 4l2 2m12 12 2 2M4 20l2-2M18 6l2-2"/></symbol>
+<symbol id="i-hot" viewBox="0 0 24 24"><circle cx="12" cy="10" r="4.4"/><path d="m12 1 0 2M3 10h2m14 0h2M5 3l2 2m10 0 2-2M3 18q4-2 8 0t9 0M4 22q4-2 8 0t8 0"/></symbol>
+<symbol id="i-rain" viewBox="0 0 24 24"><path d="M4 14q-4-6 2-7 3-8 9-4 3 1 3 5 5-1 4 4-1 2-4 2zM6 17l-2 4m9-4-2 4m9-4-2 4"/></symbol>
+<symbol id="i-wind" viewBox="0 0 24 24"><path d="M2 8h13q6 0 4-5-1-3-4-1M1 12h19q4 0 3-4M5 16h8q6 0 4 5-2 3-5 0"/></symbol>
+<symbol id="i-water" viewBox="0 0 24 24"><path fill="#c7dce0" d="M12.5 2C10 7 4.7 12.3 5.1 16.2c.4 4 3.5 6.2 7.3 6 4.6-.2 7-3.1 6.7-7.2-.3-4.1-4.8-8.6-6.6-13z"/><path d="M8 15q0 3.6 3.5 4.1"/></symbol>
+<symbol id="i-food" viewBox="0 0 24 24"><path fill="#e8c4a9" d="M2 12q7-10 16-2l4-4-.8 11.8-4-3.5Q9 22 2 12Z"/><path d="M9 7.8q3 4 0 8m2-8 4-3-.4 4"/><circle cx="6.8" cy="11.5" r=".9" fill="currentColor"/></symbol>
+<symbol id="i-wood" viewBox="0 0 24 24"><path fill="#d7be97" d="m2 14 13-8c3-1.8 7.5 2.5 6 5.5l-13 9.1Z"/><ellipse fill="#ead6b5" cx="5.5" cy="17.4" rx="3.3" ry="4.4" transform="rotate(-38 5.5 17.4)"/><path d="m8 14 11-6m-9 9 10-7m-16 7q2-1 3 2"/></symbol>
+<symbol id="i-build" viewBox="0 0 24 24"><path fill="#d4b895" d="m2 16 13-8 7 5-13 9z"/><path d="m5 18 13-8m-10 10 12-8m-14.5 1.4 6.8 5M9 11.5l6.6 5.2M12 10V2l7 5-7 1" fill="#e6d3aa"/></symbol>
+<symbol id="i-sail" viewBox="0 0 24 24"><path d="M12 2v13M10 4l-6 9h6zm4 1 5 8h-5z" fill="currentColor" stroke-width=".6"/><path d="M2 16h20l-4 4H6z" fill="currentColor" stroke-width=".6"/><path d="M3 22q3-1.5 6 0t6 0t6 0" stroke-width="1"/></symbol>
+<symbol id="i-reset" viewBox="0 0 24 24"><path d="M3 10a9 9 0 1 1 1 8M3 3v7h7"/></symbol>
+<symbol id="i-close" viewBox="0 0 24 24"><path d="m6 6 12 12m0-12L6 18"/></symbol>
+<symbol id="i-night" viewBox="0 0 24 24"><path d="M2 16h20M6 15a6 6 0 0 1 12 0M12 2v3M3 7l2 2m14 0 2-2M5 20h14"/></symbol>
+<symbol id="i-dice" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="3"/><g fill="currentColor" stroke="none"><circle cx="7.5" cy="7.5" r="1.5"/><circle cx="12" cy="12" r="1.5"/><circle cx="16.5" cy="16.5" r="1.5"/></g></symbol></defs></svg>
+<main class="shell">
+<nav>
+  <a class="back" href="../../games.html"><svg class="ico" aria-hidden="true"><use href="#i-back"/></svg><span data-i18n="common.back">返回大厅</span></a>
+  <div class="nav-right"><button id="journal" data-i18n-label="seven-day-island.journal"><svg class="ico" aria-hidden="true"><use href="#i-book"/></svg><span data-i18n="seven-day-island.journal"></span></button><button id="voyages" data-i18n-label="seven-day-island.voyages"><svg class="ico" aria-hidden="true"><use href="#i-flag"/></svg><span id="mode-name"></span><span class="chevron" aria-hidden="true">⌄</span></button></div>
+</nav>
+<header class="heading"><div class="identity"><div class="emblem"><svg class="ico" aria-hidden="true"><use href="#i-sail"/></svg></div><div><h1 data-i18n="seven-day-island.title">荒岛七日</h1><p data-i18n="seven-day-island.aim"></p></div></div><ol id="timeline" data-i18n-label="seven-day-island.days"></ol></header>
+<section class="board">
+<div class="coast">
+  <section class="chart">
+    <div class="day-line"><h2 id="day"></h2><span class="today" id="today"></span></div>
+    <div class="picture"><svg class="map" viewBox="0 0 760 422" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><image href="cover.svg" width="760" height="422"/><g class="weather-art hot-sky" stroke="#be9761" fill="none"><circle cx="140" cy="83" r="24" fill="#e7cc90" opacity=".75"/><circle cx="140" cy="83" r="28" stroke-dasharray="7 5" opacity=".6"/></g>
+    <g class="weather-art rain-sky"><path d="M0 0h760v422H0Z" fill="#778e9b" opacity=".13"/><path d="M72 122l-5 9m17 -19 -4 8m88 -27 -5 9m20 -1 -5 8m163 25 -5 9m11 -19 -5 9m25 -13 -4 7m80 20 -5 8m135 -47 -5 9m13 -2 -5 9m48 52 -3 6m-614 50 -5 9m65 7 -4 8m321 36 -4 8m133 -22 -5 8m170 -16 -5 8m-13 -18 -4 7m-233 114 -4 7" fill="none" stroke="#7f99a1" stroke-width="1.8"/></g>
+    <g class="weather-art wind-sky" stroke="#92a597" stroke-linecap="round" fill="none" stroke-width="1.3"><path d="M80 118q55 -7 77 -4t27 -3q3 -6 -3 -7M114 122q28 -3 51 -1M395 90q54 -7 73 -3t26 -2m-69 11 34 -2M39 279q25 -5 40 -2m512 -48q34 -5 63 -2"/></g><g transform="translate(695 65)" stroke="#657e71" stroke-linejoin="round" opacity=".8"><circle r="20" fill="none" stroke-width=".8"/><circle r="15.5" fill="none" stroke-width=".6"/><g fill="#f6efda" stroke-width="1"><g transform="rotate(0)"><path d="M0 -27 4 0 0 3 -4 0Z"/><path d="M0 -27 0 0 -4 0Z" fill="#7d9586"/></g><g transform="rotate(90)"><path d="M0 -27 4 0 0 3 -4 0Z"/><path d="M0 -27 0 0 -4 0Z" fill="#7d9586"/></g><g transform="rotate(180)"><path d="M0 -27 4 0 0 3 -4 0Z"/><path d="M0 -27 0 0 -4 0Z" fill="#7d9586"/></g><g transform="rotate(270)"><path d="M0 -27 4 0 0 3 -4 0Z"/><path d="M0 -27 0 0 -4 0Z" fill="#7d9586"/></g></g><circle r="2.2" fill="#54685e"/></g><g transform="translate(407 325) rotate(-9)" stroke-linejoin="round" stroke-linecap="round"><ellipse cx="0" cy="10" rx="31" ry="4" fill="#7e9d90" opacity=".35"/><g class="raft-log" data-log="0" transform="translate(-8 -5)"><path d="M-19 0l28 -7q4 -1 6 2q1 3 -2 4l-30 7Z" /><ellipse cx="-17.8" cy="3" rx="2.9" ry="3.7" transform="rotate(-25 -18 3)" /></g><g class="raft-log" data-log="1" transform="translate(-4.8 -2.5)"><path d="M-19 0l28 -7q4 -1 6 2q1 3 -2 4l-30 7Z" /><ellipse cx="-17.8" cy="3" rx="2.9" ry="3.7" transform="rotate(-25 -18 3)" /></g><g class="raft-log" data-log="2" transform="translate(-1.5999999999999996 0)"><path d="M-19 0l28 -7q4 -1 6 2q1 3 -2 4l-30 7Z" /><ellipse cx="-17.8" cy="3" rx="2.9" ry="3.7" transform="rotate(-25 -18 3)" /></g><g class="raft-log" data-log="3" transform="translate(1.6000000000000014 2.5)"><path d="M-19 0l28 -7q4 -1 6 2q1 3 -2 4l-30 7Z" /><ellipse cx="-17.8" cy="3" rx="2.9" ry="3.7" transform="rotate(-25 -18 3)" /></g><g class="raft-log" data-log="4" transform="translate(4.800000000000001 5)"><path d="M-19 0l28 -7q4 -1 6 2q1 3 -2 4l-30 7Z" /><ellipse cx="-17.8" cy="3" rx="2.9" ry="3.7" transform="rotate(-25 -18 3)" /></g><g class="raft-log" data-log="5" transform="translate(8 7.5)"><path d="M-19 0l28 -7q4 -1 6 2q1 3 -2 4l-30 7Z" /><ellipse cx="-17.8" cy="3" rx="2.9" ry="3.7" transform="rotate(-25 -18 3)" /></g><g id="raft-sail" stroke="#5b6556" stroke-width="1.3"><path d="M0 1v-36"/><path d="M2 -33q11 6 18 19l-18 5Z" fill="#f4e9cb"/></g></g></svg></div>
+    <div class="weather"><div><small data-i18n="seven-day-island.rations"></small><span class="readout" id="cost"></span></div><div><small data-i18n="seven-day-island.tomorrow"></small><span class="readout" id="forecast"></span></div></div>
+  </section>
+  <section class="stores"><div class="stores-head"><h2 data-i18n="seven-day-island.camp"></h2><small data-i18n="seven-day-island.projection"></small></div>
+    <div class="stock"><div class="stock-item"><svg class="ico" aria-hidden="true"><use href="#i-water"/></svg><div><small data-i18n="seven-day-island.rwater"></small><b id="s-water"></b></div></div><div class="stock-item"><svg class="ico" aria-hidden="true"><use href="#i-food"/></svg><div><small data-i18n="seven-day-island.rfood"></small><b id="s-food"></b></div></div><div class="stock-item"><svg class="ico" aria-hidden="true"><use href="#i-wood"/></svg><div><small data-i18n="seven-day-island.rwood"></small><b id="s-wood"></b></div></div><div class="stock-item"><svg class="ico" aria-hidden="true"><use href="#i-build"/></svg><div><small data-i18n="seven-day-island.rbuild"></small><b id="s-build"></b></div></div></div>
+  </section>
+</div>
+<section class="workpad">
+  <div id="planner">
+    <div class="section-heading"><h2><svg class="ico" aria-hidden="true"><use href="#i-dice"/></svg><span data-i18n="seven-day-island.allocation"></span></h2><span class="counter" id="counter"></span></div>
+    <p data-i18n="seven-day-island.choose"></p>
+    <div class="dice-row"><button class="die" data-die="0"><span class="face" aria-hidden="true"></span><span class="die-job"></span></button><button class="die" data-die="1"><span class="face" aria-hidden="true"></span><span class="die-job"></span></button><button class="die" data-die="2"><span class="face" aria-hidden="true"></span><span class="die-job"></span></button></div>
+    <div class="job-grid"><button class="job" data-job="water"><svg class="ico" aria-hidden="true"><use href="#i-water"/></svg><span><strong data-i18n="seven-day-island.awater"></strong><small class="gain"></small></span></button><button class="job" data-job="food"><svg class="ico" aria-hidden="true"><use href="#i-food"/></svg><span><strong data-i18n="seven-day-island.afood"></strong><small class="gain"></small></span></button><button class="job" data-job="wood"><svg class="ico" aria-hidden="true"><use href="#i-wood"/></svg><span><strong data-i18n="seven-day-island.awood"></strong><small class="gain"></small></span></button><button class="job" data-job="build"><svg class="ico" aria-hidden="true"><use href="#i-build"/></svg><span><strong data-i18n="seven-day-island.abuild"></strong><small class="gain"></small></span></button></div>
+    <div class="commit-row"><button id="commit" class="primary"><svg class="ico" aria-hidden="true"><use href="#i-night"/></svg><span data-i18n="seven-day-island.commit"></span></button><button id="clear" class="clear" data-i18n-title="seven-day-island.undo" data-i18n-label="seven-day-island.undo"><svg class="ico" aria-hidden="true"><use href="#i-reset"/></svg></button></div>
+  </div>
+  <div class="end" id="end" hidden><div class="end-mark"><svg class="ico" aria-hidden="true"><use href="#i-sail"/></svg></div><h2 id="outcome"></h2><p id="outcome-detail"></p><p id="outcome-stock"></p><button class="primary" id="replay"><svg class="ico" aria-hidden="true"><use href="#i-reset"/></svg><span data-i18n="seven-day-island.replay"></span></button><button class="secondary" id="new-random"><span data-i18n="seven-day-island.fresh"></span></button></div>
+</section>
+</section>
+</main>
+<dialog id="dialog" aria-labelledby="dialog-title"><div class="dialog-head"><h2 id="dialog-title"></h2><button id="close" data-i18n-label="seven-day-island.close"><svg class="ico" aria-hidden="true"><use href="#i-close"/></svg></button></div>
+<div class="dialog-body">
+<section id="notes"><p data-i18n="seven-day-island.how"></p><p data-i18n="seven-day-island.woodRule"></p><p data-i18n="seven-day-island.endRule"></p><details><summary data-i18n="seven-day-island.route"></summary><p data-i18n="seven-day-island.routeHelp"></p><ol id="route"></ol></details></section>
+<section id="modes"><p data-i18n="seven-day-island.restartNote"></p><button class="mode-option" id="start-tutorial"><svg class="ico" aria-hidden="true"><use href="#i-book"/></svg><span><strong data-i18n="seven-day-island.tutorial"></strong><small data-i18n="seven-day-island.fixed"></small></span><svg class="ico" aria-hidden="true"><use href="#i-next"/></svg></button><button class="mode-option" id="start-random"><svg class="ico" aria-hidden="true"><use href="#i-flag"/></svg><span><strong data-i18n="seven-day-island.random"></strong><small data-i18n="seven-day-island.shuffle"></small></span><svg class="ico" aria-hidden="true"><use href="#i-next"/></svg></button><p id="last"></p></section>
+</div></dialog>
+<div class="sr-only" id="live" aria-live="polite" role="status"></div>
+</body></html>

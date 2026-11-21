@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 400">
+  <defs>
+    <pattern id="paper" width="28" height="21" patternUnits="userSpaceOnUse"><path d="m2 4 6-1m10 11 3 .5" fill="none" stroke="#958976" stroke-width="1" opacity=".2"/></pattern>
+    <pattern id="ruled" width="24" height="48" patternUnits="userSpaceOnUse"><path d="M0 47h24" stroke="#9ca998" stroke-opacity=".56" stroke-dasharray="4 3"/></pattern>
+    <g id="ring"><circle r="17" fill="#d99986"/><circle r="8" fill="none"/></g>
+    <g id="triangle"><circle r="17" fill="#dfc17c"/><path d="m0-9 9 16h-18z" fill="none"/></g>
+    <g id="leaf"><circle r="17" fill="#a4bf9c"/><path d="M-8 8q-2-17 17-17Q12 8-8 8zm0 0L6-6" fill="none"/></g>
+    <g id="wave"><circle r="17" fill="#98b8c6"/><path d="M-11-3q5-7 11 0t11 0m-22 7q5-7 11 0t11 0" fill="none"/></g>
+    <g id="star"><circle r="17" fill="#b4a6bd"/><path d="m0-10 3 6 7 1-5 5 1 7-6-3-6 3 1-7-5-5 7-1z" fill="none"/></g>
+    <g id="hole" fill="#e5e1d0" stroke="#b0ad9e"><circle r="10"/></g>
+  </defs>
+  <rect width="640" height="400" fill="#dfd9c5"/><rect width="640" height="400" fill="url(#paper)"/>
+  <g transform="translate(103 38) rotate(-6 170 152)" stroke="#605e50" stroke-width="2" stroke-linejoin="round">
+    <rect x="6" y="8" width="359" height="326" rx="8" fill="#868574" opacity=".3" stroke="none"/>
+    <path d="M4 1 357 0l3 322-356 4z" fill="#d4cdba"/><path d="m0 0 350-2 2 317-355 4z" fill="#faf4df"/><path d="M24 2v314" stroke="#c99583" opacity=".5"/>
+    <path d="M36 43h280" stroke="#72786a"/><rect x="32" y="47" width="284" height="239" fill="url(#ruled)" stroke="none"/>
+    <g fill="#586d55" stroke="none"><circle cx="46" cy="74" r="4"/><circle cx="46" cy="122" r="4"/><circle cx="46" cy="169" r="4"/></g>
+    <g stroke="#494f46"><use href="#ring" x="79" y="74"/><use href="#wave" x="124" y="74"/><use href="#leaf" x="169" y="74"/><use href="#ring" x="214" y="74"/>
+    <use href="#triangle" x="79" y="122"/><use href="#ring" x="124" y="122"/><use href="#star" x="169" y="122"/><use href="#leaf" x="214" y="122"/>
+    <use href="#leaf" x="79" y="169"/><use href="#ring" x="124" y="169"/><use href="#triangle" x="169" y="169"/><use href="#wave" x="214" y="169"/></g>
+    <g fill="#516b57"><circle cx="265" cy="74" r="5"/><circle cx="265" cy="122" r="5"/><circle cx="280" cy="122" r="5"/><circle cx="265" cy="169" r="5"/><circle cx="280" cy="169" r="5"/><circle cx="295" cy="169" r="5"/></g>
+    <g fill="none"><path d="m280 68 6 6-6 6-6-6zM295 68l6 6-6 6-6-6zM295 116l6 6-6 6-6-6z"/></g>
+    <g><use href="#hole" x="79" y="217"/><use href="#hole" x="124" y="217"/><use href="#hole" x="169" y="217"/><use href="#hole" x="214" y="217"/><use href="#hole" x="79" y="265"/><use href="#hole" x="124" y="265"/><use href="#hole" x="169" y="265"/></g>
+  </g>
+  <g transform="translate(405 230) rotate(11)" stroke="#726c58" stroke-width="2" stroke-linejoin="round"><path d="m0 4 163-4 2 105-165 2z" fill="#d7c7a2"/><path d="m0 4 80 59 83-63M0 105l62-57m102 56-64-53" fill="none"/><path d="m80 45 12 6 1 13-11 8-14-6-2-11z" fill="#b27e6c"/><circle cx="80" cy="58" r="6" fill="none"/></g>
+  <g transform="translate(520 55) rotate(18)" stroke="#696354" stroke-width="2"><path d="M0 4q7-7 14 0v145l-7 24-7-24z" fill="#b99566"/><path d="M4 8v139m5-138v137M0 149l7 24 7-24" fill="#e2d4b0"/><path d="m5 166 2 7 2-7z" fill="#484c43"/></g>
+</svg>

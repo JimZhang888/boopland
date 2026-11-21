@@ -1,0 +1,43 @@
+{
+  "order": 88,
+  "title": "方格舰队",
+  "description": "在方格海图上藏好三艘舰船，循着命中的坐标，抢先找出并击沉对方舰队。",
+  "category": "策略",
+  "path": "./games/grid-fleet/index.html",
+  "cover": "./games/grid-fleet/cover.svg",
+  "color": "#d6e4df",
+  "locales": {
+    "zh-CN": {
+      "title": "方格舰队",
+      "description": "在方格海图上藏好三艘舰船，循着命中的坐标，抢先找出并击沉对方舰队。"
+    },
+    "en": {
+      "title": "Grid Fleet",
+      "description": "Hide three ships on your chart. Follow the trail of hits and sink the opposing fleet before it finds yours."
+    },
+    "ja": {
+      "title": "方眼艦隊",
+      "description": "海図に3隻の艦を隠そう。命中したマスを手がかりに、相手より先に敵艦隊を沈めよう。"
+    },
+    "ko": {
+      "title": "격자 함대",
+      "description": "해도에 함선 세 척을 숨기세요. 명중한 좌표를 단서로 상대 함대를 먼저 찾아 격침하세요."
+    },
+    "fr": {
+      "title": "Bataille sur quadrillage",
+      "description": "Cachez trois navires sur la carte. Suivez la piste de vos tirs au but et coulez la flotte adverse avant qu’elle ne trouve la vôtre."
+    },
+    "de": {
+      "title": "Flotte im Raster",
+      "description": "Verstecke drei Schiffe auf deiner Seekarte. Folge den Treffern und versenke die gegnerische Flotte, bevor sie deine findet."
+    },
+    "es": {
+      "title": "Flota en cuadrícula",
+      "description": "Esconde tres barcos en la carta náutica. Sigue el rastro de tus aciertos y hunde la flota rival antes de que encuentre la tuya."
+    },
+    "pt-BR": {
+      "title": "Frota na grade",
+      "description": "Esconda três navios na carta náutica. Siga as pistas de cada acerto e afunde a frota adversária antes que ela encontre a sua."
+    }
+  }
+}

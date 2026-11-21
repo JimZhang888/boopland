@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="zh-CN" data-i18n-scope="one-more-card">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#f5f2e8">
+  <title data-i18n="one-more-card.title">再翻一张</title>
+  <link rel="icon" href="art/coin.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="style.css">
+  <script defer src="../../analytics.js"></script>
+  <script defer src="../../i18n.js"></script>
+  <script defer src="translations.js"></script>
+  <script defer src="engine.js"></script>
+  <script defer src="game.js"></script>
+</head>
+<body>
+  <svg class="symbols" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><defs>
+    <symbol id="arrow" viewBox="0 0 24 24"><path d="M20 12H4m7-7-7 7 7 7"/></symbol>
+    <symbol id="book" viewBox="0 0 24 24"><path d="M3 4q5-1 9 2 4-3 9-2v15q-5-1-9 2-4-3-9-2Zm9 2v15"/></symbol>
+    <symbol id="draw" viewBox="0 0 24 24"><path d="m5 5 7-2 1 2M3 7l3 14 6-2"/><rect x="9" y="5" width="12" height="16" rx="2"/><path d="m15 9 2 4-2 4-2-4Z"/></symbol>
+    <symbol id="bag" viewBox="0 0 24 24"><path d="m8 3 4 1 4-1-2 5H10ZM9 9h6m-5 0c-1 3-6 6-6 9s3 4 8 4 8-1 8-4-5-7-6-9m-2 4v5m-2-2h4"/></symbol>
+    <symbol id="forward" viewBox="0 0 24 24"><path d="M4 12h16m-7-7 7 7-7 7"/></symbol>
+    <symbol id="repeat" viewBox="0 0 24 24"><path d="M4 10a8 8 0 1 1 1 8M4 4v6h6"/></symbol>
+    <symbol id="rose" viewBox="0 0 36 36"><circle cx="18" cy="18" r="11.5" stroke-dasharray="1 2"/><path d="m18 1 3.1 13.9L35 18l-13.9 3.1L18 35l-3.1-13.9L1 18l13.9-3.1Z"/><path d="M18 2v16l-3.1-3.1Zm0 16v16l3.1-12.9Z" fill="currentColor" stroke="none"/></symbol>
+  </defs></svg>
+  <main class="shell">
+    <header class="topbar">
+      <a class="back" href="../../games.html" data-i18n-label="common.back"><svg aria-hidden="true"><use href="#arrow"/></svg><span data-i18n="common.back">返回大厅</span></a>
+      <h1><svg aria-hidden="true"><use href="#rose"/></svg><span data-i18n="one-more-card.title">再翻一张</span></h1>
+      <button class="help" id="help" data-i18n-label="one-more-card.rules" aria-haspopup="dialog"><svg aria-hidden="true"><use href="#book"/></svg><span data-i18n="one-more-card.rules">玩法</span></button>
+    </header>
+    <div class="table">
+      <section class="map" id="map" aria-labelledby="round">
+        <div class="round-tab"><span id="round"></span><span class="steps" id="steps" aria-hidden="true"></span></div>
+        <div class="card-space">
+          <div class="stack" id="stack">
+            <div class="sheet sheet-two"></div><div class="sheet sheet-one"></div>
+            <button id="card" class="playing-card" data-i18n-label="one-more-card.flip">
+              <img class="back-art" src="card-back.svg" alt="" draggable="false">
+              <span id="face" class="face" hidden>
+                <span class="corner" aria-hidden="true">✧</span>
+                <strong id="card-value" class="card-value"></strong>
+                <img id="card-art" class="card-art" src="art/coin.svg" alt="" draggable="false">
+                <span class="card-name" id="card-name"></span>
+                <span class="face-rule" aria-hidden="true">◆</span>
+              </span>
+            </button>
+            <span id="stamp" class="stamp" aria-hidden="true" hidden></span>
+          </div>
+          <div id="summary" class="summary" hidden>
+            <svg class="seal" aria-hidden="true"><use href="#rose"/></svg>
+            <h2 data-i18n="one-more-card.finalScore">五轮总分</h2>
+            <strong id="final-score"></strong>
+            <ol id="log" class="round-log"></ol>
+          </div>
+        </div>
+        <p id="notice" class="notice" role="status" aria-live="polite" aria-atomic="true"></p>
+      </section>
+      <section class="score" data-i18n-label="one-more-card.scores">
+        <div><span data-i18n="one-more-card.pot">本轮宝分</span><strong id="pot">0</strong></div>
+        <div><span data-i18n="one-more-card.saved">已存总分</span><strong id="saved">0</strong></div>
+      </section>
+      <section class="inventory" aria-labelledby="inventory-title">
+        <div class="inventory-head"><h2 id="inventory-title" data-i18n="one-more-card.left">牌堆余量</h2><span class="total-count" id="left">10</span></div>
+        <ul id="counts" class="counts"></ul>
+        <div class="odds"><span data-i18n="one-more-card.risk">下张翻车</span><b id="risk"></b></div>
+      </section>
+      <div class="actions">
+        <button id="primary" class="primary"><svg aria-hidden="true"><use href="#draw"/></svg><span></span></button>
+        <button id="bank" class="secondary"><svg aria-hidden="true"><use href="#bag"/></svg><span data-i18n="one-more-card.bank">收手存分</span></button>
+      </div>
+    </div>
+  </main>
+  <dialog id="guide" aria-labelledby="rules-title">
+    <header><svg aria-hidden="true"><use href="#book"/></svg><h2 id="rules-title" data-i18n="one-more-card.rules">玩法</h2></header>
+    <ol><li data-i18n="one-more-card.dealRule"></li><li data-i18n="one-more-card.scoreRule"></li><li data-i18n="one-more-card.trapRule"></li><li data-i18n="one-more-card.endRule"></li></ol>
+    <form method="dialog"><a href="../../games.html" data-i18n="common.back">返回大厅</a><button class="primary" data-i18n="one-more-card.close">回到牌桌</button></form>
+  </dialog>
+</body>
+</html>

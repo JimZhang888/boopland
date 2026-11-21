@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="zh-CN" data-i18n-scope="memoryAlbum">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#eee9db">
+  <title data-i18n="memoryAlbum.title">相册翻翻</title>
+  <link rel="icon" href="cover.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="style.css">
+  <script defer src="../../analytics.js"></script>
+</head>
+<body>
+  <main class="desk">
+    <nav class="nav">
+      <a class="nav-link" href="../../games.html"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m11 5-7 7 7 7M5 12h15"/></svg><span data-i18n="common.back">返回大厅</span></a>
+      <button class="nav-link" id="help" type="button"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8.5"/><path d="M9.6 9a2.6 2.6 0 0 1 5 .8c0 2.4-2.5 2.2-2.5 4.1m0 2.2v.15"/></svg><span data-i18n="memoryAlbum.help">玩法</span></button>
+    </nav>
+    <div class="book">
+      <section class="left-page" aria-labelledby="game-name">
+        <header class="title-block">
+          <p class="destination"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 10c0 5-7 11-7 11S5 15 5 10a7 7 0 1 1 14 0Z"/><circle cx="12" cy="10" r="2.3"/></svg><span data-i18n="memoryAlbum.destination">江南 · 水乡速写</span></p>
+          <h1 id="game-name" data-i18n="memoryAlbum.title">相册翻翻</h1>
+        </header>
+        <div class="postcard" aria-hidden="true">
+          <img src="river.svg" alt="" draggable="false">
+          <svg class="postmark" viewBox="0 0 108 72" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round">
+            <path d="M2 28q10-6 20-2t17 1m-35 7q10-5 19-1t15 0m-33 7q10-4 19 0t13 0"/>
+            <g transform="rotate(-14 68 37)"><circle cx="68" cy="37" r="31" stroke-dasharray="122 2 68 3"/><circle cx="68" cy="37" r="26" stroke-width=".9"/><path d="M44 35q17-7 24-16 9 10 24 15l-7 3-16-7-18 8zM53 38v9m8-12v12m14-13v12m7-10v10m-32 2 37-1m-29 6 19-1m-13-35 7-.2"/></g>
+          </svg>
+        </div>
+        <section class="collection" aria-labelledby="collection-title">
+          <div class="section-line"><h2 id="collection-title" data-i18n="memoryAlbum.collection">我的相册</h2><span id="progress">0 / 6</span></div>
+          <div id="pockets" class="pockets" aria-hidden="true"></div>
+        </section>
+        <div class="setup">
+          <div class="modes" role="group" data-i18n-label="memoryAlbum.size" id="modes">
+            <button type="button" data-count="6"></button><button type="button" data-count="8"></button><button type="button" data-count="12"></button>
+          </div>
+          <button class="new-game" id="new" type="button"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h3c5 0 6 10 11 10h3m-4-3 4 3-4 3M4 17h3c1.6 0 3-1.1 4.1-3m2-4c1.4-2 3-3 5-3h3m-4-3 4 3-4 3"/></svg><span data-i18n="memoryAlbum.newGame">重新洗牌</span></button>
+        </div>
+      </section>
+      <div class="binding" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
+      <section class="right-page" aria-labelledby="board-title">
+        <header class="board-heading">
+          <h2 id="board-title"></h2>
+          <div class="stats">
+            <div><span data-i18n="memoryAlbum.flips">翻牌</span><strong id="flips">0</strong></div>
+            <div><span data-i18n="memoryAlbum.best">最佳</span><strong id="best">—</strong></div>
+          </div>
+        </header>
+        <div id="play-area" class="play-area"><div id="board" class="board"></div></div>
+        <p class="status"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m4 16-1 5 5-1L20 8l-4-4zM14 6l4 4M4 16l4 4"/></svg><span id="message" role="status" aria-live="polite"></span></p>
+      </section>
+    </div>
+  </main>
+  <dialog id="rules" aria-labelledby="rules-title">
+    <h2 id="rules-title" data-i18n="memoryAlbum.help">玩法</h2>
+    <p data-i18n="memoryAlbum.instructions"></p>
+    <p data-i18n="memoryAlbum.scoring"></p>
+    <form method="dialog"><button class="new-game" data-i18n="memoryAlbum.close">回到相册</button></form>
+  </dialog>
+  <script src="../../i18n.js"></script>
+  <script src="translations.js"></script>
+  <script src="art.js"></script>
+  <script src="game.js"></script>
+</body>
+</html>

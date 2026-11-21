@@ -1,0 +1,43 @@
+{
+  "order": 97,
+  "title": "山间小旅馆",
+  "description": "翻开三天的预订，为六间山中客房安排日出、清静与结伴而来的旅人。",
+  "category": "策略",
+  "path": "./games/hillside-inn/index.html",
+  "cover": "./games/hillside-inn/cover.svg",
+  "color": "#c7d0ba",
+  "locales": {
+    "zh-CN": {
+      "title": "山间小旅馆",
+      "description": "翻开三天的预订，为六间山中客房安排日出、清静与结伴而来的旅人。"
+    },
+    "en": {
+      "title": "Hillside Inn",
+      "description": "Run a six-room mountain inn for three nights. Find a sunrise view, a quiet corner or two rooms side by side."
+    },
+    "ja": {
+      "title": "山あいの小宿",
+      "description": "山あいの六室の宿を三日間切り盛り。朝日、静けさ、連れの隣室を望む旅人に部屋を割り当てよう。"
+    },
+    "ko": {
+      "title": "산속 작은 여관",
+      "description": "산속 여관의 여섯 객실을 사흘간 운영하세요. 일출과 고요함, 일행의 옆방을 바라는 손님을 맞이하세요."
+    },
+    "fr": {
+      "title": "L’Auberge des cimes",
+      "description": "Tenez une auberge de six chambres pendant trois nuits. Offrez le soleil levant, le calme ou deux chambres voisines aux voyageurs."
+    },
+    "de": {
+      "title": "Bergherberge",
+      "description": "Führe drei Nächte lang eine Bergherberge mit sechs Zimmern. Finde Morgensonne, Ruhe und Nachbarzimmer für deine Gäste."
+    },
+    "es": {
+      "title": "Posada de montaña",
+      "description": "Gestiona seis habitaciones de montaña durante tres noches. Busca amaneceres, silencio y cuartos contiguos para tus huéspedes."
+    },
+    "pt-BR": {
+      "title": "Pousada da Serra",
+      "description": "Cuide de seis quartos na serra por três noites. Encontre sol da manhã, silêncio e quartos vizinhos para seus hóspedes."
+    }
+  }
+}

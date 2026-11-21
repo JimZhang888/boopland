@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="zh-CN" data-i18n-scope="tightrope">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#f5f2e8">
+  <title data-i18n="tightrope.title">一根钢丝</title>
+  <link rel="icon" href="cover.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="style.css">
+  <script defer src="../../analytics.js"></script>
+</head>
+<body>
+  <svg class="symbols" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"><defs>
+    <symbol id="i-back" viewBox="0 0 24 24"><path d="M20 12H4m7-7-7 7 7 7"/></symbol>
+    <symbol id="i-help" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M9 9a3.1 3.1 0 1 1 4.7 2.8q-1.7 1-1.7 2.4m0 2.1v.1"/></symbol>
+    <symbol id="i-pause" viewBox="0 0 24 24"><path d="M8 5v14m8-14v14" stroke-width="3"/></symbol>
+    <symbol id="i-play" viewBox="0 0 24 24"><path d="m8 5 11 7-11 7Z"/></symbol>
+    <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="13" r="8"/><path d="M12 8v5l3 1M9 2h6m-3 0v3"/></symbol>
+    <symbol id="i-flag" viewBox="0 0 24 24"><path d="M5 21 5 3q4-2 8 0t8 0l-3 4 3 3q-5 2-9 0T5 10"/></symbol>
+    <symbol id="i-wind" viewBox="0 0 24 24"><path d="M2 8h12q5 0 4-4-1-3-4-1M3 12h16q4 0 3-3M6 16h8q4 0 3 4-1 2-4 1"/></symbol>
+    <symbol id="i-lean" viewBox="0 0 32 24"><path d="M28 12Q17 6 4 13m5-8-6 9 11 .5" stroke-width="2.2"/></symbol>
+    <symbol id="i-umbrella" viewBox="0 0 40 40"><path d="M4 21Q8 7 21 7q12 0 16 14-4-3-8 0-4-4-9 0-3-4-8 0-4-3-8 0Z" fill="#ce9a81"/><path d="m21 5-1 24q0 8-5 5-2-1-1-4M20 8q-6 5-8 12m9-12q6 4 8 12"/></symbol>
+  </defs></svg>
+  <main class="sheet" id="sheet" data-mode="ready">
+    <nav class="nav">
+      <a class="back" href="../../games.html"><svg class="icon" aria-hidden="true"><use href="#i-back"/></svg><span data-i18n="common.back">返回大厅</span></a>
+      <div class="nav-tools">
+        <button id="help" data-i18n-label="tightrope.help" data-i18n-title="tightrope.help"><svg class="icon" aria-hidden="true"><use href="#i-help"/></svg><span data-i18n="tightrope.help">玩法</span></button>
+        <button class="square" id="pause" data-i18n-label="tightrope.pause" data-i18n-title="tightrope.pause" disabled><svg class="icon" aria-hidden="true"><use id="pause-icon" href="#i-pause"/></svg></button>
+      </div>
+    </nav>
+    <header class="heading">
+      <div class="identity"><svg class="mark" aria-hidden="true"><use href="#i-umbrella"/></svg><h1 data-i18n="tightrope.title">一根钢丝</h1></div>
+      <ol class="itinerary" id="itinerary" data-i18n-label="tightrope.route">
+        <li><i></i><span>24 m</span></li><li><i></i><span>38 m</span></li><li><i></i><span>56 m</span></li>
+      </ol>
+    </header>
+    <section class="print">
+      <div class="print-head">
+        <div class="place"><span class="stage-no" id="stage-no">01 / 03</span><strong id="place"></strong></div>
+        <div class="readings"><span class="reading" id="distanceBox"><svg class="icon" aria-hidden="true"><use href="#i-flag"/></svg><span id="distance"></span></span><span class="reading" id="timerBox"><svg class="icon" aria-hidden="true"><use href="#i-clock"/></svg><span id="timer"></span></span></div>
+      </div>
+      <div class="scene" id="scene">
+        <svg id="world" role="img" data-i18n-label="tightrope.scene" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"></svg>
+        <div class="weather" id="weather" role="status"><svg class="icon" aria-hidden="true"><use href="#i-wind"/></svg><span id="wind-text"></span></div>
+        <div class="panel-layer" id="panel-layer" hidden>
+          <section class="panel" aria-labelledby="panel-title" tabindex="-1" id="panel">
+            <h2 id="panel-title"></h2><p id="panel-copy"></p>
+            <div id="results" class="results" hidden></div>
+            <button id="panel-action" class="primary"></button>
+          </section>
+        </div>
+      </div>
+      <div class="caption"><span class="status" id="status" role="status"></span><div class="journey" id="journey" aria-hidden="true"><i></i></div></div>
+    </section>
+    <footer class="controls">
+      <button class="lean" id="left" disabled><svg class="icon" aria-hidden="true"><use href="#i-lean"/></svg><span data-i18n="tightrope.left">向左</span><kbd aria-hidden="true">←</kbd></button>
+      <div class="middle">
+        <button id="start" class="primary"><span data-i18n="tightrope.start">踏上钢丝</span><span aria-hidden="true">↗</span></button>
+        <div id="balance" class="balance" hidden>
+          <div class="gauge" aria-hidden="true"><div class="safe-band"></div><div class="needle"></div></div>
+          <span class="gauge-caption"><span data-i18n="tightrope.balance">倾角</span><b id="angle"></b></span>
+        </div>
+      </div>
+      <button class="lean" id="right" disabled><kbd aria-hidden="true">→</kbd><span data-i18n="tightrope.right">向右</span><svg class="icon mirror" aria-hidden="true"><use href="#i-lean"/></svg></button>
+    </footer>
+  </main>
+  <script src="../../i18n.js"></script>
+  <script src="languages.js"></script>
+  <script src="walk.js"></script>
+  <script src="art.js"></script>
+  <script src="game.js"></script>
+</body>
+</html>

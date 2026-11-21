@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 420" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <defs>
+    <pattern id="grid" width="32" height="32" patternUnits="userSpaceOnUse"><path d="M32 0H0v32" stroke="#b5a47e" opacity=".28" stroke-width=".7"/></pattern>
+    <g id="peak"><path d="m0 26 6-7 3 1L21 0l7 12 4 1 10 14-14-3-10 2-10-2Z" fill="#ded6b7" stroke="#9a9676" stroke-width="1.2"/><path d="m21 1-3 12-4 5m7-12 3 7 4 2m-7-4-2 8m-6 3 3-4m9 5-2-7m5 8-2-5" stroke="#9a9676"/></g>
+    <g id="grove" stroke="#888e6c" fill="#cbd0b1" stroke-width="1.4"><path d="M8 19v7m10-13v8M1 19l4-7-2 1 5-9 4 8-1 1 4 7Zm11-7 3-5-1 1 4-8 4 8h-1l3 6Z"/><path d="m8 9-1 6m11-11-1 4"/></g>
+  </defs>
+  <path fill="#f1ead3" d="M0 0h760v420H0z"/>
+  <path fill="url(#grid)" d="M0 0h760v420H0z"/>
+  <g stroke="#b6ab88" opacity=".72" stroke-width="1">
+    <path d="M-10 54Q44 32 84 49t71 0q35-20 58-9m-224 22q69-25 106-7t70-2q31-15 54-9M-9 72q48-21 94-9t64 2m-170 17q46-21 87-12M-5 366q71-47 109-32t93-13q54-32 104-15m-310 71q57-38 95-36t52 4 65-19 80-13m-300 76q58-37 97-37t56 3 79-24m-230 69q56-40 94-40m54 6q54 0 87-27m320-341q45 40 102 45t101 48m-214-96q53 49 115 53t99 55m-199-99q48 39 104 43t96 58m-151-79q53 34 86 36m-13 307q40-28 79-21m-95 13q41-32 88-26m-108 22q47-41 100-31"/>
+  </g>
+  <path d="M642-10c-8 46-98 59-78 103 21 46 117 54 101 99-15 39-124 39-112 82s102 52 80 94c-10 21-47 40-77 62h30c17-17 58-36 66-63 14-48-80-62-83-94-5-32 94-35 110-77 20-55-78-68-101-111-13-28 66-51 82-95Z" fill="#d0d9c6" stroke="#a8b5a0" stroke-width="1.2"/>
+  <g stroke="#a3b29e" stroke-width="1"><path d="M631 16q-12 12-22 15m35 155q-6 12-13 14m-38 23-12 4m9 69 11 6m24 18 7 6m-18 52-9 8M587 115l12 8m-20-17 5 5"/></g>
+  <g opacity=".94">
+    <use href="#peak" transform="translate(52 101) scale(1.15)"/><use href="#peak" transform="translate(89 92) scale(1.3)"/><use href="#peak" transform="translate(125 110) scale(.85)"/><use href="#peak" transform="translate(77 113) scale(1.2)"/><use href="#peak" transform="translate(39 118) scale(.8)"/>
+    <use href="#grove" transform="translate(170 55) scale(.7)"/><use href="#grove" transform="translate(683 235) scale(1.1)"/><use href="#grove" transform="translate(702 239)"/><use href="#grove" transform="translate(705 216) scale(.8)"/><use href="#grove" transform="translate(80 311)"/><use href="#grove" transform="translate(63 318) scale(.8)"/>
+  </g>
+  <path d="M-18 220c64-12 90 69 150 48s66-85 121-68 56 60 101 47 82-77 129-59 44 31 89 15 75-70 112-56" stroke="#ae8166" stroke-width="2.2" stroke-dasharray="5 7"/>
+  <g opacity=".78">
+    <use href="#peak" transform="translate(263 64) scale(.65)"/>
+    <use href="#peak" transform="translate(279 56) scale(.85)"/>
+    <use href="#peak" transform="translate(297 67) scale(.58)"/>
+    <path d="M251 88q20-5 33-2t31-2m-47 7 15-.7m26-11 12-.7" stroke="#a7a181"/>
+    <g transform="translate(457 328) rotate(7)" stroke="#858d71" stroke-width="1.2">
+      <path d="M-12 9q-1-14-8-22m10 22q2-14 0-24m-10 2q-9-4-14 3 7-3 12 0m2-3q-13-11-17-5m17 4q6-10 13-6-6 1-10 7m-3-5q-2-9-7-10m16 13q-7-8-12-6m13 5q3-10 11-8-6 3-9 9m-1-1q9-2 13 4-8-3-12-1"/>
+      <path d="M-27 12q13-6 32-4m-16 8q13-3 19-2" stroke="#a6a17f"/>
+    </g>
+    <path d="M411 350q27 5 47 0t34-2m-68 7q20 4 42-1m4-13 6-2m-35-13 5-1" stroke="#aca482"/>
+  </g>
+  <g stroke="#ad7b61" stroke-width="2.6"><path d="m681 139 13 14m-1-14-13 15"/></g>
+  <g transform="translate(111 212)" stroke="#8e9474" fill="#dbd3ad" stroke-width="1.2"><path d="m0 16 4-3V9h4V5h4V0l7-1 4 2v6l4 2v4l4 2v4l-15 3Z"/><path d="m19-1-2 7-4 12m-8-5 10 2 13-1m-20-5 9 2 7-1"/></g>
+  <g transform="translate(536 84)" stroke="#8d947b" fill="none"><path d="m-21 8 18-27 13 24m-13-24 4 24m-8-3 5-9m-21 19q18-4 36-4" stroke-width="1.4"/><path d="m15 7 5-2m-34-18-4-3m12-9-1-5"/></g>
+  <g transform="translate(215 310) rotate(12)" stroke="#929775" opacity=".8">
+    <circle r="22"/><circle r="18" stroke-dasharray="1 4"/><path d="M0-33 5-5 32 0 5 5 0 32-5 5-32 0-5-5Z" fill="#e4dcc1"/><path d="M0-32v32l-5-5ZM32 0H0l5 5ZM0 32V0l-5 5ZM-32 0H0l-5-5Z" fill="#9ea384"/><circle r="2" fill="#858d73"/>
+  </g>
+</svg>

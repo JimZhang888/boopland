@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="zh-CN" data-i18n-scope="fiveDice">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#f5f1e7">
+  <title data-i18n="fiveDice.title">五骰记分簿</title>
+  <link rel="icon" href="./cover.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="./style.css">
+  <script defer src="../../analytics.js"></script>
+  <script defer src="../../i18n.js"></script>
+  <script defer src="./messages.js"></script>
+  <script defer src="./scorebook.js"></script>
+  <script defer src="./play.js"></script>
+</head>
+<body>
+  <svg class="symbols" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <defs>
+      <symbol id="i-arrow" viewBox="0 0 24 24"><path d="m10 5-7 7 7 7M4 12l17-.4"/></symbol>
+      <symbol id="i-help" viewBox="0 0 24 24"><path d="M3 4.6c3.1-1.1 6.5-.8 9 1.2 2.7-1.9 6-2.3 9-1.1l-.3 14.1c-2.7-.8-6.1-.4-8.7 1.2-2.5-1.7-5.6-2.1-8.8-1.2zM12 6v13"/></symbol>
+      <symbol id="i-trophy" viewBox="0 0 24 24"><path d="m6.9 3.5 10.4-.2-.8 5.6c-.3 2.8-1.8 5.4-4.5 5.5s-4.2-2.7-4.5-5.4zM7 5H3v2c0 3 1.7 4.8 5.1 4.8M17 5h4v2c0 3-1.7 4.8-5.1 4.8M12 14.5V19m-4 1.3 8-.2"/></symbol>
+      <symbol id="i-pencil" viewBox="0 0 24 24"><path d="m3 20 1.3-6L16.7 2.5q.8-.7 1.8.2l2.3 2.5q.7.9-.2 1.7L8.4 18.8zM4.6 14.1l3.7 4M14.8 4.5l4.1 4.2M7 15l9.2-8.4"/></symbol>
+      <symbol id="i-die" viewBox="0 0 24 24"><path d="m4.3 4.9 14.5-1c1.2-.1 1.7.4 1.8 1.7l.6 13c.1 1.1-.6 1.6-1.6 1.7l-14.1.4q-1.8 0-1.8-1.8l-.7-12q0-1.8 1.3-2z"/><g fill="currentColor" stroke="none"><circle cx="7.8" cy="8.6" r="1.65"/><circle cx="12" cy="12" r="1.65"/><circle cx="16.6" cy="15.7" r="1.65"/></g></symbol>
+      <symbol id="i-check" viewBox="0 0 24 24"><path d="m4.2 12.7 5 5L20 6.6"/></symbol>
+      <symbol id="i-cross" viewBox="0 0 24 24"><path d="m5.5 5.5 13 13m0-13-13 13"/></symbol>
+      <symbol id="i-seal" viewBox="0 0 40 40">
+        <g fill="#eeeadb" stroke="#475a4b" stroke-width="1.4" stroke-linejoin="round">
+          <path d="m3 16 10-5 10 3-1 15-11 6-8-5z"/><path fill="#d2d8c7" d="m3 16 9 4 11-6-1 15-11 6-8-5z"/><path fill="#f8f4e7" d="m3 16 9 4-1 15-8-5z"/>
+          <path d="m15.5 8 11-5 10 4.5-.2 14-11 6-10-5z"/><path fill="#c3ccba" d="m25.6 13.4 11-5.9-.3 14-10.9 6z"/><path d="m15.5 8 10.1 5.4-.2 14-10-5z"/>
+        </g>
+        <g fill="#495747"><ellipse cx="7.2" cy="24.5" rx="1.2" ry="1.8"/><ellipse cx="15" cy="23" rx=".95" ry="1.4"/><ellipse cx="19.4" cy="26.5" rx="1" ry="1.5"/><ellipse cx="30.5" cy="17" rx="1.4" ry="1.9"/><ellipse cx="25.8" cy="8" rx="2" ry="1"/></g>
+        <g fill="#a6674c"><ellipse cx="18.8" cy="13.2" rx="1.15" ry="1.65"/><ellipse cx="22.5" cy="20.8" rx="1.15" ry="1.65"/></g>
+      </symbol>
+    </defs>
+  </svg>
+  <main class="shell">
+    <nav class="topline">
+      <a href="../../games.html" class="nav-link"><svg class="icon"><use href="#i-arrow"/></svg><span data-i18n="common.back">返回大厅</span></a>
+      <button type="button" class="nav-link" id="help"><svg class="icon"><use href="#i-help"/></svg><span data-i18n="fiveDice.help">玩法</span></button>
+    </nav>
+    <header class="mast">
+      <div class="brand"><svg class="brand-dice" aria-hidden="true"><use href="#i-seal"/></svg><h1 data-i18n="fiveDice.title">五骰记分簿</h1></div>
+      <div class="best" data-i18n-title="fiveDice.best"><svg class="icon"><use href="#i-trophy"/></svg><span data-i18n="fiveDice.best">本机最高</span><b id="best">—</b></div>
+    </header>
+    <div class="desk">
+      <section class="tray" aria-labelledby="round-label">
+        <div class="tray-head">
+          <div class="round"><span id="round-label" data-i18n="fiveDice.round">回合</span><b id="round">01</b><span class="denom">/ 08</span></div>
+          <div class="roll-meter"><span data-i18n="fiveDice.rolls">投掷</span><span class="ticks" id="ticks" role="img"><i></i><i></i><i></i></span></div>
+        </div>
+        <div class="field">
+          <svg class="field-marks" viewBox="0 0 500 290" preserveAspectRatio="none" aria-hidden="true">
+            <g fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
+              <path d="m49 48 2-7 3 7 6 2-6 2-3 7-2-7-7-2zm379 167 2-6 2 6 6 2-6 2-2 6-2-6-6-2zM64 69l4-4m354-32 3-5m4 10 5-2"/>
+              <path d="M27 238c9-19 28-20 35-11 7 9-8 21-13 15-7-9 9-28 28-32" stroke-dasharray="3 5"/>
+              <path d="m73 208 7 1-3 7M469 73c-5 7-8 16-9 24m5-4-5 4-3-6"/>
+            </g>
+          </svg>
+          <div class="dice" id="dice"></div>
+          <div class="result" id="result" hidden>
+            <svg class="result-cup icon"><use href="#i-trophy"/></svg>
+            <strong id="result-heading"></strong><b id="final-score"></b><span data-i18n="fiveDice.finalScore">本局得分</span>
+          </div>
+        </div>
+        <div class="tray-foot">
+          <p id="hint" role="status"></p>
+          <button type="button" class="primary roll-btn" id="roll"><svg class="icon"><use href="#i-die"/></svg><span></span></button>
+        </div>
+      </section>
+      <section class="book" aria-labelledby="book-title">
+        <div class="binding" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+        <div class="book-head"><h2 id="book-title" data-i18n="fiveDice.sheet">我的记分簿</h2><svg class="icon"><use href="#i-pencil"/></svg></div>
+        <div id="lines" class="lines"></div>
+        <div class="book-foot"><span data-i18n="fiveDice.total">合计</span><b id="total">0</b></div>
+      </section>
+    </div>
+  </main>
+  <dialog id="dialog" aria-labelledby="dialog-title">
+    <div class="dialog-head"><h2 id="dialog-title"></h2><button type="button" class="icon-button" id="dismiss" data-i18n-label="fiveDice.cancel"><svg class="icon"><use href="#i-cross"/></svg></button></div>
+    <div id="help-body" hidden>
+      <ol><li data-i18n="fiveDice.help1"></li><li data-i18n="fiveDice.help2"></li><li data-i18n="fiveDice.help3"></li></ol>
+      <button type="button" id="got-it" class="primary" data-i18n="fiveDice.close">知道了</button>
+    </div>
+    <div id="score-body" hidden><p id="rule"></p><div class="modal-dice" aria-hidden="true"></div><div class="choices"><button type="button" id="write" class="primary"></button><button type="button" id="zero" class="secondary" data-i18n="fiveDice.zero">填 0 分</button></div></div>
+  </dialog>
+</body>
+</html>

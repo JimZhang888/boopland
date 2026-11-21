@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 400" role="img" aria-labelledby="title">
+<title id="title">九十九号邮局 · Post Office No. 99</title>
+<defs>
+  <pattern id="grain" width="8" height="8" patternUnits="userSpaceOnUse"><path d="m1 2 1-.7m3 5 1.5-.7" fill="none" stroke="#696951" opacity=".22" stroke-width=".65"/></pattern>
+  <pattern id="stripe" width="48" height="12" patternUnits="userSpaceOnUse" patternTransform="rotate(-45)"><path d="M0 0h12v12H0Z" fill="#ad7261"/><path d="M24 0h12v12H24Z" fill="#819686"/></pattern>
+  <pattern id="hatch" width="6" height="6" patternUnits="userSpaceOnUse"><path d="m0 6 6-6" stroke="#80624e" opacity=".42"/></pattern>
+</defs>
+<rect width="640" height="400" fill="#e4e5d2"/><g transform="rotate(-6 320 200)">
+  <path d="m4 33 585 1 2 349H3Z" fill="#f5f0da" stroke="#b1b49b" stroke-width="2"/>
+  <g stroke="#c5c9af" fill="#dbe0c4"><path d="m2 75 92-12 36 26-31 60-96 19Zm287-40 100 3 9 58-60 18-59-23ZM2 242l70-31 54 45-39 67-82-7Zm467-103 112-11 11 84-78 19-57-50Z"/></g>
+  <path d="M405 13q-61 80-20 156t-9 123q-25 43-10 91" fill="none" stroke="#adbfac" stroke-width="38"/>
+  <path d="M405 13q-61 80-20 156t-9 123q-25 43-10 91" fill="none" stroke="#c1d2c5" stroke-width="33"/>
+  <g stroke="#c0bca3" stroke-width="12" fill="none"><path d="M0 169q150 30 246-26t191 3 170 21M30 364q53-98 136-146t43-143M240 384q10-73 79-105t109-113"/></g>
+  <g stroke="#fcf5de" stroke-width="9" fill="none"><path d="M0 169q150 30 246-26t191 3 170 21M30 364q53-98 136-146t43-143M240 384q10-73 79-105t109-113"/></g>
+</g>
+<g transform="rotate(5 350 205)">
+  <path d="M63 59h498v272H63Z" fill="#7c8066" opacity=".16" transform="translate(4 6)"/>
+  <path d="M63 59h498v272H63Z" fill="#f8efda" stroke="#aba995" stroke-width="2"/>
+  <path d="M66 62h492v266H66Z" fill="none" stroke="url(#stripe)" stroke-width="6"/>
+  <path d="M77 75h470v237H77Z" fill="none" stroke="#d3c9b0"/>
+  <g transform="translate(88 98)" stroke="#515e50" stroke-linejoin="round" stroke-linecap="round">
+    <path d="M8 173q113-12 227-3m-213 7q63-4 100-3" fill="none" stroke="#a5aa8c" stroke-width="2"/>
+    <path d="m37 98 111-4 53 8-1 62-53 11-107-9Z" fill="#eadcc2" stroke-width="2.3"/>
+    <path d="m146 94 55 9-1 61-55 11Z" fill="#d6c6a8" stroke-width="2"/>
+    <path d="M22 101 62 50l102-3 49 53-60-7Z" fill="#ba8068" stroke-width="2.6"/>
+    <path d="m23 101 39-51 101-3 30 32-31 9-13 5Z" fill="url(#hatch)"/>
+    <path d="M26 103 151 95l13-44 47 50" fill="none" stroke-width="2.3"/>
+    <path d="m53 113 24-1 1 29-24 1Zm35-1 21-1v46H88Z" fill="#879f8b" stroke-width="2.3"/>
+    <path d="m58 117 15-1v14H58Zm37-1h8v14h-8Z" fill="#d8e0c8"/>
+    <path d="m163 112 20 2v20l-20 2Z" fill="#8faaa0" stroke-width="2"/>
+    <path d="m38 163 112 6m-23-58 10-1m-12 5 12-1m31 23 14-1M86 160h26m-29 4 33-1" fill="none" stroke-width="1.5"/>
+    <path d="m91 47 1-34 39 2-9 9 11 8-41-3" fill="#be7e67" stroke-width="2.2"/>
+    <path d="m107 32-3-4 2-5 5 1 2 6-2 3Z" fill="#f5e7ca" stroke="none"/>
+    <path d="m14 131 4 35m-5 3 13-1" fill="none" stroke-width="3"/>
+    <path d="M3 115q0-5 5-6l25 1 3 18-32 5Z" fill="#79988b" stroke-width="2"/>
+    <path d="m7 118 22-2m-3 7 4-1" fill="none" stroke-width="2"/>
+  </g>
+  <g transform="translate(327 96) rotate(-3)"><rect x="0" y="0" width="118" height="139" fill="#dbe1c7" stroke="#92957b" stroke-width="4" stroke-dasharray="2 5"/><path d="M9 9h100v121H9Z" fill="none" stroke="#7c826b"/>
+    <text x="59" y="86" font-family="Georgia,serif" font-size="78" text-anchor="middle" fill="#456352">99</text><path d="M17 98q30-7 85-4m-85 8q31-7 85-4" fill="none" stroke="#809078"/><text x="60" y="119" text-anchor="middle" font-size="11" letter-spacing="2" font-family="Georgia,serif" fill="#4e6453">BOOPLAND</text>
+  </g>
+  <g transform="translate(446 175) rotate(-13)" fill="none" stroke="#9c6251" stroke-width="2.4"><circle r="37"/><circle r="31"/><path d="M23-19q18-12 42-2t41-3M29-8q17-11 38-1t37-3M30 4q15-10 36-1t37-3M25 16q18-10 39-1t37-3"/><path d="m-15-3 14-9 16 10-2 13-25 1Zm0 0L0 5l15-7"/></g>
+  <g stroke="#b8ae97" fill="none"><path d="M329 260h182m-181 12h150m-151 12h159"/></g>
+</g>
+<rect width="640" height="400" fill="url(#grain)" pointer-events="none"/>
+</svg>

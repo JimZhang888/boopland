@@ -1,0 +1,43 @@
+{
+  "order": 83,
+  "title": "电梯值班员",
+  "description": "在五层老楼里编排电梯停靠，用四个座位应对三班客流，赶在乘客失去耐心前把他们送到。",
+  "category": "策略",
+  "path": "./games/elevator-dispatch/index.html",
+  "cover": "./games/elevator-dispatch/cover.svg",
+  "color": "#d9decb",
+  "locales": {
+    "zh-CN": {
+      "title": "电梯值班员",
+      "description": "在五层老楼里编排电梯停靠，用四个座位应对三班客流，赶在乘客失去耐心前把他们送到。"
+    },
+    "en": {
+      "title": "Elevator Operator",
+      "description": "Run a four-seat lift in a five-floor building. Plan your stops through three shifts and deliver passengers before their patience runs out."
+    },
+    "ja": {
+      "title": "エレベーター係",
+      "description": "5階建ての古いビルで定員4人のエレベーターを運転。3回の勤務で停車順を決め、お客を待たせずに送り届けよう。"
+    },
+    "ko": {
+      "title": "엘리베이터 안내원",
+      "description": "5층짜리 오래된 건물에서 네 명 정원의 승강기를 맡으세요. 세 번의 근무 동안 정차 순서를 짜서 손님들을 늦지 않게 데려다주세요."
+    },
+    "fr": {
+      "title": "Le liftier",
+      "description": "Aux commandes d’un vieil ascenseur de quatre places, organisez vos arrêts sur cinq niveaux et gardez vos voyageurs de bonne humeur pendant trois services."
+    },
+    "de": {
+      "title": "Der Aufzugwärter",
+      "description": "Bediene den alten Vierpersonenaufzug über fünf Etagen. Plane in drei Schichten die Halte, bevor deine Fahrgäste die Geduld verlieren."
+    },
+    "es": {
+      "title": "El ascensorista",
+      "description": "Conduce un viejo ascensor de cuatro plazas entre cinco plantas. Organiza las paradas durante tres turnos antes de que se agote la paciencia de tus pasajeros."
+    },
+    "pt-BR": {
+      "title": "O ascensorista",
+      "description": "Opere um elevador antigo de quatro lugares em um prédio de cinco andares. Planeje as paradas por três turnos antes que os passageiros percam a paciência."
+    }
+  }
+}

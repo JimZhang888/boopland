@@ -1,0 +1,43 @@
+{
+  "order": 93,
+  "title": "荒岛七日",
+  "description": "每天三枚骰子，取水、觅食、拾木、修船。看准天气，在第七天日落前乘筏离岛。",
+  "category": "策略",
+  "path": "./games/seven-day-island/index.html",
+  "cover": "./games/seven-day-island/cover.svg",
+  "color": "#c9dcd5",
+  "locales": {
+    "zh-CN": {
+      "title": "荒岛七日",
+      "description": "每天三枚骰子，取水、觅食、拾木、修船。看准天气，在第七天日落前乘筏离岛。"
+    },
+    "en": {
+      "title": "Seven Days Ashore",
+      "description": "Three dice a day to find water, gather food and timber, and build a raft. Catch the tide by the seventh sunset."
+    },
+    "ja": {
+      "title": "孤島の七日間",
+      "description": "一日三つのサイコロを水くみ、食料探し、木拾い、いかだ作りに振り分けよう。七日目の日暮れが脱出の期限。"
+    },
+    "ko": {
+      "title": "무인도에서의 7일",
+      "description": "매일 주사위 세 개로 물과 식량을 구하고 나무를 모아 뗏목을 만드세요. 일곱째 날 해 질 무렵이 마지막 기회예요."
+    },
+    "fr": {
+      "title": "Sept jours sur l’île",
+      "description": "Trois dés par jour pour trouver de l’eau, des vivres et du bois. Achevez votre radeau avant le septième coucher de soleil."
+    },
+    "de": {
+      "title": "Sieben Tage auf der Insel",
+      "description": "Drei Würfel pro Tag für Wasser, Proviant, Holz und Floßbau. Lege spätestens am siebten Abend ab."
+    },
+    "es": {
+      "title": "Siete días en la isla",
+      "description": "Reparte tres dados al día entre agua, comida, madera y construcción. Zarpa en tu balsa antes del séptimo anochecer."
+    },
+    "pt-BR": {
+      "title": "Sete dias na ilha",
+      "description": "Distribua três dados por dia entre água, comida, madeira e construção. Parta na jangada até o sétimo pôr do sol."
+    }
+  }
+}

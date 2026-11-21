@@ -1,0 +1,43 @@
+{
+  "order": 71,
+  "title": "七巧山河",
+  "description": "把七块纸板拼成八幅山水剪影。",
+  "category": "益智",
+  "path": "./games/tangram-landscapes/index.html",
+  "cover": "./games/tangram-landscapes/cover.svg",
+  "color": "#dbe0ce",
+  "locales": {
+    "zh-CN": {
+      "title": "七巧山河",
+      "description": "把七块纸板拼成八幅山水剪影。"
+    },
+    "en": {
+      "title": "Tangram Landscapes",
+      "description": "Arrange seven paper shapes into eight landscapes."
+    },
+    "ja": {
+      "title": "七巧山水",
+      "description": "七枚の紙片で八つの山水の影を組み立てよう。"
+    },
+    "ko": {
+      "title": "칠교 산수",
+      "description": "종잇조각 일곱 개로 여덟 가지 산수 실루엣을 맞춰 보세요."
+    },
+    "fr": {
+      "title": "Paysages en tangram",
+      "description": "Assemblez sept pièces de papier pour composer huit paysages."
+    },
+    "de": {
+      "title": "Tangram-Landschaften",
+      "description": "Lege acht Landschaften aus sieben Papiertans."
+    },
+    "es": {
+      "title": "Paisajes de tangram",
+      "description": "Combina siete piezas de papel para formar ocho paisajes."
+    },
+    "pt-BR": {
+      "title": "Paisagens em tangram",
+      "description": "Monte oito paisagens com sete peças de papel."
+    }
+  }
+}

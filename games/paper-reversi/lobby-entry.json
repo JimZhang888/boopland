@@ -1,0 +1,19 @@
+{
+  "order": 89,
+  "title": "纸间黑白棋",
+  "description": "在铅笔点上落下黑子，翻转两枚黑子之间的白子。选好难度，和电脑争一争棋盘四角。",
+  "category": "棋牌",
+  "path": "./games/paper-reversi/index.html",
+  "cover": "./games/paper-reversi/cover.svg",
+  "color": "#ced8bd",
+  "locales": {
+    "zh-CN": { "title": "纸间黑白棋", "description": "在铅笔点上落下黑子，翻转两枚黑子之间的白子。选好难度，和电脑争一争棋盘四角。" },
+    "en": { "title": "Paper Reversi", "description": "Play black on a pencilled grid. Outflank white discs and fight for the corners against two levels of computer play." },
+    "ja": { "title": "紙のリバーシ", "description": "鉛筆の点に石を置き、白石をはさんで返そう。2段階の強さのコンピューターと四つの角を取り合うリバーシ。" },
+    "ko": { "title": "종이 리버시", "description": "연필로 찍은 점에 흑돌을 놓아 백돌을 뒤집으세요. 두 단계의 컴퓨터 상대와 네 귀퉁이를 다퉈 보세요." },
+    "fr": { "title": "Reversi sur papier", "description": "Posez un pion noir sur un point de crayon pour retourner les blancs. Disputez les coins à un adversaire de deux niveaux." },
+    "de": { "title": "Reversi auf Papier", "description": "Setze Schwarz auf die Bleistiftpunkte und drehe weiße Steine um. Kämpfe in zwei Spielstärken gegen den Computer um die Ecken." },
+    "es": { "title": "Reversi de papel", "description": "Coloca fichas negras en los puntos a lápiz y voltea las blancas. Disputa las esquinas al ordenador en dos niveles de dificultad." },
+    "pt-BR": { "title": "Reversi de papel", "description": "Jogue com as pretas nos pontos a lápis e vire as peças brancas. Dispute os cantos com o computador em dois níveis de dificuldade." }
+  }
+}

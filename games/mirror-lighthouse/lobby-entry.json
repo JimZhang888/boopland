@@ -1,0 +1,43 @@
+{
+  "title": "镜面灯塔",
+  "description": "转动海岛上的斜镜，绕过礁石，让一束光分头点亮两座灯塔。",
+  "category": "解谜",
+  "order": 82,
+  "path": "./games/mirror-lighthouse/index.html",
+  "cover": "./games/mirror-lighthouse/cover.svg",
+  "color": "#ceddd8",
+  "locales": {
+    "zh-CN": {
+      "title": "镜面灯塔",
+      "description": "转动海岛上的斜镜，绕过礁石，让一束光分头点亮两座灯塔。"
+    },
+    "en": {
+      "title": "Mirror Lighthouse",
+      "description": "Turn the island mirrors, steer past reefs and split a single beam to light two lighthouses."
+    },
+    "ja": {
+      "title": "鏡の灯台",
+      "description": "島の鏡を回して岩礁をかわし、一筋の光を二手に分けて二つの灯台をともそう。"
+    },
+    "ko": {
+      "title": "거울 등대",
+      "description": "섬의 거울을 돌려 암초를 피하고 한 줄기 빛을 둘로 나누어 두 등대를 밝혀 보세요."
+    },
+    "fr": {
+      "title": "Le phare aux miroirs",
+      "description": "Orientez les miroirs des îles, évitez les récifs et divisez un rayon pour allumer deux phares."
+    },
+    "de": {
+      "title": "Der Spiegelleuchtturm",
+      "description": "Drehe die Inselspiegel, lenke das Licht an Riffen vorbei und teile den Strahl, um zwei Leuchttürme zu entzünden."
+    },
+    "es": {
+      "title": "El faro de los espejos",
+      "description": "Gira los espejos de las islas, esquiva los arrecifes y divide un rayo para encender dos faros."
+    },
+    "pt-BR": {
+      "title": "O farol dos espelhos",
+      "description": "Gire os espelhos das ilhas, desvie dos recifes e divida um feixe para acender dois faróis."
+    }
+  }
+}

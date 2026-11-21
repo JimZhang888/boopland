@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="zh-CN" data-i18n-scope="elevator-dispatch">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <title data-i18n="elevator-dispatch.title">电梯值班员</title>
+  <link rel="icon" href="./cab.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="./style.css">
+  <script src="../../i18n.js"></script>
+  <script defer src="../../analytics.js"></script>
+  <script defer src="./words.js"></script>
+  <script defer src="./dispatch.js"></script>
+  <script defer src="./game.js"></script>
+</head>
+<body>
+<main class="shell">
+  <header class="mast">
+    <div class="brand"><svg viewBox="0 0 42 42" aria-hidden="true" class="brand-mark"><path d="M4 36h34M8 34V15a13 13 0 0 1 26 0v19zM12 32V17a9 9 0 0 1 18 0v15zM11 19h20M21 20v12m-6-3 3-5m6 5 3-5"/><path d="m17 13 4-5 4 5"/></svg><h1 data-i18n="elevator-dispatch.title">电梯值班员</h1></div>
+    <nav><button id="help" class="help-key" data-i18n-label="elevator-dispatch.help" data-i18n-title="elevator-dispatch.help">?</button>
+    <a class="back" href="../../games.html" data-i18n-label="common.back"><span aria-hidden="true">←</span><span data-i18n="common.back">返回大厅</span></a></nav>
+  </header>
+  <div class="workbench">
+    <section class="drawing" aria-labelledby="drawing-heading">
+      <div class="drawing-head"><h2 id="drawing-heading"><i class="live-dot"></i><span data-i18n="elevator-dispatch.building">楼层实况</span></h2><span class="waiting" id="waiting"></span></div>
+      <div class="blueprint">
+        <svg id="scene" viewBox="0 0 660 500" role="img" aria-labelledby="scene-desc">
+          <title id="scene-desc"></title>
+          <defs>
+            <g id="person-coat" stroke="#4e594e" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"><path d="m-6-13-1 12h4l3-12m3 0 1 12h4L7-14" fill="#646f63"/><path d="M-8-27q8-7 15-1l5 17-23 1z" fill="currentColor"/><path d="m-7-25-5 12m18-12 5 11" fill="none"/><path d="M-4-32q-1 7 5 7 5-1 4-8" fill="#e0c5aa"/><path d="M-7-34q1-7 7-8 7 1 8 8l2 2-20 1z" fill="#707f6c"/></g>
+            <g id="person-case" stroke="#515d51" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"><path d="m-6-13-2 12h5l3-12m3 0 1 12h4l-1-13" fill="#6d7464"/><path d="M-8-27q9-6 16 0l2 16h-19z" fill="currentColor"/><path d="M-6-25q-4 8-4 14m16-14 5 11" fill="none"/><path d="M-5-33q0 8 6 8 5-1 4-9" fill="#dec0a0"/><path d="M-6-33q-2-9 5-9 9-2 8 8l-4-3z" fill="#696a5e"/><path d="m8-10 9-1 1 8-10 1z" fill="#b49a78"/></g>
+          </defs>
+          <image id="elevation" href="./building.svg" width="660" height="500"/>
+          <image id="lift" href="./cab.svg" x="108" y="400" width="92" height="71" preserveAspectRatio="none"/>
+          <g id="people"></g>
+        </svg>
+      </div>
+      <div class="legend"><span><b class="sample-tag">↑3</b> <span data-i18n="elevator-dispatch.destination">目的楼层</span></span><span><i class="sample-meter"></i> <span data-i18n="elevator-dispatch.patience">剩余耐心</span></span></div>
+      <div class="tally">
+        <div><span data-i18n="elevator-dispatch.delivered">送达</span><strong id="delivered">0</strong></div>
+        <div><span data-i18n="elevator-dispatch.left">离开</span><strong id="left">0</strong></div>
+        <div><span data-i18n="elevator-dispatch.score">积分</span><strong id="score">0</strong></div>
+      </div>
+    </section>
+    <aside class="desk">
+      <section class="shift-slip"><div class="slip-top"><span><span data-i18n="elevator-dispatch.shift">班次</span> <b id="shift-number">01 / 03</b></span><time id="clock">01:00</time></div><h2 id="shift-name"></h2><p id="shift-detail"></p></section>
+      <section class="cabin-box"><div class="section-label"><h2 data-i18n="elevator-dispatch.cabin">轿厢</h2><strong id="capacity">0 / 4</strong></div><div id="seats" class="seats"></div></section>
+      <section class="route-box"><div class="section-label"><h2 data-i18n="elevator-dispatch.route">停靠顺序</h2><span class="next"><span data-i18n="elevator-dispatch.next">下一站</span> <b id="next">—</b></span></div>
+        <div id="route" class="route"></div></section>
+      <section class="keys-box"><h2 data-i18n="elevator-dispatch.add">添加停靠</h2>
+        <div class="keys" id="keys"></div></section>
+      <div class="controls"><button id="action" class="action"><span id="action-icon" aria-hidden="true">▸</span> <span id="action-label"></span></button><p id="message" role="status"></p></div>
+    </aside>
+  </div>
+  <div class="overlay" id="overlay" hidden>
+    <section role="dialog" aria-modal="true" aria-labelledby="dialog-title" class="dialog">
+      <small id="dialog-kicker"></small><h2 id="dialog-title"></h2><div id="dialog-content"></div>
+      <button class="action" id="dialog-action"></button>
+      <a href="../../games.html" class="dialog-back" data-i18n="common.back">返回大厅</a>
+    </section>
+  </div>
+</main>
+</body></html>

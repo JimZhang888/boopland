@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 224 148" fill="none" stroke="#57684d" stroke-linecap="round" stroke-linejoin="round">
+  <defs>
+    <pattern id="vein" patternUnits="userSpaceOnUse" width="4" height="4" patternTransform="rotate(34)"><path d="M0 0v4" stroke="#788668" stroke-width=".75"/></pattern>
+    <g id="leaf">
+      <path d="M0 0C7-18 26-23 44-19 39-5 18 5 0 0Z" fill="#dae0c8" stroke-width="1.35"/>
+      <path d="M0 0Q23-10 44-19 29 0 0 0Z" fill="url(#vein)" stroke="none"/>
+      <path d="M1 0q25-13 41-18m-28 12 7-11m0 8 6-10M13-5l11 1m4-9 8 1" stroke-width=".85"/>
+    </g>
+  </defs>
+  <path d="M-3 10C30 28 46 56 84 69s63 20 87 37M1 10c29 17 51 50 87 61 35 12 55 14 77 31" stroke-width="1.5"/>
+  <path d="M28 34C32 22 30 15 27 12m17 36Q43 62 37 67m20-11q14-1 21-12m-1 20q4-17 17-24m-2 33q8-4 17-15m-3 20q7 21 18 28m8-21q18 1 26-10"/>
+  <use href="#leaf" transform="translate(29 35) rotate(-72) scale(.66)"/>
+  <use href="#leaf" transform="translate(43 48) rotate(136) scale(.83)"/>
+  <use href="#leaf" transform="translate(49 50) rotate(-65) scale(.86)"/>
+  <use href="#leaf" transform="translate(82 62) rotate(-28) scale(.96)"/>
+  <use href="#leaf" transform="translate(93 73) rotate(130) scale(.95)"/>
+  <use href="#leaf" transform="translate(138 87) rotate(-18) scale(.7)"/>
+  <path d="M65 60c-8 20-25 17-22 28 3 9 16 6 12-1-3-5-8 0-4 2m66-9c18-5 25-15 20-20-8-7-17 6-8 8 4 0 4-5 2-5m36 36c15 6 20 21 32 18 15-4 4-18 0-11-2 3 2 4 4 3" stroke-width="1.4"/>
+  <path d="M98 72c9-6 12-14 18-18 4-3 7-3 10-2m-6 4q7 4 15 2" stroke-width="1.7"/>
+  <path d="M119 53c5-5 8-6 13-4l-3 4 6 1-7 4-6-2-4 2Z" fill="#a2b28a"/>
+  <path d="M126 54c20-16 47-19 65-13 11 4 16 2 22-1-10 18-38 36-65 34-11 0-18-9-22-20Z" fill="#c1cda9" stroke-width="1.5"/>
+  <path d="M128 55c17-10 30-14 49-14 13 0 23 7 33 1-17 10-43 26-65 25-8-1-13-6-17-12Z" fill="#f1eed9" stroke-width="1"/>
+  <g fill="#90a579" stroke-width="1">
+    <circle cx="142" cy="56" r="7.4"/><circle cx="157" cy="52" r="7.3"/><circle cx="172" cy="49" r="6.8"/><circle cx="186" cy="48" r="5.8"/>
+  </g>
+  <path d="M137 54q2-4 5-4m11 0q2-4 5-4m10 1q1-3 4-3m10 3q2-3 4-3" stroke="#edf0d9" stroke-width="1.6"/>
+  <path d="M129 61q14 15 42 4m-34 2 0 3m4-2 1 3m4-2 1 3m5-3 1 2m5-3 1 2m7-4 1 1m22-13 12-6" stroke-width=".8"/>
+  <path d="M124 106c4 3 8 6 15 7m-15-6c1 6 3 11 7 15" stroke-width="1.3"/>
+  <use href="#leaf" transform="translate(131 121) rotate(49) scale(.63)"/>
+</svg>

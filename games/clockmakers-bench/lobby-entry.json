@@ -1,0 +1,43 @@
+{
+  "title": "机械钟表铺",
+  "description": "挑选齿轮，接起指针，让六只老钟按顾客指定的方向和速度走动。",
+  "category": "解谜",
+  "path": "./games/clockmakers-bench/index.html",
+  "cover": "./games/clockmakers-bench/cover.svg",
+  "color": "#dce1d2",
+  "order": 85,
+  "locales": {
+    "zh-CN": {
+      "title": "机械钟表铺",
+      "description": "挑选齿轮，接起指针，让六只老钟按顾客指定的方向和速度走动。"
+    },
+    "en": {
+      "title": "Clockmaker’s Bench",
+      "description": "Fit gears to six old clocks and make each hand turn at the speed and in the direction its owner requests."
+    },
+    "ja": {
+      "title": "からくり時計店",
+      "description": "歯車を選んで六つの古時計を修理し、針を注文どおりの速さと向きで動かそう。"
+    },
+    "ko": {
+      "title": "태엽 시계 공방",
+      "description": "톱니바퀴를 골라 오래된 시계 여섯 개를 고치고, 주문한 방향과 속도에 시곗바늘을 맞춰 보세요."
+    },
+    "fr": {
+      "title": "L’atelier d’horlogerie",
+      "description": "Réparez six vieilles horloges en choisissant les roues qui donneront à chaque aiguille le sens et la vitesse demandés."
+    },
+    "de": {
+      "title": "Die Uhrmacherwerkstatt",
+      "description": "Setze Zahnräder in sechs alte Uhren ein, bis ihre Zeiger so schnell und in die Richtung laufen, wie es der Auftrag verlangt."
+    },
+    "es": {
+      "title": "El taller de relojería",
+      "description": "Repara seis relojes antiguos con engranajes que muevan las agujas en el sentido y a la velocidad del encargo."
+    },
+    "pt-BR": {
+      "title": "Oficina de relojoaria",
+      "description": "Conserte seis relógios antigos com engrenagens que façam os ponteiros girar no sentido e na velocidade de cada encomenda."
+    }
+  }
+}

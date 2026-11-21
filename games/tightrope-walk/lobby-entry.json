@@ -1,0 +1,43 @@
+{
+  "title": "一根钢丝",
+  "description": "撑一把纸伞，读懂屋顶的风旗，稳稳走过三段楼间钢丝。",
+  "category": "动作",
+  "order": 80,
+  "path": "./games/tightrope-walk/index.html",
+  "cover": "./games/tightrope-walk/cover.svg",
+  "color": "#dce5d8",
+  "locales": {
+    "zh-CN": {
+      "title": "一根钢丝",
+      "description": "撑一把纸伞，读懂屋顶的风旗，稳稳走过三段楼间钢丝。"
+    },
+    "en": {
+      "title": "A Single Wire",
+      "description": "Read the rooftop flags and steady your paper parasol across three high wires."
+    },
+    "ja": {
+      "title": "一本の綱",
+      "description": "屋上の旗で風を読み、番傘でバランスを取りながら三つの綱を渡ろう。"
+    },
+    "ko": {
+      "title": "한 가닥 줄 위에서",
+      "description": "지붕 위 깃발로 바람을 읽고 종이 양산으로 균형을 잡아 세 구간을 건너세요."
+    },
+    "fr": {
+      "title": "Sur un fil",
+      "description": "Lisez le vent dans les fanions et gardez l’équilibre avec votre ombrelle sur trois fils entre les toits."
+    },
+    "de": {
+      "title": "Auf einem Seil",
+      "description": "Lies den Wind an den Dachfahnen und balanciere mit einem Papierschirm über drei Hochseile."
+    },
+    "es": {
+      "title": "Sobre un alambre",
+      "description": "Lee el viento en los banderines y equilibra tu sombrilla de papel para cruzar tres alambres entre tejados."
+    },
+    "pt-BR": {
+      "title": "Por um fio",
+      "description": "Observe as bandeiras nos telhados e equilibre a sombrinha de papel para cruzar três fios nas alturas."
+    }
+  }
+}

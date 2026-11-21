@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-i18n-scope="gridFleet">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#f2f0e6">
+  <title data-i18n="gridFleet.title">方格舰队</title>
+  <link rel="icon" href="data:,">
+  <link rel="stylesheet" href="fleet.css">
+  <script src="../../i18n.js"></script>
+  <script defer src="../../analytics.js"></script>
+  <script defer src="words.js"></script>
+  <script defer src="fleet.js"></script>
+  <script defer src="game.js"></script>
+</head>
+<body>
+  <svg class="symbols" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <defs>
+      <symbol id="flag" viewBox="0 0 48 48"><path d="M10 40 13 6m0 3 25-3-6 9 8 4-28 4" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"/><path d="m15 11 18-2-4 6-15 3z" fill="#ac705c"/><path d="m5 39 16 1M6 43l19-.3" stroke="currentColor" stroke-width="1.5"/></symbol>
+      <symbol id="back" viewBox="0 0 24 24"><path d="m12 5-7 7 7 7M6 12h14"/></symbol>
+      <symbol id="book" viewBox="0 0 24 24"><path d="M3 4.5q5-1.5 9 2 4-3.5 9-2v14q-5-1.4-9 1.5-4-2.9-9-1.5zm9 2V20"/></symbol>
+      <symbol id="rotate-icon" viewBox="0 0 24 24"><path d="M4 9a8 8 0 1 1 .5 8M4 3v6h6"/></symbol>
+      <symbol id="shuffle-icon" viewBox="0 0 24 24"><path d="M3 6h3c5 0 6 12 11 12h4m-4-4 4 4-4 4M3 18h3c1.7 0 3-1.4 4-3.5M14 9c.9-2 2-3 4-3h3m-4-4 4 4-4 4"/></symbol>
+      <symbol id="forward" viewBox="0 0 24 24"><path d="M3 12h17m-6-6 6 6-6 6"/></symbol>
+      <symbol id="miss-icon" viewBox="0 0 24 24"><ellipse cx="12" cy="12" rx="6.6" ry="5.1"/><path d="M12 10.8v.5"/></symbol>
+      <symbol id="hit-icon" viewBox="0 0 24 24"><path d="m6 5 12 14M18 5 6 19" stroke-width="3"/></symbol>
+      <symbol id="sunk-icon" viewBox="0 0 24 24"><path d="m12 2 9 10-9 10-9-10z" fill="currentColor" stroke="none"/><path d="m9 12 2.5 3 4.5-6" stroke="#fff9e9" stroke-width="1.7"/></symbol>
+    </defs>
+  </svg>
+  <main class="shell">
+    <header class="mast">
+      <div class="identity"><svg class="flag" aria-hidden="true"><use href="#flag"/></svg><div><h1 data-i18n="gridFleet.title">方格舰队</h1><p data-i18n="gridFleet.subtitle">单人海战棋</p></div></div>
+      <nav>
+        <button id="help" data-i18n-label="gridFleet.help"><svg class="icon"><use href="#book"/></svg><span data-i18n="gridFleet.help">玩法</span></button>
+        <a href="../../games.html" data-i18n-label="common.back"><svg class="icon"><use href="#back"/></svg><span data-i18n="common.back">返回大厅</span></a>
+      </nav>
+    </header>
+    <div class="workbench">
+      <section class="chart">
+        <header class="chart-head"><div class="chart-tabs"><button id="home"></button><button id="away" hidden></button></div><span class="scale" aria-hidden="true">8 × 8</span></header>
+        <div class="map-space"><div class="map">
+          <div class="columns" aria-hidden="true"></div><div class="rows" aria-hidden="true"></div>
+          <div class="ocean">
+            <svg class="contours" viewBox="0 0 320 320" preserveAspectRatio="none" aria-hidden="true">
+              <g fill="none" stroke="#94afa9" stroke-width="1.1">
+                <path d="M-28 65Q16 56 27 24T88-8m-112 90Q23 73 39 37T103-9m-128 106Q32 86 52 51T119-6m110 342q5-49 32-65t42-51 48-33m-104 161q6-49 32-67t40-53 37-26m-91 146q7-43 30-58t37-51"/>
+                <path d="M24 196q5-3 10 0t10 0m52-101q5-3 10 0t9 0m117-34q5-3 10 0t10 0m-77 162q5-3 10 0t10 0m-98 58q5-3 10 0t10 0m147-162q5-3 10 0t10 0" stroke-width="1.3"/>
+              </g>
+            </svg>
+            <svg id="plot" viewBox="0 0 320 320" aria-hidden="true"></svg>
+            <div id="cells" role="group"></div>
+          </div>
+        </div></div>
+        <div class="legend">
+          <span><svg class="icon miss"><use href="#miss-icon"/></svg><b data-i18n="gridFleet.miss">落空</b></span>
+          <span><svg class="icon hit"><use href="#hit-icon"/></svg><b data-i18n="gridFleet.hit">命中</b></span>
+          <span><svg class="icon sunk"><use href="#sunk-icon"/></svg><b data-i18n="gridFleet.sunk">沉没</b></span>
+        </div>
+      </section>
+      <aside class="logbook">
+        <div class="print" aria-hidden="true"></div>
+        <div class="desk">
+          <div class="brief"><h2 id="phase"></h2><p id="hint" role="status"></p></div>
+          <div id="deploy">
+            <div id="roster" role="group" data-i18n-label="gridFleet.fleet"></div>
+            <div class="tools">
+              <button id="rotate"><svg class="icon"><use href="#rotate-icon"/></svg><span data-i18n="gridFleet.rotate">旋转</span></button>
+              <button id="random"><svg class="icon"><use href="#shuffle-icon"/></svg><span data-i18n="gridFleet.random">随机部署</span></button>
+            </div>
+            <button class="primary" id="start"><span data-i18n="gridFleet.start">开始对战</span><svg class="icon"><use href="#forward"/></svg></button>
+          </div>
+          <div id="combat" hidden>
+            <div class="reports">
+              <div><span data-i18n="gridFleet.yourShot">我方试探</span><b id="outgoing"></b></div>
+              <div><span data-i18n="gridFleet.theirShot">对方试探</span><b id="incoming"></b></div>
+            </div>
+            <div class="tally"><span data-i18n="gridFleet.afloat">尚存舰船</span><strong id="afloat"></strong></div>
+            <button id="again"><svg class="icon"><use href="#rotate-icon"/></svg><span data-i18n="gridFleet.again">重新部署</span></button>
+          </div>
+        </div>
+      </aside>
+    </div>
+  </main>
+  <dialog id="dialog"><form method="dialog"><h2 id="dialog-title"></h2><p id="dialog-copy"></p><div class="dialog-actions"><button id="close"></button><button id="confirm" class="primary" type="button" hidden></button></div></form></dialog>
+</body>
+</html>

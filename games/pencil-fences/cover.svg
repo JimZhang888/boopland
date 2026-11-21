@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 290" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <defs>
+    <pattern id="furrows" width="12" height="12" patternUnits="userSpaceOnUse" patternTransform="rotate(27)"><path d="M2 -2 1 14m3-16-1 16" stroke="#827c59" stroke-width=".85" opacity=".55"/></pattern>
+    <pattern id="lines" width="8" height="9" patternUnits="userSpaceOnUse" patternTransform="rotate(-49)"><path d="M1 0v9" stroke="#687e60" stroke-width="1" opacity=".46"/></pattern>
+    <pattern id="planks" width="8" height="5" patternUnits="userSpaceOnUse"><path d="m1 0-.4 5" stroke="#774e3f" opacity=".55"/></pattern>
+    <filter id="grain"><feTurbulence type="fractalNoise" baseFrequency=".66" numOctaves="3" stitchTiles="stitch"/></filter>
+    <g id="poplar" stroke="#69755a"><path d="M0 3C-10 4-11-6-8-12c-5-7 2-13 0-18 0-6 6-17 9-24 3 12 9 19 7 29 6 5 4 12 3 16C14-2 9 6 0 3Z" fill="#9faa84" stroke-width="1.1"/><path d="m1 14 .4-48M1-6l6-7M1-17l-4-7m5 1 4-6M0 4l-4-6" stroke-width="1.2"/></g>
+    <g id="grass" stroke="#69795c" stroke-width="1.3"><path d="m0 0-5-7m5 7 1-12m2 11 5-7m5 6 3-4"/></g>
+    <g id="post" stroke="#655942" stroke-width="1.8"><path d="m-3 3-.4-28 3-4 3 4 .2 27Z" fill="#c1a57b"/><path d="M0-24 .6 0" stroke="#8a795d" stroke-width=".8"/></g>
+    <g id="bush"><path d="M-16 0q-9-7-2-13-1-11 8-11 4-11 12-6 9-4 13 5 11 2 10 11Q33 0 15 3Z" fill="#a9b597" stroke="#6e7a60"/><path d="M1 9v-25m0 15-10-9m12 4 9-10m-20 2 2-2" stroke="#758066" stroke-width="1.3"/></g>
+  </defs>
+  <path fill="#f6eedb" d="M0 0h480v290H0z"/>
+  <circle cx="76" cy="53" r="22" fill="#e2c78e"/>
+  <path d="M9 43q13-8 28-4 9-14 26-7m48 18q19-4 28 0m119-22q13-3 19 0 7-8 17-5 4-6 11-4" stroke="#a59f87" stroke-width="1.2"/>
+  <path d="M0 103C38 93 63 73 97 77c50 3 61 16 103 13 53-4 89-27 136-21 57 6 95 9 144-4v70H0Z" fill="#d4d9bc" stroke="#9ca484"/>
+  <path d="M0 109q68-34 116-19t94 4q54-13 99-12t86 1q51-4 85-13M0 113q34-12 64-13m285-15 28-2" stroke="#9aa484"/>
+  <path d="M0 128q61-35 104-22 52 13 105-1 49-14 97-4 80 15 174-7v100H0Z" fill="#bec7a4" stroke="#849074"/>
+  <g opacity=".95"><use href="#poplar" transform="translate(401 110) scale(.7)"/><use href="#poplar" transform="translate(414 109) scale(.86)"/><use href="#poplar" transform="translate(431 110) scale(.64)"/><use href="#bush" transform="translate(242 113) scale(.6)"/><use href="#bush" transform="translate(223 113) scale(.4)"/></g>
+  <path d="M0 142q148-29 251-20t229 2v166H0Z" fill="#e9ddba"/>
+  <path d="m0 150 160-22 64 3-98 28L0 179Z" fill="#c4c89e" stroke="#8e9273"/>
+  <path d="m-11 169 151-28m-94 25 113-26m-57 18 68-17m-177 16 108-17" stroke="#9a9d77" stroke-width="1.2"/>
+  <path d="M-8 196q94-27 197-44l29 12L12 243l-20-4Z" fill="#d4bd8a" stroke="#a98f62"/>
+  <path d="M-8 196q94-27 197-44l29 12L12 243l-20-4Z" fill="url(#furrows)"/>
+  <path d="M-10 262q99-44 182-74l66-20 31 15-186 114H-7Z" fill="#aebd98" stroke="#74896d"/>
+  <path d="M-10 262q99-44 182-74l66-20 31 15-186 114H-7Z" fill="url(#lines)"/>
+  <path d="M200 290q27-39 70-69 46-33 103-48 46-13 107-21v138Z" fill="#d4c99f" stroke="#9b9678"/>
+  <g stroke="#a29a77" stroke-width="1.4"><path d="M250 285q84-88 229-112m-209 121q81-82 213-107m-185 105q84-77 183-90m-144 91q72-59 141-73m-95 71q56-38 96-45m-262 39q58-67 143-98"/></g>
+  <path d="M105 293c42-42 102-77 165-109 30-16 43-26 36-34-8-8-52-7-59-17-4-7 29-14 38-16-34 1-70 9-70 16-1 14 63 18 62 27-1 9-41 22-75 40-57 29-103 54-149 90Z" fill="#f5ead0" stroke="#ac9e7a"/>
+  <path d="M132 259q53-33 99-55m49-33 11-7m-38-16q-24-6-27-13" stroke="#c3b391" stroke-dasharray="8 5 2 5"/>
+  <g stroke="#5d5948" stroke-width="1.65">
+    <path d="m279 87 39-24 48 17 1 43-42 9-46-16Z" fill="#ba8067"/>
+    <path d="m278 86 26 4 23 40-48-14Z" fill="url(#planks)"/>
+    <path d="m311 87 23-29 31 22 1 42-54 10Z" fill="#c69475"/>
+    <path d="m311 87 23-29 31 22 1 42-54 10Z" fill="url(#planks)"/>
+    <path d="m265 87 26-39 46 5-24 43Z" fill="#797e6b"/>
+    <path d="m265 87 26-39 46 5-24 43Z" fill="url(#lines)"/>
+    <path d="m310 93 25-38 35 28 3-3-38-32-28 43Z" fill="#e4d9bc"/>
+    <path d="m265 89 46 9 2-5-46-9Z" fill="#e7d7b9"/>
+    <path d="m324 128 1-30 24-4 1 30Z" fill="#8d6853"/><path d="m326 99 22-4m-23 30 23-29m-23 3 23 23" stroke="#d9bc94" stroke-width="2.7"/>
+    <path d="m330 85 1-8 9-2v8Z" fill="#726f5c"/>
+    <path d="m282 98 11 2v10l-11-3Z" fill="#726f5c"/>
+  </g>
+  <g stroke="#726b56" stroke-width="1.6"><path d="m145 115 9-49 10 48Zm3-10 12-15m-11 1 12 15" fill="#d6c9a5"/><path d="m154 68-21-10-5-8 25 12Zm1-2 13-24h5l-12 23Zm3 1 24 12 2 6-25-10Zm-4 2-11 24h-6l12-25Z" fill="#e4d9bd"/><circle cx="155" cy="67" r="3" fill="#997b5d"/></g>
+  <g stroke="#6b604b" stroke-width="1.3"><path d="m-7 234 158-54 57-18 39 14-1 5-38-13-54 18L-6 241Zm9 12 149-53 56-17 28 9-2 3-26-7-55 18L1 252Z" fill="#c1a77f"/></g>
+  <g><use href="#post" transform="translate(26 246)"/><use href="#post" transform="translate(80 226) scale(.87)"/><use href="#post" transform="translate(131 205) scale(.75)"/><use href="#post" transform="translate(172 190) scale(.64)"/><use href="#post" transform="translate(208 180) scale(.6)"/><use href="#post" transform="translate(241 189) scale(.6)"/></g>
+  <use href="#grass" transform="translate(18 263)"/><use href="#grass" transform="translate(64 242) scale(.8)"/><use href="#grass" transform="translate(398 145) scale(.65)"/><use href="#grass" transform="translate(365 271)"/>
+  <path fill="#91846a" opacity=".085" filter="url(#grain)" d="M0 0h480v290H0z"/>
+</svg>

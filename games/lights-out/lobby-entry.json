@@ -1,0 +1,19 @@
+{
+  "order": 74,
+  "title": "熄灯之后",
+  "description": "街角只剩一块招牌亮着。轻点星灯，让最后一盏也变成弯月。",
+  "category": "益智",
+  "path": "./games/lights-out/index.html",
+  "cover": "./games/lights-out/cover.svg",
+  "color": "#c9d2ca",
+  "locales": {
+    "zh-CN": { "title": "熄灯之后", "description": "街角只剩一块招牌亮着。轻点星灯，让最后一盏也变成弯月。" },
+    "en": { "title": "After Lights Out", "description": "One sign still glows above the rooftops. Tap its starry lamps until every star becomes a crescent." },
+    "ja": { "title": "灯りが消えたあと", "description": "街角にひとつだけ光る看板。星のランプを押して、最後のひとつまで三日月に変えましょう。" },
+    "ko": { "title": "불이 꺼진 뒤", "description": "골목 끝에 간판 하나만 빛납니다. 별 모양 등을 눌러 마지막 별까지 초승달로 바꿔 보세요." },
+    "fr": { "title": "Tous feux éteints", "description": "Une seule enseigne brille encore au coin de la rue. Touchez ses étoiles pour les changer toutes en croissants de lune." },
+    "de": { "title": "Lichter aus", "description": "An der Straßenecke leuchtet noch ein Schild. Tippe auf die Sternlichter, bis nur noch Mondsicheln zu sehen sind." },
+    "es": { "title": "Luces apagadas", "description": "Solo queda un letrero encendido en la esquina. Toca sus estrellas hasta que todas se conviertan en lunas crecientes." },
+    "pt-BR": { "title": "Luzes apagadas", "description": "Na esquina, só um letreiro continua aceso. Toque nas estrelas até que a última vire uma lua crescente." }
+  }
+}

@@ -1,0 +1,43 @@
+{
+  "title": "追风纸鸢",
+  "description": "收放风筝线，借阵风带燕子纸鸢穿过三道高低不同的风标。",
+  "category": "动作",
+  "path": "./games/kite-on-the-wind/index.html",
+  "cover": "./games/kite-on-the-wind/cover.svg",
+  "order": 78,
+  "color": "#dbe5da",
+  "locales": {
+    "zh-CN": {
+      "title": "追风纸鸢",
+      "description": "收放风筝线，借阵风带燕子纸鸢穿过三道高低不同的风标。"
+    },
+    "en": {
+      "title": "Kite on the Wind",
+      "description": "Fly a swallow kite through three wind gates. Reel in for lift and ease the line as gusts build."
+    },
+    "ja": {
+      "title": "風追い凧",
+      "description": "糸を引いたり緩めたりしながら、ツバメ凧を風に乗せて高さの異なる三つの風門をくぐろう。"
+    },
+    "ko": {
+      "title": "바람을 타는 연",
+      "description": "실을 감고 풀어 제비연을 띄우고, 돌풍을 타고 높이가 다른 세 관문을 통과하세요."
+    },
+    "fr": {
+      "title": "Au fil du vent",
+      "description": "Jouez avec la tension du fil et les rafales pour guider un cerf-volant hirondelle entre trois paires de fanions."
+    },
+    "de": {
+      "title": "Drachen im Wind",
+      "description": "Führe einen Schwalbendrachen mit geschicktem Leinenzug durch drei verschieden hohe Windtore."
+    },
+    "es": {
+      "title": "Cometa al viento",
+      "description": "Regula el hilo y aprovecha las ráfagas para guiar tu cometa golondrina por tres puertas a distinta altura."
+    },
+    "pt-BR": {
+      "title": "Pipa ao vento",
+      "description": "Controle a linha e aproveite as rajadas para levar uma pipa de andorinha por três portais em alturas diferentes."
+    }
+  }
+}

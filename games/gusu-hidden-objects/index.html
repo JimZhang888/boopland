@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="zh-CN" data-i18n-scope="gusu">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <title data-i18n="gusu.title">姑苏寻物记</title>
+  <link rel="icon" href="cover.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="game.css">
+  <script defer src="../../analytics.js"></script>
+  <script defer src="../../i18n.js"></script>
+  <script defer src="words.js"></script>
+  <script defer src="drawing.js"></script>
+  <script defer src="game.js"></script>
+</head>
+<body>
+  <svg class="symbols" aria-hidden="true"><defs>
+    <path id="i-back" d="M20 12H4m7-7-7 7 7 7"/>
+    <path id="i-left" d="m14 6-6 6 6 6"/>
+    <path id="i-right" d="m9 6 6 6-6 6"/>
+    <path id="i-plus" d="M5 12h14M12 5v14"/>
+    <path id="i-minus" d="M5 12h14"/>
+    <path id="i-help" d="M8 8a4 4 0 0 1 8 0c0 3-4 3-4 6m0 3v.7"/>
+    <path id="i-close" d="m6 6 12 12M18 6 6 18"/>
+    <path id="i-glass" d="M15.8 15.8 21 21M17 10a7 7 0 1 1-14 0 7 7 0 0 1 14 0Z"/>
+    <path id="i-book" d="M12 6C8 3 5 4 2 4v15c3-1 6-1 10 1 4-2 7-2 10-1V4c-4 0-7 0-10 2Zm0 0v14"/>
+    <path id="i-map" d="m2 5 7-2 6 3 7-2v15l-7 2-6-3-7 2Zm7-2v15m6-12v15"/>
+    <path id="i-check" d="m5 12 5 5L20 6"/>
+  </defs></svg>
+  <main class="shell">
+    <header>
+      <a class="back" href="../../games.html" data-i18n-label="common.back"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-back"/></svg><span data-i18n="common.back">返回大厅</span></a>
+      <div class="heading">
+        <svg class="seal" viewBox="0 0 42 45" aria-hidden="true"><path d="m3 3 35-1 1 40-36 1Z" fill="currentColor"/><g stroke="#fbf2df" stroke-width="1.6" stroke-linecap="square" fill="none"><path d="m8 8 24-.4v10H9ZM11 12h18m-9-4v10m-9 5v13m5-15v11m5-12v16m5-14v9m5-10v14M9 26h8m6 1h10"/></g></svg>
+        <h1 data-i18n="gusu.title">姑苏寻物记</h1>
+      </div>
+      <div class="progress"><span class="tally-label" data-i18n="gusu.found">已寻获</span><b id="total">0 / 8</b><div id="marks" aria-hidden="true"></div></div>
+      <button id="help" class="round" data-i18n-label="gusu.help"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-help"/></svg></button>
+    </header>
+    <div class="spread">
+      <section class="map-panel" data-i18n-label="gusu.map">
+        <div class="viewport" id="viewport" tabindex="0" role="group" data-i18n-label="gusu.map">
+          <svg id="map" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"></svg>
+          <div class="map-label"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-map"/></svg><span data-i18n="gusu.street">平江河街</span></div>
+          <div class="toast" id="toast" role="status" hidden></div>
+        </div>
+        <div class="map-tools">
+          <div class="navigator">
+            <button id="west" data-i18n-label="gusu.west"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-left"/></svg></button>
+            <input id="position" type="range" min="0" max="1000" value="300" data-i18n-label="gusu.position">
+            <button id="east" data-i18n-label="gusu.east"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-right"/></svg></button>
+          </div>
+          <span class="gesture" data-i18n="gusu.gesture">拖动画卷，轻点寻物</span>
+          <div class="zoom"><button id="out" data-i18n-label="gusu.out"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-minus"/></svg></button><button id="in" data-i18n-label="gusu.in"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-plus"/></svg></button></div>
+        </div>
+      </section>
+      <aside class="journal">
+        <div class="journal-heading"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-book"/></svg><h2 data-i18n="gusu.journal">寻物手记</h2></div>
+        <div class="list" id="list"></div>
+        <div class="current"><span class="clue-number" id="number"></span><h3 id="current-name"></h3><p id="verse"></p></div>
+        <div class="actions"><button id="browse" class="secondary"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-book"/></svg><span data-i18n="gusu.journal">寻物手记</span></button><button id="hint" class="primary"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-glass"/></svg><span id="hint-label"></span></button></div>
+      </aside>
+    </div>
+    <dialog id="sheet" aria-labelledby="sheet-title">
+      <div class="sheet-head"><h2 id="sheet-title"></h2><button id="dismiss" class="round" data-i18n-label="gusu.close"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-close"/></svg></button></div>
+      <div class="sheet-body" id="sheet-body"></div>
+      <div class="sheet-actions" id="sheet-actions"></div>
+    </dialog>
+  </main>
+</body>
+</html>

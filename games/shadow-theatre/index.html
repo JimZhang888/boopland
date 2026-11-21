@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="zh-CN" data-i18n-scope="shadowTheatre">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#f4f0e6">
+  <title data-i18n="shadowTheatre.title">皮影戏班</title>
+  <link rel="stylesheet" href="./style.css">
+  <script defer src="../../analytics.js"></script>
+  <script src="../../i18n.js"></script>
+  <script defer src="./words.js"></script>
+  <script defer src="./puppets.js"></script>
+  <script defer src="./game.js"></script>
+</head>
+<body>
+<main class="shell">
+  <header class="mast">
+    <div class="brand"><svg viewBox="0 0 52 52" aria-hidden="true"><rect x="2.5" y="2.5" width="47" height="47" rx="10" fill="#975e50"/><rect x="5.5" y="5.5" width="41" height="41" rx="7" fill="none" stroke="#d5b19a"/><g fill="none" stroke="#fcf0ce" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 34q7-8 13-9-11-2-14-15 8 10 18 11l-5-11q8 5 10 13l4-5 5 3-4 2q-6 13-20 9l-8 7 5-7Z"/><path d="m15 17 12 9m-2 6-6 10m10-11 1 10"/></g></svg>
+    <h1 data-i18n="shadowTheatre.title">皮影戏班</h1></div>
+    <nav><button class="help link-tool" id="help" aria-controls="help-panel" aria-expanded="false" data-i18n-title="shadowTheatre.help" data-i18n-label="shadowTheatre.help"><span class="question" aria-hidden="true">?</span><span data-i18n="shadowTheatre.help">玩法</span></button>
+    <a class="back link-tool" href="../../games.html" data-i18n-title="common.back" data-i18n-label="common.back"><span aria-hidden="true">←</span><span data-i18n="common.back">返回大厅</span></a></nav>
+  </header>
+  <section class="workarea">
+    <header class="billing"><div class="scene-title"><span id="act" class="act"></span><h2 id="scene"></h2></div><div id="steps" class="steps" aria-hidden="true"></div></header>
+    <div class="workspace">
+      <section class="play">
+        <div class="stage" id="stage">
+          <canvas id="screen" tabindex="0" role="group" data-i18n-label="shadowTheatre.board"></canvas>
+          <div class="curtain-call" id="success" hidden><span id="result" role="status"></span><button id="next"><span id="next-label"></span><span aria-hidden="true"> →</span></button></div>
+        </div>
+        <div class="tray"><div class="tray-label" data-i18n="shadowTheatre.tray">影偶匣</div><div id="cast"></div><button id="reset" class="reset" data-i18n-label="shadowTheatre.reset" data-i18n-title="shadowTheatre.reset"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9a8 8 0 1 1-.2 6M4 4v5h5"/></svg><span data-i18n="shadowTheatre.reset">重置</span></button></div>
+      </section>
+      <aside class="guide">
+        <div class="cue"><div class="cue-top"><span class="diamond" aria-hidden="true">❖</span><h3 data-i18n="shadowTheatre.plate">本场影谱</h3><span class="hairline"></span></div>
+          <div class="specimen"><canvas id="reference" aria-hidden="true"></canvas></div>
+          <p id="cue"></p>
+        </div>
+        <div class="adjust" id="adjust" hidden>
+          <label id="distance-row" hidden><span><b data-i18n="shadowTheatre.depth">灯距</b><output id="distance-value" for="distance"></output></span><input id="distance" type="range" min="65" max="140" step="1"></label>
+          <label id="angle-row" hidden><span><b data-i18n="shadowTheatre.angle">关节</b><output id="angle-value" for="angle"></output></span><input id="angle" type="range" min="-65" max="65" step="1"></label>
+        </div>
+        <div class="meters">
+          <div class="metric"><div><span data-i18n="shadowTheatre.coverage">轮廓覆盖</span><strong id="coverage"></strong></div><div class="track"><i id="coverage-bar"></i></div></div>
+          <div class="metric extra"><div><span data-i18n="shadowTheatre.spill">多余阴影</span><strong id="spill"></strong></div><div class="track"><i id="spill-bar"></i></div></div>
+        </div>
+      </aside>
+    </div>
+    <div class="veil" id="help-panel" hidden><section class="help-page" role="dialog" aria-labelledby="help-title"><h2 id="help-title" data-i18n="shadowTheatre.help">玩法</h2>
+      <div class="help-copy"><p data-i18n="shadowTheatre.helpMove"></p><p data-i18n="shadowTheatre.helpLight"></p><p data-i18n="shadowTheatre.helpScore"></p></div>
+      <button id="close-help" class="primary" data-i18n="shadowTheatre.resume">回到戏台</button>
+    </section></div>
+  </section>
+</main>
+</body></html>

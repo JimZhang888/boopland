@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 180 240" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <defs>
+    <pattern id="weave" width="7" height="7" patternUnits="userSpaceOnUse"><path d="m-1 6 7-7m-3 10 6-6" stroke="#d6d6b3" opacity=".19" stroke-width=".65"/></pattern>
+    <clipPath id="window"><path d="M27 174V98a63 63 0 0 1 126 0v76q-63 17-126 0Z"/></clipPath>
+    <g id="sprig" stroke="#dedabc" stroke-width="1.35">
+      <path d="M0 0q-1-20-9-33M-5-18q0-10 4-17m-5 15q-9-2-13-10m12 6q0-8-5-15M-3-11q8-4 11-12m-11 9q-8-1-13-8M0-5q8-2 13-9"/>
+    </g>
+  </defs>
+  <rect x="1" y="1" width="178" height="238" rx="9" fill="#f9f3db" stroke="#554e3e" stroke-width="2"/>
+  <rect x="6" y="6" width="168" height="228" rx="5" fill="#43574b"/>
+  <rect x="6" y="6" width="168" height="228" rx="5" fill="url(#weave)"/>
+  <path d="M13 22q9 0 9-9h136q0 9 9 9v196q-8 0-9 9H22q0-9-9-9Z" stroke="#dad7b4" stroke-width="1.7"/>
+  <path d="M16 25q9 0 10-9m129 0q1 9 9 10M16 215q9 1 10 9m129 0q1-9 9-9" stroke="#dad7b4"/>
+  <path d="M23 175V98a67 67 0 0 1 134 0v77q-67 20-134 0Z" fill="#dbd5b1" stroke="#283f38" stroke-width="1.5"/>
+  <g clip-path="url(#window)">
+    <path d="M25 31h131v155H25z" fill="#43584e"/>
+    <g stroke="#e9debb" stroke-width=".75" opacity=".8">
+      <path d="m96 106-65-8m66 10-60-26m61 24L42 67m56 37L53 54m48 48L69 44m34 56L84 39m22 60-4-61m6 62 11-61m-9 62 25-52m-22 55 34-38m-31 41 37-25"/>
+      <path d="M36 105h19m-23 5h13m90-9h15m-19 5h22m-21 5h14M42 82h10m75-15h9"/>
+    </g>
+    <circle cx="109" cy="83" r="17" fill="#dac78c"/>
+    <path d="M95 81q13-15 27-4m-29 7q15-8 32-4m-31 8q17-7 31-4m-29 8q15-5 27-5" stroke="#b3a675" opacity=".65" stroke-width=".8"/>
+    <path d="m22 133 20-19 12 7 14-20 13 18 13-12 15 9 21-21 25 19 5 38H22Z" fill="#8e9b82" stroke="#e0dabc" stroke-width="1.1"/>
+    <path d="m36 132 18-11 6 7 8-27 3 18m56-18 3-6 7 17 6 8m-39 0 5-4 5 6" stroke="#526658"/>
+    <path d="m26 143 23-19 14 7 20-10 20 9 23-15 30 14v45H26Z" fill="#637968" stroke="#bdc4a3"/>
+    <path d="M24 160q33-13 63-9t72 5v32H24Z" fill="#a0a98e"/>
+    <!-- The stepped observatory, built from offset courses of cut stone. -->
+    <g stroke="#394b40" stroke-width="1.3">
+      <path d="m43 154 3-7 7-1 1-6 7-1 1-6 7-1 1-6 5-1v-8l6-1 1-13 17-3 12 4v13l6 2v7l7 3v7l8 3v7l9 3 2 9-62 5Z" fill="#dac99a"/>
+      <path d="m99 100 12 4v13l6 2v7l7 3v7l8 3v7l9 3 2 9-56 6 16-37Z" fill="#adae87"/>
+      <path d="m79 104 20-4 13 4-1 3-12-3-19 3Zm1 14 18-3 14 3m-37 6 23-3 19 5m-49 6 26-4 30 7m-64 4 28-4 43 10m-78 1 33-4 53 12m-96 0 36-5 63 9" />
+      <path d="m87 116 1-7 5-1v7m10-9 4 1v7l-4-1Z" fill="#43574a"/>
+      <path d="m92 122 7-1-13 39-15-2Z" fill="#f0dfb2"/>
+      <path d="m90 126 7 .3m-9 3 8 .5m-10 3 8 1m-10 2 9 1m-11 2 10 1m-12 3 10 .8m-13 3 11 1m-14 3 12 1m-15 3 13 1" stroke-width=".85"/>
+      <path d="m52 150 4-2m8-5 2-2m-4 11 5-3m42-21 4 3m-1 4 4 3m-12 4 6 4m-9-1 6 4m16 1 6 4" stroke-width=".8"/>
+    </g>
+    <path d="M24 153q16 9 30 8t34 4q-13 9-7 19H23Zm132-2q-20 3-36 12t-29 22h66Z" fill="#43584b"/>
+    <path d="M83 183q-7-8 14-15t-2-8m10 1q13 4-3 10m-69-8 11 2m-9 2 17 2m78-5 15-3m-19 7 12-3" stroke="#d6d6b4" stroke-width="1"/>
+    <use href="#sprig" transform="translate(35 170) rotate(-18) scale(1.05)"/>
+    <use href="#sprig" transform="translate(145 167) rotate(14) scale(1.15)"/>
+  </g>
+  <path d="M27 174V98a63 63 0 0 1 126 0v76q-63 17-126 0Z" stroke="#4e5d4c" stroke-width="1.3"/>
+  <g stroke="#d9d4ae">
+    <path d="M34 28q27-8 44-7m24 0q28 0 44 8M33 207q15 5 36 2m41 0q23 2 37-4M34 211q18 4 29 2m55 0q14 1 26-3"/>
+    <path d="m90 15 1.5 5L96 22l-5 1.5-1 5-1.5-5-5-1.5 5-2Z" fill="#ded8b5"/>
+    <circle cx="90" cy="202" r="12"/><circle cx="90" cy="202" r="9" stroke-dasharray="1 3"/>
+    <path d="m90 185 3 14 12 3-12 3-3 14-3-14-12-3 12-3Z" fill="#d9d4ad"/>
+    <path d="m90 188 .1 14-3-3Zm0 14v13l3-10Z" fill="#677761" stroke="none"/>
+  </g>
+</svg>

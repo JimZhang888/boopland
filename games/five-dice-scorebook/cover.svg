@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="660" height="400" viewBox="0 0 660 400" role="img" aria-labelledby="title">
+  <title id="title">五骰记分簿</title>
+  <defs>
+    <pattern id="grid" width="21" height="21" patternUnits="userSpaceOnUse"><path d="M21 0H0v21" fill="none" stroke="#7f927b" opacity=".16"/></pattern>
+    <pattern id="hatch" width="6" height="6" patternUnits="userSpaceOnUse" patternTransform="rotate(25)"><path d="M0 0v6" stroke="#716f59" opacity=".38" stroke-width="2"/></pattern>
+    <filter id="grain"><feTurbulence type="fractalNoise" baseFrequency=".65" numOctaves="3" stitchTiles="stitch"/><feColorMatrix type="saturate" values="0"/></filter>
+    <g id="cube" stroke-linejoin="round">
+      <path fill="#b5b8a3" d="m-31-21 29-13 32 12-1 35-28 16-32-15z" stroke="#485a4b" stroke-width="2.8"/>
+      <path fill="#ede7ce" d="m-31-21 32 12v38l-32-15z" stroke="#485a4b" stroke-width="2"/>
+      <path fill="#fff8e3" d="m-31-21 29-13 32 12L1-9z" stroke="#485a4b" stroke-width="2.1"/>
+      <path fill="url(#hatch)" d="m23-16 7-6-1 35-7 4z"/>
+      <g fill="none" stroke="#8a947b" stroke-linecap="round"><path d="m-25-16 19 7m-21 7 .5 11m31 13 16-9M-14-25l10-5"/></g>
+    </g>
+    <g id="one" fill="#9d624b"><ellipse cx="-1" cy="-21" rx="6" ry="3.5"/></g>
+    <g id="four" fill="#9d624b"><ellipse cx="-15" cy="-21" rx="3.8" ry="2.2"/><ellipse cx="-2" cy="-27" rx="3.8" ry="2.2"/><ellipse cx="1" cy="-15" rx="3.8" ry="2.2"/><ellipse cx="14" cy="-21" rx="3.8" ry="2.2"/></g>
+    <g id="five"><use href="#four"/><ellipse cx="-.3" cy="-21" rx="3.4" ry="2" fill="#985f4a"/></g>
+    <g id="two" fill="#475d4c"><ellipse cx="-10" cy="-23" rx="4.3" ry="2.4"/><ellipse cx="10" cy="-18.8" rx="4.3" ry="2.4"/></g>
+    <g id="three"><use href="#two"/><ellipse cx="0" cy="-21" rx="3.4" ry="2.1" fill="#475d4c"/></g>
+    <g id="faces" fill="#4b6050">
+      <ellipse cx="-24" cy="-8" rx="2.7" ry="4.1" transform="rotate(-15 -24 -8)"/><ellipse cx="-16" cy="0" rx="2.7" ry="4.1" transform="rotate(-15 -16 0)"/><ellipse cx="-8" cy="10" rx="2.7" ry="4.1" transform="rotate(-15 -8 10)"/>
+      <ellipse cx="8" cy="0" rx="2.4" ry="3.7"/><ellipse cx="21" cy="-6" rx="2.4" ry="3.7"/><ellipse cx="8" cy="12" rx="2.4" ry="3.7"/><ellipse cx="21" cy="6" rx="2.4" ry="3.7"/>
+    </g>
+  </defs>
+  <path fill="#f2ecdc" d="M0 0h660v400H0z"/><path fill="url(#grid)" d="M0 0h660v400H0z"/>
+  <g transform="rotate(-9 185 205)" stroke-linejoin="round">
+    <rect x="9" y="57" width="379" height="290" rx="28" fill="#aeb79e" stroke="#8a947e" stroke-width="2"/>
+    <rect x="10" y="51" width="379" height="290" rx="27" fill="#c5d2bd" stroke="#758b73" stroke-width="2.5"/>
+    <rect x="19" y="60" width="360" height="271" rx="20" stroke="#869780" stroke-width="1.7" stroke-dasharray="5 4" fill="none"/>
+    <g stroke="#91a389" stroke-width="1.7" fill="none" stroke-linecap="round"><path d="M42 262q32-30 53-7c13 20-17 33-17 15s30-25 45-19" stroke-dasharray="5 5"/><path d="m118 245 8 6-9 3m141 38 4-9 3 8 7 3-7 2-3 9-3-9-8-2z"/></g>
+  </g>
+  <g transform="translate(366 45) rotate(8 114 143)" stroke-linejoin="round" stroke-linecap="round">
+    <rect x="4" y="10" width="215" height="289" rx="6" fill="#c8c7ac" stroke="#858a73" stroke-width="2"/>
+    <rect x="1" y="5" width="215" height="290" rx="6" fill="#ece5cd" stroke="#a5a38b" stroke-width="1.6"/>
+    <path d="M4 0 212 1q4 1 4 6l-2 275q0 7-6 8L3 288q-4-.5-4-6L0 5q0-5 4-5z" fill="#fcf7e6" stroke="#818574" stroke-width="2"/>
+    <g fill="none" stroke="#5b685a" stroke-width="3"><path d="M20 9c-4-12 0-21 4-17s4 11 1 16m21 2c-4-13 0-21 4-17s4 10 1 15m21 2c-4-12 0-21 4-17s4 11 1 16m21 2c-4-13 0-21 4-17s4 10 1 15m21 2c-4-12 0-21 4-17s4 11 1 16m21 2c-4-13 0-21 4-17s4 10 1 15m21 2c-4-12 0-21 4-17s4 11 1 16"/></g>
+    <g stroke="#b2b8a7" fill="none"><path d="m19 86 179-1M19 112l179-1m-179 26 179-1m-179 26 178-1m-178 26 179-1m-179 26 179-1m-179 26 178-1M153 75v160"/></g>
+    <g fill="#69816d"><rect x="23" y="39" width="24" height="24" rx="5" transform="rotate(-8 35 51)"/><circle cx="30" cy="47" r="2.2" fill="#faf5df"/><circle cx="39" cy="55" r="2.2" fill="#faf5df"/></g>
+    <g stroke="#5c705d" fill="none" stroke-width="2.5"><path d="m58 48 96-1m-95 9 60-1M19 72l179-.3m-179 175 177-1m-48 18 42-1m-41 6 45-1"/></g>
+    <g fill="none" stroke="#6e7a65" stroke-width="2.3"><path d="m27 97 4 5 8-10m-12 30 4 5 8-10m-12 29 4 4 8-9m-12 31 4 4 8-10M49 99l61-1m-61 26 43-1m-43 26 66-1m-66 26 49-1"/></g>
+    <g stroke="#9f6852" fill="none" stroke-width="2.2"><path d="m166 98 6-6-1 13m8-11q13-5 4 3l-5 6 11-.5m-23 20 7-6-1 13m7-11q14-5 8 3l-6 7 10-1m-26 21 6-7-1 13m9-10q13-5 7 1-8 5-7 8 5 1 12-1"/></g>
+  </g>
+  <g transform="translate(108 141) rotate(-12) scale(1.28)"><use href="#cube"/><use href="#four"/><use href="#faces"/></g>
+  <g transform="translate(222 112) rotate(11) scale(1.08)"><use href="#cube"/><use href="#two"/><use href="#faces"/></g>
+  <g transform="translate(294 188) rotate(-8) scale(1.22)"><use href="#cube"/><use href="#five"/><use href="#faces"/></g>
+  <g transform="translate(161 231) rotate(12) scale(1.42)"><use href="#cube"/><use href="#one"/><use href="#faces"/></g>
+  <g transform="translate(267 282) rotate(-15) scale(1.08)"><use href="#cube"/><use href="#three"/><use href="#faces"/></g>
+  <g transform="translate(573 320) rotate(21)" stroke="#666a52" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+    <path d="m-6-167 12 0-.2 151L0 5l-6-21z" fill="#c5aa71"/><path d="m-6-16 6 21 5.8-21-5.5 3z" fill="#e2cfab"/><path d="m-2.2-3 2.2 8 2-8z" fill="#4a554a"/><path d="m-6-168 12 .5v13l-12-.3z" fill="#b78370"/><path d="m-6-154 12 .2v7l-12 .2z" fill="#ccd0bc"/><path d="m0-143 .3 123" stroke="#e5d5a6"/>
+  </g>
+  <path d="M0 0h660v400H0z" filter="url(#grain)" opacity=".075"/>
+</svg>

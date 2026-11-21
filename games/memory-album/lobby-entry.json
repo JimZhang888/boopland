@@ -1,0 +1,43 @@
+{
+  "order": 73,
+  "title": "相册翻翻",
+  "description": "翻开草鞋、茶壶和渡船的速写，用尽量少的翻牌次数集齐一本水乡相册。",
+  "category": "益智",
+  "path": "./games/memory-album/index.html",
+  "cover": "./games/memory-album/cover.svg",
+  "color": "#dfdfcd",
+  "locales": {
+    "zh-CN": {
+      "title": "相册翻翻",
+      "description": "翻开草鞋、茶壶和渡船的速写，用尽量少的翻牌次数集齐一本水乡相册。"
+    },
+    "en": {
+      "title": "Memory Album",
+      "description": "Match sketches of sandals, teapots and ferries to fill a water-town travel album in as few flips as possible."
+    },
+    "ja": {
+      "title": "旅の絵合わせ",
+      "description": "わらじや急須、渡し舟の絵を合わせよう。なるべく少ない枚数で水郷の旅のアルバムを完成させよう。"
+    },
+    "ko": {
+      "title": "여행 짝맞추기",
+      "description": "짚신, 찻주전자, 나룻배 그림의 짝을 찾아보세요. 되도록 적게 뒤집어 물의 고장 여행 앨범을 완성하세요."
+    },
+    "fr": {
+      "title": "Album de voyage",
+      "description": "Retrouvez les paires de sandales, de théières et de barques pour remplir votre album du Jiangnan en retournant le moins de photos possible."
+    },
+    "de": {
+      "title": "Reisealbum",
+      "description": "Finde Paare mit Sandalen, Teekannen und Fähren. Fülle dein Reisealbum mit möglichst wenigen aufgedeckten Fotos."
+    },
+    "es": {
+      "title": "Álbum de viaje",
+      "description": "Empareja dibujos de sandalias, teteras y barcas para llenar tu álbum de viaje con el menor número de giros."
+    },
+    "pt-BR": {
+      "title": "Álbum de viagem",
+      "description": "Encontre pares de sandálias, bules e barcas para completar seu álbum de viagem com o menor número de viradas."
+    }
+  }
+}

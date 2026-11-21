@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 410" fill="none">
+  <title>Grid Fleet</title>
+  <defs>
+    <pattern id="grid" width="42" height="42" patternUnits="userSpaceOnUse"><path d="M42 0H0V42" stroke="#8eaba8" stroke-width="1" opacity=".45"/></pattern>
+    <pattern id="pencil" width="5" height="6" patternUnits="userSpaceOnUse" patternTransform="rotate(20)"><path d="M1 0V6" stroke="#354f52" opacity=".35" stroke-width="1.4"/></pattern>
+    <pattern id="sea" width="85" height="29" patternUnits="userSpaceOnUse"><path d="M3 11q8-2 15 0m31 10q8 2 20-1" stroke="#618584" stroke-width="1.4" opacity=".6"/></pattern>
+    <filter id="paper"><feTurbulence baseFrequency=".66" numOctaves="3" stitchTiles="stitch"/></filter>
+    <g id="gull" stroke="#51696b" stroke-width="2.4" stroke-linecap="round"><path d="M0 0q8-3 14 3 4-8 12-8"/></g>
+  </defs>
+  <path fill="#e9eee6" d="M0 0h720v410H0z"/><path fill="url(#grid)" d="M0 0h720v410H0z"/>
+  <g stroke="#93aba6" stroke-width="1.4" opacity=".47">
+    <path d="M-48 121q69 16 105-52T172-9m-235 154Q39 170 78 87T197-8m-246 182Q51 184 99 108T219 0M448-5q64 75 132 71t93 58 103 60M478-6q56 58 108 52t99 66 89 44m-272-169q41 46 87 40t110 61 79 35"/>
+  </g>
+  <g stroke="#667e79" stroke-linejoin="round">
+    <path fill="#bdcbbf" d="m508 236 39-15 29-5 15-10 45 8 25 11 48 8 23 9z"/><path fill="#f1f1e3" d="m586 207 4-43 8-1 6 46z"/><path fill="#8f6a59" d="m589 181 11-1 1 7-13 2z"/><path fill="#c4d1c6" d="M587 163v-10l6-5 7 5 1 10z"/><path d="m584 154 9-8 11 7m-19 12 18-1m-11-8 1 6m-31 48 25-6 18 3m17 12 26 6"/>
+  </g>
+  <path fill="#c0d5d0" d="m0 243 99-2 92 5 166-10 128 5 89-6 146 5v170H0z"/><path fill="url(#sea)" d="M0 246h720v164H0z"/>
+  <g stroke="#466365" stroke-width="2.3" stroke-linejoin="round" stroke-linecap="round">
+    <path fill="#93aca6" d="m91 253 70-5 26-8 249-3 79-13-13 23-24 24-45 7-302-2-28-11z"/>
+    <path fill="#637c7a" d="m108 264 148 5 140-3 94-10-12 15-65 9-281-4z"/>
+    <path fill="url(#pencil)" d="m94 254 148 1 188-7 82-19-18 28-74 16-282 4-28-9z"/>
+    <path fill="#d3ddd1" d="m142 248 5-11 35-2 8 12m-38-11-31-7-1 3 28 7m20-6 7-9 49-2 16 18"/>
+    <path fill="#a1b5ad" d="m193 241 2-25 56-3-1 26m-9-24 3-40 22-1-2 44"/>
+    <path fill="#647d7b" d="m245 176 0-8 22 1-1 7z"/>
+    <path fill="#b1c2b7" d="m274 228 4-57 25-2-1 58z"/><path fill="#546e6e" d="m278 171 1-8 26-1-1 9z"/>
+    <path fill="#d3dccc" d="m253 238 1-20 56-3 4-13 53-3 15 27 31 2 8 11z"/>
+    <path fill="#b3c4bc" d="m313 204 3-28 36-1 9 26z"/><path fill="#cfdbcf" d="m307 178-2-8 52-2 1 8z"/>
+    <path fill="#8fa6a0" d="m321 169 1-14 23-1 4 14z"/>
+    <path d="m332 155-2-72-1 1-3 70m4-60-17 66m18-58 21 64m-35-39 31-3m-26-14 21-1m-12-11-114 109m116-93 78 115m-218-12-4-56m-12 25 26-2m-13-15 44 48"/>
+    <path fill="#ab7564" d="m331 85 24-3-6 8 8 3-26 3z"/>
+    <path fill="#b6c7bc" d="m408 238 3-14 24-4 12 13z"/><path fill="#7b928b" d="m431 220 36-11 1 3-33 12z"/>
+    <g fill="#526b69" stroke="none"><path d="m316 172 6-.4v4h-6zm10-.6 6-.2v4h-6zm11-.5 6-.5v4h-6zm9-.3 6-.2v4h-6z"/><circle cx="166" cy="257" r="2.3"/><circle cx="180" cy="257" r="2.3"/><circle cx="194" cy="257" r="2.3"/><circle cx="208" cy="257" r="2.3"/><circle cx="222" cy="257" r="2.3"/><circle cx="236" cy="257" r="2.3"/></g>
+    <path d="m139 248 1-7m11 6 1-6m228-5 1-9m12 8 1-8m67 2-1-8m14 4v-8m13 5v-8m-32 10 47-10" stroke-width="1.3"/>
+  </g>
+  <g stroke-linecap="round">
+    <path d="M58 273q33 6 50 4m21 1 132 5 159-4 49-8m15-3q27 0 58-11m-381 35 88 1m86-3 73-4m-327 15 66 1m317-12 85-6" stroke="#f1f0dc" stroke-width="4"/>
+    <path d="m75 281 51 5m9-5 102 5m-11 9 90 1m72-10 60-4m-54 13 56-4" stroke="#60807f" stroke-width="1.8"/>
+    <path d="M-8 361q101-14 167-2t166-13 166-31q57-9 87-48" stroke="#778e88" stroke-width="1.5" stroke-dasharray="8 8"/>
+  </g>
+  <use href="#gull" transform="translate(398 116) scale(.82)"/><use href="#gull" transform="translate(419 100) scale(.59)"/>
+  <g transform="translate(632 76)" stroke="#6f8580" stroke-linejoin="round"><circle r="29" stroke-width="1"/><circle r="24" stroke-width=".8" stroke-dasharray="2 5"/><path d="M-36 0h72M0-37v74"/><path fill="#a66858" d="m0-32 6 32-6-4-6 4z"/><path fill="#fbf7e7" d="m0 32-6-32 6 4 6-4z"/><circle r="2.5" fill="#627876"/></g>
+  <path d="M0 0h720v410H0z" filter="url(#paper)" opacity=".085" style="mix-blend-mode:multiply"/>
+</svg>

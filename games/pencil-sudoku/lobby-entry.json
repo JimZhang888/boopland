@@ -1,0 +1,43 @@
+{
+  "order": 70,
+  "title": "铅笔数独",
+  "description": "从两分钟的四宫格起笔，记下可能的数字，再挑战三档难度的九宫格。",
+  "category": "益智",
+  "path": "./games/pencil-sudoku/index.html",
+  "cover": "./games/pencil-sudoku/cover.svg",
+  "color": "#dce1d2",
+  "locales": {
+    "zh-CN": {
+      "title": "铅笔数独",
+      "description": "从两分钟的四宫格起笔，记下可能的数字，再挑战三档难度的九宫格。"
+    },
+    "en": {
+      "title": "Pencil Sudoku",
+      "description": "Start with a two-minute 4×4, pencil in candidates, then solve 9×9 grids across three difficulty levels."
+    },
+    "ja": {
+      "title": "えんぴつ数独",
+      "description": "2分で遊べる4×4からスタート。数字をメモしながら、3段階の9×9に挑戦。"
+    },
+    "ko": {
+      "title": "연필 스도쿠",
+      "description": "2분짜리 4×4로 시작해 후보를 메모하고 세 단계 난이도의 9×9에 도전하세요."
+    },
+    "fr": {
+      "title": "Sudoku au crayon",
+      "description": "Commencez par une grille 4×4 de deux minutes, notez les candidats et passez aux 9×9 de trois niveaux."
+    },
+    "de": {
+      "title": "Bleistift-Sudoku",
+      "description": "Starte mit einem 4×4 für zwei Minuten, notiere Kandidaten und löse 9×9-Rätsel in drei Stufen."
+    },
+    "es": {
+      "title": "Sudoku a lápiz",
+      "description": "Empieza con un 4×4 de dos minutos, anota candidatos y resuelve sudokus de 9×9 en tres niveles."
+    },
+    "pt-BR": {
+      "title": "Sudoku a lápis",
+      "description": "Comece com um 4×4 de dois minutos, anote candidatos e resolva grades 9×9 em três níveis."
+    }
+  }
+}

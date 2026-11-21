@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="zh-CN" data-i18n-scope="echo-maze">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#f4efdf">
+  <title data-i18n="echo-maze.title">回声迷宫</title>
+  <link rel="icon" href="./bat.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="./style.css">
+  <script defer src="../../analytics.js"></script>
+  <script defer src="../../i18n.js"></script>
+  <script defer src="./words.js"></script>
+  <script defer src="./maze.js"></script>
+  <script defer src="./chart.js"></script>
+  <script defer src="./game.js"></script>
+</head>
+<body>
+  <svg class="symbols" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+    <symbol id="back" viewBox="0 0 24 24"><path d="m10 5-7 7 7 7M4 12h17"/></symbol>
+    <symbol id="sound" viewBox="0 0 24 24"><path d="M3 9h4l5-4v14l-5-4H3zm13-1q5 4 0 8m3-11q7 7 0 14"/></symbol>
+    <symbol id="mute" viewBox="0 0 24 24"><path d="M3 9h4l5-4v14l-5-4H3zm13 0 6 6m0-6-6 6"/></symbol>
+    <symbol id="retry" viewBox="0 0 24 24"><path d="M4 11a8 8 0 1 1 2 7M3 4v7h7"/></symbol>
+    <symbol id="help" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M9 9a3 3 0 1 1 4 3c-1 .5-1 1-1 2m0 2.5v.3"/></symbol>
+    <symbol id="arrow" viewBox="0 0 24 24"><path d="m5 12 7-7 7 7m-7-6v15"/></symbol>
+    <symbol id="echo" viewBox="0 0 24 24"><circle cx="12" cy="12" r="2"/><path d="M8 6c-4 3-4 9 0 12m8-12c4 3 4 9 0 12M5 3c-6 5-6 13 0 18M19 3c6 5 6 13 0 18"/></symbol>
+    <symbol id="wall" viewBox="0 0 24 24"><path d="M3 5 20 4l1 15-18 1zm0 7 7-7m-6 13L17 5m-6 14 9-9"/></symbol>
+    <symbol id="door" viewBox="0 0 24 24"><path d="M4 20V10a8 8 0 0 1 16 0v10zm4 0V10a4 4 0 0 1 8 0v10M2 21h20"/></symbol>
+    <symbol id="foot" viewBox="0 0 24 24"><path d="M5 14c-2-4 0-8 2-8 3 0 4 5 2 8zm0 3 4 1-1 3-3-1zm9-7c-1-5 1-9 3-8 3 0 3 5 1 9zm0 3 4 1-1 3-3-1z"/></symbol>
+    <symbol id="tinybat" viewBox="0 0 30 20"><path d="M1 7c5-5 9-6 12 1l1-4 2 2 2-2v4c4-6 7-7 11-3-4 0-4 3-4 5-3-1-5 0-6 3-2-1-3 2-4 4-2-3-3-4-5-3-1-3-2-4-5-3 0-3-1-4-4-4Z" fill="currentColor" stroke-width=".5"/></symbol>
+  </svg>
+
+  <main class="shell">
+    <nav class="nav">
+      <a class="back" href="../../games.html"><svg class="icon"><use href="#back"/></svg><span data-i18n="common.back">返回大厅</span></a>
+      <div class="tools">
+        <button id="audio" class="utility"><svg class="icon"><use href="#sound"/></svg></button>
+        <button id="restart" class="utility" data-i18n-label="echo-maze.restart" data-i18n-title="echo-maze.restart"><svg class="icon"><use href="#retry"/></svg></button>
+        <button id="help-button" class="utility" data-i18n-label="echo-maze.help" data-i18n-title="echo-maze.help"><svg class="icon"><use href="#help"/></svg></button>
+      </div>
+    </nav>
+    <header class="mast">
+      <div><h1 data-i18n="echo-maze.title">回声迷宫</h1>
+        <p data-i18n="echo-maze.sub">循着回声，带小蝙蝠飞出黑暗。</p></div>
+      <div class="bat-print" aria-hidden="true"><img src="./bat.svg" alt=""></div>
+    </header>
+
+    <div class="spread">
+      <section class="plate">
+        <div class="plate-head">
+          <div class="chapter"><span class="folio" id="folio"></span><h2 id="room"></h2></div>
+          <div id="progress" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i></div>
+        </div>
+        <div class="mapbox"><canvas id="map" role="img"></canvas></div>
+        <div class="plate-foot">
+          <div class="legends">
+            <span><svg class="icon"><use href="#tinybat"/></svg><b data-i18n="echo-maze.bat">小蝙蝠</b></span>
+            <span><svg class="icon wall"><use href="#wall"/></svg><b data-i18n="echo-maze.rock">岩壁</b></span>
+            <span><svg class="icon gate"><use href="#door"/></svg><b data-i18n="echo-maze.exit">出口</b></span>
+          </div>
+          <div class="steps"><svg class="icon"><use href="#foot"/></svg><span id="steps"></span></div>
+        </div>
+      </section>
+
+      <section class="controls">
+        <div class="bearing">
+          <div class="compass" aria-hidden="true">
+            <svg viewBox="0 0 100 100"><circle class="outer" cx="50" cy="50" r="45"/><circle class="inner" cx="50" cy="50" r="40"/><g id="ticks"></g>
+              <path class="cross" d="m22 50 56 0m-28-28v56M32 32l36 36m-36 0 36-36"/>
+              <g id="needle"><path d="m50 17 8 32-8 1-5 2Z" fill="#ae603c"/><path d="m50 83-8-32 8-1 5-2Z" fill="#555f55"/><circle cx="50" cy="50" r="3.4" fill="#f4ebd6" stroke="#605e4f"/></g>
+            </svg>
+          </div>
+          <div><h3 data-i18n="echo-maze.bearing">出口方位</h3><strong id="direction"></strong></div>
+        </div>
+        <div class="sonar">
+          <div class="row"><h3 data-i18n="echo-maze.charges">剩余回声</h3><span class="counter" id="count"></span></div>
+          <div class="tickets" aria-hidden="true"><i></i><i></i><i></i></div>
+          <button id="ping" class="primary"><svg class="icon"><use href="#echo"/></svg><span data-i18n="echo-maze.ping">发出回声</span><kbd aria-hidden="true">␣</kbd></button>
+        </div>
+        <div class="steering">
+          <h3 data-i18n="echo-maze.move">移动</h3>
+          <div class="dpad" role="group" data-i18n-label="echo-maze.move">
+            <button data-dir="up" data-i18n-label="echo-maze.n"><svg class="icon"><use href="#arrow"/></svg></button>
+            <button data-dir="left" data-i18n-label="echo-maze.w"><svg class="icon"><use href="#arrow"/></svg></button>
+            <button data-dir="down" data-i18n-label="echo-maze.s"><svg class="icon"><use href="#arrow"/></svg></button>
+            <button data-dir="right" data-i18n-label="echo-maze.e"><svg class="icon"><use href="#arrow"/></svg></button>
+          </div>
+        </div>
+        <p id="notice" class="notice" role="status"></p>
+      </section>
+    </div>
+  </main>
+
+  <dialog id="sheet" aria-labelledby="sheet-title">
+    <div class="sheet-inner">
+      <svg class="sheet-symbol icon" aria-hidden="true"><use href="#door"/></svg>
+      <h2 id="sheet-title"></h2><p id="sheet-body"></p>
+      <button class="primary" id="proceed"></button>
+      <a class="sheet-back" href="../../games.html" data-i18n="common.back">返回大厅</a>
+    </div>
+  </dialog>
+</body>
+</html>

@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="zh-CN" data-i18n-scope="mirror-lighthouse">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#f6f3e8">
+  <title data-i18n="mirror-lighthouse.title">镜面灯塔</title>
+  <link rel="icon" type="image/svg+xml" href="cover.svg">
+  <link rel="stylesheet" href="style.css">
+  <script defer src="../../analytics.js"></script>
+</head>
+<body>
+  <svg class="defs" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <defs>
+      <symbol id="i-back" viewBox="0 0 24 24"><path d="m11 5-7 7 7 7M5 12h15"/></symbol>
+      <symbol id="i-book" viewBox="0 0 24 24"><path d="M3 5.5q5-2 9 1 4-3 9-1v13q-5-2-9 1-4-3-9-1Zm9 1v13"/></symbol>
+      <symbol id="i-hint" viewBox="0 0 24 24"><path d="m12 2 2.5 6.5L21 11l-6.5 2.5L12 20l-2.5-6.5L3 11l6.5-2.5ZM20 16v5m-2.5-2.5h5"/></symbol>
+      <symbol id="i-reset" viewBox="0 0 24 24"><path d="M4 11a8 8 0 1 1 2 7M4 4v7h7"/></symbol>
+      <symbol id="i-next" viewBox="0 0 24 24"><path d="M4 12h16m-6-6 6 6-6 6"/></symbol>
+      <symbol id="i-light" viewBox="0 0 24 24"><path d="m5 22 2-1 1.5-12h7L17 21l2 1Zm2-13h10M9 8V5h6v3m-8-3 5-4 5 4M4 6H1m22 0h-3m-10 8 5-2"/></symbol>
+      <symbol id="i-close" viewBox="0 0 24 24"><path d="m6 6 12 12m0-12L6 18"/></symbol>
+    </defs>
+  </svg>
+  <main class="shell">
+    <header class="topbar">
+      <a class="back" href="../../games.html"><svg class="icon" aria-hidden="true"><use href="#i-back"/></svg><span data-i18n="common.back">返回大厅</span></a>
+      <h1><svg class="icon" aria-hidden="true"><use href="#i-light"/></svg><span data-i18n="mirror-lighthouse.title">镜面灯塔</span></h1>
+      <button class="help" id="help" data-i18n-label="mirror-lighthouse.guide"><svg class="icon" aria-hidden="true"><use href="#i-book"/></svg><span data-i18n="mirror-lighthouse.guide">航海手册</span></button>
+    </header>
+    <div class="desk">
+      <aside class="journal">
+        <div class="plate" aria-hidden="true"><img src="cover.svg" alt=""></div>
+        <div class="picker">
+          <div class="chart-index"><span class="fine-line"></span><span id="index"></span><span class="fine-line"></span></div>
+          <nav class="charts" id="charts" data-i18n-label="mirror-lighthouse.charts"></nav>
+        </div>
+        <div class="notes"><h2 id="chart-title"></h2><p id="brief"></p></div>
+        <div class="readout" aria-live="polite" aria-atomic="true">
+          <div class="status-line"><svg class="icon" aria-hidden="true"><use href="#i-light"/></svg><span id="status"></span><strong id="count"></strong></div>
+          <p class="hint-text" id="hint-text" hidden></p>
+        </div>
+        <div class="actions">
+          <button class="primary" id="action"><svg class="icon" aria-hidden="true"><use id="action-icon" href="#i-hint"/></svg><span id="action-label"></span></button>
+          <button class="restart" id="restart"><svg class="icon" aria-hidden="true"><use href="#i-reset"/></svg><span data-i18n="mirror-lighthouse.reset">重开</span></button>
+        </div>
+      </aside>
+      <section class="map-panel" data-i18n-label="mirror-lighthouse.chart">
+        <div class="map-wrap">
+          <div class="map">
+            <svg id="board" viewBox="0 0 660 660" aria-hidden="true">
+              <defs>
+                <pattern id="wash" patternUnits="userSpaceOnUse" width="97" height="81"><path d="M7 58q5 2 12 0m32-45 9-1m14 55 6-1" stroke="#78958a" opacity=".22" fill="none" stroke-width="1.5"/></pattern>
+                <pattern id="grid" patternUnits="userSpaceOnUse" x="42" y="42" width="96" height="96"><path d="M0 96V0h96" fill="none" stroke="#8fa59a" stroke-dasharray="3 5" stroke-width="1.35"/><path d="M0 5V0h5" fill="none" stroke="#869c91" stroke-width="1.8"/></pattern>
+                <pattern id="hatch" patternUnits="userSpaceOnUse" width="7" height="7"><path d="m-1 7 8-6m-3 8 5-4" fill="none" stroke="#5a6b5e" opacity=".37" stroke-width="1"/></pattern>
+                <g id="isle" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M-43 13q4-11 18-14l16-10q12-4 23 3l16 5q13 0 15 12 3 11-14 15L8 29q-18 1-32-3-17-2-19-13Z" fill="#bdcfc1" opacity=".65"/>
+                  <path d="m-37 11 10-10L-9-6l17-2L26-1l10 8-2 10-18 7-23 1-19-4-10-5Z" fill="#d8d0af" stroke="#788779" stroke-width="1.6"/>
+                  <path d="m-32 11 9-9 18-5 14-2L25 1l6 8-12 8-23 2-19-2Z" fill="#acb99c"/>
+                  <path d="m-29 17 9 4 14 2m20-2 13-4m-55-7 7-3m42-1 5 2" fill="none" stroke="#7f8970" stroke-width="1.2"/>
+                </g>
+                <g id="mirror-art" stroke-linejoin="round" stroke-linecap="round">
+                  <path d="m-6 5 1 13-7 3 23-1-7-3-1-14Z" stroke="#435d59" stroke-width="2" fill="#bdb494"/>
+                  <path d="m-25 20 43-45 7 5-43 45Z" fill="#526e69" stroke="#344d4b" stroke-width="2.5"/>
+                  <path d="m-24 17 42-44 5 5-42 44Z" fill="#c8ded8" stroke="#425b58" stroke-width="1.6"/>
+                  <path d="m-17 15 32-33" stroke="#fffbe3" stroke-width="2"/>
+                </g>
+                <g id="split-art" stroke-linejoin="round" stroke-linecap="round">
+                  <path d="m-3 5-3 13-7 3h25l-8-4-1-13Z" fill="#c9b88c" stroke="#5a665c" stroke-width="2"/>
+                  <path d="m-26 17 42-45 13 8-43 47Z" fill="#c3b7ca" stroke="#5e5867" stroke-width="2.6"/>
+                  <path d="m-26 17 12 10-3-9 33-46m-33 46 46-38" fill="#e5dbea" stroke="#83778c" stroke-width="1.5"/>
+                  <path d="m-9 10 23-25" stroke="#fff8ee" stroke-width="2"/>
+                </g>
+                <g id="tower-art" stroke="#4e615b" stroke-linejoin="round" stroke-linecap="round" stroke-width="2">
+                  <path d="m-12 16 5-37 14-1 6 38q-14 6-25 0Z" fill="#f9efd4"/>
+                  <path d="m-9-7 18-3 1 8-20 4Z" fill="#b57b6c" stroke-width="1.2"/>
+                  <path d="M-8-22v-9H8v9m-19 0h22l-2 3H-8Z" fill="var(--window,#9aafa4)"/>
+                  <path d="m-10-31 10-9 10 9Zm-4 48 28-1 2 4q-17 5-33 0Z" fill="#a97968"/>
+                  <path d="M0-40v-3m-2 60V9q2-4 5-1v9m-1-46v5" fill="#697b6f" stroke-width="1.6"/>
+                </g>
+                <g id="flare" fill="none" stroke="#bf8e43" stroke-width="2.5" stroke-linecap="round"><path d="m-15-36-8-5m9 14-12 1m11 5-6 4M15-36l8-5m-8 14 12 1m-11 5 6 4m-22-30v-6"/></g>
+                <g id="lamp-art" stroke="#4c655d" stroke-linejoin="round" stroke-width="2.4">
+                  <path d="m-20 10 4-22 22-7 12 9 2 17-20 12Z" fill="#8eaa99"/>
+                  <path d="m-21-8 20-12 17 7-19 12Z" fill="#698576"/>
+                  <path d="m-2-1 20-9-1 17-18 9Z" fill="#d5c49d"/>
+                  <path d="m5-2 11-5-1 10L4 8Z" fill="#f3ce83" stroke="#8c784e" stroke-width="1.5"/>
+                  <path d="m19-3 11-1m-12-5 8-5m-7 16 8 3" fill="none" stroke="#a98547" stroke-width="1.5"/>
+                </g>
+                <g id="reef-art" stroke="#57675f" stroke-linejoin="round" stroke-linecap="round">
+                  <path d="M-39 15q0-6 15-10l32-6q19 0 29 9 3 9-15 14-31 8-57-1Z" fill="#c1d0c2" stroke="none"/>
+                  <path d="m-32 12 12-20 11 5 8 15-18 6Zm16-3L-4-26l12-4 10 37-20 9Zm25 4L20-11l12 9 5 11-16 9Z" stroke-width="2" fill="#92998b"/>
+                  <path d="M-4-24-3 8l-13 1Zm24 15 1 22 14-6Zm-39 3-1 15-11 3Z" fill="url(#hatch)" stroke-width="1.1"/>
+                  <path d="M-32 20q8 3 14 1m24 0q12 2 23-2m-10 6 10-2" fill="none" stroke-width="1.6"/>
+                </g>
+              </defs>
+              <rect x="2" y="2" width="656" height="656" rx="3" fill="#e5ece3" stroke="#8da399" stroke-width="2"/>
+              <rect x="10" y="10" width="640" height="640" rx="2" fill="none" stroke="#9eb0a3" stroke-width="1"/>
+              <rect x="42" y="42" width="576" height="576" fill="#dbe7df" stroke="#859c90"/>
+              <g id="sea-details"></g>
+              <rect x="42" y="42" width="576" height="576" fill="url(#wash)"/>
+              <rect x="42" y="42" width="576" height="576" fill="url(#grid)"/>
+              <g id="coordinates"></g>
+              <g id="shores"></g><g id="rays"></g><g id="objects"></g>
+              <g transform="translate(630 628)" stroke="#667e73" stroke-width="1.3"><circle r="10" fill="none"/><path d="M0-17 4 0 0-2-4 0Z" fill="#667e73"/><path d="m0 14-3-12 3 2 3-2Z" fill="#f6f1dc"/><path d="M-13 0h8m11 0h7"/></g>
+            </svg>
+            <div id="mirror-controls" class="mirror-controls"></div>
+          </div>
+        </div>
+        <div class="legend" id="legend"></div>
+      </section>
+    </div>
+  </main>
+  <dialog id="guide" aria-labelledby="guide-title">
+    <div class="dialog-head"><h2 id="guide-title" data-i18n="mirror-lighthouse.guide">航海手册</h2><button id="close" data-i18n-label="mirror-lighthouse.close"><svg class="icon" aria-hidden="true"><use href="#i-close"/></svg></button></div>
+    <p data-i18n="mirror-lighthouse.rules">点击斜镜转动九十度，将光送入每一座灯塔。</p>
+    <dl id="guide-list"></dl>
+    <p class="keynote" data-i18n="mirror-lighthouse.keys">键盘可用 Tab 选择镜片，空格或回车转动。</p>
+  </dialog>
+  <script src="../../i18n.js"></script>
+  <script src="translations.js"></script>
+  <script src="optics.js"></script>
+  <script src="game.js"></script>
+</body>
+</html>

@@ -1,0 +1,43 @@
+{
+  "order": 66,
+  "title": "再翻一张",
+  "description": "再翻一张，还是见好就收？五轮寻宝里，留意余牌，在同类陷阱再现前把宝物装进口袋。",
+  "category": "策略",
+  "path": "./games/one-more-card/index.html",
+  "cover": "./games/one-more-card/cover.svg",
+  "color": "#e8e3ca",
+  "locales": {
+    "zh-CN": {
+      "title": "再翻一张",
+      "description": "再翻一张，还是见好就收？五轮寻宝里，留意余牌，在同类陷阱再现前把宝物装进口袋。"
+    },
+    "en": {
+      "title": "One More Card",
+      "description": "Draw again or pocket your finds? Read the remaining deck and bank your treasure before a trap repeats across five rounds."
+    },
+    "ja": {
+      "title": "もう一枚",
+      "description": "もう一枚めくる？ それとも引き上げる？ 山札の残りを読み、同じ罠が再び出る前に宝を持ち帰ろう。全5ラウンド。"
+    },
+    "ko": {
+      "title": "한 장만 더",
+      "description": "한 장 더 뒤집을까, 여기서 멈출까? 다섯 라운드 동안 남은 카드를 살피며 같은 함정이 다시 나오기 전에 보물을 챙기세요."
+    },
+    "fr": {
+      "title": "Encore une carte",
+      "description": "Piocher ou empocher le butin ? Pendant cinq manches, surveillez les cartes restantes et encaissez avant de retomber dans le même piège."
+    },
+    "de": {
+      "title": "Noch eine Karte",
+      "description": "Weiterziehen oder den Schatz sichern? Behalte in fünf Runden die übrigen Karten im Blick, bevor dieselbe Falle erneut zuschnappt."
+    },
+    "es": {
+      "title": "Una carta más",
+      "description": "¿Robas otra carta o te plantas? Durante cinco rondas, vigila el mazo y guarda tu tesoro antes de que se repita una trampa."
+    },
+    "pt-BR": {
+      "title": "Só mais uma carta",
+      "description": "Virar outra carta ou guardar o tesouro? Em cinco rodadas, acompanhe as cartas restantes e guarde seus pontos antes que uma armadilha se repita."
+    }
+  }
+}
