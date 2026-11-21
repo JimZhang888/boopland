@@ -6,14 +6,42 @@
   const reduced = matchMedia('(prefers-reduced-motion: reduce)');
   const sheet = byId('sheet');
   const cards = [...document.querySelectorAll('.tickets i')];
-  const marks = [...byId('progress').children];
+  const progress = byId('progress');
+  progress.max = EchoMaze.maps.length;
+  const checkpointKey = 'boopland-echo-maze-next-level';
   const keyDirections = { ArrowUp:'up', ArrowRight:'right', ArrowDown:'down', ArrowLeft:'left' };
   const compassPoints = ['n','ne','e','se','s','sw','w','nw'];
   const cardinal = { up:'n', right:'e', down:'s', left:'w' };
-  let game = EchoMaze.start(0), message = 'ready', muted = false;
+  let game = EchoMaze.start(readCheckpoint()), message = 'ready', muted = false;
   let audioContext, voices = [], bump = null, pauseTime = null, view = '', lastKey = -Infinity;
   let frame = 0, timer = 0;
   byId('map').tabIndex = 0;
+
+  function readCheckpoint() {
+    try {
+      const level = Number(localStorage.getItem(checkpointKey));
+      if (Number.isInteger(level) && level >= 0 && level < EchoMaze.maps.length) return level;
+    } catch { /* Storage is optional for local-file play. */ }
+    return 0;
+  }
+
+  function nextLevel() {
+    return (game.level + 1) % EchoMaze.maps.length;
+  }
+
+  function saveCheckpoint() {
+    const next = nextLevel();
+    try {
+      if (next === 0 || next > readCheckpoint()) localStorage.setItem(checkpointKey, String(next));
+    } catch { /* Continue the expedition when storage is unavailable. */ }
+  }
+
+  function roomName() {
+    const cavesPerRegion = 6;
+    const region = Math.floor(game.level / cavesPerRegion) + 1;
+    if (region === 1) return t('room' + (game.level + 1));
+    return t('region' + region, {n: game.level % cavesPerRegion + 1});
+  }
 
   // Draw a small printed waveform on each unused echo ticket.
   for (const card of cards) {
@@ -36,10 +64,10 @@
 
   function sync() {
     const heading = orientation();
-    const room = t('room'+(game.level+1));
+    const room = roomName();
     byId('room').textContent = room;
-    byId('folio').textContent = String(game.level+1).padStart(2,'0')+' / 06';
-    marks.forEach((mark,i)=>{mark.className = i===game.level ? 'current' : i<game.level ? 'done' : '';});
+    byId('folio').textContent = String(game.level+1).padStart(2,'0')+' / '+EchoMaze.maps.length;
+    progress.value = game.level + 1;
     byId('direction').textContent = t(heading.key);
     byId('needle').setAttribute('transform','rotate('+heading.angle+' 50 50)');
     byId('count').textContent = game.charges+' / 3';
@@ -128,7 +156,7 @@
     const help=view==='help', last=game.level===EchoMaze.maps.length-1;
     sheet.querySelector('use').setAttribute('href',help?'#echo':'#door');
     byId('sheet-title').textContent=t(help?'help':last?'finished':'cleared');
-    byId('sheet-body').textContent=help ? t('instructions') : t('summary',{room:t('room'+(game.level+1)),steps:game.steps,used:3-game.charges});
+    byId('sheet-body').textContent=help ? t('instructions') : t('summary',{room:roomName(),steps:game.steps,used:3-game.charges});
     byId('proceed').textContent=t(help?'ok':last?'newTrip':'next');
   }
 
@@ -153,7 +181,10 @@
     } else {
       message=game.pulse ? 'listening' : game.charges ? 'ready' : 'empty';
     }
-    if(result==='won') game.pulse=null;
+    if(result==='won') {
+      game.pulse=null;
+      saveCheckpoint();
+    }
     sync();paint();
     if(result==='won') openSheet('win');
   }
@@ -175,7 +206,7 @@
   byId('proceed').addEventListener('click',()=>{
     const advance=view==='win';
     sheet.close();view='';pauseIfNeeded();
-    if(advance) restart((game.level+1)%EchoMaze.maps.length,'ready');
+    if(advance) restart(nextLevel(),'ready');
     byId('map').focus({preventScroll:true});
   });
   sheet.addEventListener('cancel',event=>{if(view==='win') event.preventDefault();});
