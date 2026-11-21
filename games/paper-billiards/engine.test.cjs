@@ -21,6 +21,65 @@ test('head-on collision transfers velocity and records first contact',()=>{
   for(let i=0;i<40&&s.shot.first===null;i++)E.tick(s);
   assert.equal(s.shot.first,1);assert.ok(b(s,1).vx>300);assert.ok(Math.abs(b(s,0).vx)<30);
 });
+test('thin cuts use the tangent-circle normal regardless of which part of a tick contains contact',()=>{
+  for(const offset of [18,23,23.5,23.9,23.99,-23.99]) {
+    // At these cut angles the ball-to-ball friction impulse is at its 0.055 limit.
+    const expected=Math.asin(offset/(2*E.R))-Math.sign(offset)*Math.atan(.055);
+    for(let phase=0;phase<=60;phase++) {
+      const s=sparse(),target=b(s,1);
+      Object.assign(b(s,0),{x:300,y:300});
+      Object.assign(target,{x:380+phase/10,y:300+offset});
+      const path=E.aim(s,0);
+      assert.equal(path.hit,target);
+      assert.ok(Math.abs(Math.hypot(target.x-path.x,target.y-path.y)-2*E.R)<1e-9);
+      E.shoot(s,0,1);
+      for(let i=0;i<30&&s.shot.first===null;i++) E.tick(s);
+      assert.equal(s.shot.first,1);
+      assert.ok(Math.abs(Math.atan2(target.vy,target.vx)-expected)<1e-8);
+    }
+  }
+});
+test('the guide and the actual shot distinguish a tangent, a near miss and a fine cut',()=>{
+  for(const gap of [0,.001,-.001]) {
+    const s=sparse(),target=b(s,1),tip={side:0,high:0};
+    Object.assign(target,{x:380,y:310+2*E.R+gap});
+    const path=E.aim(s,0),guides=E.contactGuide(s,0,1,tip,path);
+    assert.equal(path.hit===target,gap<0);
+    E.shoot(s,0,1);
+    for(let i=0;i<30&&s.shot.first===null;i++) E.tick(s);
+    assert.equal(s.shot.first,gap<0?1:null);
+    if(gap>=0) {assert.deepEqual(guides,[]);assert.equal(target.vx,0);continue;}
+    for(let i=1;i<60;i++) E.tick(s);
+    const end=guides[1].at(-1);
+    assert.ok(Math.hypot(end.x-target.x,end.y-target.y)<.11);
+  }
+});
+test('a fast ball strikes the nearer target before a second impact in the same tick',()=>{
+  const s=sparse('solo',[0,1,2]);
+  Object.assign(b(s,0),{x:300,y:300});
+  Object.assign(b(s,2),{x:325,y:300});
+  Object.assign(b(s,1),{x:350,y:300});
+  E.shoot(s,0,1);E.tick(s);
+  assert.equal(s.shot.first,2);
+  assert.ok(b(s,1).vx>1300);
+});
+test('two moving object balls still collide when the contact is entirely between samples',()=>{
+  const s=sparse('solo',[0,1,2]),a=b(s,1),target=b(s,2);
+  E.shoot(s,Math.PI,.05);
+  Object.assign(a,{x:500,y:280,vx:900});
+  Object.assign(target,{x:503,y:303.99,vx:-900});
+  E.tick(s);
+  assert.ok(a.vy<0&&target.vy>0);
+  assert.equal(s.shot.first,null);
+});
+test('a symmetric double hit splits the impulse evenly',()=>{
+  const s=sparse('solo',[0,1,2]),top=b(s,1),bottom=b(s,2);
+  Object.assign(top,{x:370,y:298});Object.assign(bottom,{x:370,y:322});
+  E.shoot(s,0,1);
+  for(let i=0;i<25&&s.shot.first===null;i++) E.tick(s);
+  assert.ok(top.vx>0&&top.vy<0);
+  assert.ok(Math.abs(top.vx-bottom.vx)+Math.abs(top.vy+bottom.vy)<1e-6);
+});
 test('close straight shots follow or draw after contact in any aiming direction',()=>{
   for(const angle of [0, Math.PI/2, Math.PI, -Math.PI/2]) {
     const dx=Math.cos(angle),dy=Math.sin(angle);
