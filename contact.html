@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-i18n-scope="contact">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#eef0e6">
+  <title data-i18n="title">联系我们 · Boopland</title>
+  <style>
+    @font-face { font-family: Huiwen; src: url("./assets/fonts/huiwen-mincho-welcome.woff2") format("woff2"); font-display: swap; }
+    * { box-sizing: border-box; }
+    html { background: #eef0e6; color: #344b3e; }
+    body {
+      margin: 0; min-height: 100vh; min-height: 100svh; display: grid; grid-template-rows: auto 1fr;
+      font-family: "Iowan Old Style", Georgia, "Noto Serif CJK SC", "Songti SC", SimSun, serif;
+      background: radial-gradient(ellipse at 60% 25%, #faf8ee, transparent 75%), #eaeee2;
+    }
+    body::after {
+      content: ""; position: fixed; inset: 0; pointer-events: none; opacity: .045;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Cpath filter='url(%23n)' d='M0 0h180v180H0z'/%3E%3C/svg%3E");
+    }
+    header { width: min(90%, 1296px); min-height: 80px; margin: auto; display: flex; align-items: center; justify-content: space-between; gap: 16px; border-bottom: 1px solid #cbd1bf; }
+    .brand { font: 26px Huiwen, Georgia, serif; letter-spacing: -1px; }
+    .brand span { color: #95a17e; }
+    a { color: inherit; text-underline-offset: .26em; text-decoration-color: #9aa98c; }
+    a:hover { color: #506947; text-decoration-color: currentColor; }
+    a:focus-visible { outline: 2px solid #657d53; outline-offset: 5px; }
+    .back { display: inline-flex; align-items: center; min-height: 44px; font-size: .95rem; }
+    main { display: grid; place-items: center; padding: clamp(32px, 7vh, 80px) 22px; }
+    article {
+      position: relative; isolation: isolate; width: min(100%, 52rem); padding: clamp(30px, 6vw, 78px);
+      background: #fffcf2; border: 1px solid #d7d9c7; box-shadow: 0 14px 32px #48593c12;
+    }
+    article::before {
+      content: ""; position: absolute; z-index: -2; inset: 7px -5px -6px 4px; transform: rotate(-1deg);
+      background: #dde4ce; border: 1px solid #c8d1ba;
+    }
+    article::after { content: ""; position: absolute; z-index: -1; inset: 0; background: #fffcf2; }
+    .stamp { position: relative; margin: 0 0 12px auto; width: 86px; height: 102px; transform: rotate(6deg); border: 5px dotted #fffcf2; outline: 1px dashed #adb69b; background: #aebfa8; }
+    .landscape { position: absolute; inset: 5px; overflow: hidden; background: linear-gradient(#dbe4ce 58%, #b6ccbf 58%); border: 1px solid #a0b19a; }
+    .landscape::before { content: ""; position: absolute; top: 12%; right: 13%; width: 19px; height: 19px; border-radius: 50%; background: #e5be77; }
+    .landscape::after { content: ""; position: absolute; top: 35%; width: 100%; height: 26%; background: #90a888; clip-path: polygon(0 70%, 21% 35%, 38% 62%, 72% 10%, 100% 67%, 100% 100%, 0 100%); }
+    .boat { position: absolute; left: 18%; bottom: 16%; width: 61%; height: 34%; background: linear-gradient(106deg, #e2d6b6 44%, #fffdf0 45%); clip-path: polygon(0 73%, 19% 73%, 59% 0, 59% 73%, 100% 73%, 76% 100%, 23% 100%); }
+    .stamp::after { content: ""; position: absolute; left: -55px; top: 47%; width: 76px; height: 20px; opacity: .5; border-block: 1px solid #83917a; background: linear-gradient(transparent 46%, #83917a 48% 53%, transparent 55%); border-radius: 48%; transform: rotate(-17deg); }
+    h1 { margin: 0 0 1.1rem; font-size: clamp(2rem, 4.5vw, 3.65rem); font-weight: 400; line-height: 1.25; text-wrap: balance; }
+    .letter { margin: 0; max-width: 38em; color: #526252; font-size: clamp(1.05rem, 1.7vw, 1.22rem); line-height: 1.95; }
+    address { margin-top: clamp(26px, 4vw, 48px); padding-top: 14px; border-top: 1px dashed #c6cdb8; font-style: normal; }
+    address a { display: inline-block; padding: 8px 0; font-size: clamp(1rem, 2.7vw, 1.5rem); overflow-wrap: anywhere; }
+    @media (max-width: 540px) { header { min-height: 64px; } article { padding: 26px 22px; } .stamp { transform: rotate(6deg) scale(.86); transform-origin: right top; margin-bottom: 0; } }
+  </style>
+</head>
+<body>
+  <header>
+    <span class="brand">boopland<span>.</span></span>
+    <a class="back" href="./index.html" data-i18n="back">返回欢迎页</a>
+  </header>
+  <main>
+    <article aria-labelledby="letter-title">
+      <div class="stamp" aria-hidden="true"><div class="landscape"><i class="boat"></i></div></div>
+      <h1 id="letter-title" data-i18n="heading">写给噗通的一封信</h1>
+      <p class="letter" data-i18n="body">小河上的那只纸船，今天替我们收信。刚才是哪一局让你笑出了声？你小时候最爱玩的游戏，我们这里有吗？趁着那声「噗通」还在心里，写几句给我们吧。</p>
+      <address><a href="mailto:2661274680@qq.com">2661274680@qq.com</a></address>
+    </article>
+  </main>
+  <script src="./i18n.js"></script>
+  <script>
+    BooplandI18n.register('contact', {
+      'zh-CN': { title: '联系我们 · Boopland', back: '返回欢迎页', heading: '写给噗通的一封信', body: '小河上的那只纸船，今天替我们收信。刚才是哪一局让你笑出了声？你小时候最爱玩的游戏，我们这里有吗？趁着那声「噗通」还在心里，写几句给我们吧。' },
+      en: { title: 'Contact us · Boopland', back: 'Back to welcome page', heading: 'A letter to Boopland', body: 'The paper boat on the river is picking up our mail today. Which game made you laugh out loud? Is there one you loved as a child that you wish you could play here? Fold a few words into a letter and send it our way.' },
+      ja: { title: 'お問い合わせ · Boopland', back: '表紙に戻る', heading: 'Booplandへ、お手紙を', body: '小川に浮かぶ紙の舟が、今日は手紙を預かります。思わず声を出して笑ったのは、どのゲームでしたか。子どもの頃に夢中になった遊びも、ぜひ教えてください。ひとことでも、お便りをお待ちしています。' },
+      ko: { title: '문의하기 · Boopland', back: '첫 화면으로', heading: 'Boopland에 보내는 편지', body: '오늘은 개울에 띄운 종이배가 편지를 받으러 왔어요. 방금 어떤 게임을 하다가 웃음이 터졌나요? 어릴 때 좋아하던 놀이 중 여기서 다시 만나고 싶은 게 있나요? 그 웃음이 가시기 전에 짧은 편지를 띄워 주세요.' },
+      fr: { title: 'Nous contacter · Boopland', back: 'Retour à l’accueil', heading: 'Une lettre à Boopland', body: 'Aujourd’hui, le petit bateau en papier relève notre courrier. Quel jeu vous a fait éclater de rire ? À quel jeu de votre enfance aimeriez-vous rejouer ici ? Glissez quelques mots à bord, le temps d’un sourire.' },
+      de: { title: 'Kontakt · Boopland', back: 'Zur Startseite', heading: 'Ein Brief an Boopland', body: 'Heute holt das Papierboot auf dem Bach unsere Post ab. Bei welchem Spiel musstest du gerade laut lachen? Welches Spiel aus deiner Kindheit würdest du hier gern wiederfinden? Gib dem kleinen Boot ein paar Zeilen mit.' },
+      es: { title: 'Contacto · Boopland', back: 'Volver al inicio', heading: 'Una carta a Boopland', body: 'Hoy el barquito de papel del río recoge nuestras cartas. ¿Qué juego te ha hecho soltar una carcajada? ¿A qué jugabas de pequeño que te gustaría volver a jugar aquí? Mientras te dure la sonrisa, déjanos unas líneas a bordo.' },
+      'pt-BR': { title: 'Fale conosco · Boopland', back: 'Voltar ao início', heading: 'Uma carta para Boopland', body: 'Hoje o barquinho de papel do riacho veio buscar nossas cartas. Qual jogo fez você cair na risada? Tem alguma brincadeira da infância que você gostaria de encontrar por aqui? Enquanto o sorriso ainda está aí, mande um bilhete pra gente.' }
+    });
+  </script>
+</body>
+</html>
