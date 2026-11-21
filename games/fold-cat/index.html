@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="zh-CN" data-i18n-scope="foldCat">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title data-i18n="foldCat.title">折页寻猫</title>
+  <link rel="stylesheet" href="./style.css">
+  <script defer src="../../analytics.js"></script>
+  <script src="../../i18n.js"></script>
+  <script defer src="./words.js"></script>
+  <script defer src="./puzzle.js"></script>
+  <script defer src="./map.js"></script>
+  <script defer src="./game.js"></script>
+</head>
+<body>
+<main class="shell">
+  <header>
+    <a class="back" href="../../games.html" data-i18n-label="common.back" data-i18n-title="common.back"><span aria-hidden="true">←</span><span data-i18n="common.back">返回大厅</span></a>
+    <h1><svg class="book-icon" viewBox="0 0 36 30" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"><path d="m2 8 10-4 12 4 10-4v19l-10 4-12-4-10 4z"/><path d="M12 4v19M24 8v19" stroke-dasharray="3 2"/></g></svg><span data-i18n="foldCat.title">折页寻猫</span></h1>
+    <button id="help" class="tool" type="button" data-i18n-label="foldCat.help" data-i18n-title="foldCat.help">?</button>
+  </header>
+  <section class="folio">
+    <div class="chapter"><div class="chapter-name"><button id="pages" type="button" data-i18n-title="foldCat.pages"></button><h2 id="name"></h2></div>
+      <button id="reset" class="tool" type="button" data-i18n-label="foldCat.reset" data-i18n-title="foldCat.reset">↺</button>
+    </div>
+    <div class="board" id="board">
+      <svg id="map" role="group" data-i18n-label="foldCat.board" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <pattern id="grain" width="25" height="21" patternUnits="userSpaceOnUse"><path d="M2 5l4-.4m8 9 2-.5m3-10 1-.2" fill="none" stroke="#826e52" opacity=".17" stroke-width=".65"/></pattern>
+          <linearGradient id="creaseShadow"><stop stop-color="#4d5748" stop-opacity="0"/><stop offset=".46" stop-color="#655b45" stop-opacity=".19"/><stop offset=".52" stop-color="#fff9df" stop-opacity=".7"/><stop offset="1" stop-color="#fffaed" stop-opacity="0"/></linearGradient>
+          <linearGradient id="creaseShadowY" x2="0" y2="1" href="#creaseShadow"/>
+          <g id="paperboat" stroke="#797c69" stroke-width="1.3" stroke-linejoin="round" stroke-linecap="round">
+            <path d="M-19 9q15 6 36-1m-18 6q8 1 13-1" fill="none" stroke="#95aca1"/>
+            <path d="m-18-2 13 2 5-15 6 12 12-4-7 14-20 2Z" fill="#faf0d6"/>
+            <path d="m-18-2 15 7 21-12M-5 0l5-15 2 15m-5 5L7 0" fill="none"/>
+          </g>
+          <g id="willow" stroke="#697958" stroke-linecap="round" stroke-linejoin="round">
+            <ellipse cy="18" rx="20" ry="3" fill="#bec5a7" stroke="none"/>
+            <path d="M-16-3q-2-11 8-13 7-11 17-3 11 0 12 13-3 6-9 5-5 8-15 4-12 7-17-1Z" fill="#bbc99c" stroke-width="1.3"/>
+            <path d="M-2 19q5-13 3-24m1 8q-7-10-13-12M1 2q6-9 14-12" fill="none" stroke-width="2"/>
+            <path d="M-12-9q-8 6-7 19m9-17q-5 9-4 21m8-25q-6 8-6 16m22-16q7 7 4 20m0-22q8 6 7 16m-12-18q4 5 3 15" fill="none" stroke="#82966b" stroke-width="1.35"/>
+          </g>
+          <g id="pots" stroke="#8e8169" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round">
+            <ellipse cy="13" rx="18" ry="2.4" fill="#c9c7a9" stroke="none"/>
+            <path d="M-14 0h14l-2 12h-9Zm14 3h11l-2 9H2Z" fill="#d2a486"/><path d="M-15-1H1v3h-16Zm14 3h13v3H-1Z" fill="#ddba96"/>
+            <path d="M-7 0v-17m0 11-5-5m5 2 5-7m7 19q-1-9 5-15" fill="none" stroke="#6e855d"/>
+            <g fill="#ba8574" stroke="none"><circle cx="-7" cy="-18" r="3"/><circle cx="-13" cy="-12" r="2.2"/><circle cx="-2" cy="-16" r="2.4"/></g>
+          </g>
+          <g id="tree" stroke="#64735e" stroke-width="1.5" stroke-linejoin="round" stroke-linecap="round">
+            <ellipse cy="17" rx="16" ry="3" fill="#bcc6a5" stroke="none"/><path d="M-1 12C-17 17-21 1-12-7c-2-14 14-20 21-8 13 1 16 18 4 23-2 5-8 7-14 4Z" fill="#b4c4a6"/><path d="m0 17 1-23m0 11L-6 0m7 0 5-6m-17 2 3-4m12-2 2 4" fill="none"/>
+          </g>
+          <g id="plant" fill="none" stroke="#7e8c6e" stroke-linecap="round" stroke-width="1.4"><path d="m0 6-4-13m4 13 4-16m-3 16 9-6m-10 7-7-4"/><path d="M-4-7q-6-4-4-7 5-1 4 7m8-3q0-6 4-7 2 3-4 7" fill="#b2c49d"/></g>
+          <g id="pebbles" fill="#d4cbbb" stroke="#aaa28b" stroke-width="1"><path d="M-13 2q2-9 9-5l3 5q-6 4-12 0Zm15 2q2-6 9-4l2 4q-8 3-11 0Z"/></g>
+          <g id="water" fill="none" stroke="#809c9b" stroke-linecap="round" stroke-width="1.25"><path d="M-25 1q6-4 12-1t12-1m-3 7q7-4 14-1t10-1m-6-14q4 3 9 1"/></g>
+          <g id="garden" stroke="#a69374" stroke-linecap="round" stroke-width="1.4"><path d="m-18 4 34-6m-34 11 33-6m-28-6 1 15m8-16 1 15m11-18 1 16" fill="none"/></g>
+          <g id="cottage" stroke="#665f51" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round">
+            <ellipse cy="24" rx="28" ry="4" fill="#c1c7a8" stroke="none"/><path d="m-19-4 32-2 7 6-1 21-36 2Z" fill="#f2dfb9"/><path d="m-22-3 15-20 16-2 15 20-12-1-10-11L-9-2Z" fill="#aebdc0"/><path d="m-23 0 17-21 16-2 15 19m-37-4 7-8m-4 12 8-11m8 5 3 4" fill="none"/><path d="m-8 22 1-11q4-6 9-1l1 12" fill="#ad7d62"/><path d="m7 3 8-1v7l-8 1Z" fill="#d1b96e"/><path d="M11 2v7M6 6l9-1" fill="none"/><path d="m6-22-1-7 5-1 1 10" fill="#d9c5a4"/>
+          </g>
+          <g id="cat" stroke="#634f3b" stroke-linecap="round" stroke-linejoin="round">
+            <ellipse cy="13" rx="19" ry="4" fill="#9a947c" opacity=".24" stroke="none"/>
+            <path d="M-7 8q-16 5-17-7-1-8 4-6 3 0 2 5-1 5 9 3" fill="#c98c57" stroke-width="1.8"/>
+            <path d="M-12 11q-4-14 6-20 10-3 16 9l2 12-7 1-2-4-2 4-10 0Z" fill="#d69b61" stroke-width="1.8"/>
+            <path d="m-8-12-1-12 8 6q3-1 7 0l8-6-1 13q1 10-10 12-12 0-11-13Z" fill="#e1a26a" stroke-width="1.8"/>
+            <path d="m-7-20 4 4-4 1Zm16 5 3-5v6Z" fill="#d99182" stroke="none"/>
+            <path d="M-5-7q3-4 5 0m5 0q3-4 5 0" fill="none" stroke-width="1.45"/>
+            <path d="m1-5 3 0-1.6 2Z" fill="#815544" stroke-width=".7"/>
+            <path d="m-7-5-7-2m7 5-7 1M10-5l7-2m-6 5 6 1m-19-15 2 4m3-5v4" fill="none" stroke-width="1.1"/>
+          </g>
+          <g id="paw" fill="#596d58"><ellipse cy="2" rx="4.2" ry="3.2"/><ellipse cx="-4" cy="-2" rx="1.5" ry="2"/><ellipse cx="0" cy="-4" rx="1.5" ry="2"/><ellipse cx="4" cy="-2" rx="1.5" ry="2"/></g>
+        </defs>
+        <g id="sheet"></g><g id="squares" aria-hidden="true"></g><g id="seams"></g>
+        <g id="actor" aria-hidden="true"><g id="cat-facing"><g class="cat-pose"><use href="#cat"/></g></g></g>
+      </svg>
+    </div>
+    <div class="caption"><span class="status-icon" aria-hidden="true"><svg viewBox="-9 -9 18 18"><use href="#paw"/></svg></span><span id="message" role="status" aria-live="polite"></span><button id="hint" type="button" data-i18n="foldCat.hint">提示</button></div>
+  </section>
+  <nav id="folds" data-i18n-label="foldCat.folds"></nav>
+</main>
+<dialog id="dialog" aria-labelledby="modalTitle"><h2 id="modalTitle"></h2><div id="modalBody"></div><div id="modalActions"></div><a class="dialog-back" href="../../games.html" data-i18n="common.back">返回大厅</a></dialog>
+</body></html>

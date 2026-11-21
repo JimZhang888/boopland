@@ -14,7 +14,7 @@
   try {
     const saved = JSON.parse(localStorage.getItem(storageKey));
     if (saved && saved.version === 1) {
-      best = levels.map((_, i) => Number.isInteger(saved.best?.[i]) && saved.best[i] > 0 && saved.best[i] <= 3000 ? saved.best[i] : null);
+      best = levels.map((_, i) => Number.isSafeInteger(saved.best?.[i]) && saved.best[i] > 0 ? saved.best[i] : null);
       unlocked = Math.min(levels.length, Math.max(1, best.reduce((n, value, i) => value ? Math.max(n, i + 2) : n, 1)));
       level = Number.isInteger(saved.level) && saved.level >= 0 && saved.level < unlocked ? saved.level : 0;
       const restored = E.replay(levels[level].board, saved.history);

@@ -5,13 +5,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#eef0e6">
   <title data-i18n="title">联系我们 · Boopland</title>
+  <link rel="preload" href="./assets/fonts/huiwen-mincho-welcome.woff2?v=6d76883b7c42" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="./assets/fonts/welcome-type.css">
   <style>
-    @font-face { font-family: Huiwen; src: url("./assets/fonts/huiwen-mincho-welcome.woff2") format("woff2"); font-display: swap; }
     * { box-sizing: border-box; }
     html { background: #eef0e6; color: #344b3e; }
     body {
       margin: 0; min-height: 100vh; min-height: 100svh; display: grid; grid-template-rows: auto 1fr;
-      font-family: "Iowan Old Style", Georgia, "Noto Serif CJK SC", "Songti SC", SimSun, serif;
+      font-family: var(--sans); -webkit-font-smoothing: antialiased;
       background: radial-gradient(ellipse at 60% 25%, #faf8ee, transparent 75%), #eaeee2;
     }
     body::after {
@@ -19,7 +20,7 @@
       background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Cpath filter='url(%23n)' d='M0 0h180v180H0z'/%3E%3C/svg%3E");
     }
     header { width: min(90%, 1296px); min-height: 80px; margin: auto; display: flex; align-items: center; justify-content: space-between; gap: 16px; border-bottom: 1px solid #cbd1bf; }
-    .brand { font: 26px Huiwen, Georgia, serif; letter-spacing: -1px; }
+    .brand { font: 400 26px/1 var(--serif); letter-spacing: -1px; }
     .brand span { color: #95a17e; }
     a { color: inherit; text-underline-offset: .26em; text-decoration-color: #9aa98c; }
     a:hover { color: #506947; text-decoration-color: currentColor; }
@@ -41,7 +42,7 @@
     .landscape::after { content: ""; position: absolute; top: 35%; width: 100%; height: 26%; background: #90a888; clip-path: polygon(0 70%, 21% 35%, 38% 62%, 72% 10%, 100% 67%, 100% 100%, 0 100%); }
     .boat { position: absolute; left: 18%; bottom: 16%; width: 61%; height: 34%; background: linear-gradient(106deg, #e2d6b6 44%, #fffdf0 45%); clip-path: polygon(0 73%, 19% 73%, 59% 0, 59% 73%, 100% 73%, 76% 100%, 23% 100%); }
     .stamp::after { content: ""; position: absolute; left: -55px; top: 47%; width: 76px; height: 20px; opacity: .5; border-block: 1px solid #83917a; background: linear-gradient(transparent 46%, #83917a 48% 53%, transparent 55%); border-radius: 48%; transform: rotate(-17deg); }
-    h1 { margin: 0 0 1.1rem; font-size: clamp(2rem, 4.5vw, 3.65rem); font-weight: 400; line-height: 1.25; text-wrap: balance; }
+    h1 { font-family: var(--serif); margin: 0 0 1.1rem; font-size: clamp(2rem, 4.5vw, 3.65rem); font-weight: 400; line-height: 1.25; text-wrap: balance; }
     .letter { margin: 0; max-width: 38em; color: #526252; font-size: clamp(1.05rem, 1.7vw, 1.22rem); line-height: 1.95; }
     address { margin-top: clamp(26px, 4vw, 48px); padding-top: 14px; border-top: 1px dashed #c6cdb8; font-style: normal; }
     address a { display: inline-block; padding: 8px 0; font-size: clamp(1rem, 2.7vw, 1.5rem); overflow-wrap: anywhere; }

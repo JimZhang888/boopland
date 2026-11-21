@@ -80,3 +80,26 @@ test('silence reaches a complete result with zero score and all notes missed', (
   assert.equal(round.fullCombo, false);
   assert.equal(round.score, 0);
 });
+
+test('a hold ending inside the resume grace period requires an actual re-grip', () => {
+  for (const track of TRACKS) for (const outcome of ['untouched', 'held', 'released']) {
+    const round = new Round(track), note = round.notes.find(n => n.hold && n.end - n.time >= 0.5);
+    round.press(note.lane, note.time);
+    round.update(note.end - 0.45);
+    round.prepareResume();
+    round.release(note.lane, note.end - 0.4);
+    if (outcome !== 'untouched') round.press(note.lane, note.end - 0.35);
+    if (outcome === 'released') round.release(note.lane, note.end - 0.25);
+    round.update(note.end);
+    round.release(note.lane, note.end + 0.01);
+    assert.equal(note.state, outcome === 'held' ? 'hit' : 'miss');
+    assert.equal(round.perfect, outcome === 'held' ? 1 : 0);
+  }
+});
+test('tracks have distinct rhythms and lane patterns independent of tempo', () => {
+  const rhythms = TRACKS.map(track => {
+    const { notes, beat } = chart(track);
+    return JSON.stringify(notes.map(n => [n.lane, Math.round(n.time / beat * 2), Math.round((n.end - n.time) / beat * 2)]));
+  });
+  assert.equal(new Set(rhythms).size, TRACKS.length);
+});

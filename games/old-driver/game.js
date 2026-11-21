@@ -128,8 +128,10 @@
       $('overlay-title').textContent = t(dialog === 'intro' ? 'name' : 'help');
       $('overlay-description').textContent = t(dialog === 'intro' ? 'intro' : `${game.level.id}Hint`);
       addHelp(content, dialog === 'help'); primary.textContent = t(dialog === 'intro' ? 'start' : 'resume'); primary.onclick = closeDialog;
-    } else if (dialog === 'paused') {
-      art.textContent = 'Ⅱ'; $('overlay-title').textContent = t('pausedTitle'); $('overlay-description').textContent = t('pausedText');
+    } else if (dialog === 'paused' || dialog === 'restart') {
+      art.textContent = dialog === 'restart' ? '↺' : 'Ⅱ';
+      $('overlay-title').textContent = t(dialog === 'restart' ? 'again' : 'pausedTitle');
+      $('overlay-description').textContent = t(dialog === 'restart' ? 'confirmRestart' : 'pausedText');
       primary.textContent = t('resume'); primary.onclick = closeDialog;
       secondary.hidden = false; secondary.textContent = t('again'); secondary.onclick = () => startLevel(game.index);
     } else if (dialog === 'courses') {
@@ -161,7 +163,7 @@
     if (dialog === 'paused') closeDialog();
     else if (!dialog && game.status === 'playing') showDialog('paused');
   }
-  $('pause').onclick = pause; $('restart').onclick = () => startLevel(game.index);
+  $('pause').onclick = pause; $('restart').onclick = () => showDialog('restart');
   $('help').onclick = () => showDialog('help'); $('courses').onclick = () => showDialog('courses'); $('close-overlay').onclick = closeDialog;
   for (const button of buttons) {
     button.addEventListener('pointerdown', event => {
@@ -184,7 +186,7 @@
     }
     if (event.code === 'Escape') { event.preventDefault(); if (dialog && dialog !== 'won' && dialog !== 'failed') closeDialog(); else pause(); return; }
     if (event.code === 'KeyP' && !event.repeat) { event.preventDefault(); pause(); return; }
-    if (event.code === 'KeyR' && !event.repeat && !dialog) { event.preventDefault(); startLevel(game.index); return; }
+    if (event.code === 'KeyR' && !event.repeat && !dialog) { event.preventDefault(); showDialog('restart'); return; }
     if (drivingKeys.includes(event.code) && !dialog && game.status === 'playing') { event.preventDefault(); keys.add(event.code); }
   });
   window.addEventListener('keyup', event => keys.delete(event.code));

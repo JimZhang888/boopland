@@ -1064,6 +1064,40 @@ window.GAME_LIST = [
       'pt-BR': { title: "Metrô de papel", description: "Desenhe linhas, conecte estações e distribua pequenos trens. Mantenha os passageiros de uma cidade crescente em movimento." }
     }
   },
+  {
+    title: "折页寻猫",
+    description: "沿折痕合上纸页，让断开的路接起来。等小猫走过去，再展开下一段回家的路。",
+    path: "./games/fold-cat/index.html",
+    category: "解谜",
+    color: "#e5e7d6",
+    cover: "./games/fold-cat/cover.svg",
+    locales: {
+      en: { title: "Fold & Find the Cat", description: "Fold the page to join two broken paths. Let the cat cross, then unfold the next stretch of its way home." },
+      ja: { title: "折り紙の猫さがし", description: "折り目に沿って紙を折り、途切れた道をつなごう。猫が渡ったら、紙を開いて帰り道の続きを探そう。" },
+      ko: { title: "종이를 접어 고양이 찾기", description: "종이를 접어 끊어진 길을 이어요. 고양이가 건너면 종이를 펼쳐 집으로 가는 다음 길을 찾아요." },
+      fr: { title: "Plis et petit chat", description: "Pliez la feuille pour raccorder deux bouts de chemin. Laissez passer le chat, puis dépliez la suite de son trajet." },
+      de: { title: "Faltpfade für die Katze", description: "Falte das Blatt, bis zwei Wege aneinanderliegen. Lass die Katze hinüberlaufen und falte ihren Heimweg Stück für Stück auf." },
+      es: { title: "Pliega y encuentra al gato", description: "Dobla la hoja para unir dos caminos. Deja que el gato cruce y despliega el siguiente tramo de vuelta a casa." },
+      'pt-BR': { title: "Dobre e encontre o gato", description: "Dobre a folha para unir dois caminhos. Deixe o gato atravessar e desdobre o próximo trecho até chegar em casa." }
+    }
+  },
+  {
+    title: "课桌冰壶",
+    description: "两人轮流弹瓶盖，每人三枚。轻轻滑向靶心，或撞开对方的瓶盖，看谁最后离圆心最近。",
+    path: "./games/desk-curling/index.html",
+    category: "休闲",
+    color: "#e8dfce",
+    cover: "./games/desk-curling/cover.svg",
+    locales: {
+      en: { title: "Desk Curling", description: "Take turns flicking three bottle caps each. Nudge your rival aside and leave your cap closest to the center." },
+      ja: { title: "机の上のカーリング", description: "一人三つのボトルキャップを交互にはじこう。相手を押しのけ、最後に中心に一番近いキャップを残せるかな。" },
+      ko: { title: "책상 컬링", description: "병뚜껑을 세 개씩 나눠 번갈아 튕겨요. 상대 뚜껑을 밀어내고 내 뚜껑을 중심에 가장 가깝게 놓아 보세요." },
+      fr: { title: "Curling de bureau", description: "À tour de rôle, lancez vos trois capsules. Écartez celles de votre adversaire pour finir au plus près du centre." },
+      de: { title: "Tischcurling", description: "Schnippt abwechselnd je drei Kronkorken über den Tisch. Wer nach dem letzten Stoß am nächsten an der Mitte liegt, gewinnt." },
+      es: { title: "Curling de escritorio", description: "Cada jugador tiene tres chapas. Jugad por turnos: gana quien deje su chapa más cerca del centro al final de la ronda." },
+      'pt-BR': { title: "Curling de mesa", description: "Cada pessoa tem três tampinhas. Joguem por turnos e afastem as tampinhas rivais. Ganha quem terminar mais perto do centro." }
+    }
+  },
   // 新增示例（删除每行开头的 //，修改内容即可）：
   // {
   //   title: "游戏名字",

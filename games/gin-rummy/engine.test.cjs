@@ -193,3 +193,31 @@ test('100 seeded full matches preserve all cards, legal phases and score account
   }
   assert.ok(rounds > 100);
 });
+
+test('restoring a match preserves the draw, opponent turn, settlement and subsequent deals', () => {
+  const match = new E.Match(22);
+  const restore = () => E.Match.restore(JSON.parse(JSON.stringify(match.record)));
+  const check = () => assert.deepEqual(restore().state, match.state);
+  check();
+  match.play({type:'draw', source:'discard'});
+  assert.equal(match.state.phase, 'discard');
+  check();
+  let rounds = 0;
+  for (let step = 0; step < 2000 && match.state.phase !== 'matchOver'; step++) {
+    if (match.state.phase === 'roundOver') {
+      rounds++;
+      check();
+      const resumed = restore(), next = {type:'nextRound'};
+      resumed.play(next); match.play(next);
+      assert.deepEqual(resumed.state, match.state);
+    } else {
+      match.play(E.chooseAction(match.state));
+      if (step === 0) check();
+    }
+  }
+  assert.ok(rounds >= 1);
+  assert.equal(match.state.phase, 'matchOver');
+  check(); check();
+  assert.equal(E.Match.restore({...match.record, actions:[...match.record.actions,{type:'nextRound'}]}), null);
+  assert.equal(E.Match.restore({version:1, seed:-1, actions:[]}), null);
+});

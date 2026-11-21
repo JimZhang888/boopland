@@ -61,7 +61,12 @@
     }
     evacuate(line, train) {
       const at=this.stations[line.route[train.index]];
-      if (at) at.queue.push(...train.load);
+      if (at) {
+        for (const passenger of train.load) {
+          if (passenger.type === at.type) this.score++;
+          else at.queue.push(passenger);
+        }
+      }
       train.load=[];
     }
     setRoute(id, route) {

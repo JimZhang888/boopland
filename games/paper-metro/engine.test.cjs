@@ -19,3 +19,26 @@ test('weekly supplies freeze time and grant exactly the chosen resources',()=>{c
 test('long simulations grow stations, preserve riders, and respect capacity',()=>{const g=new Metro({seed:12,calm:true});g.setRoute(0,[0,1,3,4,2]);for(let i=0;i<12000;i++){if(g.supply)g.chooseSupply('carriage');g.tick(.05);if(i%440===0){g.setRoute(0,g.stations.map(s=>s.id));if(g.freeTrains&&g.lines[0].trains.length<5)g.assignTrain(0,1);}assert.equal(passengerCount(g),g.totalSpawned);for(const l of g.lines)for(const tr of l.trains)assert.ok(tr.load.length<=g.capacity);}assert.equal(g.stations.length,18);assert.ok(g.score>150);assert.ok(g.capacity>=20);assert.ok(g.freeTrains>=0);});
 test('all eight dictionaries have complete keys and interpolation values',()=>{let catalog;vm.runInNewContext(fs.readFileSync(path.join(__dirname,'translations.js'),'utf8'),{BooplandI18n:{register:(scope,c)=>{assert.equal(scope,'metro');catalog=c;}}});assert.equal(Object.keys(catalog).length,8);for(const lang of Object.keys(catalog)){assert.deepEqual(Object.keys(catalog[lang]),Object.keys(catalog.en));for(const [key,text]of Object.entries(catalog[lang])){assert.ok(text.length>0);assert.deepEqual([...text.matchAll(/\{\w+\}/g)].map(x=>x[0]).sort(),[...catalog.en[key].matchAll(/\{\w+\}/g)].map(x=>x[0]).sort());}}});
 test('lobby entry is unique and all referenced local resources exist',()=>{const root=path.join(__dirname,'../..');const context={window:{}};vm.runInNewContext(fs.readFileSync(path.join(root,'gamelist.js'),'utf8'),context);const entries=context.window.GAME_LIST.filter(g=>g.path==='./games/paper-metro/index.html');assert.equal(entries.length,1);assert.equal(Object.keys(entries[0].locales).length,7);assert.ok(fs.existsSync(path.join(root,entries[0].cover)));for(const match of fs.readFileSync(path.join(__dirname,'index.html'),'utf8').matchAll(/(?:src|href)="(\.[^"]+)"/g))assert.ok(fs.existsSync(path.resolve(__dirname,match[1])),match[1]);});
+
+test('route changes during a stop deliver matching riders once and preserve riders continuing onward', () => {
+  for (const change of ['remove', 'clear', 'redraw']) {
+    const game = quiet(), route = [0, 1, 3];
+    game.setRoute(0, route);
+    for (const station of [1, 3]) game.spawnPassenger(0, game.stations[station].type);
+    const [arriving, continuing] = game.stations[0].queue;
+    const train = game.lines[0].trains[0];
+    for (let ticks = 0; ticks < 600 && train.index === 0; ticks++) game.tick(0.025);
+    assert.equal(train.index, 1);
+    assert.ok(train.dwell > 0 && train.load.includes(arriving) && train.load.includes(continuing));
+    if (change === 'remove') game.assignTrain(0, -1);
+    if (change === 'clear') game.clearRoute(0);
+    if (change === 'redraw') game.setRoute(0, route);
+    assert.equal(game.score, 1, change);
+    assert.deepEqual(game.stations[1].queue, [continuing]);
+    if (change === 'remove') game.assignTrain(0, 1);
+    if (change === 'clear') game.setRoute(0, route);
+    advance(game, 45);
+    assert.equal(game.score, 2);
+    assert.equal(passengerCount(game), 2);
+  }
+});

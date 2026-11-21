@@ -98,5 +98,27 @@
   }
   function stay(s) { if (s.phase !== 'stairs') return false; s.phase = 'explore'; note(s, 'walk'); return true; }
   function score(s) { return s.gold + s.kills * 15 + s.explored * 5 + s.floorsCleared * 60 + (s.phase === 'won' ? s.hp * 2 : 0); }
-  return { create, start, adjacent, move, fight, retreat, loot, potion, descend, stay, intent, estimate, score, FLOORS };
+  function applyCommand(state, command) {
+    if (Number.isInteger(command)) {
+      const previous = state.message;
+      return move(state, command) || state.message !== previous;
+    }
+    switch (command) {
+      case 'start': return start(state);
+      case 'attack': return fight(state);
+      case 'guard': return fight(state, true);
+      case 'retreat': return retreat(state);
+      case 'descend': return descend(state);
+      case 'stay': return stay(state);
+      case 'potion': return potion(state);
+      case 'blade': case 'shield': case 'flask': return loot(state, command);
+      default: return false;
+    }
+  }
+  function restore(record) {
+    if (record?.version !== 1 || !Number.isSafeInteger(record.seed) || !Array.isArray(record.commands)) return null;
+    const state = create(record.seed);
+    return record.commands.every(command => applyCommand(state, command)) ? state : null;
+  }
+  return { create, start, adjacent, move, fight, retreat, loot, potion, descend, stay, intent, estimate, score, FLOORS, applyCommand, restore };
 });

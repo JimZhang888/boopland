@@ -38,7 +38,45 @@ test('undo updates connected homes and can reopen a won level', () => {
 });
 test('star thresholds reward target-length paths without rejecting longer solutions', () => {
   const state=E.create(E.levels[0]); state.won=true;
-  for (const [extra,stars] of [[0,3],[1,2],[4,2],[5,1]]) {
+  for (const [extra,stars] of [[0,3],[1,2],[2,2],[3,1]]) {
     state.path=Array(state.level.target+extra+1).fill([0,0]); assert.equal(E.stars(state),stars);
+  }
+});
+
+test('all twelve maps award every rating on real routes and their targets are optimal', () => {
+  for (const level of E.levels) {
+    const index = ([x,y]) => y * level.size + x;
+    const blocked = new Set(level.obstacles.map(o => index(o.position)));
+    const homes = new Set(level.houses.map(index));
+    const finish = index(level.finish), start = index(level.start);
+    const adjacent = Array.from({length:level.size ** 2}, (_, cell) => {
+      const x = cell % level.size, y = Math.floor(cell / level.size);
+      return [[x-1,y],[x+1,y],[x,y-1],[x,y+1]]
+        .filter(point => point.every(v => v >= 0 && v < level.size))
+        .map(index).filter(neighbor => !blocked.has(neighbor));
+    });
+    const used = new Set([start]), path = [start], routes = new Map();
+    function visit(cell, houses) {
+      if (cell === finish) {
+        if (houses === homes.size && !routes.has(path.length - 1)) routes.set(path.length - 1, [...path]);
+        return;
+      }
+      for (const next of adjacent[cell]) {
+        if (used.has(next)) continue;
+        used.add(next); path.push(next);
+        visit(next, houses + Number(homes.has(next)));
+        path.pop(); used.delete(next);
+      }
+    }
+    visit(start, 0);
+    assert.equal(Math.min(...routes.keys()), level.target, 'target on map ' + level.id);
+    const ratings = new Set();
+    for (const route of routes.values()) {
+      const state = E.create(level);
+      for (const cell of route.slice(1)) E.move(state, [cell % level.size, Math.floor(cell / level.size)]);
+      assert.ok(state.won);
+      ratings.add(E.stars(state));
+    }
+    assert.deepEqual(ratings, new Set([1,2,3]), 'ratings on map ' + level.id);
   }
 });

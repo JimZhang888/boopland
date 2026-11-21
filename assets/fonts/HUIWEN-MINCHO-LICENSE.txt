@@ -22,7 +22,7 @@ ce5943311946b3a36772658b2e7c979a35a7067752b1ebb3103c73a984f638b3
 原始字体文件内的版权字段：Public Domain
 
 本项目的网页版本：
-huiwen-mincho-welcome.woff2 提取 index.html 欢迎页所需字符。
+huiwen-mincho-welcome.woff2 提取 index.html 欢迎页和 contact.html 联系页所需字符。
 huiwen-mincho-lobby.woff2 提取 games.html、games-i18n.js、gamelist.js、
 i18n.js 中的大厅界面、游戏名称、简介、分类和动态提示所需字符。
 两份文件均由上述原始字体转换为 WOFF2；未修改字形轮廓，
@@ -35,7 +35,8 @@ i18n.js 中的大厅界面、游戏名称、简介、分类和动态提示所需
 重新生成子集。以下命令在项目根目录执行，需要开发工具 fonttools
 及 Brotli；网站运行和部署本身没有 Python 或构建依赖：
 
-python -m fontTools.subset "原版字体路径.ttf" --text-file=index.html --unicodes=U+0020-017F --flavor=woff2 --name-IDs=* --name-legacy --name-languages=* --output-file=assets/fonts/huiwen-mincho-welcome.woff2
+Get-Content -Raw -Encoding utf8 index.html,contact.html | Set-Content -Encoding utf8 "$env:TEMP/boopland-welcome-font-text.txt"
+python -m fontTools.subset "原版字体路径.ttf" --text-file="$env:TEMP/boopland-welcome-font-text.txt" --unicodes=U+0020-017F --flavor=woff2 --name-IDs=* --name-legacy --name-languages=* --output-file=assets/fonts/huiwen-mincho-welcome.woff2
 
 大厅子集（先在 PowerShell 合并大厅的四份文本到临时文件）：
 
@@ -43,7 +44,8 @@ Get-Content -Raw -Encoding utf8 games.html,games-i18n.js,gamelist.js,i18n.js | S
 python -m fontTools.subset "原版字体路径.ttf" --text-file="$env:TEMP/boopland-lobby-font-text.txt" --unicodes=U+0020-017F --flavor=woff2 --name-IDs=* --name-legacy --name-languages=* --output-file=assets/fonts/huiwen-mincho-lobby.woff2
 
 生成后，取新 WOFF2 文件 SHA-256 的前 12 位作为版本号，
-同步更新 games.html 中 preload 的 href 和 @font-face 的 src 的 ?v= 参数；
+欢迎页子集需同步更新 index.html、contact.html 的 preload 和 welcome-type.css 的 src。
+大厅子集需同步更新 games.html 中 preload 的 href 和 @font-face 的 src 的 ?v= 参数；
 两处 URL 必须一致，确保已有浏览器缓存也会加载新字库。
 检查时除确认字体文件加载成功，还应确认标题每个字的实际渲染字体，
 避免遗漏单字回退（例如“纸间衣橱”里的“衣、橱”）。

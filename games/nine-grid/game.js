@@ -4,6 +4,13 @@
   const $ = id => document.getElementById(id), t = (key, values) => I.t('nineGrid.' + key, values);
   const monsterNames = ['slime', 'wolf', 'spirit', 'guardian'];
   let state = E.create(), lastMessage = '', best = 0, recorded = false;
+  const saveKey = 'boopland-nine-grid-run-v1';
+  let commands = [];
+  try {
+    const record = JSON.parse(localStorage.getItem(saveKey));
+    const restored = E.restore(record);
+    if (restored) { state = restored; commands = record.commands; }
+  } catch { /* Optional storage. */ }
   try { best = Math.max(0, Number(localStorage.getItem('boopland-nine-grid-best')) || 0); } catch { /* Play without persistence. */ }
   function message(item) {
     if (!item) return '';
@@ -18,19 +25,15 @@
     button.addEventListener('click', () => execute(command)); $('actions').append(button);
   }
   function execute(command) {
-    let changed = false;
-    if (command === 'start') changed = E.start(state);
-    if (command === 'attack') changed = E.fight(state);
-    if (command === 'guard') changed = E.fight(state, true);
-    if (command === 'retreat') changed = E.retreat(state);
-    if (command === 'descend') changed = E.descend(state);
-    if (command === 'stay') changed = E.stay(state);
-    if (command === 'potion') changed = E.potion(state);
-    if (['blade', 'shield', 'flask'].includes(command)) changed = E.loot(state, command);
-    if (command === 'restart') { state = E.create(); recorded = false; lastMessage = ''; E.start(state); changed = true; }
-    if (changed) render();
+    if (command === 'restart') {
+      state = E.create(); commands = []; recorded = false; lastMessage = ''; command = 'start';
+    }
+    if (!E.applyCommand(state, command)) return;
+    commands.push(command);
+    try { localStorage.setItem(saveKey, JSON.stringify({version: 1, seed: state.seed, commands})); } catch { /* Play without storage. */ }
+    render();
   }
-  function move(index) { const old = state.message; const moved = E.move(state, index); if (moved || state.message !== old) render(); }
+  function move(index) { execute(index); }
   function renderBoard() {
     // Keep buttons stable so keyboard focus survives each turn.
     if (!$('board').children.length) for (let i = 0; i < 9; i++) {

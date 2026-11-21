@@ -7,7 +7,14 @@
   const symbols = ['♣', '♦', '♥', '♠'];
   const suitNames = ['clubs', 'diamonds', 'hearts', 'spades'];
   const ranks = ['A', '2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K'];
-  let state = E.createGame();
+  const saveKey = 'boopland-gin-rummy-v1';
+  let match;
+  try { match = E.Match.restore(JSON.parse(localStorage.getItem(saveKey))); } catch { /* Optional storage. */ }
+  match ||= new E.Match();
+  let state = match.state;
+  function save() {
+    try { localStorage.setItem(saveKey, JSON.stringify(match.record)); } catch { /* Keep playing in memory. */ }
+  }
   let selected = null;
   let sortMode = 0;
   let timer = null;
@@ -150,7 +157,8 @@
 
   function perform(action) {
     if (!action) return;
-    E.act(state, action);
+    match.play(action);
+    save();
     selected = null;
     notice = null;
     render();
@@ -191,7 +199,9 @@
 
   function freshGame() {
     stopTimer();
-    state = E.createGame();
+    match = new E.Match();
+    state = match.state;
+    save();
     selected = null;
     notice = null;
     closeDialog();
@@ -257,7 +267,8 @@
       addDialogAction(state.phase === 'matchOver' ? 'playAgain' : 'nextRound', () => {
         if (state.phase === 'matchOver') freshGame();
         else {
-          E.nextRound(state);
+          match.play({ type: 'nextRound' });
+          save();
           selected = null;
           notice = null;
           closeDialog();
@@ -319,6 +330,8 @@
   window.addEventListener('pagehide', stopTimer);
   window.addEventListener('pageshow', schedule);
   window.addEventListener('boopland:languagechange', () => { render(); if ($('dialog').open) populateDialog(); });
+  save();
   render();
-  schedule();
+  if (ended()) openDialog('result');
+  else schedule();
 })();

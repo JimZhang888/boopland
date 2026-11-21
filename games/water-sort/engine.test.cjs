@@ -100,3 +100,22 @@ test('static entry resources, lobby registration and seven card translations are
   assert.equal(Object.keys(entries[0].locales).length, 7);
   assert.ok(fs.existsSync(path.resolve(__dirname, '../..', entries[0].cover)));
 });
+
+test('a long legal game restores at 3000, 3001 and 3002 moves and can undo across the boundary', () => {
+  const initial = levels[0].board, a = initial.length - 2, b = a + 1;
+  let board = E.clone(initial);
+  const history = [], snapshots = [];
+  while (history.length < 3002) {
+    const pair = history.length === 0 ? [0,a] : history.length % 2 ? [a,b] : [b,a];
+    board = E.pour(board, ...pair).board;
+    history.push(pair);
+    if (history.length >= 3000) {
+      snapshots.push(board);
+      assert.deepEqual(E.replay(initial, JSON.parse(JSON.stringify(history))), board);
+    }
+  }
+  for (const expected of snapshots.slice(0, -1).reverse()) {
+    history.pop();
+    assert.deepEqual(E.replay(initial, history), expected);
+  }
+});

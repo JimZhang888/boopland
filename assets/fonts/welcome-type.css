@@ -1,0 +1,6 @@
+@font-face { font-family: "Huiwen Mincho"; src: url("./huiwen-mincho-welcome.woff2?v=6d76883b7c42") format("woff2"); font-style: normal; font-weight: 400; font-display: swap; }
+
+:root {
+  --serif: "Huiwen Mincho", "Iowan Old Style", "Palatino Linotype", "Noto Serif CJK SC", "Songti SC", "SimSun", serif;
+  --sans: "Huiwen Mincho", "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+}

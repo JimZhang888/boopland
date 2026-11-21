@@ -182,5 +182,15 @@
     {dress:'linenDress',shoes:'sandals',hair:'chestnutWaves',hat:'strawHat',background:'meadow',prop:'daisies'}
   ];
   function inspiration(index,skin=0){const look={...defaultOutfit,coat:null,socks:null,hat:null,neck:null,bag:null,prop:null,...inspirations[index%inspirations.length],skin};if(look.dress){look.top=null;look.bottom=null;}return look;}
-  window.PaperWardrobe = {items,byId,tasks,categories,slots,defaultOutfit,freshState,sanitize,cleanOutfit,equip,evaluate,complete,unlocked,inspiration};
+  function saveLook(state, replaceIndex = null) {
+    if (state.album.some(look => Object.keys(defaultOutfit).every(slot => look.outfit[slot] === state.outfit[slot]))) return 'duplicateLook';
+    if (replaceIndex === null && state.album.length >= 24) return 'albumFull';
+    const previous = replaceIndex === null ? null : state.album[replaceIndex];
+    if (replaceIndex !== null && !previous) return 'albumFull';
+    const id = previous ? previous.id : Date.now().toString(36)+'-'+Math.random().toString(36).slice(2,7);
+    if (previous) state.album.splice(replaceIndex, 1);
+    state.album.unshift({id, date:new Date().toISOString(), outfit:{...state.outfit}, task:state.mode==='free'?null:state.task});
+    return 'saved';
+  }
+  window.PaperWardrobe = {items,byId,tasks,categories,slots,defaultOutfit,freshState,sanitize,cleanOutfit,equip,evaluate,complete,unlocked,inspiration,saveLook};
 })();

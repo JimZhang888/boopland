@@ -65,4 +65,27 @@ for(const task of E.tasks){const report=E.evaluate(E.defaultOutfit,task);for(con
 vm.runInContext(fs.readFileSync(path.join(__dirname,'../../gamelist.js'),'utf8'),c);
 const records=c.window.GAME_LIST.filter(x=>x.path==='./games/paper-wardrobe/index.html');assert.equal(records.length,1);assert.equal(records[0].category,'休闲');
 for(const lang of ['en','ja','ko','fr','de','es','pt-BR'])assert.ok(records[0].locales[lang].title&&records[0].locales[lang].description);
+
+{
+  const book = E.freshState();
+  const tops = E.unlocked(book).filter(item => item.slot === 'top');
+  const bottoms = E.unlocked(book).filter(item => item.slot === 'bottom');
+  const outfits = tops.flatMap(top => bottoms.map(bottom => ({...book.outfit, top:top.id, bottom:bottom.id})));
+  assert.ok(outfits.length > 24);
+  for (const next of outfits.slice(0,24)) {
+    book.outfit = next;
+    assert.equal(E.saveLook(book), 'saved');
+    assert.equal(E.saveLook(book), 'duplicateLook');
+  }
+  book.outfit = outfits[24];
+  const old = E.sanitize(JSON.parse(JSON.stringify(book)));
+  assert.equal(E.saveLook(book), 'albumFull');
+  assert.equal(E.saveLook(book, 5), 'saved');
+  assert.equal(book.album.length, 24);
+  assert.equal(book.album[0].id, old.album[5].id);
+  assert.equal(JSON.stringify(book.album.slice(1)), JSON.stringify(old.album.filter((_,i) => i !== 5)));
+  assert.equal(JSON.stringify(E.sanitize(JSON.parse(JSON.stringify(book))).album), JSON.stringify(book.album));
+  assert.deepEqual(book.scores, old.scores);
+  assert.deepEqual(book.unlocked, old.unlocked);
+}
 console.log(`PASS: ${E.items.length} items (${E.unlocked(state).length} starters), all 12 tasks score 100 with starter pieces, ${passes} rainy-day solutions, mutually exclusive garments, rewards, score bounds, save sanitation, ${keys.length} translated keys × 8 languages, relative resources, analytics and lobby registration.`);

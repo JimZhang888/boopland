@@ -268,5 +268,32 @@
     else throw new Error('Unknown action');
   }
 
-  return Object.freeze({ rank, suit, value, points, bySuit, byRank, meldCandidates, analyze, canLayoff, layoff, defend, settle, createGame, pass, draw, discard, nextRound, bestDiscard, wantsUpcard, chooseAction, act });
+  // One seed fixes the deals across the match. Replaying accepted actions also
+  // reconstructs the opponent's public knowledge and the round-by-round scores.
+  class Match {
+    constructor(seed = Math.floor(Math.random() * 0x100000000)) {
+      this.record = { version: 1, seed, actions: [] };
+      let word = seed;
+      this.random = () => {
+        word = (Math.imul(word, 1664525) + 1013904223) >>> 0;
+        return word / 0x100000000;
+      };
+      this.state = createGame(this.random);
+    }
+    play(action) {
+      if (action.type === 'nextRound') nextRound(this.state, this.random);
+      else act(this.state, action);
+      this.record.actions.push(action);
+    }
+    static restore(record) {
+      if (record?.version !== 1 || !Number.isInteger(record.seed) || record.seed < 0 ||
+          record.seed > 0xffffffff || !Array.isArray(record.actions)) return null;
+      const match = new Match(record.seed);
+      try {
+        for (const action of record.actions) match.play(action);
+      } catch { return null; }
+      return match;
+    }
+  }
+  return Object.freeze({ rank, suit, value, points, bySuit, byRank, meldCandidates, analyze, canLayoff, layoff, defend, settle, createGame, pass, draw, discard, nextRound, bestDiscard, wantsUpcard, chooseAction, act, Match });
 });

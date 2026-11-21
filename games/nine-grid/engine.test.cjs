@@ -84,3 +84,18 @@ test('eight complete dictionaries share interpolation fields; all static resourc
   const records = sandbox.window.GAME_LIST.filter(row => row.path === './games/nine-grid/index.html');
   assert.equal(records.length, 1); assert.equal(Object.keys(records[0].locales).length, 7); assert.ok(fs.existsSync(path.resolve(__dirname, '../../', records[0].cover)));
 });
+
+test('restores the exact encounter and continued random floor layout from accepted input', () => {
+  const record = {version:1, seed:117, commands:[]}, state = E.create(record.seed);
+  const snapshots = s => JSON.parse(JSON.stringify(s));
+  for (const command of ['start', 8, 'blade', 7, 4, 'guard', 'attack', 1, 'descend']) {
+    assert.ok(E.applyCommand(state, command), String(command));
+    record.commands.push(command);
+    const copy = E.restore(JSON.parse(JSON.stringify(record)));
+    assert.deepEqual(snapshots(copy), snapshots(state));
+    if (copy.enemy) assert.equal(copy.enemy, copy.tiles[copy.pos].enemy);
+  }
+  assert.equal(state.floor, 2);
+  assert.equal(E.restore({...record, commands:['start',9]}), null);
+  assert.equal(E.restore({version:9}), null);
+});

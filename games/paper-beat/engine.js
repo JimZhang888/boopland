@@ -7,10 +7,34 @@
   ];
   const WINDOW = 0.16;
   const PERFECT = 0.07;
+  // Each four-beat phrase lists [beat offset, lane, optional hold length].
+  const phrases = {
+    rain: [
+      [[0,0],[2,1]], [[0,1],[1.5,0],[3,1]],
+      [[0,0,1.5],[2,1],[3,1]], [[0,1,1.5],[2.5,0]],
+      [[0,0],[1,1],[2,0],[3,1]], [[0,0],[1,1],[2,0],[3.5,1]],
+      [[0,0,2],[2.5,1],[3.5,1]], [[0,1,1],[1.5,0],[2.5,1],[3.5,0]]
+    ],
+    moon: [
+      [[0,0],[1.5,1],[3,0]], [[0.5,1],[2,0],[3.5,1]],
+      [[0,0,1],[1.5,1],[2.5,0]], [[0.5,1,1],[2,0],[3.5,1]],
+      [[0,0],[1,1],[2,0],[3,1]], [[0.5,0],[1.5,1],[2.5,0],[3.5,1]],
+      [[0.5,0],[1.5,1],[2,0],[3,1]], [[0,1,1],[1.5,0],[2.5,1],[3.5,0]]
+    ]
+  };
   function chart(track) {
     const beat = 60 / track.bpm;
     const notes = [];
     const add = (b, lane, length = 0) => notes.push({ id: notes.length, time: b * beat, end: (b + length) * beat, lane, hold: length > 0, state: 'pending' });
+    if (phrases[track.id]) {
+      for (let bar = 0; bar < 24; bar++) {
+        const section = Math.floor(bar / 6);
+        for (const [offset, lane, length] of phrases[track.id][section * 2 + bar % 2]) {
+          add(bar * 4 + offset, lane, length);
+        }
+      }
+      return { notes, beat, duration: 96 * beat };
+    }
     for (let b = 0; b < 22; b += 2) add(b, b < 8 ? 0 : b < 16 ? 1 : (b / 2) % 2);
     for (let b = 24; b < 46; b += 4) { add(b, (b / 4) % 2, 2); add(b + 3, 1 - (b / 4) % 2); }
     for (let b = 48; b < 70; b += 1) { if (b % 8 !== 7) add(b, b % 2); }
@@ -43,8 +67,11 @@
       for (const note of this.notes) {
         if (note.state === 'pending' && time - note.time > WINDOW) this.miss(note);
         if (note.state === 'holding') {
-          if (!this.held[note.lane] && time > (note.graceUntil ?? -Infinity)) this.miss(note, 'early');
-          else if (time >= note.end) this.finish(note);
+          if (this.held[note.lane]) {
+            if (time >= note.end) this.finish(note);
+          } else if (time >= note.end || time > (note.graceUntil ?? -Infinity)) {
+            this.miss(note, 'early');
+          }
         }
       }
     }
@@ -65,6 +92,7 @@
     }
     release(lane, time) {
       this.update(time);
+      if (!this.held[lane]) return;
       this.held[lane] = false;
       const note = this.notes.find(n => n.lane === lane && n.state === 'holding');
       if (!note) return;

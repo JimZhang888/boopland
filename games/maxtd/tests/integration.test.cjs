@@ -50,8 +50,14 @@ test('lobby has one MaxTD entry with an existing cover and seven translated card
   const entries = context.window.GAME_LIST.filter(game => game.path === './games/maxtd/index.html');
   assert.equal(entries.length, 1);
   assert.ok(fs.existsSync(path.resolve(root, entries[0].cover)));
-  for (const code of languages.slice(1)) for (const key of ['title', 'description', 'category']) {
-    assert.ok(entries[0].locales[code][key], `${code}.${key}`);
+  let categories;
+  context.window.BooplandI18n = { register(name, dictionary) { if (name === 'lobby') categories = dictionary; } };
+  vm.runInNewContext(fs.readFileSync(path.join(root, 'games-i18n.js'), 'utf8'), context);
+  assert.equal(entries[0].category, '策略');
+  assert.match(fs.readFileSync(path.join(root, 'games.html'), 'utf8'), /\['策略',\s*'categoryStrategy'\]/);
+  for (const code of languages.slice(1)) {
+    for (const key of ['title', 'description']) assert.ok(entries[0].locales[code][key]?.trim(), `${code}.${key}`);
+    assert.ok(categories[code].categoryStrategy.trim(), code);
   }
 });
 

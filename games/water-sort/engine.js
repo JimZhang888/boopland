@@ -81,7 +81,7 @@
   }
 
   function replay(initial, history) {
-    if (!Array.isArray(history) || history.length > 3000) return null;
+    if (!Array.isArray(history)) return null;
     let board = clone(initial);
     for (const move of history) {
       if (!Array.isArray(move) || move.length !== 2 || won(board)) return null;

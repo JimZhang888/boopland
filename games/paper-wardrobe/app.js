@@ -71,14 +71,20 @@
     const list=E.tasks.filter(task=>task.type===state.mode);
     openModal(t(state.mode==='order'?'chooseOrder':'chooseTitle'),`<p>${A.escape(t('taskHint'))}</p><div class="task-list">${list.map(task=>`<button class="task-card" data-task="${task.id}">${A.thumbnail(E.byId[task.background])}<div><h3>${A.escape(taskName(task.id))}</h3><small>${A.escape(t('task_'+task.id+'Desc'))}</small><small>${A.escape(t('reward',{name:name(task.reward)}))}</small></div><span class="task-score">${state.scores[task.id]>=75?'✓':state.scores[task.id]??'↗'}</span></button>`).join('')}</div>`,'tasks');
   }
-  function saveOutfit(){
-    if(state.album.length>=24){status('albumFull');return;}
-    state.album.unshift({id:Date.now().toString(36)+'-'+Math.random().toString(36).slice(2,7),date:new Date().toISOString(),outfit:{...state.outfit},task:state.mode==='free'?null:state.task});
-    status('saved');persist();render();
+  function saveOutfit(replaceIndex=null){
+    const result=E.saveLook(state,replaceIndex);
+    status(result);
+    if(result==='albumFull'){showAlbum(true);return;}
+    if(result==='saved')persist();
+    if($('dialog').open)closeModal();
+    render();
   }
-  function showAlbum(){
-    const body=state.album.length?`<div class="album-grid">${state.album.map(look=>`<article class="album-card">${A.render(look.outfit)}<span>${A.escape(dateText(look.date))} · ${A.escape(look.task?taskName(look.task):name(look.outfit.background))}</span><button data-restore="${A.escape(look.id)}">${A.escape(t('wearAgain'))}</button></article>`).join('')}</div>`:`<div class="empty-album"><span aria-hidden="true">▧</span><p>${A.escape(t('albumEmpty'))}</p></div>`;
-    openModal(t('album')+' · '+state.album.length+'/24',body,'album');
+  function showAlbum(replacing=false){
+    const cards=state.album.map((look,index)=>`<article class="album-card">${A.render(look.outfit)}<span>${A.escape(dateText(look.date))} · ${A.escape(look.task?taskName(look.task):name(look.outfit.background))}</span>
+      ${replacing ? `<button data-replace="${index}">${A.escape(t('replaceLook'))}</button>` : `<button data-restore="${A.escape(look.id)}">${A.escape(t('wearAgain'))}</button><button data-delete="${index}">${A.escape(t('deleteLook'))}</button>`}
+    </article>`).join('');
+    const body=cards ? `${replacing?'<p>'+A.escape(t('albumFull'))+'</p>':''}<div class="album-grid">${cards}</div>` : `<div class="empty-album"><span aria-hidden="true">▧</span><p>${A.escape(t('albumEmpty'))}</p></div>`;
+    openModal(t('album')+' · '+state.album.length+'/24',body,replacing?'replace':'album');
   }
   function showHelp(){openModal(t('help'),`<ol class="help-list">${[1,2,3,4,5].map(n=>`<li>${A.escape(t('help'+n))}</li>`).join('')}</ol>`,'help');}
   function showLocked(id){const task=E.tasks.find(task=>task.reward===id);openModal(name(id),`<div class="reward-box">${A.thumbnail(E.byId[id])}<p>${A.escape(t('locked',{task:taskName(task.id)}))}</p></div><p>${A.escape(t('task_'+task.id+'Desc'))}</p><p>${A.escape(t('taskHint'))}</p><div class="dialog-buttons"><button class="primary" data-task="${task.id}">${A.escape(t(task.type==='order'?'order':'challenge'))} ↗</button></div>`,{type:'locked',id});}
@@ -133,21 +139,30 @@
   $('undo').addEventListener('click',()=>{if(!history.length)return;state.outfit=history.pop();status('undone');persist();render();});
   $('reset').addEventListener('click',()=>{const next={...E.defaultOutfit,skin:state.outfit.skin};if(state.mode!=='free')next.background=currentTask().background;changeOutfit(next,'resetDone');});
   $('submit').addEventListener('click',()=>{if(state.mode==='free')saveOutfit();else{const task=currentTask(),result=E.complete(state,task);persist();render();showResult(result,task);}});
-  $('choose').addEventListener('click',showTasks);$('album').addEventListener('click',showAlbum);$('help').addEventListener('click',showHelp);$('export').addEventListener('click',exportPostcard);
+  $('choose').addEventListener('click',showTasks);$('album').addEventListener('click',()=>showAlbum());$('help').addEventListener('click',showHelp);$('export').addEventListener('click',exportPostcard);
   $('close-dialog').addEventListener('click',closeModal);
-  $('dialog').addEventListener('close',()=>{modal=null;});
+  $('dialog').addEventListener('close',()=>{if(!$('dialog').open)modal=null;});
   $('dialog').addEventListener('click',event=>{if(event.target===$('dialog')){const rect=$('dialog').getBoundingClientRect();if(event.clientX<rect.left||event.clientX>rect.right||event.clientY<rect.top||event.clientY>rect.bottom)closeModal();}});
   $('dialog-content').addEventListener('click',event=>{
     const task=event.target.closest('[data-task]');if(task){selectTask(task.dataset.task);return;}
+    const replace=event.target.closest('[data-replace]');
+    if(replace){if(window.confirm(t('confirmReplace')))saveOutfit(Number(replace.dataset.replace));return;}
+    const remove=event.target.closest('[data-delete]');
+    if(remove){
+      if(window.confirm(t('confirmDelete'))){
+        state.album.splice(Number(remove.dataset.delete),1);status('deletedLook');persist();render();showAlbum();
+      }
+      return;
+    }
     const restore=event.target.closest('[data-restore]');if(restore){const look=state.album.find(x=>x.id===restore.dataset.restore);if(look){changeOutfit({...look.outfit},'restored');closeModal();}return;}
     if(event.target.closest('[data-close]'))closeModal();
-    if(event.target.closest('[data-dialog-save]')){saveOutfit();closeModal();}
+    if(event.target.closest('[data-dialog-save]'))saveOutfit();
     if(event.target.closest('[data-next]')){const list=E.tasks.filter(x=>x.type===state.mode),i=list.findIndex(x=>x.id===state.task);selectTask(list[(i+1)%list.length].id);}
   });
   window.addEventListener('boopland:languagechange',()=>{
     if(lastSelected&&['selected','removed'].includes(statusKey))statusValues={name:name(lastSelected)};
     renderCategories();render();
-    if(modal==='help')showHelp();else if(modal==='album')showAlbum();else if(modal==='tasks')showTasks();else if(modal?.type==='locked')showLocked(modal.id);else if(modal?.type==='result')showResult(modal.result,modal.task);else if(modal?.type==='export'){closeModal();exportPostcard();}
+    if(modal==='help')showHelp();else if(modal==='album'||modal==='replace')showAlbum(modal==='replace');else if(modal==='tasks')showTasks();else if(modal?.type==='locked')showLocked(modal.id);else if(modal?.type==='result')showResult(modal.result,modal.task);else if(modal?.type==='export'){closeModal();exportPostcard();}
   });
   renderCategories();render();
   if(restored&&storageOK)status('restored');
