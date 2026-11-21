@@ -45,7 +45,9 @@ python -m fontTools.subset "原版字体路径.ttf" --text-file="$env:TEMP/boopl
 
 生成后，取新 WOFF2 文件 SHA-256 的前 12 位作为版本号，
 欢迎页子集需同步更新 index.html、contact.html 的 preload 和 welcome-type.css 的 src。
-大厅子集需同步更新 games.html 中 preload 的 href 和 @font-face 的 src 的 ?v= 参数；
-两处 URL 必须一致，确保已有浏览器缓存也会加载新字库。
+大厅以 huiwen-mincho-lobby.woff2 作为完整字形来源。更新它或调整游戏标题后，
+在根目录运行 python assets/fonts/split-lobby-font.py（需 Node.js、fonttools 及 Brotli）。
+脚本按文字与标点、界面与靠前的游戏标题、靠前的游戏简介、后续标题及其余汉字分组生成 WOFF2 文件，同时更新
+games.html 的字体版本。浏览器按页面实际显示的字符加载对应字形。
 检查时除确认字体文件加载成功，还应确认标题每个字的实际渲染字体，
 避免遗漏单字回退（例如“纸间衣橱”里的“衣、橱”）。
