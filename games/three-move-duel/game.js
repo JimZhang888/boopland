@@ -124,8 +124,10 @@
   }
   function drawBoard() {
     const shown=rehearsal || board;
-    for (const [id,cell] of [['hero-actor',shown.player],['rival-actor',shown.rival]]) {
-      $(id).style.transform='translate('+A.centers[cell]+'px,'+(A.deck[cell]-10)+'px)';
+    for (const [id,cell,hp] of [['hero-actor',shown.player,board.playerHP],['rival-actor',shown.rival,board.rivalHP]]) {
+      const actor=$(id);
+      actor.style.transform='translate('+A.centers[cell]+'px,'+(A.deck[cell]-10)+'px)';
+      actor.classList.toggle('is-down',hp===0);
     }
     $('world').querySelectorAll('.cell-mark').forEach((mark,i)=>{
       mark.classList.toggle('player',i===shown.player);

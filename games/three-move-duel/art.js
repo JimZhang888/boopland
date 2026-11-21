@@ -124,8 +124,24 @@
     const hat=style==='pine' || style==='swallow';
     const blade = '<g class="sword">'+path('M22-49L70-72L75-74L70-68L24-46Z','#e2e3d8',hand)+line('M28-49l39-18','#929b91',.9)+
       line('M19-53l6 11',dark,3.4)+line('M10-43l12-7',dark,4)+line('M10-43q-6 10-13 10m12-9q-2 8-7 13',robe,1.9)+'</g>';
-    return '<g class="pose">'+
-      '<ellipse cy="1" rx="28" ry="3.7" fill="#6f7869" opacity=".25"/>'+
+    const head = path('M-12-96q8-10 18-2l5 8-1 5 4 4-4 2-1 5-7 2-9-6-4-8Z','#debea0',hand)+
+      line('M5-87l5 .8m-6 10 4-.6',dark,1.4)+
+      (hat ? path('M-31-88q11-6 24-18l6-5 4 1 24 17-2 3q-23-1-55 4Z',style==='pine'?'#a49876':'#aba98b',hand)+line('M-24-89l23-17-9 13m10-14 12 13m-26 3 13-14m18 13 6 .4','#6d6b56',1)+line('M-15-87q4 26 20 15','#6d6654',1.2)
+      : path('M-13-85q-8-13 3-19 11-6 21 3l1 8-12 1-4 8-3 2-1-7-3 4Z','#404b45',hand)+path('M-13-99q-10-3-6-9 5-6 11-2 5 3 4 9Z','#414b45',hand)+line('M-21-106l20 3','#ba9a79',2.5))+
+      path('M-13-92q-6 13-16 15l-7 6q17-3 22-11l-6 17q9-7 12-21Z',dark,hand);
+    // The settled silhouette follows the bridge deck, with a bent knee and the blade at rest.
+    const fallen = '<g class="fallen" opacity="0">'+
+      path('M-4-12L17-24Q20-26 23-22L34-6l8 2 1 4-13-1-13-13L5-3Z',dark,hand)+
+      path('M0-8l20 1 14 3 10-1 3 5-17 1-16-4-16 4Z',dark,hand)+
+      '<g transform="translate(-40 -14) scale(.86 .72) rotate(-64) translate(0 87)">'+head+'</g>'+
+      path('M-34-8q3-12 15-13l27 7 10 3-4 4 7 4-17 1-8 3-8-2-21 2q-7-1-10-9Z',robe,hand)+
+      path('M-30-15q9-7 15-2l15 8 5 3-9 1-15-3-11 1Z',light,hand)+
+      path('M-6-17l5 1-5 15-5-1Z',dark,hand)+line('M0-11l11 6m-38 3 10-3','#515d50',1)+
+      path('M-9-2L39 0l7 2-54-1Z','#e2e3d8',hand)+line('M-12-5l-1 7m-10-4 11 1',dark,2.6)+
+      path('M-31-12q5-5 11 1l4 5 7 2-1 4-14-2-8-5Z',light,hand)+
+      path('M-10-4l6 1 2 3-8-1Z','#d9b89a',hand)+'</g>';
+    return '<ellipse class="ground-shadow" cy="1" rx="28" ry="3.7" fill="#6f7869" opacity=".25"/>'+
+      '<g class="upright"><g class="pose">'+
       path('M-8-34l11 3-14 24-13 5-2-4 11-10Z',dark,hand)+path('M2-35l10-1 14 27 8 5-2 4-16-3-6-12-15-11Z',dark,hand)+
       path('M-28-4l12-4 4 4-2 4-17 1Z','#41483f',hand)+path('M18-5l11 1 8 2-1 3-20-2Z','#41483f',hand)+
       path('M-12-63q-12 6-18 21l-14 7q8 4 18 0l18-11 6-14Z',light,hand)+
@@ -135,15 +151,12 @@
       path('M-16-45q12 3 27-2l1 6-28 3Z',dark,hand)+
       path('M-13-42q-12 0-21 8l-14-1 12 5q12-5 23-8',light,hand)+
       path('M-7-78l12-1 1 12-8 7-8-8Z','#d1b59a',hand)+
-      path('M-12-96q8-10 18-2l5 8-1 5 4 4-4 2-1 5-7 2-9-6-4-8Z','#debea0',hand)+
-      line('M5-87l5 .8m-6 10 4-.6',dark,1.4)+
-      (hat ? path('M-31-88q11-6 24-18l6-5 4 1 24 17-2 3q-23-1-55 4Z',style==='pine'?'#a49876':'#aba98b',hand)+line('M-24-89l23-17-9 13m10-14 12 13m-26 3 13-14m18 13 6 .4','#6d6b56',1)+line('M-15-87q4 26 20 15','#6d6654',1.2)
-      : path('M-13-85q-8-13 3-19 11-6 21 3l1 8-12 1-4 8-3 2-1-7-3 4Z','#404b45',hand)+path('M-13-99q-10-3-6-9 5-6 11-2 5 3 4 9Z','#414b45',hand)+line('M-21-106l20 3','#ba9a79',2.5))+
-      path('M-13-92q-6 13-16 15l-7 6q17-3 22-11l-6 17q9-7 12-21Z',dark,hand)+
+      head+
       path('M-9-69l6-3 9 5-6 7Z',light,hand)+
       path('M-10-64q6-7 14 3l6 9 9-4 5 8-15 10q-8-2-14-11l-5-8Z',light,hand)+
       blade+path('M16-51l4-4 6 1 2 3-4 3-6 1Z','#d9b89a',hand)+
-      line('M-8-60l10 15m3 1 5 3m-23-8 5-10','#515d50',1)+'</g>';
+      line('M-8-60l10 15m3 1 5 3m-23-8 5-10','#515d50',1)+'</g></g>'+fallen+
+      '<g class="landing-dust" opacity="0">'+line('M-53 0l-7-3m11-1-3-4m88 7 6-3','#877c67',1.4)+'</g>';
   }
 
   function actor(id, style, cell, mirrored) {
