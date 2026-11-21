@@ -55,7 +55,9 @@
     if(state.phase!=='over')setStatus(t(paused?'paused':reason,values));
     else setStatus(t(state.mode==='solo'?'cleared':'win',{player:state.winner+1}));
     $('power').value=Math.round(power*100);setText('power-value',Math.round(power*100)+'%');
-    setText('angle-value',((Math.round(angle*180/Math.PI)%360+360)%360)+'°');
+    const hundredths=Math.round(angle*18000/Math.PI);
+    const wrapped=((hundredths%36000)+36000)%36000;
+    setText('angle-value',(wrapped/100).toFixed(2)+'°');
     $('power').setAttribute('aria-valuetext',Math.round(power*100)+'%');
     const enabled=!paused&&!$('dialog').open&&state.phase==='aim';
     $('tip-open').disabled=!enabled;
@@ -131,8 +133,12 @@
   $('game').addEventListener('pointercancel',()=>{cancelDrag();sync();});
   $('game').addEventListener('lostpointercapture',()=>{if(drag){cancelDrag();sync();}});
   $('power').addEventListener('input',()=>{power=Number($('power').value)/100;sync();});
-  $('aim-left').addEventListener('click',()=>{angle-=Math.PI/180;sync();});
-  $('aim-right').addEventListener('click',()=>{angle+=Math.PI/180;sync();});
+  function nudgeAim(direction,precise) {
+    angle+=direction*(precise ? .01 : .1)*Math.PI/180;
+    sync();
+  }
+  $('aim-left').addEventListener('click',event=>nudgeAim(-1,event.shiftKey));
+  $('aim-right').addEventListener('click',event=>nudgeAim(1,event.shiftKey));
   $('strike').addEventListener('click',strike);$('pause').addEventListener('click',()=>pause());
   $('sound').addEventListener('click',()=>{sound=!sound;if(sound){wakeAudio();tone('strike',.35);}else audio?.suspend().catch(()=>{});save();sync();});
   $('result-action').addEventListener('click',()=>{if(paused)pause(false);else start();});
@@ -185,13 +191,15 @@
     const key=event.key.toLowerCase();
     if(key==='escape'&&drag){event.preventDefault();cancelDrag();sync();return;}
     if(key==='p'||key==='escape'){event.preventDefault();pause();return;}
-    if(/^(INPUT|SELECT|BUTTON|A)$/.test(document.activeElement?.tagName))return;
+    const horizontal=key==='arrowleft'||key==='arrowright';
+    const focus=document.activeElement;
+    if(focus?.matches('input,select,button,a')&&!(horizontal&&focus.closest('.fine-aim')))return;
     if(!canInput())return;
     if(key===' '){event.preventDefault();strike();}
-    else if(state.phase==='aim'&&['arrowleft','arrowright','arrowup','arrowdown'].includes(key)) {
-      event.preventDefault();const step=(event.shiftKey ? .2 : 1)*Math.PI/180;
-      if(key==='arrowleft')angle-=step;if(key==='arrowright')angle+=step;
-      if(key==='arrowup')power=E.clamp(power+.05,.05,1);if(key==='arrowdown')power=E.clamp(power-.05,.05,1);sync();
+    else if(state.phase==='aim'&&horizontal) {
+      event.preventDefault();nudgeAim(key==='arrowleft'?-1:1,event.shiftKey);
+    } else if(state.phase==='aim'&&(key==='arrowup'||key==='arrowdown')) {
+      event.preventDefault();power=E.clamp(power+(key==='arrowup' ? .05 : -.05),.05,1);sync();
     }
   });
   window.addEventListener('blur',()=>{if(state.shots||drag)pause(true);});

@@ -106,6 +106,7 @@
   }
 }
 
+.fine-aim output { min-width: 6.5ch; white-space: nowrap; }
 .tip-trigger {
   min-width: 44px; min-height: 44px; padding: 2px 4px; border-radius: 5px;
   display: grid; justify-items: center; align-content: center; gap: 2px;
